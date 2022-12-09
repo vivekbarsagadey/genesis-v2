@@ -1,12 +1,12 @@
 "use client";
 
-import { Typography } from "@mui/material";
-import Grid from "@mui/material/Grid";
-import HeaderComponent from "./components/header";
-import AppsIcon from "@mui/icons-material/Apps";
+
+import { SessionProvider } from "next-auth/react";
+import LayoutComponent from "./components/LayoutComponent";
 
 export default function RootLayout({
   children,
+  ...props
 }: {
   children: React.ReactNode;
 }) {
@@ -14,16 +14,9 @@ export default function RootLayout({
     <html>
       <head />
       <body>
-        <Grid container spacing={2}>
-          <Grid item xs={2} display="flex">
-            <AppsIcon />
-            <Typography>Project</Typography>
-          </Grid>
-          <Grid item xs={10}>
-            <HeaderComponent />
-            {children}
-          </Grid>
-        </Grid>
+         <SessionProvider session={props.session}>
+           <LayoutComponent>{children}</LayoutComponent>
+        </SessionProvider>
       </body>
     </html>
   );

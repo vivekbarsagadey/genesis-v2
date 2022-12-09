@@ -1,17 +1,31 @@
 "use client";
-import { Grid } from "@mui/material";
 import React from "react";
-import HeaderComponent from "./components/header";
-import Button from '@mui/material/Button';
+import { useSession, signOut } from "next-auth/react";
+import Button from "@mui/material/Button";
 import Link from "next/link";
+import SignIn from "./login/page";
 
 const page = () => {
-  return (
-    <div>
-            <Link href={"/create"}>
-            <Button>create</Button></Link>
-    </div>
-  );
+  const { data: session } = useSession();
+  if (session) {
+    return (
+      <>
+        signed in as {session.user.email}
+        <Link href={"/create"}>
+          <Button>create</Button>
+        </Link>
+        <button onClick={() => signOut()}>SignOut </button>
+      </>
+    );
+  } 
+  
+    return (
+      <>
+        <SignIn />
+      </>
+    );
+  
+  
 };
 
 export default page;
