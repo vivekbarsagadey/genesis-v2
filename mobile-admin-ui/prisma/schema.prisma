@@ -27,7 +27,6 @@ model Project {
   modules Module[]
    @@map("tb_project")
 }
-
 model Module {
    id    Int     @id @default(autoincrement())
    name  String?
@@ -36,7 +35,6 @@ model Module {
    screens Screen[]
     @@map("tb_module")
 }
-
 model Screen {
   id    Int     @id @default(autoincrement())
   name  String?

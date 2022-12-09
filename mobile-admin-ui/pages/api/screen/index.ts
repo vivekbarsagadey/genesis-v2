@@ -2,6 +2,7 @@ import prisma from "../../../lib/prisma";
 
 export default async function handle(req, res) {
   const {  name } = req.body;
+  
   if (req.method === "POST") {
     const result = await prisma.screen.create({
       data: {

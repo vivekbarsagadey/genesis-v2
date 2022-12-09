@@ -2,8 +2,7 @@ import prisma from "../../../lib/prisma";
 
 
 export default async function handle(req, res) {
-  const { title,
-    name,
+  const { title, name,
     logo } = req.body;
   if (req.method === "POST") {
     const result = await prisma.project.create({

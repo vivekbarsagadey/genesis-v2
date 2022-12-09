@@ -3,6 +3,7 @@ import prisma from "../../../lib/prisma";
 export default async function handle(req, res) {
   const id = req.query?.id;
   console.log("this is id",id)
+  
   if (req.method === "DELETE") {
     const user = await prisma.user.delete({
       where: { id: id },

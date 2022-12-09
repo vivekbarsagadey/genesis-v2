@@ -7,6 +7,7 @@ export default async function handle(req, res) {
     const project = await prisma.project.delete({
       where: { id: id },
     });
+    
     res.json(project);
   } else if (req.method === "GET") {
     const project = await prisma.project.findUnique({
