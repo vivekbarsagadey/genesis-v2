@@ -1,7 +1,7 @@
 import React from 'react'
 import IUserComponentProps from '../user.props'
-import Board from "@asseinfo/react-kanban";
-import "@asseinfo/react-kanban/dist/styles.css";
+// import Board from "@asseinfo/react-kanban";
+// import "@asseinfo/react-kanban/dist/styles.css";
 import Grid from '@mui/material/Grid/Grid';
 
 interface KanbanComponentProps extends  IUserComponentProps{}

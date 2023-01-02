@@ -53,6 +53,59 @@ model User {
   @@map("users")
 }
 
+model Company {
+  id             String    @id @default(cuid())
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+  name           String?
+  pic            String?
+  country_code   String?
+  description    String?
+  address        String?
+  streetAddress  String?   @map("street_address")
+  city           String?
+  state          String?
+  zipCode        String?   @map("zip_code")
+  country        String?
+  firstName      String?   @map("first_name")
+  lastName       String?   @map("last_name")
+  email          String?   @unique
+  mobile         String?
+  accountType    String?   @map("account_type")
+  locLatitude    Float?    @map("loc_lat")
+  locLongitude   Float?    @map("loc_lon")
+  locAltitude    Float?    @default(0) @map("loc_alt")
+  registerNo     String?   @map("register_no")
+  website        String?
+  foundationYear String?
+  tagLine        String?   @map("tag_line")
+  projects       Project[]
+
+  @@map("tb_company")
+}
+
+
+model Project {
+ id             String    @id @default(cuid())
+ createdAt      DateTime  @default(now()) @map("created_at")
+ updatedAt      DateTime  @updatedAt @map("updated_at")
+ name           String   @unique
+ description    String?
+ logo           String?
+ adminEmail     String? @map("admin_email")  
+ supportEmail   String? @map("support_email")
+ phoneNumber    String? @map("phone_number")
+ supportPhone   String? @map("support_phone")
+ webUrl         String? @map("web_url")
+ currentVersion String? @map("current_version")
+ status         String? @map("status")
+ companyId      String?  @map("company_id")
+ company        Company? @relation(fields: [companyId], references: [id])
+
+  @@map("tb_project")
+}
+
+
 model VerificationToken {
   identifier String
   token      String   @unique
