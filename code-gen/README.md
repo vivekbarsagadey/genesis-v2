@@ -2,7 +2,7 @@
 
 ## Code Gen for Projects
 
-_Create a virtualenv in the application directory and activate it_
+_Create a virtual env in the application directory and activate it_
 
 ## Installation
 
