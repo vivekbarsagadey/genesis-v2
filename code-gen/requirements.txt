@@ -6,3 +6,4 @@ pytesseract
 pillow
 cloudinary
 requests
+GitPython
