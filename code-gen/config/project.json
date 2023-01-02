@@ -1,0 +1,117 @@
+{
+  "config": {
+    "name": "",
+    "path": "",
+    "lang": "nextjs",
+    "type": [
+      "admin"
+    ],
+    "out": "generated-sources"
+  },
+  "pages": [
+    {
+      "name": "event",
+      "label": "Events",
+      "title": "Events Form",
+      "pipeline": [
+        {
+          "name": "UPCOMING",
+          "title": "UP COMING",
+          "ord": 1
+        },
+        {
+          "name": "RUNNING",
+          "title": "RUNNING",
+          "ord": 2
+        },
+        {
+          "name": "EXPIRED",
+          "title": "EXPIRED",
+          "ord": 3
+        }
+      ],
+      "screen": {
+        "list": [
+          "Calendar",
+          "Cohort",
+          "Kanban",
+          "List",
+          "Grid",
+          "Graph"
+        ]
+      },
+      "type": "CURD",
+      "img": "",
+      "components": [
+        {
+          "name": "title",
+          "type": "text",
+          "fieldtype": "String",
+          "required": "true",
+          "label": "text",
+          "error": "text is required",
+          "ui": {
+            "extra_small_devices": "12",
+            "small_devices": "12",
+            "medium_devices": "6",
+            "large_devices": "4",
+            "xlarge_devices": "3",
+            "css": "",
+            "clz": ""
+          }
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "fieldtype": "String",
+          "required": "true",
+          "label": "text",
+          "error": "text is required",
+          "ui": {
+            "extra_small_devices": "12",
+            "small_devices": "12",
+            "medium_devices": "6",
+            "large_devices": "4",
+            "xlarge_devices": "3",
+            "css": "",
+            "clz": ""
+          }
+        },
+        {
+          "name": "date",
+          "type": "date",
+          "fieldtype": "DateTime",
+          "required": "false",
+          "label": "Date of Birth",
+          "error": "DateTime is required",
+          "ui": {
+            "extra_small_devices": "12",
+            "small_devices": "12",
+            "medium_devices": "6",
+            "large_devices": "4",
+            "xlarge_devices": "3",
+            "css": "",
+            "clz": ""
+          }
+        },
+        {
+          "name": "venue",
+          "type": "text",
+          "fieldtype": "String",
+          "required": "true",
+          "label": "text",
+          "error": "text is required",
+          "ui": {
+            "extra_small_devices": "12",
+            "small_devices": "12",
+            "medium_devices": "6",
+            "large_devices": "4",
+            "xlarge_devices": "3",
+            "css": "",
+            "clz": ""
+          }
+        }
+      ]
+    }
+  ]
+}
