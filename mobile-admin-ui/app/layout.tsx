@@ -4,6 +4,7 @@
 import { SessionProvider } from "next-auth/react";
 import LayoutComponent from "./components/LayoutComponent";
 
+
 export default function RootLayout({
   children,
   ...props

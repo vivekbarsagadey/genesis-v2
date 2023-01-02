@@ -12,6 +12,8 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fontsource/roboto": "^4.5.8",
+    "@hookform/resolvers": "^2.9.10",
+    "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "^5.10.16",
     "@mui/material": "^5.10.17",
     "@mui/styled-engine-sc": "^5.10.16",
@@ -25,8 +27,10 @@
     "next-auth": "^4.18.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.40.0",
     "styled-component": "^2.8.0",
-    "typescript": "4.9.4"
+    "typescript": "4.9.4",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "eslint-config-next": "^13.0.6",

@@ -3,7 +3,6 @@ import { Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 
 import AppsIcon from "@mui/icons-material/Apps";
-import HeaderComponent from './header';
 import { useSession } from 'next-auth/react';
 const LayoutComponent = ({
     children,
@@ -18,7 +17,7 @@ const LayoutComponent = ({
             <Typography>Project</Typography>
           </Grid>
           <Grid item xs={10}>
-            <HeaderComponent />
+          
             {children}
           </Grid>
         </Grid>} 
