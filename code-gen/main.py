@@ -1,8 +1,5 @@
 import json
 import os
-from gen.nextjs.admin import build_builder
-from gen.project import project_config_builder
-
 
 from util.file_util import FileUtil
 
@@ -19,16 +16,15 @@ def codeGen():
 
    
 
-def projectCofigGen():
-    print("This is projectCofigGen ")
+def projectConfigGen():
+    print("This is project Config Gen ")
     FileUtil.clear_src_structure()
     FileUtil.check_or_create_src_structure()
-    project_config_builder.init()
-    project_config_builder.upload_json()
+  
 
 if __name__ == '__main__':
     print('==============================================')
     print('Please select values and press enter for performing operations:')   
-    projectCofigGen()
+    projectConfigGen()
     codeGen()
     
