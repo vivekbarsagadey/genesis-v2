@@ -1,6 +1,5 @@
 import IUser from "../user.model";
 
-
 const deleteUser =async(item:IUser)=>{
        await fetch(`${process.env.NEXT_PUBLIC_API_URL}\\users/${item._id}`, {
       method: "DELETE",
