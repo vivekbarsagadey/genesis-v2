@@ -1,6 +1,12 @@
 import os
 import shutil
+import stat
 import tempfile
+
+def removeReadOnly(func, path, excinfo):
+    # Using os.chmod with stat.S_IWRITE to allow write permissions
+    os.chmod(path, stat.S_IWRITE)
+    func(path)
 
 class FileUtil:
 
@@ -8,6 +14,11 @@ class FileUtil:
     def clear_src_structure():
         if os.path.exists('./generated-sources'):
             shutil.rmtree('./generated-sources')
+            
+    @staticmethod
+    def clear_structure(location):
+        if os.path.exists(location):
+            shutil.rmtree(location ,onerror=removeReadOnly)
 
     @staticmethod
     def check_or_create_src_structure():

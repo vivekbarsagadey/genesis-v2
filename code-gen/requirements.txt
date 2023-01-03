@@ -7,3 +7,4 @@ pillow
 cloudinary
 requests
 GitPython
+python-dotenv

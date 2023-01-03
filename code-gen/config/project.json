@@ -1,7 +1,7 @@
 {
   "config": {
-    "name": "",
-    "path": "",
+    "name": "admin-app-test",
+    "path": "F:/Repo",
     "lang": "nextjs",
     "type": [
       "admin"
