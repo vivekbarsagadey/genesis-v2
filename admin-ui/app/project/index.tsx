@@ -1,8 +1,7 @@
 import React from 'react'
 
-const HomeComponent = ({projects} : any) => {
+const HomeComponent = () => {
   
-  console.log("projects >>",projects);
   
     return (
     <div>
