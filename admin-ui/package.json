@@ -16,7 +16,7 @@
     "@hookform/resolvers": "^2.9.10",
     "@mui/icons-material": "^5.10.14",
     "@mui/material": "^5.10.14",
-    "@mui/styles": "^5.10.14",
+    "@mui/styles": "^5.11.2",
     "@next-auth/prisma-adapter": "^1.0.5",
     "@next/font": "^13.0.4",
     "@prisma/client": "^4.6.1",

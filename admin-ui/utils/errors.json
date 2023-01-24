@@ -1,0 +1,12 @@
+{
+  "email": [
+    "Field is Required",
+    "Enter Valid Email",
+    "white space not allowed",
+    "@ and .com reqired",
+    "Altest 8 characters are Required",
+    "Enter Valid Password(atleast one uppercase,lowercase,special charater,number is required)",
+    "Maximum 20 Characters allowed",
+    "10 Digits should be Required"
+  ]
+}
