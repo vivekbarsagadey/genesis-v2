@@ -1,7 +1,7 @@
 import { InputStyle } from "../../../../../../styles/common/input";
 import { ValidatationError } from "../../validatation.error";
-import { ValidationEmailStatus } from "../validator.context";
-import RuleContext from "./rule.context";
+import { ValidationStatus } from "../validator.context";
+import {RuleContext} from "./rule.context";
 import { makeStyles } from "@mui/styles";
 import { styled } from '@mui/material/styles';
 
@@ -17,12 +17,11 @@ const useStyles = makeStyles({
 const TextRule = ({ status, data , name}: RuleContext) => {
   
   const condition = (): boolean => {
-    return status === ValidationEmailStatus.TEXT;
+    return status === ValidationStatus.TEXT;
   };
 
   const action = () => {
-    if (data.trim().length !== " ") {
-      console.log("password data is correct.....")
+    if (!data.includes(" ")) {
     }else{
       throw new ValidatationError(`White Space is not allowed`)
     }

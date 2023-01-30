@@ -1,4 +1,4 @@
-enum ValidationEmailStatus {
+enum ValidationStatus {
   REQUIRED,
   EMAIL,
   PASSWORD,
@@ -10,7 +10,7 @@ enum ValidationEmailStatus {
  export default interface ValidationContext {
   data: any;
   name?: string;
-  status: ValidationEmailStatus[];
+  status: ValidationStatus[];
 }
 
-export { ValidationEmailStatus };
+export { ValidationStatus };

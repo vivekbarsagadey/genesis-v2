@@ -1,12 +1,12 @@
 import { isBlank } from "../../../../../../utils/string.util";
 import { ValidatationError } from "../../validatation.error";
-import { ValidationEmailStatus } from "../validator.context";
-import RuleContext from "./rule.context";
+import { ValidationStatus } from "../validator.context";
+import {RuleContext} from "./rule.context";
 
 const RequiredRule = ({ status, data, name }: RuleContext) => {
   
   const condition = (): boolean => {
-    return status === ValidationEmailStatus.REQUIRED;
+    return status === ValidationStatus.REQUIRED;
   };
   
   const action = () => {

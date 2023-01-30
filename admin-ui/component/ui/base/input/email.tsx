@@ -6,7 +6,7 @@ import { makeStyles } from "@mui/styles";
 import InputProps from "./props";
 import { ValidatationEngine, ValidatationError } from "../validation";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { ValidationEmailStatus } from "../validation/emailValidation/validator.context";
+import { ValidationStatus } from "../validation/emailValidation/validator.context";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import DoneIcon from "@mui/icons-material/Done";
 const useStyles = makeStyles({
@@ -39,7 +39,7 @@ const InputEmailComponent = ({
         .execute({
           data: e.target.value,
           name: label,
-          status: [ValidationEmailStatus.REQUIRED, ValidationEmailStatus.EMAIL],
+          status: [ValidationStatus.REQUIRED, ValidationStatus.EMAIL],
         })
         .map((e) => e.message)
     );

@@ -16,8 +16,10 @@ export default interface InputProps {
   helperText?:any;
   getError?:any;
   getData?:any
-  charLength?:number
+  textLength?:number
+  onInput?:number
   icon?:any
+  buttonType?:any
   // this to send data back to parent
   register?: (_: string) => any;
 }

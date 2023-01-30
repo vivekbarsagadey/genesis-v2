@@ -10,7 +10,7 @@ import Input from "@mui/material/Input";
 import { ValidatationEngine } from "../validation";
 import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { ValidationEmailStatus } from "../validation/emailValidation/validator.context";
+import { ValidationStatus } from "../validation/emailValidation/validator.context";
 
 const InputPasswordComponent = ({
   label,
@@ -37,8 +37,8 @@ const InputPasswordComponent = ({
           data: e.target.value,
           name: label,
           status: [
-            ValidationEmailStatus.REQUIRED,
-            ValidationEmailStatus.PASSWORD,
+            ValidationStatus.REQUIRED,
+            ValidationStatus.PASSWORD,
           ],
         })
         .map((e) => e.message)

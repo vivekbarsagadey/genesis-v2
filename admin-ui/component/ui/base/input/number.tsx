@@ -4,9 +4,8 @@ import { Typography } from "@mui/material";
 import { InputStyle } from "../../../../styles";
 import { makeStyles } from "@mui/styles";
 import InputProps from "./props";
-import { ValidatationEngine, ValidatationError } from "../validation";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import { ValidationEmailStatus } from "../validation/emailValidation/validator.context";
+import { ValidatationEngine } from "../validation";
+import { ValidationStatus } from "../validation/emailValidation/validator.context";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import DoneIcon from "@mui/icons-material/Done";
 const useStyles = makeStyles({
@@ -25,7 +24,8 @@ const InputNumberComponent = ({
   id,
   placeHolder,
   getData,
-  charLength,
+  textLength,
+  onInput,
   icon
 }: InputProps) => {
   const [_value, setValue] = useState<string>("");
@@ -40,7 +40,7 @@ const InputNumberComponent = ({
         .execute({
           data: e.target.value,
           name: label,
-          status: [ValidationEmailStatus.REQUIRED, ValidationEmailStatus.NUMBER],
+          status: [ValidationStatus.REQUIRED, ValidationStatus.NUMBER],
         })
         .map((e) => e.message)
     );
@@ -57,7 +57,8 @@ const InputNumberComponent = ({
           onChange={handleChange}
           placeholder={placeHolder}
           value={_value}
-          maxLength={10}
+          onInput={(e) => e.target.value = e.target.value.slice(0, 10)}
+
            style={InputStyle.input.item}/>
         {errors
           ? (() => {

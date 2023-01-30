@@ -1,17 +1,15 @@
 import React from 'react'
 import { Button } from '@mui/material'
+import InputProps from '../input/props'
 
-interface buttonProps{
-    label:string
-  }
-const ButtonComponent = ({label}:buttonProps) => {
+
+const ButtonComponent = ({}:InputProps) => {
   return (
     <div>
         <Button
-    type='submit'
     variant='contained'
     fullWidth
-    >{label}</Button>
+    ></Button>
     </div>
   )
 }
