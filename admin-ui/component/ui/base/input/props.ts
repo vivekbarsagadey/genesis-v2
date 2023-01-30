@@ -16,6 +16,8 @@ export default interface InputProps {
   helperText?:any;
   getError?:any;
   getData?:any
+  charLength?:number
+  icon?:any
   // this to send data back to parent
   register?: (_: string) => any;
 }

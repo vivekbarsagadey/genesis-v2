@@ -11,7 +11,7 @@ const RequiredRule = ({ status, data, name }: RuleContext) => {
   
   const action = () => {
     if(isBlank(data)){
-      throw new ValidatationError(` ${name} Is required `);
+      throw new ValidatationError(` ${name} is Required `);
     }
   };
 

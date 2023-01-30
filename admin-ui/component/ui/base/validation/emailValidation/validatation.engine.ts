@@ -1,6 +1,9 @@
 import { ValidatationError } from "..";
 import { EmailRule } from "./rules/email.rule";
+import { NumberRule } from "./rules/number.rule";
+import { PasswordRule } from "./rules/password.rule";
 import { RequiredRule } from "./rules/required.rule";
+import { TextRule } from "./rules/text.rule";
 import ValidationEmailContext, {
   ValidationEmailStatus,
 } from "./validator.context";
@@ -37,6 +40,16 @@ const ValidatationEngine = () => {
         case ValidationEmailStatus.EMAIL:
           ruleSet.push(EmailRule({ data, status: s, name: name }));
           break;
+        case ValidationEmailStatus.PASSWORD:
+          ruleSet.push(PasswordRule({ data, status: s, name: name }));
+          break;
+        case ValidationEmailStatus.TEXT:
+          ruleSet.push(TextRule({ data, status: s, name: name }));
+          break;
+        case ValidationEmailStatus.NUMBER:
+          ruleSet.push(NumberRule({ data, status: s, name: name }));
+          break;
+      
         default:
           console.error("This rule is not supported ....");
       }

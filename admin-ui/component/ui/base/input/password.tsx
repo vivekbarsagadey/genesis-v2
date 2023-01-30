@@ -10,8 +10,15 @@ import Input from "@mui/material/Input";
 import { ValidatationEngine } from "../validation";
 import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import { ValidationEmailStatus } from "../validation/emailValidation/validator.context";
 
-const InputPasswordComponent = ({ label, id, placeHolder }: InputProps) => {
+const InputPasswordComponent = ({
+  label,
+  id,
+  placeHolder,
+  getData,
+  icon
+}: InputProps) => {
   const [_value, setValue] = useState<string>("");
   const [errors, setErrors] = useState<string[]>();
   const [showPassword, setShowPassword] = useState(false);
@@ -22,32 +29,43 @@ const InputPasswordComponent = ({ label, id, placeHolder }: InputProps) => {
   };
 
   const handleChange = (e: any) => {
+    getData(_value);
     setValue(e.target.value);
-  }
+    setErrors(
+      engine
+        .execute({
+          data: e.target.value,
+          name: label,
+          status: [
+            ValidationEmailStatus.REQUIRED,
+            ValidationEmailStatus.PASSWORD,
+          ],
+        })
+        .map((e) => e.message)
+    );
+  };
 
   return (
     <>
-      <Typography>{label}</Typography>
-      <Input
-        id={id}
-        type={showPassword ? "text" : "password"}
-        onChange={handleChange}
-        placeholder={placeHolder}
-        value={_value}
-        startAdornment={
-          <InputAdornment position="start">
-            <AccountCircle />
-          </InputAdornment>
-        }
-        endAdornment={
-          <InputAdornment position="end">
-            <IconButton onClick={handleShowPassword}>
+       <Typography> {label}</Typography>
+      <Typography  component="div"  style={InputStyle.input.container}>
+        {icon}
+        <input
+			  type={showPassword ? "text" : "password"}
+                id={id}
+          onChange={handleChange}
+          placeholder={placeHolder}
+          value={_value}
+           style={InputStyle.input.item}
+        />
+        <IconButton onClick={handleShowPassword}>
               {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
             </IconButton>
-          </InputAdornment>
-        }
-      />
-      {errors}
+      </Typography>
+
+      {errors?.map((em, i) => {
+        return <div key={i} style={InputStyle.error.item}>{em}</div>;
+      })}
     </>
   );
 };

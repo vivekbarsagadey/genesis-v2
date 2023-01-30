@@ -1,47 +1,80 @@
+"use client";
 import React, { useState } from "react";
-import InputProps from "./props";
-import Input from "@mui/material/Input";
-import { ValidatationEngine, ValidatationError } from "../validation";
-import { ValidationStatus } from "../validation/emailValidation/validator.context";
-import InputAdornment from "@mui/material/InputAdornment";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Typography } from "@mui/material";
+import { InputStyle } from "../../../../styles";
+import { makeStyles } from "@mui/styles";
+import InputProps from "./props";
+import { ValidatationEngine, ValidatationError } from "../validation";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import { ValidationEmailStatus } from "../validation/emailValidation/validator.context";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import DoneIcon from "@mui/icons-material/Done";
+const useStyles = makeStyles({
+  ...InputStyle,
+  error: {
+    ...InputStyle.error,
+  },
+  input:{
+    ...InputStyle.input
+  },
+ 
+});
 
-const InputTextComponent = ({ label, id, placeHolder }: InputProps) => {
+const InputTextComponent = ({
+  label,
+  id,
+  placeHolder,
+  getData,
+  icon
+}: InputProps) => {
   const [_value, setValue] = useState<string>("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState<string[]>();
   const engine = ValidatationEngine();
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
+    getData(_value);
     setValue(e.target.value);
-
-    const errors = engine.execute({
-      data: e,
-      status: ValidationStatus.REQUIRED,
-    });
-    errors.forEach((e) => {
-      setError(e.message);
-    });
+    setErrors(
+      engine
+        .execute({
+          data: e.target.value,
+          name: label,
+          status: [ValidationEmailStatus.REQUIRED, ValidationEmailStatus.TEXT],
+        })
+        .map((e) => e.message)
+    );
   };
 
   return (
     <>
-      <Typography>{label}</Typography>
-      <Input
-        id={id}
-        type="text"
-        onChange={handleChange}
-        placeholder={placeHolder}
-        value={_value}
-        startAdornment={
-          <InputAdornment position="start">
-            <AccountCircle />
-          </InputAdornment>
-        }
-      />
-      {error}
+      <Typography> {label}</Typography>
+      <Typography  component="div"  style={InputStyle.input.container}>
+        {icon}
+        <input
+          type="text"
+          id={id}
+          onChange={handleChange}
+          placeholder={placeHolder}
+          value={_value}
+          maxLength={20}
+           style={InputStyle.input.item}
+        />
+        {errors
+          ? (() => {
+              if (errors.length == 0) {
+                return <DoneIcon style={{ color: "green" }} />;
+              }
+
+              return <ErrorOutlineIcon style={{ color: "red" }} />;
+            })()
+          : null}
+      </Typography>
+
+      {errors?.map((em, i) => {
+        return <div key={i} style={InputStyle.error.item}>{em}</div>;
+      })}
     </>
   );
 };
 
-export default InputTextComponent;
+export { InputTextComponent };

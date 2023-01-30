@@ -14,21 +14,21 @@ const useStyles = makeStyles({
 });
 
 
-const EmailRule = ({ status, data , name}: RuleContext) => {
+const NumberRule = ({ status, data , name}: RuleContext) => {
   
   const condition = (): boolean => {
-    return status === ValidationEmailStatus.EMAIL;
+    return status === ValidationEmailStatus.NUMBER;
   };
 
   const action = () => {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data)) {
+    if (data.length>10) {
       console.log("email data is correct.....")
     }else{
-      throw new ValidatationError(`Please entire valid ${name} `)
+      throw new ValidatationError(`${name} Should be 10 digit `)
     }
   };
 
   return { condition, action };
 };
 
-export { EmailRule };
+export { NumberRule };

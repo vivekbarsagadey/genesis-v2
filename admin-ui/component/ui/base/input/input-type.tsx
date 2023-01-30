@@ -1,20 +1,25 @@
 import { InputEmailComponent } from "./email";
+import { InputNumberComponent } from "./number";
 import { InputPasswordComponent } from "./password";
 import InputProps from "./props";
-import InputTextComponent from './text';
+import {InputTextComponent} from './text';
 
 const InputComponent = (props: InputProps) => {
   if (props.type == "email") {
     return <InputEmailComponent {...props}></InputEmailComponent>;
   }
-  else if (props.type == "password") {
-    return <InputPasswordComponent {...props}/>
+ if (props.type == "password") {
+    return <InputPasswordComponent {...props}></InputPasswordComponent>
   }
- else{
-   return <InputTextComponent {...props}/>
+ if(props.type == "text"){
+   return <InputTextComponent {...props}></InputTextComponent>
  }
+ if(props.type == "number"){
+   return <InputNumberComponent {...props}></InputNumberComponent>
+ }
+
 
  
 };
 
-export { InputComponent,InputPasswordComponent,InputTextComponent};
+export { InputComponent};

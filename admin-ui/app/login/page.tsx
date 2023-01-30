@@ -7,7 +7,10 @@ import { Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useForm } from "../../hooks/from";
 import { InputComponent } from "../../component/ui/base/input";
-
+import MailIcon from '@mui/icons-material/Mail';
+import LockIcon from '@mui/icons-material/Lock';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import CallIcon from '@mui/icons-material/Call';
 const useStyles = makeStyles({
   login_button: {
     background: "#FFC107",
@@ -45,12 +48,7 @@ const SignIn: NextPage = (props): JSX.Element => {
   const classes = useStyles();
 
   const router = useRouter();
-  const [errorState,setErrorState] = useState("fdgfgdh")
-  const [childData,setChildData] = useState()
-  // const handleCallBack = () =>{
-  //   // setChildData()
-  //   setErrorState()
-  // }
+  const [errorState,setErrorState] = useState(" ")
   console.log(errorState);
   
 
@@ -60,17 +58,42 @@ const SignIn: NextPage = (props): JSX.Element => {
         <Grid item xs={12}>
           <InputComponent
             type="email"
-            placeHolder="enter email"
+            placeHolder="Enter email"
             label="Email"
             id="email"
             getData={setErrorState}
+            icon={<MailIcon/>}
           />
           <InputComponent
             type="password"
             placeHolder="enter password"
             label="Password"
             id="password"
+            getData={setErrorState}
+            icon={<LockIcon/>}
+
+          
           />
+          <InputComponent
+            type="text"
+            placeHolder="Enter Text"
+            label="Text"
+            id="text"
+            getData={setErrorState}
+            icon={<AssignmentIcon/>}
+
+          />
+          <InputComponent
+            type="number"
+            placeHolder="Enter Number"
+            label="Number"
+            id="number"
+            getData={setErrorState}
+            icon={<CallIcon/>}
+
+          />
+          
+      
         </Grid>
       </Grid>
     </>

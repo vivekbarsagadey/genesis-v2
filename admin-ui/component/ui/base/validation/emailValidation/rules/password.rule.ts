@@ -14,21 +14,21 @@ const useStyles = makeStyles({
 });
 
 
-const EmailRule = ({ status, data , name}: RuleContext) => {
+const PasswordRule = ({ status, data , name}: RuleContext) => {
   
   const condition = (): boolean => {
-    return status === ValidationEmailStatus.EMAIL;
+    return status === ValidationEmailStatus.PASSWORD;
   };
 
   const action = () => {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data)) {
-      console.log("email data is correct.....")
+    if (data.length>8) {
+      console.log("password data is correct.....")
     }else{
-      throw new ValidatationError(`Please entire valid ${name} `)
+      throw new ValidatationError(`Minimum 8 Characters are Required`)
     }
   };
 
   return { condition, action };
 };
 
-export { EmailRule };
+export { PasswordRule };

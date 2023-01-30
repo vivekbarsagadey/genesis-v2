@@ -20,11 +20,12 @@ const useStyles = makeStyles({
  
 });
 
-const InputEmailComponent = ({
+const InputNumberComponent = ({
   label,
   id,
   placeHolder,
   getData,
+  charLength,
   icon
 }: InputProps) => {
   const [_value, setValue] = useState<string>("");
@@ -39,7 +40,7 @@ const InputEmailComponent = ({
         .execute({
           data: e.target.value,
           name: label,
-          status: [ValidationEmailStatus.REQUIRED, ValidationEmailStatus.EMAIL],
+          status: [ValidationEmailStatus.REQUIRED, ValidationEmailStatus.NUMBER],
         })
         .map((e) => e.message)
     );
@@ -49,16 +50,15 @@ const InputEmailComponent = ({
     <>
       <Typography> {label}</Typography>
       <Typography  component="div"  style={InputStyle.input.container}>
-        {/* <AccountCircle /> */}
         {icon}
         <input
-          type="email"
+          type="number"
           id={id}
           onChange={handleChange}
           placeholder={placeHolder}
           value={_value}
-           style={InputStyle.input.item}
-        />
+          maxLength={10}
+           style={InputStyle.input.item}/>
         {errors
           ? (() => {
               if (errors.length == 0) {
@@ -77,4 +77,4 @@ const InputEmailComponent = ({
   );
 };
 
-export { InputEmailComponent };
+export { InputNumberComponent};
