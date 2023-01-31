@@ -6,10 +6,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { makeStyles } from "@mui/styles";
 import { InputStyle } from "../../../../styles";
 import InputProps from "./props";
-import Input from "@mui/material/Input";
 import { ValidatationEngine } from "../validation";
-import InputAdornment from "@mui/material/InputAdornment";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import { ValidationStatus } from "../validation/emailValidation/validator.context";
 
 const InputPasswordComponent = ({

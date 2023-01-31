@@ -1,12 +1,13 @@
 // validatoters
+
+type defaultString = string | undefined | null
 export default interface InputProps {
-  // sendind data from parent to child
-  label?: string;
+  label?: defaultString;
   id?: string;
-  value?: string;
+  value?: defaultString;
   placeHolder?: string;
   required?: boolean;
-  type?: string;
+  type: string;
   readonly?: boolean;
   disabled?: boolean;
   size?: string;
@@ -15,11 +16,11 @@ export default interface InputProps {
   startAdornment?: any;
   helperText?:any;
   getError?:any;
-  getData?:any
   textLength?:number
   onInput?:number
   icon?:any
-  buttonType?:any
+  errorIcon?:any
   // this to send data back to parent
   register?: (_: string) => any;
 }
+

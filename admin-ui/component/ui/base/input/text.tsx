@@ -5,7 +5,6 @@ import { InputStyle } from "../../../../styles";
 import { makeStyles } from "@mui/styles";
 import InputProps from "./props";
 import { ValidatationEngine, ValidatationError } from "../validation";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import { ValidationStatus } from "../validation/emailValidation/validator.context";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import DoneIcon from "@mui/icons-material/Done";

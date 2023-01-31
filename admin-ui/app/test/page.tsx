@@ -2,18 +2,19 @@
 import React, { useState } from "react";
 import { useForm } from "../../hooks/from";
 import {InputComponent}  from "../../component/ui/base/input/";
+import MailIcon from '@mui/icons-material/Mail';
 
 const TestComponent = () => {
   const { formState, register } = useForm();
   return (
     <>
-      {/* <InputComponent
-        type="email"
-        label="User Email"
-        id="emaasdasdil"
-        register={register}
-      ></InputComponent> */}
-      Emai details {formState("email")?.value}
+      <InputComponent
+            type="email"
+            placeHolder="Enter email"
+            label="Email"
+            id="email"
+            icon={<MailIcon/>}
+          ></InputComponent>
     </>
   );
 };

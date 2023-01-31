@@ -24,8 +24,6 @@ const InputNumberComponent = ({
   id,
   placeHolder,
   getData,
-  textLength,
-  onInput,
   icon
 }: InputProps) => {
   const [_value, setValue] = useState<string>("");
@@ -57,7 +55,7 @@ const InputNumberComponent = ({
           onChange={handleChange}
           placeholder={placeHolder}
           value={_value}
-          onInput={(e) => e.target.value = e.target.value.slice(0, 10)}
+          onInput={(e:any) => e.target.value = e.target.value.slice(0, 10)}
 
            style={InputStyle.input.item}/>
         {errors

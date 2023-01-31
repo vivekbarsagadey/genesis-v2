@@ -4,8 +4,8 @@ import { NumberRule } from "./rules/number.rule";
 import { PasswordRule } from "./rules/password.rule";
 import { RequiredRule } from "./rules/required.rule";
 import { TextRule } from "./rules/text.rule";
-import ValidationEmailContext, {
-  ValidationEmailStatus,
+import ValidationContext, {
+  ValidationStatus,
 } from "./validator.context";
 
 const ValidatationEngine = () => {
@@ -13,7 +13,7 @@ const ValidatationEngine = () => {
     data,
     status,
     name,
-  }: ValidationEmailContext): ValidatationError[] => {
+  }: ValidationContext): ValidatationError[] => {
     const errors: ValidatationError[] = [];
     const ruleSet: any[] = build({ data, status, name });
     ruleSet.forEach((r) => {
@@ -30,23 +30,23 @@ const ValidatationEngine = () => {
     return errors;
   };
 
-  const build = ({ data, status, name }: ValidationEmailContext): any[] => {
+  const build = ({ data, status, name }: ValidationContext): any[] => {
     const ruleSet: any[] = [];
     status.forEach((s) => {
       switch (s) {
-        case ValidationEmailStatus.REQUIRED:
+        case ValidationStatus.REQUIRED:
           ruleSet.push(RequiredRule({ data, status: s, name: name }));
           break;
-        case ValidationEmailStatus.EMAIL:
+        case ValidationStatus.EMAIL:
           ruleSet.push(EmailRule({ data, status: s, name: name }));
           break;
-        case ValidationEmailStatus.PASSWORD:
+        case ValidationStatus.PASSWORD:
           ruleSet.push(PasswordRule({ data, status: s, name: name }));
           break;
-        case ValidationEmailStatus.TEXT:
+        case ValidationStatus.TEXT:
           ruleSet.push(TextRule({ data, status: s, name: name }));
           break;
-        case ValidationEmailStatus.NUMBER:
+        case ValidationStatus.NUMBER:
           ruleSet.push(NumberRule({ data, status: s, name: name }));
           break;
       
