@@ -1,16 +1,17 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { Typography } from "@mui/material";
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import Box from "@mui/material/Box";
+import InputAdornment from '@mui/material/InputAdornment';
 import TextField from "@mui/material/TextField";
-import { InputStyle } from "../../../../styles";
 import { makeStyles } from "@mui/styles";
-import InputProps from "./props";
-import { ValidatationEngine, ValidatationError } from "../validation";
+import React, { useState } from "react";
+import { InputStyle } from "../../../../styles";
+import { ValidatationEngine } from "../validation";
 import { ValidationStatus } from "../validation/emailValidation/validator.context";
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import DoneIcon from "@mui/icons-material/Done";
 import { ErrorComponent } from "./error";
+import InputProps from "./props";
+import MailIcon from '@mui/icons-material/Mail';
+
 const useStyles = makeStyles({
   ...InputStyle,
   error: {
@@ -53,9 +54,7 @@ const InputEmailComponent = ({
   }
 
 
-  useEffect(()=>{
-
-  },[])
+  
 
   return (
     <Box
@@ -67,16 +66,25 @@ const InputEmailComponent = ({
           required={required}
           id="standard-required"
           label={label||"Field Name"}
+          placeholder={placeHolder}
           defaultValue={value}
           value={_value}
           variant="standard"
           onChange={onChangeHandller}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <MailIcon />
+              </InputAdornment>
+            ),
+          }}
         />
 
-        {errors?.map((e,i)=><ErrorComponent key={i} message={e}></ErrorComponent>)}
+        {errors?.map((e,i)=><ErrorComponent key={i} message={e} ></ErrorComponent>)}
 
     </Box>
   );
 };
 
 export { InputEmailComponent };
+

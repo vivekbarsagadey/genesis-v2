@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { useForm } from "../../hooks/from";
 import {InputComponent}  from "../../component/ui/base/input/";
-import MailIcon from '@mui/icons-material/Mail';
 
 const TestComponent = () => {
   const { formState, register } = useForm();
@@ -13,7 +12,26 @@ const TestComponent = () => {
             placeHolder="Enter email"
             label="Email"
             id="email"
-            icon={<MailIcon/>}
+          ></InputComponent>
+      <InputComponent
+            type="number"
+            placeHolder="Enter number"
+            label="Number"
+            id="number"
+          ></InputComponent>
+    
+      <InputComponent
+            type="password"
+            placeHolder="Enter Password"
+            label="Password"
+            id="password"
+          ></InputComponent>
+
+      <InputComponent
+            type="text"
+            placeHolder="Enter Text"
+            label="Text"
+            id="text"
           ></InputComponent>
     </>
   );

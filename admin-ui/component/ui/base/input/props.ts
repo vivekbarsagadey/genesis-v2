@@ -20,6 +20,7 @@ export default interface InputProps {
   onInput?:number
   icon?:any
   errorIcon?:any
+  variant?:any
   // this to send data back to parent
   register?: (_: string) => any;
 }

@@ -1,69 +1,85 @@
-import React, { useState } from "react";
-import Grid from "@mui/material/Grid";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import { IconButton, Typography } from "@mui/material";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+"use client";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import Box from "@mui/material/Box";
+import InputAdornment from "@mui/material/InputAdornment";
+import TextField from "@mui/material/TextField";
 import { makeStyles } from "@mui/styles";
+import React, { useState } from "react";
 import { InputStyle } from "../../../../styles";
-import InputProps from "./props";
 import { ValidatationEngine } from "../validation";
 import { ValidationStatus } from "../validation/emailValidation/validator.context";
+import { ErrorComponent } from "./error";
+import InputProps from "./props";
+import { IconButton, Input, Typography } from '@mui/material';
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import InputBase from "@mui/material/InputBase";
+import LockIcon from '@mui/icons-material/Lock';
+
+const useStyles = makeStyles({
+  ...InputStyle,
+  error: {
+    ...InputStyle.error,
+  },
+  input: {
+    ...InputStyle.input,
+  },
+});
 
 const InputPasswordComponent = ({
   label,
-  id,
   placeHolder,
-  getData,
-  icon
+  value,
+  required,
 }: InputProps) => {
-  const [_value, setValue] = useState<string>("");
-  const [errors, setErrors] = useState<string[]>();
-  const [showPassword, setShowPassword] = useState(false);
   const engine = ValidatationEngine();
-
+  const [_value, setValue] = useState<string | undefined | null>(value);
+  const [errors, setErrors] = useState<string[]>();
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const onChangeHandller = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const _v = e.target.value;
+    setValue(_v);
+    doValidation(_v);
+  };
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleChange = (e: any) => {
-    getData(_value);
-    setValue(e.target.value);
+  const doValidation = (_v: string) => {
     setErrors(
       engine
         .execute({
-          data: e.target.value,
-          name: label,
-          status: [
-            ValidationStatus.REQUIRED,
-            ValidationStatus.PASSWORD,
-          ],
+          data: _v,
+          name: label || "",
+          status: [ValidationStatus.REQUIRED, ValidationStatus.PASSWORD],
         })
         .map((e) => e.message)
     );
   };
 
   return (
-    <>
-       <Typography> {label}</Typography>
-      <Typography  component="div"  style={InputStyle.input.container}>
-        {icon}
-        <input
-			  type={showPassword ? "text" : "password"}
-                id={id}
-          onChange={handleChange}
-          placeholder={placeHolder}
-          value={_value}
-           style={InputStyle.input.item}
-        />
-        <IconButton onClick={handleShowPassword}>
-              {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-            </IconButton>
-      </Typography>
+    <Box component="form" noValidate autoComplete="off">
+      <Typography>{label || "Field Name"}</Typography>
+      <Input
+        required={required}
+        id="standard-required"
+        placeholder={placeHolder}
+        defaultValue={value}
+        type={showPassword?"text":"password"}
+        value={_value}
+        onChange={onChangeHandller}
+        startAdornment={<InputAdornment position="start"><LockIcon/></InputAdornment>}
+        endAdornment={<InputAdornment position="end">
+          <IconButton onClick={handleShowPassword}>
+           {showPassword?<Visibility/>:<VisibilityOff/>}
+          </IconButton>
+          </InputAdornment>}
+      />
 
-      {errors?.map((em, i) => {
-        return <div key={i} style={InputStyle.error.item}>{em}</div>;
-      })}
-    </>
+      {errors?.map((e, i) => (
+        <ErrorComponent key={i} message={e}></ErrorComponent>
+      ))}
+    </Box>
   );
 };
 

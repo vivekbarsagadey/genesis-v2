@@ -1,79 +1,87 @@
 "use client";
-import React, { useState } from "react";
-import { Typography } from "@mui/material";
-import { InputStyle } from "../../../../styles";
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import Box from "@mui/material/Box";
+import InputAdornment from '@mui/material/InputAdornment';
+import TextField from "@mui/material/TextField";
 import { makeStyles } from "@mui/styles";
-import InputProps from "./props";
-import { ValidatationEngine, ValidatationError } from "../validation";
+import React, { useState } from "react";
+import { InputStyle } from "../../../../styles";
+import { ValidatationEngine } from "../validation";
 import { ValidationStatus } from "../validation/emailValidation/validator.context";
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import DoneIcon from "@mui/icons-material/Done";
+import { ErrorComponent } from "./error";
+import InputProps from "./props";
+import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 const useStyles = makeStyles({
   ...InputStyle,
   error: {
     ...InputStyle.error,
   },
-  input:{
-    ...InputStyle.input
+  input: {
+    ...InputStyle.input,
   },
- 
 });
 
 const InputTextComponent = ({
   label,
-  id,
   placeHolder,
-  getData,
-  icon
+  value,
+  required
 }: InputProps) => {
-  const [_value, setValue] = useState<string>("");
-  const [errors, setErrors] = useState<string[]>();
   const engine = ValidatationEngine();
+  const [_value, setValue] = useState< string | undefined | null>(value);
+  const [errors, setErrors] = useState<string[]>();
+  const onChangeHandller = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const _v = e.target.value
+    setValue(_v);
+    doValidation(_v);
 
-  const handleChange = (e: any) => {
-    getData(_value);
-    setValue(e.target.value);
+  };
+
+
+  const doValidation=(_v:string)=>{
     setErrors(
       engine
         .execute({
-          data: e.target.value,
-          name: label,
+          data: _v,
+          name: label||"",
           status: [ValidationStatus.REQUIRED, ValidationStatus.TEXT],
         })
         .map((e) => e.message)
     );
-  };
+  }
+
+
+  
 
   return (
-    <>
-      <Typography> {label}</Typography>
-      <Typography  component="div"  style={InputStyle.input.container}>
-        {icon}
-        <input
-          type="text"
-          id={id}
-          onChange={handleChange}
+    <Box
+      component="form"
+      noValidate
+      autoComplete="off"
+    >
+      <TextField
+          required={required}
+          id="standard-required"
+          label={label||"Field Name"}
           placeholder={placeHolder}
+          defaultValue={value}
           value={_value}
-          maxLength={20}
-           style={InputStyle.input.item}
+          variant="standard"
+          onChange={onChangeHandller}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <TextSnippetIcon />
+              </InputAdornment>
+            ),
+          }}
         />
-        {errors
-          ? (() => {
-              if (errors.length == 0) {
-                return <DoneIcon style={{ color: "green" }} />;
-              }
 
-              return <ErrorOutlineIcon style={{ color: "red" }} />;
-            })()
-          : null}
-      </Typography>
+        {errors?.map((e,i)=><ErrorComponent key={i} message={e} ></ErrorComponent>)}
 
-      {errors?.map((em, i) => {
-        return <div key={i} style={InputStyle.error.item}>{em}</div>;
-      })}
-    </>
+    </Box>
   );
 };
 
 export { InputTextComponent };
+
