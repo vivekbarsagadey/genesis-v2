@@ -7,6 +7,7 @@ import { makeStyles } from "@mui/styles";
 import { InputStyle } from "../../styles";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import InputAdornment from '@mui/material/InputAdornment';
+import { styled } from '@mui/material/styles';
 
 
 const useStyles = makeStyles({
@@ -25,9 +26,10 @@ const InputVariantOne = ({ type, placeHolder, label, id ,variant}: InputProps) =
   return (
     <>
       <TextField
-      type={type}
+      type="text"
       label={label}
       id={id}
+      style={{outline:'none'}}
       //  variant={variant}
       placeholder={placeHolder}
       fullWidth

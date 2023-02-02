@@ -1,7 +1,7 @@
 "use client";
 import { NextPage } from "next";
 import { signIn } from "next-auth/react";
-import { FormEventHandler, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
@@ -12,6 +12,8 @@ import LockIcon from '@mui/icons-material/Lock';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import CallIcon from '@mui/icons-material/Call';
 import { ButtonComponent } from "../../component/ui/base/button";
+import DoneIcon from "@mui/icons-material/Done";
+
 const useStyles = makeStyles({
   login_button: {
     background: "#FFC107",
@@ -50,9 +52,8 @@ const SignIn: NextPage = (props): JSX.Element => {
 
   const router = useRouter();
   const [errorState,setErrorState] = useState(" ")
-  console.log(errorState);
+  // console.log(errorState);
   
-
   return (
     <>
       <Grid container className={classes.background_style}>
@@ -62,38 +63,34 @@ const SignIn: NextPage = (props): JSX.Element => {
             placeHolder="Enter email"
             label="Email"
             id="email"
-            getData={setErrorState}
+            // getData={setErrorState}
             icon={<MailIcon/>}
+            
           />
           <InputComponent
             type="password"
-            placeHolder="enter password"
+            placeHolder="Enter password"
             label="Password"
             id="password"
-            getData={setErrorState}
-            icon={<LockIcon/>}
-
-          
+            // getData={setErrorState}
+            icon={<LockIcon/>} 
           />
           <InputComponent
             type="text"
             placeHolder="Enter Text"
             label="Text"
             id="text"
-            getData={setErrorState}
+            // getData={setErrorState}
             icon={<AssignmentIcon/>}
-
           />
           <InputComponent
             type="number"
             placeHolder="Enter Number"
             label="Number"
             id="number"
-            getData={setErrorState}
+            // getData={setErrorState}
             icon={<CallIcon/>}
           />
-          
-        
         </Grid>
       </Grid>
     </>
