@@ -27,7 +27,6 @@ const InputEmailComponent = ({
   id,
   placeHolder,
   value,
-  icon,
   required
 }: InputProps) => {
   const engine = ValidatationEngine();
@@ -68,6 +67,7 @@ const InputEmailComponent = ({
           label={label||"Field Name"}
           placeholder={placeHolder}
           defaultValue={value}
+          type="email"
           value={_value}
           variant="standard"
           onChange={onChangeHandller}

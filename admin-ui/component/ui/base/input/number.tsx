@@ -66,7 +66,7 @@ const InputNumberComponent = ({
           label={label||"Field Name"}
           placeholder={placeHolder}
           defaultValue={value}
-          type={type}
+          type="number"
           value={_value}
           onInput = {(e:any) =>{
             e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,10)

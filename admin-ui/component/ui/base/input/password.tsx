@@ -1,8 +1,10 @@
 "use client";
-import AccountCircle from "@mui/icons-material/AccountCircle";
+import LockIcon from "@mui/icons-material/Lock";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { IconButton, Input, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import InputAdornment from "@mui/material/InputAdornment";
-import TextField from "@mui/material/TextField";
 import { makeStyles } from "@mui/styles";
 import React, { useState } from "react";
 import { InputStyle } from "../../../../styles";
@@ -10,11 +12,6 @@ import { ValidatationEngine } from "../validation";
 import { ValidationStatus } from "../validation/emailValidation/validator.context";
 import { ErrorComponent } from "./error";
 import InputProps from "./props";
-import { IconButton, Input, Typography } from '@mui/material';
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import InputBase from "@mui/material/InputBase";
-import LockIcon from '@mui/icons-material/Lock';
 
 const useStyles = makeStyles({
   ...InputStyle,
@@ -65,15 +62,21 @@ const InputPasswordComponent = ({
         id="standard-required"
         placeholder={placeHolder}
         defaultValue={value}
-        type={showPassword?"text":"password"}
+        type={showPassword ? "text" : "password"}
         value={_value}
         onChange={onChangeHandller}
-        startAdornment={<InputAdornment position="start"><LockIcon/></InputAdornment>}
-        endAdornment={<InputAdornment position="end">
-          <IconButton onClick={handleShowPassword}>
-           {showPassword?<Visibility/>:<VisibilityOff/>}
-          </IconButton>
-          </InputAdornment>}
+        startAdornment={
+          <InputAdornment position="start">
+            <LockIcon />
+          </InputAdornment>
+        }
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton onClick={handleShowPassword}>
+              {showPassword ? <Visibility /> : <VisibilityOff />}
+            </IconButton>
+          </InputAdornment>
+        }
       />
 
       {errors?.map((e, i) => (
@@ -84,3 +87,4 @@ const InputPasswordComponent = ({
 };
 
 export { InputPasswordComponent };
+

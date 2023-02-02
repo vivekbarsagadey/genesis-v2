@@ -16,11 +16,10 @@ export default interface InputProps {
   startAdornment?: any;
   helperText?:any;
   getError?:any;
-  textLength?:number
   onInput?:number
-  icon?:any
-  errorIcon?:any
-  variant?:any
+  
+ 
+
   // this to send data back to parent
   register?: (_: string) => any;
 }
