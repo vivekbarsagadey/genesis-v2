@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, IconButton, Typography } from "@mui/material";
 import Logo from "./Sidebar/Logo";
 import SidebarComponent from "./Sidebar/SidebarComponent";
-import HeaderComponent from "./Header/HeaderComponent";
+import HeaderComponent from "./Header/paget";
 import { useSession, signIn, signOut } from "next-auth/react";
 const LayoutComponent = ({
   children,

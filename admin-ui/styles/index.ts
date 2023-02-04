@@ -1,0 +1,1 @@
+export {InputStyle} from './common'
