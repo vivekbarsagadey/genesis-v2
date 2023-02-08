@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { useForm } from "../../hooks/from";
 import {InputComponent}  from "../../component/ui/base/input/";
-
 const TestComponent = () => {
   const { formState, register } = useForm();
   return (

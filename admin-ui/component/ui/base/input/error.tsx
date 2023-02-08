@@ -1,27 +1,23 @@
 "use client";
-import React, { useState } from "react";
-import { InputStyle } from "../../../../styles";
 import { makeStyles } from "@mui/styles";
+import { InputStyle } from "./";
 
-const useStyles = makeStyles({
-    ...InputStyle,
-    error: {
-      ...InputStyle.error,
-    },
-    input: {
-      ...InputStyle.input,
-    },
-  });
-  
-interface ErrorComponentPropes{
-    message : string
+// const useStyles = makeStyles({
+//   ...InputStyle,
+//   error: {
+//     ...InputStyle.error,
+//   },
+//   input: {
+//     ...InputStyle.input,
+//   },
+// });
+
+interface ErrorComponentProps {
+  message: string;
 }
 
+const ErrorComponent = ({ message }: ErrorComponentProps) => {
+  return <p style={InputStyle.error.item}>{message}</p>;
+};
 
-const ErrorComponent = ({message}:ErrorComponentPropes)=>{
-    return <p style={InputStyle.error.item}>{message}</p>
-}
-
-
-
-export {ErrorComponent}
+export { ErrorComponent };

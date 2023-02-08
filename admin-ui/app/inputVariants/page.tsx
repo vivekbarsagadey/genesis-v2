@@ -1,13 +1,9 @@
 "use client"
 import React from 'react'
-import { InputVariantFive } from './input.variantfive'
-import { InputVariantFour } from './input.variantfour'
-import { InputVariantOne } from './input.variantone'
-import { InputVariantThree } from './input.variantthree'
-import { InputVariantTwo } from './input.varianttwo'
-import PersonIcon from '@mui/icons-material/Person';
+import {InputVariantOne,InputVariantTwo,InputVariantThree,InputVariantFour,InputVariantFive} from "./"
 
-const page = () => {
+
+const InputVariants = () => {
   return (
     <>
         <div style={{margin:'6px'}}>
@@ -16,16 +12,15 @@ const page = () => {
          placeHolder="Enter text"
          label=" Text"
          id="text"
-          // variant="outlined"
+         
         />
         </div>
- 
+    
         <div style={{margin:'10px'}}>
         <InputVariantTwo
          type="text"
          placeHolder="Enter text"
          label=" Text"
-         variant="standard"
          id="text"/>
         </div>
         
@@ -34,8 +29,6 @@ const page = () => {
          type="text"
          placeHolder="Enter text"
          label=" Text"
-         variant="outlined"
-
          id="text"/>
         </div>
 
@@ -44,7 +37,6 @@ const page = () => {
          type="text"
          placeHolder="Enter text"
          label=" Text"
-         variant="standard"
          id="text"/>
          </div>
 
@@ -53,11 +45,17 @@ const page = () => {
          type="text"
          placeHolder="Enter text"
          label=" Text"
-         variant="standard"
          id="text"/>
          </div>
     </>
   )
 }
+const page = () => {
+  return (
+    <>
+    <InputVariants></InputVariants>
+    </>
+  );
+};
 
 export default page

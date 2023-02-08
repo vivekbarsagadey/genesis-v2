@@ -1,10 +1,8 @@
 "use client";
 import TextField from "@mui/material/TextField/TextField";
 import React, { useState } from "react";
-import { InputComponent } from "../../component/ui/base/input/input-type";
-import InputProps from "../../component/ui/base/input/props";
 import { makeStyles } from "@mui/styles";
-import { InputStyle } from "../../styles";
+import { InputProps, InputStyle } from "../../component";
 
 const useStyles = makeStyles({
   ...InputStyle,
@@ -16,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-const InputVariantFive = ({ type, placeHolder, label, id,variant }: InputProps) => {
+const InputVariantFive = ({ type, placeHolder, label, id }: InputProps) => {
   const [_value, setValue] = useState<string>("");
 
   return (
@@ -26,7 +24,7 @@ const InputVariantFive = ({ type, placeHolder, label, id,variant }: InputProps) 
         placeholder={placeHolder}
         label={label}
         id={id}
-        variant={variant}
+         variant={"standard"}
         fullWidth
         style={InputStyle.inputVariantFive.item}
         
@@ -35,4 +33,4 @@ const InputVariantFive = ({ type, placeHolder, label, id,variant }: InputProps) 
   );
 };
 
-export { InputVariantFive };
+export  {InputVariantFive};

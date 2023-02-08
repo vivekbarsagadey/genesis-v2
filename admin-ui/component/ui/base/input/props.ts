@@ -1,7 +1,7 @@
 // validatoters
 
-type defaultString = string | undefined | null
-export default interface InputProps {
+type defaultString = string | undefined | null;
+interface InputProps {
   label?: defaultString;
   id?: string;
   value?: defaultString;
@@ -14,13 +14,12 @@ export default interface InputProps {
   autofocus?: boolean;
   autocomplete?: string;
   startAdornment?: any;
-  helperText?:any;
-  getError?:any;
-  onInput?:number
-  
- 
+  helperText?: any;
+  getError?: any;
+  onInput?: number;
 
   // this to send data back to parent
   register?: (_: string) => any;
 }
 
+export type { InputProps };

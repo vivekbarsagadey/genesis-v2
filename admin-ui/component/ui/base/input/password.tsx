@@ -5,23 +5,12 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { IconButton, Input, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import InputAdornment from "@mui/material/InputAdornment";
-import { makeStyles } from "@mui/styles";
 import React, { useState } from "react";
-import { InputStyle } from "../../../../styles";
-import { ValidatationEngine } from "../validation";
-import { ValidationStatus } from "../validation/emailValidation/validator.context";
-import { ErrorComponent } from "./error";
-import InputProps from "./props";
+// import { ValidatationEngine } from "../../../../validation/validatation.engine";
+// import {ValidationStatus} from "../../../../validation/validator.context";
+import { ErrorComponent, InputProps } from "./";
 
-const useStyles = makeStyles({
-  ...InputStyle,
-  error: {
-    ...InputStyle.error,
-  },
-  input: {
-    ...InputStyle.input,
-  },
-});
+
 
 const InputPasswordComponent = ({
   label,
@@ -29,30 +18,30 @@ const InputPasswordComponent = ({
   value,
   required,
 }: InputProps) => {
-  const engine = ValidatationEngine();
+  // const engine = ValidatationEngine();
   const [_value, setValue] = useState<string | undefined | null>(value);
   const [errors, setErrors] = useState<string[]>();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const onChangeHandller = (e: React.ChangeEvent<HTMLInputElement>) => {
     const _v = e.target.value;
     setValue(_v);
-    doValidation(_v);
+    // doValidation(_v);
   };
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const doValidation = (_v: string) => {
-    setErrors(
-      engine
-        .execute({
-          data: _v,
-          name: label || "",
-          status: [ValidationStatus.REQUIRED, ValidationStatus.PASSWORD],
-        })
-        .map((e) => e.message)
-    );
-  };
+  // const doValidation = (_v: string) => {
+  //   // setErrors(
+  //   //   engine
+  //   //     .execute({
+  //   //       data: _v,
+  //   //       name: label || "",
+  //   //       status: [ValidationStatus.REQUIRED, ValidationStatus.PASSWORD],
+  //   //     })
+  //   //     .map((e) => e.message)
+  //   // );
+  // };
 
   return (
     <Box component="form" noValidate autoComplete="off">
@@ -63,7 +52,7 @@ const InputPasswordComponent = ({
         placeholder={placeHolder}
         defaultValue={value}
         type={showPassword ? "text" : "password"}
-        value={_value}
+        // value={_value}
         onChange={onChangeHandller}
         startAdornment={
           <InputAdornment position="start">
@@ -77,6 +66,7 @@ const InputPasswordComponent = ({
             </IconButton>
           </InputAdornment>
         }
+        
       />
 
       {errors?.map((e, i) => (
@@ -87,4 +77,3 @@ const InputPasswordComponent = ({
 };
 
 export { InputPasswordComponent };
-

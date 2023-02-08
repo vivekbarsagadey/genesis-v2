@@ -1,13 +1,10 @@
 "use client";
-import TextField from "@mui/material/TextField/TextField";
-import React, { useState } from "react";
-import { InputComponent } from "../../component/ui/base/input/input-type";
-import InputProps from "../../component/ui/base/input/props";
-import { makeStyles } from "@mui/styles";
-import { InputStyle } from "../../styles";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import InputAdornment from '@mui/material/InputAdornment';
-import { styled } from '@mui/material/styles';
+import TextField from "@mui/material/TextField/TextField";
+import { makeStyles } from "@mui/styles";
+import { useState } from "react";
+import { InputProps, InputStyle } from "../../component";
 
 
 const useStyles = makeStyles({
@@ -20,19 +17,20 @@ const useStyles = makeStyles({
   },
 });
 
-const InputVariantOne = ({ type, placeHolder, label, id ,variant}: InputProps) => {
+const InputVariantOne = ({ placeHolder, label, id }: InputProps) => {
   const [_value, setValue] = useState<string>("");
-
+  const classes = useStyles()
   return (
     <>
       <TextField
+      autoFocus={true}
       type="text"
       label={label}
+      variant={'outlined'}
       id={id}
-      style={{outline:'none'}}
-      //  variant={variant}
       placeholder={placeHolder}
       fullWidth
+       style={InputStyle.inputVariantOne.item}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">
@@ -40,9 +38,10 @@ const InputVariantOne = ({ type, placeHolder, label, id ,variant}: InputProps) =
           </InputAdornment>
         ),
       }}
-      style={InputStyle.inputVariantOne.item}/>
+      />
     </>
   );
 };
 
-export { InputVariantOne };
+export {InputVariantOne};
+
