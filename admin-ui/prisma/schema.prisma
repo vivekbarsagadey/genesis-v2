@@ -105,6 +105,29 @@ model Project {
   @@map("tb_project")
 }
 
+model Screen {
+  id             String    @id @default(cuid())
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+  name           String?
+  components     Component[]
+
+  @@map("tb_screen")
+}
+
+
+model Component{
+  id             String    @id @default(cuid())
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+  name           String   @unique
+  screenId       String?  @map("screen_id")
+  screen         Screen? @relation(fields: [screenId], references: [id])
+
+  @@map("tb_component")
+}
+
+
 
 model VerificationToken {
   identifier String

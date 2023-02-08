@@ -38,6 +38,7 @@
     "react-calendar-month-view": "^0.7.0",
     "react-csv": "^2.2.2",
     "react-dom": "^18.2.0",
+    "react-draggable": "^4.4.5",
     "react-excel-renderer": "^1.1.0",
     "react-export-table-to-excel": "^1.0.6",
     "react-hook-form": "^7.39.4",
