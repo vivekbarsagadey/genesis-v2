@@ -1,15 +1,16 @@
 "use client";
-import React from "react";
-import { InputEmailComponent } from "./email";
-import { InputNumberComponent } from "./number";
-import { InputPasswordComponent } from "./password";
-import { InputTextComponent } from "./text";
+import {
+  InputEmailComponent,
+  InputNumberComponent,
+  InputPasswordComponent,
+  InputProps,
+  InputTextComponent
+} from "./";
 
-import InputProps from "./props";
 
 const InputComponent = (props: InputProps) => {
   if (props.type == "email") {
-    return <InputEmailComponent {...props}/>
+    return <InputEmailComponent {...props} />;
   }
   if (props.type == "password") {
     return <InputPasswordComponent {...props}></InputPasswordComponent>;
@@ -21,7 +22,8 @@ const InputComponent = (props: InputProps) => {
     return <InputNumberComponent {...props}></InputNumberComponent>;
   }
 
-  return <></>
+  return <></>;
 };
 
 export { InputComponent };
+

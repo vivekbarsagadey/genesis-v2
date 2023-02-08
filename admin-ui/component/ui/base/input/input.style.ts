@@ -1,5 +1,5 @@
 "use client";
-import { colors, fontSize, weight } from "../../themes";
+import { colors, fontSize, weight } from "../../../../themes";
 
 const InputStyle = {
   label: {
@@ -50,13 +50,11 @@ const InputStyle = {
   inputVariantOne: {
     item: {
       backgroundColor: "#D1D3D9",
-      outline:'none'
     },
   },
   inputVariantTwo: {
     item: {
-      backgroundColor: "#D1D3D9",
-      borderBottom:"3px solid black",
+       borderBottom:"3px solid black",
     },
   },
   inputVariantThree: {

@@ -1,1 +1,0 @@
-export {InputStyle} from './input'
