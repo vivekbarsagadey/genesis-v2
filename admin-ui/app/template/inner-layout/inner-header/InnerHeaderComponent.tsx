@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, IconButton, Button } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
@@ -33,6 +33,24 @@ const InnerHeaderComponent = ({
 }: ITabPanel) => {
   const router = useRouter();
 
+  // get call for Screen Name
+  const [screens2, setScreens2] = React.useState();
+  const fetchData = () => {
+    fetch("http://localhost:3000/api/screens")
+      .then((r) => {
+        return r.json();
+      })
+      .then((d) => {
+        setScreens2(d);
+      });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // console.log("screens2 ",screens2);
+
   const removeScreen = (screenR: any) => {
     // DEL Call for sreen remove
     fetch(`http://localhost:3000/api/screens/${screenR.id}`, {
@@ -64,6 +82,7 @@ const InnerHeaderComponent = ({
       { projectName: project[0].name },
       { component: dragList },
       { property: innerSectionData },
+      { pages: screens2[0].name },
     ]);
     console.log("json >>", json);
   };
