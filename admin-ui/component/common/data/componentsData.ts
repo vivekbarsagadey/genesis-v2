@@ -456,6 +456,47 @@ export const menu = [
           },
         ],
       },
+      {
+        id: "1.12",
+        name: "icon",
+        type: "component",
+        image: "/item/astrologi.jpg",
+        lable: "Icon",
+        icon: "FormatColorTextIcon",
+        properties: [
+          {
+            general: {
+              name: "image",
+              position: "relative",
+              width: "200px",
+              height: "856px",
+              overflowY: "scroll",
+              background: "#FFFFFF",
+              borderradius: "32px",
+            },
+
+            css: {
+              name: "image",
+              position: "relative",
+              width: "200px",
+              height: "856px",
+              overflowY: "scroll",
+              background: "#FFFFFF",
+              borderradius: "32px",
+            },
+
+            model: {
+              name: "image",
+              position: "relative",
+              width: "200px",
+            },
+            api: {
+              name: "image",
+              url: "https//https://www.google.com-components 1.8",
+            },
+          },
+        ],
+      },
     ],
   },
   {
