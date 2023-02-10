@@ -339,7 +339,7 @@ export const menu = [
         type: "component",
         image: "/item/profile.png",
         lable: "Profile",
-        icon: "AccountCircleIcon",
+        icon: "KeyboardHideIcon",
         properties: [
           {
             general: {
@@ -380,7 +380,7 @@ export const menu = [
         type: "component",
         image: "/item/search.png",
         lable: "Search",
-        icon: "SearchIcon",
+        icon: "KeyboardHideIcon",
         properties: [
           {
             general: {
@@ -419,9 +419,9 @@ export const menu = [
         id: "1.11",
         name: "image",
         type: "component",
-        image: "/item/image.png",
+        image: "/item/astrologi.jpg",
         lable: "Image",
-        icon: "ImageIcon ",
+        icon: "FormatColorTextIcon ",
         properties: [
           {
             general: {
