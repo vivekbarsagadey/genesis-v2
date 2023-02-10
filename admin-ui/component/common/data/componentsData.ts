@@ -419,9 +419,9 @@ export const menu = [
         id: "1.11",
         name: "image",
         type: "component",
-        image: "/item/astrologi.jpg",
+        image: "/item/image.png",
         lable: "Image",
-        icon: "FormatColorTextIcon ",
+        icon: "FormatColorTextIcon",
         properties: [
           {
             general: {
@@ -457,10 +457,10 @@ export const menu = [
         ],
       },
       {
-        id: "1.12",
-        name: "icon",
+        id: "1.11",
+        name: "image",
         type: "component",
-        image: "/item/astrologi.jpg",
+        image: "/item/menu.png",
         lable: "Icon",
         icon: "FormatColorTextIcon",
         properties: [
