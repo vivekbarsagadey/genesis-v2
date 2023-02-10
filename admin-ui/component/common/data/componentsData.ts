@@ -337,7 +337,7 @@ export const menu = [
         id: "1.9",
         name: "profile",
         type: "component",
-        image: "/item/text.png",
+        image: "/item/profile.png",
         lable: "Profile",
         icon: "AccountCircleIcon",
         properties: [
@@ -378,7 +378,7 @@ export const menu = [
         id: "1.10",
         name: "search",
         type: "component",
-        image: "/item/text.png",
+        image: "/item/search.png",
         lable: "Search",
         icon: "SearchIcon",
         properties: [
@@ -419,7 +419,7 @@ export const menu = [
         id: "1.11",
         name: "image",
         type: "component",
-        image: "/item/text.png",
+        image: "/item/image.png",
         lable: "Image",
         icon: "ImageIcon ",
         properties: [
