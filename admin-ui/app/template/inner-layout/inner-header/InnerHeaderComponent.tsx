@@ -34,7 +34,7 @@ const InnerHeaderComponent = ({
   const router = useRouter();
 
   // get call for Screen Name
-  const [screens2, setScreens2] = React.useState();
+  const [screens2, setScreens2] = React.useState("");
   const fetchData = () => {
     fetch("http://localhost:3000/api/screens")
       .then((r) => {
@@ -82,7 +82,7 @@ const InnerHeaderComponent = ({
       { projectName: project[0].name },
       { component: dragList },
       { property: innerSectionData },
-      { pages: screens2[0].name },
+      { pages: screens2[0]?.name },
     ]);
     console.log("json >>", json);
   };
