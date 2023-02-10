@@ -339,7 +339,7 @@ export const menu = [
         type: "component",
         image: "/item/text.png",
         lable: "Profile",
-        icon: "FormatColorTextIcon",
+        icon: "AccountCircleIcon",
         properties: [
           {
             general: {
@@ -380,7 +380,7 @@ export const menu = [
         type: "component",
         image: "/item/text.png",
         lable: "Search",
-        icon: "FormatColorTextIcon",
+        icon: "SearchIcon",
         properties: [
           {
             general: {
@@ -421,7 +421,7 @@ export const menu = [
         type: "component",
         image: "/item/text.png",
         lable: "Image",
-        icon: "FormatColorTextIcon",
+        icon: "ImageIcon ",
         properties: [
           {
             general: {
