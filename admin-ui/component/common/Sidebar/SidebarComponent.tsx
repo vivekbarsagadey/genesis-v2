@@ -26,6 +26,9 @@ import { fontWeight, Colors, fontSize } from "../../../themes/font";
 import { sideComponent } from "./SidebarComponentStyle";
 import { IMenuListSet } from "../../../app/template/templateInterface/TemplateInterface";
 import SideBarInnerList from "./SideBarInnerList";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import SearchIcon from '@mui/icons-material/Search';
+import ImageIcon from '@mui/icons-material/Image';
 interface ISideBar {
   menuList: IMenuListSet[];
   show: Boolean;
@@ -87,8 +90,23 @@ const SidebarComponent = ({ menuList, show, updateMyDragImages }: ISideBar) => {
                       style={{ fontSize: "1.2rem", color: "#334D6E" }}
                     />
                   </Case>
+                  <Case value="KeyboardHideIcon">
+                    <KeyboardHideIcon
+                      style={{ fontSize: "1.2rem", color: "#334D6E" }}
+                    />
+                  </Case>
+                  <Case value="KeyboardHideIcon">
+                    <KeyboardHideIcon
+                      style={{ fontSize: "1.2rem", color: "#334D6E" }}
+                    />
+                  </Case>
+                  <Case value="FormatColorTextIcon">
+                    <FormatColorTextIcon
+                      style={{ fontSize: "1.2rem", color: "#334D6E" }}
+                    />
+                  </Case>
                   <Default>
-                    <ArticleIcon color="primary" />
+                    <FormatColorTextIcon color="primary" />
                   </Default>
                 </Switch>
               </ListItemIcon>
