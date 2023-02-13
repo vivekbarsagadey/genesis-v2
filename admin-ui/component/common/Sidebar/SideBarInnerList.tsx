@@ -7,14 +7,13 @@ import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import FormatColorTextIcon from "@mui/icons-material/FormatColorText";
 import SideBarInnerText from "./SideBarInnerText";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const SideBarInnerList = ({ item, show, updateMyDragImages }: any) => {
   return (
     <Grid container mt={-4}>
-      <Grid item xs={4} >
+      <Grid item xs={4}>
         {show && (
-          <ListItemIcon >
+          <ListItemIcon>
             <Switch condition={item.icon}>
               <Case value="PinIcon ">
                 <PinIcon style={{ fontSize: "1rem", color: "#334D6E" }} />
@@ -48,16 +47,18 @@ const SideBarInnerList = ({ item, show, updateMyDragImages }: any) => {
               <Case value="FormatColorTextIcon">
                 <FormatColorTextIcon
                   style={{ fontSize: "1rem", color: "#334D6E" }}
-                  color="primary"
                 />
               </Case>
-              {/* <Default> <FormatColorTextIcon color="primary" />
-              </Default> */}
+              <Default>
+                {" "}
+                <FormatColorTextIcon
+                  style={{ fontSize: "1rem", color: "#334D6E" }}
+                />
+              </Default>
             </Switch>
           </ListItemIcon>
         )}
       </Grid>
-
       <Grid item xs={8}>
         {show && (
           <SideBarInnerText
@@ -69,5 +70,4 @@ const SideBarInnerList = ({ item, show, updateMyDragImages }: any) => {
     </Grid>
   );
 };
-
 export default SideBarInnerList;
