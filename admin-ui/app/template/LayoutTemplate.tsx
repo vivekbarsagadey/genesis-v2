@@ -91,7 +91,7 @@ const LayoutTemplate = ({
           xs={show ? 1.3 : 1.5}
           sm={show ? 1.3 : 0.5}
           md={show ? 2 : 0.5}
-          lg={show ? 2 : 0.5}
+          lg={show ? 2 : 0.74}
           pl={2}
           pt={2}
           pr={1}
@@ -111,7 +111,7 @@ const LayoutTemplate = ({
           xs={show ? 10.5 : 10.5}
           sm={show ? 10.5 : 11.5}
           md={show ? 10 : 11.5}
-          lg={show ? 10 : 11.5}
+          lg={show ? 10 : 11.26}
         >
           <HeaderComponent project={project} />
 
