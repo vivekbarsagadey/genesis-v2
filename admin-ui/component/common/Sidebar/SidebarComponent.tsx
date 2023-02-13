@@ -26,9 +26,9 @@ import { fontWeight, Colors, fontSize } from "../../../themes/font";
 import { sideComponent } from "./SidebarComponentStyle";
 import { IMenuListSet } from "../../../app/template/templateInterface/TemplateInterface";
 import SideBarInnerList from "./SideBarInnerList";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import SearchIcon from '@mui/icons-material/Search';
-import ImageIcon from '@mui/icons-material/Image';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import SearchIcon from "@mui/icons-material/Search";
+import ImageIcon from "@mui/icons-material/Image";
 interface ISideBar {
   menuList: IMenuListSet[];
   show: Boolean;
@@ -71,7 +71,7 @@ const SidebarComponent = ({ menuList, show, updateMyDragImages }: ISideBar) => {
     <>
       {menuList?.map((menu) => {
         return (
-          <div key={menu.id} style={{ display: "flex"}}>
+          <div key={menu.id} style={{ display: "flex" }}>
             <Grid item xs={1} mt={1.8} ml={1.5}>
               <ListItemIcon>
                 <Switch condition={menu.icon}>

@@ -97,7 +97,7 @@ const LayoutTemplate = ({
           pr={1}
           textAlign={show ? "right" : "left"}
           style={{ backgroundColor: "white" }}
-        >
+>
           <Logo handleMenu={handleMenu} show={show} />
           <SidebarComponent
             show={show}
