@@ -71,7 +71,7 @@ const SidebarComponent = ({ menuList, show, updateMyDragImages }: ISideBar) => {
     <>
       {menuList?.map((menu) => {
         return (
-          <div key={menu.id} style={{ display: "flex" }}>
+          <div key={menu.id} style={{ display: "flex"}}>
             <Grid item xs={1} mt={1.8} ml={1.5}>
               <ListItemIcon>
                 <Switch condition={menu.icon}>

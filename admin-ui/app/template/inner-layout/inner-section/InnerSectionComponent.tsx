@@ -22,7 +22,7 @@ const InnerSectionComponent = ({
   };
   return (
     <Grid container>
-      <Grid item xs={12} style={{ background: "#4D575F", height: "84.3vh" }}>
+      <Grid item xs={12} style={{ background: "#4D575F", height: "82vh" }}>
         {screens?.map((s: any) => {
           return (
             <TabPanel value={value} index={0} key={s.id}>

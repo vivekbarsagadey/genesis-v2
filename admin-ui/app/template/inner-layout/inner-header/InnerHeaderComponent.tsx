@@ -88,8 +88,8 @@ const InnerHeaderComponent = ({
   };
 
   return (
-    <Grid container style={{ backgroundColor: "#2C3134", height: "2.5rem" }}>
-      <Grid item xs={10} style={{ height: "1vh", marginTop: "-2rem" }}>
+    <Grid container style={{ backgroundColor: "#2C3134", height: "2.9rem",marginTop:'0.5rem',borderRadius:'6px 6px 0px 0px' }}>
+      <Grid item xs={10} style={{ marginTop: "-1.5rem" }}>
         <Tabs value={value} onChange={handleChange}>
           {screens?.map((screen: any) => {
             return (
@@ -130,7 +130,7 @@ const InnerHeaderComponent = ({
           display={"flex"}
           justifyContent={"flex-end"}
         >
-          <Grid item xs={1.1} mt={0.4}>
+          <Grid item xs={1.1} mt={0.8}>
             <Button
               variant="contained"
               size="small"
