@@ -80,7 +80,7 @@ const SidebarComponent = ({ menuList, show, updateMyDragImages }: ISideBar) => {
             >
               <AccordionSummary>
                 <Grid container>
-                  <Grid item xs={1.5} ml={1}>
+                  <Grid item xs={1.5} ml={1} mr={0.6}>
                     <ListItemIcon>
                       <Switch condition={menu.icon}>
                         <Case value="ViewSidebarIcon">
@@ -98,9 +98,9 @@ const SidebarComponent = ({ menuList, show, updateMyDragImages }: ISideBar) => {
                             style={{ fontSize: "1.2rem", color: "#334D6E" }}
                           />
                         </Case>
-                        <Default>
+                        {/* <Default>
                           <FormatColorTextIcon color="primary" />
-                        </Default>
+                        </Default> */}
                       </Switch>
                     </ListItemIcon>
                   </Grid>
