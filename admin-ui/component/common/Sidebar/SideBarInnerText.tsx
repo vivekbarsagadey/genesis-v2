@@ -7,10 +7,9 @@ const SideBarInnerText = ({ item, updateMyDragImages }: any) => {
   };
   return (
     <Typography
-      textAlign={"left"}
       fontSize={"0.8rem"}
       color={"#334D6E"}
-      style={{ cursor: "pointer" }}
+      style={{ cursor: "pointer",marginLeft:'1.5rem' }}
       onClick={() => updateList(item)}
     >
       {item.lable}

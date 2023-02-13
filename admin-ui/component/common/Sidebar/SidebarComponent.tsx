@@ -29,6 +29,8 @@ import SideBarInnerList from "./SideBarInnerList";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
 import ImageIcon from "@mui/icons-material/Image";
+import SideBarInnerText from "./SideBarInnerText";
+
 interface ISideBar {
   menuList: IMenuListSet[];
   show: Boolean;
@@ -60,95 +62,98 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
+
 const SidebarComponent = ({ menuList, show, updateMyDragImages }: ISideBar) => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
     };
-
   return (
     <>
       {menuList?.map((menu) => {
         return (
-          <div key={menu.id} style={{ display: "flex" }}>
-            <Grid item xs={1} mt={1.8} ml={1.5}>
-              <ListItemIcon>
-                <Switch condition={menu.icon}>
-                  <Case value="ViewSidebarIcon">
-                    <ViewSidebarIcon
-                      style={{ fontSize: "1.2rem", color: "#334D6E" }}
-                    />
-                  </Case>
-                  <Case value="WebAssetIcon">
-                    <WebAssetIcon
-                      style={{ fontSize: "1.2rem", color: "#334D6E" }}
-                    />
-                  </Case>
-                  <Case value="GridOnIcon">
-                    <GridOnIcon
-                      style={{ fontSize: "1.2rem", color: "#334D6E" }}
-                    />
-                  </Case>
-                  <Case value="KeyboardHideIcon">
-                    <KeyboardHideIcon
-                      style={{ fontSize: "1.2rem", color: "#334D6E" }}
-                    />
-                  </Case>
-                  <Case value="KeyboardHideIcon">
-                    <KeyboardHideIcon
-                      style={{ fontSize: "1.2rem", color: "#334D6E" }}
-                    />
-                  </Case>
-                  <Case value="FormatColorTextIcon">
-                    <FormatColorTextIcon
-                      style={{ fontSize: "1.2rem", color: "#334D6E" }}
-                    />
-                  </Case>
-                  <Default>
-                    <FormatColorTextIcon color="primary" />
-                  </Default>
-                </Switch>
-              </ListItemIcon>
-            </Grid>
-            <Grid container mb={-1.7}>
-              <Grid item xs={7.6}>
-                <Accordion onChange={handleChange("panel1")}>
-                  <AccordionSummary>
-                    <Grid container>
-                      {show && (
-                        <Grid item xs={1}>
-                          <Typography
-                            style={{
-                              color: "#334D6E",
-                              fontSize: "0.9rem",
-                              marginLeft: "-0.5rem",
-                            }}
-                          >
-                            {menu.lable}
-                          </Typography>
-                        </Grid>
-                      )}
+          <div key={menu.id}>
+            <Accordion
+              onChange={handleChange("panel1")}
+              style={{ marginTop: "-1rem" }}
+            >
+              <AccordionSummary>
+                <Grid container>
+                  <Grid item xs={1.5} ml={1}>
+                    <ListItemIcon>
+                      <Switch condition={menu.icon}>
+                        <Case value="ViewSidebarIcon">
+                          <ViewSidebarIcon
+                            style={{ fontSize: "1.2rem", color: "#334D6E" }}
+                          />
+                        </Case>
+                        <Case value="WebAssetIcon">
+                          <WebAssetIcon
+                            style={{ fontSize: "1.2rem", color: "#334D6E" }}
+                          />
+                        </Case>
+                        <Case value="GridOnIcon">
+                          <GridOnIcon
+                            style={{ fontSize: "1.2rem", color: "#334D6E" }}
+                          />
+                        </Case>
+                        <Default>
+                          <FormatColorTextIcon color="primary" />
+                        </Default>
+                      </Switch>
+                    </ListItemIcon>
+                  </Grid>
+                  {show && (
+                    <Grid item xs={2.2}>
+                      <Typography
+                        style={{
+                          color: "#334D6E",
+                          fontSize: "0.9rem",
+                        }}
+                      >
+                        {menu.lable}
+                      </Typography>
                     </Grid>
-                  </AccordionSummary>
-                  {menu.components.map((item) => {
-                    return (
-                      <AccordionDetails key={item.id}>
-                        <SideBarInnerList
-                          item={item}
-                          show={show}
-                          updateMyDragImages={updateMyDragImages}
-                        />
-                      </AccordionDetails>
-                    );
-                  })}
-                </Accordion>
-              </Grid>
-            </Grid>
+                  )}
+                </Grid>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Grid
+                  container
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-evenly",
+                  }}
+                >
+                  {show && (
+                    <Grid item xs={12} ml={1}>
+                      <Grid container>
+                        <Grid item xs={2}>
+                          {menu.components.map((item) => {
+                            return (
+                              <AccordionDetails key={item.id}>
+                                <SideBarInnerList
+                                  item={item}
+                                  show={show}
+                                  updateMyDragImages={updateMyDragImages}
+                                />
+                              </AccordionDetails>
+                            );
+                          })}
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  )}
+                </Grid>
+              </AccordionDetails>
+            </Accordion>
           </div>
         );
       })}
     </>
   );
 };
+
 export default SidebarComponent;
