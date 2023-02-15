@@ -1,24 +1,27 @@
 "use client";
 import { NextPage } from "next";
 import { signIn } from "next-auth/react";
-import { useState } from "react";
+import { FormEventHandler, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Grid } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Card,
+  Button,
+  InputBase,
+  Typography,
+  Snackbar,
+  TextField,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { useForm } from "../../hooks/from";
-import { InputComponent } from "../../component/ui/base/input";
-import MailIcon from '@mui/icons-material/Mail';
-import LockIcon from '@mui/icons-material/Lock';
-import AssignmentIcon from '@mui/icons-material/Assignment';
-import CallIcon from '@mui/icons-material/Call';
-import { ButtonComponent } from "../../component/ui/base/button";
-import DoneIcon from "@mui/icons-material/Done";
+import Link from "next/link";
+import Alert from "@mui/material/Alert";
 
 const useStyles = makeStyles({
   login_button: {
     background: "#FFC107",
     width: "100%",
-    color: "white",
+    color: "black",
     textTransform: "capitalize",
     "&:hover": {
       background: "#FFC107",
@@ -50,49 +53,135 @@ interface Props {}
 const SignIn: NextPage = (props): JSX.Element => {
   const classes = useStyles();
 
+  const [userInfo, setUserInfo] = useState({ email: "", password: "" });
+  const [alert, showAlert] = useState(false);
   const router = useRouter();
-  const [errorState,setErrorState] = useState(" ")
-  // console.log(errorState);
-  
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    if (userInfo?.email === "faisal@gmail.com" && userInfo.password) {
+      const res = await signIn("credentials", {
+        email: userInfo.email,
+        password: userInfo.password,
+        redirect: false,
+      });
+      
+      if (!res.error) {
+        router.push("/");
+      }
+    } else {
+      showAlert(true);
+    }
+  };
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    showAlert(false);
+  };
   return (
     <>
       <Grid container className={classes.background_style}>
-        <Grid item xs={12}>
-          <InputComponent
-            type="email"
-            placeHolder="Enter email"
-            label="Email"
-            id="email"
-            // getData={setErrorState}
-            icon={<MailIcon/>}
-            
-          />
-          <InputComponent
-            type="password"
-            placeHolder="Enter password"
-            label="Password"
-            id="password"
-            // getData={setErrorState}
-            icon={<LockIcon/>} 
-          />
-          <InputComponent
-            type="text"
-            placeHolder="Enter Text"
-            label="Text"
-            id="text"
-            // getData={setErrorState}
-            icon={<AssignmentIcon/>}
-          />
-          <InputComponent
-            type="number"
-            placeHolder="Enter Number"
-            label="Number"
-            id="number"
-            // getData={setErrorState}
-            icon={<CallIcon/>}
-          />
+        <Grid item style={{ position: "absolute", top: "5%" }} xs={12}>
+          <Grid container>
+            <Grid item xs={12}>
+              <Grid container>
+                <Grid item lg={6} sm={4} xs={4} md={5.6}></Grid>
+                <Grid item xs={5}>
+                  <img
+                    src="./images/genesislogo.png"
+                    alt="LoginImage"
+                    style={{ height: "7vh" }}
+                  />
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item md={4} lg={4} sm={2} xs={0}></Grid>
+            <Grid item px={2} md={8} lg={8} sm={10} xs={12}>
+              <Card className={classes.card_style}>
+                <form onSubmit={handleSubmit}>
+                  <Grid item xs={12}>
+                    <Typography
+                      fontSize={"1.5rem"}
+                      pb={1.5}
+                      fontWeight={"bold"}
+                    >
+                      Login
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Typography py={1} style={{ fontSize: "0.9rem" }}>
+                      {" "}
+                      Email
+                    </Typography>
+                    <TextField
+                      color="warning"
+                      size="small"
+                      fullWidth
+                      classes={{ root: classes.customTextField }}
+                      placeholder="User@Genesis.com"
+                      value={userInfo.email}
+                      onChange={({ target }) =>
+                        setUserInfo({ ...userInfo, email: target.value })
+                      }
+                      type="email"
+                    />
+                  </Grid>
+                  <Grid item xs={12} py={2}>
+                    <Typography py={1} style={{ fontSize: "0.9rem" }}>
+                      {" "}
+                      Password
+                    </Typography>
+                    <TextField
+                      color="warning"
+                      size="small"
+                      fullWidth
+                      classes={{ root: classes.customTextField }}
+                      placeholder="Enter Your Password"
+                      value={userInfo.password}
+                      onChange={({ target }) =>
+                        setUserInfo({ ...userInfo, password: target.value })
+                      }
+                      type="password"
+                    />
+                  </Grid>
+                  <Grid item xs={12} my={2}>
+                    <Button
+                      type="submit"
+                      value="Login"
+                      variant="contained"
+                      className={classes.login_button}
+                    >
+                      Login
+                    </Button>
+                  </Grid>
+                  <Grid item xs={12} my={1}>
+                    <Link href={"/register"} style={{ textDecoration: "none" }}>
+                      <Button
+                        type="submit"
+                        value="Login"
+                        variant="contained"
+                        className={classes.login_button}
+                      >
+                        New User? Register Account
+                      </Button>
+                    </Link>
+                  </Grid>
+                </form>
+              </Card>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
+      <Snackbar open={alert} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          <Typography style={{ fontWeight: "bold", fontSize: "0.8rem" }}>
+            Invalid username and password !
+          </Typography>
+        </Alert>
+      </Snackbar>
     </>
   );
 };

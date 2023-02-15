@@ -9,18 +9,25 @@ const useStyles = makeStyles({
    position:'absolute',
    top:'0px',
    left:'0px',
-   zIndex:-1
+   zIndex:-1,
+   backgroundRepeat: "no-repeat",
+   backgroundSize: "cover",
+   height: "100vh",
+   backgroundPosition: "center",
   },
   registercard:{
     position:'relative',
-    top:'16rem',
-    left:'13rem',
-    width:'50%'
+    top:'5rem',
+    left:'11rem',
+    width:'45%',
+    
   },
   logo:{
     position:'absolute',
-   top:'6rem',
-   left:'17rem',
+   top:'1.2rem',
+   left:'16.5rem',
+   width:'10%',
+   height:'7vh'
   //  zIndex:1
   }
     
@@ -30,12 +37,12 @@ const Registration = () => {
 
   return (
     <div>
-        <img src='./images/login.png' alt='login ' className={classes.loginimg} style={{width:'100%'}}/>
+        <img src='./images/loginbackground1.png' alt='login ' className={classes.loginimg} style={{width:'100%'}}/>
         <div className={classes.registercard}>
         <Registrationform />  
         </div>
         <div>
-          <img src="./images/comfortzone.png" alt="logo" className={classes.logo} />
+          <img src="./images/genesislogo.png" alt="logo" className={classes.logo} />
         </div>
     </div>
   )

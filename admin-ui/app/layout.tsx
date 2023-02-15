@@ -9,7 +9,7 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
-import LayoutComponent from "../component/common/page";
+import LayoutComponent from "../component/common/LayoutComponent";
 
 const queryClient = new QueryClient();
 export default function RootLayout({

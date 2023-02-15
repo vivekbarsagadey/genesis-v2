@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, IconButton, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ListIcon from "@mui/icons-material/List";
-import Image from "next/image";
+import Link from "next/link";
 
 interface logoProps {
   show: boolean;
@@ -16,22 +16,26 @@ const Logo = ({ handleMenu, show }: logoProps) => {
       {show && (
         <Grid
           textAlign={"left"}
-          pl={0.5}
           pt={1}
           display={{ xs: "none", sm: "none", md: "block" }}
         >
-          <Image
-            src="./images/comfortzone.png"
-            alt="LoginImage"
-            style={{ height: "90%", width: "90%" }}
-          />
+          <Link href={"/project"} style={{ textDecoration: "none" }}>
+            {/* <img
+              src="./images/genesislogo2.png"
+              alt="LoginImage"
+              style={{ height: "70%", width: "70%",marginLeft:'1.7rem' }}
+            /> */}
+            jkjkjjk
+          </Link>
         </Grid>
       )}
-      <IconButton onClick={handleMenu}>
-        {show ? <MenuIcon /> : <ListIcon />}
-      </IconButton>
+      <div>
+        <IconButton onClick={handleMenu}>
+          {show ? <MenuIcon /> : <ListIcon />}
+        </IconButton>
+      </div>
     </div>
   );
 };
 
-export {Logo};
+export default Logo;
