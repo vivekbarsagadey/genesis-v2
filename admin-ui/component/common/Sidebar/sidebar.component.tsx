@@ -5,7 +5,7 @@ import { Grid, IconButton, Typography } from "@mui/material";
 import Link from "next/link";
 import StoreIcon from "@mui/icons-material/Store";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 
 const modules = [
   {
@@ -76,4 +76,4 @@ const SidebarComponent = ({ show, setShow }: any) => {
   );
 };
 
-export default SidebarComponent;
+export { SidebarComponent };

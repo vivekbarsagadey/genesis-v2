@@ -1,9 +1,7 @@
+import { Grid } from "@mui/material";
+import { useSession } from "next-auth/react";
 import React from "react";
-import { Grid, IconButton, Typography } from "@mui/material";
-import Logo from "./Sidebar/Logo";
-import SidebarComponent from "./Sidebar/SidebarComponent";
-import HeaderComponent from "./Header/HeaderComponent";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { HeaderComponent, Logo, SidebarComponent } from "./";
 const LayoutComponent = ({
   children,
   ...props
@@ -36,7 +34,8 @@ const LayoutComponent = ({
             <SidebarComponent show={show} />
           </Grid>
           <Grid
-            item style={{backgroundColor:" #EDF2F9", height:"100vh"}}
+            item
+            style={{ backgroundColor: " #EDF2F9", height: "100vh" }}
             xs={show ? 10.5 : 10.5}
             sm={show ? 10.5 : 11.5}
             md={show ? 10 : 11.5}
@@ -47,11 +46,7 @@ const LayoutComponent = ({
           </Grid>
         </Grid>
       )}
-      {!session && (
-        <div>
-          {children}
-        </div>
-      )}
+      {!session && <div>{children}</div>}
     </>
   );
 };

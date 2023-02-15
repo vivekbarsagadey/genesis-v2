@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     borderRadius: "5px"
   },
   registerbutton: {
-    textTransform: "capitalize !important",
+    textTransform: "capitalize",
     background: "#FFC107 !important"
   },
   errormessage: {

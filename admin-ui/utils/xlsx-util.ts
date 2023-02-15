@@ -1,4 +1,4 @@
-import * as FileSaver from "file-saver";
+import * as FileSaver from "file-savesr";
 import * as XLSX from "xlsx";
 
 

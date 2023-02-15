@@ -22,7 +22,6 @@ const HeaderComponent = () => {
     setAnchorEl(null);
   };
 
-
   return (
     <Grid container mb={1} style={{ backgroundColor: "#F2F8FF" }}>
       <Grid
@@ -104,14 +103,14 @@ const HeaderComponent = () => {
             transformOrigin={{ horizontal: "right", vertical: "top" }}
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           >
-            <Link href={"/"} style={{textDecoration:'none',color:'black'}}>
-            <MenuItem
-              onClick={() => signOut()}
-              style={{ height: "0.3rem", padding: "0.3rem" }}
+            <Link href={"/"} style={{ textDecoration: "none", color: "black" }}>
+              <MenuItem
+                onClick={() => signOut()}
+                style={{ height: "0.3rem", padding: "0.3rem" }}
               >
-              <Typography style={{ fontSize: "0.7rem" }}>Signout</Typography>
-            </MenuItem>
-              </Link>
+                <Typography style={{ fontSize: "0.7rem" }}>Signout</Typography>
+              </MenuItem>
+            </Link>
           </Menu>
         </Stack>
       </Grid>
@@ -119,4 +118,4 @@ const HeaderComponent = () => {
   );
 };
 
-export default HeaderComponent;
+export { HeaderComponent };
