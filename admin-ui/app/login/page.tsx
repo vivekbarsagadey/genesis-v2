@@ -64,6 +64,7 @@ const SignIn: NextPage = (props): JSX.Element => {
         password: userInfo.password,
         redirect: false,
       });
+      
       if (!res.error) {
         router.push("/");
       }

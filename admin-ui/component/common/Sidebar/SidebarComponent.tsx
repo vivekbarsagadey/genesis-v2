@@ -22,7 +22,6 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import FormatColorTextIcon from "@mui/icons-material/FormatColorText";
-import { fontWeight, Colors, fontSize } from "../../../themes/font";
 import { sideComponent } from "./SidebarComponentStyle";
 import { IMenuListSet } from "../../../app/template/templateInterface/TemplateInterface";
 import SideBarInnerList from "./SideBarInnerList";
@@ -175,17 +174,19 @@ const SidebarComponent = ({ menuList, show, updateMyDragImages }: ISideBar) => {
           <GridOnIcon style={{ fontSize: "1rem", color: "#334D6E" }} />
         </Grid>
         <Grid item xs={2.53}>
-          <Typography
-            display={{ xs: "none", sm: "none", md: "block" }}
-            style={{
-              color: "#334D6E",
-              fontSize: "0.9rem",
-              cursor: "pointer",
-            }}
-            onClick={handleOpen}
-          >
-            Grid
-          </Typography>
+          {show && (
+            <Typography
+              display={{ xs: "none", sm: "none", md: "block" }}
+              style={{
+                color: "#334D6E",
+                fontSize: "0.9rem",
+                cursor: "pointer",
+              }}
+              onClick={handleOpen}
+            >
+              Grid
+            </Typography>
+          )}
           <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
