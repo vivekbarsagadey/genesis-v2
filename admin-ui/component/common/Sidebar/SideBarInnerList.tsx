@@ -16,13 +16,16 @@ const SideBarInnerList = ({ item, show, updateMyDragImages }: any) => {
           <ListItemIcon>
             <Switch condition={item.icon}>
               <Case value="PinIcon ">
-                <PinIcon style={{ fontSize: "1rem", color: "#334D6E" }} />
+                <PinIcon 
+                style={{ fontSize: "1rem", color: "#334D6E" }} />
               </Case>
               <Case value="PinIcon ">
-                <PinIcon style={{ fontSize: "1rem", color: "#334D6E" }} />
+                <PinIcon 
+                style={{ fontSize: "1rem", color: "#334D6E" }} />
               </Case>
               <Case value="PinIcon">
-                <PinIcon style={{ fontSize: "1rem", color: "#334D6E" }} />
+                <PinIcon 
+                style={{ fontSize: "1rem", color: "#334D6E" }} />
               </Case>
               <Case value="KeyboardHideIcon">
                 <KeyboardHideIcon

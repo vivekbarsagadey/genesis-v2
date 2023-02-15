@@ -103,3 +103,5 @@ dist
 # TernJS port file
 .tern-port
 /admin-ui/package-lock.json
+/admin-ui/.vscode
+/admin-ui/db

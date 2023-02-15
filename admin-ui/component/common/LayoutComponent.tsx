@@ -7,6 +7,8 @@ import { IMenuListSet } from "./templateInterface/TemplateInterface";
 import { menu } from "../../component/common/data/componentsData";
 import { useSession, signIn, signOut } from "next-auth/react";
 import InnerLayout from "../../app/template/inner-layout/InnerLayout";
+import CreateProject from "../../app/create.project/ListProject";
+import ListProject from "../../app/create.project/ListProject";
 const LayoutComponent = ({
   children,
   ...props
@@ -70,12 +72,16 @@ const LayoutComponent = ({
             lg={show ? 10 : 11.26}
           >
             <HeaderComponent project={project} />
-            <InnerLayout
+
+          <ListProject/>
+
+
+            {/* <InnerLayout
               dragList={dragList}
               menuList={menuList}
               project={project}
               setDragList={setDragList}
-            />
+            /> */}
             {children}
           </Grid>
         </Grid>
