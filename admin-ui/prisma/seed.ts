@@ -8,8 +8,8 @@ async function main() {
         //  console.log("this is data drom seeding")
     const user = await prisma.user.create({
       data:{
-        name:"Piraji Survase",
-        email:"piraji.s@whizit.co.in",
+        name:"Faisal Hayat",
+        email:"Faisal.h@whizit.co.in",
         // image:"https://lh3.googleusercontent.com/a/AATXAJzC7nu5bN2iAS-Mnf1TQ8VePgIbXJqHq0NTQAHe=s96-c"
       }
 

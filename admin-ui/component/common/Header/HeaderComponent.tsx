@@ -71,7 +71,7 @@ const HeaderComponent = ({ project }: any) => {
         <Grid item xs={0.1}></Grid>
         <Grid item xs={5.9} style={{ display: "flex", alignItems: "center" }}>
           <Grid container>
-            <Grid item xs={1.8} mt={0.4}>
+            <Grid item xs={1.8} sm={3} md={1.5} mt={0.4}>
               <Button
                 size="small"
                 variant="contained"

@@ -23,7 +23,7 @@ const Logo = ({ handleMenu, show }: logoProps) => {
             <img
               src="./images/genesislogo2.png"
               alt="LoginImage"
-              style={{ height: "70%", width: "70%",marginLeft:'1rem' }}
+              style={{ height: "70%", width: "70%",marginLeft:'1.7rem' }}
             />
           </Link>
         </Grid>

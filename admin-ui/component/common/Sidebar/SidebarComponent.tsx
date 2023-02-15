@@ -30,6 +30,21 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
 import ImageIcon from "@mui/icons-material/Image";
 import SideBarInnerText from "./SideBarInnerText";
+import Backdrop from "@mui/material/Backdrop";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Fade from "@mui/material/Fade";
+
+const style = {
+  position: "absolute" as "absolute",
+  top: "40%",
+  left: "44%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  p: 4,
+};
 
 interface ISideBar {
   menuList: IMenuListSet[];
@@ -69,6 +84,10 @@ const SidebarComponent = ({ menuList, show, updateMyDragImages }: ISideBar) => {
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
     };
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <>
       {menuList?.map((menu) => {
@@ -95,18 +114,16 @@ const SidebarComponent = ({ menuList, show, updateMyDragImages }: ISideBar) => {
                         </Case>
                         <Case value="GridOnIcon">
                           <GridOnIcon
-                            style={{ fontSize: "1.2rem", color: "#334D6E" }}
+                            style={{ fontSize: "1rem", color: "#334D6E" }}
                           />
                         </Case>
-                        {/* <Default>
-                          <FormatColorTextIcon color="primary" />
-                        </Default> */}
                       </Switch>
                     </ListItemIcon>
                   </Grid>
-                  {show && (
-                    <Grid item xs={2.2}>
+                  <Grid item xs={2.2}>
+                    {show && (
                       <Typography
+                        display={{ xs: "none", sm: "none", md: "block" }}
                         style={{
                           color: "#334D6E",
                           fontSize: "0.9rem",
@@ -114,8 +131,8 @@ const SidebarComponent = ({ menuList, show, updateMyDragImages }: ISideBar) => {
                       >
                         {menu.lable}
                       </Typography>
-                    </Grid>
-                  )}
+                    )}
+                  </Grid>
                 </Grid>
               </AccordionSummary>
               <AccordionDetails>
@@ -152,6 +169,52 @@ const SidebarComponent = ({ menuList, show, updateMyDragImages }: ISideBar) => {
           </div>
         );
       })}
+      <Grid container>
+        <Grid item xs={2}></Grid>
+        <Grid item xs={0.5}>
+          <GridOnIcon style={{ fontSize: "1rem", color: "#334D6E" }} />
+        </Grid>
+        <Grid item xs={2.53}>
+          <Typography
+            display={{ xs: "none", sm: "none", md: "block" }}
+            style={{
+              color: "#334D6E",
+              fontSize: "0.9rem",
+              cursor: "pointer",
+            }}
+            onClick={handleOpen}
+          >
+            Grid
+          </Typography>
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <Fade in={open}>
+              <Box sx={style}>
+                <Typography
+                  id="transition-modal-title"
+                  variant="h6"
+                  component="h2"
+                >
+                  Text in a modal
+                </Typography>
+                <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+                  Duis mollis, est non commodo luctus, nisi erat porttitor
+                  ligula.
+                </Typography>
+              </Box>
+            </Fade>
+          </Modal>
+        </Grid>
+      </Grid>
     </>
   );
 };
