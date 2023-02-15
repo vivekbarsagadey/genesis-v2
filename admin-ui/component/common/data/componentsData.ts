@@ -712,133 +712,133 @@ export const menu = [
       },
     ],
   },
-  {
-    id: "3",
-    name: "grids",
-    icon: "GridOnIcon",
-    lable: "Grid",
-    components: [
-      {
-        id: "3.1",
-        name: "grid6x2",
-        type: "grid",
-        image: "/path2",
-        lable: "Grid 6X2",
-        icon: "FormatColorTextIcon",
-        properties: [
-          {
-            general: {
-              name: "grid6x2",
-              position: "relative",
-              width: "200px",
-              height: "856px",
-              overflowY: "scroll",
-              background: "#FFFFFF",
-              borderradius: "32px",
-            },
+  // {
+  //   id: "3",
+  //   name: "grids",
+  //   icon: "GridOnIcon",
+  //   lable: "Grid",
+  //   components: [
+  //     {
+  //       id: "3.1",
+  //       name: "grid6x2",
+  //       type: "grid",
+  //       image: "/path2",
+  //       lable: "Grid 6X2",
+  //       icon: "FormatColorTextIcon",
+  //       properties: [
+  //         {
+  //           general: {
+  //             name: "grid6x2",
+  //             position: "relative",
+  //             width: "200px",
+  //             height: "856px",
+  //             overflowY: "scroll",
+  //             background: "#FFFFFF",
+  //             borderradius: "32px",
+  //           },
 
-            css: {
-              name: "grid6x2",
-              position: "relative",
-              width: "200px",
-              height: "856px",
-              overflowY: "scroll",
-              background: "#FFFFFF",
-              borderradius: "32px",
-            },
+  //           css: {
+  //             name: "grid6x2",
+  //             position: "relative",
+  //             width: "200px",
+  //             height: "856px",
+  //             overflowY: "scroll",
+  //             background: "#FFFFFF",
+  //             borderradius: "32px",
+  //           },
 
-            model: {
-              name: "grid6x2",
-              position: "relative",
-              width: "200px",
-            },
-            api: {
-              name: "grid6x2",
-              url: "https//https://www.google.com-grid3.1",
-            },
-          },
-        ],
-      },
-      {
-        id: "3.2",
-        name: "grid12",
-        type: "grid",
-        image: "/path2",
-        lable: "Grid 12",
-        icon: "FormatColorTextIcon",
-        properties: [
-          {
-            general: {
-              name: "grid12",
-              position: "relative",
-              width: "200px",
-              height: "856px",
-              overflowY: "scroll",
-              background: "#FFFFFF",
-              borderradius: "32px",
-            },
+  //           model: {
+  //             name: "grid6x2",
+  //             position: "relative",
+  //             width: "200px",
+  //           },
+  //           api: {
+  //             name: "grid6x2",
+  //             url: "https//https://www.google.com-grid3.1",
+  //           },
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       id: "3.2",
+  //       name: "grid12",
+  //       type: "grid",
+  //       image: "/path2",
+  //       lable: "Grid 12",
+  //       icon: "FormatColorTextIcon",
+  //       properties: [
+  //         {
+  //           general: {
+  //             name: "grid12",
+  //             position: "relative",
+  //             width: "200px",
+  //             height: "856px",
+  //             overflowY: "scroll",
+  //             background: "#FFFFFF",
+  //             borderradius: "32px",
+  //           },
 
-            css: {
-              name: "grid12",
-              position: "relative",
-              width: "200px",
-              height: "856px",
-              overflowY: "scroll",
-              background: "#FFFFFF",
-              borderradius: "32px",
-            },
+  //           css: {
+  //             name: "grid12",
+  //             position: "relative",
+  //             width: "200px",
+  //             height: "856px",
+  //             overflowY: "scroll",
+  //             background: "#FFFFFF",
+  //             borderradius: "32px",
+  //           },
 
-            model: {
-              name: "grid12",
-              position: "relative",
-              width: "200px",
-            },
-            api: {
-              name: "grid12",
-              url: "https//https://www.google.com-grid3.2",
-            },
-          },
-        ],
-      },
-      {
-        id: "3.3",
-        name: "grid4x3",
-        type: "grid",
-        image: "/path2",
-        lable: "Grid 4X3",
-        icon: "FormatColorTextIcon",
-        properties: [
-          {
-            general: {
-              name: "grid4x3",
-              position: "relative",
-              width: "200px",
-              height: "856px",
-              overflowY: "scroll",
-              background: "#FFFFFF",
-              borderradius: "32px",
-            },
-            css: {
-              name: "grid4x3",
-              position: "relative",
-              width: "200px",
-              height: "856px",
-              overflowY: "scroll",
-              background: "#FFFFFF",
-              borderradius: "32px",
-            },
-            model: {
-              name: "grid4x3",
-              position: "relative",
-              width: "200px",
-            },
-            api: {
-              name: "grid4x3",
-              url: "https//https://www.google.com-grid3.3",
-            },
-          },
-        ],
-      },
-    ],
-  },
+  //           model: {
+  //             name: "grid12",
+  //             position: "relative",
+  //             width: "200px",
+  //           },
+  //           api: {
+  //             name: "grid12",
+  //             url: "https//https://www.google.com-grid3.2",
+  //           },
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       id: "3.3",
+  //       name: "grid4x3",
+  //       type: "grid",
+  //       image: "/path2",
+  //       lable: "Grid 4X3",
+  //       icon: "FormatColorTextIcon",
+  //       properties: [
+  //         {
+  //           general: {
+  //             name: "grid4x3",
+  //             position: "relative",
+  //             width: "200px",
+  //             height: "856px",
+  //             overflowY: "scroll",
+  //             background: "#FFFFFF",
+  //             borderradius: "32px",
+  //           },
+  //           css: {
+  //             name: "grid4x3",
+  //             position: "relative",
+  //             width: "200px",
+  //             height: "856px",
+  //             overflowY: "scroll",
+  //             background: "#FFFFFF",
+  //             borderradius: "32px",
+  //           },
+  //           model: {
+  //             name: "grid4x3",
+  //             position: "relative",
+  //             width: "200px",
+  //           },
+  //           api: {
+  //             name: "grid4x3",
+  //             url: "https//https://www.google.com-grid3.3",
+  //           },
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];
