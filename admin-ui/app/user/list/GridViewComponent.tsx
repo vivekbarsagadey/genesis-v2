@@ -59,6 +59,9 @@ const GridViewComponent = ({ items }: GridComponentProps) => {
         <Grid container spacing={1.5} mt={1}>
           {_DATA.currentData().map((item) => {
             return (
+
+
+              
               <Grid item lg={4} xs={12} sm={6} md={4}  mt={0} key={item.id}>
                 <Card>
                   <Box>
