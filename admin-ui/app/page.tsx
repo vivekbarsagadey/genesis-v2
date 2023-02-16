@@ -2,24 +2,21 @@
 "use client";
 import { useSession, signIn, signOut } from "next-auth/react"
 import React from 'react'
+import ListProject from "./create.project/ListProject";
+import HomeComponent from "./home";
 import SignIn from "./login/page";
 import Registration from "./register/page";
+import { useRouter } from "next/navigation";
 
 
 const page = () => {
   const { data: session } = useSession()
+  const router = useRouter();
   if (session) {
-    return (
-      <>
-        {/* Signed in as {session.user.email} <br />
-        <button onClick={() => signOut()}>Sign out</button> */}
-      </>
-    ) 
+    router.push("/home");
   }
   return (
-    <>
     <SignIn />
-    </>
   )
 }
 

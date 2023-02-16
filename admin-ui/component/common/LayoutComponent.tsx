@@ -1,14 +1,12 @@
+import { Grid } from "@mui/material";
+import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
-import { Grid, IconButton, Typography } from "@mui/material";
+import ListProject from "../../app/create.project/ListProject";
+import { menu } from "../../component/common/data/componentsData";
+import HeaderComponent from "./Header/HeaderComponent";
 import Logo from "./Sidebar/Logo";
 import SidebarComponent from "./Sidebar/SidebarComponent";
-import HeaderComponent from "./Header/HeaderComponent";
 import { IMenuListSet } from "./templateInterface/TemplateInterface";
-import { menu } from "../../component/common/data/componentsData";
-import { useSession, signIn, signOut } from "next-auth/react";
-import InnerLayout from "../../app/template/inner-layout/InnerLayout";
-import CreateProject from "../../app/create.project/ListProject";
-import ListProject from "../../app/create.project/ListProject";
 const LayoutComponent = ({
   children,
   ...props

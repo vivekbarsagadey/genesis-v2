@@ -28,9 +28,8 @@ export default function RootLayout({
               <CssBaseline />
               <body>
                 <main>
-                  <>
-                    <LayoutComponent>{children}</LayoutComponent>
-                  </>
+                  this data file
+                {children}
                 </main>
               </body>
             </ThemeProvider>

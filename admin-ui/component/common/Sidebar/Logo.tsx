@@ -20,12 +20,11 @@ const Logo = ({ handleMenu, show }: logoProps) => {
           display={{ xs: "none", sm: "none", md: "block" }}
         >
           <Link href={"/project"} style={{ textDecoration: "none" }}>
-            {/* <img
+            <img
               src="./images/genesislogo2.png"
               alt="LoginImage"
               style={{ height: "70%", width: "70%",marginLeft:'1.7rem' }}
-            /> */}
-            jkjkjjk
+            />
           </Link>
         </Grid>
       )}

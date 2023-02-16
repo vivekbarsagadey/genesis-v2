@@ -1,17 +1,14 @@
-import React from "react";
-import { Grid, Button, Typography, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import { Button, Grid, TextField, Typography } from "@mui/material";
 import Backdrop from "@mui/material/Backdrop";
-import Modal from "@mui/material/Modal";
-import Fade from "@mui/material/Fade";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
-import Paper from "@mui/material/Paper";
-import InputBase from "@mui/material/InputBase";
-import Divider from "@mui/material/Divider";
+import Fade from "@mui/material/Fade";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
-import DirectionsIcon from "@mui/icons-material/Directions";
+import InputBase from "@mui/material/InputBase";
+import Modal from "@mui/material/Modal";
+import Paper from "@mui/material/Paper";
+import React from "react";
 
 const style = {
   position: "absolute" as "absolute",
@@ -32,7 +29,7 @@ const CreateComponent = () => {
 
   return (
     <Grid container mt={1}>
-      <Grid item xs={"0.2"}></Grid>
+      <Grid item xs={0.2}></Grid>
       <Grid item xs={7.8} style={{ display: "flex"}}>
         <Paper
           component="form"
