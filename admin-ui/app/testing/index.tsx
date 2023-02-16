@@ -13,6 +13,7 @@ import TestingCalendarView from "./list/CalendarView";
 import TestingGraphView from "./list/GraphView";
 import TestingKanbanView from "./list/KanbanView";
 import DownloadAll from "./list/DownloadAll";
+import ViewsTestingComponent from "./view";
 
 const TestingHome = () => {
   return (
@@ -43,30 +44,28 @@ const TestingHome = () => {
               <TestingKanbanView />
             </Grid>
           </Grid>
+          {/* <ViewsTestingComponent/> */}
         </Grid>
         <Grid item xs={1}>
-
-        <Grid item xs={11.5} display={"flex"} justifyContent={"flex-end"}>
-        <Link href={"/testing/create"} style={{ textDecoration: "none" }}>
-          <Button
-            variant="contained"
-            size="small"
-            style={{
-              textTransform: "capitalize",
-              borderRadius: "20px",
-              fontWeight: "bold",
-              padding: "0.2rem 1.1rem ",
-            }}
-          >
-            Create
-            <span style={{ marginLeft: "0.8rem", fontSize: "1rem" }}>+</span>
-          </Button>
-        </Link>
-      </Grid>
-
-
-
-          {/* <TestingCreateButton /> */}
+          <Grid item xs={11.5} display={"flex"} justifyContent={"flex-end"}>
+            <Link href={"/testing/create"} style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                size="small"
+                style={{
+                  textTransform: "capitalize",
+                  borderRadius: "20px",
+                  fontWeight: "bold",
+                  padding: "0.2rem 1.1rem ",
+                }}
+              >
+                Create
+                <span style={{ marginLeft: "0.8rem", fontSize: "1rem" }}>
+                  +
+                </span>
+              </Button>
+            </Link>
+          </Grid>
         </Grid>
       </Grid>
       <TestingListComponent />

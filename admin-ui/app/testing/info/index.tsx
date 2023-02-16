@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Grid, IconButton, Typography } from "@mui/material";
+import { Grid, IconButton, Tooltip, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import EditIcon from "@mui/icons-material/Edit";
@@ -25,9 +25,11 @@ const ListInfo = () => {
         <Checkbox size="small" />
       </Grid>
       <Grid item xs={1}>
-        <IconButton>
-          <RemoveRedEyeIcon fontSize="small" />
-        </IconButton>
+        <Tooltip title="View">
+          <IconButton>
+            <RemoveRedEyeIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
       </Grid>
       <Grid item xs={3}>
         <Typography
@@ -39,7 +41,7 @@ const ListInfo = () => {
           Astrology V1.1
         </Typography>
       </Grid>
-      <Grid item xs={2.9}>
+      <Grid item xs={2.6}>
         <Typography
           fontWeight={"bold"}
           fontSize={"0.8rem"}
@@ -48,14 +50,11 @@ const ListInfo = () => {
           Austin
         </Typography>
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs={2.3}>
         <Grid container display={"flex"} alignItems={"center"}>
-          <Grid item xs={2}>
-            <Checkbox size="small" />
-          </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={12}>
             <Typography fontSize={"0.8rem"} style={{ color: "#334155" }}>
-              B2B-W
+              Business to Business -Web
             </Typography>
           </Grid>
         </Grid>
@@ -64,15 +63,19 @@ const ListInfo = () => {
         <Grid container>
           <Grid item xs={1.5}>
             <Link href={"/testing/-1"} style={{ textDecoration: "none" }}>
-              <IconButton>
-                <EditIcon fontSize="small" />
-              </IconButton>
+              <Tooltip title="Edit">
+                <IconButton>
+                  <EditIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
             </Link>
           </Grid>
           <Grid item xs={4}>
-            <IconButton>
-              <FileDownloadIcon fontSize="small" />
-            </IconButton>
+            <Tooltip title="Download">
+              <IconButton>
+                <FileDownloadIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           </Grid>
         </Grid>
       </Grid>
