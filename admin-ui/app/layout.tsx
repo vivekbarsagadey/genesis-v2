@@ -23,13 +23,15 @@ export default function RootLayout({
               <CssBaseline />
               <body>
                 <main>
-                  <If condition={props.session}>
+                  {/* <If condition={props.session}>
                     <Then>
                       <>This is index page</>
                       {children}
                     </Then>
                     <Else>{children}</Else>
-                  </If>
+                  </If> */}
+                  {/* <>This is index page</> */}
+                  {children}
                 </main>
               </body>
             </ThemeProvider>
