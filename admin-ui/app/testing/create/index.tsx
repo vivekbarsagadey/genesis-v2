@@ -91,21 +91,20 @@ const TestingCreate = () => {
               <Grid item xs={7}>
                 <Grid container>
                   <Grid item xs={3}>
-                    <Typography fontSize={"0.8rem"}>B2B-W</Typography>
+                    <Typography fontSize={"0.8rem"}>Business 2Business - Web</Typography>
                   </Grid>
                   <Grid item xs={3}>
-                    <Typography fontSize={"0.8rem"}>B2B-M</Typography>
+                    <Typography fontSize={"0.8rem"}>Business 2 Business - Mobile</Typography>
                   </Grid>
                   <Grid item xs={3}>
-                    <Typography fontSize={"0.8rem"}>B2C-W</Typography>
+                    <Typography fontSize={"0.8rem"}>Business 2 Customer - Web</Typography>
                   </Grid>
                   <Grid item xs={3}>
-                    <Typography fontSize={"0.8rem"}>B2C-M</Typography>
+                    <Typography fontSize={"0.8rem"}>Business 2 Customer - Mobile</Typography>
                   </Grid>
                 </Grid>
               </Grid>
             </Grid>
-
             <Grid container mt={6}>
               <Grid item xs={9}></Grid>
               <Grid item xs={3}>

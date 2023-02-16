@@ -25,11 +25,9 @@ const ListInfo = () => {
         <Checkbox size="small" />
       </Grid>
       <Grid item xs={1}>
-        <Link href={"/testing/-1"} style={{ textDecoration: "none" }}>
-          <IconButton>
-            <RemoveRedEyeIcon fontSize="small" />
-          </IconButton>
-        </Link>
+        <IconButton>
+          <RemoveRedEyeIcon fontSize="small" />
+        </IconButton>
       </Grid>
       <Grid item xs={3}>
         <Typography
@@ -65,9 +63,11 @@ const ListInfo = () => {
       <Grid item xs={2}>
         <Grid container>
           <Grid item xs={1.5}>
-            <IconButton>
-              <EditIcon fontSize="small" />
-            </IconButton>
+            <Link href={"/testing/-1"} style={{ textDecoration: "none" }}>
+              <IconButton>
+                <EditIcon fontSize="small" />
+              </IconButton>
+            </Link>
           </Grid>
           <Grid item xs={4}>
             <IconButton>
