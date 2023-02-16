@@ -64,7 +64,7 @@ const SignIn: NextPage = (props): JSX.Element => {
         password: userInfo.password,
         redirect: false,
       });
-      
+
       if (!res.error) {
         router.push("/");
       }
@@ -83,105 +83,73 @@ const SignIn: NextPage = (props): JSX.Element => {
   };
   return (
     <>
-      <Grid container className={classes.background_style}>
-        <Grid item style={{ position: "absolute", top: "5%" }} xs={12}>
-          <Grid container>
-            <Grid item xs={12}>
-              <Grid container>
-                <Grid item lg={6} sm={4} xs={4} md={5.6}></Grid>
-                <Grid item xs={5}>
-                  <img
-                    src="./images/genesislogo.png"
-                    alt="LoginImage"
-                    style={{ height: "7vh" }}
-                  />
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item md={4} lg={4} sm={2} xs={0}></Grid>
-            <Grid item px={2} md={8} lg={8} sm={10} xs={12}>
-              <Card className={classes.card_style}>
-                <form onSubmit={handleSubmit}>
-                  <Grid item xs={12}>
-                    <Typography
-                      fontSize={"1.5rem"}
-                      pb={1.5}
-                      fontWeight={"bold"}
-                    >
-                      Login
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Typography py={1} style={{ fontSize: "0.9rem" }}>
-                      {" "}
-                      Email
-                    </Typography>
-                    <TextField
-                      color="warning"
-                      size="small"
-                      fullWidth
-                      classes={{ root: classes.customTextField }}
-                      placeholder="User@Genesis.com"
-                      value={userInfo.email}
-                      onChange={({ target }) =>
-                        setUserInfo({ ...userInfo, email: target.value })
-                      }
-                      type="email"
-                    />
-                  </Grid>
-                  <Grid item xs={12} py={2}>
-                    <Typography py={1} style={{ fontSize: "0.9rem" }}>
-                      {" "}
-                      Password
-                    </Typography>
-                    <TextField
-                      color="warning"
-                      size="small"
-                      fullWidth
-                      classes={{ root: classes.customTextField }}
-                      placeholder="Enter Your Password"
-                      value={userInfo.password}
-                      onChange={({ target }) =>
-                        setUserInfo({ ...userInfo, password: target.value })
-                      }
-                      type="password"
-                    />
-                  </Grid>
-                  <Grid item xs={12} my={2}>
-                    <Button
-                      type="submit"
-                      value="Login"
-                      variant="contained"
-                      className={classes.login_button}
-                    >
-                      Login
-                    </Button>
-                  </Grid>
-                  <Grid item xs={12} my={1}>
-                    <Link href={"/register"} style={{ textDecoration: "none" }}>
-                      <Button
-                        type="submit"
-                        value="Login"
-                        variant="contained"
-                        className={classes.login_button}
-                      >
-                        New User? Register Account
-                      </Button>
-                    </Link>
-                  </Grid>
-                </form>
-              </Card>
-            </Grid>
+      <Card className={classes.card_style}>
+        <form onSubmit={handleSubmit}>
+          <Grid item xs={12}>
+            <Typography fontSize={"1.5rem"} pb={1.5} fontWeight={"bold"}>
+              Login
+            </Typography>
           </Grid>
-        </Grid>
-      </Grid>
-      <Snackbar open={alert} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          <Typography style={{ fontWeight: "bold", fontSize: "0.8rem" }}>
-            Invalid username and password !
-          </Typography>
-        </Alert>
-      </Snackbar>
+          <Grid item xs={12}>
+            <Typography py={1} style={{ fontSize: "0.9rem" }}>
+              {" "}
+              Email
+            </Typography>
+            <TextField
+              color="warning"
+              size="small"
+              fullWidth
+              classes={{ root: classes.customTextField }}
+              placeholder="User@Genesis.com"
+              value={userInfo.email}
+              onChange={({ target }) =>
+                setUserInfo({ ...userInfo, email: target.value })
+              }
+              type="email"
+            />
+          </Grid>
+          <Grid item xs={12} py={2}>
+            <Typography py={1} style={{ fontSize: "0.9rem" }}>
+              {" "}
+              Password
+            </Typography>
+            <TextField
+              color="warning"
+              size="small"
+              fullWidth
+              classes={{ root: classes.customTextField }}
+              placeholder="Enter Your Password"
+              value={userInfo.password}
+              onChange={({ target }) =>
+                setUserInfo({ ...userInfo, password: target.value })
+              }
+              type="password"
+            />
+          </Grid>
+          <Grid item xs={12} my={2}>
+            <Button
+              type="submit"
+              value="Login"
+              variant="contained"
+              className={classes.login_button}
+            >
+              Login
+            </Button>
+          </Grid>
+          <Grid item xs={12} my={1}>
+            <Link href={"/register"} style={{ textDecoration: "none" }}>
+              <Button
+                type="submit"
+                value="Login"
+                variant="contained"
+                className={classes.login_button}
+              >
+                New User? Register Account
+              </Button>
+            </Link>
+          </Grid>
+        </form>
+      </Card>
     </>
   );
 };

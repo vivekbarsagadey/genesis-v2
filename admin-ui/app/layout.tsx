@@ -1,15 +1,10 @@
 "use client";
-import Head from "./head";
-import * as React from "react";
-import { ThemeProvider, CssBaseline } from "@mui/material";
-import { theme } from "../themes/com-light";
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-} from "@tanstack/react-query";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
-import LayoutComponent from "../component/common/LayoutComponent";
+import * as React from "react";
+import { theme } from "../themes/com-light";
+import { If, Then, Else, When, Unless, Switch, Case, Default } from "react-if";
 
 const queryClient = new QueryClient();
 export default function RootLayout({
@@ -28,8 +23,13 @@ export default function RootLayout({
               <CssBaseline />
               <body>
                 <main>
-                  this data file
-                {children}
+                  <If condition={props.session}>
+                    <Then>
+                      <>This is index page</>
+                      {children}
+                    </Then>
+                    <Else>{children}</Else>
+                  </If>
                 </main>
               </body>
             </ThemeProvider>

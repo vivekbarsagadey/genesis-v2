@@ -14,10 +14,12 @@ const page = () => {
   const router = useRouter();
   if (session) {
     router.push("/home");
+  }else{
+    router.push("/login");
   }
-  return (
+  /* return (
     <SignIn />
-  )
+  ) */
 }
 
 export default page
