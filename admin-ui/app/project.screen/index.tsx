@@ -22,6 +22,8 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import ImportExportOutlinedIcon from "@mui/icons-material/ImportExportOutlined";
 import { makeStyles } from "@mui/styles";
+import IProject from "./project.model";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 const useStyles = makeStyles({
   addnewbtn: {
@@ -78,6 +80,10 @@ const TestingHome = () => {
     fetchData();
   }, []);
 
+
+  const itemsCallBackHandler = (_items: Array<IProject>) => {
+    setProject(_items);
+  };
   useEffect(() => {
     setNewProject(project);
   }, [project]);
@@ -119,7 +125,16 @@ const TestingHome = () => {
         </Grid>
         <Grid item xs={0.1}></Grid>
         <Grid item xs={0.4}>
-          <TestingFilter />
+        <Tooltip title="Filter" arrow>
+            <IconButton
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+            >
+              <FilterAltIcon fontSize="small" />
+            </IconButton>
+          </Tooltip>
         </Grid>
         <Grid item xs={0.6} lg={0.37} md={0.5} sm={0.9}>
           <Tooltip title="Export" arrow>
@@ -219,17 +234,7 @@ const TestingHome = () => {
         {(() => {
           switch (count) {
             case "List":
-              // return  <GridViewComponent items={users} ></GridViewComponent>
-              return (
-                // <ListComponent
-                //   show={show}
-                //   setShow={setShow}
-                //   items={users}
-                //   setUsers={setUsers}
-                // />
-
-                <TestingListComponent newproject={newproject} />
-              );
+              return <TestingListComponent newproject={newproject} />;
             case "Graph":
               return <TestingGraphView project={project}></TestingGraphView>;
             case "Kanban":
@@ -244,8 +249,11 @@ const TestingHome = () => {
           }
         })()}
       </div>
-      {/* project list  */}
-      {/* <TestingListComponent newproject={newproject} /> */}
+
+      <TestingFilter project={project} anchorEl={anchorEl}
+          open={open}
+          handleClose={handleClose}
+          itemsCallBackHandler={itemsCallBackHandler}/>
     </>
   );
 };

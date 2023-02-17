@@ -64,9 +64,7 @@ const HeaderComponent = ({ project }: any) => {
     handleCloseModal();
     window.location.reload();
   };
-
   return (
-    
       <Grid container mb={1} style={{ backgroundColor: "#f1f5f9" }} pt={1}>
         <Grid item xs={0.1}></Grid>
         <Grid item xs={5.9} style={{ display: "flex", alignItems: "center" }}>

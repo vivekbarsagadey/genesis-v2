@@ -22,18 +22,18 @@ const InfoTestingComponent = ({ items }: any) => {
         }}
         mt={0.5}
       >
-        <Grid item xs={0.5}></Grid>
+        <Grid item xs={0.04}></Grid>
         <Grid item xs={0.5}>
           <Checkbox size="small" />
         </Grid>
-        <Grid item xs={1.5}>
+        <Grid item xs={1.48}>
           <Tooltip title="View">
             <IconButton>
               <RemoveRedEyeIcon fontSize="small" />
             </IconButton>
           </Tooltip>
         </Grid>
-        <Grid item xs={2.64}>
+        <Grid item xs={2.46}>
           <Typography
             fontWeight={"bold"}
             fontSize={"0.8rem"}
@@ -43,7 +43,7 @@ const InfoTestingComponent = ({ items }: any) => {
             {items.name}
           </Typography>
         </Grid>
-        <Grid item xs={2.45}>
+        <Grid item xs={2.65}>
           <Typography
             fontWeight={"bold"}
             fontSize={"0.8rem"}

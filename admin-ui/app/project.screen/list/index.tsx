@@ -12,7 +12,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 const useStyles = makeStyles({
   container: {
     textAlign: "center",
-    background: "#F5F5F5",
+    backgroundColor: "#f1f5f9",
     paddingLeft: "0.5rem",
     width: "98.5%",
     borderRadius: "15px 15px 0px 0px ",
@@ -105,7 +105,7 @@ const TestingListComponent = ({ newproject }: any) => {
     <div>
       <Box style={{ marginTop: "1rem" }}>
         <Grid container className={classes.container}>
-          <Grid item xs={0.48}></Grid>
+
           <Grid
             item
             xs={0.488}
