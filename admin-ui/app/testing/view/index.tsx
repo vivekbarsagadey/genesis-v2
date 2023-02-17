@@ -20,7 +20,7 @@ const AllViews = [
     id: 2,
     view: "Grid",
     title:"Grid",
-    icon:     <GridViewIcon fontSize="small" />
+    icon:  <GridViewIcon fontSize="small" />
   },
   {
     id: 3,

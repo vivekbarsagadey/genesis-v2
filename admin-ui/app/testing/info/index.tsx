@@ -24,14 +24,14 @@ const ListInfo = () => {
       <Grid item xs={0.5}>
         <Checkbox size="small" />
       </Grid>
-      <Grid item xs={1}>
+      <Grid item xs={1.5}>
         <Tooltip title="View">
           <IconButton>
             <RemoveRedEyeIcon fontSize="small" />
           </IconButton>
         </Tooltip>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={2.64}>
         <Typography
           fontWeight={"bold"}
           fontSize={"0.8rem"}
@@ -41,7 +41,7 @@ const ListInfo = () => {
           Astrology V1.1
         </Typography>
       </Grid>
-      <Grid item xs={2.6}>
+      <Grid item xs={2.4}>
         <Typography
           fontWeight={"bold"}
           fontSize={"0.8rem"}
@@ -50,7 +50,7 @@ const ListInfo = () => {
           Austin
         </Typography>
       </Grid>
-      <Grid item xs={2.3}>
+      <Grid item xs={2.87}>
         <Grid container display={"flex"} alignItems={"center"}>
           <Grid item xs={12}>
             <Typography fontSize={"0.8rem"} style={{ color: "#334155" }}>
@@ -59,9 +59,9 @@ const ListInfo = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xs={2}>
+      <Grid item xs={1}>
         <Grid container>
-          <Grid item xs={1.5}>
+          <Grid item xs={2.8}>
             <Link href={"/testing/-1"} style={{ textDecoration: "none" }}>
               <Tooltip title="Edit">
                 <IconButton>
