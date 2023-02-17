@@ -5,17 +5,10 @@ import { PieChart } from "react-minimal-pie-chart";
 import Grid from "@mui/material/Grid";
 import { Chart } from "react-google-charts";
 
-
-
-
-
-
 export const options = {
   title: "My Daily Activities",
   is3D: true,
 };
-
-
 
 const TestingGraphView = ({ project }: any) => {
   // const example = [
@@ -58,7 +51,7 @@ const TestingGraphView = ({ project }: any) => {
           Hello
           {/* <PieChart data={example} />
           <PieChart data={example} /> */}
-
+          {/* <PieChart data={example} />
           {/* <Chart
             chartType="PieChart"
             data={example}

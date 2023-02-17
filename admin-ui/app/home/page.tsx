@@ -9,6 +9,7 @@ import { menu } from "../../component/common/data/componentsData";
 import { IMenuListSet } from "../template/templateInterface/TemplateInterface";
 import Logo from "../../component/common/sidebar/logo";
 import TestingHome from "../project.screen";
+import ProjectSidebar from "../../component/common/ProjectSidebar/ProjectSidebar";
 
 const Page = () => {
   const [show, setShow] = useState(true);
@@ -52,11 +53,13 @@ const Page = () => {
           style={{ backgroundColor: "white" }}
         >
           <Logo handleMenu={handleMenu} show={show} />
-          <SidebarComponent
+          {/* <SidebarComponent
             show={show}
             updateMyDragImages={updateMyDragImages}
             menuList={menuList}
-          />
+          /> */}
+
+          <ProjectSidebar show={show}/>
         </Grid>
         <Grid
           item

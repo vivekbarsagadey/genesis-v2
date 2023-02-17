@@ -16,23 +16,21 @@ const Logo = ({ handleMenu, show }: logoProps) => {
       {show && (
         <Grid
           textAlign={"left"}
+          pl={0.5}
           pt={1}
           display={{ xs: "none", sm: "none", md: "block" }}
         >
-          <Link href={"/project"} style={{ textDecoration: "none" }}>
-            <img
-              src="./images/genesislogo2.png"
-              alt="LoginImage"
-              style={{ height: "70%", width: "70%",marginLeft:'1.7rem' }}
-            />
-          </Link>
+          {" "}
+          <img
+            src="./images/genesislogo2.png"
+            alt="LoginImage"
+            style={{ height: "90%", width: "90%" }}
+          />
         </Grid>
       )}
-      <div>
-        <IconButton onClick={handleMenu}>
-          {show ? <MenuIcon /> : <ListIcon />}
-        </IconButton>
-      </div>
+      <IconButton onClick={handleMenu}>
+        {show ? <MenuIcon /> : <ListIcon />}
+      </IconButton>
     </div>
   );
 };

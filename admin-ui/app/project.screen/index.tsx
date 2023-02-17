@@ -110,6 +110,7 @@ const TestingHome = () => {
   return (
     <>
       <Grid container mt={1}>
+        <Grid item xs={0.2}></Grid>
         <Grid item xs={2.7}>
           <TestingSearch
             newproject={newproject}
@@ -186,23 +187,10 @@ const TestingHome = () => {
           </Dialog>
         </Grid>
 
-        <Grid item xs={3}>
+        <Grid item xs={2.8}>
           <Grid container>
-            {/* <Grid item xs={1.5}>
-              <TestingGridView />
-            </Grid>
-            <Grid item xs={1.5}>
-              <TestingCalendarView />
-            </Grid>
-            <Grid item xs={1.5}>
-              <TestingGraphView />
-            </Grid>
-            <Grid item xs={1.5}>
-              <TestingKanbanView />
-            </Grid> */}
-            <ViewsTestingComponent handleCount={handleCount}/>
+            <ViewsTestingComponent handleCount={handleCount} />
           </Grid>
-          {/* <ViewsTestingComponent/> */}
         </Grid>
 
         <Grid item xs={4.8} display={"flex"} justifyContent={"flex-end"}>
@@ -247,14 +235,14 @@ const TestingHome = () => {
             case "Kanban":
               return <TestingKanbanView project={project} />;
             case "Calendar":
-              return <TestingCalendarView project={project}></TestingCalendarView>;
+              return (
+                <TestingCalendarView project={project}></TestingCalendarView>
+              );
 
             default:
               return <TestingGridView project={project}></TestingGridView>;
           }
         })()}
-
-
       </div>
       {/* project list  */}
       {/* <TestingListComponent newproject={newproject} /> */}
