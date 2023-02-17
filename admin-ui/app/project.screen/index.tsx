@@ -57,6 +57,7 @@ const useStyles = makeStyles({
 const TestingHome = () => {
   const classes = useStyles();
   const [project, setProject] = useState([]);
+  const [count, setCount] = useState("List");
   const [newproject, setNewProject] = useState(project);
   const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -81,8 +82,9 @@ const TestingHome = () => {
     setNewProject(project);
   }, [project]);
 
-
-
+  const handleCount = (data: string) => {
+    setCount(data);
+  };
   const Open = Boolean(menuItem);
   const handleClickData = (event: React.MouseEvent<HTMLButtonElement>) => {
     setmenuItem(event.currentTarget);
@@ -186,7 +188,7 @@ const TestingHome = () => {
 
         <Grid item xs={3}>
           <Grid container>
-            <Grid item xs={1.5}>
+            {/* <Grid item xs={1.5}>
               <TestingGridView />
             </Grid>
             <Grid item xs={1.5}>
@@ -197,7 +199,8 @@ const TestingHome = () => {
             </Grid>
             <Grid item xs={1.5}>
               <TestingKanbanView />
-            </Grid>
+            </Grid> */}
+            <ViewsTestingComponent handleCount={handleCount}/>
           </Grid>
           {/* <ViewsTestingComponent/> */}
         </Grid>
@@ -224,8 +227,34 @@ const TestingHome = () => {
           </Grid>
         </Grid>
       </Grid>
+      <div>
+        {(() => {
+          switch (count) {
+            case "List":
+              // return  <GridViewComponent items={users} ></GridViewComponent>
+              return (
+                // <ListComponent
+                //   show={show}
+                //   setShow={setShow}
+                //   items={users}
+                //   setUsers={setUsers}
+                // />
+
+                <TestingListComponent newproject={newproject} />
+              );
+            case "Graph":
+              return <TestingGraphView project={project}></TestingGraphView>;
+            case "Kanban":
+              return <TestingKanbanView project={project} />;
+            case "Calendar":
+              return <TestingCalendarView project={project}></TestingCalendarView>;
+            default:
+              return <TestingGridView project={project}></TestingGridView>;
+          }
+        })()}
+      </div>
       {/* project list  */}
-      <TestingListComponent newproject={newproject} />
+      {/* <TestingListComponent newproject={newproject} /> */}
     </>
   );
 };

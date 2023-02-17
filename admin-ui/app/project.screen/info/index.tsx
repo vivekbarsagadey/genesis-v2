@@ -50,14 +50,14 @@ const InfoTestingComponent = ({ items }: any) => {
             style={{ color: "#334155" }}
           >
             {" "}
-            {items.username}
+            {items.customerName}
           </Typography>
         </Grid>
         <Grid item xs={2.65}>
           <Grid container display={"flex"} alignItems={"center"}>
             <Grid item xs={12}>
               <Typography fontSize={"0.8rem"} style={{ color: "#334155" }}>
-                {items.website}
+                {items.application}
               </Typography>
             </Grid>
           </Grid>
