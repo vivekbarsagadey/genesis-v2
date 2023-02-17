@@ -37,48 +37,47 @@ const Page = () => {
   }, []);
   return (
     <>
-      {/* <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={1}>
-          <Grid item xs={2}>
-            <SidebarComponent
-              show={show}
-              updateMyDragImages={updateMyDragImages}
-              menuList={menuList}
-            />
-          </Grid>
-          <Grid item xs={10}>
-            <HeaderComponent />
+      <Grid container>
+        <Grid
+          item
+          xs={show ? 1.3 : 1.5}
+          sm={show ? 1.3 : 0.5}
+          md={show ? 2 : 0.74}
+          lg={show ? 2 : 0.74}
+          pl={2}
+          pt={2}
+          pr={1}
+          textAlign={show ? "right" : "left"}
+          style={{ backgroundColor: "white" }}
+        >
+          <Logo handleMenu={handleMenu} show={show} />
+          <SidebarComponent
+            show={show}
+            updateMyDragImages={updateMyDragImages}
+            menuList={menuList}
+          />
+        </Grid>
+        <Grid
+          item
+          style={{ backgroundColor: " #EDF2F9", height: "100vh" }}
+          xs={show ? 10.5 : 10.5}
+          sm={show ? 10.5 : 11.5}
+          md={show ? 10 : 11.5}
+          lg={show ? 10 : 11.26}
+        >
+          <HeaderComponent />
+
+          {/* <ListProject/> */}
+          <Grid item xs={12}>
+            <>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
+              id. Quos, perferendis obcaecati voluptas accusantium dolorem ex
+              nemo excepturi. Laboriosam, tempora. Vero similique in molestiae
+              nemo ullam voluptate distinctio consequatur ?
+            </>
           </Grid>
         </Grid>
-      </Box> */}
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={1}>
-          <Grid item xs={2}>
-            <Logo handleMenu={handleMenu} show={show} />
-            <SidebarComponent
-              show={show}
-              updateMyDragImages={updateMyDragImages}
-              menuList={menuList}
-            />
-          </Grid>
-          <Grid item xs={10}>
-            <Grid container spacing={1}>
-              <Grid item xs={12}>
-                <HeaderComponent />
-              </Grid>
-              <Grid item xs={12}>
-                <>
-                Lorem ipsum dolor sit amet consectetur adipisicing 
-                elit. Eligendi, id. Quos, perferendis obcaecati 
-                voluptas accusantium dolorem ex nemo excepturi. 
-                Laboriosam, tempora. Vero similique in molestiae 
-                nemo ullam voluptate distinctio consequatur ?
-                </>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Box>
+      </Grid>
     </>
   );
 };
