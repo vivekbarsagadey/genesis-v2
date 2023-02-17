@@ -8,6 +8,7 @@ import HeaderComponent from "../../component/common/Header/HeaderComponent";
 import { menu } from "../../component/common/data/componentsData";
 import { IMenuListSet } from "../template/templateInterface/TemplateInterface";
 import Logo from "../../component/common/sidebar/logo";
+import TestingHome from "../project.screen";
 
 const Page = () => {
   const [show, setShow] = useState(true);
@@ -70,10 +71,7 @@ const Page = () => {
           {/* <ListProject/> */}
           <Grid item xs={12}>
             <>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
-              id. Quos, perferendis obcaecati voluptas accusantium dolorem ex
-              nemo excepturi. Laboriosam, tempora. Vero similique in molestiae
-              nemo ullam voluptate distinctio consequatur ?
+              <TestingHome />
             </>
           </Grid>
         </Grid>
