@@ -56,33 +56,33 @@ const useStyles = makeStyles({
 
 const TestingHome = () => {
   const classes = useStyles();
-  const [project, setProject] = useState();
+  const [project, setProject] = useState([]);
   const [newproject, setNewProject] = useState(project);
   const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [openModule, setOpenModule] = React.useState(false);
   const open = Boolean(anchorEl);
 
-  // const fetchData = () => {
-  //   fetch("https://jsonplaceholder.typicode.com/users")
-  //     .then((r) => {
-  //       return r.json();
-  //     })
-  //     .then((d) => {
-  //       setProject(d);
-  //     });
-  // };
+  const fetchData = () => {
+    fetch("http://localhost:3000/api/projects")
+      .then((r) => {
+        return r.json();
+      })
+      .then((d) => {
+        setProject(d);
+      });
+  };
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   useEffect(() => {
     setNewProject(project);
   }, [project]);
 
-  // const itemsCallBackHandler = (_project) => {
-  //   setNewProject(_project);
-  // };
+
+
   const Open = Boolean(menuItem);
   const handleClickData = (event: React.MouseEvent<HTMLButtonElement>) => {
     setmenuItem(event.currentTarget);
@@ -110,8 +110,8 @@ const TestingHome = () => {
       <Grid container mt={1}>
         <Grid item xs={2.7}>
           <TestingSearch
-          // project={newproject}
-          // itemsCallBackHandler={itemsCallBackHandler}
+            newproject={newproject}
+            setNewProject={setNewProject}
           />
         </Grid>
         <Grid item xs={0.1}></Grid>
@@ -225,7 +225,7 @@ const TestingHome = () => {
         </Grid>
       </Grid>
       {/* project list  */}
-      <TestingListComponent project={project} />
+      <TestingListComponent newproject={newproject} />
     </>
   );
 };

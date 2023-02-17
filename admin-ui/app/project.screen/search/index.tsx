@@ -23,23 +23,19 @@ const useStyles = makeStyles({
   },
 });
 
-
-
-
-const TestingSearch = ({project,itemsCallBackHandler
-}) => {
+const TestingSearch = ({ newproject, setNewProject }: any) => {
   const classes = useStyles();
   const [search, setSearch] = useState("");
   const getSearch = (event: any) => {
     setSearch(event.target.value);
-  };
-  const doSearch = () => {
-    itemsCallBackHandler(
-      project.filter((ele: any) =>
-        ele.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+    setNewProject(
+      newproject?.filter((ele: any) =>
+        ele.name.toLowerCase().includes(search.toLocaleLowerCase())
       )
     );
   };
+  
+
   return (
     <div>
       <Grid item xs={12}>
@@ -49,8 +45,9 @@ const TestingSearch = ({project,itemsCallBackHandler
             placeholder="Search"
             onChange={getSearch}
             className={classes.search}
+            value={search}
           />
-          <IconButton onClick={doSearch}>
+          <IconButton>
             <SearchIcon />
           </IconButton>
         </Box>

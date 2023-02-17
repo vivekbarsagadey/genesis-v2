@@ -31,7 +31,7 @@ const useStyles = makeStyles({
   },
 });
 
-const TestingListComponent = ({project}) => {
+const TestingListComponent = ({ newproject }: any) => {
   const [sortedIcon, setSortedIcon] = useState(true);
   const [sortedIconLastName, setSortedIconLastName] = useState(true);
   const [sortedIconEmail, setSortedIconEmail] = useState(true);
@@ -184,13 +184,12 @@ const TestingListComponent = ({project}) => {
           </Grid>
         </Grid>
       </Box>
-      {project?.map((items:any,index:any)=>{
-        return(
+      {newproject?.map((items: any, index: any) => {
+        return (
           <div key={index}>
             <InfoTestingComponent items={items} />
-
           </div>
-        )
+        );
       })}
     </div>
   );
