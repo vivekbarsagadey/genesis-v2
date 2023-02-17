@@ -7,6 +7,7 @@ import SidebarComponent from "../../component/common/Sidebar/SidebarComponent";
 import HeaderComponent from "../../component/common/Header/HeaderComponent";
 import { menu } from "../../component/common/data/componentsData";
 import { IMenuListSet } from "../template/templateInterface/TemplateInterface";
+import Logo from "../../component/common/sidebar/logo";
 
 const Page = () => {
   const [show, setShow] = useState(true);
@@ -36,7 +37,7 @@ const Page = () => {
   }, []);
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      {/* <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
           <Grid item xs={2}>
             <SidebarComponent
@@ -47,6 +48,34 @@ const Page = () => {
           </Grid>
           <Grid item xs={10}>
             <HeaderComponent />
+          </Grid>
+        </Grid>
+      </Box> */}
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={1}>
+          <Grid item xs={2}>
+            <Logo handleMenu={handleMenu} show={show} />
+            <SidebarComponent
+              show={show}
+              updateMyDragImages={updateMyDragImages}
+              menuList={menuList}
+            />
+          </Grid>
+          <Grid item xs={10}>
+            <Grid container spacing={1}>
+              <Grid item xs={12}>
+                <HeaderComponent />
+              </Grid>
+              <Grid item xs={12}>
+                <>
+                Lorem ipsum dolor sit amet consectetur adipisicing 
+                elit. Eligendi, id. Quos, perferendis obcaecati 
+                voluptas accusantium dolorem ex nemo excepturi. 
+                Laboriosam, tempora. Vero similique in molestiae 
+                nemo ullam voluptate distinctio consequatur ?
+                </>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Box>
