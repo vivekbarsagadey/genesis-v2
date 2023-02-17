@@ -19,12 +19,27 @@ const useStyles = makeStyles({
     alignItems: "center",
     border: "1px solid #cbd5e1",
     borderRadius: "5px",
-    height:'6vh'
+    height: "6vh",
   },
 });
 
-const TestingSearch = () => {
+
+
+
+const TestingSearch = ({project,itemsCallBackHandler
+}) => {
   const classes = useStyles();
+  const [search, setSearch] = useState("");
+  const getSearch = (event: any) => {
+    setSearch(event.target.value);
+  };
+  const doSearch = () => {
+    itemsCallBackHandler(
+      project.filter((ele: any) =>
+        ele.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+      )
+    );
+  };
   return (
     <div>
       <Grid item xs={12}>
@@ -32,10 +47,10 @@ const TestingSearch = () => {
           <input
             type="text"
             placeholder="Search"
-            // onChange={getSearch}
+            onChange={getSearch}
             className={classes.search}
           />
-          <IconButton>
+          <IconButton onClick={doSearch}>
             <SearchIcon />
           </IconButton>
         </Box>
@@ -43,5 +58,4 @@ const TestingSearch = () => {
     </div>
   );
 };
-
 export default TestingSearch;

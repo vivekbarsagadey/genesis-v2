@@ -31,12 +31,11 @@ const useStyles = makeStyles({
   },
 });
 
-const TestingListComponent = () => {
+const TestingListComponent = ({project}) => {
   const [sortedIcon, setSortedIcon] = useState(true);
   const [sortedIconLastName, setSortedIconLastName] = useState(true);
   const [sortedIconEmail, setSortedIconEmail] = useState(true);
   const classes = useStyles();
-
   // // Sorting logic
   // const handleClick = () => {
   //   setSortedIcon(!sortedIcon);
@@ -185,7 +184,14 @@ const TestingListComponent = () => {
           </Grid>
         </Grid>
       </Box>
-      <InfoTestingComponent />
+      {project?.map((items:any,index:any)=>{
+        return(
+          <div key={index}>
+            <InfoTestingComponent items={items} />
+
+          </div>
+        )
+      })}
     </div>
   );
 };

@@ -6,13 +6,8 @@ import axios from "axios";
 
 const users = Array<IUser>()
 
-
-
 const Home = () => {
   const[users,setUsers]=useState([])
-
-
-
   useEffect(() => {
     fetchData()
    }, []);

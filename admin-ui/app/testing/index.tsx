@@ -57,6 +57,7 @@ const useStyles = makeStyles({
 const TestingHome = () => {
   const classes = useStyles();
   const [project, setProject] = useState();
+  const [newproject, setNewProject] = useState(project);
   const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [openModule, setOpenModule] = React.useState(false);
@@ -74,6 +75,12 @@ const TestingHome = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  useEffect(() => {
+    setNewProject(project);
+  }, [project]);
+  const itemsCallBackHandler = (_project) => {
+    setNewProject(_project);
+  };
   const Open = Boolean(menuItem);
   const handleClickData = (event: React.MouseEvent<HTMLButtonElement>) => {
     setmenuItem(event.currentTarget);
@@ -100,7 +107,7 @@ const TestingHome = () => {
     <>
       <Grid container mt={1}>
         <Grid item xs={2.7}>
-          <TestingSearch />
+          <TestingSearch  project={newproject}  itemsCallBackHandler={itemsCallBackHandler}/>
         </Grid>
         <Grid item xs={0.1}></Grid>
         <Grid item xs={0.4}>
@@ -212,7 +219,7 @@ const TestingHome = () => {
           </Grid>
         </Grid>
       </Grid>
-      <TestingListComponent />
+      <TestingListComponent project={project}/>
     </>
   );
 };

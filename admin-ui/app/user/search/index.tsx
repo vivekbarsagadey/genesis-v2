@@ -26,9 +26,9 @@ const useStyles = makeStyles({
 });
 
 interface SearchComponentProps extends IUserComponentProps {}
-const SearchUserComponent = ({
-  items,
-  itemsCallBackHandler = () => {},
+
+
+const SearchUserComponent = ({items,itemsCallBackHandler = () => {},
 }: SearchComponentProps) => {
   const [search, setSearch] = useState("");
   const classes = useStyles();
