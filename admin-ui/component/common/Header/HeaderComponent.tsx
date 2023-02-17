@@ -140,7 +140,8 @@ const HeaderComponent = ({ project }: any) => {
                   fontSize: "0.9rem",
                 }}
               >
-                {project[0]?.name}
+                {/* {project[0]?.name} */}
+                project_Name
               </Typography>
             </Grid>
           </Grid>
