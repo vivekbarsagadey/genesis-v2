@@ -64,7 +64,9 @@ const TestingFilter = ({
               size="small"
               freeSolo
               disableClearable
-              options={Array.from(new Set(project.map((id) => id.customerName)))}
+              options={Array.from(
+                new Set(project.map((id) => id.customerName))
+              )}
               renderInput={(params) => (
                 <TextField
                   {...params}

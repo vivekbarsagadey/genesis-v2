@@ -24,6 +24,9 @@ import ImportExportOutlinedIcon from "@mui/icons-material/ImportExportOutlined";
 import { makeStyles } from "@mui/styles";
 import IProject from "./project.model";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import { CSVLink } from "react-csv";
+import { download } from "../../utils/pdf-util";
+import { xlsxDownload } from "../../utils/xlsx-util";
 
 const useStyles = makeStyles({
   addnewbtn: {
@@ -80,7 +83,6 @@ const TestingHome = () => {
     fetchData();
   }, []);
 
-
   const itemsCallBackHandler = (_items: Array<IProject>) => {
     setProject(_items);
   };
@@ -113,6 +115,45 @@ const TestingHome = () => {
     setOpenModule(false);
   };
 
+  const exportToExcell = async () => {
+    const fileName = "User_Templates";
+    await xlsxDownload({ fileName: fileName, project: users });
+  };
+
+  const exportPDF = async () => {
+    const headers = [["Project Name", "Customer Name", "Application"]];
+    const data = project.map((elt) => [
+      elt.name,
+      elt.customerName,
+      elt.application,
+    ]);
+    await download({ headers: headers, project: data });
+  };
+
+  const fileHandler = (event: any) => {
+    let fileObj = event.target.files[0];
+    ExcelRenderer(fileObj, (err, resp) => {
+      if (err) {
+      } else {
+        setFile({
+          cols: resp.cols,
+          rows: resp.rows,
+        });
+      }
+    });
+  };
+
+  const sendDataHandler = async () => {
+    for (let i = 1; i < file?.rows.length; i++) {
+      const users = {
+        name: file.rows[i][1],
+        customerName: file.rows[i][2],
+        application: file.rows[i][3],
+      };
+      await createUser(users);
+      handleImportClose();
+    }
+  };
   return (
     <>
       <Grid container mt={1}>
@@ -125,7 +166,7 @@ const TestingHome = () => {
         </Grid>
         <Grid item xs={0.1}></Grid>
         <Grid item xs={0.4}>
-        <Tooltip title="Filter" arrow>
+          <Tooltip title="Filter" arrow>
             <IconButton
               aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"
@@ -136,7 +177,14 @@ const TestingHome = () => {
             </IconButton>
           </Tooltip>
         </Grid>
-        <Grid item xs={0.6} lg={0.37} md={0.5} sm={0.9}>
+        <Grid
+          item
+          xs={0.6}
+          lg={0.37}
+          md={0.5}
+          sm={0.9}
+          style={{ display: "flex", alignItems: "center" }}
+        >
           <Tooltip title="Export" arrow>
             <IconButton
               aria-controls={Open ? "basic-menu" : undefined}
@@ -157,12 +205,30 @@ const TestingHome = () => {
             }}
           >
             <MenuItem>
-              <Typography style={{ fontSize: "0.8rem" }}>Excel</Typography>
+              <Typography
+                style={{ fontSize: "0.8rem" }}
+                onClick={exportToExcell}
+              >
+                Excel
+              </Typography>
             </MenuItem>
             <MenuItem>
-              <Typography style={{ fontSize: "0.8rem" }}>PDF</Typography>
+              <Typography
+                style={{ fontSize: "0.8rem" }}
+                onClick={() => exportPDF()}
+              >
+                PDF
+              </Typography>
             </MenuItem>
-            <MenuItem>CSV</MenuItem>
+            <MenuItem>
+              <CSVLink
+                data={project}
+                filename={`project_tamplate5`}
+                className={classes.csvlink}
+              >
+                CSV
+              </CSVLink>
+            </MenuItem>
           </Menu>
         </Grid>
 
@@ -180,7 +246,7 @@ const TestingHome = () => {
             aria-describedby="alert-dialog-description"
           >
             <DialogContent>
-              <input type="file" />
+              <input type="file" onChange={fileHandler} />
             </DialogContent>
             <DialogActions>
               <Button
@@ -191,7 +257,7 @@ const TestingHome = () => {
                 Cancel
               </Button>
               <Button
-                // onClick={sendDataHandler}
+                onClick={sendDataHandler}
                 autoFocus
                 variant="contained"
                 className={classes.savebtn}
@@ -250,10 +316,13 @@ const TestingHome = () => {
         })()}
       </div>
 
-      <TestingFilter project={project} anchorEl={anchorEl}
-          open={open}
-          handleClose={handleClose}
-          itemsCallBackHandler={itemsCallBackHandler}/>
+      <TestingFilter
+        project={project}
+        anchorEl={anchorEl}
+        open={open}
+        handleClose={handleClose}
+        itemsCallBackHandler={itemsCallBackHandler}
+      />
     </>
   );
 };

@@ -38,7 +38,7 @@ const TestingGridView = ({ project }: any) => {
                       </IconButton>
                     </Grid>
                     <Grid container style={{ paddingLeft: "1rem" }}>
-                      <Grid item xs={3.1}>
+                      <Grid item xs={5}>
                         <Typography fontSize={"0.9rem"}>
                           Project Name
                         </Typography>
@@ -46,7 +46,7 @@ const TestingGridView = ({ project }: any) => {
                       <Grid item xs={1.5}>
                         <Typography> :</Typography>
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={3}>
                         <Typography fontSize={"0.9rem"} noWrap>
                           {item?.name}
                         </Typography>
@@ -56,7 +56,7 @@ const TestingGridView = ({ project }: any) => {
 
                   <Box>
                     <Grid container>
-                      <Grid item xs={3.5} style={{ paddingLeft: "1rem" }}>
+                      <Grid item xs={5.3} style={{ paddingLeft: "1rem" }}>
                         <Typography fontSize={"0.8rem"}>
                           Customer Name
                         </Typography>
@@ -64,10 +64,10 @@ const TestingGridView = ({ project }: any) => {
                       <Grid item xs={1.5}>
                         <Typography> :</Typography>
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={3}>
                         <Typography fontSize={"0.9rem"} noWrap>
                           {" "}
-                          {item?.customer}
+                          {item?.customerName}
                         </Typography>
                       </Grid>
                     </Grid>
@@ -77,7 +77,7 @@ const TestingGridView = ({ project }: any) => {
                     <Grid container>
                       <Grid
                         item
-                        xs={3.5}
+                        xs={5.3}
                         style={{ paddingLeft: "1rem", paddingBottom: "0.5rem" }}
                       >
                         <Typography fontSize={"0.9rem"}>Application</Typography>
@@ -85,7 +85,7 @@ const TestingGridView = ({ project }: any) => {
                       <Grid item xs={1.5}>
                         <Typography> :</Typography>
                       </Grid>
-                      <Grid item xs={6}>
+                      <Grid item xs={4}>
                         <Typography fontSize={"0.9rem"} noWrap>
                           {item?.application}
                         </Typography>
