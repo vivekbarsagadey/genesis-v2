@@ -8,7 +8,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import Link from "next/link";
 
-const InfoTestingComponent = ({ items }) => {
+const InfoTestingComponent = ({ items }: any) => {
   console.log("itemsitemsitemsitemsitems", items);
   return (
     <div>

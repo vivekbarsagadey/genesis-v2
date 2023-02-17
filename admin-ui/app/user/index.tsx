@@ -16,7 +16,7 @@ import ImportExportOutlinedIcon from "@mui/icons-material/ImportExportOutlined";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import {  ExcelRenderer } from "react-excel-renderer";
+import { ExcelRenderer } from "react-excel-renderer";
 import { CSVLink } from "react-csv";
 import Tooltip from "@mui/material/Tooltip";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
@@ -39,8 +39,8 @@ const useStyles = makeStyles({
     fontWeight: "bold",
     paddingLeft: "1rem",
     paddingRight: "1rem",
-    background:'#FFC107',
-     "&:hover": {
+    background: "#FFC107",
+    "&:hover": {
       background: "#FFC107",
     },
   },
@@ -213,7 +213,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
               aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
             >
-              <FilterAltIcon fontSize="small"/>
+              <FilterAltIcon fontSize="small" />
             </IconButton>
           </Tooltip>
         </Grid>
@@ -228,7 +228,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
           style={{ display: "flex", alignItems: "center" }}
         >
           <Tooltip title="Export" arrow>
-            <IconButton 
+            <IconButton
               aria-controls={Open ? "basic-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={Open ? "true" : undefined}
@@ -318,14 +318,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
           </Dialog>
         </Grid>
 
-
-
-
-
-        <Grid
-          item textAlign="right" xs={6} sm={4.8}
-          md={4.8}
-        >
+        <Grid item textAlign="right" xs={6} sm={4.8} md={4.8}>
           {show && (
             <Tooltip title="Delete All" arrow>
               <IconButton aria-label="delete" onClick={() => removeData(items)}>
@@ -345,11 +338,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
           </Link>
         </Grid>
 
-        <Grid
-          
-        >
-          
-        </Grid>
+        <Grid></Grid>
 
         <Grid container>
           <Grid item xs={12} mt={1.5} display="flex">
@@ -397,9 +386,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
                 aria-expanded={filterOpen ? "true" : undefined}
                 onClick={filterDataClick}
               >
-                <span style={{ fontSize: "1rem" }}>
-                  +
-                </span>
+                <span style={{ fontSize: "1rem" }}>+</span>
                 Filter
               </Button>
             </div>
@@ -424,8 +411,8 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
               return <GraphViewComponent items={users}></GraphViewComponent>;
             case "Kanban":
               return <KanbanViewComponent items={users} />;
-              case "Calendar":
-                return <CalendarView items={users}></CalendarView>;
+            case "Calendar":
+              return <CalendarView items={users}></CalendarView>;
             default:
               return <GridViewComponent items={users}></GridViewComponent>;
           }

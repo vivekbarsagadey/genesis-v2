@@ -1,7 +1,7 @@
 import React from "react";
 import { IconButton, Tooltip } from "@mui/material";
 import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
-const TestingKanbanView = () => {
+const TestingKanbanView = ({project}) => {
   return (
     <div>
       <Tooltip title="Kanban">

@@ -1,7 +1,7 @@
 import React from "react";
 import { IconButton, Tooltip } from "@mui/material";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-const TestingCalendarView = () => {
+const TestingCalendarView = ({project}) => {
   return (
     <div>
       <Tooltip title="Calendar">

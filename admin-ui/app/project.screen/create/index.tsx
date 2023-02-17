@@ -129,7 +129,7 @@ const TestingCreate = () => {
               <Grid item xs={3}>
                 <Grid container>
                   <Grid item xs={5.6}>
-                    <Link href={"testing"} style={{ textDecoration: "none" }}>
+                    <Link href={"home"} style={{ textDecoration: "none" }}>
                       <Button
                         variant="contained"
                         size="small"
