@@ -248,10 +248,13 @@ const TestingHome = () => {
               return <TestingKanbanView project={project} />;
             case "Calendar":
               return <TestingCalendarView project={project}></TestingCalendarView>;
+
             default:
               return <TestingGridView project={project}></TestingGridView>;
           }
         })()}
+
+
       </div>
       {/* project list  */}
       {/* <TestingListComponent newproject={newproject} /> */}
