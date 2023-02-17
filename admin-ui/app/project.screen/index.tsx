@@ -81,8 +81,6 @@ const TestingHome = () => {
     setNewProject(project);
   }, [project]);
 
-
-
   const Open = Boolean(menuItem);
   const handleClickData = (event: React.MouseEvent<HTMLButtonElement>) => {
     setmenuItem(event.currentTarget);
@@ -204,7 +202,10 @@ const TestingHome = () => {
 
         <Grid item xs={4.8} display={"flex"} justifyContent={"flex-end"}>
           <Grid item xs={11.5} display={"flex"} justifyContent={"flex-end"}>
-            <Link href={"/testing/create"} style={{ textDecoration: "none" }}>
+            <Link
+              href={"/project.screen/create"}
+              style={{ textDecoration: "none" }}
+            >
               <Button
                 variant="contained"
                 size="small"
