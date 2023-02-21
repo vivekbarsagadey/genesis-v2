@@ -66,12 +66,12 @@ const TestingCreate = () => {
               <Grid item xs={3.3}>
                 <Typography>Application</Typography>
               </Grid>
-              <Grid item xs={0.7}>
+              <Grid item xs={0.6}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={7}>
                 <Grid container>
-                  <Grid item xs={6}>
+                  <Grid item xs={5.8}>
                     <Grid container alignItems={"center"}>
                       <Grid item xs={2}>
                         <Checkbox />
@@ -91,7 +91,7 @@ const TestingCreate = () => {
                       </Grid>
                     </Grid>
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={5.8}>
                     <Grid container alignItems={"center"}>
                       <Grid item xs={2}>
                         <Checkbox />
