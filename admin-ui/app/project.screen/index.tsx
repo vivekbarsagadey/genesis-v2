@@ -117,7 +117,7 @@ const TestingHome = () => {
 
   const exportToExcell = async () => {
     const fileName = "User_Templates";
-    await xlsxDownload({ fileName: fileName, project: users });
+    await xlsxDownload({ fileName: fileName, project: project });
   };
 
   const exportPDF = async () => {
@@ -276,7 +276,7 @@ const TestingHome = () => {
 
         <Grid item xs={4.8} display={"flex"} justifyContent={"flex-end"}>
           <Grid item xs={11.5} display={"flex"} justifyContent={"flex-end"}>
-            <Link href={"/testing/create"} style={{ textDecoration: "none" }}>
+            <Link href={"/project.screen/create"} style={{ textDecoration: "none" }}>
               <Button
                 variant="contained"
                 size="small"

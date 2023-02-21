@@ -53,7 +53,7 @@ const InfoTestingComponent = ({ items }: any) => {
             {items.customerName}
           </Typography>
         </Grid>
-        <Grid item xs={2.65}>
+        <Grid item xs={2.59}>
           <Grid container display={"flex"} alignItems={"center"}>
             <Grid item xs={12}>
               <Typography fontSize={"0.8rem"} style={{ color: "#334155" }}>
@@ -64,7 +64,7 @@ const InfoTestingComponent = ({ items }: any) => {
         </Grid>
         <Grid item xs={1}>
           <Grid container>
-            <Grid item xs={2.8}>
+            <Grid item xs={3.8}>
               <Link href={"/testing/-1"} style={{ textDecoration: "none" }}>
                 <Tooltip title="Edit">
                   <IconButton>

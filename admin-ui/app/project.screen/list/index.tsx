@@ -8,6 +8,10 @@ import { makeStyles } from "@mui/styles";
 import InfoUserComponent from "../info";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import ProjectPagination from "./ProjectPagination";
+import usePagination from "./ProjectPagination";
+import Pagination from "@mui/material/Pagination";
+import projectPagination from "./ProjectPagination";
 
 const useStyles = makeStyles({
   container: {
@@ -36,6 +40,19 @@ const TestingListComponent = ({ newproject }: any) => {
   const [sortedIconLastName, setSortedIconLastName] = useState(true);
   const [sortedIconEmail, setSortedIconEmail] = useState(true);
   const classes = useStyles();
+
+
+  let [page, setPage] = useState(1);
+  const PER_PAGE = 8;
+  const count = Math.ceil(newproject.length / PER_PAGE);
+  const _DATA = projectPagination(newproject, PER_PAGE);
+
+  const handleChangePage = (e, p) => {
+    setPage(p);
+    _DATA.jump(p);
+  };
+
+
   // // Sorting logic
   // const handleClick = () => {
   //   setSortedIcon(!sortedIcon);
@@ -184,13 +201,28 @@ const TestingListComponent = ({ newproject }: any) => {
           </Grid>
         </Grid>
       </Box>
-      {newproject?.map((items: any, index: any) => {
+      {_DATA.currentData().map((items: any, index: any) => {
         return (
           <div key={index}>
             <InfoTestingComponent items={items} />
           </div>
         );
       })}
+      <Grid container>
+          <Grid item xs={11.8} className={classes.pagination}>
+            <div style={{ position: "fixed" }}>
+              <Pagination
+                count={count}
+                size="small"
+                page={page}
+                variant="outlined"
+                color="primary"
+                onChange={handleChangePage}
+              />
+            </div>
+          </Grid>
+          <Grid item xs={0.2}></Grid>
+        </Grid>
     </div>
   );
 };

@@ -9,7 +9,6 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 const TestingGridView = ({ project }: any) => {
-  
   return (
     <>
       <Box sx={{ flexGrow: 1 }} mx={2.5}>
