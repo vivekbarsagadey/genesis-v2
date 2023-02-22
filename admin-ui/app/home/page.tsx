@@ -54,7 +54,7 @@ const Page = () => {
           style={{ backgroundColor: "white" }}
         >
           <Logo handleMenu={handleMenu} show={show} />
-          
+
           {/* <SidebarComponent
             show={show}
             updateMyDragImages={updateMyDragImages}
