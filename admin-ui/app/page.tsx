@@ -1,11 +1,6 @@
 
 "use client";
-import { useSession, signIn, signOut } from "next-auth/react"
-import React from 'react'
-import ListProject from "./create.project/ListProject";
-import HomeComponent from "./home";
-import SignIn from "./login/page";
-import Registration from "./register/page";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 
