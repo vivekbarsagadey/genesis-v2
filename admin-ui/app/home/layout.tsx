@@ -5,13 +5,15 @@ import HeaderComponent from "../../component/common/Header/HeaderComponent";
 import ProjectSidebar from "../../component/common/ProjectSidebar/ProjectSidebar";
 import Logo from "../../component/common/sidebar/logo";
 
-export default function Layout({ children } : any) {
+export default function Layout({ children } :  {
+  children: React.ReactNode,
+}) {
   const [show, setShow] = useState(true);
   const handleMenu = () => {
     setShow(!show);
   };
   return (
-    <>
+    <section>
       <Grid container>
         <Grid
           item
@@ -44,7 +46,7 @@ export default function Layout({ children } : any) {
           </Grid>
         </Grid>
       </Grid>
-    </>
+    </section>
   );
  
 }
