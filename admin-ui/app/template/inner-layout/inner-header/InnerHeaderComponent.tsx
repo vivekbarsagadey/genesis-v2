@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 import { Grid, IconButton, Button } from "@mui/material";
 import Stack from "@mui/material/Stack";
