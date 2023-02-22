@@ -8,10 +8,10 @@ import { makeStyles } from "@mui/styles";
 import InfoUserComponent from "../info";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import ProjectPagination from "./ProjectPagination";
-import usePagination from "./ProjectPagination";
+import ProjectPagination from "./ProjectListPagination";
+import usePagination from "./ProjectListPagination";
 import Pagination from "@mui/material/Pagination";
-import projectPagination from "./ProjectPagination";
+import projectPagination from "./ProjectListPagination";
 
 const useStyles = makeStyles({
   container: {

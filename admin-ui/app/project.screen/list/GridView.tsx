@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { IconButton, Tooltip } from "@mui/material";
 import GridViewIcon from "@mui/icons-material/GridView";
 import { Box } from "@mui/system";
@@ -7,13 +7,36 @@ import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card/Card";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import Pagination from "@mui/material/Pagination";
+import { makeStyles } from "@mui/styles";
+import projectGridPagination from "./ProjectGridPagination";
 
-const TestingGridView = ({ project }: any) => {
+const useStyles = makeStyles({
+  pagination: {
+    display: "flex",
+    justifyContent: "flex-end",
+    marginTop: "2rem",
+    position: "relative",
+  },
+});
+
+const TestingGridView = ({ newproject }: any) => {
+  const classes = useStyles();
+  // Pagination logic
+  let [page, setPage] = useState(1);
+  const PER_PAGE = 9;
+  const count = Math.ceil(newproject.length / PER_PAGE);
+  const _DATA = projectGridPagination(newproject, PER_PAGE);
+
+  const handleChangePage = (e, p) => {
+    setPage(p);
+    _DATA.jump(p);
+  };
   return (
     <>
       <Box sx={{ flexGrow: 1 }} mx={2.5}>
         <Grid container spacing={1.5} mt={1}>
-          {project?.map((item: any) => {
+          {_DATA.currentData().map((item: any) => {
             return (
               <Grid item lg={4} xs={12} sm={6} md={4} mt={0}>
                 <Card>
@@ -95,6 +118,21 @@ const TestingGridView = ({ project }: any) => {
               </Grid>
             );
           })}
+        </Grid>
+        <Grid container>
+          <Grid item xs={11.8} className={classes.pagination}>
+            <div style={{ position: "fixed" }}>
+              <Pagination
+                count={count}
+                size="small"
+                page={page}
+                variant="outlined"
+                color="primary"
+                onChange={handleChangePage}
+              />
+            </div>
+          </Grid>
+          <Grid item xs={0.2}></Grid>
         </Grid>
       </Box>
     </>

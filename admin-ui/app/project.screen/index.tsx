@@ -311,7 +311,7 @@ const TestingHome = () => {
               );
 
             default:
-              return <TestingGridView project={project}></TestingGridView>;
+              return <TestingGridView newproject={newproject}></TestingGridView>;
           }
         })()}
       </div>
