@@ -13,30 +13,31 @@ import ProjectSidebar from "../../component/common/ProjectSidebar/ProjectSidebar
 
 const Page = () => {
   const [show, setShow] = useState(true);
-  const [project, setProject] = useState("");
-
-  //JSON data set for all menu given to menuList
-  const [menuList, setMenuList] = useState<IMenuListSet[]>(menu);
   const handleMenu = () => {
     setShow(!show);
   };
-  const [dragList, setDragList] = React.useState<IMenuListSet[]>([]);
+  // const [project, setProject] = useState("");
 
-  const updateMyDragImages = (newList: any) => {
-    setDragList([...dragList, newList]);
-  };
-  const fetchData = () => {
-    fetch("http://localhost:3000/api/projects")
-      .then((r) => {
-        return r.json();
-      })
-      .then((d) => {
-        setProject(d);
-      });
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
+  //JSON data set for all menu given to menuList
+  // const [menuList, setMenuList] = useState<IMenuListSet[]>(menu);
+
+  // const [dragList, setDragList] = React.useState<IMenuListSet[]>([]);
+
+  // const updateMyDragImages = (newList: any) => {
+  //   setDragList([...dragList, newList]);
+  // };
+  // const fetchData = () => {
+  //   fetch("http://localhost:3000/api/projects")
+  //     .then((r) => {
+  //       return r.json();
+  //     })
+  //     .then((d) => {
+  //       setProject(d);
+  //     });
+  // };
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
   return (
     <>
       <Grid container>
@@ -53,13 +54,14 @@ const Page = () => {
           style={{ backgroundColor: "white" }}
         >
           <Logo handleMenu={handleMenu} show={show} />
+          
           {/* <SidebarComponent
             show={show}
             updateMyDragImages={updateMyDragImages}
             menuList={menuList}
           /> */}
 
-          <ProjectSidebar show={show}/>
+          <ProjectSidebar show={show} />
         </Grid>
         <Grid
           item

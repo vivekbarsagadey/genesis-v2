@@ -41,7 +41,7 @@ const ProjectSidebar = ({ show }: any) => {
           case "Dashboard":
             return (
               <Grid key={module.id} item xs={12} container alignItems="center">
-                <Link href="/company" style={{ textDecoration: "none" }}>
+                <Link href="/dashboard" style={{ textDecoration: "none" }}>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <IconButton>
                       <DashboardIcon fontSize={"small"} />
@@ -90,7 +90,7 @@ const ProjectSidebar = ({ show }: any) => {
           case "Report":
             return (
               <Grid key={module.id} item xs={12} container alignItems="center">
-                <Link href="/user" style={{ textDecoration: "none" }}>
+                <Link href="/report" style={{ textDecoration: "none" }}>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <IconButton>
                       <ReportIcon fontSize={"small"} />
@@ -114,7 +114,7 @@ const ProjectSidebar = ({ show }: any) => {
           case "Company":
             return (
               <Grid key={module.id} item xs={12} container alignItems="center">
-                <Link href="/user" style={{ textDecoration: "none" }}>
+                <Link href="/company" style={{ textDecoration: "none" }}>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <IconButton>
                       <StoreIcon fontSize={"small"} />
