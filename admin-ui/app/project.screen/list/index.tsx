@@ -41,7 +41,6 @@ const TestingListComponent = ({ newproject }: any) => {
   const [sortedIconEmail, setSortedIconEmail] = useState(true);
   const classes = useStyles();
 
-
   let [page, setPage] = useState(1);
   const PER_PAGE = 8;
   const count = Math.ceil(newproject.length / PER_PAGE);
@@ -51,7 +50,6 @@ const TestingListComponent = ({ newproject }: any) => {
     setPage(p);
     _DATA.jump(p);
   };
-
 
   // // Sorting logic
   // const handleClick = () => {
@@ -122,7 +120,6 @@ const TestingListComponent = ({ newproject }: any) => {
     <div>
       <Box style={{ marginTop: "1rem" }}>
         <Grid container className={classes.container}>
-
           <Grid
             item
             xs={0.488}
@@ -201,28 +198,30 @@ const TestingListComponent = ({ newproject }: any) => {
           </Grid>
         </Grid>
       </Box>
-      {_DATA.currentData().map((items: any, index: any) => {
-        return (
-          <div key={index}>
-            <InfoTestingComponent items={items} />
-          </div>
-        );
-      })}
-      <Grid container>
-          <Grid item xs={11.8} className={classes.pagination}>
-            <div style={{ position: "fixed" }}>
-              <Pagination
-                count={count}
-                size="small"
-                page={page}
-                variant="outlined"
-                color="primary"
-                onChange={handleChangePage}
-              />
+      <div style={{ height: "62vh" }}>
+        {_DATA.currentData().map((items: any, index: any) => {
+          return (
+            <div key={index}>
+              <InfoTestingComponent items={items} />
             </div>
-          </Grid>
-          <Grid item xs={0.2}></Grid>
+          );
+        })}
+      </div>
+      <Grid container>
+        <Grid item xs={11.8} className={classes.pagination}>
+          <div style={{ position: "fixed" }}>
+            <Pagination
+              count={count}
+              size="small"
+              page={page}
+              variant="outlined"
+              color="primary"
+              onChange={handleChangePage}
+            />
+          </div>
         </Grid>
+        <Grid item xs={0.2}></Grid>
+      </Grid>
     </div>
   );
 };

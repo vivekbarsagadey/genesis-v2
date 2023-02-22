@@ -11,7 +11,7 @@ import Link from "next/link";
 const InfoTestingComponent = ({ items }: any) => {
   console.log("itemsitemsitemsitemsitems", items);
   return (
-    <div>
+    <div    >
       <Grid
         container
         style={{
@@ -19,6 +19,7 @@ const InfoTestingComponent = ({ items }: any) => {
           alignItems: "center",
           background: "#f1f5f9",
           padding: "0.2rem",
+         
         }}
         mt={0.5}
       >
