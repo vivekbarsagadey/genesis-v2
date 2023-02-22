@@ -59,6 +59,11 @@ const Page = () => {
             show={show}
             updateMyDragImages={updateMyDragImages}
             menuList={menuList}
+
+
+
+
+            
           /> */}
 
           <ProjectSidebar show={show} />
