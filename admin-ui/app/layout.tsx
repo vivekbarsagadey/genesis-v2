@@ -19,7 +19,6 @@ export default function RootLayout({
   return (
     <html>
       <head>
-       
       </head>
       <body>
         <CacheProvider value={clientSideEmotionCache}>
