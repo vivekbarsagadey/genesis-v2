@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation";
 
 
 const page = () => {
-  const { data: session } = useSession()
   const router = useRouter();
+  const { data: session } = useSession()
+  
   if (session) {
     router.push("/home");
   }else{
