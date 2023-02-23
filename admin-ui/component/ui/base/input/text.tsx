@@ -18,26 +18,14 @@ const InputTextComponent = ({
   value,
   required,
 }: InputProps) => {
-  // const engine = ValidatationEngine();
+  //  const engine = ValidatationEngine();
   const [_value, setValue] = useState<string | undefined | null>(value);
   const [errors, setErrors] = useState<string[]>();
   const onChangeHandller = (e: React.ChangeEvent<HTMLInputElement>) => {
     const _v = e.target.value;
     setValue(_v);
-    // doValidation(_v);
+    //  doValidation(_v);
   };
-
-  // const doValidation = (_v: string) => {
-  //   // setErrors(
-  //   //   engine
-  //   //     .execute({
-  //   //       data: _v,
-  //   //       name: label || "",
-  //   //       status: [ValidationStatus.REQUIRED, ValidationStatus.TEXT],
-  //   //     })
-  //   //     .map((e) => e.message)
-  //   // );
-  // };
 
   return (
     <Box component="form" noValidate autoComplete="off">
@@ -57,9 +45,9 @@ const InputTextComponent = ({
         }
       />
 
-      {errors?.map((e, i) => (
-        <ErrorComponent key={i} message={e}></ErrorComponent>
-      ))}
+          {errors?.map(({ e, i }: any) => {
+          return <ErrorComponent key={i} message={e} />;
+        })}
     </Box>
   );
 };

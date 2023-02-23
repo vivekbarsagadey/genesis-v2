@@ -53,6 +53,14 @@ model User {
   @@map("users")
 }
 
+model Customer {
+   id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique 
+
+   @@map("customers")     
+}
+
 model Company {
   id             String    @id @default(cuid())
   createdAt      DateTime  @default(now()) @map("created_at")

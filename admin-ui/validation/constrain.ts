@@ -6,7 +6,7 @@ const Pattern = {
   ),
 };
 interface Constraint {
-  field: string;
+  field?: string;
   dependents?: string[];
   validatorType: ValidatorType;
   message?: string;
