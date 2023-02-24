@@ -39,7 +39,7 @@ const ProjectGridView = ({ newproject }: any) => {
           {_DATA.currentData().map((item: any) => {
             return (
               <Grid item lg={4} xs={12} sm={6} md={4} mt={0}>
-                <Card>
+                <Card style={{padding:'0.8rem'}}>
                   <Box>
                     <Grid
                       item
@@ -48,15 +48,15 @@ const ProjectGridView = ({ newproject }: any) => {
                     >
                       {" "}
                       {/* <Link href={`/user/${item._id}`}> */}
-                      <IconButton size="small">
+                      {/* <IconButton size="small">
                         <EditIcon />
-                      </IconButton>
+                      </IconButton> */}
                       {/* </Link> */}
                       <IconButton
                         size="small"
                         // onClick={() => removeData(item)}
                       >
-                        <DeleteOutlineIcon />
+                        {/* <DeleteOutlineIcon /> */}
                       </IconButton>
                     </Grid>
                     <Grid container style={{ paddingLeft: "1rem" }}>
@@ -68,7 +68,7 @@ const ProjectGridView = ({ newproject }: any) => {
                       <Grid item xs={1.5}>
                         <Typography> :</Typography>
                       </Grid>
-                      <Grid item xs={3}>
+                      <Grid item xs={5.5}>
                         <Typography fontSize={"0.9rem"} noWrap>
                           {item?.name}
                         </Typography>
@@ -86,7 +86,7 @@ const ProjectGridView = ({ newproject }: any) => {
                       <Grid item xs={1.5}>
                         <Typography> :</Typography>
                       </Grid>
-                      <Grid item xs={3}>
+                      <Grid item xs={5.2}>
                         <Typography fontSize={"0.9rem"} noWrap>
                           {" "}
                           {item?.customerName}
@@ -107,7 +107,7 @@ const ProjectGridView = ({ newproject }: any) => {
                       <Grid item xs={1.5}>
                         <Typography> :</Typography>
                       </Grid>
-                      <Grid item xs={4}>
+                      <Grid item xs={5.2}>
                         <Typography fontSize={"0.9rem"} noWrap>
                           {item?.application}
                         </Typography>

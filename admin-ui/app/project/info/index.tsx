@@ -1,25 +1,23 @@
 "use client";
 
-import React from "react";
-import { Grid, IconButton, Tooltip, Typography } from "@mui/material";
-import Checkbox from "@mui/material/Checkbox";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import EditIcon from "@mui/icons-material/Edit";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import { Grid, IconButton, Tooltip, Typography } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 
 const InfoProjectComponent = ({ items }: any) => {
   console.log("itemsitemsitemsitemsitems", items);
   return (
-    <div    >
+    <div>
       <Grid
         container
         style={{
           display: "flex",
           alignItems: "center",
-          background: "#f1f5f9",
+          background: "#f8fafc",
           padding: "0.2rem",
-         
         }}
         mt={0.5}
       >
@@ -35,21 +33,13 @@ const InfoProjectComponent = ({ items }: any) => {
           </Tooltip>
         </Grid>
         <Grid item xs={2.46}>
-          <Typography
-            fontWeight={"bold"}
-            fontSize={"0.8rem"}
-            style={{ color: "#334155" }}
-          >
+          <Typography fontSize={"0.8rem"} style={{ color: "#334155" }}>
             {" "}
             {items.name}
           </Typography>
         </Grid>
         <Grid item xs={2.65}>
-          <Typography
-            fontWeight={"bold"}
-            fontSize={"0.8rem"}
-            style={{ color: "#334155" }}
-          >
+          <Typography fontSize={"0.8rem"} style={{ color: "#334155" }}>
             {" "}
             {items.customerName}
           </Typography>
