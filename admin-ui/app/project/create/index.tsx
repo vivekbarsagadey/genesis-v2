@@ -1,4 +1,5 @@
 "use client";
+import React, { useState } from "react";
 import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
@@ -31,6 +32,47 @@ const applicationType = [
   },
 ];
 const ProjectCreate = () => {
+  const [projectName, setProjectName] = useState<String>("");
+  const [customerName, setCustomerName] = useState<String>("");
+  const [application, setApplication] = useState<String>("");
+
+  const getApplicationType = (_TypeR: any) => {
+    setApplication(_TypeR.label);
+  };
+
+  const updateProjectName = (e: any) => {
+    setProjectName(e.target.value);
+  };
+  const updateCustomerName = (e: any) => {
+    setCustomerName(e.target.value);
+  };
+
+  const updateMyProjectData = () => {
+    // console.log(projectName,customerName,application);
+
+    fetch("http://localhost:3000/api/projects", {
+      method: "POST",
+      body: JSON.stringify({
+        name: projectName,
+        customerName,
+        application,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((res) => res.json())
+      .then((post) => {
+        setProjectName("");
+        setCustomerName("");
+        setApplication("");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+      
+  };
+
   return (
     <div>
       <Grid container mt={-0.8}>
@@ -56,6 +98,8 @@ const ProjectCreate = () => {
                   placeholder="Create Project Name"
                   size={"small"}
                   fullWidth
+                  value={projectName}
+                  onChange={updateProjectName}
                 />
               </Grid>
             </Grid>
@@ -78,6 +122,8 @@ const ProjectCreate = () => {
                   id="outlined-basic"
                   size={"small"}
                   fullWidth
+                  value={customerName}
+                  onChange={updateCustomerName}
                 />
               </Grid>
             </Grid>
@@ -96,20 +142,24 @@ const ProjectCreate = () => {
               </Grid>
               <Grid item xs={7}>
                 <Grid container>
-                  {applicationType?.map((application: IApplicationType) => {
-                    return (
-                      <Grid item xs={5.8}>
-                        <Grid container alignItems={"center"}>
-                          <Grid item xs={2}>
-                            <Checkbox />
-                          </Grid>
-                          <Grid item xs={10}>
-                            <Typography>{application.label}</Typography>
+                  {applicationType?.map(
+                    (application: IApplicationType, index) => {
+                      return (
+                        <Grid item xs={5.8} key={index}>
+                          <Grid container alignItems={"center"}>
+                            <Grid item xs={2}>
+                              <Checkbox
+                                onClick={() => getApplicationType(application)}
+                              />
+                            </Grid>
+                            <Grid item xs={10}>
+                              <Typography>{application.label}</Typography>
+                            </Grid>
                           </Grid>
                         </Grid>
-                      </Grid>
-                    );
-                  })}
+                      );
+                    }
+                  )}
                 </Grid>
               </Grid>
             </Grid>
@@ -151,6 +201,7 @@ const ProjectCreate = () => {
                         textTransform: "capitalize",
                         fontWeight: "bold",
                       }}
+                      onClick={updateMyProjectData}
                     >
                       Save
                     </Button>
