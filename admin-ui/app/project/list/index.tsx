@@ -200,7 +200,7 @@ const ProjectListComponent = ({ newproject }: any) => {
         </Grid>
       </Box>
       <div style={{ height: "62vh" }}>
-        {_DATA.currentData().map((items: any, index: any) => {
+        {_DATA.currentData().reverse().map((items: any, index: any) => {
           return (
             <div key={index}>
               <InfoProjectComponent items={items} />
