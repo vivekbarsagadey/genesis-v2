@@ -1,6 +1,5 @@
 "use client";
-import React from "react";
-import { Grid, Typography, Button, TextField, Paper } from "@mui/material";
+import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 
@@ -97,51 +96,18 @@ const ProjectCreate = () => {
               </Grid>
               <Grid item xs={7}>
                 <Grid container>
-                  {/* <Grid item xs={5.8}>
-                    <Grid container alignItems={"center"}>
-                      <Grid item xs={2}>
-                        <Checkbox />
-                      </Grid>
-                      <Grid item xs={10}>
-                        <Typography>Business to Business - Web</Typography>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Grid container alignItems={"center"}>
-                      <Grid item xs={2}>
-                        <Checkbox />
-                      </Grid>
-                      <Grid item xs={10}>
-                        <Typography>Business to Business - Mobile</Typography>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={5.8}>
-                    <Grid container alignItems={"center"}>
-                      <Grid item xs={2}>
-                        <Checkbox />
-                      </Grid>
-                      <Grid item xs={10}>
-                        <Typography>Business to Customer - Web</Typography>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Grid container alignItems={"center"}>
-                      <Grid item xs={2}>
-                        <Checkbox />
-                      </Grid>
-                      <Grid item xs={10}>
-                        <Typography>Business to Customer - Mobile</Typography>
-                      </Grid>
-                    </Grid>
-                  </Grid> */}
                   {applicationType?.map((application: IApplicationType) => {
                     return (
-                      <>
-                        <Checkbox /> {application.label}
-                      </>
+                      <Grid item xs={5.8}>
+                        <Grid container alignItems={"center"}>
+                          <Grid item xs={2}>
+                            <Checkbox />
+                          </Grid>
+                          <Grid item xs={10}>
+                            <Typography>{application.label}</Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
                     );
                   })}
                 </Grid>
