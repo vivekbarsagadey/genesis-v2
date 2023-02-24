@@ -326,10 +326,17 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
             <Button
               variant="contained"
               size="small"
-              className={classes.addnewbtn}
+              style={{
+                textTransform: "capitalize",
+                borderRadius: "20px",
+                fontWeight: "bold",
+                padding: "0.2rem 0.7rem ",
+              }}
             >
-            
-              Create<span style={{ marginLeft: "0.5rem", fontSize: "1rem" }}>+</span>
+              Create
+              <span style={{ marginLeft: "0.8rem", fontSize: "0.9rem" }}>
+                +
+              </span>
             </Button>
           </Link>
         </Grid>

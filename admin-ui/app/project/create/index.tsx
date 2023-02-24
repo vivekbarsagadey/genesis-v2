@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 interface IApplicationType {
   id: Number;
   type: String;
@@ -35,6 +35,7 @@ const ProjectCreate = () => {
   const [projectName, setProjectName] = useState<String>("");
   const [customerName, setCustomerName] = useState<String>("");
   const [application, setApplication] = useState<String>("");
+  const router = useRouter();
 
   const getApplicationType = (_TypeR: any) => {
     setApplication(_TypeR.label);
@@ -70,7 +71,8 @@ const ProjectCreate = () => {
       .catch((err) => {
         console.log(err.message);
       });
-      
+
+    router.push("/project");
   };
 
   return (
@@ -150,6 +152,7 @@ const ProjectCreate = () => {
                             <Grid item xs={2}>
                               <Checkbox
                                 onClick={() => getApplicationType(application)}
+                             
                               />
                             </Grid>
                             <Grid item xs={10}>
