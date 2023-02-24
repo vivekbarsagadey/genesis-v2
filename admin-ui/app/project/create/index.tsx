@@ -4,12 +4,39 @@ import { Grid, Typography, Button, TextField, Paper } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 
+interface IApplicationType {
+  id: Number;
+  type: String;
+  label: String;
+}
+const applicationType = [
+  {
+    id: 1,
+    type: "B2C",
+    label: "Business to Customer - Web",
+  },
+  {
+    id: 2,
+    type: "B2C",
+    label: "Business to Customer - Mobile",
+  },
+  {
+    id: 3,
+    type: "B2B",
+    label: "Business to Business - Web",
+  },
+  {
+    id: 4,
+    type: "B2B",
+    label: "Business to Business - Mobile",
+  },
+];
 const ProjectCreate = () => {
   return (
     <div>
-      <Grid container mt={-0.8} >
+      <Grid container mt={-0.8}>
         <Grid item xs={12}>
-          <Paper style={{ padding: "3rem",height:'90.3vh' }}>
+          <Paper style={{ padding: "3rem", height: "90.3vh" }}>
             <Grid container mb={5}>
               <Grid item xs={0.65}></Grid>
               <Grid item xs={10}>
@@ -70,7 +97,7 @@ const ProjectCreate = () => {
               </Grid>
               <Grid item xs={7}>
                 <Grid container>
-                  <Grid item xs={5.8}>
+                  {/* <Grid item xs={5.8}>
                     <Grid container alignItems={"center"}>
                       <Grid item xs={2}>
                         <Checkbox />
@@ -109,7 +136,14 @@ const ProjectCreate = () => {
                         <Typography>Business to Customer - Mobile</Typography>
                       </Grid>
                     </Grid>
-                  </Grid>
+                  </Grid> */}
+                  {applicationType?.map((application: IApplicationType) => {
+                    return (
+                      <>
+                        <Checkbox /> {application.label}
+                      </>
+                    );
+                  })}
                 </Grid>
               </Grid>
             </Grid>
