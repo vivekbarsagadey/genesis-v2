@@ -6,7 +6,7 @@ import LinearProgress from "@mui/material/LinearProgress";
 export default function Loading() {
   return (
     <h1>
-      <Box sx={{ width: "100%",marginTop:'-2rem' }}>
+      <Box sx={{ width: "100%",marginTop:'-1.7rem' }}>
         <LinearProgress />
       </Box>
     </h1>
