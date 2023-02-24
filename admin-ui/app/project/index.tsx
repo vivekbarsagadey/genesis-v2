@@ -114,7 +114,7 @@ const ProjectHomeComponent = () => {
   };
 
   const exportToExcell = async () => {
-    const fileName = "User_Templates";
+    const fileName = "Project_Templates";
     await xlsxDownload({ fileName: fileName, project: project });
   };
 

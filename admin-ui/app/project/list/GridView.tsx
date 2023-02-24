@@ -107,7 +107,7 @@ const ProjectGridView = ({ newproject }: any) => {
                         <Typography fontSize={"0.75rem"}> :</Typography>
                       </Grid>
                       <Grid item xs={5.2}>
-                        <Typography fontSize={"0.75rem"} noWrap>
+                        <Typography fontSize={"0.75rem"}>
                           {item?.application}
                         </Typography>
                       </Grid>
