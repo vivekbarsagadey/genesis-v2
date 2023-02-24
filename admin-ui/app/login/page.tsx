@@ -87,6 +87,7 @@ const SignIn: NextPage = (props): JSX.Element => {
   };
   return (
     <>
+    
       <Grid container className={classes.background_style}>
         <Grid item style={{ position: "absolute", top: "5%" }} xs={12}>
           <Grid container>
