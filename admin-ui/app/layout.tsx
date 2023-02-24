@@ -24,13 +24,11 @@ export default function RootLayout({
         <CacheProvider value={clientSideEmotionCache}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <body>
               <SessionProvider session={props?.session}>
                 <QueryClientProvider client={queryClient}>
                   <main>{children}</main>
                 </QueryClientProvider>
               </SessionProvider>
-            </body>
           </ThemeProvider>
         </CacheProvider>
       </body>

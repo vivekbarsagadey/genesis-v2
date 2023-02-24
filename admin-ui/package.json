@@ -55,6 +55,7 @@
     "yup": "^1.0.0"
   },
   "devDependencies": {
+    "@svgr/webpack": "^6.5.1",
     "@types/cors": "^2.8.13",
     "eslint-config-prettier": "^8.6.0",
     "prisma": "^4.10.1",

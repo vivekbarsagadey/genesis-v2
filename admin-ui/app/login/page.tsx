@@ -1,7 +1,7 @@
 "use client";
 import { NextPage } from "next";
 import { signIn } from "next-auth/react";
-import { FormEventHandler, useState } from "react";
+import { FormEventHandler, ReactElement, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   Box,
@@ -153,5 +153,13 @@ const SignIn: NextPage = (props): JSX.Element => {
     </>
   );
 };
+
+/* SignIn.getLayout = function getLayout(data: Data, component: ReactElement) {
+  return (
+      <div>
+          {component}
+      </div>
+  )
+} */
 
 export default SignIn;
