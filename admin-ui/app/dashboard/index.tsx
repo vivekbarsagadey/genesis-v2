@@ -1,11 +1,9 @@
+import React from 'react'
 
+const Dashboard = () => {
+  return (
+    <div>This is Dashboard Page </div>
+  )
+}
 
-const index = () => {
-    return (
-      <>this is index page</>
-     )
-   }
-   
-   export default index;
- 
-   
+export default Dashboard
