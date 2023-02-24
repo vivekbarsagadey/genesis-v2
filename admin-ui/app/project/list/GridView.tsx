@@ -32,7 +32,7 @@ const ProjectGridView = ({ newproject }: any) => {
   return (
     <>
       <Box>
-        <Grid container spacing={1.5} mt={1}>
+        <Grid container spacing={1.5} mt={0.5}>
           {_DATA.currentData().map((item: any) => {
             return (
               <Grid item lg={4} xs={12} sm={6} md={4} mt={0}>
