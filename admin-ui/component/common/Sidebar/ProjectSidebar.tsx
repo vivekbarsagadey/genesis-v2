@@ -19,17 +19,18 @@ const modules = [
     id: 2,
     name: "Project",
   },
+
   {
     id: 3,
-    name: "Report",
-  },
-  {
-    id: 4,
     name: "Company",
   },
   {
-    id: 5,
+    id: 4,
     name: "User",
+  },
+  {
+    id: 5,
+    name: "Report",
   },
 ];
 
