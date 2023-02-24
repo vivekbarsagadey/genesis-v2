@@ -66,7 +66,7 @@ const HeaderComponent = ({ project }: any) => {
     window.location.reload();
   };
   return (
-      <Grid container mb={1} style={{ backgroundColor: "#f1f5f9" }} pt={1}>
+      <Grid container mb={1} mt={-0.8} style={{ backgroundColor: "#f1f5f9" }}>
         <Grid item xs={0.1}></Grid>
         <Grid item xs={5.9} style={{ display: "flex", alignItems: "center" }}>
           <Grid container>

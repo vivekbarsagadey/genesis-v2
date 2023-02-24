@@ -281,11 +281,11 @@ const ProjectHomeComponent = () => {
                   textTransform: "capitalize",
                   borderRadius: "20px",
                   fontWeight: "bold",
-                  padding: "0.2rem 1.1rem ",
+                  padding: "0.2rem 0.7rem ",
                 }}
               >
                 Create
-                <span style={{ marginLeft: "0.8rem", fontSize: "1rem" }}>
+                <span style={{ marginLeft: "0.8rem", fontSize: "0.9rem" }}>
                   +
                 </span>
               </Button>

@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   typography: {
     color: "#494a49",
     fontWeight: "600",
-    fontSize: "0.8rem",
+    fontSize: "0.75rem",
   },
   pagination: {
     display: "flex",
@@ -139,7 +139,7 @@ const ProjectListComponent = ({ newproject }: any) => {
             sm={2.5}
             style={{ display: "flex", alignItems: "center" }}
           >
-            <Typography className={classes.typography} style={{}}>
+            <Typography className={classes.typography}>
               Project Name
             </Typography>
             {sortedIcon === true ? (

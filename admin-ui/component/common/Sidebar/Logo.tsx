@@ -26,9 +26,9 @@ const Logo = ({ handleMenu, show }: logoProps) => {
         </Grid>
       )}
       <div>
-      <IconButton onClick={handleMenu}>
-        {show ? <MenuIcon  /> : <ListIcon  />}
-      </IconButton>
+        <IconButton onClick={handleMenu}>
+          {show ? <MenuIcon /> : <ListIcon />}
+        </IconButton>
       </div>
     </div>
   );
