@@ -33,13 +33,13 @@ const useStyles = makeStyles({
     fontWeight: "bold",
     paddingLeft: "1rem",
     paddingRight: "1rem",
-    background: "#FFC107",
+    background: "#FFC107", // color should be varible and needs to move to them file
     "&:hover": {
       background: "#FFC107",
     },
   },
   savebtn: {
-    width: "0.9rem",
+    width: "0.9rem",  // we have to use them object no hard coed value for all rem or any other value
     height: "1.7rem",
     fontSize: "0.8rem",
     textTransform: "capitalize",
@@ -56,19 +56,19 @@ const useStyles = makeStyles({
     textDecoration: "none",
   },
 });
-
+// why do you have all of the login in the index page
 const ProjectHomeComponent = () => {
   const classes = useStyles();
-  const [project, setProject] = useState([]);
-  const [count, setCount] = useState("List");
-  const [newproject, setNewProject] = useState(project);
+  const [project, setProject] = useState([]); // why project is having array
+  const [count, setCount] = useState("List"); // what do you mean by count
+  const [newproject, setNewProject] = useState(project); // what is newprokect .. plz follow correct naming convention
   const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [openModule, setOpenModule] = React.useState(false);
-  const [search, setSearch] = useState("");
-  const [filterSelected, setFilterSelected] = useState([]);
-  const [chip, setChip] = useState(false);
-  const open = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null); // what is anchorEl .... you should have proper name 
+  const [openModule, setOpenModule] = React.useState(false); // what kind of module is it?, why not an propare name
+  const [search, setSearch] = useState(""); // what is search ? , search will be component, either you will have search Critaira, of searchResult
+  const [filterSelected, setFilterSelected] = useState([]); // why the fealter is part of this file
+  const [chip, setChip] = useState(false); // what is clip? , if is boolean, use "is" or "flag" etc 
+  const open = Boolean(anchorEl); // what is open ? 
 
   const fetchData = () => {
     fetch("http://localhost:3000/api/projects")
@@ -123,16 +123,20 @@ const ProjectHomeComponent = () => {
 
   const exportPDF = async () => {
     const headers = [["Project Name", "Customer Name", "Application"]];
+    // what is data?
+    // why do you have red error, you can not return [] in map... this is very bad proctise
     const data = project.map((elt) => [
       elt.name,
       elt.customerName,
       elt.application,
     ]);
+    // i can see red mark
     await download({ headers: headers, project: data });
   };
 
   const fileHandler = (event: any) => {
     let fileObj = event.target.files[0];
+    //why do you have error here
     ExcelRenderer(fileObj, (err, resp) => {
       if (err) {
       } else {
@@ -144,7 +148,10 @@ const ProjectHomeComponent = () => {
     });
   };
 
+  // what is sendData .... where do you want to send
   const sendDataHandler = async () => {
+    //why do we have for loop .. this is wrong
+
     for (let i = 1; i < file?.rows.length; i++) {
       const users = {
         name: file.rows[i][1],
@@ -155,6 +162,11 @@ const ProjectHomeComponent = () => {
       handleImportClose();
     }
   };
+  //create template for this grid and place data insde template template
+  // dom code is very bad, you have to thing about code seperation and create comon components to handle filter and search and other thing like view etc
+  // make sure all common component is common for all the screen, like filter, search , view, download, upload etc.component
+  // no hard coded lable, it should come from properties to support I28N
+  // why i can see red error for all the thing
   return (
     <>
       <Grid container mt={1}>
@@ -275,6 +287,7 @@ const ProjectHomeComponent = () => {
             <ProjectViewComponent handleCount={handleCount} />
           </Grid>
         </Grid>
+
 
         <Grid item xs={5.8} display={"flex"}>
           <Grid item xs={9.5} mt={0.7}>
