@@ -277,11 +277,38 @@ const ProjectHomeComponent = () => {
         </Grid>
 
         <Grid item xs={5.8} display={"flex"}>
-          <Grid item xs={9.5}>
+          <Grid item xs={9.5} mt={0.7}>
             {chip ? (
               <>
                 {filterSelected?.map((item: any, index) => {
-                  return <span key={index}> {item} <span>x</span>  </span>;
+                  return (
+                    <span
+                      key={index}
+                      style={{
+                        fontSize: "0.7rem",
+                        marginRight: "0.5rem",
+                        background: "#e2e8f0",
+                        padding: "0.3rem",
+                        borderRadius: "20px",
+                      }}
+                    >
+                      {" "}
+                      {item}{" "}
+                      <span
+                        style={{
+                          background: "black",
+                          color: "white",
+                          borderRadius: "50%",
+
+                          padding: "0 0.2rem 0.1rem 3px",
+                          marginLeft: "0.5rem",
+                          cursor: "pointer",
+                        }}
+                      >
+                        x
+                      </span>{" "}
+                    </span>
+                  );
                 })}
               </>
             ) : null}
