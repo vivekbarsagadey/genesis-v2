@@ -65,6 +65,8 @@ const ProjectHomeComponent = () => {
   const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [openModule, setOpenModule] = React.useState(false);
+  const [search, setSearch] = useState("");
+
   const open = Boolean(anchorEl);
 
   const fetchData = () => {
@@ -159,6 +161,7 @@ const ProjectHomeComponent = () => {
           <ProjectSearch
             newproject={newproject}
             setNewProject={setNewProject}
+            search={search} setSearch={setSearch}
           />
         </Grid>
         <Grid item xs={0.1}></Grid>
@@ -297,7 +300,7 @@ const ProjectHomeComponent = () => {
         {(() => {
           switch (count) {
             case "List":
-              return <ProjectListComponent newproject={newproject} />;
+              return <ProjectListComponent newproject={newproject}   search={search} />;
             case "Graph":
               return <ProjectGraphView project={project}></ProjectGraphView>;
             case "Kanban":

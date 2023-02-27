@@ -23,18 +23,23 @@ const useStyles = makeStyles({
   },
 });
 
-const ProjectSearch = ({ newproject, setNewProject }: any) => {
+const ProjectSearch = ({
+  newproject,
+  setNewProject,
+  search,
+  setSearch,
+}: any) => {
   const classes = useStyles();
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
+
   const getSearch = (event: any) => {
     setSearch(event.target.value);
-    setNewProject(
-      newproject?.filter((ele: any) =>
-        ele.name.toLowerCase().includes(search.toLocaleLowerCase())
-      )
-    );
+    // setNewProject(
+    //   newproject?.filter((ele: any) =>
+    //     ele.name.toLowerCase().includes(search.toLocaleLowerCase())
+    //   )
+    // );
   };
-  
 
   return (
     <div>
