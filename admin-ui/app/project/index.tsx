@@ -25,7 +25,6 @@ import ProjectKanbanView from "./list/KanbanView";
 import IProject from "./project.model";
 import ProjectSearch from "./search";
 import ProjectViewComponent from "./view";
-
 const useStyles = makeStyles({
   addnewbtn: {
     textTransform: "capitalize",
@@ -39,7 +38,7 @@ const useStyles = makeStyles({
     },
   },
   savebtn: {
-    width: "0.9rem",  // we have to use them object no hard coed value for all rem or any other value
+    width: "0.9rem", // we have to use them object no hard coed value for all rem or any other value
     height: "1.7rem",
     fontSize: "0.8rem",
     textTransform: "capitalize",
@@ -63,13 +62,12 @@ const ProjectHomeComponent = () => {
   const [count, setCount] = useState("List"); // what do you mean by count
   const [newproject, setNewProject] = useState(project); // what is newprokect .. plz follow correct naming convention
   const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null); // what is anchorEl .... you should have proper name 
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null); // what is anchorEl .... you should have proper name
   const [openModule, setOpenModule] = React.useState(false); // what kind of module is it?, why not an propare name
   const [search, setSearch] = useState(""); // what is search ? , search will be component, either you will have search Critaira, of searchResult
   const [filterSelected, setFilterSelected] = useState([]); // why the fealter is part of this file
-  const [chip, setChip] = useState(false); // what is clip? , if is boolean, use "is" or "flag" etc 
-  const open = Boolean(anchorEl); // what is open ? 
-
+  const [chip, setChip] = useState(false); // what is clip? , if is boolean, use "is" or "flag" etc
+  const open = Boolean(anchorEl); // what is open ?
   const fetchData = () => {
     fetch("http://localhost:3000/api/projects")
       .then((r) => {
@@ -79,18 +77,15 @@ const ProjectHomeComponent = () => {
         setProject(d);
       });
   };
-
   useEffect(() => {
     fetchData();
   }, []);
-
   const itemsCallBackHandler = (_items: Array<IProject>) => {
     setProject(_items);
   };
   useEffect(() => {
     setNewProject(project);
   }, [project]);
-
   const handleCount = (data: string) => {
     setCount(data);
   };
@@ -104,24 +99,21 @@ const ProjectHomeComponent = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   const handleClose1 = () => {
     setmenuItem(null);
   };
-
   const handleClickOpen = () => {
     setOpenModule(true);
   };
   const handleImportClose = () => {
     setOpenModule(false);
   };
-
   const exportToExcell = async () => {
-    const fileName = "Project_Templates";
+    const fileName = `${"Project"}  ${new Date().toISOString().slice(0, 10)}`;
     await xlsxDownload({ fileName: fileName, project: project });
   };
-
   const exportPDF = async () => {
+    const fileName = `${"Project"}  ${new Date().toISOString().slice(0, 10)}`;
     const headers = [["Project Name", "Customer Name", "Application"]];
     // what is data?
     // why do you have red error, you can not return [] in map... this is very bad proctise
@@ -131,9 +123,8 @@ const ProjectHomeComponent = () => {
       elt.application,
     ]);
     // i can see red mark
-    await download({ headers: headers, project: data });
+    await download({ headers: headers, project: data, fileName: fileName });
   };
-
   const fileHandler = (event: any) => {
     let fileObj = event.target.files[0];
     //why do you have error here
@@ -147,11 +138,9 @@ const ProjectHomeComponent = () => {
       }
     });
   };
-
   // what is sendData .... where do you want to send
   const sendDataHandler = async () => {
     //why do we have for loop .. this is wrong
-
     for (let i = 1; i < file?.rows.length; i++) {
       const users = {
         name: file.rows[i][1],
@@ -237,7 +226,9 @@ const ProjectHomeComponent = () => {
             <MenuItem>
               <CSVLink
                 data={project}
-                filename={`project_tamplate5`}
+                filename={`${"Project"}  ${new Date()
+                  .toISOString()
+                  .slice(0, 10)}`}
                 className={classes.csvlink}
               >
                 CSV
@@ -245,7 +236,6 @@ const ProjectHomeComponent = () => {
             </MenuItem>
           </Menu>
         </Grid>
-
         <Grid item xs={0.5} sm={1.5} md={0.93} lg={0.4}>
           <Tooltip title="Import" arrow>
             <IconButton onClick={handleClickOpen}>
@@ -281,14 +271,11 @@ const ProjectHomeComponent = () => {
             </DialogActions>
           </Dialog>
         </Grid>
-
         <Grid item xs={2}>
           <Grid container>
             <ProjectViewComponent handleCount={handleCount} />
           </Grid>
         </Grid>
-
-
         <Grid item xs={5.8} display={"flex"}>
           <Grid item xs={9.5} mt={0.7}>
             {chip ? (
@@ -312,7 +299,6 @@ const ProjectHomeComponent = () => {
                           background: "black",
                           color: "white",
                           borderRadius: "50%",
-
                           padding: "0 0.2rem 0.1rem 3px",
                           marginLeft: "0.5rem",
                           cursor: "pointer",
@@ -362,7 +348,6 @@ const ProjectHomeComponent = () => {
               return (
                 <ProjectCalendarView project={project}></ProjectCalendarView>
               );
-
             default:
               return (
                 <ProjectGridView newproject={newproject}></ProjectGridView>
@@ -370,7 +355,6 @@ const ProjectHomeComponent = () => {
           }
         })()}
       </div>
-
       <ProjectFilter
         project={project}
         anchorEl={anchorEl}
@@ -385,5 +369,4 @@ const ProjectHomeComponent = () => {
     </>
   );
 };
-
 export default ProjectHomeComponent;
