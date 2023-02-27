@@ -66,7 +66,8 @@ const ProjectHomeComponent = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [openModule, setOpenModule] = React.useState(false);
   const [search, setSearch] = useState("");
-
+  const [filterSelected, setFilterSelected] = useState([]);
+  const [chip, setChip] = useState(false);
   const open = Boolean(anchorEl);
 
   const fetchData = () => {
@@ -161,7 +162,8 @@ const ProjectHomeComponent = () => {
           <ProjectSearch
             newproject={newproject}
             setNewProject={setNewProject}
-            search={search} setSearch={setSearch}
+            search={search}
+            setSearch={setSearch}
           />
         </Grid>
         <Grid item xs={0.1}></Grid>
@@ -268,14 +270,23 @@ const ProjectHomeComponent = () => {
           </Dialog>
         </Grid>
 
-        <Grid item xs={2.8}>
+        <Grid item xs={2}>
           <Grid container>
             <ProjectViewComponent handleCount={handleCount} />
           </Grid>
         </Grid>
 
-        <Grid item xs={4.8} display={"flex"} justifyContent={"flex-end"}>
-          <Grid item xs={11.5} display={"flex"} justifyContent={"flex-end"}>
+        <Grid item xs={5.8} display={"flex"}>
+          <Grid item xs={9.5}>
+            {chip ? (
+              <>
+                {filterSelected?.map((item: any, index) => {
+                  return <span key={index}> {item} <span>x</span>  </span>;
+                })}
+              </>
+            ) : null}
+          </Grid>
+          <Grid item xs={2} display={"flex"}>
             <Link href={"/project/create"} style={{ textDecoration: "none" }}>
               <Button
                 variant="contained"
@@ -300,7 +311,9 @@ const ProjectHomeComponent = () => {
         {(() => {
           switch (count) {
             case "List":
-              return <ProjectListComponent newproject={newproject}   search={search} />;
+              return (
+                <ProjectListComponent newproject={newproject} search={search} />
+              );
             case "Graph":
               return <ProjectGraphView project={project}></ProjectGraphView>;
             case "Kanban":
@@ -324,6 +337,10 @@ const ProjectHomeComponent = () => {
         open={open}
         handleClose={handleClose}
         itemsCallBackHandler={itemsCallBackHandler}
+        filterSelected={filterSelected}
+        setFilterSelected={setFilterSelected}
+        chip={chip}
+        setChip={setChip}
       />
     </>
   );
