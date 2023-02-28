@@ -53,6 +53,14 @@ model User {
   @@map("users")
 }
 
+model Customer {
+   id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique 
+
+   @@map("customers")     
+}
+
 model Company {
   id             String    @id @default(cuid())
   createdAt      DateTime  @default(now()) @map("created_at")
@@ -100,6 +108,8 @@ model Project {
  currentVersion String? @map("current_version")
  status         String? @map("status")
  companyId      String?  @map("company_id")
+ customerName   String? @map("customer_name")
+ application    String? @map("application")
  company        Company? @relation(fields: [companyId], references: [id])
 
   @@map("tb_project")

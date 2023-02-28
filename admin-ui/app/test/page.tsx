@@ -1,9 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "../../hooks/from";
 import {InputComponent}  from "../../component/ui/base/input/";
+import { ButtonComponent } from "../../component/ui/base/button";
+import { SearchComponent } from "../../component/ui/base";
+
+
 const TestComponent = () => {
-  const { formState, register } = useForm();
+  const { register } = useForm();
   return (
     <>
       <InputComponent
@@ -11,6 +15,7 @@ const TestComponent = () => {
             placeHolder="Enter email"
             label="Email"
             id="email"
+            register={register}
           ></InputComponent>
       <InputComponent
             type="number"
@@ -32,6 +37,11 @@ const TestComponent = () => {
             label="Text"
             id="text"
           ></InputComponent>
+
+          <ButtonComponent label="Submit" onClick={()=> console.log('hello')}></ButtonComponent>
+          <SearchComponent
+           placeHolder="Search" type="text"
+           ></SearchComponent>
     </>
   );
 };

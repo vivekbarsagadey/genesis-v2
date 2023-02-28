@@ -2,7 +2,7 @@ import { RuleContext } from './';
 import { ValidatorType } from '../validator';
 import { ValidationError } from '../validation.error';
 
-const EmailRule = ({ constraint, data, name }: RuleContext) => {
+const EmailRule = ({ constraint, data }: RuleContext) => {
   const condition = (): boolean => {
     return constraint.validatorType === ValidatorType.EMAIL;
   };

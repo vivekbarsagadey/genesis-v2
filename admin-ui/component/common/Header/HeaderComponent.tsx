@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Box, Button, Grid, IconButton, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
@@ -64,14 +65,12 @@ const HeaderComponent = ({ project }: any) => {
     handleCloseModal();
     window.location.reload();
   };
-
   return (
-    
-      <Grid container mb={1} style={{ backgroundColor: "#f1f5f9" }} pt={1}>
+      <Grid container mb={1} mt={-0.8} style={{ backgroundColor: "#f1f5f9" }}>
         <Grid item xs={0.1}></Grid>
         <Grid item xs={5.9} style={{ display: "flex", alignItems: "center" }}>
           <Grid container>
-            <Grid item xs={1.8} sm={3} md={1.5} mt={0.4}>
+            {/* <Grid item xs={1.8} sm={3} md={1.5} mt={0.4}>
               <Button
                 size="small"
                 variant="contained"
@@ -84,8 +83,8 @@ const HeaderComponent = ({ project }: any) => {
               >
                 New
               </Button>
-            </Grid>
-            <Modal
+            </Grid> */}
+            {/* <Modal
               open={openNew}
               onClose={handleCloseModal}
               aria-labelledby="modal-modal-title"
@@ -129,8 +128,8 @@ const HeaderComponent = ({ project }: any) => {
                   </Grid>
                 </Grid>
               </Box>
-            </Modal>
-            <Grid item xs={8}>
+            </Modal> */}
+            {/* <Grid item xs={8}>
               <Typography
                 mt={0.8}
                 ml={1}
@@ -140,9 +139,9 @@ const HeaderComponent = ({ project }: any) => {
                   fontSize: "0.9rem",
                 }}
               >
-                {project[0]?.name}
+                project_Name
               </Typography>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Grid>
         <Grid item xs={6}>

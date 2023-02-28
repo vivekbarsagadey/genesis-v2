@@ -1,13 +1,11 @@
 "use client";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import Box from "@mui/material/Box";
 import InputAdornment from "@mui/material/InputAdornment";
-import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 // import { ValidatationEngine } from "../../../../validation/validatation.engine";
 // import {ValidationStatus} from "../../../../validation/validator.context";
 import { ErrorComponent, InputProps } from "./";
-import CallIcon from '@mui/icons-material/Call';
+import CallIcon from "@mui/icons-material/Call";
 import Input from "@mui/material/Input";
 import Typography from "@mui/material/Typography";
 
@@ -41,7 +39,7 @@ const InputNumberComponent = ({
 
   return (
     <Box component="form" noValidate autoComplete="off">
-       <Typography>{label || "Field Name"}</Typography>
+      <Typography>{label || "Field Name"}</Typography>
       <Input
         required={required}
         id="standard-required"
@@ -55,12 +53,11 @@ const InputNumberComponent = ({
             .slice(0, 10);
         }}
         onChange={onChangeHandller}
-    
-          startAdornment= {
-            <InputAdornment position="start">
+        startAdornment={
+          <InputAdornment position="start">
             <CallIcon />
           </InputAdornment>
-          }
+        }
       />
 
       {errors?.map((e, i) => (

@@ -8,7 +8,7 @@ interface DownloadProps {
   fileName: string
 }
 
-const download = async ({ headers, items, title, fileName }: DownloadProps) => {
+const download = async ({ headers, project, title, fileName }: DownloadProps) => {
   debugger;
   const unit = "pt";
   const size = "A3"; // Use A1, A2, A3 or A4
@@ -20,9 +20,8 @@ const download = async ({ headers, items, title, fileName }: DownloadProps) => {
   let content = {
     startY: 50,
     head: headers,
-    body: items,
+    body: project,
   };
-  doc.text(title, marginLeft, 40);
   doc.autoTable(content);
   doc.save(fileName);
 };

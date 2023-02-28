@@ -105,3 +105,4 @@ dist
 /admin-ui/package-lock.json
 /admin-ui/.vscode
 /admin-ui/db
+/admin-ui/yarn.lock

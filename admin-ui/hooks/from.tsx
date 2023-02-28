@@ -1,26 +1,35 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-interface FormItem {
-  value?: string;
-  name?: string;
-  isValid?: boolean;
+interface InputHolder {
+  name: string;
+  value: string;
 }
+const form: Map<string, any> = new Map();
 
 const useForm = () => {
-  const [formItems, setFormItems] = useState<FormItem[]>([]);
-  //const [formState, register] = useState<string>("");
+  const [message, setMessage] = useState("");
 
-  const register = (name: string) => {
-    const formItem: FormItem = { name, value: "", isValid: true };
-    formItems.push(formItem);
-    return formItem;
+  const register = (f: InputHolder) => {
+    form.set(f.name, f.value);
+    return update;
   };
 
-  const formState = (name: string) => {
-    return formItems?.find((f) => f.name === name);
+  useEffect(() => {
+    setMessage("This is test message");
+  }, []);
+
+  const update = (f: InputHolder) => {
+    form.get(f.name).value = f.value;
   };
 
-  return { formState, register };
+  const submit = () => {
+    console.log("this is form", form);
+    form.forEach((f) => {
+      console.log("this is f from", f);
+    });
+  };
+
+  return { message, register, submit, update };
 };
 
 export { useForm };

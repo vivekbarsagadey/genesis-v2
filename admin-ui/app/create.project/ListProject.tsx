@@ -1,10 +1,11 @@
-import React from "react";
-import { Grid, IconButton, Typography, Paper, Button } from "@mui/material";
-import CreateComponent from "./CreateComponent";
-import Checkbox from "@mui/material/Checkbox";
+"use client"
+
+import EditIcon from "@mui/icons-material/Edit";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import EditIcon from "@mui/icons-material/Edit";
+import { Button, Grid, Paper, Typography } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
+import CreateComponent from "../project/create";
 
 const ListProject = () => {
   return (

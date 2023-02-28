@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   login_button: {
     background: "#FFC107",
     width: "100%",
-    color: "black",
+    color: "white",
     textTransform: "capitalize",
     "&:hover": {
       background: "#FFC107",
@@ -57,6 +57,7 @@ const SignIn: NextPage = (props): JSX.Element => {
   const [alert, showAlert] = useState(false);
   const router = useRouter();
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    // validate your userinfo
     e.preventDefault();
     if (userInfo?.email === "faisal@gmail.com" && userInfo.password) {
       const res = await signIn("credentials", {
@@ -64,14 +65,16 @@ const SignIn: NextPage = (props): JSX.Element => {
         password: userInfo.password,
         redirect: false,
       });
-      
+      // console.log("res",res)
       if (!res.error) {
+        // console.log(res);
         router.push("/");
       }
     } else {
       showAlert(true);
     }
   };
+
   const handleClose = (
     event?: React.SyntheticEvent | Event,
     reason?: string
@@ -79,21 +82,23 @@ const SignIn: NextPage = (props): JSX.Element => {
     if (reason === "clickaway") {
       return;
     }
+
     showAlert(false);
   };
   return (
     <>
+    
       <Grid container className={classes.background_style}>
         <Grid item style={{ position: "absolute", top: "5%" }} xs={12}>
           <Grid container>
             <Grid item xs={12}>
               <Grid container>
-                <Grid item lg={6} sm={4} xs={4} md={5.6}></Grid>
+                <Grid item lg={5.84} sm={4} xs={2.5} md={5.6}></Grid>
                 <Grid item xs={5}>
                   <img
-                    src="./images/genesislogo.png"
+                    src="./images/genesisloginlogo.png"
                     alt="LoginImage"
-                    style={{ height: "7vh" }}
+                    style={{ height: "9vh" }}
                   />
                 </Grid>
               </Grid>
@@ -114,14 +119,15 @@ const SignIn: NextPage = (props): JSX.Element => {
                   <Grid item xs={12}>
                     <Typography py={1} style={{ fontSize: "0.9rem" }}>
                       {" "}
-                      Email
+                      User Name or Email Address*{" "}
                     </Typography>
                     <TextField
                       color="warning"
                       size="small"
                       fullWidth
                       classes={{ root: classes.customTextField }}
-                      placeholder="User@Genesis.com"
+                      placeholder="User@Comfort 
+                      Zone.com"
                       value={userInfo.email}
                       onChange={({ target }) =>
                         setUserInfo({ ...userInfo, email: target.value })
