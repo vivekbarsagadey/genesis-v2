@@ -36,7 +36,7 @@ const InfoProjectComponent = ({ items }: any) => {
             </IconButton>
           </Tooltip>
         </Grid>
-        <Grid item xs={2.46}>
+        <Grid item xs={2.5}>
           <Typography className={classes.typography}> {items.name}</Typography>
         </Grid>
         <Grid item xs={2.65}>
@@ -45,7 +45,7 @@ const InfoProjectComponent = ({ items }: any) => {
             {items.customerName}
           </Typography>
         </Grid>
-        <Grid item xs={2.59}>
+        <Grid item xs={2.7}>
           <Grid container display={"flex"} alignItems={"center"}>
             <Grid item xs={12}>
               <Typography className={classes.typography}>
