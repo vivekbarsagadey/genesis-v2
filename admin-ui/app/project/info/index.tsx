@@ -12,6 +12,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     background: "#f8fafc",
     padding: "0.2rem",
+    width:'98.5%'
   },
   typography: {
     color: "#494a49",
