@@ -205,6 +205,7 @@ const ProjectCreate = () => {
                         fontWeight: "bold",
                       }}
                       onClick={updateMyProjectData}
+                      disabled={!projectName || !customerName || !application}
                     >
                       Save
                     </Button>
