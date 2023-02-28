@@ -1,11 +1,11 @@
 
 
-const index = () => {
+const ProjectReport = () => {
     return (
-      <>this is index page</>
+      <>this is report page</>
      )
    }
    
-   export default index;
+   export default ProjectReport;
  
    

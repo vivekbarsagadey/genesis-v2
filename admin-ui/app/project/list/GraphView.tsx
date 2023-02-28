@@ -7,7 +7,7 @@ export const options = {
   is3D: true,
 };
 
-const TestingGraphView = ({ project }: any) => {
+const ProjectGraphView = ({ project }: any) => {
   const example = [
     {
       type: "India",
@@ -51,4 +51,4 @@ const TestingGraphView = ({ project }: any) => {
   );
 };
 
-export default TestingGraphView;
+export default ProjectGraphView;

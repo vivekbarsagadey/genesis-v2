@@ -73,7 +73,7 @@ const board = {
     },
   ],
 };
-const TestingKanbanView = ({ project }: any) => {
+const ProjectKanbanView = ({ project }: any) => {
   return (
     <div>
       <Grid container px={2.5} pt={2}>
@@ -100,4 +100,4 @@ const TestingKanbanView = ({ project }: any) => {
   );
 };
 
-export default TestingKanbanView;
+export default ProjectKanbanView;

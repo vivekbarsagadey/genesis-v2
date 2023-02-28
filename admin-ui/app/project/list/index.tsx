@@ -12,6 +12,7 @@ import ProjectPagination from "./ProjectListPagination";
 import usePagination from "./ProjectListPagination";
 import Pagination from "@mui/material/Pagination";
 import projectPagination from "./ProjectListPagination";
+import InfoProjectComponent from "../info";
 
 const useStyles = makeStyles({
   container: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles({
   typography: {
     color: "#494a49",
     fontWeight: "600",
-    fontSize: "0.8rem",
+    fontSize: "0.75rem",
   },
   pagination: {
     display: "flex",
@@ -35,7 +36,7 @@ const useStyles = makeStyles({
   },
 });
 
-const TestingListComponent = ({ newproject }: any) => {
+const ProjectListComponent = ({ newproject, search }: any) => {
   const [sortedIcon, setSortedIcon] = useState(true);
   const [sortedIconLastName, setSortedIconLastName] = useState(true);
   const [sortedIconEmail, setSortedIconEmail] = useState(true);
@@ -138,9 +139,7 @@ const TestingListComponent = ({ newproject }: any) => {
             sm={2.5}
             style={{ display: "flex", alignItems: "center" }}
           >
-            <Typography className={classes.typography} style={{}}>
-              Project Name
-            </Typography>
+            <Typography className={classes.typography}>Project Name</Typography>
             {sortedIcon === true ? (
               <IconButton id="sort-a-z">
                 <ExpandLessIcon />
@@ -199,13 +198,19 @@ const TestingListComponent = ({ newproject }: any) => {
         </Grid>
       </Box>
       <div style={{ height: "62vh" }}>
-        {_DATA.currentData().map((items: any, index: any) => {
-          return (
-            <div key={index}>
-              <InfoTestingComponent items={items} />
-            </div>
-          );
-        })}
+        {_DATA
+          .currentData()
+          .reverse()
+          .filter((ele: any) =>
+            ele.name.toLowerCase().includes(search.toLowerCase())
+          )
+          .map((items: any, index: any) => {
+            return (
+              <div key={index}>
+                <InfoProjectComponent items={items} />
+              </div>
+            );
+          })}
       </div>
       <Grid container>
         <Grid item xs={11.8} className={classes.pagination}>
@@ -226,4 +231,4 @@ const TestingListComponent = ({ newproject }: any) => {
   );
 };
 
-export default TestingListComponent;
+export default ProjectListComponent;

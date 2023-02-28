@@ -6,25 +6,44 @@ import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 
-const TestingFilter = ({
+const ProjectFilter = ({
   project,
   anchorEl,
   open,
   handleClose,
   itemsCallBackHandler = () => {},
-}) => {
+  filterSelected,
+  setFilterSelected,
+  setChip,
+  chip,
+}: any) => {
   const [filterDataName, setFilterDataName] = useState("");
   const [filterDataEmail, setFilterDataEmail] = useState("");
 
   const doFilter = () => {
+    setChip(true);
     const newUsers = project?.filter(
       (u) =>
         u.name.toLowerCase().includes(filterDataName.toLowerCase()) ||
         u.customerName.toLowerCase().includes(filterDataEmail.toLowerCase())
     );
     itemsCallBackHandler(newUsers);
+
     handleClose();
   };
+
+  const updateProjectName = (value: any) => {
+    setFilterDataName(value);
+    setFilterSelected([...filterSelected, "Project Name"]);
+  };
+
+  const updateCustomerName = (value: any) => {
+    setFilterDataEmail(value);
+    setFilterSelected([...filterSelected, "Customer  Name"]);
+  };
+
+  console.log("filterSelected >>", filterSelected);
+
   return (
     <div>
       <Menu
@@ -53,7 +72,10 @@ const TestingFilter = ({
                   }}
                 />
               )}
-              onChange={(event, value) => setFilterDataName(value)}
+              // onChange={(event, value) => setFilterDataName(value)}
+              onChange={(event, value) => {
+                updateProjectName(value);
+              }}
             />
           </Stack>
         </div>
@@ -77,7 +99,10 @@ const TestingFilter = ({
                   }}
                 />
               )}
-              onChange={(event, value) => setFilterDataEmail(value)}
+              // onChange={(event, value) => setFilterDataEmail(value)}
+              onChange={(event, value) => {
+                updateCustomerName(value);
+              }}
             />
           </Stack>
         </div>
@@ -99,6 +124,7 @@ const TestingFilter = ({
               size="small"
               style={{ textTransform: "capitalize" }}
               onClick={doFilter}
+              disabled={!filterDataName || !filterDataEmail}
             >
               Save
             </Button>
@@ -109,4 +135,4 @@ const TestingFilter = ({
   );
 };
 
-export default TestingFilter;
+export default ProjectFilter;

@@ -37,12 +37,8 @@ const useStyles = makeStyles({
     textTransform: "capitalize",
     borderRadius: "20px",
     fontWeight: "bold",
-    paddingLeft: "1rem",
-    paddingRight: "1rem",
-    background: "#FFC107",
-    "&:hover": {
-      background: "#FFC107",
-    },
+    paddingLeft: "0.7rem",
+    paddingRight: "0.7rem",
   },
   savebtn: {
     width: "0.9rem",
@@ -330,10 +326,17 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
             <Button
               variant="contained"
               size="small"
-              className={classes.addnewbtn}
+              style={{
+                textTransform: "capitalize",
+                borderRadius: "20px",
+                fontWeight: "bold",
+                padding: "0.2rem 0.7rem ",
+              }}
             >
-              <span style={{ marginRight: "0.5rem", fontSize: "1rem" }}>+</span>
-              Add New
+              Create
+              <span style={{ marginLeft: "0.8rem", fontSize: "0.9rem" }}>
+                +
+              </span>
             </Button>
           </Link>
         </Grid>
@@ -375,7 +378,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
                 })}
               </Typography>
             </div>
-            <div style={{ marginTop: "0.2rem" }}>
+            {/* <div style={{ marginTop: "0.2rem" }}>
               <Button
                 variant="contained"
                 size="small"
@@ -389,7 +392,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
                 <span style={{ fontSize: "1rem" }}>+</span>
                 Filter
               </Button>
-            </div>
+            </div> */}
           </Grid>
         </Grid>
       </Grid>
@@ -430,7 +433,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
       </div>
 
       <div>
-        <FilterComponent
+        {/* <FilterComponent
           items={items}
           anchor={anchor}
           filterOpen={filterOpen}
@@ -439,7 +442,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
           chipData={chipData}
           setChipData={setChipData}
           itemsCallBackHandler={itemsCallBackHandler}
-        />
+        /> */}
       </div>
     </>
   );

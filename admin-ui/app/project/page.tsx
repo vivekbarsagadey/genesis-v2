@@ -1,13 +1,11 @@
+import ProjectHomeComponent from "./index";
 
-import { PrismaClient } from '@prisma/client'
-import React from 'react'
-import HomeComponent from './index'
-const Home = () => {
-  
+const page = () => {
   return (
-    <HomeComponent  />
-  )
-}
-export default Home
+    <div>
+      <ProjectHomeComponent> </ProjectHomeComponent>
+    </div>
+  );
+};
 
-
+export default page;

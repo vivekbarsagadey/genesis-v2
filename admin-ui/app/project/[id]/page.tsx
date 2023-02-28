@@ -1,10 +1,10 @@
 import React from 'react'
-import TestingCreate from '.'
+import ProjectCreate from '.'
 
 const page = () => {
   return (
     <div>
-        <TestingCreate/>
+        <ProjectCreate/>
     </div>
   )
 }

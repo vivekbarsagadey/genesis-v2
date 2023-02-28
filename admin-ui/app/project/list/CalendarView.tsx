@@ -6,7 +6,9 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import Grid from "@mui/material/Grid";
 const localizer = momentLocalizer(moment);
-const TestingCalendarView = ({ project }: any) => {
+
+
+const ProjectCalendarView = ({ project }: any) => {
   const [events, setEvents] = useState([]);
 
   const AllData = project.map((project: any) => {
@@ -34,4 +36,4 @@ const TestingCalendarView = ({ project }: any) => {
   );
 };
 
-export default TestingCalendarView;
+export default ProjectCalendarView;

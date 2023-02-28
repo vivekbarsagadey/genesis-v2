@@ -4,19 +4,13 @@ import { Grid, Typography, Button, TextField, Paper } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 
-const TestingCreate = () => {
+const ProjectCreate = () => {
   return (
     <div>
       <Grid container mt={3}>
         <Grid item xs={1}></Grid>
         <Grid item xs={10}>
           <Paper style={{ padding: "3rem" }}>
-            <Grid container mb={5}>
-              <Grid item xs={0.65}></Grid>
-              <Grid item xs={10}>
-                <Typography fontSize={"1.3rem"}>Create New Project</Typography>
-              </Grid>
-            </Grid>
             <Grid container style={{ width: "100%", alignItems: "center" }}>
               <Grid item xs={0.65}></Grid>
               <Grid item xs={3.3}>
@@ -66,50 +60,22 @@ const TestingCreate = () => {
               <Grid item xs={3.3}>
                 <Typography>Application</Typography>
               </Grid>
-              <Grid item xs={0.6}>
+              <Grid item xs={0.7}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={7}>
                 <Grid container>
-                  <Grid item xs={5.8}>
-                    <Grid container alignItems={"center"}>
-                      <Grid item xs={2}>
-                        <Checkbox />
-                      </Grid>
-                      <Grid item xs={10}>
-                        <Typography>Business to Business - Web</Typography>
-                      </Grid>
-                    </Grid>
+                  <Grid item xs={3}>
+                    <Checkbox />
                   </Grid>
-                  <Grid item xs={6}>
-                    <Grid container alignItems={"center"}>
-                      <Grid item xs={2}>
-                        <Checkbox />
-                      </Grid>
-                      <Grid item xs={10}>
-                        <Typography>Business to Business - Mobile</Typography>
-                      </Grid>
-                    </Grid>
+                  <Grid item xs={3}>
+                    <Checkbox />
                   </Grid>
-                  <Grid item xs={5.8}>
-                    <Grid container alignItems={"center"}>
-                      <Grid item xs={2}>
-                        <Checkbox />
-                      </Grid>
-                      <Grid item xs={10}>
-                        <Typography>Business to Customer - Web</Typography>
-                      </Grid>
-                    </Grid>
+                  <Grid item xs={3}>
+                    <Checkbox />
                   </Grid>
-                  <Grid item xs={6}>
-                    <Grid container alignItems={"center"}>
-                      <Grid item xs={2}>
-                        <Checkbox />
-                      </Grid>
-                      <Grid item xs={10}>
-                        <Typography>Business to Customer - Mobile</Typography>
-                      </Grid>
-                    </Grid>
+                  <Grid item xs={3}>
+                    <Checkbox />
                   </Grid>
                 </Grid>
               </Grid>
@@ -122,14 +88,30 @@ const TestingCreate = () => {
             >
               <Grid item xs={0.55}></Grid>
               <Grid item xs={4.2}></Grid>
-              <Grid item xs={7}></Grid>
+              <Grid item xs={7}>
+                <Grid container>
+                  <Grid item xs={3}>
+                    <Typography fontSize={"0.8rem"}>B2B-W</Typography>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Typography fontSize={"0.8rem"}>B2B-M</Typography>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Typography fontSize={"0.8rem"}>B2C-W</Typography>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Typography fontSize={"0.8rem"}>B2C-M</Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
             </Grid>
+
             <Grid container mt={6}>
               <Grid item xs={9}></Grid>
               <Grid item xs={3}>
                 <Grid container>
                   <Grid item xs={5.6}>
-                    <Link href={"home"} style={{ textDecoration: "none" }}>
+                    <Link href={"testing"} style={{ textDecoration: "none" }}>
                       <Button
                         variant="contained"
                         size="small"
@@ -167,4 +149,4 @@ const TestingCreate = () => {
   );
 };
 
-export default TestingCreate;
+export default ProjectCreate;

@@ -1,10 +1,12 @@
-"use client";
-
-
-export default function Layout({ children } : any) {
-  return (
-    <>
-      <main>{children}</main>
-    </>
-  )
-}
+export default function RootLayout({
+    children,
+  }: {
+    children: React.ReactNode
+  }) {
+    return (
+      <>
+        <>{children}</>
+      </>
+    )
+  }
+  

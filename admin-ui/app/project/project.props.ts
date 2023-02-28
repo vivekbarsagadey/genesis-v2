@@ -1,6 +1,6 @@
 import IProject from "./project.model";
 
-interface IUserComponentProps {
+interface IProjectComponentProps {
     items: Array<IProject>;
     itemsCallBackHandler? : (_project: Array<IProject> ) => void;
 }

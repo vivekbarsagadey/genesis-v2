@@ -1,7 +1,10 @@
 import React from "react";
+import ProjectReport from ".";
 
 const Report = () => {
-  return <div>This is Report</div>;
+  return <div>
+    <ProjectReport/>
+  </div>;
 };
 
 export default Report;
