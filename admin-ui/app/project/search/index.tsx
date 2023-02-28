@@ -1,8 +1,7 @@
-import Grid from "@mui/material/Grid";
-import IconButton from "@mui/material/IconButton";
-import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
@@ -10,7 +9,6 @@ const useStyles = makeStyles({
     border: "none",
     height: "4vh",
     width: "100%",
-    // paddingLeft: "7px",
     outline: "none",
   },
   box: {
@@ -23,22 +21,11 @@ const useStyles = makeStyles({
   },
 });
 
-const ProjectSearch = ({
-  newproject,
-  setNewProject,
-  search,
-  setSearch,
-}: any) => {
+const ProjectSearch = ({ listSearch, setListSearch }: any) => {
+  
   const classes = useStyles();
-  // const [search, setSearch] = useState("");
-
   const getSearch = (event: any) => {
-    setSearch(event.target.value);
-    // setNewProject(
-    //   newproject?.filter((ele: any) =>
-    //     ele.name.toLowerCase().includes(search.toLocaleLowerCase())
-    //   )
-    // );
+    setListSearch(event.target.value);
   };
 
   return (
@@ -50,7 +37,7 @@ const ProjectSearch = ({
             placeholder="Search"
             onChange={getSearch}
             className={classes.search}
-            value={search}
+            value={listSearch}
           />
           <IconButton>
             <SearchIcon />

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import Autocomplete from "@mui/material/Autocomplete";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Menu from "@mui/material/Menu";
 import Stack from "@mui/material/Stack";
-import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
+import { useState } from "react";
 
 const ProjectFilter = ({
   project,
@@ -14,14 +14,14 @@ const ProjectFilter = ({
   itemsCallBackHandler = () => {},
   filterSelected,
   setFilterSelected,
-  setChip,
-  chip,
+  setFilterChipType,
+
 }: any) => {
   const [filterDataName, setFilterDataName] = useState("");
   const [filterDataEmail, setFilterDataEmail] = useState("");
 
   const doFilter = () => {
-    setChip(true);
+    setFilterChipType(true);
     const newUsers = project?.filter(
       (u) =>
         u.name.toLowerCase().includes(filterDataName.toLowerCase()) ||

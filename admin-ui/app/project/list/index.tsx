@@ -1,18 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Box, Grid, IconButton, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import InfoTestingComponent from "../info";
-import { makeStyles } from "@mui/styles";
-import InfoUserComponent from "../info";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import ProjectPagination from "./ProjectListPagination";
-import usePagination from "./ProjectListPagination";
 import Pagination from "@mui/material/Pagination";
-import projectPagination from "./ProjectListPagination";
+import { makeStyles } from "@mui/styles";
 import InfoProjectComponent from "../info";
+import projectPagination from "./ProjectListPagination";
 
 const useStyles = makeStyles({
   container: {
@@ -36,87 +30,17 @@ const useStyles = makeStyles({
   },
 });
 
-const ProjectListComponent = ({ newproject, search }: any) => {
-  const [sortedIcon, setSortedIcon] = useState(true);
-  const [sortedIconLastName, setSortedIconLastName] = useState(true);
-  const [sortedIconEmail, setSortedIconEmail] = useState(true);
+const ProjectListComponent = ({ newproject, listSearch }: any) => {
   const classes = useStyles();
-
   let [page, setPage] = useState(1);
   const PER_PAGE = 8;
   const count = Math.ceil(newproject.length / PER_PAGE);
   const _DATA = projectPagination(newproject, PER_PAGE);
 
-  const handleChangePage = (e, p) => {
+  const handleChangePage = (e: any, p: any) => {
     setPage(p);
     _DATA.jump(p);
   };
-
-  // // Sorting logic
-  // const handleClick = () => {
-  //   setSortedIcon(!sortedIcon);
-  //   const sortData = [...items].sort((a, b) => {
-  //     return a.firstName > b.firstName ? 1 : -1;
-  //   });
-  //   setUsers(sortData);
-  // };
-  // const handleSort = () => {
-  //   setSortedIcon(!sortedIcon);
-  //   const sortData = [...items].reverse();
-  //   setUsers(sortData);
-  // };
-  // const handleClickLastName = () => {
-  //   setSortedIconLastName(!sortedIconLastName);
-  //   const sortedLastName = [...items].sort((a, b) => {
-  //     return a.lastName > b.lastName ? 1 : -1;
-  //   });
-  //   setUsers(sortedLastName);
-  // };
-  // const handleSortlastName = () => {
-  //   setSortedIconLastName(!sortedIconLastName);
-  //   const sortedLastName = [...items].sort().reverse();
-  //   setUsers(sortedLastName);
-  // };
-  // const handleClickEmail = () => {
-  //   setSortedIconEmail(!sortedIconEmail);
-  //   const sortedEmail = [...items].sort((a, b) => {
-  //     return a.email > b.email ? 1 : -1;
-  //   });
-  //   setUsers(sortedEmail);
-  // };
-  // const handleSortEmail = () => {
-  //   setSortedIconEmail(!sortedIconEmail);
-  //   const sortedEmail = [...items].sort().reverse();
-  //   setUsers(sortedEmail);
-  // };
-  // const handleClickMobile = () => {
-  //   setSortedIconMobile(!sortedIconMobile);
-  //   const sortedMobile = [...items].sort((a, b) => {
-  //     return a.email > b.email ? 1 : -1;
-  //   });
-  //   setUsers(sortedMobile);
-  // };
-  // const handleSortMobile = () => {
-  //   setSortedIconMobile(!sortedIconAddress);
-  //   const sortedMobile = [...items].sort().reverse();
-  //   setUsers(sortedMobile);
-  // };
-  // const handleClickAddress = () => {
-  //   setSortedIconAddress(!sortedIconAddress);
-  //   const sortedAdress = [...items].sort((a, b) => {
-  //     return a.email > b.email ? 1 : -1;
-  //   });
-  //   setUsers(sortedAdress);
-  // };
-  // const handleSortAddress = () => {
-  //   setSortedIconAddress(!sortedIconAddress);
-  //   const sortedAdress = [...items].sort().reverse();
-  //   setUsers(sortedAdress);
-  // };
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setShow(event.target.checked);
-  // };
-
   return (
     <div>
       <Box style={{ marginTop: "1rem" }}>
@@ -140,16 +64,6 @@ const ProjectListComponent = ({ newproject, search }: any) => {
             style={{ display: "flex", alignItems: "center" }}
           >
             <Typography className={classes.typography}>Project Name</Typography>
-            {sortedIcon === true ? (
-              <IconButton id="sort-a-z">
-                <ExpandLessIcon />
-              </IconButton>
-            ) : (
-              <IconButton>
-                {" "}
-                <KeyboardArrowDownIcon />
-              </IconButton>
-            )}
           </Grid>
           <Grid
             item
@@ -160,16 +74,6 @@ const ProjectListComponent = ({ newproject, search }: any) => {
             <Typography className={classes.typography}>
               Customer Name
             </Typography>
-            {sortedIconLastName === true ? (
-              <IconButton id="sort-a-z">
-                <ExpandLessIcon />
-              </IconButton>
-            ) : (
-              <IconButton>
-                {" "}
-                <KeyboardArrowDownIcon />
-              </IconButton>
-            )}
           </Grid>
           <Grid
             item
@@ -178,16 +82,6 @@ const ProjectListComponent = ({ newproject, search }: any) => {
             style={{ display: "flex", alignItems: "center" }}
           >
             <Typography className={classes.typography}>Application</Typography>
-            {sortedIconEmail === true ? (
-              <IconButton id="sort-a-z">
-                <ExpandLessIcon />
-              </IconButton>
-            ) : (
-              <IconButton>
-                {" "}
-                <KeyboardArrowDownIcon />
-              </IconButton>
-            )}
           </Grid>
 
           <Grid item xs={0.5} style={{ display: "flex", alignItems: "center" }}>
@@ -202,7 +96,7 @@ const ProjectListComponent = ({ newproject, search }: any) => {
           .currentData()
           .reverse()
           .filter((ele: any) =>
-            ele.name.toLowerCase().includes(search.toLowerCase())
+            ele.name.toLowerCase().includes(listSearch.toLowerCase())
           )
           .map((items: any, index: any) => {
             return (
