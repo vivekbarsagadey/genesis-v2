@@ -25,6 +25,7 @@ import ProjectKanbanView from "./list/KanbanView";
 import IProject from "./project.model";
 import ProjectSearch from "./search";
 import ProjectViewComponent from "./view";
+import { downloadExcel } from "react-export-table-to-excel";
 const useStyles = makeStyles({
   addnewbtn: {
     textTransform: "capitalize",
@@ -68,6 +69,14 @@ const ProjectHomeComponent = () => {
   const [filterSelected, setFilterSelected] = useState([]); // why the fealter is part of this file
   const [chip, setChip] = useState(false); // what is clip? , if is boolean, use "is" or "flag" etc
   const open = Boolean(anchorEl); // what is open ?
+  const header = [
+    "Id",
+    "createdAt",
+    "updatedAt",
+    " Project Name",
+    "Customer Name",
+    "Application",
+  ];
   const fetchData = () => {
     fetch("http://localhost:3000/api/projects")
       .then((r) => {
@@ -108,12 +117,8 @@ const ProjectHomeComponent = () => {
   const handleImportClose = () => {
     setOpenModule(false);
   };
-  const exportToExcell = async () => {
-    const fileName = `${"Project"}  ${new Date().toISOString().slice(0, 10)}`;
-    await xlsxDownload({ fileName: fileName, project: project });
-  };
   const exportPDF = async () => {
-    const fileName = `${"Project"}  ${new Date().toISOString().slice(0, 10)}`;
+    const fileName = `Project ${new Date().toISOString().slice(0, 10)}`;
     const headers = [["Project Name", "Customer Name", "Application"]];
     // what is data?
     // why do you have red error, you can not return [] in map... this is very bad proctise
@@ -125,32 +130,19 @@ const ProjectHomeComponent = () => {
     // i can see red mark
     await download({ headers: headers, project: data, fileName: fileName });
   };
-  const fileHandler = (event: any) => {
-    let fileObj = event.target.files[0];
-    //why do you have error here
-    ExcelRenderer(fileObj, (err, resp) => {
-      if (err) {
-      } else {
-        setFile({
-          cols: resp.cols,
-          rows: resp.rows,
-        });
-      }
-    });
-  };
   // what is sendData .... where do you want to send
-  const sendDataHandler = async () => {
-    //why do we have for loop .. this is wrong
-    for (let i = 1; i < file?.rows.length; i++) {
-      const users = {
-        name: file.rows[i][1],
-        customerName: file.rows[i][2],
-        application: file.rows[i][3],
-      };
-      await createUser(users);
-      handleImportClose();
-    }
-  };
+
+  function handleDownloadExcel() {
+    downloadExcel({
+      fileName: `Project ${new Date().toISOString().slice(0, 10)}`,
+      sheet: "react-export-table-to-excel",
+      tablePayload: {
+        header,
+        body: project,
+      },
+    });
+  }
+
   //create template for this grid and place data insde template template
   // dom code is very bad, you have to thing about code seperation and create comon components to handle filter and search and other thing like view etc
   // make sure all common component is common for all the screen, like filter, search , view, download, upload etc.component
@@ -210,7 +202,7 @@ const ProjectHomeComponent = () => {
             <MenuItem>
               <Typography
                 style={{ fontSize: "0.8rem" }}
-                onClick={exportToExcell}
+                onClick={handleDownloadExcel}
               >
                 Excel
               </Typography>
@@ -226,7 +218,7 @@ const ProjectHomeComponent = () => {
             <MenuItem>
               <CSVLink
                 data={project}
-                filename={`${"Project"}  ${new Date()
+                filename={`Project ${new Date()
                   .toISOString()
                   .slice(0, 10)}`}
                 className={classes.csvlink}
@@ -236,41 +228,7 @@ const ProjectHomeComponent = () => {
             </MenuItem>
           </Menu>
         </Grid>
-        <Grid item xs={0.5} sm={1.5} md={0.93} lg={0.4}>
-          <Tooltip title="Import" arrow>
-            <IconButton onClick={handleClickOpen}>
-              <ImportExportOutlinedIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
-          {/* <ViewsComponent handleCount={handleCount} /> */}
-          <Dialog
-            open={openModule}
-            onClose={() => setOpenModule(false)}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogContent>
-              <input type="file" onChange={fileHandler} />
-            </DialogContent>
-            <DialogActions>
-              <Button
-                onClick={() => setOpenModule(false)}
-                variant="contained"
-                className={classes.cancelbtn}
-              >
-                Cancel
-              </Button>
-              <Button
-                onClick={sendDataHandler}
-                autoFocus
-                variant="contained"
-                className={classes.savebtn}
-              >
-                Save
-              </Button>
-            </DialogActions>
-          </Dialog>
-        </Grid>
+        {/* Import Functionality */}
         <Grid item xs={2}>
           <Grid container>
             <ProjectViewComponent handleCount={handleCount} />
