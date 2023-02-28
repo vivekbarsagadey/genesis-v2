@@ -1,4 +1,5 @@
 export { ButtonComponent } from "./button";
+export {SearchComponent} from './search' 
 export {
   ErrorComponent,
   InputComponent,

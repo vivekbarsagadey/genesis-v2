@@ -42,6 +42,8 @@ class ValidationErrors {
 class ValidationError extends Error {
   constructor(private constraint: Constraint) {
     super(constraint.message);
+    console.log(constraint.message);
+    
     Object.setPrototypeOf(this, ValidationError.prototype);
   }
 
@@ -53,7 +55,7 @@ class ValidationError extends Error {
     return this.constraint.message || `${this.constraint.field} is required`;
   }
   getErrorConstraint() {
-    return this.constraint;
+    return this.constraint.message;
   }
 }
 

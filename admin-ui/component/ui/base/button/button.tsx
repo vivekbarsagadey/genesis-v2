@@ -1,15 +1,17 @@
+"use client";
 import React from 'react'
 import { Button } from '@mui/material'
-import InputProps from '../input/props'
+import {InputProps} from '../input/props'
 
 
-const ButtonComponent = ({}:InputProps) => {
+const ButtonComponent = ({label, onClick}:InputProps) => {
   return (
     <div>
         <Button
-    variant='contained'
-    fullWidth
-    ></Button>
+        variant="contained"
+        onClick={onClick}
+        fullWidth
+    >{label}</Button>
     </div>
   )
 }

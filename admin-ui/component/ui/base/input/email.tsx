@@ -48,13 +48,17 @@ const InputEmailComponent = ({
   };
 
   const handleChange = (e: any) => {
-    setValue(e);
+    // console.log("email data -->>",_value)
+    setValue(e.target.value)
     doValidation(e);
-    update({ name: label, value: e });
+     update({ name: label, value:e.target.value});    
+     
   };
+  console.log("__value", _value);
+  updates = register({ name: label, value:_value });
 
   useEffect(() => {
-    updates = register({ name: label, value:value });
+    
     setValue(value || '');
     addValidator({ field: label, validatorType: ValidatorType.REQUIRED });
     addValidator({ field: label, validatorType: ValidatorType.EMAIL });
@@ -67,7 +71,7 @@ const InputEmailComponent = ({
         placeholder={placeHolder}
         defaultValue={value}
         type="email"
-        // value={_value}
+        //  value={_value}
         onChange={handleChange}
         startAdornment={
           <InputAdornment position="start">
