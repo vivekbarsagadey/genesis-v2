@@ -122,7 +122,7 @@ model Component{
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
-  name           String   @unique
+  name           String   
   screenId       String?  @map("screen_id") @db.ObjectId
   screen         Screen? @relation(fields: [screenId], references: [id])
 
