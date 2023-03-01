@@ -28,7 +28,7 @@ export default function Page({ params, searchParams }: {
     return <>Please wait there is some error</>
   }
   if (data) {
-    console.log(data)
+
   }
     
   return <CompanyComponent company={data} />

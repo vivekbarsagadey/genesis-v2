@@ -57,7 +57,7 @@ const InfoProjectComponent = ({ items }: any) => {
         <Grid item xs={1}>
           <Grid container>
             <Grid item xs={3.8}>
-              <Link href={"/testing/-1"} style={{ textDecoration: "none" }}>
+              <Link href={"/project/-1"} style={{ textDecoration: "none" }}>
                 <Tooltip title="Edit">
                   <IconButton>
                     <EditIcon fontSize="small" />

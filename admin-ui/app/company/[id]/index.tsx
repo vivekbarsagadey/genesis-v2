@@ -132,7 +132,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
         await updateCompany(newCompany);
         router.push("/company");
       } catch (error) {
-        console.log(error);
+
       }
     } else {
       try {
@@ -149,7 +149,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
         await createCompany(_company);
         router.push("/company");
       } catch (error) {
-        console.log(error);
+
       }
     }
   };

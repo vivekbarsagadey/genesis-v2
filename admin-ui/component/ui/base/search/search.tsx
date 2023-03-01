@@ -20,7 +20,6 @@ const SearchComponent = ({ placeHolder, type }: InputProps) => {
     const value = e.target.value;
     setSearchValue(value);
   };
-  console.log("search value", searchValue);
   return (
     <>
       <TextField

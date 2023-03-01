@@ -23,9 +23,7 @@ const useForm = () => {
   };
 
   const submit = () => {
-    console.log("this is form", form);
     form.forEach((f) => {
-      console.log("this is f from", f);
     });
   };
 

@@ -7,11 +7,6 @@ const Css = ({ menuList }: any) => {
   const cssP = components[1].map((general: any) =>
     general.map((d: any) => d.css)
   );
-
-  // console.log(
-  //   "API Container -> Data ",
-  //   components[1].map((general: any) => general.map((d: any) => d.css))
-  // );
   return (
     <>
       <Grid container>

@@ -7,10 +7,6 @@ const Api = ({ menuList }: any) => {
   const apiData = components[1].map((general: any) =>
     general.map((d: any) => d.api)
   );
-  // console.log(
-  //   "api Container -> Data ",
-  //   components[1].map((general: any) => general.map((d: any) => d.api))
-  // );
   return (
     <>
       <Grid container>

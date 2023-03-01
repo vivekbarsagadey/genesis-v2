@@ -41,9 +41,6 @@ const ProjectFilter = ({
     setFilterDataEmail(value);
     setFilterSelected([...filterSelected, "Customer  Name"]);
   };
-
-  console.log("filterSelected >>", filterSelected);
-
   return (
     <div>
       <Menu

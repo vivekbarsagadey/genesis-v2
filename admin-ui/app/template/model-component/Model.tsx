@@ -7,10 +7,6 @@ const Model = ({ menuList }: any) => {
   const modelData = components[1].map((general: any) =>
     general.map((d: any) => d.model)
   );
-  // console.log(
-  //   "model Container -> Data ",
-  //   components[1].map((general: any) => general.map((d: any) => d.model))
-  // );
   return (
     <>
       <Grid container>

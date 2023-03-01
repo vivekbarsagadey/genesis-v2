@@ -17,8 +17,6 @@ const Home = () => {
   // companies.push(...result)
   setUsers(result)
   }
-  // console.log("companiescompanies",companies);
-  
   return (
     <>
     

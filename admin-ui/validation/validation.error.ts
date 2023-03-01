@@ -42,7 +42,6 @@ class ValidationErrors {
 class ValidationError extends Error {
   constructor(private constraint: Constraint) {
     super(constraint.message);
-    console.log(constraint.message);
     
     Object.setPrototypeOf(this, ValidationError.prototype);
   }

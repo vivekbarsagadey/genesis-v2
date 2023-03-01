@@ -65,7 +65,7 @@ const ProjectHomeComponent = () => {
   const [newproject, setNewProject] = useState(project); // This is a duplicate Json Data
   const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null); // what is anchorEl .... you should have proper name
-  const [listSearch, setListSearch] = useState(""); // what is search ? , search will be component, either you will have search Critaira, of searchResult
+  const [listSearch, setListSearch] = useState("");
   const [filterSelected, setFilterSelected] = useState([]);
   const [filterChipType, setFilterChipType] = useState(false);
 
@@ -138,11 +138,6 @@ const ProjectHomeComponent = () => {
     });
   }
 
-  //create template for this grid and place data insde template template
-  // dom code is very bad, you have to thing about code seperation and create comon components to handle filter and search and other thing like view etc
-  // make sure all common component is common for all the screen, like filter, search , view, download, upload etc.component
-  // no hard coded lable, it should come from properties to support I28N
-  // why i can see red error for all the thing
   return (
     <>
       <Grid container mt={1}>
@@ -225,7 +220,7 @@ const ProjectHomeComponent = () => {
             <ProjectViewComponent handleCount={handleCount} />
           </Grid>
         </Grid>
-        <Grid item xs={5.8} display={"flex"}>
+        <Grid item xs={6.2} display={"flex"}>
           <Grid item xs={9.5} mt={0.7}>
             {filterChipType ? (
               <>
@@ -252,7 +247,7 @@ const ProjectHomeComponent = () => {
               </>
             ) : null}
           </Grid>
-          <Grid item xs={2} display={"flex"}>
+          <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
             <Link href={"/project/create"} style={{ textDecoration: "none" }}>
               <Button
                 variant="contained"

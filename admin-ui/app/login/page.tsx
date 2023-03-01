@@ -19,13 +19,9 @@ import Alert from "@mui/material/Alert";
 
 const useStyles = makeStyles({
   login_button: {
-    background: "#FFC107",
     width: "100%",
     color: "white",
     textTransform: "capitalize",
-    "&:hover": {
-      background: "#FFC107",
-    },
   },
   background_style: {
     backgroundImage: `url(${"./images/loginbackground1.png"})`,
@@ -65,9 +61,7 @@ const SignIn: NextPage = (props): JSX.Element => {
         password: userInfo.password,
         redirect: false,
       });
-      // console.log("res",res)
       if (!res.error) {
-        // console.log(res);
         router.push("/");
       }
     } else {
@@ -87,7 +81,6 @@ const SignIn: NextPage = (props): JSX.Element => {
   };
   return (
     <>
-    
       <Grid container className={classes.background_style}>
         <Grid item style={{ position: "absolute", top: "5%" }} xs={12}>
           <Grid container>
@@ -122,12 +115,10 @@ const SignIn: NextPage = (props): JSX.Element => {
                       User Name or Email Address*{" "}
                     </Typography>
                     <TextField
-                      color="warning"
                       size="small"
                       fullWidth
                       classes={{ root: classes.customTextField }}
-                      placeholder="User@Comfort 
-                      Zone.com"
+                      placeholder="User@Genesis.com"
                       value={userInfo.email}
                       onChange={({ target }) =>
                         setUserInfo({ ...userInfo, email: target.value })
@@ -141,7 +132,6 @@ const SignIn: NextPage = (props): JSX.Element => {
                       Password
                     </Typography>
                     <TextField
-                      color="warning"
                       size="small"
                       fullWidth
                       classes={{ root: classes.customTextField }}

@@ -90,7 +90,7 @@ const CreateProjectComponent = () => {
           setName("");
         })
         .catch((err) => {
-          // console.log(err.message);
+
         });
     }
   };

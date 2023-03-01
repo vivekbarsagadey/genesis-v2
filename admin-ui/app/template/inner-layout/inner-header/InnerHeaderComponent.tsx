@@ -50,8 +50,6 @@ const InnerHeaderComponent = ({
     fetchData();
   }, []);
 
-  // console.log("screens2 ",screens2);
-
   const removeScreen = (screenR: any) => {
     // DEL Call for sreen remove
     fetch(`http://localhost:3000/api/screens/${screenR.id}`, {
@@ -73,19 +71,12 @@ const InnerHeaderComponent = ({
   const innerSectionData = dragList.map((ele: any) => ele.properties);
 
   const saveJsonData = () => {
-    // console.log("JSON ", [
-    //   { projectName: project[0].name },
-    //   { component: dragList },
-    //   { property: innerSectionData },
-    // ]);
-
     var json = JSON.stringify([
       { projectName: project[0].name },
       { component: dragList },
       { property: innerSectionData },
       { pages: screens2[0]?.name },
     ]);
-    console.log("json >>", json);
   };
 
   return (

@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
 import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 interface IApplicationType {
   id: Number;
   type: String;
@@ -36,11 +36,9 @@ const ProjectCreate = () => {
   const [customerName, setCustomerName] = useState<String>("");
   const [application, setApplication] = useState<String>("");
   const router = useRouter();
-
   const getApplicationType = (_TypeR: any) => {
     setApplication(_TypeR.label);
   };
-
   const updateProjectName = (e: any) => {
     setProjectName(e.target.value);
   };
@@ -49,8 +47,6 @@ const ProjectCreate = () => {
   };
 
   const updateMyProjectData = () => {
-    // console.log(projectName,customerName,application);
-
     fetch("http://localhost:3000/api/projects", {
       method: "POST",
       body: JSON.stringify({
@@ -69,9 +65,7 @@ const ProjectCreate = () => {
         setApplication("");
       })
       .catch((err) => {
-        console.log(err.message);
       });
-
     router.push("/project");
   };
 
@@ -79,7 +73,7 @@ const ProjectCreate = () => {
     <div>
       <Grid container mt={-0.8}>
         <Grid item xs={12}>
-          <Paper style={{ padding: "3rem", height: "90.3vh" }}>
+          <Paper style={{ padding: "3rem", height: "92.6vh" }}>
             <Grid container mb={5}>
               <Grid item xs={0.65}></Grid>
               <Grid item xs={10}>
@@ -152,7 +146,6 @@ const ProjectCreate = () => {
                             <Grid item xs={2}>
                               <Checkbox
                                 onClick={() => getApplicationType(application)}
-                             
                               />
                             </Grid>
                             <Grid item xs={10}>

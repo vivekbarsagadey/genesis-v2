@@ -59,7 +59,6 @@ const HeaderComponent = ({ project }: any) => {
           setScreenName("");
         })
         .catch((err) => {
-          // console.log(err.message);
         });
     }
     handleCloseModal();

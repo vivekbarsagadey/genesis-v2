@@ -4,13 +4,47 @@ import { Grid, Typography, Button, TextField, Paper } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 
+interface IApplicationType {
+  id: Number;
+  type: String;
+  label: String;
+}
+
+const applicationType = [
+  {
+    id: 1,
+    type: "B2C",
+    label: "Business to Customer - Web",
+  },
+  {
+    id: 2,
+    type: "B2C",
+    label: "Business to Customer - Mobile",
+  },
+  {
+    id: 3,
+    type: "B2B",
+    label: "Business to Business - Web",
+  },
+  {
+    id: 4,
+    type: "B2B",
+    label: "Business to Business - Mobile",
+  },
+];
+
 const ProjectCreate = () => {
   return (
     <div>
-      <Grid container mt={3}>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={10}>
-          <Paper style={{ padding: "3rem" }}>
+      <Grid container mt={-0.8}>
+        <Grid item xs={12}>
+          <Paper style={{ padding: "3rem", height: "92.6vh" }}>
+            <Grid container mb={5}>
+              <Grid item xs={0.65}></Grid>
+              <Grid item xs={10}>
+                <Typography fontSize={"1.3rem"}>Edit Project</Typography>
+              </Grid>
+            </Grid>
             <Grid container style={{ width: "100%", alignItems: "center" }}>
               <Grid item xs={0.65}></Grid>
               <Grid item xs={3.3}>
@@ -60,23 +94,27 @@ const ProjectCreate = () => {
               <Grid item xs={3.3}>
                 <Typography>Application</Typography>
               </Grid>
-              <Grid item xs={0.7}>
+              <Grid item xs={0.6}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={7}>
                 <Grid container>
-                  <Grid item xs={3}>
-                    <Checkbox />
-                  </Grid>
-                  <Grid item xs={3}>
-                    <Checkbox />
-                  </Grid>
-                  <Grid item xs={3}>
-                    <Checkbox />
-                  </Grid>
-                  <Grid item xs={3}>
-                    <Checkbox />
-                  </Grid>
+                  {applicationType?.map(
+                    (application: IApplicationType, index) => {
+                      return (
+                        <Grid item xs={5.8} key={index}>
+                          <Grid container alignItems={"center"}>
+                            <Grid item xs={2}>
+                              <Checkbox />
+                            </Grid>
+                            <Grid item xs={10}>
+                              <Typography>{application.label}</Typography>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      );
+                    }
+                  )}
                 </Grid>
               </Grid>
             </Grid>
@@ -88,33 +126,17 @@ const ProjectCreate = () => {
             >
               <Grid item xs={0.55}></Grid>
               <Grid item xs={4.2}></Grid>
-              <Grid item xs={7}>
-                <Grid container>
-                  <Grid item xs={3}>
-                    <Typography fontSize={"0.8rem"}>B2B-W</Typography>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <Typography fontSize={"0.8rem"}>B2B-M</Typography>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <Typography fontSize={"0.8rem"}>B2C-W</Typography>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <Typography fontSize={"0.8rem"}>B2C-M</Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
+              <Grid item xs={7}></Grid>
             </Grid>
-
             <Grid container mt={6}>
               <Grid item xs={9}></Grid>
               <Grid item xs={3}>
                 <Grid container>
                   <Grid item xs={5.6}>
-                    <Link href={"testing"} style={{ textDecoration: "none" }}>
+                    <Link href={"/project"} style={{ textDecoration: "none" }}>
                       <Button
                         variant="contained"
-                        size="small"
+                        size="medium"
                         style={{
                           borderRadius: "5px",
                           textTransform: "capitalize",
@@ -128,7 +150,7 @@ const ProjectCreate = () => {
                   <Grid item xs={6}>
                     <Button
                       variant="contained"
-                      size="small"
+                      size="medium"
                       style={{
                         borderRadius: "5px",
                         textTransform: "capitalize",
@@ -143,7 +165,6 @@ const ProjectCreate = () => {
             </Grid>
           </Paper>
         </Grid>
-        <Grid item xs={1}></Grid>
       </Grid>
     </div>
   );

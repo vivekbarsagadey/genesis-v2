@@ -23,8 +23,6 @@ function doValidation(_errors: ValidationError[], context: RuleContext) {
       }
     } catch (e) {
       if (e instanceof ValidationError) {
-        console.log(e);
-        
         _errors.push(e);
       }
     }

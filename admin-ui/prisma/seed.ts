@@ -5,7 +5,6 @@ async function main() {
   
     // add default value
 
-        //  console.log("this is data drom seeding")
     const user = await prisma.user.create({
       data:{
         name:"Faisal Hayat",

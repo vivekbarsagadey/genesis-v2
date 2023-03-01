@@ -93,7 +93,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
     //just pass the fileObj as parameter
     ExcelRenderer(fileObj, (err, resp) => {
       if (err) {
-        console.log(err);
+     
       } else {
         setFile({
           cols: resp.cols,
