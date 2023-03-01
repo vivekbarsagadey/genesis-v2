@@ -22,7 +22,7 @@ const ProjectCalendarView = ({ project }: any) => {
     setEvents(AllData);
   }, []);
   return (
-    <Grid pt={1} container style={{ height: "73vh" }}>
+    <Grid pt={1} container height={"80vh"}>
       <Grid item xs={12} px={2.5}>
         <Calendar
           events={events}

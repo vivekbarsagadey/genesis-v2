@@ -1,24 +1,13 @@
-import { IconButton } from "@mui/material";
 import Card from "@mui/material/Card/Card";
 import Grid from "@mui/material/Grid";
 import Pagination from "@mui/material/Pagination";
 import Typography from "@mui/material/Typography";
-import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/system";
 import { useState } from "react";
+import { ListStyle as style } from "./ListStyle";
 import projectGridPagination from "./ProjectGridPagination";
 
-const useStyles = makeStyles({
-  pagination: {
-    display: "flex",
-    justifyContent: "flex-end",
-    marginTop: "2rem",
-    position: "relative",
-  },
-});
-
 const ProjectGridView = ({ copyProject }: any) => {
-  const classes = useStyles();
   // Pagination logic
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
@@ -113,7 +102,7 @@ const ProjectGridView = ({ copyProject }: any) => {
             })}
         </Grid>
         <Grid container>
-          <Grid item xs={11.8} className={classes.pagination}>
+          <Grid item xs={11.8} style={style.pagination}>
             <div style={{ position: "fixed" }}>
               <Pagination
                 count={count}

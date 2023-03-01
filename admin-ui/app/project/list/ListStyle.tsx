@@ -22,5 +22,9 @@ const ListStyle = {
     display: "flex",
     alignItems: "center",
   },
+  loader: {
+    width: "100%",
+    marginTop: "-1.7rem",
+  },
 };
 export { ListStyle };
