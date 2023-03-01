@@ -4,7 +4,16 @@ import { makeStyles } from "@mui/styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Grid, Typography, TextField, Box, Button, FormControl, Select, MenuItem } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  TextField,
+  Box,
+  Button,
+  FormControl,
+  Select,
+  MenuItem,
+} from "@mui/material";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -12,8 +21,6 @@ import ICompany from "../company.model";
 import { createCompany, updateCompany } from "../services/CompanyServices";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-
-
 
 const useStyles = makeStyles({
   errormessage: {
@@ -30,7 +37,6 @@ const useStyles = makeStyles({
   },
 });
 
-        
 const country = [
   { id: 1, name: "India", label: "India" },
   { id: 2, name: "Australia", label: "Australia" },
@@ -39,7 +45,6 @@ const country = [
   { id: 5, name: "US", label: "US" },
   { id: 5, name: "UK", label: "UK" },
 ];
-
 
 const state = [
   { id: 1, name: "Maharastra", label: "Maharastra" },
@@ -59,10 +64,10 @@ const schema = yup
   .object({
     name: yup.string().required("Comapany Name is required"),
     mobile: yup
-    .string()
-    .required("Mobile Number is Required")
-    .min(10, "Enter 10-digit Mobile Number")
-    .max(10, "Enter Number that's 10 or Less"),
+      .string()
+      .required("Mobile Number is Required")
+      .min(10, "Enter 10-digit Mobile Number")
+      .max(10, "Enter Number that's 10 or Less"),
     address: yup.string().required("Address is required"),
     email: yup
       .string()
@@ -115,7 +120,6 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
   const router = useRouter();
 
   const onSubmit = async (data: any) => {
-   
     if (company?._id) {
       try {
         const newCompany = {
@@ -132,7 +136,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
         await updateCompany(newCompany);
         router.push("/company");
       } catch (error) {
-
+        console.log(error);
       }
     } else {
       try {
@@ -149,7 +153,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
         await createCompany(_company);
         router.push("/company");
       } catch (error) {
-
+        console.log(error);
       }
     }
   };
@@ -158,11 +162,12 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box className={classes.box}>
-          
-          <Grid container spacing={2} p={3} >
-          <Grid item xs={12} pb={3}>
-          <Typography fontWeight='bold' fontSize='30px' noWrap>Create Company</Typography>
-          </Grid>
+          <Grid container spacing={2} p={3}>
+            <Grid item xs={12} pb={3}>
+              <Typography fontWeight="bold" fontSize="30px" noWrap>
+                Create Company
+              </Typography>
+            </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>Company Name:</Typography>
               <TextField
@@ -207,44 +212,44 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>Country:</Typography>
               <FormControl fullWidth size="small">
-              <Select
-                onChange={(e) =>
-                  setValue("country", e.target.value, {
-                    shouldValidate: true,
-                  })
-                }
-              >
-                {country.map((c) => {
-                  return (
-                    <MenuItem key={c.id} value={c.name}>
-                      {c.label}
-                    </MenuItem>
-                  );
-                })}
-              </Select>
-            </FormControl>
+                <Select
+                  onChange={(e) =>
+                    setValue("country", e.target.value, {
+                      shouldValidate: true,
+                    })
+                  }
+                >
+                  {country.map((c) => {
+                    return (
+                      <MenuItem key={c.id} value={c.name}>
+                        {c.label}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+              </FormControl>
               <p className={classes.errormessage}>{errors.country?.message}</p>
             </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>State:</Typography>
-             
-                <FormControl fullWidth size="small">
-              <Select
-                onChange={(event) =>
-                  setValue("state", event.target.value, {
-                    shouldValidate: true,
-                  })
-                }
-              >
-                {state.map((c) => {
-                  return (
-                    <MenuItem key={c.id} value={c.name}>
-                      {c.label}
-                    </MenuItem>
-                  );
-                })}
-              </Select>
-            </FormControl>
+
+              <FormControl fullWidth size="small">
+                <Select
+                  onChange={(event) =>
+                    setValue("state", event.target.value, {
+                      shouldValidate: true,
+                    })
+                  }
+                >
+                  {state.map((c) => {
+                    return (
+                      <MenuItem key={c.id} value={c.name}>
+                        {c.label}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+              </FormControl>
               <p className={classes.errormessage}>{errors.address?.message}</p>
             </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
@@ -267,31 +272,38 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
               />
               <p className={classes.errormessage}>{errors.address?.message}</p>
             </Grid>
-           
 
             <Grid item xs={12} textAlign="right">
               <Link href={"/company"} className={classes.buttons}>
-                <Button variant="contained" style={{ marginRight: "4px",background:'#FFC107' }}>
+                <Button
+                  variant="contained"
+                  style={{ marginRight: "4px", background: "#FFC107" }}
+                >
                   Cancel
                 </Button>
               </Link>
-              <Button type="submit" variant="contained" onClick={handleCreate} style={{background:'#FFC107'}}>
+              <Button
+                type="submit"
+                variant="contained"
+                onClick={handleCreate}
+                style={{ background: "#FFC107" }}
+              >
                 Submit
               </Button>
 
               <Snackbar
-                    open={create}
-                    autoHideDuration={6000}
-                    onClose={handleClose}
-                  >
-                    <Alert
-                      onClose={handleClose}
-                      severity="success"
-                      sx={{ width: "100%" }}
-                    >
-                       Sucessfully...
-                    </Alert>
-                  </Snackbar>
+                open={create}
+                autoHideDuration={6000}
+                onClose={handleClose}
+              >
+                <Alert
+                  onClose={handleClose}
+                  severity="success"
+                  sx={{ width: "100%" }}
+                >
+                  Sucessfully...
+                </Alert>
+              </Snackbar>
             </Grid>
           </Grid>
         </Box>

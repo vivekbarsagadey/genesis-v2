@@ -36,7 +36,7 @@ import CalenderViewComponent from "./list/CalenderViewComponent";
 const useStyles = makeStyles({
   createButton: {
     borderRadius: "1.5rem",
-    textTransform:'capitalize'
+    textTransform: "capitalize",
   },
 });
 interface HomeComponentProps {
@@ -49,7 +49,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
   const [file, setFile] = useState(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(false);
   const Open = Boolean(menuItem);
   // for import popup
   const [openModule, setOpenModule] = React.useState(false);
@@ -92,9 +92,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
 
     //just pass the fileObj as parameter
     ExcelRenderer(fileObj, (err, resp) => {
-      if (err) {
-     
-      } else {
+      if (!err) {
         setFile({
           cols: resp.cols,
           rows: resp.rows,
@@ -121,29 +119,53 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
     }
   };
 
-  const exportPDF =async () => {
-    const headers = [[" COMPANY NAME", "EMAIL","CONTACT","ADDRESS","COUNTRY","STATE","CITY","PINCODE"]];
+  const exportPDF = async () => {
+    const headers = [
+      [
+        " COMPANY NAME",
+        "EMAIL",
+        "CONTACT",
+        "ADDRESS",
+        "COUNTRY",
+        "STATE",
+        "CITY",
+        "PINCODE",
+      ],
+    ];
     const title = "Companies Report";
-    const fileName = "companies.pdf"
-    const data = items.map((elt) => [elt.name, elt.email,elt.mobile,elt.address,elt.country,elt.state,elt.city,elt.pinCode]);
-    await download({ headers: headers, items: data, title: title, fileName: fileName });
+    const fileName = "companies.pdf";
+    const data = items.map((elt) => [
+      elt.name,
+      elt.email,
+      elt.mobile,
+      elt.address,
+      elt.country,
+      elt.state,
+      elt.city,
+      elt.pinCode,
+    ]);
+    await download({
+      headers: headers,
+      items: data,
+      title: title,
+      fileName: fileName,
+    });
     setmenuItem(null);
   };
 
-  const exportToXLSX = async(items:any) => { 
-    const fileName = "Companies"
+  const exportToXLSX = async (items: any) => {
+    const fileName = "Companies";
     await xlsxDownload({ fileName: fileName, items: items });
     setmenuItem(null);
   };
 
- const handleCount =(data :string)=>{
-  setCount(data)
- }
+  const handleCount = (data: string) => {
+    setCount(data);
+  };
 
- const removeItem = async(companies:any)=>{
-  await deleteCompany(companies);
-
-}
+  const removeItem = async (companies: any) => {
+    await deleteCompany(companies);
+  };
   return (
     <>
       <Grid container spacing={2} p={3}>
@@ -153,21 +175,29 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
             itemsCallBackHandler={itemsCallBackHandler}
           />
         </Grid>
-        <Grid item xs={12}  sm={6} md={6} lg={6} display="flex"  alignItems="center">
-          <Tooltip title="Filter" >
-          <IconButton
-            aria-controls={open ? "basic-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick} 
-          >
-            <FilterAltIcon />
-          </IconButton>
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          md={6}
+          lg={6}
+          display="flex"
+          alignItems="center"
+        >
+          <Tooltip title="Filter">
+            <IconButton
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+            >
+              <FilterAltIcon />
+            </IconButton>
           </Tooltip>
           <Tooltip title="Import">
-          <IconButton onClick={handleClickOpen}>
-            <ImportExportOutlinedIcon />
-          </IconButton>
+            <IconButton onClick={handleClickOpen}>
+              <ImportExportOutlinedIcon />
+            </IconButton>
           </Tooltip>
           <Dialog
             open={openModule}
@@ -194,15 +224,15 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
               </Button>
             </DialogActions>
           </Dialog>
-          <Tooltip title='Export'>
-          <IconButton
-            aria-controls={Open ? "basic-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={Open ? "true" : undefined}
-            onClick={handleClickData}
-          >
-            <FileDownloadOutlinedIcon />
-          </IconButton>
+          <Tooltip title="Export">
+            <IconButton
+              aria-controls={Open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={Open ? "true" : undefined}
+              onClick={handleClickData}
+            >
+              <FileDownloadOutlinedIcon />
+            </IconButton>
           </Tooltip>
           <Menu
             id="basic-menu"
@@ -214,7 +244,10 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
             }}
           >
             <MenuItem>
-              <Typography fontSize="0.8rem" onClick={(e) => exportToXLSX(items)}>
+              <Typography
+                fontSize="0.8rem"
+                onClick={(e) => exportToXLSX(items)}
+              >
                 Excel
               </Typography>
             </MenuItem>
@@ -225,45 +258,64 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
             </MenuItem>
             <MenuItem>
               <Typography fontSize="0.8rem" onClick={handleClose1}>
-              <CSVLink data={items} filename={`Companies_tamplate`} style={{ textDecoration: "none",color:"black" }}>
-                 CSV
-              </CSVLink>
-
+                <CSVLink
+                  data={items}
+                  filename={`Companies_tamplate`}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  CSV
+                </CSVLink>
               </Typography>
             </MenuItem>
           </Menu>
-          <ViewsComponent  handleCount={handleCount}  />
-        </Grid> 
-       
-        <Grid item xs={12} sm={2} md={2} lg={2} textAlign="right">
+          <ViewsComponent handleCount={handleCount} />
+        </Grid>
 
-       {checked && <IconButton onClick={()=>removeItem(items)} >  <DeleteOutlineIcon/></IconButton>}
+        <Grid item xs={12} sm={2} md={2} lg={2} textAlign="right">
+          {checked && (
+            <IconButton onClick={() => removeItem(items)}>
+              {" "}
+              <DeleteOutlineIcon />
+            </IconButton>
+          )}
           <Link href={"/company/-1"} style={{ textDecoration: "none" }}>
             <Tooltip title="Create">
-            <Button variant="contained" className={classes.createButton}>
-              <AddIcon fontSize="small" /> Create
-            </Button>
+              <Button variant="contained" className={classes.createButton}>
+                <AddIcon fontSize="small" /> Create
+              </Button>
             </Tooltip>
           </Link>
         </Grid>
-        </Grid>
+      </Grid>
 
-        <Grid item xs={12}  pl={3} pr={3} pt={1}>
+      <Grid item xs={12} pl={3} pr={3} pt={1}>
         {(() => {
-        switch (count) { 
-          case 'List':
-          return  <ListViewComponent companies={companies}  setCompanies={setCompanies} 
-          checked={checked} setChecked={setChecked}  ></ListViewComponent> 
-           case 'Graph':
-          return  <GraphViewComponent items={companies} ></GraphViewComponent> 
-          case 'Calender':
-            return <CalenderViewComponent items={companies}></CalenderViewComponent>
-          default:
-            return <GridViewComponent items={companies} /> 
-        }
-      })()}
-        </Grid>
-     
+          switch (count) {
+            case "List":
+              return (
+                <ListViewComponent
+                  companies={companies}
+                  setCompanies={setCompanies}
+                  checked={checked}
+                  setChecked={setChecked}
+                ></ListViewComponent>
+              );
+            case "Graph":
+              return (
+                <GraphViewComponent items={companies}></GraphViewComponent>
+              );
+            case "Calender":
+              return (
+                <CalenderViewComponent
+                  items={companies}
+                ></CalenderViewComponent>
+              );
+            default:
+              return <GridViewComponent items={companies} />;
+          }
+        })()}
+      </Grid>
+
       <div>
         <FilterComponent
           items={items}

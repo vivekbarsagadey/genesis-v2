@@ -1,22 +1,22 @@
-import React from "react";
-import { Grid, IconButton, Typography } from "@mui/material";
-import Logo from "./Sidebar/Logo";
-import SidebarComponent from "./Sidebar/SidebarComponent";
+import React, { useState } from "react";
+import { Grid } from "@mui/material";
+import { useSession } from "next-auth/react";
 import HeaderComponent from "./Header/HeaderComponent";
-import { useSession, signIn, signOut } from "next-auth/react";
+import Logo from "./Sidebar/Logo";
 import ProjectSidebar from "./Sidebar/ProjectSidebar";
+
 const LayoutComponent = ({
   children,
-  ...props
 }: {
   children: React.ReactNode;
 }) => {
   const { data: session } = useSession();
-  const [show, setShow] = React.useState(true);
+  const [show, setShow] = useState(true);
 
   const handleMenu = () => {
     setShow(!show);
   };
+
   return (
     <>
       {session && (

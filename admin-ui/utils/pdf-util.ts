@@ -2,13 +2,14 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 
 interface DownloadProps {
-  items: string[][];
   headers: string[][];
   title:string,
-  fileName: string
+  fileName: string,
+  project:(_:string)=>any
+
 }
 
-const download = async ({ headers, project, title, fileName }: DownloadProps) => {
+const download = async ({ headers, project, fileName }: DownloadProps) => {
   debugger;
   const unit = "pt";
   const size = "A3"; // Use A1, A2, A3 or A4

@@ -1,15 +1,13 @@
 "use client";
-import Head from "./head";
-import * as React from "react";
-import { ThemeProvider, CssBaseline } from "@mui/material";
-import { theme } from "../themes/com-light";
+import React from "react";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import {
   QueryClient,
-  QueryClientProvider,
-  useQuery,
+  QueryClientProvider
 } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
 import LayoutComponent from "../component/common/LayoutComponent";
+import { theme } from "../themes/com-light";
 
 const queryClient = new QueryClient();
 export default function RootLayout({
@@ -18,21 +16,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <html>
       <head></head>
       <body>
-        <SessionProvider session={props.session}>
+        <SessionProvider session={props?.session}>
           <QueryClientProvider client={queryClient}>
             <ThemeProvider theme={theme}>
               <CssBaseline />
-              <body>
                 <main>
                   <>
                     <LayoutComponent>{children}</LayoutComponent>
                   </>
                 </main>
-              </body>
             </ThemeProvider>
           </QueryClientProvider>
         </SessionProvider>

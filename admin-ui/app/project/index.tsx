@@ -5,79 +5,32 @@ import { Button, Grid, IconButton } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
-import Typography from "@mui/material/Typography";
-import { makeStyles } from "@mui/styles";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { CSVLink } from "react-csv";
-import { downloadExcel } from "react-export-table-to-excel";
-import { download } from "../../utils/pdf-util";
+import CsvGenerator from "../utility/CsvGenerator";
+import ExcellGenerator from "../utility/ExcellGenerator";
+import PdfGenerator from "../utility/PdfGenerator";
 import ProjectFilter from "./filter";
 import ProjectListComponent from "./list";
 import ProjectCalendarView from "./list/CalendarView";
 import ProjectGraphView from "./list/GraphView";
 import ProjectGridView from "./list/GridView";
 import ProjectKanbanView from "./list/KanbanView";
-import IProject from "./project.model";
+import { ProjectHomeStyle as style } from "./ProjectHomeStyle";
 import ProjectSearch from "./search";
 import ProjectViewComponent from "./view";
-const useStyles = makeStyles({
-  addnewbtn: {
-    textTransform: "capitalize",
-    borderRadius: "20px",
-    fontWeight: "bold",
-    paddingLeft: "1rem",
-    paddingRight: "1rem",
-    background: "#FFC107",
-    "&:hover": {
-      background: "#FFC107",
-    },
-  },
-  savebtn: {
-    width: "0.9rem",
-    height: "1.7rem",
-    fontSize: "0.8rem",
-    textTransform: "capitalize",
-  },
-  cancelbtn: {
-    width: "0.9rem",
-    height: "1.7rem",
-    fontSize: "0.8rem",
-    textTransform: "capitalize",
-  },
-  csvlink: {
-    fontSize: "0.8rem",
-    color: "black",
-    textDecoration: "none",
-  },
-  chip: {
-    fontSize: "0.7rem",
-    marginRight: "0.5rem",
-    background: "#e2e8f0",
-    padding: "0.3rem",
-    borderRadius: "20px",
-  },
-});
+
 const ProjectHomeComponent = () => {
-  const classes = useStyles();
   const [project, setProject] = useState([]); // This is a original json Data
   const [count, setCount] = useState("List"); // This is a different different type of View Count (List,Grid,Calendar,etc)
-  const [newproject, setNewProject] = useState(project); // This is a duplicate Json Data
+  const [copyProject, setCopyProject] = useState(project); // This is a duplicate Json Data
   const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null); // what is anchorEl .... you should have proper name
-  const [listSearch, setListSearch] = useState("");
+  const [projectSearchList, setProjectSearchList] = useState("");
   const [filterSelected, setFilterSelected] = useState([]);
   const [filterChipType, setFilterChipType] = useState(false);
 
   const open = Boolean(anchorEl);
-  const header = [
-    "Id",
-    "createdAt",
-    "updatedAt",
-    " Project Name",
-    "Customer Name",
-    "Application",
-  ];
   const fetchData = () => {
     fetch("http://localhost:3000/api/projects")
       .then((r) => {
@@ -87,19 +40,25 @@ const ProjectHomeComponent = () => {
         setProject(d);
       });
   };
+
   useEffect(() => {
     fetchData();
   }, []);
-  const itemsCallBackHandler = (_items: Array<IProject>) => {
+
+  const itemsCallBackHandler = (_items: any) => {
     setProject(_items);
   };
+
   useEffect(() => {
-    setNewProject(project);
+    setCopyProject(project);
   }, [project]);
+
   const handleCount = (data: string) => {
     setCount(data);
   };
+
   const Open = Boolean(menuItem);
+
   const handleClickData = (event: React.MouseEvent<HTMLButtonElement>) => {
     setmenuItem(event.currentTarget);
   };
@@ -113,41 +72,15 @@ const ProjectHomeComponent = () => {
     setmenuItem(null);
   };
 
-  const exportPDF = async () => {
-    const fileName = `Project ${new Date().toISOString().slice(0, 10)}`;
-    const headers = [["Project Name", "Customer Name", "Application"]];
-    const pdfSendData = project.map((elt) => [
-      elt.name,
-      elt.customerName,
-      elt.application,
-    ]);
-    await download({
-      headers: headers,
-      project: pdfSendData,
-      fileName: fileName,
-    });
-  };
-  function handleDownloadExcel() {
-    downloadExcel({
-      fileName: `Project ${new Date().toISOString().slice(0, 10)}`,
-      sheet: "react-export-table-to-excel",
-      tablePayload: {
-        header,
-        body: project,
-      },
-    });
-  }
-
   return (
     <>
       <Grid container mt={1}>
-        <Grid item xs={2.9}>
+        <Grid item xs={3}>
           <ProjectSearch
-            listSearch={listSearch}
-            setListSearch={setListSearch}
+            projectSearchList={projectSearchList}
+            handleCallback={setProjectSearchList}
           />
         </Grid>
-        <Grid item xs={0.1}></Grid>
         <Grid item xs={0.4}>
           <Tooltip title="Filter" arrow>
             <IconButton
@@ -160,14 +93,7 @@ const ProjectHomeComponent = () => {
             </IconButton>
           </Tooltip>
         </Grid>
-        <Grid
-          item
-          xs={0.6}
-          lg={0.37}
-          md={0.5}
-          sm={0.9}
-          style={{ display: "flex", alignItems: "center" }}
-        >
+        <Grid item xs={0.6} lg={0.37} md={0.5} sm={0.9}>
           <Tooltip title="Export" arrow>
             <IconButton
               aria-controls={Open ? "basic-menu" : undefined}
@@ -188,33 +114,16 @@ const ProjectHomeComponent = () => {
             }}
           >
             <MenuItem>
-              <Typography
-                style={{ fontSize: "0.8rem" }}
-                onClick={handleDownloadExcel}
-              >
-                Excel
-              </Typography>
+              <ExcellGenerator project={project} />
             </MenuItem>
             <MenuItem>
-              <Typography
-                style={{ fontSize: "0.8rem" }}
-                onClick={() => exportPDF()}
-              >
-                PDF
-              </Typography>
+              <PdfGenerator project={project} />
             </MenuItem>
             <MenuItem>
-              <CSVLink
-                data={project}
-                filename={`Project ${new Date().toISOString().slice(0, 10)}`}
-                className={classes.csvlink}
-              >
-                CSV
-              </CSVLink>
+              <CsvGenerator project={project} />
             </MenuItem>
           </Menu>
         </Grid>
-        {/* Import Functionality */}
         <Grid item xs={2}>
           <Grid container>
             <ProjectViewComponent handleCount={handleCount} />
@@ -224,45 +133,17 @@ const ProjectHomeComponent = () => {
           <Grid item xs={9.5} mt={0.7}>
             {filterChipType ? (
               <>
-                {filterSelected?.map((item: any, index) => {
-                  return (
-                    <span key={index} className={classes.chip} style={{}}>
-                      {" "}
-                      {item}{" "}
-                      <span
-                        style={{
-                          background: "black",
-                          color: "white",
-                          borderRadius: "50%",
-                          padding: "0 0.2rem 0.1rem 3px",
-                          marginLeft: "0.5rem",
-                          cursor: "pointer",
-                        }}
-                      >
-                        x
-                      </span>{" "}
-                    </span>
-                  );
+                {filterSelected?.map((item: any) => {
+                  return <FilterChipComponent item={item} />;
                 })}
               </>
             ) : null}
           </Grid>
           <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
-            <Link href={"/project/create"} style={{ textDecoration: "none" }}>
-              <Button
-                variant="contained"
-                size="small"
-                style={{
-                  textTransform: "capitalize",
-                  borderRadius: "20px",
-                  fontWeight: "bold",
-                  padding: "0.2rem 0.7rem ",
-                }}
-              >
+            <Link href={"/project/create"} passHref legacyBehavior>
+              <Button variant="contained" style={style.createbtn}>
                 Create
-                <span style={{ marginLeft: "0.8rem", fontSize: "0.9rem" }}>
-                  +
-                </span>
+                <span style={style.createspan}>+</span>
               </Button>
             </Link>
           </Grid>
@@ -274,8 +155,8 @@ const ProjectHomeComponent = () => {
             case "List":
               return (
                 <ProjectListComponent
-                  newproject={newproject}
-                  listSearch={listSearch}
+                  copyProject={copyProject}
+                  projectSearchList={projectSearchList}
                 />
               );
             case "Graph":
@@ -287,9 +168,7 @@ const ProjectHomeComponent = () => {
                 <ProjectCalendarView project={project}></ProjectCalendarView>
               );
             default:
-              return (
-                <ProjectGridView newproject={newproject}></ProjectGridView>
-              );
+              return <ProjectGridView copyProject={copyProject} />;
           }
         })()}
       </div>
@@ -306,4 +185,13 @@ const ProjectHomeComponent = () => {
     </>
   );
 };
+
+const FilterChipComponent = ({ item }: any) => {
+  return (
+    <span style={style.chip}>
+      {item} <span style={style.chipcrossbutton}>x</span>{" "}
+    </span>
+  );
+};
+
 export default ProjectHomeComponent;

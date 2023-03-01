@@ -3,41 +3,26 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import { makeStyles } from "@mui/styles";
+import { SearchStyle as style } from "./searchStyle";
 
-const useStyles = makeStyles({
-  search: {
-    border: "none",
-    height: "4vh",
-    width: "100%",
-    outline: "none",
-  },
-  box: {
-    backgroundColor: "#fff",
-    display: "flex",
-    alignItems: "center",
-    border: "1px solid #cbd5e1",
-    borderRadius: "5px",
-    height: "6vh",
-  },
-});
+const useStyles = makeStyles({});
 
-const ProjectSearch = ({ listSearch, setListSearch }: any) => {
-  
+const ProjectSearch = ({ projectSearchList, handleCallback }: any) => {
   const classes = useStyles();
   const getSearch = (event: any) => {
-    setListSearch(event.target.value);
+    handleCallback(event.target.value);
   };
 
   return (
     <div>
       <Grid item xs={12}>
-        <Box pl={1} className={classes.box}>
+        <Box pl={1} style={style.box}>
           <input
             type="text"
             placeholder="Search"
             onChange={getSearch}
-            className={classes.search}
-            value={listSearch}
+            style={style.search}
+            value={projectSearchList}
           />
           <IconButton>
             <SearchIcon />

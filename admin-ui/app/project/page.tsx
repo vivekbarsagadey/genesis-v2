@@ -3,7 +3,7 @@ import ProjectHomeComponent from "./index";
 const page = () => {
   return (
     <div>
-      <ProjectHomeComponent> </ProjectHomeComponent>
+      <ProjectHomeComponent/>
     </div>
   );
 };

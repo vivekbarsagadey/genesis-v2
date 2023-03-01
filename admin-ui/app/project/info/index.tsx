@@ -4,27 +4,13 @@ import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Grid, IconButton, Tooltip, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
-import { makeStyles } from "@mui/styles";
 import Link from "next/link";
-const useStyles = makeStyles({
-  container: {
-    display: "flex",
-    alignItems: "center",
-    background: "#f8fafc",
-    padding: "0.2rem",
-    width:'98.5%'
-  },
-  typography: {
-    color: "#494a49",
-    fontSize: "0.73rem",
-  },
-});
+import { InfoStyle as style } from "./InfoStyle";
 
 const InfoProjectComponent = ({ items }: any) => {
-  const classes = useStyles();
   return (
     <div>
-      <Grid container style={{}} className={classes.container} mt={0.5}>
+      <Grid container style={style.container}>
         <Grid item xs={0.04}></Grid>
         <Grid item xs={0.5}>
           <Checkbox size="small" />
@@ -37,10 +23,10 @@ const InfoProjectComponent = ({ items }: any) => {
           </Tooltip>
         </Grid>
         <Grid item xs={2.5}>
-          <Typography className={classes.typography}> {items.name}</Typography>
+          <Typography style={style.typography}> {items.name}</Typography>
         </Grid>
         <Grid item xs={2.65}>
-          <Typography className={classes.typography}>
+          <Typography style={style.typography}>
             {" "}
             {items.customerName}
           </Typography>
@@ -48,7 +34,7 @@ const InfoProjectComponent = ({ items }: any) => {
         <Grid item xs={2.7}>
           <Grid container display={"flex"} alignItems={"center"}>
             <Grid item xs={12}>
-              <Typography className={classes.typography}>
+              <Typography style={style.typography}>
                 {items.application}
               </Typography>
             </Grid>
@@ -57,7 +43,7 @@ const InfoProjectComponent = ({ items }: any) => {
         <Grid item xs={1}>
           <Grid container>
             <Grid item xs={3.8}>
-              <Link href={"/project/-1"} style={{ textDecoration: "none" }}>
+              <Link href={"/project/-1"} passHref>
                 <Tooltip title="Edit">
                   <IconButton>
                     <EditIcon fontSize="small" />

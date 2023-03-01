@@ -15,20 +15,18 @@ const ProjectFilter = ({
   filterSelected,
   setFilterSelected,
   setFilterChipType,
-
 }: any) => {
   const [filterDataName, setFilterDataName] = useState("");
   const [filterDataEmail, setFilterDataEmail] = useState("");
 
   const doFilter = () => {
     setFilterChipType(true);
-    const newUsers = project?.filter(
+    const filteredData = project?.filter(
       (u) =>
         u.name.toLowerCase().includes(filterDataName.toLowerCase()) ||
         u.customerName.toLowerCase().includes(filterDataEmail.toLowerCase())
     );
-    itemsCallBackHandler(newUsers);
-
+    itemsCallBackHandler(filteredData);
     handleClose();
   };
 

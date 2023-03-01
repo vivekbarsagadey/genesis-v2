@@ -1,0 +1,1 @@
+export {applicationType} from "./applicationType"
