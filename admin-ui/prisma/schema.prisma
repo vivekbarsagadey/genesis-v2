@@ -144,7 +144,7 @@ model ProjectJson{
   projectData   Json?
 
 
-  @@map("tb_projectjson")
+  @@map("tb_project_json")
 
 }
 
