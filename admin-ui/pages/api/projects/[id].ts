@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../utils/prisma";
 import { handleApiMiddleware } from "../middleware";
 
-
+// DELETE /api/project/:id
 const handle = async (req: NextApiRequest, res: NextApiResponse) => {
   await handleApiMiddleware(req, res);
   const id = req.query?.id?.toString();

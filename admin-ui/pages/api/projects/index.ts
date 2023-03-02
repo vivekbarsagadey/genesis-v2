@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../utils/prisma";
 import { handleApiMiddleware } from "../middleware";
 
-
+// POST /api/project
 const handle = async (req: NextApiRequest, res: NextApiResponse) => {
   await handleApiMiddleware(req, res);
   if (req.method === "POST") {
