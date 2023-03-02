@@ -1,26 +1,21 @@
 "use client";
-import React, { useState } from "react";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { Box, Grid, IconButton, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-import Badge from "@mui/material/Badge";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Stack from "@mui/material/Stack";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import React, { useState } from "react";
 import { headerstyle as style } from "./headerstyle";
 
 const HeaderComponent = ({ project }: any) => {
   const { data: session } = useSession();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const [openNew, setOpenNew] = useState(false);
-  const [screenName, setScreenName] = useState("");
-  const handleOpenModal = () => setOpenNew(true);
-  const handleCloseModal = () => setOpenNew(false);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -28,24 +23,7 @@ const HeaderComponent = ({ project }: any) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const updateScreenName = (e: any) => {
-    setScreenName(e.target.value);
-  };
-  const updateScreenData = () => {
-    if (screenName !== "") {
-      fetch("http://localhost:3000/api/screens", {
-        method: "POST",
-        body: JSON.stringify({
-          name: screenName,
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      }).then((res) => res.json());
-    }
-    handleCloseModal();
-    window.location.reload();
-  };
+
   return (
     <Grid container mb={1} mt={-0.8} style={style.headercontainer}>
       <Grid item xs={12}>
