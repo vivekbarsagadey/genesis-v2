@@ -1,9 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/react";
 
 import prisma from "../../../utils/prisma";
 import { handleApiMiddleware } from "../middleware";
-
 
 // POST /api/project
 const handle = async (req: NextApiRequest, res: NextApiResponse) => {

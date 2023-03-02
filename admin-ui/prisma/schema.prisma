@@ -6,13 +6,15 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 
 model Account {
-  id                 String  @id @default(cuid())
+  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
   userId             String  @map("user_id")
   type               String
   provider           String
@@ -22,7 +24,7 @@ model Account {
   expires_at         Int?
   token_type         String?
   scope              String?
-  id_token           String? 
+  id_token           String? @db.ObjectId
   session_state      String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -32,7 +34,9 @@ model Account {
 }
 
 model Session {
-  id           String   @id @default(cuid())
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
   sessionToken String   @unique @map("session_token")
   userId       String   @map("user_id")
   expires      DateTime
@@ -42,7 +46,9 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
   name          String?
   email         String?   @unique
   emailVerified DateTime? @map("email_verified")
@@ -53,18 +59,10 @@ model User {
   @@map("users")
 }
 
-model Customer {
-   id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique 
-
-   @@map("customers")     
-}
-
 model Company {
-  id             String    @id @default(cuid())
-  createdAt      DateTime  @default(now()) @map("created_at")
-  updatedAt      DateTime  @updatedAt @map("updated_at")
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
   name           String?
   pic            String?
   country_code   String?
@@ -94,9 +92,9 @@ model Company {
 
 
 model Project {
- id             String    @id @default(cuid())
- createdAt      DateTime  @default(now()) @map("created_at")
- updatedAt      DateTime  @updatedAt @map("updated_at")
+ id             String   @id @default(auto()) @map("_id") @db.ObjectId
+ createdAt      DateTime @default(now())
+ updatedAt      DateTime @updatedAt
  name           String   @unique
  description    String?
  logo           String?
@@ -107,7 +105,7 @@ model Project {
  webUrl         String? @map("web_url")
  currentVersion String? @map("current_version")
  status         String? @map("status")
- companyId      String?  @map("company_id")
+ companyId      String?  @map("company_id") @db.ObjectId
  customerName   String? @map("customer_name")
  application    String? @map("application")
  company        Company? @relation(fields: [companyId], references: [id])
@@ -116,34 +114,48 @@ model Project {
 }
 
 model Screen {
-  id             String    @id @default(cuid())
-  createdAt      DateTime  @default(now()) @map("created_at")
-  updatedAt      DateTime  @updatedAt @map("updated_at")
-  name           String?
-  components     Component[]
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  name            String?
+  components      Component[]
 
   @@map("tb_screen")
 }
 
 
 model Component{
-  id             String    @id @default(cuid())
-  createdAt      DateTime  @default(now()) @map("created_at")
-  updatedAt      DateTime  @updatedAt @map("updated_at")
-  name           String   @unique
-  screenId       String?  @map("screen_id")
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  name           String   
+  screenId       String?  @map("screen_id") @db.ObjectId
   screen         Screen? @relation(fields: [screenId], references: [id])
 
   @@map("tb_component")
 }
 
 
+model ProjectJson{
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  name          String?
+  projectData   Json?
+
+
+  @@map("tb_project_json")
+
+}
 
 model VerificationToken {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
   identifier String
   token      String   @unique
   expires    DateTime
 
   @@unique([identifier, token])
-  @@map("verificationtokens")
+  @@map("tb_verification_tokens")
 }
