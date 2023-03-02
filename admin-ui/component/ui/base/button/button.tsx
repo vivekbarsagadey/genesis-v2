@@ -10,7 +10,6 @@ const ButtonComponent = ({label, onClick}:InputProps) => {
         <Button
         variant="contained"
         onClick={onClick}
-        fullWidth
     >{label}</Button>
     </div>
   )

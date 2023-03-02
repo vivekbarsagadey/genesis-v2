@@ -18,6 +18,8 @@ interface InputProps {
   onInput?: number;
   variant?:any;
   onClick?:any;
+  data?:any;
+  handleCallback?:any;
 
   // this to send data back to parent
   register?: any;
