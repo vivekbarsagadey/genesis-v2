@@ -210,7 +210,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
               <Typography pt={1}>
                 for Example.{" "}
                 <Link
-                  href={"/tamplate/campanies_tamplate5.xlsx"}
+                  href={"/tamplate/campanies_tamplate5.xlsx"} passHref 
                   download="campanies_tamplate5.xlsx"
                 >
                   click here?
@@ -278,7 +278,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
               <DeleteOutlineIcon />
             </IconButton>
           )}
-          <Link href={"/company/-1"} style={{ textDecoration: "none" }}>
+          <Link href={"/company/-1"} passHref  style={{ textDecoration: "none" }}>
             <Tooltip title="Create">
               <Button variant="contained" className={classes.createButton}>
                 <AddIcon fontSize="small" /> Create

@@ -21,9 +21,9 @@ import ProjectSearch from "./search";
 import ProjectViewComponent from "./view";
 
 const ProjectHomeComponent = () => {
-  const [project, setProject] = useState([]); // This is a original json Data
+  const [projectData, setProjectData] = useState([]); // This is a original json Data
   const [count, setCount] = useState("List"); // This is a different different type of View Count (List,Grid,Calendar,etc)
-  const [copyProject, setCopyProject] = useState(project); // This is a duplicate Json Data
+  const [copyProject, setCopyProject] = useState(projectData); // This is a duplicate Json Data
   const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null); // what is anchorEl .... you should have proper name
   const [projectSearchList, setProjectSearchList] = useState("");
@@ -37,7 +37,7 @@ const ProjectHomeComponent = () => {
         return r.json();
       })
       .then((d) => {
-        setProject(d);
+        setProjectData(d);
       });
   };
 
@@ -46,12 +46,12 @@ const ProjectHomeComponent = () => {
   }, []);
 
   const itemsCallBackHandler = (_items: any) => {
-    setProject(_items);
+    setProjectData(_items);
   };
 
   useEffect(() => {
-    setCopyProject(project);
-  }, [project]);
+    setCopyProject(projectData);
+  }, [projectData]);
 
   const handleCount = (data: string) => {
     setCount(data);
@@ -114,13 +114,13 @@ const ProjectHomeComponent = () => {
             }}
           >
             <MenuItem>
-              <ExcellGenerator project={project} />
+              <ExcellGenerator projectData={projectData} />
             </MenuItem>
             <MenuItem>
-              <PdfGenerator project={project} />
+              <PdfGenerator projectData={projectData} />
             </MenuItem>
             <MenuItem>
-              <CsvGenerator project={project} />
+              <CsvGenerator projectData={projectData} />
             </MenuItem>
           </Menu>
         </Grid>
@@ -160,12 +160,12 @@ const ProjectHomeComponent = () => {
                 />
               );
             case "Graph":
-              return <ProjectGraphView project={project}></ProjectGraphView>;
+              return <ProjectGraphView projectData={projectData}></ProjectGraphView>;
             case "Kanban":
-              return <ProjectKanbanView project={project} />;
+              return <ProjectKanbanView projectData={projectData} />;
             case "Calendar":
               return (
-                <ProjectCalendarView project={project}></ProjectCalendarView>
+                <ProjectCalendarView projectData={projectData}></ProjectCalendarView>
               );
             default:
               return <ProjectGridView copyProject={copyProject} />;
@@ -173,7 +173,7 @@ const ProjectHomeComponent = () => {
         })()}
       </div>
       <ProjectFilter
-        project={project}
+        projectData={projectData}
         anchorEl={anchorEl}
         open={open}
         handleClose={handleClose}

@@ -19,8 +19,8 @@ const ListStyle = {
     position: "relative" as "relative",
   },
   grid: {
-    display: "flex",
-    alignItems: "center",
+    display: "flex" as "flex",
+    alignItems: "center" as "center",
   },
   loader: {
     width: "100%",

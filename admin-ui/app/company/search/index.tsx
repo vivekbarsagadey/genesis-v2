@@ -4,20 +4,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import ICompanyComponentProps from "../company.props";
 import React, { useState } from "react";
 import { makeStyles } from "@mui/styles";
+import { CompanyStyle as style } from "../CompanyStyle";
 
-const useStyles = makeStyles({
-  search: {
-    border: "none",
-    height: "5vh",
-    width: "100%",
-    paddingLeft: "10px",
-  },
-  box: {
-    display: "flex",
-    alignItems: "center",
-    border: "1px ridge",
-  },
-});
 
 interface SearchComponentProps extends ICompanyComponentProps {}
 
@@ -39,16 +27,16 @@ const SearchComponent = ({
       )
     );
   };
-  const classes = useStyles();
+
   return (
     <>
       <Grid item xs={12}>
-        <Box className={classes.box}>
+        <Box style={style.box}>
           <input
             type="text"
             placeholder="Search"
             onChange={getSearch}
-            className={classes.search}
+            style={style.search}
           />
           <IconButton onClick={doSearch}>
             <SearchIcon />

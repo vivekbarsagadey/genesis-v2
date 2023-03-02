@@ -1,15 +1,14 @@
 "use client";
-import React from "react";
-import { Grid, Typography, Button, TextField, Paper } from "@mui/material";
+import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 import { applicationType } from "../../../config";
 import { ProjectEditPageStyle as style } from "./ProjectEditPageStyle";
 
-interface IApplicationType {
-  id: Number;
-  type: string;
-  label: string;
+interface IApplicationInterface {
+  id: any;
+  type: String;
+  label: String;
 }
 
 const ProjectCreate = () => {
@@ -70,9 +69,9 @@ const ProjectCreate = () => {
               </Grid>
               <Grid item xs={7}>
                 <Grid container>
-                  {applicationType?.map((item, index) => {
+                  {applicationType?.map((item) => {
                     return (
-                      <Grid item xs={5.8} key={index}>
+                      <Grid item xs={5.8} key={item.id}>
                         <ApplicationTypeDetails item={item} />
                       </Grid>
                     );
@@ -91,7 +90,7 @@ const ProjectCreate = () => {
               <Grid item xs={3}>
                 <Grid container>
                   <Grid item xs={5.6}>
-                    <Link href={"/project"} passHref >
+                    <Link href={"/project"} passHref>
                       <Button
                         variant="contained"
                         size="medium"
@@ -120,7 +119,7 @@ const ProjectCreate = () => {
   );
 };
 
-const ApplicationTypeDetails = ({ item }) => {
+const ApplicationTypeDetails = ({ item }: IApplicationInterface) => {
   return (
     <Grid container alignItems={"center"}>
       <Grid item xs={2}>

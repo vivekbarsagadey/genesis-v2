@@ -1,3 +1,4 @@
+
 const applicationType = [
     {
       id: 1,

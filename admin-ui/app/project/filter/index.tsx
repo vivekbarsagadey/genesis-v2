@@ -7,7 +7,7 @@ import TextField from "@mui/material/TextField";
 import { useState } from "react";
 
 const ProjectFilter = ({
-  project,
+  projectData,
   anchorEl,
   open,
   handleClose,
@@ -21,7 +21,7 @@ const ProjectFilter = ({
 
   const doFilter = () => {
     setFilterChipType(true);
-    const filteredData = project?.filter(
+    const filteredData = projectData?.filter(
       (u) =>
         u.name.toLowerCase().includes(filterDataName.toLowerCase()) ||
         u.customerName.toLowerCase().includes(filterDataEmail.toLowerCase())
@@ -56,7 +56,7 @@ const ProjectFilter = ({
               size="small"
               freeSolo
               disableClearable
-              options={Array.from(new Set(project?.map((f) => f.name)))}
+              options={Array.from(new Set(projectData?.map((f) => f.name)))}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -82,7 +82,7 @@ const ProjectFilter = ({
               freeSolo
               disableClearable
               options={Array.from(
-                new Set(project.map((id) => id.customerName))
+                new Set(projectData.map((id) => id.customerName))
               )}
               renderInput={(params) => (
                 <TextField
@@ -94,7 +94,6 @@ const ProjectFilter = ({
                   }}
                 />
               )}
-              // onChange={(event, value) => setFilterDataEmail(value)}
               onChange={(event, value) => {
                 updateCustomerName(value);
               }}

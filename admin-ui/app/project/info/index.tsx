@@ -7,11 +7,12 @@ import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 import { InfoStyle as style } from "./InfoStyle";
 
+
 const InfoProjectComponent = ({ items }: any) => {
   return (
     <div>
       <Grid container style={style.container}>
-        <Grid item xs={0.04}></Grid>
+        <Grid item xs={0.1}></Grid>
         <Grid item xs={0.5}>
           <Checkbox size="small" />
         </Grid>

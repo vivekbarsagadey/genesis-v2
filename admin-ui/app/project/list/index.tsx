@@ -9,6 +9,8 @@ import projectPagination from "./ProjectListPagination";
 import { ListStyle as style } from "./ListStyle";
 
 const ProjectListComponent = ({ copyProject, projectSearchList }: any) => {
+
+  //pagination logic
   let [page, setPage] = useState(1);
   const PER_PAGE = 8;
   const count = Math.ceil(copyProject.length / PER_PAGE);
@@ -18,6 +20,8 @@ const ProjectListComponent = ({ copyProject, projectSearchList }: any) => {
     setPage(p);
     _DATA.jump(p);
   };
+
+  
   return (
     <div>
       <Box mt={2}>

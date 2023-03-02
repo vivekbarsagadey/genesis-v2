@@ -73,7 +73,7 @@ const board = {
     },
   ],
 };
-const ProjectKanbanView = ({ project }: any) => {
+const ProjectKanbanView = ({ projectData }) => {
   return (
     <div>
       <Grid container px={2.5} pt={2}>

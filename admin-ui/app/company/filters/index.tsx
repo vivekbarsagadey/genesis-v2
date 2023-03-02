@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Menu from "@mui/material/Menu";
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 import ICompanyComponentProps from "../company.props";
 import { Stack } from "@mui/system";
+import { CompanyStyle as style } from "../CompanyStyle";
 
 interface FilterComponentProps extends ICompanyComponentProps {
   handleClose: () => void;
@@ -22,10 +23,8 @@ const FilterComponent = ({
 }: FilterComponentProps) => {
   const [filterDataName, setFilterDataName] = useState("");
   const [filterDataEmail, setFilterDataEmail] = useState("");
-  
 
   const doFilter = () => {
-
     const newCompany = items?.filter(
       (c) =>
         c.name.toLowerCase().includes(filterDataName.toLowerCase()) ||
@@ -33,7 +32,6 @@ const FilterComponent = ({
     );
     itemsCallBackHandler(newCompany);
     handleClose();
-    
   };
 
   return (
@@ -48,7 +46,7 @@ const FilterComponent = ({
         }}
       >
         <div>
-          <Stack spacing={2} sx={{ width: 350, padding: "1rem" }} >
+          <Stack spacing={2} style={style.stack}>
             <Autocomplete
               freeSolo
               disableClearable
@@ -70,7 +68,7 @@ const FilterComponent = ({
         </div>
 
         <div>
-          <Stack spacing={2} sx={{ width: 350, padding: "1rem" }} >
+          <Stack spacing={2} style={style.stack}>
             <Autocomplete
               freeSolo
               disableClearable
@@ -97,7 +95,7 @@ const FilterComponent = ({
             <Button
               variant="outlined"
               size="small"
-              style={{ textTransform: "capitalize" }}
+              style={style.filterbtn}
               onClick={() => handleClose()}
             >
               Cancel
@@ -107,9 +105,8 @@ const FilterComponent = ({
             <Button
               variant="outlined"
               size="small"
-              style={{ textTransform: "capitalize" }}
+              style={style.filterbtn}
               onClick={doFilter}
-             
             >
               Save
             </Button>

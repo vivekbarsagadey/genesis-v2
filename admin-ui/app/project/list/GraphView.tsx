@@ -7,36 +7,36 @@ export const options = {
   is3D: true,
 };
 
-const ProjectGraphView = ({ project }: any) => {
+const ProjectGraphView = ({ projectData }: any) => {
   const example = [
     {
       type: "India",
-      value: project?.filter(items=>items.country==="India")?.length,
+      value: projectData?.filter(items=>items.country==="India")?.length,
       color: "#E97D30",
     },
     {
       type: "Australia",
-      value: project.filter(items=>items.country==="Australia").length,
+      value: projectData.filter(items=>items.country==="Australia").length,
       color: "#62B170",
     },
     {
       type: "America",
-      value: project.filter(items=>items.country==="America").length,
+      value: projectData.filter(items=>items.country==="America").length,
       color: "#F1AF13",
     },
     {
       type: "Spain",
-      value: project.filter(items=>items.country==="Spain").length,
+      value: projectData.filter(items=>items.country==="Spain").length,
       color: "#4BA2DA",
     },
     {
       type: "US",
-      value: project.filter(items=>items.country==="US").length,
+      value: projectData.filter(items=>items.country==="US").length,
       color: "#F1AF13",
     },
     {
       type: "UK",
-      value: project.filter(items=>items.country==="UK").length,
+      value: projectData.filter(items=>items.country==="UK").length,
       color: "#F1AF13",
     },
   ];

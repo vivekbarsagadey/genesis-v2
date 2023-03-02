@@ -11,14 +11,14 @@ const header = [
   "Customer Name",
   "Application",
 ];
-const ExcellGenerator = ({ project }: any) => {
+const ExcellGenerator = ({ projectData }: any) => {
   function handleDownloadExcel() {
     downloadExcel({
       fileName: `Project ${new Date().toISOString().slice(0, 10)}`,
       sheet: "react-export-table-to-excel",
       tablePayload: {
         header,
-        body: project,
+        body: projectData,
       },
     });
   }
@@ -29,6 +29,6 @@ const ExcellGenerator = ({ project }: any) => {
       </Typography>
     </div>
   );
-};
+}; 
 
 export default ExcellGenerator;

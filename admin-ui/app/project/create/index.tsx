@@ -20,10 +20,10 @@ const ProjectCreate = () => {
   const getApplicationType = (_TypeR: any) => {
     setApplication(_TypeR.label);
   };
-  const updateProjectName = (e: any) => {
+  const updateProjectName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProjectName(e.target.value);
   };
-  const updateCustomerName = (e: any) => {
+  const updateCustomerName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerName(e.target.value);
   };
 
@@ -125,7 +125,7 @@ const ProjectCreate = () => {
                   <Grid item xs={3}>
                     <Grid container>
                       <Grid item xs={5.6}>
-                        <Link href={"/project"} passHref legacyBehavior>
+                        <Link href={"/project"} passHref>
                           <Button
                             variant="contained"
                             size="medium"
@@ -141,9 +141,6 @@ const ProjectCreate = () => {
                           size="medium"
                           style={style.btn}
                           onClick={updateMyProjectData}
-                          disabled={
-                            !projectName || !customerName || !application
-                          }
                         >
                           Save
                         </Button>

@@ -1,60 +1,24 @@
 "use client";
-import React from "react";
-import { makeStyles } from "@mui/styles";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import {
-  Grid,
-  Typography,
-  TextField,
   Box,
   Button,
   FormControl,
-  Select,
+  Grid,
   MenuItem,
+  Select,
+  TextField,
+  Typography,
 } from "@mui/material";
-import axios from "axios";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React from "react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
 import ICompany from "../company.model";
+import { CompanyStyle as style } from "../CompanyStyle";
 import { createCompany, updateCompany } from "../services/CompanyServices";
-import Snackbar from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert";
-
-const useStyles = makeStyles({
-  errormessage: {
-    marginTop: "0",
-    color: "red",
-    fontWeight: "lighter",
-    fontSize: "15px",
-  },
-  buttons: {
-    textDecoration: "none !important",
-  },
-  box: {
-    // background:'#E5E5E5',
-  },
-});
-
-const country = [
-  { id: 1, name: "India", label: "India" },
-  { id: 2, name: "Australia", label: "Australia" },
-  { id: 3, name: "America", label: "America" },
-  { id: 4, name: "Spain", label: "Spain" },
-  { id: 5, name: "US", label: "US" },
-  { id: 5, name: "UK", label: "UK" },
-];
-
-const state = [
-  { id: 1, name: "Maharastra", label: "Maharastra" },
-  { id: 2, name: "Rajasthan", label: "Rajasthan" },
-  { id: 3, name: "Madhya Pradesh", label: "Madhya Pradesh" },
-  { id: 4, name: "Uttar Pradesh", label: "Uttar Pradesh" },
-  { id: 5, name: "GOA", label: "GOA" },
-  { id: 6, name: "Assam", label: "Assam" },
-  { id: 7, name: "Kerala", label: "Kerala" },
-];
+import { state, country } from "../../../config/companyType";
 
 interface ICompanyProp {
   company: ICompany | undefined;
@@ -81,8 +45,6 @@ const schema = yup
   .required();
 
 const CompanyComponent = ({ company }: ICompanyProp) => {
-  const classes = useStyles();
-
   const [create, setCreate] = React.useState(false);
 
   const handleCreate = () => {
@@ -164,7 +126,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
         <Box className={classes.box}>
           <Grid container spacing={2} p={3}>
             <Grid item xs={12} pb={3}>
-              <Typography fontWeight="bold" fontSize="30px" noWrap>
+              <Typography style={style.fontSize} noWrap>
                 Create Company
               </Typography>
             </Grid>
@@ -176,7 +138,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                 placeholder="Company Name"
                 fullWidth
               />
-              <p className={classes.errormessage}>{errors.name?.message}</p>
+              <p style={style.errormessage}>{errors.name?.message}</p>
             </Grid>
 
             <Grid item xs={12} sm={6} md={6} lg={4}>
@@ -187,7 +149,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                 placeholder="Email"
                 fullWidth
               />
-              <p className={classes.errormessage}>{errors.email?.message}</p>
+              <p style={style.errormessage}>{errors.email?.message}</p>
             </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>Phone:</Typography>
@@ -197,7 +159,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                 placeholder="Mobile"
                 fullWidth
               />
-              <p className={classes.errormessage}>{errors.mobile?.message}</p>
+              <p style={style.errormessage}>{errors.mobile?.message}</p>
             </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>Address:</Typography>
@@ -207,7 +169,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                 size="small"
                 fullWidth
               />
-              <p className={classes.errormessage}>{errors.address?.message}</p>
+              <p style={style.errormessage}>{errors.address?.message}</p>
             </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>Country:</Typography>
@@ -219,24 +181,24 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                     })
                   }
                 >
-                  {country.map((c) => {
+                  {country.map((items) => {
                     return (
-                      <MenuItem key={c.id} value={c.name}>
-                        {c.label}
+                      <MenuItem key={items.id} value={items.name}>
+                        <CountryDetails items={items} />
                       </MenuItem>
                     );
                   })}
                 </Select>
               </FormControl>
-              <p className={classes.errormessage}>{errors.country?.message}</p>
+              <p style={style.errormessage}>{errors.country?.message}</p>
             </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>State:</Typography>
 
               <FormControl fullWidth size="small">
                 <Select
-                  onChange={(event) =>
-                    setValue("state", event.target.value, {
+                  onChange={(e) =>
+                    setValue("state", e.target.value, {
                       shouldValidate: true,
                     })
                   }
@@ -244,13 +206,13 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                   {state.map((c) => {
                     return (
                       <MenuItem key={c.id} value={c.name}>
-                        {c.label}
+                        <StateDetails c={c} />
                       </MenuItem>
                     );
                   })}
                 </Select>
               </FormControl>
-              <p className={classes.errormessage}>{errors.address?.message}</p>
+              <p style={style.errormessage}>{errors.address?.message}</p>
             </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>City:</Typography>
@@ -260,7 +222,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                 size="small"
                 fullWidth
               />
-              <p className={classes.errormessage}>{errors.address?.message}</p>
+              <p style={style.errormessage}>{errors.address?.message}</p>
             </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>Pincode:</Typography>
@@ -270,15 +232,12 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                 size="small"
                 fullWidth
               />
-              <p className={classes.errormessage}>{errors.address?.message}</p>
+              <p style={style.errormessage}>{errors.address?.message}</p>
             </Grid>
 
             <Grid item xs={12} textAlign="right">
-              <Link href={"/company"} className={classes.buttons}>
-                <Button
-                  variant="contained"
-                  style={{ marginRight: "4px", background: "#FFC107" }}
-                >
+              <Link href={"/company"}>
+                <Button variant="contained" style={style.btn}>
                   Cancel
                 </Button>
               </Link>
@@ -286,30 +245,24 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                 type="submit"
                 variant="contained"
                 onClick={handleCreate}
-                style={{ background: "#FFC107" }}
+                style={style.btn}
               >
                 Submit
               </Button>
-
-              <Snackbar
-                open={create}
-                autoHideDuration={6000}
-                onClose={handleClose}
-              >
-                <Alert
-                  onClose={handleClose}
-                  severity="success"
-                  sx={{ width: "100%" }}
-                >
-                  Sucessfully...
-                </Alert>
-              </Snackbar>
             </Grid>
           </Grid>
         </Box>
       </form>
     </>
   );
+};
+
+const CountryDetails = ({ items }: any) => {
+  return <>{items.label}</>;
+};
+
+const StateDetails = ({ c }):any => {
+  return <>{c.label}</>;
 };
 
 export default CompanyComponent;

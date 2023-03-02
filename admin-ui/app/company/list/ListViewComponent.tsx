@@ -9,28 +9,33 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Pagination from "@mui/material/Pagination";
 import usePagination from "./pagination";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { CompanyStyle as style } from "../CompanyStyle";
 
 const useStyles = makeStyles({
   expandIcon: {
     display: "flex",
     textAlign: "center",
-    
+
     alignItems: "center",
   },
 });
 
 interface ListComponentProps extends ICompanyComponentProps {
-  companies:any,
-  setCompanies:any
-  checked:any,
-  setChecked:any
+  companies: any;
+  setCompanies: any;
+  checked: any;
+  setChecked: any;
 }
-const ListViewComponent = ({ companies, setCompanies,checked,setChecked }: ListComponentProps) => {
- 
+const ListViewComponent = ({
+  companies,
+  setCompanies,
+  checked,
+  setChecked,
+}: ListComponentProps) => {
   const [sortCompanyName, setSortCompanyName] = useState(true);
-  const [sortCompanyEmail, setSortCompanyEmail] = useState(true)
-  const [sortCompanyContact, setSortCompanyContact] = useState(true)
-  const [sortCompanyAddress, setSortCompanyAddress] = useState(true)
+  const [sortCompanyEmail, setSortCompanyEmail] = useState(true);
+  const [sortCompanyContact, setSortCompanyContact] = useState(true);
+  const [sortCompanyAddress, setSortCompanyAddress] = useState(true);
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
 
@@ -41,10 +46,10 @@ const ListViewComponent = ({ companies, setCompanies,checked,setChecked }: ListC
     setPage(p);
     _DATA.jump(p);
   };
-const handleCheck =()=>{
-  setChecked(!checked)
-}
-  
+  const handleCheck = () => {
+    setChecked(!checked);
+  };
+
   const handleClick = () => {
     setSortCompanyName(!sortCompanyName);
     const sortData = [...companies].sort((a, b) => {
@@ -97,34 +102,45 @@ const handleCheck =()=>{
     setCompanies(sortData);
   };
 
- 
   const classes = useStyles();
   return (
     <>
-    
       <Box style={{ background: "#f8fafc" }}>
         <Grid container>
           <Grid item xs={12} lg={1} sm={1} md={1}>
             <Checkbox checked={checked} onChange={handleCheck} />
           </Grid>
-          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}  className={classes.expandIcon} >
-            <Typography fontWeight="bold" fontSize="small" noWrap>
+          <Grid
+            item
+            xs={2.5}
+            lg={2.5}
+            sm={2.5}
+            md={2.5}
+            style={style.expandIcon}
+          >
+            <Typography style={style.listfont} noWrap>
               Company Name
             </Typography>
-            
 
             {sortCompanyName === true ? (
               <IconButton onClick={handleClick} id="sort-a-z">
                 <ExpandLessIcon />
               </IconButton>
             ) : (
-              <IconButton onClick={handleSort}>  
+              <IconButton onClick={handleSort}>
                 <KeyboardArrowDownIcon />
               </IconButton>
             )}
           </Grid>
-          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}  className={classes.expandIcon}>
-            <Typography fontWeight="bold" fontSize="small" noWrap>
+          <Grid
+            item
+            xs={2.5}
+            lg={2.5}
+            sm={2.5}
+            md={2.5}
+            style={style.expandIcon}
+          >
+            <Typography style={style.listfont} noWrap>
               Email
             </Typography>
             {sortCompanyEmail === true ? (
@@ -132,13 +148,20 @@ const handleCheck =()=>{
                 <ExpandLessIcon />
               </IconButton>
             ) : (
-              <IconButton onClick={handleSortEmail}>  
+              <IconButton onClick={handleSortEmail}>
                 <KeyboardArrowDownIcon />
               </IconButton>
             )}
           </Grid>
-          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}  className={classes.expandIcon}>
-            <Typography fontWeight="bold" fontSize="small" noWrap>
+          <Grid
+            item
+            xs={2.5}
+            lg={2.5}
+            sm={2.5}
+            md={2.5}
+            style={style.expandIcon}
+          >
+            <Typography style={style.listfont} noWrap>
               Contact
             </Typography>
             {sortCompanyContact === true ? (
@@ -146,13 +169,20 @@ const handleCheck =()=>{
                 <ExpandLessIcon />
               </IconButton>
             ) : (
-              <IconButton onClick={handleSortContact}>  
+              <IconButton onClick={handleSortContact}>
                 <KeyboardArrowDownIcon />
               </IconButton>
             )}
           </Grid>
-          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}  className={classes.expandIcon}>
-            <Typography fontWeight="bold" fontSize="small" noWrap>
+          <Grid
+            item
+            xs={2.5}
+            lg={2.5}
+            sm={2.5}
+            md={2.5}
+            style={style.expandIcon}
+          >
+            <Typography style={style.listfont} noWrap>
               Address
             </Typography>
             {sortCompanyAddress === true ? (
@@ -160,13 +190,13 @@ const handleCheck =()=>{
                 <ExpandLessIcon />
               </IconButton>
             ) : (
-              <IconButton onClick={handleSortAddress}>  
+              <IconButton onClick={handleSortAddress}>
                 <KeyboardArrowDownIcon />
               </IconButton>
             )}
           </Grid>
-          <Grid item xs={1} lg={1} sm={1} md={1} className={classes.expandIcon}>
-            <Typography fontWeight="bold" fontSize="small" noWrap>
+          <Grid item xs={1} lg={1} sm={1} md={1} style={style.expandIcon}>
+            <Typography style={style.listfont} noWrap>
               Action
             </Typography>
           </Grid>
@@ -177,9 +207,12 @@ const handleCheck =()=>{
         return <GridViewInfoComponent checked={checked} key={c._id} c={c} />;
       })}
 
-
-<Grid container style={{display:'flex',justifyContent:'flex-end',position:'relative'}} pt={2}>
-        <div style={{position:'fixed'}}>
+      <Grid
+        container
+        style={style.pagination}
+        pt={2}
+      >
+        <div style={{ position: "fixed" }}>
           <Pagination
             count={count}
             size="medium"
@@ -188,7 +221,7 @@ const handleCheck =()=>{
             variant="outlined"
             onChange={handleChange}
           />
-       </div>
+        </div>
       </Grid>
     </>
   );
