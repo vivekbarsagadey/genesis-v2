@@ -4,8 +4,8 @@ const Model = ({ menuList }: any) => {
   const components = menuList.map((d: any) =>
     d.components.map((d: any) => d.properties)
   );
-  const modelData = components[1].map((general: any) =>
-    general.map((d: any) => d.model)
+  const modelData = components[1]?.map((general) =>
+    general?.map((d: any) => d.model)
   );
   return (
     <>

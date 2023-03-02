@@ -6,24 +6,17 @@ import ICompanyComponentProps from "../company.props";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import Link from "next/link";
-import { CompanyStyle as style } from "../CompanyStyle";
-import { deleteCompany } from "../services/CompanyServices";
+import { CompanyStyle as style } from "../companystyle";
 
 interface InfoComponentProps extends ICompanyComponentProps {}
 const InfoComponent = ({ item }: any) => {
-  const getRemove = async (item: any) => {
-    await deleteCompany(item);
-  };
-  const removeHandler = (item: any) => {
-    getRemove(item);
-  };
   return (
     <Grid item xs={12} lg={4} sm={6}>
       <Card>
         <Grid container spacing={2}>
           <Grid item xs={12} style={style.infoGrid}>
             <Tooltip title="Delete">
-              <IconButton onClick={() => removeHandler(item)}>
+              <IconButton>
                 <DeleteOutlineIcon fontSize="small" />
               </IconButton>
             </Tooltip>

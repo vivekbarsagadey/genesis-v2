@@ -1,11 +1,10 @@
-import { Grid, IconButton, Input } from "@mui/material";
-import { Box } from "@mui/system";
 import SearchIcon from "@mui/icons-material/Search";
+import { Grid, IconButton } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import { Box } from "@mui/system";
+import { useState } from "react";
 import ICompanyComponentProps from "../company.props";
-import React, { useState } from "react";
-import { makeStyles } from "@mui/styles";
-import { CompanyStyle as style } from "../CompanyStyle";
-
+import { CompanyStyle as style } from "../companystyle";
 
 interface SearchComponentProps extends ICompanyComponentProps {}
 
@@ -13,7 +12,6 @@ const SearchComponent = ({
   items,
   itemsCallBackHandler = () => {},
 }: SearchComponentProps) => {
-    
   const [search, setSearch] = useState("");
 
   const getSearch = (event: any) => {
@@ -32,8 +30,12 @@ const SearchComponent = ({
     <>
       <Grid item xs={12}>
         <Box style={style.box}>
-          <input
+          <TextField
+            fullWidth
+            label="Search"
+            id="Search"
             type="text"
+            size="small"
             placeholder="Search"
             onChange={getSearch}
             style={style.search}

@@ -27,7 +27,6 @@ const CompanyStyle = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "0px",
   },
   expandIcon: {
     display: "flex" as "flex",
@@ -44,15 +43,13 @@ const CompanyStyle = {
     position: "relative" as "relative",
   },
   search: {
-    border: "none" as "none",
-    height: "5vh",
+   
     width: "100%",
-    paddingLeft: "10px",
   },
   box: {
     display: "flex" as "flex",
     alignItems: "center" as "center",
-    border: "1px ridge",
+   
   },
 };
 

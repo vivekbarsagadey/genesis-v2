@@ -7,9 +7,10 @@ import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import CsvGenerator from "../utility/CsvGenerator";
-import ExcellGenerator from "../utility/ExcellGenerator";
-import PdfGenerator from "../utility/PdfGenerator";
+import { URL } from "../utility/apiurl/apiurl";
+import CsvGenerator from "../utility/project/CsvGenerator";
+import ExcellGenerator from "../utility/project/ExcellGenerator";
+import PdfGenerator from "../utility/project/PdfGenerator";
 import ProjectFilter from "./filter";
 import ProjectListComponent from "./list";
 import ProjectCalendarView from "./list/CalendarView";
@@ -32,7 +33,7 @@ const ProjectHomeComponent = () => {
 
   const open = Boolean(anchorEl);
   const fetchData = () => {
-    fetch("http://localhost:3000/api/projects")
+    fetch(`${URL}/projects`)
       .then((r) => {
         return r.json();
       })
@@ -160,12 +161,16 @@ const ProjectHomeComponent = () => {
                 />
               );
             case "Graph":
-              return <ProjectGraphView projectData={projectData}></ProjectGraphView>;
+              return (
+                <ProjectGraphView projectData={projectData}></ProjectGraphView>
+              );
             case "Kanban":
               return <ProjectKanbanView projectData={projectData} />;
             case "Calendar":
               return (
-                <ProjectCalendarView projectData={projectData}></ProjectCalendarView>
+                <ProjectCalendarView
+                  projectData={projectData}
+                ></ProjectCalendarView>
               );
             default:
               return <ProjectGridView copyProject={copyProject} />;

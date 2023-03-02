@@ -34,19 +34,19 @@ const ProjectGridView = ({ copyProject }: any) => {
             .map((item: any) => {
               return (
                 <Grid item lg={4} xs={12} sm={6} md={4} mt={0} key={item.id}>
-                  <Card style={{ padding: "0.8rem" }}>
+                  <Card style={style.box}>
                     <Box>
-                      <Grid container style={{ paddingLeft: "1rem" }}>
+                      <Grid container style={style.card}>
                         <Grid item xs={5}>
-                          <Typography fontSize={"0.75rem"}>
+                          <Typography style={style.gridfontsize}>
                             Project Name
                           </Typography>
                         </Grid>
                         <Grid item xs={1.5}>
-                          <Typography fontSize={"0.75rem"}> :</Typography>
+                          <Typography style={style.gridfontsize}> :</Typography>
                         </Grid>
                         <Grid item xs={5.5}>
-                          <Typography fontSize={"0.75rem"} noWrap>
+                          <Typography style={style.gridfontsize} noWrap>
                             {item?.name}
                           </Typography>
                         </Grid>
@@ -55,16 +55,16 @@ const ProjectGridView = ({ copyProject }: any) => {
 
                     <Box mt={1}>
                       <Grid container>
-                        <Grid item xs={5.3} style={{ paddingLeft: "1rem" }}>
-                          <Typography fontSize={"0.75rem"}>
+                        <Grid item xs={5.3} style={style.card}>
+                          <Typography style={style.gridfontsize}>
                             Customer Name
                           </Typography>
                         </Grid>
                         <Grid item xs={1.5}>
-                          <Typography fontSize={"0.75rem"}> :</Typography>
+                          <Typography style={style.gridfontsize}> :</Typography>
                         </Grid>
                         <Grid item xs={5.2}>
-                          <Typography fontSize={"0.75rem"} noWrap>
+                          <Typography style={style.gridfontsize} noWrap>
                             {" "}
                             {item?.customerName}
                           </Typography>
@@ -74,23 +74,16 @@ const ProjectGridView = ({ copyProject }: any) => {
 
                     <Box mt={1}>
                       <Grid container>
-                        <Grid
-                          item
-                          xs={5.3}
-                          style={{
-                            paddingLeft: "1rem",
-                            paddingBottom: "0.5rem",
-                          }}
-                        >
-                          <Typography fontSize={"0.75rem"}>
+                        <Grid item xs={5.3} style={style.card}>
+                          <Typography style={style.gridfontsize}>
                             Application
                           </Typography>
                         </Grid>
                         <Grid item xs={1.5}>
-                          <Typography fontSize={"0.75rem"}> :</Typography>
+                          <Typography style={style.gridfontsize}> :</Typography>
                         </Grid>
                         <Grid item xs={5.2}>
-                          <Typography fontSize={"0.75rem"}>
+                          <Typography style={style.gridfontsize}>
                             {item?.application}
                           </Typography>
                         </Grid>

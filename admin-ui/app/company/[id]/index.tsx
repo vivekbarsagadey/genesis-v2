@@ -8,17 +8,16 @@ import {
   MenuItem,
   Select,
   TextField,
-  Typography,
+  Typography
 } from "@mui/material";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import {
+  country, state
+} from "../../../component/common/data/company/companyType";
 import ICompany from "../company.model";
-import { CompanyStyle as style } from "../CompanyStyle";
-import { createCompany, updateCompany } from "../services/CompanyServices";
-import { state, country } from "../../../config/companyType";
+import { CompanyStyle as style } from "../companystyle";
 
 interface ICompanyProp {
   company: ICompany | undefined;
@@ -45,20 +44,6 @@ const schema = yup
   .required();
 
 const CompanyComponent = ({ company }: ICompanyProp) => {
-  const [create, setCreate] = React.useState(false);
-
-  const handleCreate = () => {
-    setCreate(true);
-  };
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-
-    setCreate(false);
-  };
-
   const {
     register,
     setValue,
@@ -79,56 +64,13 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
     resolver: yupResolver(schema),
   });
 
-  const router = useRouter();
-
-  const onSubmit = async (data: any) => {
-    if (company?._id) {
-      try {
-        const newCompany = {
-          _id: company?._id,
-          name: data?.name,
-          address: data?.address,
-          email: data?.email,
-          mobile: data?.mobile,
-          country: data?.country,
-          state: data?.state,
-          city: data?.city,
-          pinCode: data?.pincode,
-        };
-        await updateCompany(newCompany);
-        router.push("/company");
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      try {
-        const _company = {
-          name: data?.name,
-          mobile: data?.mobile,
-          address: data?.address,
-          email: data?.email,
-          country: data?.country,
-          state: data?.state,
-          city: data?.city,
-          pinCode: data?.pincode,
-        };
-        await createCompany(_company);
-        router.push("/company");
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
-
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Box className={classes.box}>
+      <form>
+        <Box>
           <Grid container spacing={2} p={3}>
             <Grid item xs={12} pb={3}>
-              <Typography style={style.fontSize} noWrap>
-                Create Company
-              </Typography>
+              <Typography noWrap>Create Company</Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>Company Name:</Typography>
@@ -174,13 +116,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>Country:</Typography>
               <FormControl fullWidth size="small">
-                <Select
-                  onChange={(e) =>
-                    setValue("country", e.target.value, {
-                      shouldValidate: true,
-                    })
-                  }
-                >
+                <Select>
                   {country.map((items) => {
                     return (
                       <MenuItem key={items.id} value={items.name}>
@@ -196,13 +132,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
               <Typography>State:</Typography>
 
               <FormControl fullWidth size="small">
-                <Select
-                  onChange={(e) =>
-                    setValue("state", e.target.value, {
-                      shouldValidate: true,
-                    })
-                  }
-                >
+                <Select>
                   {state.map((c) => {
                     return (
                       <MenuItem key={c.id} value={c.name}>
@@ -241,12 +171,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                   Cancel
                 </Button>
               </Link>
-              <Button
-                type="submit"
-                variant="contained"
-                onClick={handleCreate}
-                style={style.btn}
-              >
+              <Button type="submit" variant="contained" style={style.btn}>
                 Submit
               </Button>
             </Grid>
@@ -257,11 +182,11 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
   );
 };
 
-const CountryDetails = ({ items }: any) => {
+const CountryDetails = ({ items }) => {
   return <>{items.label}</>;
 };
 
-const StateDetails = ({ c }):any => {
+const StateDetails = ({ c }) => {
   return <>{c.label}</>;
 };
 

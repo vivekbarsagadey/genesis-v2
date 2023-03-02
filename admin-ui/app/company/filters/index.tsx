@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import Autocomplete from "@mui/material/Autocomplete";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Menu from "@mui/material/Menu";
 import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
-import ICompanyComponentProps from "../company.props";
 import { Stack } from "@mui/system";
-import { CompanyStyle as style } from "../CompanyStyle";
+import { useState } from "react";
+import ICompanyComponentProps from "../company.props";
+import { CompanyStyle as style } from "../companystyle";
 
 interface FilterComponentProps extends ICompanyComponentProps {
   handleClose: () => void;

@@ -26,5 +26,14 @@ const ListStyle = {
     width: "100%",
     marginTop: "-1.7rem",
   },
+  gridfontsize:{
+    fontSize:'0.75rem'
+  },
+  box:{
+    padding: "0.8rem"
+  },
+  card:{
+    paddingLeft: "1rem",
+  }
 };
 export { ListStyle };

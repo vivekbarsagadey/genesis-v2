@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { applicationType } from "../../../config/applicationType";
+import { URL } from "../../utility/apiurl/apiurl";
 import { CreateStyle as style } from "./CreateStyle";
 interface IApplicationType {
   id: Number;
@@ -28,7 +29,7 @@ const ProjectCreate = () => {
   };
 
   const updateMyProjectData = async () => {
-    await fetch("http://localhost:3000/api/projects", {
+    await fetch(`${URL}/projects`, {
       method: "POST",
       body: JSON.stringify({
         name: projectName,
@@ -135,6 +136,7 @@ const ProjectCreate = () => {
                           </Button>
                         </Link>
                       </Grid>
+
                       <Grid item xs={6}>
                         <Button
                           variant="contained"

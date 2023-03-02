@@ -9,7 +9,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Pagination from "@mui/material/Pagination";
 import usePagination from "./pagination";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { CompanyStyle as style } from "../CompanyStyle";
+import { CompanyStyle as style } from "../companystyle";
 
 const useStyles = makeStyles({
   expandIcon: {

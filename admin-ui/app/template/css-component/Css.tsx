@@ -5,7 +5,7 @@ const Css = ({ menuList }: any) => {
     d.components.map((d: any) => d.properties)
   );
   const cssP = components[1].map((general: any) =>
-    general.map((d: any) => d.css)
+    general?.map((d: any) => d.css)
   );
   return (
     <>

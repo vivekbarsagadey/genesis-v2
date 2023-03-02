@@ -11,6 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Stack from "@mui/material/Stack";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { headerstyle as style } from "./headerstyle";
 
 const HeaderComponent = ({ project }: any) => {
   const { data: session } = useSession();
@@ -46,7 +47,7 @@ const HeaderComponent = ({ project }: any) => {
     window.location.reload();
   };
   return (
-    <Grid container mb={1} mt={-0.8} style={{ backgroundColor: "#f1f5f9" }}>
+    <Grid container mb={1} mt={-0.8} style={style.headercontainer}>
       <Grid item xs={12}>
         <Grid
           item
@@ -61,35 +62,23 @@ const HeaderComponent = ({ project }: any) => {
         >
           <Stack direction="row">
             <IconButton>
-              <Badge variant="dot" color="primary">
-                <MailIcon style={{ fontSize: "1.2rem" }} />
-              </Badge>
+              <MailIcon style={style.icon} />
             </IconButton>
             <IconButton>
-              <SettingsIcon style={{ fontSize: "1.2rem" }} />
+              <SettingsIcon style={style.icon} />
             </IconButton>
             <IconButton>
-              <Badge variant="dot" color="primary">
-                <NotificationsNoneIcon style={{ fontSize: "1.2rem" }} />
-              </Badge>
+              <NotificationsNoneIcon style={style.icon} />
             </IconButton>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "left",
-                textAlign: "center",
-              }}
-            >
+            <Box style={style.box}>
               <IconButton
                 onClick={handleClick}
                 size="small"
                 sx={{ mr: 2 }}
-                aria-controls={open ? "account-menu" : undefined}
                 aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
               >
                 <Avatar
-                  sx={{ width: 32, height: 32 }}
+                  style={style.avtar}
                   alt="Remy Sharp"
                   src="./images/avtar.png"
                 />
@@ -103,44 +92,13 @@ const HeaderComponent = ({ project }: any) => {
               onClick={handleClose}
               PaperProps={{
                 elevation: 0,
-                sx: {
-                  overflow: "visible",
-                  filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                  mt: 1.5,
-                  "& .MuiAvatar-root": {
-                    width: 32,
-                    height: 32,
-                    ml: -0.5,
-                    mr: 1,
-                  },
-                  "&:before": {
-                    content: '""',
-                    display: "block",
-                    position: "absolute",
-                    top: 0,
-                    right: 14,
-                    width: 10,
-                    height: 10,
-                    bgcolor: "background.paper",
-                    transform: "translateY(-50%) rotate(45deg)",
-                    zIndex: 0,
-                  },
-                },
               }}
               transformOrigin={{ horizontal: "right", vertical: "top" }}
               anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
             >
-              <Link
-                href={"/"}
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                <MenuItem
-                  onClick={() => signOut()}
-                  style={{ height: "0.3rem", padding: "0.3rem" }}
-                >
-                  <Typography style={{ fontSize: "0.7rem" }}>
-                    Signout
-                  </Typography>
+              <Link href={"/"} style={style.link}>
+                <MenuItem onClick={() => signOut()} style={style.menu}>
+                  <Typography style={style.signout}>Signout</Typography>
                 </MenuItem>
               </Link>
             </Menu>

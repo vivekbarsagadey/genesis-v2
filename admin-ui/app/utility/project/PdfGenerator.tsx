@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "@mui/material";
-import { download } from "../../utils/pdf-util";
-import { ProjectHomeStyle as style} from "../project/ProjectHomeStyle";
+import { download } from "../../../utils/pdf-util";
+import { ProjectHomeStyle as style} from "../../project/ProjectHomeStyle";
 
 const PdfGenerator = ({ projectData }: any) => {
   const exportPDF = async () => {
