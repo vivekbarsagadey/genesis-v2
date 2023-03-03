@@ -8,7 +8,7 @@ import InfoProjectComponent from "../info";
 import projectPagination from "./ProjectListPagination";
 import { ListStyle as style } from "./ListStyle";
 
-const ProjectListComponent = ({ copyProject, projectSearchList }: any) => {
+const ProjectListComponent = ({ copyProject, projectSearchList }) => {
 
   //pagination logic
   let [page, setPage] = useState(1);
@@ -55,10 +55,10 @@ const ProjectListComponent = ({ copyProject, projectSearchList }: any) => {
         {_DATA
           .currentData()
           .reverse()
-          .filter((ele: any) =>
+          .filter((ele) =>
             ele.name.toLowerCase().includes(projectSearchList.toLowerCase())
           )
-          .map((items: any, index: any) => {
+          .map((items, index) => {
             return (
               <div key={index}>
                 <InfoProjectComponent items={items} />

@@ -1,12 +1,15 @@
-"use client"
+"use client";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
+import { DashboardStyle as style } from "./DashboardStyle";
 
 export default function Loading() {
-    return <h1>
-       <Box sx={{ width: "100%",marginTop:'-1.6rem' }}>
+  return (
+    <h1>
+      <Box style={style.loading}>
         <LinearProgress />
       </Box>
     </h1>
-  }
+  );
+}

@@ -11,7 +11,7 @@ const localizer = momentLocalizer(moment);
 const ProjectCalendarView = ({ projectData }: any) => {
   const [events, setEvents] = useState([]);
 
-  const AllData = projectData.map((projectData: any) => {
+  const CalendarData = projectData.map((projectData: any) => {
     return {
       title: projectData.firstName,
       start: new Date(projectData.createdAt),
@@ -19,7 +19,7 @@ const ProjectCalendarView = ({ projectData }: any) => {
     };
   });
   useEffect(() => {
-    setEvents(AllData);
+    setEvents(CalendarData);
   }, []);
   return (
     <Grid pt={1} container height={"80vh"}>

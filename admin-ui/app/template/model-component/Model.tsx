@@ -1,11 +1,13 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-const Model = ({ menuList }: any) => {
-  const components = menuList.map((d: any) =>
-    d.components.map((d: any) => d.properties)
+import { ModelStyle as style } from "./ModelStyle";
+
+const Model = ({ menuList }) => {
+  const components = menuList?.map((d) =>
+    d.components.map((d) => d.properties)
   );
   const modelData = components[1]?.map((general) =>
-    general?.map((d: any) => d.model)
+    general?.map((d) => d.model)
   );
   return (
     <>
@@ -14,23 +16,17 @@ const Model = ({ menuList }: any) => {
         <Grid item xs={4.5}>
           <Grid container>
             <Grid item xs={12} mt={1}>
-              <Typography style={{ color: "#212E3D", fontSize: "0.73rem" }}>
-                width
-              </Typography>
+              <Typography style={style.width}>width</Typography>
             </Grid>
           </Grid>
         </Grid>
         <Grid item xs={6}>
-          {modelData[0]?.map((p: any) => {
+          {modelData[0]?.map((p) => {
             return (
               <div key={p.id}>
                 <Grid container>
                   <Grid item xs={12} mt={1}>
-                    <Typography
-                      style={{ color: "#EC5500", fontSize: "0.73rem" }}
-                    >
-                      {p.width}
-                    </Typography>
+                    <Typography style={style.typography}>{p.width}</Typography>
                   </Grid>
                 </Grid>
               </div>

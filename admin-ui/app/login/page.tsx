@@ -1,54 +1,22 @@
 "use client";
-import { NextPage } from "next";
-import { signIn } from "next-auth/react";
-import { FormEventHandler, useState } from "react";
-import { useRouter } from "next/navigation";
 import {
-  Box,
-  Grid,
-  Card,
   Button,
-  InputBase,
-  Typography,
+  Card,
+  Grid,
   Snackbar,
   TextField,
+  Typography,
 } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import Link from "next/link";
 import Alert from "@mui/material/Alert";
+import { NextPage } from "next";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { FormEventHandler, useState } from "react";
+import { LoginStyle as style } from "./LoginStyle";
 
-const useStyles = makeStyles({
-  login_button: {
-    width: "100%",
-    color: "white",
-    textTransform: "capitalize",
-  },
-  background_style: {
-    backgroundImage: `url(${"./images/loginbackground1.png"})`,
-    position: "relative",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    height: "100vh",
-    backgroundPosition: "center",
-  },
-  card_style: {
-    padding: "1.5rem",
-    width: "20rem",
-    marginTop: "1rem",
-    boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-    borderRadius: "5px",
-  },
-  customTextField: {
-    "& input::placeholder": {
-      fontSize: "0.7rem",
-    },
-  },
-});
 interface Props {}
 
 const SignIn: NextPage = (props): JSX.Element => {
-  const classes = useStyles();
-
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const [alert, showAlert] = useState(false);
   const router = useRouter();
@@ -81,8 +49,8 @@ const SignIn: NextPage = (props): JSX.Element => {
   };
   return (
     <>
-      <Grid container className={classes.background_style}>
-        <Grid item style={{ position: "absolute", top: "5%" }} xs={12}>
+      <Grid container style={style.background_style}>
+        <Grid item style={style.grid} xs={12}>
           <Grid container>
             <Grid item xs={12}>
               <Grid container>
@@ -98,7 +66,7 @@ const SignIn: NextPage = (props): JSX.Element => {
             </Grid>
             <Grid item md={4} lg={4} sm={2} xs={0}></Grid>
             <Grid item px={2} md={8} lg={8} sm={10} xs={12}>
-              <Card className={classes.card_style}>
+              <Card style={style.card_style}>
                 <form onSubmit={handleSubmit}>
                   <Grid item xs={12}>
                     <Typography
@@ -117,7 +85,6 @@ const SignIn: NextPage = (props): JSX.Element => {
                     <TextField
                       size="small"
                       fullWidth
-                      classes={{ root: classes.customTextField }}
                       placeholder="User@Genesis.com"
                       value={userInfo.email}
                       onChange={({ target }) =>
@@ -134,7 +101,6 @@ const SignIn: NextPage = (props): JSX.Element => {
                     <TextField
                       size="small"
                       fullWidth
-                      classes={{ root: classes.customTextField }}
                       placeholder="Enter Your Password"
                       value={userInfo.password}
                       onChange={({ target }) =>
@@ -148,22 +114,20 @@ const SignIn: NextPage = (props): JSX.Element => {
                       type="submit"
                       value="Login"
                       variant="contained"
-                      className={classes.login_button}
+                      style={style.login_button}
                     >
                       Login
                     </Button>
                   </Grid>
                   <Grid item xs={12} my={1}>
-                    <Link href={"/register"} style={{ textDecoration: "none" }}>
-                      <Button
-                        type="submit"
-                        value="Login"
-                        variant="contained"
-                        className={classes.login_button}
-                      >
-                        New User? Register Account
-                      </Button>
-                    </Link>
+                    <Button
+                      type="submit"
+                      value="Login"
+                      variant="contained"
+                      style={style.login_button}
+                    >
+                      New User? Register Account
+                    </Button>
                   </Grid>
                 </form>
               </Card>

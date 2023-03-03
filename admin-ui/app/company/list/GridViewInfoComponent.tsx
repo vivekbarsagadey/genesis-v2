@@ -1,24 +1,16 @@
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
+import { Tooltip } from "@mui/material";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton/IconButton";
 import Typography from "@mui/material/Typography";
-import { makeStyles } from "@mui/styles";
-import React, { useEffect, useState } from "react";
-import ICompanyComponentProps from "../company.props";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { Tooltip } from "@mui/material";
 import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import ICompany from "../company.model";
-
-const useStyles = makeStyles({
-  expandIcon: {
-    display: "flex",
-    textAlign: "center",
-    alignItems: "center",
-  },
-});
+import ICompanyComponentProps from "../company.props";
+import { CompanyStyle as style } from "../companystyle";
 
 interface GridViewInfoComponentProps extends ICompanyComponentProps {
   c: ICompany;
@@ -41,19 +33,11 @@ const GridViewInfoComponent = ({ c, checked }: any) => {
     setShow(event.target.checked);
   };
 
-  const classes = useStyles();
   return (
     <>
-      <Box style={{ background: "#f8fafc", marginTop: "0.7rem" }}>
-        <Grid container className={classes.expandIcon}>
-          <Grid
-            item
-            xs={12}
-            lg={1}
-            sm={1}
-            md={1}
-            className={classes.expandIcon}
-          >
+      <Box>
+        <Grid container style={style.expandIcon}>
+          <Grid item xs={12} lg={1} sm={1} md={1}>
             <Checkbox checked={show} onChange={handleChange} />
           </Grid>
           <Grid
@@ -62,7 +46,7 @@ const GridViewInfoComponent = ({ c, checked }: any) => {
             lg={2.5}
             sm={2.5}
             md={2.5}
-            className={classes.expandIcon}
+            style={style.expandIcon}
           >
             <Typography fontSize="small" noWrap>
               {c.name}
@@ -74,7 +58,7 @@ const GridViewInfoComponent = ({ c, checked }: any) => {
             lg={2.5}
             sm={2.5}
             md={2.5}
-            className={classes.expandIcon}
+            style={style.expandIcon}
           >
             <Typography fontSize="small" noWrap>
               {c.email}
@@ -86,7 +70,7 @@ const GridViewInfoComponent = ({ c, checked }: any) => {
             lg={2.5}
             sm={2.5}
             md={2.5}
-            className={classes.expandIcon}
+            style={style.expandIcon}
           >
             <Typography fontSize="small" noWrap>
               {c.mobile}
@@ -98,7 +82,7 @@ const GridViewInfoComponent = ({ c, checked }: any) => {
             lg={2.5}
             sm={2.5}
             md={2.5}
-            className={classes.expandIcon}
+            style={style.expandIcon}
           >
             <Typography fontSize="small" noWrap>
               {c.address}

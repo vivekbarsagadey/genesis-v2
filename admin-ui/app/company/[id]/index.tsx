@@ -117,7 +117,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
               <Typography>Country:</Typography>
               <FormControl fullWidth size="small">
                 <Select>
-                  {country.map((items) => {
+                  {country?.map((items) => {
                     return (
                       <MenuItem key={items.id} value={items.name}>
                         <CountryDetails items={items} />
@@ -133,7 +133,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
 
               <FormControl fullWidth size="small">
                 <Select>
-                  {state.map((c) => {
+                  {state?.map((c) => {
                     return (
                       <MenuItem key={c.id} value={c.name}>
                         <StateDetails c={c} />
@@ -166,7 +166,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
             </Grid>
 
             <Grid item xs={12} textAlign="right">
-              <Link href={"/company"}>
+              <Link href={"/company"} passHref>
                 <Button variant="contained" style={style.btn}>
                   Cancel
                 </Button>

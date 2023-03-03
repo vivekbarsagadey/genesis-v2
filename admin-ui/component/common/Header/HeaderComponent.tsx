@@ -14,19 +14,18 @@ import { headerstyle as style } from "./headerstyle";
 
 const HeaderComponent = ({ project }: any) => {
   const { data: session } = useSession();
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const [openMenu, setOpenMenu] = useState<null | HTMLElement>(null);
+  const open = Boolean(openMenu);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+    setOpenMenu(event.currentTarget);
   };
   const handleClose = () => {
-    setAnchorEl(null);
+    setOpenMenu(null);
   };
 
   return (
-    <Grid container
-     style={style.headercontainer}>
+    <Grid container style={style.headercontainer}>
       <Grid item xs={12}>
         <Grid
           item
@@ -64,7 +63,7 @@ const HeaderComponent = ({ project }: any) => {
               </IconButton>
             </Box>
             <Menu
-              anchorEl={anchorEl}
+              anchorEl={openMenu}
               id="account-menu"
               open={open}
               onClose={handleClose}

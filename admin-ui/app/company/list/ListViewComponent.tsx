@@ -1,30 +1,19 @@
-import { Box, Checkbox, Grid, Typography } from "@mui/material";
-import React, { useState, useEffect } from "react";
-import ICompanyComponentProps from "../company.props";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import { makeStyles } from "@mui/styles";
-import GridViewInfoComponent from "./GridViewInfoComponent";
-import IconButton from "@mui/material/IconButton";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { Box, Checkbox, Grid, Typography } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
 import Pagination from "@mui/material/Pagination";
-import usePagination from "./pagination";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { useState } from "react";
+import ICompanyComponentProps from "../company.props";
 import { CompanyStyle as style } from "../companystyle";
-
-const useStyles = makeStyles({
-  expandIcon: {
-    display: "flex",
-    textAlign: "center",
-
-    alignItems: "center",
-  },
-});
+import GridViewInfoComponent from "./GridViewInfoComponent";
+import usePagination from "./pagination";
 
 interface ListComponentProps extends ICompanyComponentProps {
-  companies: any;
-  setCompanies: any;
-  checked: any;
-  setChecked: any;
+  companies ;
+  setCompanies;
+  checked;
+  setChecked;
 }
 const ListViewComponent = ({
   companies,
@@ -102,7 +91,6 @@ const ListViewComponent = ({
     setCompanies(sortData);
   };
 
-  const classes = useStyles();
   return (
     <>
       <Box style={{ background: "#f8fafc" }}>
@@ -207,11 +195,7 @@ const ListViewComponent = ({
         return <GridViewInfoComponent checked={checked} key={c._id} c={c} />;
       })}
 
-      <Grid
-        container
-        style={style.pagination}
-        pt={2}
-      >
+      <Grid container style={style.pagination} pt={2}>
         <div style={{ position: "fixed" }}>
           <Pagination
             count={count}

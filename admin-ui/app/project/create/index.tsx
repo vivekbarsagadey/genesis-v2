@@ -1,7 +1,6 @@
 "use client";
 import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
-import { Axios } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -18,7 +17,7 @@ const ProjectCreate = () => {
   const [customerName, setCustomerName] = useState<String>("");
   const [application, setApplication] = useState<String>("");
   const router = useRouter();
-  const getApplicationType = (_TypeR: any) => {
+  const getApplicationType = (_TypeR) => {
     setApplication(_TypeR.label);
   };
   const updateProjectName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,8 +125,8 @@ const ProjectCreate = () => {
                   <Grid item xs={3}>
                     <Grid container>
                       <Grid item xs={5.6}>
-                        <Link href={"/project"} passHref>
-                          <Button
+                        <Link href={"/project"} passHref >
+                          <Button 
                             variant="contained"
                             size="medium"
                             style={style.btn}
@@ -159,7 +158,7 @@ const ProjectCreate = () => {
   );
 };
 
-const ApplicationDetails = ({ application, getApplicationType }: any) => {
+const ApplicationDetails = ({ application, getApplicationType }) => {
   return (
     <Grid container alignItems={"center"}>
       <Grid item xs={2}>

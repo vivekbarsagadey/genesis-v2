@@ -161,9 +161,7 @@ const ProjectHomeComponent = () => {
                 />
               );
             case "Graph":
-              return (
-                <ProjectGraphView projectData={projectData}></ProjectGraphView>
-              );
+              return <ProjectGraphView></ProjectGraphView>;
             case "Kanban":
               return <ProjectKanbanView projectData={projectData} />;
             case "Calendar":
@@ -191,7 +189,7 @@ const ProjectHomeComponent = () => {
   );
 };
 
-const FilterChipComponent = ({ item }: any) => {
+const FilterChipComponent = ({ item }) => {
   return (
     <span style={style.chip}>
       {item} <span style={style.chipcrossbutton}>x</span>{" "}

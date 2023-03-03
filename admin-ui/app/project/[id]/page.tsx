@@ -1,10 +1,9 @@
-import React from 'react'
-import ProjectCreate from '.'
+import ProjectEditComponent from '.'
 
 const page = () => {
   return (
     <div>
-        <ProjectCreate/>
+        <ProjectEditComponent/>
     </div>
   )
 }

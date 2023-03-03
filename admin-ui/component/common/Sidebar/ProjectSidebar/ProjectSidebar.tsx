@@ -12,7 +12,7 @@ import { headerstyle as style } from "./projectstyle";
 const ProjectSidebar = ({ show }: any) => {
   return (
     <>
-      {modules.map((module) => {
+      {modules?.map((module) => {
         switch (module?.name) {
           case "Dashboard":
             return <DashboardLayOut module={module} show={show} />;
@@ -55,7 +55,7 @@ const DashboardLayOut = ({ module, show }) => {
 const ProjectlayOut = ({ module, show }) => {
   return (
     <Grid key={module.id} item xs={12} container alignItems="center">
-      <Link href="/project" style={{ textDecoration: "none" }}>
+      <Link href="/project" passHref style={{ textDecoration: "none" }}>
         <div style={style.header}>
           <IconButton>
             <AppsIcon fontSize={"small"} />
@@ -77,7 +77,7 @@ const ProjectlayOut = ({ module, show }) => {
 const ReportLayOut = ({ module, show }) => {
   return (
     <Grid key={module.id} item xs={12} container alignItems="center">
-      <Link href="/report" style={{ textDecoration: "none" }}>
+      <Link href="/report" passHref style={{ textDecoration: "none" }}>
         <div style={style.header}>
           <IconButton>
             <ReportIcon fontSize={"small"} />
@@ -99,7 +99,7 @@ const ReportLayOut = ({ module, show }) => {
 const CompanyLayOut = ({ module, show }) => {
   return (
     <Grid key={module.id} item xs={12} container alignItems="center">
-      <Link href="/company" style={{ textDecoration: "none" }}>
+      <Link href="/company" passHref style={{ textDecoration: "none" }}>
         <div style={style.header}>
           <IconButton>
             <StoreIcon fontSize={"small"} />
@@ -121,7 +121,7 @@ const CompanyLayOut = ({ module, show }) => {
 const UserLayOut = ({ module, show }) => {
   return (
     <Grid key={module.id} item xs={12} container alignItems="center">
-      <Link href="/user" style={{ textDecoration: "none" }}>
+      <Link href="/user" passHref style={{ textDecoration: "none" }}>
         <div style={style.header}>
           <IconButton>
             <PersonOutlineIcon fontSize={"small"} />

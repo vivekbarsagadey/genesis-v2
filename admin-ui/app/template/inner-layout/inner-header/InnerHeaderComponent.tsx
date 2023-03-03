@@ -1,16 +1,14 @@
 "use client";
-import React, { useEffect } from "react";
-import { Grid, IconButton, Button } from "@mui/material";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
-import Badge from "@mui/material/Badge";
-import SmartphoneIcon from "@mui/icons-material/Smartphone";
-import TabletIcon from "@mui/icons-material/Tablet";
-import Typography from "@mui/material/Typography";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import CloseIcon from "@mui/icons-material/Close";
+import { Button, Grid } from "@mui/material";
+import Stack from "@mui/material/Stack";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
 import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
+import { URL } from "../../../utility/apiurl/apiurl";
+import { InnerHeaderStyle as style } from "./InnerHeaderStyle";
+
 
 interface ITabPanel {
   value: number;
@@ -35,14 +33,14 @@ const InnerHeaderComponent = ({
   const router = useRouter();
 
   // get call for Screen Name
-  const [screens2, setScreens2] = React.useState("");
+  const [screenName, setScreenName] = React.useState("");
   const fetchData = () => {
-    fetch("http://localhost:3000/api/screens")
+    fetch(`${URL}/screens`)
       .then((r) => {
         return r.json();
       })
       .then((d) => {
-        setScreens2(d);
+        setScreenName(d);
       });
   };
 
@@ -60,33 +58,29 @@ const InnerHeaderComponent = ({
     });
   };
 
-  const components = menuList.map((d: any) =>
-    d.components.map((d: any) => d.properties)
+  const components = menuList.map((d) =>
+    d.components.map((d) => d.properties)
   );
 
-  const rightTab = components[0].map((general: any) =>
-    general.map((d: any) => d.api)
+  const rightTab = components[0].map((general) =>
+    general.map((d) => d.api)
   );
 
-  const innerSectionData = dragList.map((ele: any) => ele.properties);
+  const innerSectionData = dragList.map((ele) => ele.properties);
 
   const saveJsonData = () => {
     var json = JSON.stringify([
       { projectName: project[0].name },
       { component: dragList },
       { property: innerSectionData },
-      { pages: screens2[0]?.name },
+      { pages: screenName[0]?.name },
     ]);
   };
 
   return (
     <Grid
       container
-      style={{
-        backgroundColor: "#2C3134",
-        height: "2.9rem",
-        marginTop: "0.5rem",
-      }}
+      style={style.container}
     >
       <Grid item lg={10.15} xs={9} sm={9.5} style={{ marginTop: "-1.5rem" }}>
         <Tabs value={value} onChange={handleChange}>
@@ -103,15 +97,7 @@ const InnerHeaderComponent = ({
                 iconPosition="end"
                 label={screen.name}
                 {...a11yProps(0)}
-                style={{
-                  textTransform: "capitalize",
-                  fontSize: "0.7rem",
-                  color: "white",
-                  paddingTop: "0px",
-                  display: "flex",
-                  paddingBottom: "0.5rem",
-                  alignItems: "flex-end",
-                }}
+                style={style.tabs}
               />
             );
           })}
@@ -133,19 +119,14 @@ const InnerHeaderComponent = ({
             <Button
               variant="contained"
               size="small"
-              style={{ textTransform: "capitalize", height: "1.5rem" }}
+              style={style.btn}
               onClick={saveJsonData}
             >
               Save
             </Button>
           </Grid>
           <Stack direction="row">
-            {/* <IconButton>
-              <SmartphoneIcon style={{ fontSize: "1.2rem", color: "white" }} />
-            </IconButton> */}
-            {/* <IconButton>
-              <TabletIcon style={{ fontSize: "1.2rem", color: "white" }} />
-            </IconButton> */}
+         
           </Stack>
         </Grid>
       </Grid>

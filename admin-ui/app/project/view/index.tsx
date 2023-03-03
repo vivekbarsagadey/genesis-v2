@@ -38,7 +38,7 @@ const AllViews = [
     icon: <ViewKanbanOutlinedIcon fontSize="small" />,
   },
 ];
-const ProjectViewComponent = ({ handleCount }: any) => {
+const ProjectViewComponent = ({ handleCount }) => {
   return (
     <>
       {AllViews?.map((data) => {

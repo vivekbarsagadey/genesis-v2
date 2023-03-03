@@ -1,12 +1,10 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-const Css = ({ menuList }: any) => {
-  const components = menuList.map((d: any) =>
-    d.components.map((d: any) => d.properties)
-  );
-  const cssP = components[1].map((general: any) =>
-    general?.map((d: any) => d.css)
-  );
+import { CSSStyle as style } from "./CSSStyle";
+
+const Css = ({ menuList }) => {
+  const components = menuList.map((d) => d.components.map((d) => d.properties));
+  const cssP = components[1].map((general) => general?.map((d) => d.css));
   return (
     <>
       <Grid container>
@@ -14,25 +12,17 @@ const Css = ({ menuList }: any) => {
         <Grid item xs={4.5}>
           <Grid container>
             <Grid item xs={12} mt={1}>
-              <Typography style={{ color: "#212E3D", fontSize: "0.73rem" }}>
-                borderRadius
-              </Typography>
+              <Typography style={style.typography}>borderRadius</Typography>
             </Grid>
             <Grid item xs={12} mt={1}>
-              <Typography style={{ color: "#212E3D", fontSize: "0.73rem" }}>
-                height
-              </Typography>
+              <Typography style={style.typography}>height</Typography>
             </Grid>
             <Grid item xs={12} mt={1}>
-              <Typography style={{ color: "#212E3D", fontSize: "0.73rem" }}>
-                overflowY
-              </Typography>
+              <Typography style={style.typography}>overflowY</Typography>
             </Grid>
 
             <Grid item xs={12} mt={1}>
-              <Typography style={{ color: "#212E3D", fontSize: "0.73rem" }}>
-                width
-              </Typography>
+              <Typography style={style.typography}>width</Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -42,35 +32,25 @@ const Css = ({ menuList }: any) => {
               <div key={p.id}>
                 <Grid container>
                   <Grid item xs={12} mt={1}>
-                    <Typography
-                      style={{ color: "#EC5500", fontSize: "0.73rem" }}
-                    >
+                    <Typography style={style.typography}>
                       {p.borderradius}
                     </Typography>
                   </Grid>
                   <Grid item xs={12} mt={1}>
-                    <Typography
-                      style={{ color: "#EC5500", fontSize: "0.73rem" }}
-                    >
+                    <Typography style={style.typography}>
                       {" "}
                       {p.height}
                     </Typography>
                   </Grid>
                   <Grid item xs={12} mt={1}>
-                    <Typography
-                      style={{ color: "#03AA5A", fontSize: "0.73rem" }}
-                    >
+                    <Typography style={style.typography}>
                       {" "}
                       {p.overflowY}
                     </Typography>
                   </Grid>
 
                   <Grid item xs={12} mt={1}>
-                    <Typography
-                      style={{ color: "#EC5500", fontSize: "0.73rem" }}
-                    >
-                      {p.width}
-                    </Typography>
+                    <Typography style={style.typography}>{p.width}</Typography>
                   </Grid>
                 </Grid>
               </div>

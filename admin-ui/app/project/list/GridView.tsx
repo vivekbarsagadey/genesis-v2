@@ -21,13 +21,7 @@ const ProjectGridView = ({ copyProject }: any) => {
   return (
     <>
       <Box>
-        <Grid
-          container
-          spacing={1.5}
-          mt={0.5}
-          pr={2.8}
-          style={{ height: "71.5vh" }}
-        >
+        <Grid container spacing={1.5} mt={0.5} style={style.paginationheader}>
           {_DATA
             .currentData()
             .reverse()

@@ -3,18 +3,14 @@ const CompanyStyle = {
     marginTop: "0",
     color: "red" as "red",
     fontWeight: "lighter" as "lighter",
-    fontSize: "15px",
   },
   fontSize: {
-    fontSize: "30px",
     fontWeight: "bold" as "bold",
   },
   btn: {
-    marginRight: "4px",
     background: "#FFC107" as "#FFC107",
   },
   stack: {
-    width: 350,
     padding: "1rem",
   },
   filterbtn: {
@@ -35,21 +31,23 @@ const CompanyStyle = {
   },
   listfont: {
     fontSize: "small",
-    fontWeight:"bold"
+    fontWeight: "bold",
   },
-  pagination:{
+  pagination: {
     display: "flex" as "flex",
     justifyContent: "flex-end",
     position: "relative" as "relative",
   },
   search: {
-   
     width: "100%",
   },
   box: {
     display: "flex" as "flex",
     alignItems: "center" as "center",
-   
+  },
+  loading: {
+    width: "100%",
+    marginTop: "-1.5rem",
   },
 };
 

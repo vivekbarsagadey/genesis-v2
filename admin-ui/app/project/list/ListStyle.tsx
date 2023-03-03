@@ -18,6 +18,9 @@ const ListStyle = {
     marginTop: "2rem",
     position: "relative" as "relative",
   },
+  paginationheader: {
+    height: "71.5vh",
+  },
   grid: {
     display: "flex" as "flex",
     alignItems: "center" as "center",
@@ -26,14 +29,14 @@ const ListStyle = {
     width: "100%",
     marginTop: "-1.7rem",
   },
-  gridfontsize:{
-    fontSize:'0.75rem'
+  gridfontsize: {
+    fontSize: "0.75rem",
   },
-  box:{
-    padding: "0.8rem"
+  box: {
+    padding: "0.8rem",
   },
-  card:{
+  card: {
     paddingLeft: "1rem",
-  }
+  },
 };
 export { ListStyle };
