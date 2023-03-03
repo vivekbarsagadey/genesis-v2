@@ -1,38 +1,23 @@
 "use client";
-import React, { useState } from "react";
-import { Grid, Typography } from "@mui/material";
-import TableChartIcon from "@mui/icons-material/TableChart";
-import WebAssetIcon from "@mui/icons-material/WebAsset";
 import GridOnIcon from "@mui/icons-material/GridOn";
-import { styled } from "@mui/material/styles";
-import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
-import MuiAccordionSummary, {
-  AccordionSummaryProps,
-} from "@mui/material/AccordionSummary";
-import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import ViewSidebarIcon from "@mui/icons-material/ViewSidebar";
-import MailIcon from "@mui/icons-material/Mail";
-import Switch, { Case, Default } from "react-switch-case";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ArticleIcon from "@mui/icons-material/Article";
-import LockIcon from "@mui/icons-material/Lock";
-import PinIcon from "@mui/icons-material/Pin";
-import KeyboardHideIcon from "@mui/icons-material/KeyboardHide";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import FormatColorTextIcon from "@mui/icons-material/FormatColorText";
-import { sideComponent } from "./SidebarComponentStyle";
-import { IMenuListSet } from "../../../app/template/templateInterface/TemplateInterface";
-import SideBarInnerList from "./SideBarInnerList";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import SearchIcon from "@mui/icons-material/Search";
-import ImageIcon from "@mui/icons-material/Image";
-import SideBarInnerText from "./SideBarInnerText";
+import WebAssetIcon from "@mui/icons-material/WebAsset";
+import { Grid, Typography } from "@mui/material";
+import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
+import MuiAccordionDetails from "@mui/material/AccordionDetails";
+import MuiAccordionSummary, {
+  AccordionSummaryProps
+} from "@mui/material/AccordionSummary";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Modal from "@mui/material/Modal";
+import { styled } from "@mui/material/styles";
+import React from "react";
+import Switch, { Case } from "react-switch-case";
+import { IMenuListSet } from "../../../app/template/templateInterface/TemplateInterface";
+import SideBarInnerList from "./SideBarInnerList";
 
 const style = {
   position: "absolute" as "absolute",

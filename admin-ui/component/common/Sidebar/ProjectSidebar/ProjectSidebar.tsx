@@ -6,34 +6,12 @@ import ReportIcon from "@mui/icons-material/Report";
 import StoreIcon from "@mui/icons-material/Store";
 import { Grid, IconButton, Typography } from "@mui/material";
 import Link from "next/link";
-
-const modules = [
-  {
-    id: 1,
-    name: "Dashboard",
-  },
-  {
-    id: 2,
-    name: "Project",
-  },
-
-  {
-    id: 3,
-    name: "Company",
-  },
-  {
-    id: 4,
-    name: "User",
-  },
-  {
-    id: 5,
-    name: "Report",
-  },
-];
+import { modules } from "./data/projectsidebar";
+import { headerstyle as style } from "./projectstyle";
 
 const ProjectSidebar = ({ show }: any) => {
   return (
-    <div>
+    <>
       {modules.map((module) => {
         switch (module?.name) {
           case "Dashboard":
@@ -48,26 +26,22 @@ const ProjectSidebar = ({ show }: any) => {
             return <UserLayOut module={module} show={show} />;
         }
       })}
-    </div>
+    </>
   );
 };
 
-const DashboardLayOut = ({ module, show }: any) => {
+const DashboardLayOut = ({ module, show }) => {
   return (
     <Grid container key={module?.id} item xs={12} alignItems="center">
       <Link href="/dashboard" style={{ textDecoration: "none" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={style.header}>
           <IconButton>
             <DashboardIcon fontSize={"small"} />
           </IconButton>
           {show && (
             <Typography
               display={{ xs: "none", sm: "none", md: "block" }}
-              style={{
-                color: "#475569",
-                fontSize: "0.8rem",
-                fontWeight: "550",
-              }}
+              style={style.typography}
             >
               Dashboard
             </Typography>
@@ -78,22 +52,18 @@ const DashboardLayOut = ({ module, show }: any) => {
   );
 };
 
-const ProjectlayOut = ({ module, show }: any) => {
+const ProjectlayOut = ({ module, show }) => {
   return (
     <Grid key={module.id} item xs={12} container alignItems="center">
       <Link href="/project" style={{ textDecoration: "none" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={style.header}>
           <IconButton>
             <AppsIcon fontSize={"small"} />
           </IconButton>
           {show && (
             <Typography
               display={{ xs: "none", sm: "none", md: "block" }}
-              style={{
-                color: "#475569",
-                fontSize: "0.8rem",
-                fontWeight: "550",
-              }}
+              style={style.typography}
             >
               Project
             </Typography>
@@ -104,22 +74,18 @@ const ProjectlayOut = ({ module, show }: any) => {
   );
 };
 
-const ReportLayOut = ({ module, show }: any) => {
+const ReportLayOut = ({ module, show }) => {
   return (
     <Grid key={module.id} item xs={12} container alignItems="center">
       <Link href="/report" style={{ textDecoration: "none" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={style.header}>
           <IconButton>
             <ReportIcon fontSize={"small"} />
           </IconButton>
           {show && (
             <Typography
               display={{ xs: "none", sm: "none", md: "block" }}
-              style={{
-                color: "#475569",
-                fontSize: "0.8rem",
-                fontWeight: "550",
-              }}
+              style={style.typography}
             >
               Report
             </Typography>
@@ -130,22 +96,18 @@ const ReportLayOut = ({ module, show }: any) => {
   );
 };
 
-const CompanyLayOut = ({ module, show }: any) => {
+const CompanyLayOut = ({ module, show }) => {
   return (
     <Grid key={module.id} item xs={12} container alignItems="center">
       <Link href="/company" style={{ textDecoration: "none" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={style.header}>
           <IconButton>
             <StoreIcon fontSize={"small"} />
           </IconButton>
           {show && (
             <Typography
               display={{ xs: "none", sm: "none", md: "block" }}
-              style={{
-                color: "#475569",
-                fontSize: "0.8rem",
-                fontWeight: "550",
-              }}
+              style={style.typography}
             >
               Company
             </Typography>
@@ -156,22 +118,18 @@ const CompanyLayOut = ({ module, show }: any) => {
   );
 };
 
-const UserLayOut = ({ module, show }: any) => {
+const UserLayOut = ({ module, show }) => {
   return (
     <Grid key={module.id} item xs={12} container alignItems="center">
       <Link href="/user" style={{ textDecoration: "none" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={style.header}>
           <IconButton>
             <PersonOutlineIcon fontSize={"small"} />
           </IconButton>
           {show && (
             <Typography
               display={{ xs: "none", sm: "none", md: "block" }}
-              style={{
-                color: "#475569",
-                fontSize: "0.8rem",
-                fontWeight: "550",
-              }}
+              style={style.typography}
             >
               User
             </Typography>

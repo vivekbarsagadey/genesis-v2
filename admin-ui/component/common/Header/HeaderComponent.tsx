@@ -25,7 +25,8 @@ const HeaderComponent = ({ project }: any) => {
   };
 
   return (
-    <Grid container mb={1} mt={-0.8} style={style.headercontainer}>
+    <Grid container
+     style={style.headercontainer}>
       <Grid item xs={12}>
         <Grid
           item

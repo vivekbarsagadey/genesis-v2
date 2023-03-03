@@ -3,13 +3,9 @@ import { Grid } from "@mui/material";
 import { useSession } from "next-auth/react";
 import HeaderComponent from "./Header/HeaderComponent";
 import Logo from "./Sidebar/Logo";
-import ProjectSidebar from "./Sidebar/ProjectSidebar";
+import ProjectSidebar from "./Sidebar/ProjectSidebar/ProjectSidebar";
 
-const LayoutComponent = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+const LayoutComponent = ({ children }: { children: React.ReactNode }) => {
   const { data: session } = useSession();
   const [show, setShow] = useState(true);
 
@@ -35,8 +31,7 @@ const LayoutComponent = ({
           >
             <Logo handleMenu={handleMenu} show={show} />
             {/* <SidebarComponent show={show} /> */}
-            <ProjectSidebar show={show}/>
-            
+            <ProjectSidebar show={show} />
           </Grid>
           <Grid
             item
@@ -50,11 +45,7 @@ const LayoutComponent = ({
           </Grid>
         </Grid>
       )}
-      {!session && (
-        <div>
-          {children}
-        </div>
-      )}
+      {!session && <div>{children}</div>}
     </>
   );
 };
