@@ -7,10 +7,10 @@ import Typography from "@mui/material/Typography";
 import React, { useEffect, useState } from "react";
 import { ValidatorType } from "../../../../validation/validator";
 import { ValidationEngine } from "../../../../validation/validation.engine";
-// import {ValidationStatus} from "../../../../validation/validator.context";
 import { ErrorComponent, InputProps } from "./";
 import { ValidationErrors } from "../../../../validation/validation.error";
 import { Constraint } from "../../../../validation/constrain";
+import useForm from '../../../../hooks/from';
 
 const InputEmailComponent = ({
   label,
@@ -21,48 +21,57 @@ const InputEmailComponent = ({
 }: InputProps) => {
   const [_value, setValue] = useState<string | undefined | null>(value);
   const [errors, setErrors] = useState<string[]>();
+  const {register,update,isError} = useForm()
+
+  let updates = null
   const onChangeHandller = (e: React.ChangeEvent<HTMLInputElement>) => {
     const _v = e.target.value;
     setValue(_v);
-    // doValidation(_v);
+    doValidation(_v);
+    update({name:label! , value: e ,errors:['abc']})
   };
 
-  // let _error: ValidationErrors = new ValidationErrors();
-  // const context = {
-  //   constraints: new Array(),
-  // };
+  let _error: ValidationErrors = new ValidationErrors();
+  const context = {
+    constraints: new Array(),
+  };
 
-  // const addValidator = (constraint: Constraint) => {
-  //   context.constraints?.push(constraint);
-  // };
+  const addValidator = (constraint: Constraint) => {
+    context.constraints?.push(constraint);
+  };
 
-  // const doValidation = (_v: string) => {
-  //   _error = new ValidationErrors();
-  //   _error.add({
-  //     row: _v,
-  //     errors: ValidationEngine.validate({
-  //       data: v,
-  //       constraints: context.constraints,
-  //     }), 
-  //   });
-    // console.log(_error?.errorRows);
+  const doValidation = (_v: string) => {
+    _error = new ValidationErrors();
+    _error.add({
+      row: _v,
+      _errors: ValidationEngine.validate({data: _v, constraints: context.constraints }), 
+    });
+    if(_error.isError()){
+      _error.getAllErrors().forEach((e)=>{
+        console.log('E',e.getErrorMessage())
+        setErrors(e?.getErrorMessage())
+      })
+    }
+  }
 
-    /* setErrors(
-      engine
-        .execute({
-          data: _v,
-          name: label,
-          status: [ValidationStatus.REQUIRED, ValidationStatus.EMAIL],
-        })
-        .map((e: any) => e.message)
-    ); */
-  // };
+    // console.log(_error?.errorRows); 
+    //  setErrors(
+    //   engine
+    //     .execute({
+    //       data: _v,
+    //       name: label,
+    //       status: [ValidationStatus.REQUIRED, ValidationStatus.EMAIL],
+    //     })
+    //     .map((e: any) => e.message)
+    // ); 
+ 
 
-  // useEffect(() => {
-  //   setValue(value || '');
-  //   addValidator({ field: label, validatorType: ValidatorType.REQUIRED });
-  //   addValidator({ field: label, validatorType: ValidatorType.EMAIL });
-  // }, []);
+  useEffect(() => {
+    register({name: label})
+    setValue(value || '');
+    addValidator({ field: label, validatorType: ValidatorType.REQUIRED });
+    addValidator({ field: label, validatorType: ValidatorType.EMAIL });
+  }, []);
 
   return (
     <Box component="form" noValidate autoComplete="off">

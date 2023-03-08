@@ -1,26 +1,34 @@
-import React, { useState, useEffect } from "react";
+"use client"
+import React from 'react'
 
-interface FormItem {
-  value?: string;
-  name?: string;
-  isValid?: boolean;
-}
 
-const useForm = () => {
-  const [formItems, setFormItems] = useState<FormItem[]>([]);
-  //const [formState, register] = useState<string>("");
 
-  const register = (name: string) => {
-    const formItem: FormItem = { name, value: "", isValid: true };
-    formItems.push(formItem);
-    return formItem;
-  };
-
-  const formState = (name: string) => {
-    return formItems?.find((f) => f.name === name);
-  };
-
-  return { formState, register };
+type FormStore = {
+  name: string;
+  value: string;
+  errors?: string[];
 };
 
-export { useForm };
+const formStore = new Map<string,FormStore>()
+const useForm = () => {
+  
+  const register = (name: string) => {
+    formStore.set(name,{name, value: '',errors:[]})
+  };
+
+  const update = ({name,value,errors = []}:FormStore) => {
+    formStore.set(name,{name, value,errors})
+  };
+
+  const isError = ()=>{
+    for(const key of formStore.keys()){
+        console.log(key)
+
+    }
+}
+
+  return { register, update,isError};
+};
+
+
+export default useForm
