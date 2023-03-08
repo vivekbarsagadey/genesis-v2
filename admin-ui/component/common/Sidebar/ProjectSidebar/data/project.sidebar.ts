@@ -5,11 +5,11 @@ const modules = [
     },
     {
       id: 2,
-      name: "Project",
+      name: "Report",
     },
     {
       id: 3,
-      name: "Report",
+      name: "Project",
     },
     {
       id: 4,

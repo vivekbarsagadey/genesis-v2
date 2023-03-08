@@ -38,32 +38,6 @@ const ProjectSidebar = ({ show }: any) => {
                 </Link>
               </Grid>
             );
-
-          case "Project":
-            return (
-              <Grid key={module.id} item xs={12} container alignItems="center">
-                <Link
-                  href="/project"
-                  passHref
-                  style={{ textDecoration: "none" }}
-                >
-                  <div style={style.header}>
-                    <IconButton>
-                      <AppsIcon fontSize={"small"} />
-                    </IconButton>
-                    {show && (
-                      <Typography
-                        display={{ xs: "none", sm: "none", md: "block" }}
-                        style={style.typography}
-                      >
-                        Project
-                      </Typography>
-                    )}
-                  </div>
-                </Link>
-              </Grid>
-            );
-
           case "Report":
             return (
               <Grid key={module.id} item xs={12} container alignItems="center">
@@ -82,6 +56,30 @@ const ProjectSidebar = ({ show }: any) => {
                         style={style.typography}
                       >
                         Report
+                      </Typography>
+                    )}
+                  </div>
+                </Link>
+              </Grid>
+            );
+          case "Project":
+            return (
+              <Grid key={module.id} item xs={12} container alignItems="center">
+                <Link
+                  href="/project"
+                  passHref
+                  style={{ textDecoration: "none" }}
+                >
+                  <div style={style.header}>
+                    <IconButton>
+                      <AppsIcon fontSize={"small"} />
+                    </IconButton>
+                    {show && (
+                      <Typography
+                        display={{ xs: "none", sm: "none", md: "block" }}
+                        style={style.typography}
+                      >
+                        Project
                       </Typography>
                     )}
                   </div>
