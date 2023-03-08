@@ -16,7 +16,7 @@ import * as yup from "yup";
 import {
   country,
   state
-} from "../../../component/common/data/company/companyType";
+} from "../../../component/common/data/company/company.type";
 import ICompany from "../company.model";
 import { CompanyStyle as style } from "../companystyle";
 

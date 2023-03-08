@@ -1,6 +1,6 @@
 import React from "react";
 import { Typography } from "@mui/material";
-import { ProjectHomeStyle as style } from "../../project/ProjectHomeStyle";
+import { ProjectHomeStyle as style } from "../../project/project.home.style";
 import { downloadExcel } from "react-export-table-to-excel";
 
 const header = [

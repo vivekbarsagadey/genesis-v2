@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import {InputVariantOne,InputVariantTwo,InputVariantThree,InputVariantFour,InputVariantFive} from "./"
+import {InputVariantOne,InputVariantTwo,InputVariantThree,InputVariantFour,InputVariantFive} from "."
 
 
 const InputVariants = () => {

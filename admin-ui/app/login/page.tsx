@@ -12,7 +12,7 @@ import { NextPage } from "next";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useState } from "react";
-import { LoginStyle as style } from "./LoginStyle";
+import { LoginStyle as style } from "./login.style";
 
 interface Props {}
 

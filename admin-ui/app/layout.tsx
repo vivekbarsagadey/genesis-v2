@@ -6,7 +6,7 @@ import {
   QueryClientProvider
 } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
-import LayoutComponent from "../component/common/LayoutComponent";
+import LayoutComponent from "../component/common/layout.component";
 import { theme } from "../themes/com-light";
 
 const queryClient = new QueryClient();

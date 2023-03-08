@@ -13,18 +13,18 @@ import ExcellGenerator from "../utility/project/ExcellGenerator";
 import PdfGenerator from "../utility/project/PdfGenerator";
 import ProjectFilter from "./filter";
 import ProjectListComponent from "./list";
-import ProjectCalendarView from "./list/CalendarView";
-import ProjectGraphView from "./list/GraphView";
-import ProjectGridView from "./list/GridView";
-import ProjectKanbanView from "./list/KanbanView";
-import { ProjectHomeStyle as style } from "./ProjectHomeStyle";
+import ProjectCalendarView from "./list/calendar.view";
+import ProjectGraphView from "./list/graph.view";
+import ProjectGridView from "./list/grid.view";
+import ProjectKanbanView from "./list/kanban.view";
+import { ProjectHomeStyle as style } from "./project.home.style";
 import ProjectSearch from "./search";
 import ProjectViewComponent from "./view";
 
 const ProjectHomeComponent = () => {
   const [projectData, setProjectData] = useState([]); // This is a original json Data
-  const [count, setCount] = useState("List"); // This is a different different type of View Count (List,Grid,Calendar,etc)
   const [copyProject, setCopyProject] = useState(projectData); // This is a duplicate Json Data
+  const [count, setCount] = useState("List"); // This is a different different type of View Count (List,Grid,Calendar,etc)
   const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null); // what is anchorEl .... you should have proper name
   const [projectSearchList, setProjectSearchList] = useState("");
@@ -76,13 +76,13 @@ const ProjectHomeComponent = () => {
   return (
     <>
       <Grid container mt={1}>
-        <Grid item xs={3}>
+        <Grid item xs={2.4} lg={3}>
           <ProjectSearch
             projectSearchList={projectSearchList}
             handleCallback={setProjectSearchList}
           />
         </Grid>
-        <Grid item xs={0.4}>
+        <Grid item xs={0.6} lg={0.4}>
           <Tooltip title="Filter" arrow>
             <IconButton
               aria-controls={open ? "basic-menu" : undefined}
@@ -94,7 +94,7 @@ const ProjectHomeComponent = () => {
             </IconButton>
           </Tooltip>
         </Grid>
-        <Grid item xs={0.6} lg={0.37} md={0.5} sm={0.9}>
+        <Grid item xs={0.7} lg={0.37} md={0.5} sm={0.9}>
           <Tooltip title="Export" arrow>
             <IconButton
               aria-controls={Open ? "basic-menu" : undefined}
@@ -125,13 +125,13 @@ const ProjectHomeComponent = () => {
             </MenuItem>
           </Menu>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={6} lg={2} md={3.9} sm={4.5}>
           <Grid container>
             <ProjectViewComponent handleCount={handleCount} />
           </Grid>
         </Grid>
-        <Grid item xs={6.2} display={"flex"}>
-          <Grid item xs={9.5} mt={0.7}>
+        <Grid item xs={2} lg={6.2} md={4} sm={3} display={"flex"}>
+          <Grid item xs={2} lg={9.6} sm={6} mt={0.7}>
             {filterChipType ? (
               <>
                 {filterSelected?.map((item: any) => {
@@ -140,7 +140,14 @@ const ProjectHomeComponent = () => {
               </>
             ) : null}
           </Grid>
-          <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
+          <Grid
+            item
+            xs={12}
+            lg={2}
+            sm={12}
+            display={"flex"}
+            justifyContent={"flex-end"}
+          >
             <Link href={"/project/create"} passHref legacyBehavior>
               <Button variant="contained" style={style.createbtn}>
                 Create

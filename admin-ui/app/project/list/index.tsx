@@ -5,8 +5,8 @@ import { Box, Grid, IconButton, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Pagination from "@mui/material/Pagination";
 import InfoProjectComponent from "../info";
-import projectPagination from "./ProjectListPagination";
-import { ListStyle as style } from "./ListStyle";
+import projectPagination from "./project.list.pagination";
+import { ListStyle as style } from "./liist.style";
 import IProject from "../project.model";
 
 interface IProjectProp {

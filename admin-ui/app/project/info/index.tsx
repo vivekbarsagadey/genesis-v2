@@ -5,7 +5,7 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Grid, IconButton, Tooltip, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
-import { InfoStyle as style } from "./InfoStyle";
+import { InfoStyle as style } from "./info.style";
 
 
 const InfoProjectComponent = ({ items }: any) => {

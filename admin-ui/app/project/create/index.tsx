@@ -4,9 +4,9 @@ import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { applicationType } from "../../../config/applicationType";
+import { applicationType } from "../../../component/common/data/project/application.type";
 import { URL } from "../../utility/apiurl/apiurl";
-import { CreateStyle as style } from "./CreateStyle";
+import { CreateStyle as style } from "./create.style";
 interface IApplicationType {
   id: Number;
   type: String;

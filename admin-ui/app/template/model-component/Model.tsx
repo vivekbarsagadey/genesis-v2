@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import { ModelStyle as style } from "./ModelStyle";
+import { ModelStyle as style } from "./model.style";
 
 const Model = ({ menuList }) => {
   const components = menuList?.map((d) =>

@@ -2,7 +2,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
-import { SearchStyle as style } from "./searchStyle";
+import { SearchStyle as style } from "./search.style";
 
 const ProjectSearch = ({ projectSearchList, handleCallback }: any) => {
   const getSearch = (event: any) => {

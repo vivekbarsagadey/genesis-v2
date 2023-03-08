@@ -11,9 +11,9 @@ import { useEffect, useState } from "react";
 import ICompany from "./company.model";
 import FilterComponent from "./filters";
 import GridViewComponent from "./list";
-import CalenderViewComponent from "./list/CalenderViewComponent";
-import GraphViewComponent from "./list/GraphViewComponent";
-import ListViewComponent from "./list/ListViewComponent";
+import CalenderViewComponent from "./list/calender.view.component";
+import GraphViewComponent from "./list/graph.view.component";
+import ListViewComponent from "./list/list.view.component";
 import SearchComponent from "./search";
 import ViewsComponent from "./view";
 

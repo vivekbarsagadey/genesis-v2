@@ -1,14 +1,17 @@
+import { colors, fontSize, weight } from "../../themes";
+import { position, textAlign } from "../../themes/fonts";
+
 const CompanyStyle = {
   errormessage: {
     marginTop: "0",
-    color: "red" as "red",
-    fontWeight: "lighter" as "lighter",
+    color: colors.danger,
+    fontWeight: weight.low,
   },
   fontSize: {
-    fontWeight: "bold" as "bold",
+    fontWeight: weight.bold,
   },
   btn: {
-    background: "#FFC107" as "#FFC107",
+    background: colors.defaultcolor,
   },
   stack: {
     padding: "1rem",
@@ -21,29 +24,29 @@ const CompanyStyle = {
   },
   infoGrid: {
     display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: textAlign.textAlign,
+    alignItems: textAlign.textAlign,
   },
   expandIcon: {
     display: "flex" as "flex",
-    textAlign: "center" as "center",
-    alignItems: "center" as "center",
+    textAlign: textAlign.textAlign,
+    alignItems: textAlign.textAlign,
   },
   listfont: {
-    fontSize: "small",
-    fontWeight: "bold",
+    fontSize: fontSize.small,
+    fontWeight: weight.bold,
   },
   pagination: {
     display: "flex" as "flex",
     justifyContent: "flex-end",
-    position: "relative" as "relative",
+    position: position.relative,
   },
   search: {
     width: "100%",
   },
   box: {
     display: "flex" as "flex",
-    alignItems: "center" as "center",
+    alignItems: textAlign.alignItems,
   },
   loading: {
     width: "100%",
