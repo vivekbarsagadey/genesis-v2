@@ -1,8 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "../../hooks/from";
 import { InputComponent } from "../../component/ui/base/input/";
-import { ButtonComponent } from "../../component/ui/base/button";
 import { SearchComponent } from "../../component/ui/base";
 
 
@@ -41,15 +40,15 @@ const TestComponent = () => {
         id="text"
       ></InputComponent>
 
-      <ButtonComponent
-        label="Submit"
-        onClick={() => console.log("hello")}
-      ></ButtonComponent>
+      
+
       <SearchComponent
         placeHolder="Search"
         type="text"
        
       ></SearchComponent>
+   
+
     </>
   );
 };

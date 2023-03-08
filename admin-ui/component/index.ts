@@ -5,7 +5,6 @@ export {
   SidebarComponent,
 } from "./common";
 export {
-  ButtonComponent,
   ErrorComponent,
   InputComponent,
   InputEmailComponent,
@@ -15,3 +14,4 @@ export {
   InputStyle,
 } from "./ui/base";
 export type { InputProps } from "./ui/base";
+export type {ButtonProps} from "./ui/base"

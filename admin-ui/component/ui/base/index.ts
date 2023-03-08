@@ -1,4 +1,8 @@
-export { ButtonComponent } from "./button";
+
+export {ButtonComponent,
+  NextButtonComponent,
+  PreviousButtonComponent,
+  SaveButtonComponent} from './button'
 export {SearchComponent} from './search' 
 export {
   ErrorComponent,
@@ -10,3 +14,4 @@ export {
   InputStyle,
 } from "./input";
 export type { InputProps } from "./input";
+export type {ButtonProps} from "./button"
