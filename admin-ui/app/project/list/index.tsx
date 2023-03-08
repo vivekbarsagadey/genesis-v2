@@ -7,9 +7,17 @@ import Pagination from "@mui/material/Pagination";
 import InfoProjectComponent from "../info";
 import projectPagination from "./ProjectListPagination";
 import { ListStyle as style } from "./ListStyle";
+import IProject from "../project.model";
 
-const ProjectListComponent = ({ copyProject, projectSearchList }) => {
+interface IProjectProp {
+  copyProject: IProject;
+  projectSearchList: IProject;
+}
 
+const ProjectListComponent = ({
+  copyProject,
+  projectSearchList,
+}: IProjectProp) => {
   //pagination logic
   let [page, setPage] = useState(1);
   const PER_PAGE = 8;
@@ -21,7 +29,6 @@ const ProjectListComponent = ({ copyProject, projectSearchList }) => {
     _DATA.jump(p);
   };
 
-  
   return (
     <div>
       <Box mt={2}>
@@ -55,8 +62,7 @@ const ProjectListComponent = ({ copyProject, projectSearchList }) => {
         {_DATA
           .currentData()
           .reverse()
-          .filter((ele) =>
-            ele.name.toLowerCase().includes(projectSearchList.toLowerCase())
+          .filter((ele) => ele.name.toLowerCase().includes(projectSearchList.toLowerCase())
           )
           .map((items, index) => {
             return (

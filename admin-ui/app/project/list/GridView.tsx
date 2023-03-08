@@ -4,17 +4,22 @@ import Pagination from "@mui/material/Pagination";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
 import { useState } from "react";
+import IProject from "../project.model";
 import { ListStyle as style } from "./ListStyle";
 import projectGridPagination from "./ProjectGridPagination";
 
-const ProjectGridView = ({ copyProject }: any) => {
+interface IProjectProp {
+  copyProject: IProject;
+}
+
+const ProjectGridView = ({ copyProject }: IProjectProp) => {
   // Pagination logic
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(copyProject.length / PER_PAGE);
   const _DATA = projectGridPagination(copyProject, PER_PAGE);
 
-  const handleChangePage = (e: any, p: any) => {
+  const handleChangePage = (e, p) => {
     setPage(p);
     _DATA.jump(p);
   };
@@ -33,6 +38,7 @@ const ProjectGridView = ({ copyProject }: any) => {
                       <Grid container style={style.card}>
                         <Grid item xs={5}>
                           <Typography style={style.gridfontsize}>
+                            
                             Project Name
                           </Typography>
                         </Grid>

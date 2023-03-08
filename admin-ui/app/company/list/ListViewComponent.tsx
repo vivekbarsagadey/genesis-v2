@@ -10,17 +10,10 @@ import GridViewInfoComponent from "./GridViewInfoComponent";
 import usePagination from "./pagination";
 
 interface ListComponentProps extends ICompanyComponentProps {
-  companies ;
+  companies;
   setCompanies;
-  checked;
-  setChecked;
 }
-const ListViewComponent = ({
-  companies,
-  setCompanies,
-  checked,
-  setChecked,
-}: ListComponentProps) => {
+const ListViewComponent = ({ companies, setCompanies }: ListComponentProps) => {
   const [sortCompanyName, setSortCompanyName] = useState(true);
   const [sortCompanyEmail, setSortCompanyEmail] = useState(true);
   const [sortCompanyContact, setSortCompanyContact] = useState(true);
@@ -34,9 +27,6 @@ const ListViewComponent = ({
   const handleChange = (e, p) => {
     setPage(p);
     _DATA.jump(p);
-  };
-  const handleCheck = () => {
-    setChecked(!checked);
   };
 
   const handleClick = () => {
@@ -93,10 +83,10 @@ const ListViewComponent = ({
 
   return (
     <>
-      <Box style={{ background: "#f8fafc" }}>
+      <Box>
         <Grid container>
           <Grid item xs={12} lg={1} sm={1} md={1}>
-            <Checkbox checked={checked} onChange={handleCheck} />
+            <Checkbox />
           </Grid>
           <Grid
             item
@@ -192,7 +182,7 @@ const ListViewComponent = ({
       </Box>
 
       {_DATA.currentData().map((c) => {
-        return <GridViewInfoComponent checked={checked} key={c._id} c={c} />;
+        return <GridViewInfoComponent key={c._id} c={c} />;
       })}
 
       <Grid container style={style.pagination} pt={2}>

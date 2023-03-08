@@ -7,7 +7,6 @@ import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton/IconButton";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 import ICompany from "../company.model";
 import ICompanyComponentProps from "../company.props";
 import { CompanyStyle as style } from "../companystyle";
@@ -17,28 +16,13 @@ interface GridViewInfoComponentProps extends ICompanyComponentProps {
   show: boolean;
 }
 
-const GridViewInfoComponent = ({ c, checked }: any) => {
-  const [show, setShow] = useState(checked);
-  const [open, setOpen] = React.useState(false);
-
-  const handleClick = () => {
-    setOpen(true);
-  };
-
-  useEffect(() => {
-    setShow(checked);
-  }, [checked]);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setShow(event.target.checked);
-  };
-
+const GridViewInfoComponent = ({ c }: any) => {
   return (
     <>
       <Box>
         <Grid container style={style.expandIcon}>
           <Grid item xs={12} lg={1} sm={1} md={1}>
-            <Checkbox checked={show} onChange={handleChange} />
+            <Checkbox />
           </Grid>
           <Grid
             item
@@ -89,13 +73,11 @@ const GridViewInfoComponent = ({ c, checked }: any) => {
             </Typography>
           </Grid>
           <Grid item xs={1} lg={1} sm={1} md={1}>
-            {show && (
-              <Tooltip title="Delete">
-                <IconButton>
-                  <DeleteOutlineIcon />
-                </IconButton>
-              </Tooltip>
-            )}
+            <Tooltip title="Delete">
+              <IconButton>
+                <DeleteOutlineIcon />
+              </IconButton>
+            </Tooltip>
 
             <Link href={`/company/${c._id}`}>
               <Tooltip title="Edit">

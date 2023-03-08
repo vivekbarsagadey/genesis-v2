@@ -16,9 +16,6 @@ interface FilterComponentProps extends ICompanyComponentProps {
 
 const FilterComponent = ({
   items,
-  anchorEl,
-  open,
-  handleClose,
   itemsCallBackHandler = () => {},
 }: FilterComponentProps) => {
   const [filterDataName, setFilterDataName] = useState("");
@@ -31,20 +28,11 @@ const FilterComponent = ({
         c.email.toLowerCase().includes(filterDataEmail.toLowerCase())
     );
     itemsCallBackHandler(newCompany);
-    handleClose();
   };
 
   return (
     <div>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
-      >
+      <Menu>
         <div>
           <Stack spacing={2} style={style.stack}>
             <Autocomplete
@@ -92,12 +80,7 @@ const FilterComponent = ({
         <Grid container mb={1}>
           <Grid item xs={5.6}></Grid>
           <Grid item xs={3.6}>
-            <Button
-              variant="outlined"
-              size="small"
-              style={style.filterbtn}
-              onClick={() => handleClose()}
-            >
+            <Button variant="outlined" size="small" style={style.filterbtn}>
               Cancel
             </Button>
           </Grid>

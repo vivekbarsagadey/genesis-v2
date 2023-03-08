@@ -14,7 +14,8 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import {
-  country, state
+  country,
+  state
 } from "../../../component/common/data/company/companyType";
 import ICompany from "../company.model";
 import { CompanyStyle as style } from "../companystyle";

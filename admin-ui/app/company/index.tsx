@@ -6,9 +6,8 @@ import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { Button, Grid, IconButton, Tooltip, Typography } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import "jspdf-autotable";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ICompany from "./company.model";
 import FilterComponent from "./filters";
 import GridViewComponent from "./list";
@@ -25,24 +24,6 @@ interface HomeComponentProps {
 const HomeComponent = ({ items }: HomeComponentProps) => {
   const [count, setCount] = useState("Grid");
   const [companies, setCompanies] = useState(items);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
-  const [checked, setChecked] = useState(false);
-  const Open = Boolean(menuItem);
-  const handleClickData = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setmenuItem(event.currentTarget);
-  };
-  const handleClose1 = () => {
-    setmenuItem(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   useEffect(() => {
     setCompanies(items);
@@ -74,30 +55,17 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
           alignItems="center"
         >
           <Tooltip title="Filter">
-            <IconButton
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-            >
+            <IconButton>
               <FilterAltIcon />
             </IconButton>
           </Tooltip>
 
           <Tooltip title="Export">
-            <IconButton aria-haspopup="true" onClick={handleClickData}>
+            <IconButton>
               <FileDownloadOutlinedIcon />
             </IconButton>
           </Tooltip>
-          <Menu
-            id="basic-menu"
-            anchorEl={menuItem}
-            open={Open}
-            onClose={handleClose1}
-            MenuListProps={{
-              "aria-labelledby": "basic-button",
-            }}
-          >
+          <Menu>
             <MenuItem>
               <Typography fontSize="0.8rem">Excel</Typography>
             </MenuItem>
@@ -112,12 +80,10 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
         </Grid>
 
         <Grid item xs={12} sm={2} md={2} lg={2} textAlign="right">
-          {checked && (
-            <IconButton>
-              {" "}
-              <DeleteOutlineIcon />
-            </IconButton>
-          )}
+          <IconButton>
+            {" "}
+            <DeleteOutlineIcon />
+          </IconButton>
           <Link
             href={"/company/-1"}
             passHref
@@ -140,8 +106,6 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
                 <ListViewComponent
                   companies={companies}
                   setCompanies={setCompanies}
-                  checked={checked}
-                  setChecked={setChecked}
                 ></ListViewComponent>
               );
             case "Graph":
@@ -163,9 +127,6 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
       <div>
         <FilterComponent
           items={items}
-          anchorEl={anchorEl}
-          open={open}
-          handleClose={handleClose}
           itemsCallBackHandler={itemsCallBackHandler}
         />
       </div>

@@ -4,6 +4,8 @@ interface IProject{
     name: string;
     customerName: string;
     application: string;
+    length:number;
+    
 }
 
 

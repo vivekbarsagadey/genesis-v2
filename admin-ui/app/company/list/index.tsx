@@ -3,14 +3,11 @@ import React, { useState } from "react";
 import ICompanyComponentProps from "../company.props";
 import Grid from "@mui/material/Grid";
 import InfoComponent from "../info";
-
 import Pagination from "@mui/material/Pagination";
 import usePagination from "./pagination";
 
 interface ListComponentProps extends ICompanyComponentProps {}
 const GridViewComponent = ({ items }: ListComponentProps) => {
-  
-  
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
 
