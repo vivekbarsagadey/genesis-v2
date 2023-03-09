@@ -1,12 +1,12 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 
-const Property = ({ menuList }: any) => {
-  const components = menuList.map((d: any) =>
-    d.components.map((d: any) => d.properties)
+const Property = ({ menuList }) => {
+  const components = menuList.map((d) =>
+    d.components.map((d) => d.properties)
   );
-  const properties = components[0].map((general: any) =>
-    general.map((d: any) => d.general)
+  const properties = components[0].map((general) =>
+    general.map((d) => d.general)
   );
 
   return (
@@ -36,7 +36,7 @@ const Property = ({ menuList }: any) => {
           </Grid>
         </Grid>
         <Grid item xs={6}>
-          {properties?.map((p: any) => {
+          {properties?.map((p) => {
             return (
               <div key={p.id}>
                 <Grid container>

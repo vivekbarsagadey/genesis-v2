@@ -40,13 +40,13 @@ function a11yProps(index: number) {
     "aria-controls": `simple-tabpanel-${index}`,
   };
 }
-const InnerSubSection = ({ menuList, dragList }: any) => {
+const InnerSubSection = ({ menuList, dragList }) => {
   const [value, setValue] = React.useState(0);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-  const components = menuList.map((d: any) =>
-    d.components.map((d: any) => d.properties)
+  const components = menuList.map((d) =>
+    d.components.map((d) => d.properties)
   );
 
   return (

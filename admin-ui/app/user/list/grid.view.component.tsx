@@ -81,7 +81,7 @@ const GridViewComponent = ({ items }: GridComponentProps) => {
 
                   <Box>
                     <Grid container>
-                      <Grid item xs={3.5} style={{ paddingLeft: "1rem" }}>
+                      <Grid item xs={3.5}>
                         <Typography fontSize={"0.9rem"}>Mobile</Typography>
                       </Grid>
                       <Grid item xs={1.5}>
@@ -97,7 +97,7 @@ const GridViewComponent = ({ items }: GridComponentProps) => {
 
                   <Box>
                     <Grid container>
-                      <Grid item xs={3.5} style={{ paddingLeft: "1rem" }}>
+                      <Grid item xs={3.5}>
                         <Typography fontSize={"0.9rem"}> Address</Typography>
                       </Grid>
                       <Grid item xs={1.5}>
@@ -118,7 +118,7 @@ const GridViewComponent = ({ items }: GridComponentProps) => {
         </Grid>
         <Grid container>
           <Grid item xs={11.8}>
-            <div style={{ position: "fixed" }}>
+            <div>
               <Pagination
                 count={count}
                 size="small"

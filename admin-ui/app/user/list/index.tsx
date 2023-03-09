@@ -104,7 +104,7 @@ const ListComponent = ({
 
   return (
     <>
-      <Box px={3} style={{ marginTop: "1rem" }}>
+      <Box px={3}>
         <Grid container >
           <Grid
             item
@@ -117,7 +117,7 @@ const ListComponent = ({
             item
             xs={2.2}
             sm={2.2}
-            style={{ display: "flex", alignItems: "center" }}
+          
           >
             <Typography  >
               First Name
@@ -137,7 +137,7 @@ const ListComponent = ({
             item
             xs={2.1}
             sm={2.1}
-            style={{ display: "flex", alignItems: "center" }}
+          
           >
             <Typography >Last Name</Typography>
             {sortedIconLastName === true ? (
@@ -155,7 +155,7 @@ const ListComponent = ({
             item
             xs={2.4}
             sm={2.6}
-            style={{ display: "flex", alignItems: "center" }}
+           
           >
             <Typography >Email</Typography>
             {sortedIconEmail === true ? (
@@ -173,7 +173,7 @@ const ListComponent = ({
             item
             xs={2}
             sm={2}
-            style={{ display: "flex", alignItems: "center" }}
+         
           >
             <Typography >Contact No.</Typography>
             {sortedIconMobile === true ? (
@@ -192,7 +192,7 @@ const ListComponent = ({
             xs={1.5}
             sm={1.5}
             lg={1.6}
-            style={{ display: "flex", alignItems: "center" }}
+         
           >
             <Typography  noWrap>
               Address
@@ -209,7 +209,7 @@ const ListComponent = ({
             )}
           </Grid>
 
-          <Grid item xs={0.5} style={{ display: "flex", alignItems: "center" }}>
+          <Grid item xs={0.5}>
             <Typography  noWrap>
               Action
             </Typography>
@@ -225,7 +225,7 @@ const ListComponent = ({
       <div>
         <Grid container>
           <Grid item xs={11.8}>
-            <div style={{ position: "fixed" }}>
+            <div >
               <Pagination
                 count={count}
                 size="small"

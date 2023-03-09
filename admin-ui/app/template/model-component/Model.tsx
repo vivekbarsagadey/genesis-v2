@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import { ModelStyle as style } from "./model.style";
 
 const Model = ({ menuList }) => {
   const components = menuList?.map((d) =>
@@ -16,7 +15,7 @@ const Model = ({ menuList }) => {
         <Grid item xs={4.5}>
           <Grid container>
             <Grid item xs={12} mt={1}>
-              <Typography style={style.width}>width</Typography>
+              <Typography>width</Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -26,7 +25,7 @@ const Model = ({ menuList }) => {
               <div key={p.id}>
                 <Grid container>
                   <Grid item xs={12} mt={1}>
-                    <Typography style={style.typography}>{p.width}</Typography>
+                    <Typography >{p.width}</Typography>
                   </Grid>
                 </Grid>
               </div>

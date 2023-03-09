@@ -16,27 +16,31 @@ const ProjectFilter = ({
   setFilterSelected,
   setFilterChipType,
 }: any) => {
-  const [filterDataName, setFilterDataName] = useState("");
-  const [filterDataEmail, setFilterDataEmail] = useState("");
+  const [projectDataName, setProjectDataName] = useState("");
+  const [projectCustomerName, setProjectCustomerName] = useState("");
 
   const doFilter = () => {
-    setFilterChipType(true);
-    const filteredData = projectData?.filter(
-      (u) =>
-        u.name.toLowerCase().includes(filterDataName.toLowerCase()) ||
-        u.customerName.toLowerCase().includes(filterDataEmail.toLowerCase())
-    );
-    itemsCallBackHandler(filteredData);
-    handleClose();
+    if (projectDataName !== "" && projectCustomerName !== "") {
+      const filteredData = projectData?.filter(
+        (u) =>
+          u.name.toLowerCase().includes(projectDataName.toLowerCase()) ||
+          u.customerName
+            .toLowerCase()
+            .includes(projectCustomerName.toLowerCase())
+      );
+      itemsCallBackHandler(filteredData);
+      handleClose();
+      setFilterChipType(true);
+    }
   };
 
-  const updateProjectName = (value: any) => {
-    setFilterDataName(value);
+  const updateProjectName = (value) => {
+    setProjectDataName(value);
     setFilterSelected([...filterSelected, "Project Name"]);
   };
 
-  const updateCustomerName = (value: any) => {
-    setFilterDataEmail(value);
+  const updateCustomerName = (value) => {
+    setProjectCustomerName(value);
     setFilterSelected([...filterSelected, "Customer  Name"]);
   };
   return (
@@ -111,12 +115,7 @@ const ProjectFilter = ({
             </Button>
           </Grid>
           <Grid item xs={1}>
-            <Button
-              variant="contained"
-              size="small"
-              onClick={doFilter}
-              disabled={!filterDataName || !filterDataEmail}
-            >
+            <Button variant="contained" size="small" onClick={doFilter}>
               Save
             </Button>
           </Grid>

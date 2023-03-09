@@ -1,9 +1,7 @@
 // correct layout
 "use client";
 import { Grid } from "@mui/material";
-import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
-import { menu } from "../../component/common/data/components.data";
 import HeaderComponent from "../../component/common/header";
 import Logo from "../../component/common/Sidebar/logo";
 import SidebarComponent from "../../component/common/Sidebar/sidebar.component";
@@ -15,7 +13,7 @@ const LayoutTemplate = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const { data: session } = useSession();
+
   const [show, setShow] = useState(true);
   const [project, setProject] = useState("");
 
@@ -30,7 +28,7 @@ const LayoutTemplate = ({
     setDragList([...dragList, newList]);
   };
   const fetchData = () => {
-    fetch("http://localhost:3000/api/projects")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`)
       .then((r) => {
         return r.json();
       })
@@ -57,7 +55,8 @@ const LayoutTemplate = ({
           style={{ backgroundColor: "white" }}
         >
           <Logo handleMenu={handleMenu} show={show} />
-          <SidebarComponent show={show}
+          <SidebarComponent
+            show={show}
             updateMyDragImages={updateMyDragImages}
             menuList={menuList}
           />

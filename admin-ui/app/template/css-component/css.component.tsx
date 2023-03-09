@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import { CSSStyle as style } from "./css.style";
+
 
 const Css = ({ menuList }) => {
   const components = menuList.map((d) => d.components.map((d) => d.properties));
@@ -12,17 +12,17 @@ const Css = ({ menuList }) => {
         <Grid item xs={4.5}>
           <Grid container>
             <Grid item xs={12} mt={1}>
-              <Typography style={style.typography}>borderRadius</Typography>
+              <Typography>borderRadius</Typography>
             </Grid>
             <Grid item xs={12} mt={1}>
-              <Typography style={style.typography}>height</Typography>
+              <Typography>height</Typography>
             </Grid>
             <Grid item xs={12} mt={1}>
-              <Typography style={style.typography}>overflowY</Typography>
+              <Typography>overflowY</Typography>
             </Grid>
 
             <Grid item xs={12} mt={1}>
-              <Typography style={style.typography}>width</Typography>
+              <Typography>width</Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -32,25 +32,25 @@ const Css = ({ menuList }) => {
               <div key={p.id}>
                 <Grid container>
                   <Grid item xs={12} mt={1}>
-                    <Typography style={style.typography}>
+                    <Typography>
                       {p.borderradius}
                     </Typography>
                   </Grid>
                   <Grid item xs={12} mt={1}>
-                    <Typography style={style.typography}>
+                    <Typography>
                       {" "}
                       {p.height}
                     </Typography>
                   </Grid>
                   <Grid item xs={12} mt={1}>
-                    <Typography style={style.typography}>
+                    <Typography>
                       {" "}
                       {p.overflowY}
                     </Typography>
                   </Grid>
 
                   <Grid item xs={12} mt={1}>
-                    <Typography style={style.typography}>{p.width}</Typography>
+                    <Typography>{p.width}</Typography>
                   </Grid>
                 </Grid>
               </div>

@@ -52,7 +52,7 @@ const InnerLayout = ({ menuList,dragList,setDragList,project }: any) => {
 
   const [screens, setScreens] = React.useState();
   const fetchData = () => {
-    fetch("http://localhost:3000/api/screens")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`)
       .then((r) => {
         return r.json();
       })

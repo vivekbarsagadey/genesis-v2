@@ -106,9 +106,9 @@ const UserComponent = ({ user }: IUserProp) => {
             <Grid
               item
               xs={12}
-              style={{ display: "flex", justifyContent: "flex-end" }}
+             
             >
-              <Link href={"/user"} style={{ textDecoration: "none" }}>
+              <Link href={"/user"}>
                 <Button variant="contained">Close</Button>
               </Link>
               <Button type="submit" variant="contained">

@@ -14,7 +14,7 @@ const Api = ({ menuList }: any) => {
         <Grid item xs={2}>
           <Grid container>
             <Grid item xs={12} mt={1}>
-              <Typography style={{ color: "#212E3D", fontSize: "0.73rem" }}>
+              <Typography >
                 url
               </Typography>
             </Grid>
@@ -26,7 +26,7 @@ const Api = ({ menuList }: any) => {
               <div key={p.id}>
                 <Grid container>
                   <Grid item xs={12} mt={1}>
-                    <Typography style={{ color: "blue", fontSize: "0.73rem" }}>
+                    <Typography >
                       {p.url}
                     </Typography>
                   </Grid>

@@ -19,8 +19,8 @@ const CalendarView = ({ items }: any) => {
     setEvents(AllData);
   }, []);
   return (
-    <Grid pt={1} container style={{ height: "73vh" }}>
-      <Grid item xs={12} px={2.5}>
+    <Grid pt={1} container>
+      <Grid item xs={12}>
         <Calendar
           events={events}
           startAccessor="start"

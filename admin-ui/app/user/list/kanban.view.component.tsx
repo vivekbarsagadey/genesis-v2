@@ -8,7 +8,7 @@ interface KanbanComponentProps extends IUserComponentProps {}
 const KanbanViewComponent = ({ items }: KanbanComponentProps) => {
   return (
     <>
-      <Grid container px={2.5} pt={2}>
+      <Grid container>
         <Grid item xs={12}>
           KanbanView
         </Grid>

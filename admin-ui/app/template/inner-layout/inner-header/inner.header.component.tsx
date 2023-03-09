@@ -6,20 +6,10 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
-import { URL } from "../../../utility/apiurl/apiurl";
-import { InnerHeaderStyle as style } from "./inner.header.style";
 
 
-interface ITabPanel {
-  value: number;
-  handleChange: any;
-  TabPanel: any;
-  a11yProps: any;
-  screens: any;
-  project: any;
-  dragList: any;
-  menuList: any;
-}
+
+
 
 const InnerHeaderComponent = ({
   handleChange,
@@ -29,7 +19,7 @@ const InnerHeaderComponent = ({
   screens,
   project,
   menuList,
-}: ITabPanel) => {
+}) => {
   const router = useRouter();
 
   // get call for Screen Name
@@ -48,9 +38,11 @@ const InnerHeaderComponent = ({
     fetchData();
   }, []);
 
-  const removeScreen = (screenR: any) => {
+  )
+
+  const removeScreen = (screenR) => {
     // DEL Call for sreen remove
-    fetch(`http://localhost:3000/api/screens/${screenR.id}`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/screens/${screenR.id}`, {
       method: "DELETE",
     }).then(() => {
       // router.push("/template");
@@ -80,24 +72,22 @@ const InnerHeaderComponent = ({
   return (
     <Grid
       container
-      style={style.container}
+
     >
-      <Grid item lg={10.15} xs={9} sm={9.5} style={{ marginTop: "-1.5rem" }}>
+      <Grid item lg={10.15} xs={9} sm={9.5}>
         <Tabs value={value} onChange={handleChange}>
-          {screens?.map((screen: any) => {
+          {screens?.map((screen) => {
             return (
               <Tab
                 key={screen.id}
                 icon={
                   <CloseIcon
-                    style={{ fontSize: "0.9rem" }}
                     onClick={() => removeScreen(screen)}
                   />
                 }
                 iconPosition="end"
                 label={screen.name}
                 {...a11yProps(0)}
-                style={style.tabs}
               />
             );
           })}
@@ -119,7 +109,6 @@ const InnerHeaderComponent = ({
             <Button
               variant="contained"
               size="small"
-              style={style.btn}
               onClick={saveJsonData}
             >
               Save

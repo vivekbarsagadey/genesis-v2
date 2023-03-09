@@ -17,7 +17,7 @@ const RemoveDrag = ({ data, removeItemDrag, dragList }: any) => {
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
       >
-        <Grid container style={{ position: "relative" }}>
+        <Grid container >
           <Grid item xs={4.7}>
             <img src={data.image} />
           </Grid>
@@ -25,17 +25,12 @@ const RemoveDrag = ({ data, removeItemDrag, dragList }: any) => {
             {isShown && (
               <Stack
                 direction="row"
-                style={{
-                  position: "absolute",
-                  top: "0",
-                  left: "0",
-                }}
+               
               >
                 <Badge
                   color="primary"
                   badgeContent="X"
                   onClick={() => removeItem(data)}
-                  style={{ cursor: "pointer" }}
                 ></Badge>
               </Stack>
             )}

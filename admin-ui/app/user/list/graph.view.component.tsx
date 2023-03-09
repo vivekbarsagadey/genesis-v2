@@ -41,7 +41,7 @@ const GraphViewComponent = ({ items }: GraphComponentProps) => {
 
   return (
     <Grid container >
-      <Grid item xs={12} px={2} >
+      <Grid item xs={12}  >
       <PieChart data={example} />
       </Grid>
     </Grid>

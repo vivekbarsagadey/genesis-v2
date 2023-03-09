@@ -2,32 +2,25 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import RemoveDrag from "./remove.drag";
-interface ITabSubPanel {
-  value: number;
-  TabPanel: any;
-  a11yProps: any;
-  screens: any;
-  dragList: any;
-  setDragList: any;
-}
+
 const InnerSectionComponent = ({
   value,
   TabPanel,
   dragList,
   screens,
   setDragList,
-}: ITabSubPanel) => {
-  const removeItemDrag = (dataR: any) => {
-    setDragList(dragList.filter((ele: any) => ele.lable !== dataR.lable));
+}) => {
+  const removeItemDrag = (dataR) => {
+    setDragList(dragList.filter((ele) => ele.lable !== dataR.lable));
   };
   return (
     <Grid container>
-      <Grid item xs={12} style={{ background: "#4D575F", height: "82vh" }}>
-        {screens?.map((s: any) => {
+      <Grid item xs={12}>
+        {screens?.map((s) => {
           return (
             <TabPanel value={value} index={0} key={s.id}>
-              <Typography color={"white"} fontSize={"1.5rem"}>
-                {dragList.map((data: any) => {
+              <Typography color={"white"}>
+                {dragList.map((data) => {
                   return (
                     <div key={data.id}>
                       <RemoveDrag

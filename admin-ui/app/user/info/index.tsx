@@ -15,17 +15,9 @@ interface FilterComponentProps extends IUserComponentProps {
 const InfoUserComponent = ({ f }: FilterComponentProps) => {
   return (
     <>
-      <Box px={3} style={{ marginTop: "0.4rem" }}>
-        <Grid
-          container
-          className="classes.container"
-          style={{ backgroundColor: "#fff" }}
-        >
-          <Grid
-            item
-            xs={0.8}
-            style={{ display: "flex", justifyContent: "left" }}
-          >
+      <Box>
+        <Grid container className="classes.container">
+          <Grid item xs={0.8}>
             <Checkbox size="small" />
           </Grid>
           <Grid item xs={2.2}>
