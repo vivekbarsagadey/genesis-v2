@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function projectGridPagination(items: any, itemsPerPage: any) {
+function projectGridPagination(items, itemsPerPage) {
   const [currentPage, setCurrentPage] = useState(1);
   const maxPage = Math.ceil(items.length / itemsPerPage);
   function currentData() {
@@ -14,7 +14,7 @@ function projectGridPagination(items: any, itemsPerPage: any) {
   function prev() {
     setCurrentPage((currentPage) => Math.max(currentPage - 1, 1));
   }
-  function jump(page: any) {
+  function jump(page) {
     const pageNumber = Math.max(1, page);
     setCurrentPage((currentPage) => Math.min(pageNumber, maxPage));
   }

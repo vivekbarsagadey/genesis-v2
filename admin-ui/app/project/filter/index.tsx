@@ -15,7 +15,7 @@ const ProjectFilter = ({
   filterSelected,
   setFilterSelected,
   setFilterChipType,
-}: any) => {
+}) => {
   const [projectDataName, setProjectDataName] = useState("");
   const [projectCustomerName, setProjectCustomerName] = useState("");
 
@@ -85,7 +85,7 @@ const ProjectFilter = ({
               freeSolo
               disableClearable
               options={Array.from(
-                new Set(projectData.map((id) => id.customerName))
+                new Set(projectData?.map((id) => id.customerName))
               )}
               renderInput={(params) => (
                 <TextField

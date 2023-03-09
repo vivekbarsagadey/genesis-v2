@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function useGridPagination(items : any, itemsPerPage : any) {
+function useGridPagination(items , itemsPerPage ) {
   const [currentPage, setCurrentPage] = useState(1);
   const maxPage = Math.ceil(items.length / itemsPerPage);
 

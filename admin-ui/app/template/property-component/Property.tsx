@@ -2,11 +2,11 @@ import React from "react";
 import { Grid, Typography } from "@mui/material";
 
 const Property = ({ menuList }) => {
-  const components = menuList.map((d) =>
-    d.components.map((d) => d.properties)
+  const components = menuList?.map((d) =>
+    d.components?.map((d) => d.properties)
   );
-  const properties = components[0].map((general) =>
-    general.map((d) => d.general)
+  const properties = components[0]?.map((general) =>
+    general?.map((d) => d.general)
   );
 
   return (

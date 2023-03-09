@@ -5,10 +5,10 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import Grid from "@mui/material/Grid";
 const localizer = momentLocalizer(moment);
 
-const CalendarView = ({ items }: any) => {
+const CalendarView = ({ items }) => {
   const [events, setEvents] = useState([]);
 
-  const AllData = items.map((items: any) => {
+  const AllData = items?.map((items) => {
     return {
       title: items.firstName,
       start: new Date(items.createdAt),

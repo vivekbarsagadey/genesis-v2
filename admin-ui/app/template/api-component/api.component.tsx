@@ -1,11 +1,11 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-const Api = ({ menuList }: any) => {
-  const components = menuList.map((d: any) =>
-    d.components.map((d: any) => d.properties)
+const Api = ({ menuList }) => {
+  const components = menuList?.map((d) =>
+    d.components?.map((d) => d.properties)
   );
-  const apiData = components[1].map((general: any) =>
-    general.map((d: any) => d.api)
+  const apiData = components[1]?.map((general) =>
+    general?.map((d) => d.api)
   );
   return (
     <>
@@ -21,7 +21,7 @@ const Api = ({ menuList }: any) => {
           </Grid>
         </Grid>
         <Grid item xs={9.3}>
-          {apiData[0]?.map((p: any) => {
+          {apiData[0]?.map((p) => {
             return (
               <div key={p.id}>
                 <Grid container>

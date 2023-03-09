@@ -37,7 +37,7 @@ const FilterComponent = ({
             <Autocomplete
               freeSolo
               disableClearable
-              options={items.map((f) => f.name)}
+              options={items?.map((f) => f.name)}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -59,7 +59,7 @@ const FilterComponent = ({
             <Autocomplete
               freeSolo
               disableClearable
-              options={items.map((id) => id.email)}
+              options={items?.map((id) => id.email)}
               renderInput={(params) => (
                 <TextField
                   {...params}

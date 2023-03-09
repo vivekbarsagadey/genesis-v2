@@ -95,10 +95,10 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
   const itemsCallBackHandler = (_items: Array<IUser>) => {
     setUsers(_items);
   };
-  const removeData = (f: any) => {
+  const removeData = (f) => {
     getRemove(f);
   };
-  const getRemove = async (item: any) => {
+  const getRemove = async (item) => {
     await deleteUser(item);
     router.push("/user");
   };

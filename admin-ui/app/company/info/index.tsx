@@ -8,7 +8,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import Link from "next/link";
 
 interface InfoComponentProps extends ICompanyComponentProps {}
-const InfoComponent = ({ item }: any) => {
+const InfoComponent = ({ item }) => {
   return (
     <Grid item xs={12} lg={4} sm={6}>
       <Card>

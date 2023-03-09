@@ -9,18 +9,14 @@ import usePagination from "./pagination";
 import { Pagination } from "@mui/material";
 
 
-interface ListComponentProps extends IUserComponentProps {
-  setUsers: any;
-  show: boolean;
-  setShow: any;
-}
+
 const ListComponent = ({
   items,
   setShow,
   show,
   setUsers,
   itemsCallBackHandler = () => {},
-}: ListComponentProps) => {
+}) => {
   const [sortedIcon, setSortedIcon] = useState(true);
   const [sortedIconLastName, setSortedIconLastName] = useState(true);
   const [sortedIconEmail, setSortedIconEmail] = useState(true);
@@ -218,7 +214,7 @@ const ListComponent = ({
       </Box>
 
       <div >
-        {_DATA.currentData().map((f) => {
+        {_DATA.currentData()?.map((f) => {
           return <InfoUserComponent f={f} key={f.id} />;
         })}
       </div>

@@ -50,7 +50,7 @@ const ProjectHomeComponent = () => {
     fetchData();
   }, []);
 
-  const itemsCallBackHandler = (_items: any) => {
+  const itemsCallBackHandler = (_items) => {
     setProjectData(_items);
   };
   console.log("projectData >>", projectData);
@@ -139,7 +139,7 @@ const ProjectHomeComponent = () => {
           <Grid item xs={2} lg={10.2} sm={6} mt={0.7}>
             {filterChipType ? (
               <>
-                {filterSelected?.map((item: any) => {
+                {filterSelected?.map((item) => {
                   return <FilterChipComponent item={item} />;
                 })}
               </>

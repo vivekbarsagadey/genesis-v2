@@ -45,7 +45,7 @@ const InputTextComponent = ({
         }
       />
 
-          {errors?.map(({ e, i }: any) => {
+          {errors?.map(({ e, i }) => {
           return <ErrorComponent key={i} message={e} />;
         })}
     </Box>

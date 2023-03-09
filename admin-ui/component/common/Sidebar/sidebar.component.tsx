@@ -16,7 +16,6 @@ import Modal from "@mui/material/Modal";
 import { styled } from "@mui/material/styles";
 import React from "react";
 import Switch, { Case } from "react-switch-case";
-import { IMenuListSet } from "../../../app/template/templateInterface/template.interface";
 import SideBarInnerList from "./sidebar.inner.list";
 
 const style = {
@@ -30,11 +29,7 @@ const style = {
   p: 4,
 };
 
-interface ISideBar {
-  menuList: IMenuListSet[];
-  show: Boolean;
-  updateMyDragImages: any;
-}
+i
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -62,7 +57,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
-const SidebarComponent = ({ menuList, show, updateMyDragImages }: ISideBar) => {
+const SidebarComponent = ({ menuList, show, updateMyDragImages }) => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -132,7 +127,7 @@ const SidebarComponent = ({ menuList, show, updateMyDragImages }: ISideBar) => {
                     <Grid item xs={12} ml={1}>
                       <Grid container>
                         <Grid item xs={2}>
-                          {menu.components.map((item) => {
+                          {menu.components?.map((item) => {
                             return (
                               <AccordionDetails key={item.id}>
                                 <SideBarInnerList

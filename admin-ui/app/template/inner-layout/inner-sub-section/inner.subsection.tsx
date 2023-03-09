@@ -45,8 +45,8 @@ const InnerSubSection = ({ menuList, dragList }) => {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-  const components = menuList.map((d) =>
-    d.components.map((d) => d.properties)
+  const components = menuList?.map((d) =>
+    d.components?.map((d) => d.properties)
   );
 
   return (

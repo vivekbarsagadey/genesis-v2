@@ -3,7 +3,7 @@ import { Grid, Typography } from "@mui/material";
 
 const Model = ({ menuList }) => {
   const components = menuList?.map((d) =>
-    d.components.map((d) => d.properties)
+    d.components?.map((d) => d.properties)
   );
   const modelData = components[1]?.map((general) =>
     general?.map((d) => d.model)

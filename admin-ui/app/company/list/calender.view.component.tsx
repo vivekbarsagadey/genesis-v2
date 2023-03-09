@@ -6,11 +6,11 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 
 
 const localizer = momentLocalizer(moment);
-const CalenderViewComponent = ({items}:any) => {
+const CalenderViewComponent = ({items}) => {
 
   const [events, setEvents] = useState([])
 
-  const AllData = items.map((item:any)=>{
+  const AllData = items?.map((item)=>{
     return {'title':item.name,  'start': new Date(item.createdAt),'end': new Date(item.updatedAt)}
   })
   useEffect(()=>{

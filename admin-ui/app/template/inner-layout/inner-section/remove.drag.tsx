@@ -5,9 +5,9 @@ import Stack from "@mui/material/Stack";
 import Badge from "@mui/material/Badge";
 import Draggable from "react-draggable";
 
-const RemoveDrag = ({ data, removeItemDrag, dragList }: any) => {
+const RemoveDrag = ({ data, removeItemDrag, dragList }) => {
   const [isShown, setIsShown] = React.useState(false);
-  const removeItem = (dataR: any) => {
+  const removeItem = (dataR) => {
     removeItemDrag(dataR);
   };
 

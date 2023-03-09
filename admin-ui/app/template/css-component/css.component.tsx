@@ -3,8 +3,8 @@ import { Grid, Typography } from "@mui/material";
 
 
 const Css = ({ menuList }) => {
-  const components = menuList.map((d) => d.components.map((d) => d.properties));
-  const cssP = components[1].map((general) => general?.map((d) => d.css));
+  const components = menuList?.map((d) => d.components?.map((d) => d.properties));
+  const cssP = components[1]?.map((general) => general?.map((d) => d.css));
   return (
     <>
       <Grid container>
@@ -27,7 +27,7 @@ const Css = ({ menuList }) => {
           </Grid>
         </Grid>
         <Grid item xs={6}>
-          {cssP[0]?.map((p: any) => {
+          {cssP[0]?.map((p) => {
             return (
               <div key={p.id}>
                 <Grid container>

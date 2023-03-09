@@ -50,15 +50,15 @@ const InnerHeaderComponent = ({
     });
   };
 
-  const components = menuList.map((d) =>
-    d.components.map((d) => d.properties)
+  const components = menuList?.map((d) =>
+    d.components?.map((d) => d.properties)
   );
 
-  const rightTab = components[0].map((general) =>
-    general.map((d) => d.api)
+  const rightTab = components[0]?.map((general) =>
+    general?.map((d) => d.api)
   );
 
-  const innerSectionData = dragList.map((ele) => ele.properties);
+  const innerSectionData = dragList?.map((ele) => ele.properties);
 
   const saveJsonData = () => {
     var json = JSON.stringify([

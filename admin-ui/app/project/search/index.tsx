@@ -1,8 +1,8 @@
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 
-const ProjectSearch = ({ projectSearchList, handleCallback }: any) => {
-  const getSearch = (event: any) => {
+const ProjectSearch = ({ projectSearchList, handleCallback }) => {
+  const getSearch = (event) => {
     handleCallback(event.target.value);
   };
 

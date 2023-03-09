@@ -46,7 +46,7 @@ const InputEmailComponent = ({
     }
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e) => {
     setValue(e.target.value)
     doValidation(e);
      update({ name: label, value:e.target.value});    
@@ -77,7 +77,7 @@ const InputEmailComponent = ({
         }
       />
       <div>
-      {errors?.map(({e,i}:any) => {
+      {errors?.map(({e,i}) => {
           return <ErrorComponent key={i} message={e} />;
         })}
       </div>

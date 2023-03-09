@@ -4,10 +4,10 @@ import Stack from "@mui/material/Stack";
 import React from "react";
 import Draggable from "react-draggable";
 
-const DragComponent = ({ data, setChildData, childData }: any) => {
+const DragComponent = ({ data, setChildData, childData }) => {
   const [isShown, setIsShown] = React.useState(false);
-  const removeItem = (dataR: any) => {
-    setChildData(childData.filter((ele: any) => ele.type !== dataR.type));
+  const removeItem = (dataR) => {
+    setChildData(childData.filter((ele) => ele.type !== dataR.type));
   };
 
   return (

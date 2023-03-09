@@ -9,10 +9,10 @@ import Link from "next/link";
 import { modules } from "../../../common/sidebar/projectsidebar/data/project.sidebar";
 import { headerstyle as style } from "./project.style";
 
-const ProjectSidebar = ({ show }: any) => {
+const ProjectSidebar = ({ show }) => {
   return (
     <div>
-      {modules.map((module) => {
+      {modules?.map((module) => {
         switch (module.name) {
           case "Dashboard":
             return (

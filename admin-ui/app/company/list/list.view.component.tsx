@@ -142,7 +142,7 @@ const ListViewComponent = ({ companies, setCompanies }: ListComponentProps) => {
         </Grid>
       </Box>
 
-      {_DATA.currentData().map((c) => {
+      {_DATA.currentData()?.map((c) => {
         return <GridViewInfoComponent key={c._id} c={c} />;
       })}
 

@@ -1,14 +1,13 @@
-import React from "react";
-import { Grid, ListItemIcon, Typography } from "@mui/material";
-import Switch, { Case, Default } from "react-switch-case";
-import PinIcon from "@mui/icons-material/Pin";
-import KeyboardHideIcon from "@mui/icons-material/KeyboardHide";
-import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import FormatColorTextIcon from "@mui/icons-material/FormatColorText";
+import KeyboardHideIcon from "@mui/icons-material/KeyboardHide";
+import PinIcon from "@mui/icons-material/Pin";
+import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
+import { Grid, ListItemIcon } from "@mui/material";
+import Switch, { Case, Default } from "react-switch-case";
 import SideBarInnerText from "./sidebar.inner.text";
 
-const SideBarInnerList = ({ item, show, updateMyDragImages }: any) => {
+const SideBarInnerList = ({ item, show, updateMyDragImages }) => {
   return (
     <Grid container mt={-4}>
       <Grid item xs={4}>

@@ -1,7 +1,7 @@
 "use client";
 
 
-export default function Layout({ children } : any) {
+export default function Layout({ children }) {
   return (
     <>
       <main>{children}</main>

@@ -39,7 +39,7 @@ const InputPasswordComponent = ({
   //   //       name: label || "",
   //   //       status: [ValidationStatus.REQUIRED, ValidationStatus.PASSWORD],
   //   //     })
-  //   //     .map((e) => e.message)
+  //   //     ?.map((e) => e.message)
   //   // );
   // };
 

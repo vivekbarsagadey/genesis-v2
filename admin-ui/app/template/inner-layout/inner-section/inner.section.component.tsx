@@ -20,7 +20,7 @@ const InnerSectionComponent = ({
           return (
             <TabPanel value={value} index={0} key={s.id}>
               <Typography color={"white"}>
-                {dragList.map((data) => {
+                {dragList?.map((data) => {
                   return (
                     <div key={data.id}>
                       <RemoveDrag

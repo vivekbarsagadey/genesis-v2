@@ -8,10 +8,10 @@ import Grid from "@mui/material/Grid";
 const localizer = momentLocalizer(moment);
 
 
-const ProjectCalendarView = ({ projectData }: any) => {
+const ProjectCalendarView = ({ projectData }) => {
   const [events, setEvents] = useState([]);
 
-  const CalendarData = projectData.map((projectData: any) => {
+  const CalendarData = projectData?.map((projectData) => {
     return {
       title: projectData.firstName,
       start: new Date(projectData.createdAt),

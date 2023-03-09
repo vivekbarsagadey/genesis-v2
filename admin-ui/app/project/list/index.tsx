@@ -61,7 +61,7 @@ const ProjectListComponent = ({
           .currentData()
           .reverse()
           .filter((ele) => ele.name.toLowerCase().includes(projectSearchList.toLowerCase()) )
-          .map((items, index) => {
+          ?.map((items, index) => {
             return (
               <Typography key={index}>
                 <InfoProjectComponent items={items} />

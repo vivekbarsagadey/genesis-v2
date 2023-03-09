@@ -24,7 +24,7 @@ const LayoutTemplate = ({
   };
   const [dragList, setDragList] = React.useState<IMenuListSet[]>([]);
 
-  const updateMyDragImages = (newList: any) => {
+  const updateMyDragImages = (newList) => {
     setDragList([...dragList, newList]);
   };
   const fetchData = () => {

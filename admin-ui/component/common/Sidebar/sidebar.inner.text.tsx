@@ -1,8 +1,7 @@
-import React, { useState } from "react";
 import { Typography } from "@mui/material";
 
-const SideBarInnerText = ({ item, updateMyDragImages }: any) => {
-  const updateList = (itemR: any) => {
+const SideBarInnerText = ({ item, updateMyDragImages }) => {
+  const updateList = (itemR) => {
     updateMyDragImages(itemR);
   };
   return (

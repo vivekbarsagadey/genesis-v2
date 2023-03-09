@@ -10,7 +10,7 @@ const header = [
   "Customer Name",
   "Application",
 ];
-const ExcellGenerator = ({ projectData }: any) => {
+const ExcellGenerator = ({ projectData }) => {
   function handleDownloadExcel() {
     downloadExcel({
       fileName: `Project ${new Date().toISOString().slice(0, 10)}`,

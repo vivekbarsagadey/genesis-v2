@@ -13,7 +13,7 @@ const SearchComponent = ({
 }: SearchComponentProps) => {
   const [search, setSearch] = useState("");
 
-  const getSearch = (event: any) => {
+  const getSearch = (event) => {
     setSearch(event.target.value);
   };
 

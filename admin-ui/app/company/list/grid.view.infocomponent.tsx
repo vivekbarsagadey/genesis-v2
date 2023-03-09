@@ -15,7 +15,7 @@ interface GridViewInfoComponentProps extends ICompanyComponentProps {
   show: boolean;
 }
 
-const GridViewInfoComponent = ({ c }: any) => {
+const GridViewInfoComponent = ({ c }) => {
   return (
     <>
       <Box>

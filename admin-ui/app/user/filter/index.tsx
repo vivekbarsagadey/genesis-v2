@@ -36,7 +36,7 @@ const FilterUserComponent = ({
               size="small"
               freeSolo
               disableClearable
-              options={Array.from(new Set(items.map((f) => f.firstName)))}
+              options={Array.from(new Set(items?.map((f) => f.firstName)))}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -57,7 +57,7 @@ const FilterUserComponent = ({
               size="small"
               freeSolo
               disableClearable
-              options={Array.from(new Set(items.map((id) => id.email)))}
+              options={Array.from(new Set(items?.map((id) => id.email)))}
               renderInput={(params) => (
                 <TextField
                   {...params}
