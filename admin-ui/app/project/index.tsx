@@ -34,8 +34,6 @@ const ProjectHomeComponent = () => {
 
   const open = Boolean(anchorEl);
 
-  
-
   const fetchData = () => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`)
       .then((r) => {
@@ -82,10 +80,7 @@ const ProjectHomeComponent = () => {
     <>
       <Grid container mt={1}>
         <Grid item xs={2.4} lg={3}>
-          <ProjectSearch
-            projectSearchList={projectSearchList}
-            handleCallback={setProjectSearchList}
-          />
+          <ProjectSearch projectSearchList={projectSearchList} />
         </Grid>
         <Grid item xs={0.6} lg={0.4}>
           <Tooltip title="Filter" arrow>
@@ -146,7 +141,7 @@ const ProjectHomeComponent = () => {
             ) : null}
           </Grid>
           <Grid item xs={12} lg={1} sm={12}>
-            <Link href={"/project/create"} passHref legacyBehavior>
+            <Link href={"/project/create"} passHref>
               <Button variant="contained" size="small">
                 Create
                 <span>+</span>
@@ -187,8 +182,6 @@ const ProjectHomeComponent = () => {
         handleClose={handleClose}
         itemsCallBackHandler={itemsCallBackHandler}
         filterSelected={filterSelected}
-        setFilterSelected={setFilterSelected}
-        setFilterChipType={setFilterChipType}
       />
     </>
   );
