@@ -4,7 +4,6 @@ import TextField from "@mui/material/TextField";
 import { Box } from "@mui/system";
 import { useState } from "react";
 import ICompanyComponentProps from "../company.props";
-import { CompanyStyle as style } from "../companystyle";
 
 interface SearchComponentProps extends ICompanyComponentProps {}
 
@@ -29,7 +28,7 @@ const SearchComponent = ({
   return (
     <>
       <Grid item xs={12}>
-        <Box style={style.box}>
+        <Box>
           <TextField
             fullWidth
             label="Search"
@@ -38,7 +37,6 @@ const SearchComponent = ({
             size="small"
             placeholder="Search"
             onChange={getSearch}
-            style={style.search}
           />
           <IconButton onClick={doSearch}>
             <SearchIcon />

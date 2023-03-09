@@ -5,7 +5,6 @@ import IconButton from "@mui/material/IconButton";
 import Pagination from "@mui/material/Pagination";
 import { useState } from "react";
 import ICompanyComponentProps from "../company.props";
-import { CompanyStyle as style } from "../companystyle";
 import GridViewInfoComponent from "./grid.view.infocomponent";
 import usePagination from "./pagination";
 
@@ -88,17 +87,8 @@ const ListViewComponent = ({ companies, setCompanies }: ListComponentProps) => {
           <Grid item xs={12} lg={1} sm={1} md={1}>
             <Checkbox />
           </Grid>
-          <Grid
-            item
-            xs={2.5}
-            lg={2.5}
-            sm={2.5}
-            md={2.5}
-            style={style.expandIcon}
-          >
-            <Typography style={style.listfont} noWrap>
-              Company Name
-            </Typography>
+          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}>
+            <Typography noWrap>Company Name</Typography>
 
             {sortCompanyName === true ? (
               <IconButton onClick={handleClick} id="sort-a-z">
@@ -110,17 +100,8 @@ const ListViewComponent = ({ companies, setCompanies }: ListComponentProps) => {
               </IconButton>
             )}
           </Grid>
-          <Grid
-            item
-            xs={2.5}
-            lg={2.5}
-            sm={2.5}
-            md={2.5}
-            style={style.expandIcon}
-          >
-            <Typography style={style.listfont} noWrap>
-              Email
-            </Typography>
+          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}>
+            <Typography noWrap>Email</Typography>
             {sortCompanyEmail === true ? (
               <IconButton onClick={handleClickEmail} id="sort-a-z">
                 <ExpandLessIcon />
@@ -131,17 +112,8 @@ const ListViewComponent = ({ companies, setCompanies }: ListComponentProps) => {
               </IconButton>
             )}
           </Grid>
-          <Grid
-            item
-            xs={2.5}
-            lg={2.5}
-            sm={2.5}
-            md={2.5}
-            style={style.expandIcon}
-          >
-            <Typography style={style.listfont} noWrap>
-              Contact
-            </Typography>
+          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}>
+            <Typography noWrap>Contact</Typography>
             {sortCompanyContact === true ? (
               <IconButton onClick={handleClickContact} id="sort-a-z">
                 <ExpandLessIcon />
@@ -152,17 +124,8 @@ const ListViewComponent = ({ companies, setCompanies }: ListComponentProps) => {
               </IconButton>
             )}
           </Grid>
-          <Grid
-            item
-            xs={2.5}
-            lg={2.5}
-            sm={2.5}
-            md={2.5}
-            style={style.expandIcon}
-          >
-            <Typography style={style.listfont} noWrap>
-              Address
-            </Typography>
+          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}>
+            <Typography noWrap>Address</Typography>
             {sortCompanyAddress === true ? (
               <IconButton onClick={handleClickAddress} id="sort-a-z">
                 <ExpandLessIcon />
@@ -173,10 +136,8 @@ const ListViewComponent = ({ companies, setCompanies }: ListComponentProps) => {
               </IconButton>
             )}
           </Grid>
-          <Grid item xs={1} lg={1} sm={1} md={1} style={style.expandIcon}>
-            <Typography style={style.listfont} noWrap>
-              Action
-            </Typography>
+          <Grid item xs={1} lg={1} sm={1} md={1}>
+            <Typography noWrap>Action</Typography>
           </Grid>
         </Grid>
       </Box>
@@ -185,8 +146,8 @@ const ListViewComponent = ({ companies, setCompanies }: ListComponentProps) => {
         return <GridViewInfoComponent key={c._id} c={c} />;
       })}
 
-      <Grid container style={style.pagination} pt={2}>
-        <div style={{ position: "fixed" }}>
+      <Grid container  pt={2}>
+        <div>
           <Pagination
             count={count}
             size="medium"

@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { applicationType } from "../../../component/common/data/project/application.type";
 import { URL } from "../../utility/apiurl/apiurl";
-import { CreateStyle as style } from "./create.style";
+
+
 interface IApplicationType {
   id: Number;
   type: String;
@@ -44,27 +45,27 @@ const ProjectCreate = () => {
 
   return (
     <div>
-      <Grid container mt={-0.8}>
+      <Grid container>
         <Grid item xs={12}>
-          <Paper style={style.paper}>
+          <Paper elevation={0}>
             <Grid container>
               <Grid item xs={0.65}></Grid>
               <Grid item xs={11}>
                 <Grid container mb={5}>
-                  <Grid item xs={10}>
+                  <Grid item xs={10} mt={5}>
                     <Typography fontSize={"1.3rem"}>
                       Create New Project
                     </Typography>
                   </Grid>
                 </Grid>
-                <Grid container style={style.container}>
-                  <Grid item xs={3.3}>
+                <Grid container mt={3.5}>
+                  <Grid item xs={3.3} mt={3}>
                     <Typography>Project Name</Typography>
                   </Grid>
-                  <Grid item xs={0.7}>
+                  <Grid item xs={0.7} mt={4}>
                     <Typography>:</Typography>
                   </Grid>
-                  <Grid item xs={6.5}>
+                  <Grid item xs={6.5} mt={3}>
                     <TextField
                       id="outlined-basic"
                       placeholder="Create Project Name"
@@ -76,11 +77,11 @@ const ProjectCreate = () => {
                   </Grid>
                 </Grid>
 
-                <Grid container style={style.container}>
-                  <Grid item xs={3.3}>
+                <Grid container mt={3}>
+                  <Grid item xs={3.3} mt={1}>
                     <Typography>Customer Name </Typography>
                   </Grid>
-                  <Grid item xs={0.7}>
+                  <Grid item xs={0.7} mt={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6.5}>
@@ -95,11 +96,11 @@ const ProjectCreate = () => {
                   </Grid>
                 </Grid>
 
-                <Grid container style={style.container}>
-                  <Grid item xs={3.3}>
+                <Grid container mt={3}>
+                  <Grid item xs={3.3} mt={3}>
                     <Typography>Application</Typography>
                   </Grid>
-                  <Grid item xs={0.6}>
+                  <Grid item xs={0.6} mt={3}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={7}>
@@ -125,12 +126,8 @@ const ProjectCreate = () => {
                   <Grid item xs={3}>
                     <Grid container>
                       <Grid item xs={5.6}>
-                        <Link href={"/project"} passHref >
-                          <Button 
-                            variant="contained"
-                            size="medium"
-                            style={style.btn}
-                          >
+                        <Link href={"/project"} passHref>
+                          <Button variant="contained" size="small" >
                             Cancel
                           </Button>
                         </Link>
@@ -139,8 +136,7 @@ const ProjectCreate = () => {
                       <Grid item xs={6}>
                         <Button
                           variant="contained"
-                          size="medium"
-                          style={style.btn}
+                          size="small"
                           onClick={updateMyProjectData}
                         >
                           Save

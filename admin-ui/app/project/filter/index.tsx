@@ -51,7 +51,7 @@ const ProjectFilter = ({
         }}
       >
         <div>
-          <Stack sx={{ width: 300, padding: "1rem" }}>
+          <Stack width={300} padding={"1rem"}>
             <Autocomplete
               size="small"
               freeSolo
@@ -67,7 +67,6 @@ const ProjectFilter = ({
                   }}
                 />
               )}
-              // onChange={(event, value) => setFilterDataName(value)}
               onChange={(event, value) => {
                 updateProjectName(value);
               }}
@@ -76,7 +75,7 @@ const ProjectFilter = ({
         </div>
 
         <div>
-          <Stack sx={{ width: 300, padding: "1rem" }}>
+          <Stack width={300} padding={"1rem"}>
             <Autocomplete
               size="small"
               freeSolo
@@ -106,7 +105,6 @@ const ProjectFilter = ({
             <Button
               variant="contained"
               size="small"
-              style={{ textTransform: "capitalize" }}
               onClick={() => handleClose()}
             >
               Cancel
@@ -116,7 +114,6 @@ const ProjectFilter = ({
             <Button
               variant="contained"
               size="small"
-              style={{ textTransform: "capitalize" }}
               onClick={doFilter}
               disabled={!filterDataName || !filterDataEmail}
             >

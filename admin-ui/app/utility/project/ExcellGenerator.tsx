@@ -1,6 +1,5 @@
 import React from "react";
 import { Typography } from "@mui/material";
-import { ProjectHomeStyle as style } from "../../project/project.home.style";
 import { downloadExcel } from "react-export-table-to-excel";
 
 const header = [
@@ -24,7 +23,7 @@ const ExcellGenerator = ({ projectData }: any) => {
   }
   return (
     <div>
-      <Typography style={style.menubtn} onClick={handleDownloadExcel}>
+      <Typography variant="subtitle1" onClick={handleDownloadExcel}>
         Excel
       </Typography>
     </div>

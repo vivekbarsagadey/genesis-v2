@@ -1,18 +1,17 @@
 import React from "react";
+import Typography from "@mui/material/Typography";
 import { CSVLink } from "react-csv";
-import { ProjectHomeStyle as style } from "../../project/project.home.style";
 
 const CsvGenerator = ({ projectData }:any) => {
   return (
-    <div>
+    <Typography variant="subtitle1">
       <CSVLink
         data={projectData}
         filename={`projectData ${new Date().toISOString().slice(0, 10)}`}
-        style={style.menubtn}
       >
         CSV
       </CSVLink>
-    </div>
+    </Typography>
   );
 };
 

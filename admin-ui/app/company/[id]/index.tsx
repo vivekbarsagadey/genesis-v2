@@ -8,17 +8,16 @@ import {
   MenuItem,
   Select,
   TextField,
-  Typography
+  Typography,
 } from "@mui/material";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import {
   country,
-  state
+  state,
 } from "../../../component/common/data/company/company.type";
 import ICompany from "../company.model";
-import { CompanyStyle as style } from "../companystyle";
 
 interface ICompanyProp {
   company: ICompany | undefined;
@@ -81,7 +80,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                 placeholder="Company Name"
                 fullWidth
               />
-              <p style={style.errormessage}>{errors.name?.message}</p>
+              <p>{errors.name?.message}</p>
             </Grid>
 
             <Grid item xs={12} sm={6} md={6} lg={4}>
@@ -92,7 +91,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                 placeholder="Email"
                 fullWidth
               />
-              <p style={style.errormessage}>{errors.email?.message}</p>
+              <p>{errors.email?.message}</p>
             </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>Phone:</Typography>
@@ -102,7 +101,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                 placeholder="Mobile"
                 fullWidth
               />
-              <p style={style.errormessage}>{errors.mobile?.message}</p>
+              <p>{errors.mobile?.message}</p>
             </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>Address:</Typography>
@@ -112,7 +111,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                 size="small"
                 fullWidth
               />
-              <p style={style.errormessage}>{errors.address?.message}</p>
+              <p>{errors.address?.message}</p>
             </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>Country:</Typography>
@@ -127,7 +126,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                   })}
                 </Select>
               </FormControl>
-              <p style={style.errormessage}>{errors.country?.message}</p>
+              <p>{errors.country?.message}</p>
             </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>State:</Typography>
@@ -143,7 +142,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                   })}
                 </Select>
               </FormControl>
-              <p style={style.errormessage}>{errors.address?.message}</p>
+              <p>{errors.address?.message}</p>
             </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>City:</Typography>
@@ -153,7 +152,7 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                 size="small"
                 fullWidth
               />
-              <p style={style.errormessage}>{errors.address?.message}</p>
+              <p>{errors.address?.message}</p>
             </Grid>
             <Grid item xs={12} sm={6} md={6} lg={4}>
               <Typography>Pincode:</Typography>
@@ -163,16 +162,16 @@ const CompanyComponent = ({ company }: ICompanyProp) => {
                 size="small"
                 fullWidth
               />
-              <p style={style.errormessage}>{errors.address?.message}</p>
+              <p>{errors.address?.message}</p>
             </Grid>
 
             <Grid item xs={12} textAlign="right">
               <Link href={"/company"} passHref>
-                <Button variant="contained" style={style.btn}>
+                <Button variant="contained">
                   Cancel
                 </Button>
               </Link>
-              <Button type="submit" variant="contained" style={style.btn}>
+              <Button type="submit" variant="contained">
                 Submit
               </Button>
             </Grid>

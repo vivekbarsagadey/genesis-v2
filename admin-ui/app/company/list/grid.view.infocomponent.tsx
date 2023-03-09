@@ -9,7 +9,6 @@ import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import ICompany from "../company.model";
 import ICompanyComponentProps from "../company.props";
-import { CompanyStyle as style } from "../companystyle";
 
 interface GridViewInfoComponentProps extends ICompanyComponentProps {
   c: ICompany;
@@ -20,54 +19,26 @@ const GridViewInfoComponent = ({ c }: any) => {
   return (
     <>
       <Box>
-        <Grid container style={style.expandIcon}>
+        <Grid container>
           <Grid item xs={12} lg={1} sm={1} md={1}>
             <Checkbox />
           </Grid>
-          <Grid
-            item
-            xs={2.5}
-            lg={2.5}
-            sm={2.5}
-            md={2.5}
-            style={style.expandIcon}
-          >
+          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}>
             <Typography fontSize="small" noWrap>
               {c.name}
             </Typography>
           </Grid>
-          <Grid
-            item
-            xs={2.5}
-            lg={2.5}
-            sm={2.5}
-            md={2.5}
-            style={style.expandIcon}
-          >
+          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}>
             <Typography fontSize="small" noWrap>
               {c.email}
             </Typography>
           </Grid>
-          <Grid
-            item
-            xs={2.5}
-            lg={2.5}
-            sm={2.5}
-            md={2.5}
-            style={style.expandIcon}
-          >
+          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}>
             <Typography fontSize="small" noWrap>
               {c.mobile}
             </Typography>
           </Grid>
-          <Grid
-            item
-            xs={2.5}
-            lg={2.5}
-            sm={2.5}
-            md={2.5}
-            style={style.expandIcon}
-          >
+          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}>
             <Typography fontSize="small" noWrap>
               {c.address}
             </Typography>

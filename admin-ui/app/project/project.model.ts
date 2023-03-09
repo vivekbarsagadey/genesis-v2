@@ -1,6 +1,6 @@
 
 interface IProject{
-    _id:string;
+    id:string;
     name: string;
     customerName: string;
     application: string;

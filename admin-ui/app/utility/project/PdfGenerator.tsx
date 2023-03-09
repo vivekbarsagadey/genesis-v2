@@ -1,7 +1,6 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import { download } from "../../../utils/pdf-util";
-import { ProjectHomeStyle as style} from "../../project/project.home.style";
 
 const PdfGenerator = ({ projectData }: any) => {
   const exportPDF = async () => {
@@ -20,9 +19,7 @@ const PdfGenerator = ({ projectData }: any) => {
   };
   return (
     <div>
-      <Typography onClick={() => exportPDF()} style={style.menubtn}>
-        PDF
-      </Typography>
+      <Typography variant="subtitle1" onClick={() => exportPDF()}>PDF</Typography>
     </div>
   );
 };

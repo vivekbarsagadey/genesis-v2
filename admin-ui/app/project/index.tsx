@@ -1,7 +1,7 @@
 "use client";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
-import { Button, Grid, IconButton } from "@mui/material";
+import { Button, Grid, IconButton, Typography } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
@@ -17,9 +17,10 @@ import ProjectCalendarView from "./list/calendar.view";
 import ProjectGraphView from "./list/graph.view";
 import ProjectGridView from "./list/grid.view";
 import ProjectKanbanView from "./list/kanban.view";
-import { ProjectHomeStyle as style } from "./project.home.style";
 import ProjectSearch from "./search";
 import ProjectViewComponent from "./view";
+import Chip from "@mui/material/Chip";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const ProjectHomeComponent = () => {
   const [projectData, setProjectData] = useState([]); // This is a original json Data
@@ -131,7 +132,7 @@ const ProjectHomeComponent = () => {
           </Grid>
         </Grid>
         <Grid item xs={2} lg={6.2} md={4} sm={3} display={"flex"}>
-          <Grid item xs={2} lg={9.6} sm={6} mt={0.7}>
+          <Grid item xs={2} lg={10.2} sm={6} mt={0.7}>
             {filterChipType ? (
               <>
                 {filterSelected?.map((item: any) => {
@@ -140,18 +141,11 @@ const ProjectHomeComponent = () => {
               </>
             ) : null}
           </Grid>
-          <Grid
-            item
-            xs={12}
-            lg={2}
-            sm={12}
-            display={"flex"}
-            justifyContent={"flex-end"}
-          >
+          <Grid item xs={12} lg={1} sm={12}>
             <Link href={"/project/create"} passHref legacyBehavior>
-              <Button variant="contained" style={style.createbtn}>
+              <Button variant="contained" size="small">
                 Create
-                <span style={style.createspan}>+</span>
+                <span>+</span>
               </Button>
             </Link>
           </Grid>
@@ -198,9 +192,12 @@ const ProjectHomeComponent = () => {
 
 const FilterChipComponent = ({ item }) => {
   return (
-    <span style={style.chip}>
-      {item} <span style={style.chipcrossbutton}>x</span>{" "}
-    </span>
+    <Chip
+      variant="outlined"
+      label={item}
+      deleteIcon={<DeleteIcon />}
+      size="small"
+    />
   );
 };
 

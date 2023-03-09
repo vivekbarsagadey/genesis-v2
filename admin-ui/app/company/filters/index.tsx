@@ -6,7 +6,6 @@ import TextField from "@mui/material/TextField";
 import { Stack } from "@mui/system";
 import { useState } from "react";
 import ICompanyComponentProps from "../company.props";
-import { CompanyStyle as style } from "../companystyle";
 
 interface FilterComponentProps extends ICompanyComponentProps {
   handleClose: () => void;
@@ -34,7 +33,7 @@ const FilterComponent = ({
     <div>
       <Menu>
         <div>
-          <Stack spacing={2} style={style.stack}>
+          <Stack spacing={2}>
             <Autocomplete
               freeSolo
               disableClearable
@@ -56,7 +55,7 @@ const FilterComponent = ({
         </div>
 
         <div>
-          <Stack spacing={2} style={style.stack}>
+          <Stack spacing={2}>
             <Autocomplete
               freeSolo
               disableClearable
@@ -80,17 +79,12 @@ const FilterComponent = ({
         <Grid container mb={1}>
           <Grid item xs={5.6}></Grid>
           <Grid item xs={3.6}>
-            <Button variant="outlined" size="small" style={style.filterbtn}>
+            <Button variant="outlined" size="small">
               Cancel
             </Button>
           </Grid>
           <Grid item xs={2}>
-            <Button
-              variant="outlined"
-              size="small"
-              style={style.filterbtn}
-              onClick={doFilter}
-            >
+            <Button variant="outlined" size="small" onClick={doFilter}>
               Save
             </Button>
           </Grid>
