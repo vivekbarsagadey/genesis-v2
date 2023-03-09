@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { applicationType } from "../../../component/common/data/project/application.type";
-import { URL } from "../../utility/apiurl/apiurl";
 
 
 interface IApplicationType {
@@ -29,7 +28,7 @@ const ProjectCreate = () => {
   };
 
   const updateMyProjectData = async () => {
-    await fetch(`${URL}/projects`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
       method: "POST",
       body: JSON.stringify({
         name: projectName,

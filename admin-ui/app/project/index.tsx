@@ -33,8 +33,11 @@ const ProjectHomeComponent = () => {
   const [filterChipType, setFilterChipType] = useState(false);
 
   const open = Boolean(anchorEl);
+
+  
+
   const fetchData = () => {
-    fetch(`${URL}/projects`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`)
       .then((r) => {
         return r.json();
       })
@@ -50,6 +53,7 @@ const ProjectHomeComponent = () => {
   const itemsCallBackHandler = (_items: any) => {
     setProjectData(_items);
   };
+  console.log("projectData >>", projectData);
 
   useEffect(() => {
     setCopyProject(projectData);
