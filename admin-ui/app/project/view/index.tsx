@@ -5,9 +5,6 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import TimelineIcon from "@mui/icons-material/Timeline";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ViewKanbanOutlinedIcon from "@mui/icons-material/ViewKanbanOutlined";
-interface IViewProps {
-  handleCount: () => void;
-}
 
 const AllViews = [
   {
@@ -41,7 +38,7 @@ const AllViews = [
     icon: <ViewKanbanOutlinedIcon fontSize="small" />,
   },
 ];
-const ProjectViewComponent = ({ handleCount }: IViewProps) => {
+const ProjectViewComponent = ({ handleCount }) => {
   return (
     <>
       {AllViews?.map((data) => {

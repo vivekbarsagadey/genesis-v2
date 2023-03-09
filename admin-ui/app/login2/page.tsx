@@ -52,7 +52,6 @@ const SignIn: NextPage = (props): JSX.Element => {
 
   const router = useRouter();
   const [errorState,setErrorState] = useState(" ")
-  // console.log(errorState);
   
   return (
     <>

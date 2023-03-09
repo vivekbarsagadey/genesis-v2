@@ -1,36 +1,27 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { Button, Grid, IconButton, Typography, Paper } from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import FilterUserComponent from "./filter";
-import ListComponent from "./list";
-import SearchUserComponent from "./search";
-import IUser from "./user.model";
-import Link from "next/link";
+import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
-import { createUser, deleteUser } from "./services/UserServices";
-import { useRouter } from "next/navigation";
+import { Button, Grid, IconButton } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import ImportExportOutlinedIcon from "@mui/icons-material/ImportExportOutlined";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import { ExcelRenderer } from "react-excel-renderer";
-import { CSVLink } from "react-csv";
-import Tooltip from "@mui/material/Tooltip";
-import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
-import { download } from "../../utils/pdf-util";
-import { xlsxDownload } from "../../utils/xlsx-util";
-import { makeStyles } from "@mui/styles";
-import ViewsComponent from "./view";
-import GraphViewComponent from "./list/GraphViewComponent";
-import GridViewComponent from "./list/GridViewComponent";
-import CalendarView from "./list/CalendarView";
-import FilterComponent from "./filter/Filter";
 import { styled } from "@mui/material/styles";
-import Chip from "@mui/material/Chip";
-import KanbanViewComponent from "./list/KanbanViewComponent";
+import Tooltip from "@mui/material/Tooltip";
+import { makeStyles } from "@mui/styles";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import CsvGenerator from "../utility/project/CsvGenerator";
+import ExcellGenerator from "../utility/project/ExcellGenerator";
+import PdfGenerator from "../utility/project/PdfGenerator";
+import FilterUserComponent from "./filter";
+import ListComponent from "./list";
+import CalendarView from "./list/calendar.view";
+import GraphViewComponent from "./list/graph.view.component";
+import GridViewComponent from "./list/grid.view.component";
+import KanbanViewComponent from "./list/kanban.view.component";
+import SearchUserComponent from "./search";
+import IUser from "./user.model";
 
 const useStyles = makeStyles({
   addnewbtn: {
@@ -73,7 +64,6 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
   const [users, setUsers] = useState(items);
   const [show, setShow] = useState(false);
   const [openModule, setOpenModule] = React.useState(false);
-  const [file, setFile] = useState(null);
   const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
   const router = useRouter();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -105,91 +95,26 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
   const itemsCallBackHandler = (_items: Array<IUser>) => {
     setUsers(_items);
   };
-  const removeData = (f: any) => {
+  const removeData = (f) => {
     getRemove(f);
   };
-  const getRemove = async (item: any) => {
+  const getRemove = async (item) => {
     await deleteUser(item);
     router.push("/user");
   };
-  const exportPDF = async () => {
-    const headers = [
-      [
-        "First Name",
-        "Last Name",
-        "Mobile",
-        "Email",
-        "Address",
-        "Country",
-        "State",
-        "Pin Code",
-      ],
-    ];
-    const data = users.map((elt) => [
-      elt.firstName,
-      elt.lastName,
-      elt.mobile,
-      elt.email,
-      elt.address,
-      elt.country,
-      elt.state,
-      elt.pinCode,
-    ]);
-    await download({ headers: headers, items: data });
-  };
-  const exportToExcell = async () => {
-    const fileName = "User_Templates";
-    await xlsxDownload({ fileName: fileName, items: users });
-  };
+
   const handleClickOpen = () => {
     setOpenModule(true);
   };
   const handleImportClose = () => {
     setOpenModule(false);
   };
-  const fileHandler = (event: any) => {
-    let fileObj = event.target.files[0];
-    ExcelRenderer(fileObj, (err, resp) => {
-      if (err) {
-      } else {
-        setFile({
-          cols: resp.cols,
-          rows: resp.rows,
-        });
-      }
-    });
-  };
 
-  const sendDataHandler = async () => {
-    for (let i = 1; i < file?.rows.length; i++) {
-      const users = {
-        firstName: file.rows[i][1],
-        lastName: file.rows[i][2],
-        address: file.rows[i][3],
-        email: file.rows[i][4],
-        mobile: file.rows[i][5].toString(),
-        country: file.rows[i][6],
-        state: file.rows[i][7],
-        city: file.rows[i][8],
-        pinCode: file.rows[i][9],
-      };
-      await createUser(users);
-      handleImportClose();
-    }
-  };
   const handleCount = (data: string) => {
     setCount(data);
   };
 
   const [anchor, setAnchor] = React.useState<null | HTMLElement>(null);
-  const filterOpen = Boolean(anchor);
-
-  const filterDataClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchor(event.currentTarget);
-  };
-  const filterDataClose = () => {
-    setAnchor(null);
-  };
 
   return (
     <>
@@ -213,16 +138,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
             </IconButton>
           </Tooltip>
         </Grid>
-        <Grid
-          item
-          xs={0.6}
-          lg={0.37}
-          md={0.5}
-          sm={0.9}
-          mt={1}
-          ml={1}
-          style={{ display: "flex", alignItems: "center" }}
-        >
+        <Grid item xs={0.6} lg={0.37} md={0.5} sm={0.9} mt={1} ml={1}>
           <Tooltip title="Export" arrow>
             <IconButton
               aria-controls={Open ? "basic-menu" : undefined}
@@ -243,75 +159,15 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
             }}
           >
             <MenuItem>
-              <Typography
-                style={{ fontSize: "0.8rem" }}
-                onClick={exportToExcell}
-              >
-                Excel
-              </Typography>
+              <ExcellGenerator />
             </MenuItem>
             <MenuItem>
-              <Typography
-                style={{ fontSize: "0.8rem" }}
-                onClick={() => exportPDF()}
-              >
-                PDF
-              </Typography>
+              <PdfGenerator />
             </MenuItem>
             <MenuItem>
-              <CSVLink
-                data={items}
-                filename={`users_tamplate5`}
-                className={classes.csvlink}
-              >
-                CSV
-              </CSVLink>
+              <CsvGenerator />
             </MenuItem>
           </Menu>
-        </Grid>
-
-        <Grid
-          item
-          xs={0.5}
-          sm={1.5}
-          md={0.93}
-          lg={2.1}
-          style={{ display: "flex", alignItems: "center" }}
-          mt={0.7}
-        >
-          <Tooltip title="Import" arrow>
-            <IconButton onClick={handleClickOpen}>
-              <ImportExportOutlinedIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
-          <ViewsComponent handleCount={handleCount} />
-          <Dialog
-            open={openModule}
-            onClose={() => setOpenModule(false)}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogContent>
-              <input type="file" onChange={fileHandler} />
-            </DialogContent>
-            <DialogActions>
-              <Button
-                onClick={() => setOpenModule(false)}
-                variant="contained"
-                className={classes.cancelbtn}
-              >
-                Cancel
-              </Button>
-              <Button
-                onClick={sendDataHandler}
-                autoFocus
-                variant="contained"
-                className={classes.savebtn}
-              >
-                Save
-              </Button>
-            </DialogActions>
-          </Dialog>
         </Grid>
 
         <Grid item textAlign="right" xs={6} sm={4.8} md={4.8}>
@@ -322,78 +178,12 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
               </IconButton>
             </Tooltip>
           )}
-          <Link href={"/user/-1"} style={{ textDecoration: "none" }}>
-            <Button
-              variant="contained"
-              size="small"
-              style={{
-                textTransform: "capitalize",
-                borderRadius: "20px",
-                fontWeight: "bold",
-                padding: "0.2rem 0.7rem ",
-              }}
-            >
+          <Link href={"/user/-1"}>
+            <Button variant="contained" size="small">
               Create
-              <span style={{ marginLeft: "0.8rem", fontSize: "0.9rem" }}>
-                +
-              </span>
+              <span>+</span>
             </Button>
           </Link>
-        </Grid>
-
-        <Grid></Grid>
-
-        <Grid container>
-          <Grid item xs={12} mt={1.5} display="flex">
-            <div>
-              <Typography
-                sx={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  listStyle: "none",
-                  p: 0.5,
-                  m: 0,
-                }}
-                component="ul"
-              >
-                {chipData?.map((data) => {
-                  let icon;
-                  return (
-                    <>
-                      {data && (
-                        <ListItem key={data.key}>
-                          <Chip
-                            icon={icon}
-                            label={data}
-                            onDelete={
-                              data.label === "Chip"
-                                ? undefined
-                                : handleDelete(data)
-                            }
-                          />
-                        </ListItem>
-                      )}
-                    </>
-                  );
-                })}
-              </Typography>
-            </div>
-            {/* <div style={{ marginTop: "0.2rem" }}>
-              <Button
-                variant="contained"
-                size="small"
-                className={classes.addnewbtn}
-                id="basic-button"
-                aria-controls={filterOpen ? "basic-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={filterOpen ? "true" : undefined}
-                onClick={filterDataClick}
-              >
-                <span style={{ fontSize: "1rem" }}>+</span>
-                Filter
-              </Button>
-            </div> */}
-          </Grid>
         </Grid>
       </Grid>
 
@@ -401,7 +191,6 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
         {(() => {
           switch (count) {
             case "List":
-              // return  <GridViewComponent items={users} ></GridViewComponent>
               return (
                 <ListComponent
                   show={show}
@@ -432,18 +221,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
         />
       </div>
 
-      <div>
-        {/* <FilterComponent
-          items={items}
-          anchor={anchor}
-          filterOpen={filterOpen}
-          handleClose={handleClose}
-          filterDataClose={filterDataClose}
-          chipData={chipData}
-          setChipData={setChipData}
-          itemsCallBackHandler={itemsCallBackHandler}
-        /> */}
-      </div>
+      <div></div>
     </>
   );
 };

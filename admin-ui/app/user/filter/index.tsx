@@ -19,19 +19,6 @@ const FilterUserComponent = ({
   handleClose,
   itemsCallBackHandler = () => {},
 }: FilterComponentProps) => {
-  const [filterDataName, setFilterDataName] = useState("");
-  const [filterDataEmail, setFilterDataEmail] = useState("");
-
-  const doFilter = () => {
-    const newUsers = items?.filter(
-      (u) =>
-        u.firstName.toLowerCase().includes(filterDataName.toLowerCase()) ||
-        u.email.toLowerCase().includes(filterDataEmail.toLowerCase())
-    );
-    itemsCallBackHandler(newUsers);
-    handleClose();
-  };
-
   return (
     <div>
       <Menu
@@ -44,12 +31,12 @@ const FilterUserComponent = ({
         }}
       >
         <div>
-          <Stack sx={{ width: 300, padding: "1rem" }}>
+          <Stack>
             <Autocomplete
               size="small"
               freeSolo
               disableClearable
-              options={Array.from(new Set(items.map((f) => f.firstName)))}
+              options={Array.from(new Set(items?.map((f) => f.firstName)))}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -60,18 +47,17 @@ const FilterUserComponent = ({
                   }}
                 />
               )}
-              onChange={(event, value) => setFilterDataName(value)}
             />
           </Stack>
         </div>
 
         <div>
-          <Stack sx={{ width: 300, padding: "1rem" }}>
+          <Stack>
             <Autocomplete
               size="small"
               freeSolo
               disableClearable
-              options={Array.from(new Set(items.map((id) => id.email)))}
+              options={Array.from(new Set(items?.map((id) => id.email)))}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -82,7 +68,6 @@ const FilterUserComponent = ({
                   }}
                 />
               )}
-              onChange={(event, value) => setFilterDataEmail(value)}
             />
           </Stack>
         </div>
@@ -92,19 +77,13 @@ const FilterUserComponent = ({
             <Button
               variant="contained"
               size="small"
-              style={{ textTransform: "capitalize" }}
               onClick={() => handleClose()}
             >
               Cancel
             </Button>
           </Grid>
           <Grid item xs={1}>
-            <Button
-              variant="contained"
-              size="small"
-              style={{ textTransform: "capitalize" }}
-              onClick={doFilter}
-            >
+            <Button variant="contained" size="small">
               Save
             </Button>
           </Grid>

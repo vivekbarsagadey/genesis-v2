@@ -5,51 +5,23 @@ import React, { useState } from "react";
 import InfoUserComponent from "../info";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import usePagination from "./Pagination";
+import usePagination from "./pagination";
 import { Pagination } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 
-const useStyles = makeStyles({
-  container: {
-    // textAlign: "center",
-    background: "#fff",
-    // paddingLeft: "0.5rem",
-    // width: "98.5%",
-    // borderRadius:'15px 15px 0px 0px ',
-    // borderBottom:"3px solid #FFC107",
-    // marginLeft:"1rem",
-    // marginRight:"0.5rem"
-  },
-  typography: {
-    color: "#494a49",
-    fontWeight: "600",
-    fontSize: "0.8rem",
-  },
-  pagination: {
-    display: "flex",
-    justifyContent: "flex-end",
-    marginTop: "2rem",
-    position: "relative",
-  },
-});
-interface ListComponentProps extends IUserComponentProps {
-  setUsers: any;
-  show: boolean;
-  setShow: any;
-}
+
+
 const ListComponent = ({
   items,
   setShow,
   show,
   setUsers,
   itemsCallBackHandler = () => {},
-}: ListComponentProps) => {
+}) => {
   const [sortedIcon, setSortedIcon] = useState(true);
   const [sortedIconLastName, setSortedIconLastName] = useState(true);
   const [sortedIconEmail, setSortedIconEmail] = useState(true);
   const [sortedIconMobile, setSortedIconMobile] = useState(true);
   const [sortedIconAddress, setSortedIconAddress] = useState(true);
-  const classes = useStyles();
   // Pagination logic
   let [page, setPage] = useState(1);
   const PER_PAGE = 8;
@@ -128,8 +100,8 @@ const ListComponent = ({
 
   return (
     <>
-      <Box px={3} style={{ marginTop: "1rem" }}>
-        <Grid container className={classes.container}>
+      <Box px={3}>
+        <Grid container >
           <Grid
             item
             xs={0.8}
@@ -141,9 +113,9 @@ const ListComponent = ({
             item
             xs={2.2}
             sm={2.2}
-            style={{ display: "flex", alignItems: "center" }}
+          
           >
-            <Typography className={classes.typography} >
+            <Typography  >
               First Name
             </Typography>
             {sortedIcon === true ? (
@@ -161,9 +133,9 @@ const ListComponent = ({
             item
             xs={2.1}
             sm={2.1}
-            style={{ display: "flex", alignItems: "center" }}
+          
           >
-            <Typography className={classes.typography}>Last Name</Typography>
+            <Typography >Last Name</Typography>
             {sortedIconLastName === true ? (
               <IconButton onClick={handleClickLastName} id="sort-a-z">
                 <ExpandLessIcon />
@@ -179,9 +151,9 @@ const ListComponent = ({
             item
             xs={2.4}
             sm={2.6}
-            style={{ display: "flex", alignItems: "center" }}
+           
           >
-            <Typography className={classes.typography}>Email</Typography>
+            <Typography >Email</Typography>
             {sortedIconEmail === true ? (
               <IconButton onClick={handleClickEmail} id="sort-a-z">
                 <ExpandLessIcon />
@@ -197,9 +169,9 @@ const ListComponent = ({
             item
             xs={2}
             sm={2}
-            style={{ display: "flex", alignItems: "center" }}
+         
           >
-            <Typography className={classes.typography}>Contact No.</Typography>
+            <Typography >Contact No.</Typography>
             {sortedIconMobile === true ? (
               <IconButton onClick={handleClickMobile} id="sort-a-z">
                 <ExpandLessIcon />
@@ -216,9 +188,9 @@ const ListComponent = ({
             xs={1.5}
             sm={1.5}
             lg={1.6}
-            style={{ display: "flex", alignItems: "center" }}
+         
           >
-            <Typography className={classes.typography} noWrap>
+            <Typography  noWrap>
               Address
             </Typography>
             {sortedIconAddress === true ? (
@@ -233,8 +205,8 @@ const ListComponent = ({
             )}
           </Grid>
 
-          <Grid item xs={0.5} style={{ display: "flex", alignItems: "center" }}>
-            <Typography className={classes.typography} noWrap>
+          <Grid item xs={0.5}>
+            <Typography  noWrap>
               Action
             </Typography>
           </Grid>
@@ -242,14 +214,14 @@ const ListComponent = ({
       </Box>
 
       <div >
-        {_DATA.currentData().map((f) => {
-          return <InfoUserComponent f={f} key={f.id} show={show} />;
+        {_DATA.currentData()?.map((f) => {
+          return <InfoUserComponent f={f} key={f.id} />;
         })}
       </div>
       <div>
         <Grid container>
-          <Grid item xs={11.8} className={classes.pagination}>
-            <div style={{ position: "fixed" }}>
+          <Grid item xs={11.8}>
+            <div >
               <Pagination
                 count={count}
                 size="small"

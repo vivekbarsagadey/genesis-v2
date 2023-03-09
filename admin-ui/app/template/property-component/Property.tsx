@@ -1,12 +1,12 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 
-const Property = ({ menuList }: any) => {
-  const components = menuList.map((d: any) =>
-    d.components.map((d: any) => d.properties)
+const Property = ({ menuList }) => {
+  const components = menuList?.map((d) =>
+    d.components?.map((d) => d.properties)
   );
-  const properties = components[0].map((general: any) =>
-    general.map((d: any) => d.general)
+  const properties = components[0]?.map((general) =>
+    general?.map((d) => d.general)
   );
 
   return (
@@ -16,84 +16,31 @@ const Property = ({ menuList }: any) => {
         <Grid item xs={4.5}>
           <Grid container>
             <Grid item xs={12} mt={1}>
-              <Typography style={{ color: "#212E3D", fontSize: "0.73rem" }}>
-                background
-              </Typography>
+              <Typography>background</Typography>
             </Grid>
             <Grid item xs={12} mt={1}>
-              <Typography style={{ color: "#212E3D", fontSize: "0.73rem" }}>
-                borderRadius
-              </Typography>
+              <Typography>borderRadius</Typography>
             </Grid>
             <Grid item xs={12} mt={1}>
-              <Typography style={{ color: "#212E3D", fontSize: "0.73rem" }}>
-                height
-              </Typography>
+              <Typography>height</Typography>
             </Grid>
             <Grid item xs={12} mt={1}>
-              <Typography style={{ color: "#212E3D", fontSize: "0.73rem" }}>
-                overflowY
-              </Typography>
+              <Typography>overflowY</Typography>
             </Grid>
             <Grid item xs={12} mt={1}>
-              <Typography style={{ color: "#212E3D", fontSize: "0.73rem" }}>
-                position
-              </Typography>
+              <Typography>position</Typography>
             </Grid>
             <Grid item xs={12} mt={1}>
-              <Typography style={{ color: "#212E3D", fontSize: "0.73rem" }}>
-                width
-              </Typography>
+              <Typography>width</Typography>
             </Grid>
           </Grid>
         </Grid>
         <Grid item xs={6}>
-          {properties[0]?.map((p: any) => {
+          {properties?.map((p) => {
             return (
               <div key={p.id}>
                 <Grid container>
-                  <Grid item xs={12} mt={1}>
-                    <Typography
-                      style={{ color: "#EC5500", fontSize: "0.73rem" }}
-                    >
-                      {p.background}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} mt={1}>
-                    <Typography
-                      style={{ color: "#EC5500", fontSize: "0.73rem" }}
-                    >
-                      {p.borderradius}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} mt={1}>
-                    <Typography
-                      style={{ color: "#EC5500", fontSize: "0.73rem" }}
-                    >
-                      {p.height}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} mt={1}>
-                    <Typography
-                      style={{ color: "#03AA5A", fontSize: "0.73rem" }}
-                    >
-                      {p.overflowY}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} mt={1}>
-                    <Typography
-                      style={{ color: "#03AA5A", fontSize: "0.73rem" }}
-                    >
-                      {p.position}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} mt={1}>
-                    <Typography
-                      style={{ color: "#EC5500", fontSize: "0.73rem" }}
-                    >
-                      {p.width}
-                    </Typography>
-                  </Grid>
+                  <PropertyList p={p} />
                 </Grid>
               </div>
             );
@@ -104,4 +51,28 @@ const Property = ({ menuList }: any) => {
   );
 };
 
+const PropertyList = ({ p }) => {
+  return (
+    <>
+      <Grid item xs={12} mt={1}>
+        <Typography>{p.background}</Typography>
+      </Grid>
+      <Grid item xs={12} mt={1}>
+        <Typography>{p.borderradius}</Typography>
+      </Grid>
+      <Grid item xs={12} mt={1}>
+        <Typography>{p.height}</Typography>
+      </Grid>
+      <Grid item xs={12} mt={1}>
+        <Typography>{p.overflowY}</Typography>
+      </Grid>
+      <Grid item xs={12} mt={1}>
+        <Typography>{p.position}</Typography>
+      </Grid>
+      <Grid item xs={12} mt={1}>
+        <Typography>{p.width}</Typography>
+      </Grid>
+    </>
+  );
+};
 export default Property;

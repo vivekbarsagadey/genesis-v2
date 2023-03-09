@@ -1,5 +1,5 @@
 import React from "react";
-import ScreensComponent from "./ScreensComponent";
+import ScreensComponent from "./screens.component";
 
 const page = () => {
   return (

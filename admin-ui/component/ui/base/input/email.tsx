@@ -42,19 +42,16 @@ const InputEmailComponent = ({
     });
     if (_error.isError()) {
       _error.getAllErrors().forEach((e) => {
-        console.log(e.getErrorMessage());
       });
     }
   };
 
-  const handleChange = (e: any) => {
-    // console.log("email data -->>",_value)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
     doValidation(e);
      update({ name: label, value:e.target.value});    
      
   };
-  console.log("__value", _value);
   updates = register({ name: label, value:_value });
 
   useEffect(() => {
@@ -80,7 +77,7 @@ const InputEmailComponent = ({
         }
       />
       <div>
-      {errors?.map(({e,i}:any) => {
+      {errors?.map(({e,i}) => {
           return <ErrorComponent key={i} message={e} />;
         })}
       </div>

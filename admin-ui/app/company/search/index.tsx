@@ -1,23 +1,9 @@
-import { Grid, IconButton, Input } from "@mui/material";
-import { Box } from "@mui/system";
 import SearchIcon from "@mui/icons-material/Search";
+import { Grid, IconButton } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import { Box } from "@mui/system";
+import { useState } from "react";
 import ICompanyComponentProps from "../company.props";
-import React, { useState } from "react";
-import { makeStyles } from "@mui/styles";
-
-const useStyles = makeStyles({
-  search: {
-    border: "none",
-    height: "5vh",
-    width: "100%",
-    paddingLeft: "10px",
-  },
-  box: {
-    display: "flex",
-    alignItems: "center",
-    border: "1px ridge",
-  },
-});
 
 interface SearchComponentProps extends ICompanyComponentProps {}
 
@@ -25,11 +11,10 @@ const SearchComponent = ({
   items,
   itemsCallBackHandler = () => {},
 }: SearchComponentProps) => {
-    
   const [search, setSearch] = useState("");
 
-  const getSearch = (event: any) => {
-    setSearch(event.target.value);
+  const getSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
   };
 
   const doSearch = () => {
@@ -39,16 +24,19 @@ const SearchComponent = ({
       )
     );
   };
-  const classes = useStyles();
+
   return (
     <>
       <Grid item xs={12}>
-        <Box className={classes.box}>
-          <input
+        <Box>
+          <TextField
+            fullWidth
+            label="Search"
+            id="Search"
             type="text"
+            size="small"
             placeholder="Search"
             onChange={getSearch}
-            className={classes.search}
           />
           <IconButton onClick={doSearch}>
             <SearchIcon />
