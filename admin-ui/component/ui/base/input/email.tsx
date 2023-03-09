@@ -46,7 +46,7 @@ const InputEmailComponent = ({
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
     doValidation(e);
      update({ name: label, value:e.target.value});    

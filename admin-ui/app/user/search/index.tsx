@@ -13,8 +13,8 @@ const SearchUserComponent = ({
 }: SearchComponentProps) => {
   const [search, setSearch] = useState("");
 
-  const getSearch = (event) => {
-    setSearch(event.target.value);
+  const getSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
   };
   const doSearch = () => {
     itemsCallBackHandler(

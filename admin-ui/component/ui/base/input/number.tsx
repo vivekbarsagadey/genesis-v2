@@ -47,7 +47,7 @@ const InputNumberComponent = ({
         defaultValue={value}
         type="number"
         // value={_value}
-        onInput={(e) => {
+        onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
           e.target.value = Math.max(0, parseInt(e.target.value))
             .toString()
             .slice(0, 10);
