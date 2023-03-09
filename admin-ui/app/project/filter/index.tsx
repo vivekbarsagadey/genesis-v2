@@ -44,7 +44,7 @@ const ProjectFilter = ({
     setFilterSelected([...filterSelected, "Customer  Name"]);
   };
   return (
-    <div>
+    <>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -54,55 +54,52 @@ const ProjectFilter = ({
           "aria-labelledby": "basic-button",
         }}
       >
-        <div>
-          <Stack width={300} padding={"1rem"}>
-            <Autocomplete
-              size="small"
-              freeSolo
-              disableClearable
-              options={Array.from(new Set(projectData?.map((f) => f.name)))}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Project Name"
-                  InputProps={{
-                    ...params.InputProps,
-                    type: "search",
-                  }}
-                />
-              )}
-              onChange={(event, value) => {
-                updateProjectName(value);
-              }}
-            />
-          </Stack>
-        </div>
+        <Stack width={300} padding={"1rem"}>
+          <Autocomplete
+            size="small"
+            freeSolo
+            disableClearable
+            options={Array.from(new Set(projectData?.map((f) => f.name)))}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Project Name"
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search",
+                }}
+              />
+            )}
+            onChange={(event, value) => {
+              updateProjectName(value);
+            }}
+          />
+        </Stack>
 
-        <div>
-          <Stack width={300} padding={"1rem"}>
-            <Autocomplete
-              size="small"
-              freeSolo
-              disableClearable
-              options={Array.from(
-                new Set(projectData?.map((id) => id.customerName))
-              )}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Customer Name"
-                  InputProps={{
-                    ...params.InputProps,
-                    type: "search",
-                  }}
-                />
-              )}
-              onChange={(event, value) => {
-                updateCustomerName(value);
-              }}
-            />
-          </Stack>
-        </div>
+        <Stack width={300} padding={"1rem"}>
+          <Autocomplete
+            size="small"
+            freeSolo
+            disableClearable
+            options={Array.from(
+              new Set(projectData?.map((id) => id.customerName))
+            )}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Customer Name"
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search",
+                }}
+              />
+            )}
+            onChange={(event, value) => {
+              updateCustomerName(value);
+            }}
+          />
+        </Stack>
+
         <Grid container mb={1} mt={2}>
           <Grid item xs={5.6}></Grid>
           <Grid item xs={3.2}>
@@ -121,7 +118,7 @@ const ProjectFilter = ({
           </Grid>
         </Grid>
       </Menu>
-    </div>
+    </>
   );
 };
 

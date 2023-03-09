@@ -21,60 +21,58 @@ const FilterComponent = ({
   const [filterDataEmail, setFilterDataEmail] = useState("");
 
   const doFilter = () => {
-    const newCompany = items?.filter(
-      (c) =>
-        c.name.toLowerCase().includes(filterDataName.toLowerCase()) ||
-        c.email.toLowerCase().includes(filterDataEmail.toLowerCase())
-    );
-    itemsCallBackHandler(newCompany);
+    if (filterDataName !== "" && filterDataEmail !== "") {
+      const newCompany = items?.filter(
+        (c) =>
+          c.name.toLowerCase().includes(filterDataName.toLowerCase()) ||
+          c.email.toLowerCase().includes(filterDataEmail.toLowerCase())
+      );
+      itemsCallBackHandler(newCompany);
+    }
   };
 
   return (
     <div>
-      <Menu>
-        <div>
-          <Stack spacing={2}>
-            <Autocomplete
-              freeSolo
-              disableClearable
-              options={items?.map((f) => f.name)}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Name"
-                  size="small"
-                  InputProps={{
-                    ...params.InputProps,
-                    type: "search",
-                  }}
-                />
-              )}
-              onChange={(event, value) => setFilterDataName(value)}
-            />
-          </Stack>
-        </div>
+      <Menu >
+        <Stack spacing={2}>
+          <Autocomplete
+            freeSolo
+            disableClearable
+            options={items?.map((f) => f.name)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Name"
+                size="small"
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search",
+                }}
+              />
+            )}
+            onChange={(event, value) => setFilterDataName(value)}
+          />
+        </Stack>
 
-        <div>
-          <Stack spacing={2}>
-            <Autocomplete
-              freeSolo
-              disableClearable
-              options={items?.map((id) => id.email)}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Email"
-                  size="small"
-                  InputProps={{
-                    ...params.InputProps,
-                    type: "search",
-                  }}
-                />
-              )}
-              onChange={(event, value) => setFilterDataEmail(value)}
-            />
-          </Stack>
-        </div>
+        <Stack spacing={2}>
+          <Autocomplete
+            freeSolo
+            disableClearable
+            options={items?.map((id) => id.email)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Email"
+                size="small"
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search",
+                }}
+              />
+            )}
+            onChange={(event, value) => setFilterDataEmail(value)}
+          />
+        </Stack>
 
         <Grid container mb={1}>
           <Grid item xs={5.6}></Grid>

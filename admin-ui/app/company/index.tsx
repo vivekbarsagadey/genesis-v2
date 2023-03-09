@@ -81,14 +81,9 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
 
         <Grid item xs={12} sm={2} md={2} lg={2} textAlign="right">
           <IconButton>
-            {" "}
             <DeleteOutlineIcon />
           </IconButton>
-          <Link
-            href={"/company/-1"}
-            passHref
-            style={{ textDecoration: "none" }}
-          >
+          <Link passHref>
             <Tooltip title="Create">
               <Button variant="contained">
                 <AddIcon fontSize="small" /> Create
