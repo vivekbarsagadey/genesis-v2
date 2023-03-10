@@ -1,115 +1,69 @@
 "use client";
+import { useState } from "react";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const CompanyCreateComponent = () => {
+  const [ownerFirstName, setOwnerFirstName] = useState("");
+  const [ownerLastName, setOwnerLastName] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [companyEmail, setCompanyEmail] = useState("");
+  const [companyPhone, setCompanyPhone] = useState("");
+  const [companyAddress, setCompanyAddress] = useState("");
+  const [companyWebsite, setCompanyWebsite] = useState("");
+  const [companyFoundationYear, setCompanyFoundationYear] = useState("");
+  const router = useRouter();
+
+  const updateMyCompanyData = async () => {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+      method: "POST",
+      body: JSON.stringify({
+        firstName: ownerFirstName,
+        lastName: ownerLastName ,
+        name:companyName,
+        email:companyEmail,
+        mobile:companyPhone,
+        address:companyAddress,
+        website:companyWebsite,
+        foundationYear:companyFoundationYear
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }).then((res) => res.json());
+    router.push("/project");
+  };
+
+  const updateOwnerFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setOwnerFirstName(e.target.value);
+  };
+  const updateOwnerLastName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setOwnerLastName(e.target.value);
+  };
+  const updateCompanyName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyName(e.target.value);
+  };
+  const updateCompanyEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyEmail(e.target.value);
+  };
+  const updateCompanyPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyPhone(e.target.value);
+  };
+  const updateCompanyAdress = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyAddress(e.target.value);
+  };
+  const updateCompanyWebsite = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyWebsite(e.target.value);
+  };
+  const updateCompanyFoundationYear = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setCompanyFoundationYear(e.target.value);
+  };
+
   return (
     <div>
-      {/* <Grid container>
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={0.65}></Grid>
-            <Grid item xs={11}>
-              <Grid container mb={5}>
-                <Grid item xs={10} mt={5}>
-                  <Typography fontSize={"1.3rem"}>
-                    Create New Company
-                  </Typography>
-                </Grid>
-              </Grid>
-              <Grid container mt={3.5}>
-                <Grid item xs={3.3} mt={3}>
-                  <Typography>Company Name</Typography>
-                </Grid>
-                <Grid item xs={0.7} mt={4}>
-                  <Typography>:</Typography>
-                </Grid>
-                <Grid item xs={6.5} mt={3}>
-                  <TextField
-                    id="outlined-basic"
-                    placeholder="Create Company Name"
-                    size={"small"}
-                    fullWidth
-                  />
-                </Grid>
-              </Grid>
-
-              <Grid container mt={3}>
-                <Grid item xs={3.3} mt={1}>
-                  <Typography>Email </Typography>
-                </Grid>
-                <Grid item xs={0.7} mt={1}>
-                  <Typography>:</Typography>
-                </Grid>
-                <Grid item xs={6.5}>
-                  <TextField
-                    placeholder="Email"
-                    id="outlined-basic"
-                    size={"small"}
-                    fullWidth
-                  />
-                </Grid>
-              </Grid>
-
-              <Grid container mt={3}>
-                <Grid item xs={3.3} mt={1}>
-                  <Typography>Contact </Typography>
-                </Grid>
-                <Grid item xs={0.7} mt={1}>
-                  <Typography>:</Typography>
-                </Grid>
-                <Grid item xs={6.5}>
-                  <TextField
-                    placeholder="Contact Number"
-                    id="outlined-basic"
-                    size={"small"}
-                    fullWidth
-                  />
-                </Grid>
-              </Grid>
-
-              <Grid container mt={3}>
-                <Grid item xs={3.3} mt={1}>
-                  <Typography>Address</Typography>
-                </Grid>
-                <Grid item xs={0.7} mt={1}>
-                  <Typography>:</Typography>
-                </Grid>
-                <Grid item xs={6.5}>
-                  <TextField
-                    placeholder="Address"
-                    id="outlined-basic"
-                    size={"small"}
-                    fullWidth
-                  />
-                </Grid>
-              </Grid>
-
-              <Grid container mt={6}>
-                <Grid item xs={8.3}></Grid>
-                <Grid item xs={3}>
-                  <Grid container>
-                    <Grid item xs={5.6}>
-                      <Link href={"/company"} passHref>
-                        <Button variant="contained" size="small">
-                          Cancel
-                        </Button>
-                      </Link>
-                    </Grid>
-
-                    <Grid item xs={6}>
-                      <Button variant="contained" size="small">
-                        Save
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid> */}
-
       <Grid container mt={6}>
         <Grid item xs={1}></Grid>
         <Grid item xs={5}>
@@ -126,6 +80,8 @@ const CompanyCreateComponent = () => {
                 placeholder="Create Company Name"
                 size={"small"}
                 fullWidth
+                value={ownerFirstName}
+                onChange={updateOwnerFirstName}
               />
             </Grid>
           </Grid>
@@ -144,6 +100,8 @@ const CompanyCreateComponent = () => {
                 placeholder="Create Company Name"
                 size={"small"}
                 fullWidth
+                value={ownerLastName}
+                onChange={updateOwnerLastName}
               />
             </Grid>
           </Grid>
@@ -166,6 +124,8 @@ const CompanyCreateComponent = () => {
                 placeholder="Create Company Name"
                 size={"small"}
                 fullWidth
+                value={companyName}
+                onChange={updateCompanyName}
               />
             </Grid>
           </Grid>
@@ -184,6 +144,8 @@ const CompanyCreateComponent = () => {
                 placeholder="Create Company Name"
                 size={"small"}
                 fullWidth
+                value={companyEmail}
+                onChange={updateCompanyEmail}
               />
             </Grid>
           </Grid>
@@ -195,7 +157,7 @@ const CompanyCreateComponent = () => {
         <Grid item xs={5}>
           <Grid container>
             <Grid item xs={3}>
-              <Typography>Contact</Typography>
+              <Typography>Phone</Typography>
             </Grid>
             <Grid item xs={0.5}>
               :
@@ -203,9 +165,11 @@ const CompanyCreateComponent = () => {
             <Grid item xs={6.5}>
               <TextField
                 id="outlined-basic"
-                placeholder="Create Company Name"
+                placeholder="Phone Number"
                 size={"small"}
                 fullWidth
+                value={companyPhone}
+                onChange={updateCompanyPhone}
               />
             </Grid>
           </Grid>
@@ -221,9 +185,11 @@ const CompanyCreateComponent = () => {
             <Grid item xs={6.5}>
               <TextField
                 id="outlined-basic"
-                placeholder="Create Company Name"
+                placeholder="Address"
                 size={"small"}
                 fullWidth
+                value={companyAddress}
+                onChange={updateCompanyAdress}
               />
             </Grid>
           </Grid>
@@ -242,9 +208,11 @@ const CompanyCreateComponent = () => {
             <Grid item xs={6.5}>
               <TextField
                 id="outlined-basic"
-                placeholder="Create Company Name"
+                placeholder="Website"
                 size={"small"}
                 fullWidth
+                value={companyWebsite}
+                onChange={updateCompanyWebsite}
               />
             </Grid>
           </Grid>
@@ -260,9 +228,11 @@ const CompanyCreateComponent = () => {
             <Grid item xs={6.5}>
               <TextField
                 id="outlined-basic"
-                placeholder="Create Company Name"
+                placeholder="Foundation Year"
                 size={"small"}
                 fullWidth
+                value={companyFoundationYear}
+                onChange={updateCompanyFoundationYear}
               />
             </Grid>
           </Grid>
@@ -273,12 +243,14 @@ const CompanyCreateComponent = () => {
         <Grid item xs={12}>
           <Grid container display={"flex"} justifyContent={"flex-end"}>
             <Grid item xs={1}>
-              <Button variant="contained" size="small">
-                Cancel
-              </Button>
+              <Link href={"/company"}>
+                <Button variant="contained" size="small">
+                  Cancel
+                </Button>
+              </Link>
             </Grid>
             <Grid item xs={1.93}>
-              <Button variant="contained" size="small">
+              <Button variant="contained" size="small" onClick={updateMyCompanyData}>
                 Save
               </Button>
             </Grid>
