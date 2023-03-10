@@ -106,6 +106,7 @@ const ProjectCreate = () => {
                   <Grid item xs={6.5}>
                     <Stack>
                       <Autocomplete
+                        size="small"
                         onChange={updateCustomerName}
                         freeSolo
                         id="free-solo-2-demo"
@@ -114,11 +115,11 @@ const ProjectCreate = () => {
                         renderInput={(params) => (
                           <TextField
                             {...params}
-                            label="Company Name"
                             InputProps={{
                               ...params.InputProps,
                               type: "search",
                             }}
+                            placeholder="Customer Name"
                           />
                         )}
                       />

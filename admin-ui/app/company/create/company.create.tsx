@@ -77,7 +77,7 @@ const CompanyCreateComponent = () => {
             <Grid item xs={6.5}>
               <TextField
                 id="outlined-basic"
-                placeholder="Create Company Name"
+                placeholder="First Name"
                 size={"small"}
                 fullWidth
                 value={ownerFirstName}
@@ -97,7 +97,7 @@ const CompanyCreateComponent = () => {
             <Grid item xs={6.5}>
               <TextField
                 id="outlined-basic"
-                placeholder="Create Company Name"
+                placeholder="Last Name"
                 size={"small"}
                 fullWidth
                 value={ownerLastName}
