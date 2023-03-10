@@ -78,7 +78,7 @@ const ProjectCreate = () => {
 
                 <Grid container mt={3}>
                   <Grid item xs={3.3} mt={1}>
-                    <Typography>Customer Name </Typography>
+                    <Typography>Company Name </Typography>
                   </Grid>
                   <Grid item xs={0.7} mt={1}>
                     <Typography>:</Typography>

@@ -42,7 +42,7 @@ const ProjectListComponent = ({
               <Typography variant="subtitle2">Project Name</Typography>
             </Grid>
             <Grid item xs={2.7} sm={2.7}>
-              <Typography variant="subtitle2">Customer Name</Typography>
+              <Typography variant="subtitle2">Company Name</Typography>
             </Grid>
             <Grid item xs={2.8} sm={3.4}>
               <Typography variant="subtitle2">Application</Typography>
