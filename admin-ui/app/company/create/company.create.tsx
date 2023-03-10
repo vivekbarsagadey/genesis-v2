@@ -16,23 +16,23 @@ const CompanyCreateComponent = () => {
   const router = useRouter();
 
   const updateMyCompanyData = async () => {
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/companies`, {
       method: "POST",
       body: JSON.stringify({
         firstName: ownerFirstName,
-        lastName: ownerLastName ,
-        name:companyName,
-        email:companyEmail,
-        mobile:companyPhone,
-        address:companyAddress,
-        website:companyWebsite,
-        foundationYear:companyFoundationYear
+        lastName: ownerLastName,
+        name: companyName,
+        email: companyEmail,
+        mobile: companyPhone,
+        address: companyAddress,
+        website: companyWebsite,
+        foundationYear: companyFoundationYear,
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
     }).then((res) => res.json());
-    router.push("/project");
+    router.push("/company");
   };
 
   const updateOwnerFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -250,7 +250,11 @@ const CompanyCreateComponent = () => {
               </Link>
             </Grid>
             <Grid item xs={1.93}>
-              <Button variant="contained" size="small" onClick={updateMyCompanyData}>
+              <Button
+                variant="contained"
+                size="small"
+                onClick={updateMyCompanyData}
+              >
                 Save
               </Button>
             </Grid>
