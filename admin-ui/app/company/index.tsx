@@ -1,132 +1,132 @@
 "use client";
-import AddIcon from "@mui/icons-material/Add";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
-import { Button, Grid, IconButton, Tooltip, Typography } from "@mui/material";
+import { Button, Grid, IconButton } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Tooltip from "@mui/material/Tooltip";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import ICompany from "./company.model";
-import FilterComponent from "./filters";
-import GridViewComponent from "./list";
-import CalenderViewComponent from "./list/calender.view.component";
-import GraphViewComponent from "./list/graph.view.component";
+import { useState } from "react";
+import CompanyFilterComponent from "./filters";
+import CompanyCalendarView from "./list/calendar.view";
+import CompanyGraphView from "./list/graph.view";
+import CompanyGridView from "./list/grid.view";
+import CompanyKanbanView from "./list/kanban.view";
 import ListViewComponent from "./list/list.view.component";
-import SearchComponent from "./search";
-import ViewsComponent from "./view";
+import CompanySearchDetails from "./search";
+import CompanyViewComponent from "./view";
 
-interface HomeComponentProps {
-  items: Array<ICompany>;
-}
+const CompanyHome = () => {
+  const [count, setCount] = useState("List"); // This is a different different type of View Count (List,Grid,Calendar,etc)
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
 
-const HomeComponent = ({ items }: HomeComponentProps) => {
-  const [count, setCount] = useState("Grid");
-  const [companies, setCompanies] = useState(items);
-
-  useEffect(() => {
-    setCompanies(items);
-  }, [items]);
-
-  const itemsCallBackHandler = (_items: Array<ICompany>) => {
-    setCompanies(_items);
-  };
   const handleCount = (data: string) => {
     setCount(data);
   };
-
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
   return (
     <>
-      <Grid container spacing={2} p={3}>
-        <Grid item xs={12} sm={4} md={4} lg={4}>
-          <SearchComponent
-            items={companies}
-            itemsCallBackHandler={itemsCallBackHandler}
-          />
+      <Grid container mt={1}>
+        <Grid item xs={2.4} lg={3}>
+          <CompanySearchDetails />
         </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={6}
-          lg={6}
-          display="flex"
-          alignItems="center"
-        >
-          <Tooltip title="Filter">
-            <IconButton>
-              <FilterAltIcon />
+        <Grid item xs={0.6} lg={0.4}>
+          <Tooltip title="Filter" arrow>
+            <IconButton
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+            >
+              <FilterAltIcon fontSize="small" />
             </IconButton>
           </Tooltip>
-
-          <Tooltip title="Export">
-            <IconButton>
-              <FileDownloadOutlinedIcon />
+        </Grid>
+        <Grid item xs={0.7} lg={0.37} md={0.5} sm={0.9}>
+          <Tooltip title="Export" arrow>
+            <IconButton
+            // aria-controls={Open ? "basic-menu" : undefined}
+            // aria-haspopup="true"
+            // aria-expanded={Open ? "true" : undefined}
+            // onClick={handleClickData}
+            >
+              <FileDownloadOutlinedIcon fontSize="small" />
             </IconButton>
           </Tooltip>
-          <Menu>
+          <Menu
+            // id="basic-menu"
+            // anchorEl={menuItem}
+            // open={Open}
+            // onClose={handleClose1}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
             <MenuItem>
-              <Typography fontSize="0.8rem">Excel</Typography>
+              {/* <ExcellGenerator projectData={projectData} /> */}
             </MenuItem>
             <MenuItem>
-              <Typography>PDF</Typography>
+              {/* <PdfGenerator projectData={projectData} /> */}
             </MenuItem>
             <MenuItem>
-              <Typography>CSV</Typography>
+              {/* <CsvGenerator projectData={projectData} /> */}
             </MenuItem>
           </Menu>
-          <ViewsComponent handleCount={handleCount} />
         </Grid>
-
-        <Grid item xs={12} sm={2} md={2} lg={2} textAlign="right">
-          <IconButton>
-            <DeleteOutlineIcon />
-          </IconButton>
-          <Link passHref>
-            <Tooltip title="Create">
-              <Button variant="contained">
-                <AddIcon fontSize="small" /> Create
+        <Grid item xs={6} lg={2} md={3.9} sm={4.5}>
+          <Grid container>
+            {/* <ProjectViewComponent handleCount={handleCount} /> */}
+            <CompanyViewComponent handleCount={handleCount} />
+          </Grid>
+        </Grid>
+        <Grid item xs={2} lg={6.2} md={4} sm={3} display={"flex"}>
+          <Grid item xs={2} lg={10.2} sm={6} mt={0.7}>
+            {/* {filterChipType ? (
+              <>
+                {filterSelected?.map((item) => {
+                  return <FilterChipComponent item={item} />;
+                })}
+              </>
+            ) : null} */}
+          </Grid>
+          <Grid item xs={12} lg={1} sm={12}>
+            <Link href={"/company/create"} passHref>
+              <Button variant="contained" size="small">
+                Create
+                <span>+</span>
               </Button>
-            </Tooltip>
-          </Link>
+            </Link>
+          </Grid>
         </Grid>
-      </Grid>
-
-      <Grid item xs={12} pl={3} pr={3} pt={1}>
-        {(() => {
-          switch (count) {
-            case "List":
-              return (
-                <ListViewComponent
-                  companies={companies}
-                  setCompanies={setCompanies}
-                ></ListViewComponent>
-              );
-            case "Graph":
-              return (
-                <GraphViewComponent items={companies}></GraphViewComponent>
-              );
-            case "Calender":
-              return (
-                <CalenderViewComponent
-                  items={companies}
-                ></CalenderViewComponent>
-              );
-            default:
-              return <GridViewComponent items={companies} />;
-          }
-        })()}
       </Grid>
 
       <div>
-        <FilterComponent
-          items={items}
-          itemsCallBackHandler={itemsCallBackHandler}
-        />
+        {(() => {
+          switch (count) {
+            case "List":
+              return <ListViewComponent />;
+            case "Graph":
+              return <CompanyGraphView />;
+            case "Kanban":
+              return <CompanyKanbanView />;
+            case "Calendar":
+              return <CompanyCalendarView></CompanyCalendarView>;
+            default:
+              return <CompanyGridView />;
+          }
+        })()}
       </div>
+
+      <CompanyFilterComponent
+        anchorEl={anchorEl}
+        open={open}
+        // handleClose={handleClose}
+      />
     </>
   );
 };
 
-export default HomeComponent;
+export default CompanyHome;

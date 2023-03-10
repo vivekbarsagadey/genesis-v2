@@ -1,10 +1,10 @@
 import React from 'react'
-import CompanyHome from '.'
+import CompanyCreateComponent from './company.create'
 
 const page = () => {
   return (
     <div>
-      <CompanyHome/>
+        <CompanyCreateComponent/>
     </div>
   )
 }

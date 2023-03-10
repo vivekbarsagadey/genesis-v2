@@ -2,94 +2,102 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Menu from "@mui/material/Menu";
+import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
-import { Stack } from "@mui/system";
 import { useState } from "react";
-import ICompanyComponentProps from "../company.props";
 
-interface FilterComponentProps extends ICompanyComponentProps {
-  handleClose: () => void;
-  anchorEl: boolean;
-  open: boolean;
-}
+const CompanyFilterComponent = ({handleClose,anchorEl,open}) => {
 
-const FilterComponent = ({
-  items,
-  itemsCallBackHandler = () => {},
-}: FilterComponentProps) => {
-  const [filterDataName, setFilterDataName] = useState("");
-  const [filterDataEmail, setFilterDataEmail] = useState("");
+  // const [companyName, setCompanyName] = useState("");
+  // const [companyEmail, setCompanyEmail] = useState("");
 
-  const doFilter = () => {
-    if (filterDataName !== "" && filterDataEmail !== "") {
-      const newCompany = items?.filter(
-        (c) =>
-          c.name.toLowerCase().includes(filterDataName.toLowerCase()) ||
-          c.email.toLowerCase().includes(filterDataEmail.toLowerCase())
-      );
-      itemsCallBackHandler(newCompany);
-    }
-  };
-
+  // const doFilter = () => {
+  //   if (companyName !== "" && companyEmail !== "") {
+  //     const filteredData = projectData?.filter(
+  //       (u) =>
+  //         u.name.toLowerCase().includes(projectDataName.toLowerCase()) ||
+  //         u.customerName
+  //           .toLowerCase()
+  //           .includes(projectCustomerName.toLowerCase())
+  //     );
+  //     itemsCallBackHandler(filteredData);
+  //     handleClose();
+  //     setFilterChipType(true);
+  //   }
+  // };
   return (
     <div>
-      <Menu >
-        <Stack spacing={2}>
+       <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        <Stack width={300} padding={"1rem"}>
           <Autocomplete
+            size="small"
             freeSolo
             disableClearable
-            options={items?.map((f) => f.name)}
+          
             renderInput={(params) => (
               <TextField
                 {...params}
-                label="Name"
-                size="small"
+                label="Project Name"
                 InputProps={{
                   ...params.InputProps,
                   type: "search",
                 }}
               />
             )}
-            onChange={(event, value) => setFilterDataName(value)}
+          
           />
         </Stack>
 
-        <Stack spacing={2}>
+        <Stack width={300} padding={"1rem"}>
           <Autocomplete
+            size="small"
             freeSolo
             disableClearable
-            options={items?.map((id) => id.email)}
+            // options={Array.from(new Set(projectData?.map((f) => f.name)))}
             renderInput={(params) => (
               <TextField
                 {...params}
-                label="Email"
-                size="small"
+                label="Project Name"
                 InputProps={{
                   ...params.InputProps,
                   type: "search",
                 }}
               />
             )}
-            onChange={(event, value) => setFilterDataEmail(value)}
+            // onChange={(event, value) => {
+            //   updateProjectName(value);
+            // }}
           />
         </Stack>
 
-        <Grid container mb={1}>
+        <Grid container mb={1} mt={2}>
           <Grid item xs={5.6}></Grid>
-          <Grid item xs={3.6}>
-            <Button variant="outlined" size="small">
+          <Grid item xs={3.2}>
+          <Button
+              variant="contained"
+              size="small"
+              onClick={() => handleClose()}
+            >
               Cancel
             </Button>
           </Grid>
-          <Grid item xs={2}>
-            <Button variant="outlined" size="small" onClick={doFilter}>
+          <Grid item xs={1}>
+            <Button variant="contained" size="small" >
               Save
             </Button>
           </Grid>
         </Grid>
       </Menu>
     </div>
-  );
-};
+  )
+}
 
-export default FilterComponent;
+export default CompanyFilterComponent

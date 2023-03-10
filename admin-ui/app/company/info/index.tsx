@@ -1,54 +1,84 @@
-import { Avatar, Card, IconButton, Tooltip, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid";
-import React from "react";
-import ICompanyComponentProps from "../company.props";
-
+"use client";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import EditIcon from "@mui/icons-material/Edit";
-import Link from "next/link";
-
-interface InfoComponentProps extends ICompanyComponentProps {}
-const InfoComponent = ({ item }) => {
+const InfoCompanyComponent = () => {
   return (
-    <Grid item xs={12} lg={4} sm={6}>
-      <Card>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Tooltip title="Delete">
-              <IconButton>
-                <DeleteOutlineIcon fontSize="small" />
-              </IconButton>
-            </Tooltip>
-            <Link href={`/company/${item._id}`}>
-              <Tooltip title="Edit">
+    <div>
+      <Grid mt={0.6} width={"98.2%"}>
+        <Paper variant="outlined">
+          <Grid container>
+            <Grid item xs={0.12}></Grid>
+            <Grid item xs={0.6}>
+              <Checkbox size="small" />
+            </Grid>
+            <Grid item xs={1.25}>
+              <Tooltip title="View">
                 <IconButton>
-                  <EditIcon fontSize="small" />
+                  <RemoveRedEyeIcon fontSize="small" />
                 </IconButton>
               </Tooltip>
-            </Link>
-          </Grid>
-          <Grid item xs={3} sm={3} lg={3} md={3}>
-            <Avatar />
-          </Grid>
-          <Grid item xs={9} sm={9} lg={9} md={9}>
-            <Grid container spacing={2}>
-              <Grid item xs={6} sm={6} lg={6} md={6}>
-                <Typography noWrap>Company Name:</Typography>
-                <Typography>Email:</Typography>
-                <Typography>Contact:</Typography>
-                <Typography>Address:</Typography>
+            </Grid>
+            <Grid item xs={2.2}>
+              <Typography variant="body2">
+                John Enterprises
+                {/* {items.name} */}
+              </Typography>
+            </Grid>
+            <Grid item xs={1.98}>
+              <Typography variant="body2">
+                {/* {items.customerName} */}
+                John@gmail.com
+              </Typography>
+            </Grid>
+            <Grid item xs={4} sm={2.43}>
+              <Grid container display={"flex"} alignItems={"center"}>
+                <Grid item xs={12}>
+                  <Typography variant="body2" noWrap>
+                    {/* {items.application} */}
+                    +91 8969857470
+                  </Typography>
+                </Grid>
               </Grid>
-              <Grid item xs={6} sm={6} lg={6} md={6}>
-                <Typography noWrap>{item.name}</Typography>
-                <Typography noWrap>{item.email}</Typography>
-                <Typography noWrap>{item.mobile}</Typography>
-                <Typography noWrap>{item.address}</Typography>
+            </Grid>
+            <Grid item xs={4} sm={2}>
+              <Grid container display={"flex"} alignItems={"center"}>
+                <Grid item xs={12}>
+                  <Typography variant="body2" noWrap>
+                    {/* {items.application} */}
+                    Dhayri Pune Maharastra
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={1}>
+              <Grid container>
+                <Grid item xs={3.8}>
+                  {/* <Link href={`/project/${items.id}`}
+                 passHref>
+                  <Tooltip title="Edit">
+                    <IconButton>
+                      <EditIcon fontSize="small" />
+                    </IconButton>
+                  </Tooltip>
+                </Link> */}
+                </Grid>
+                <Grid item xs={4}>
+                  <Tooltip title="Delete">
+                    <IconButton>
+                      <DeleteOutlineIcon fontSize="small" />
+                    </IconButton>
+                  </Tooltip>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </Card>
-    </Grid>
+        </Paper>
+      </Grid>
+    </div>
   );
 };
-export default InfoComponent;
+
+export default InfoCompanyComponent;

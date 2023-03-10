@@ -4,63 +4,56 @@ import GridViewIcon from "@mui/icons-material/GridView";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import TimelineIcon from "@mui/icons-material/Timeline";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import ViewKanbanOutlinedIcon from "@mui/icons-material/ViewKanbanOutlined";
 
-interface IViewProps {
-  handleCount: () => void;
-}
 const AllViews = [
   {
     id: 1,
-    view: "Grid",
-    icon: (
-      <Tooltip title="Grid">
-        <GridViewIcon />
-      </Tooltip>
-    ),
+    view: "List",
+    title: "List",
+    icon: <ListAltIcon fontSize="small" />,
   },
   {
     id: 2,
-    view: "List",
-    icon: (
-      <Tooltip title="List">
-        <ListAltIcon />
-      </Tooltip>
-    ),
+    view: "Grid",
+    title: "Grid",
+    icon: <GridViewIcon fontSize="small" />,
   },
   {
     id: 3,
     view: "Graph",
-    icon: (
-      <Tooltip title="Graph">
-        <TimelineIcon />
-      </Tooltip>
-    ),
+    title: "Graph",
+    icon: <TimelineIcon fontSize="small" />,
+  },
+  {
+    id: 3,
+    view: "Calendar",
+    title: "Calendar",
+    icon: <CalendarMonthIcon fontSize="small" />,
   },
   {
     id: 4,
-    view: "Calender",
-    icon: (
-      <Tooltip title="Calender">
-        <CalendarMonthIcon />
-      </Tooltip>
-    ),
+    view: "Kanban",
+    title: "Kanban",
+    icon: <ViewKanbanOutlinedIcon fontSize="small" />,
   },
 ];
-
-const ViewsComponent = ({ handleCount }: IViewProps) => {
+const CompanyViewComponent = ({ handleCount }) => {
   return (
     <>
-      {AllViews?.map((item) => {
+      {AllViews?.map((data) => {
         return (
-          <>
-            <IconButton onClick={() => handleCount(item.view)}>
-              {item.icon}
-            </IconButton>
-          </>
+          <div key={data.id} style={{ margin: "0.2rem" }}>
+            <Tooltip title={data?.title}>
+              <IconButton size="small" onClick={() => handleCount(data.view)}>
+                {data.icon}
+              </IconButton>
+            </Tooltip>
+          </div>
         );
       })}
     </>
   );
 };
 
-export default ViewsComponent;
+export default CompanyViewComponent;
