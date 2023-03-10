@@ -125,6 +125,9 @@ const ProjectCreate = () => {
                       />
                     </Stack>
                   </Grid>
+                  <Link   href={"/company/create"} >
+                    <Button>+Add Company</Button>
+                  </Link>
                 </Grid>
                 <Grid container mt={3}>
                   <Grid item xs={3.3} mt={3}>
