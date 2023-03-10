@@ -5,6 +5,10 @@ import { ButtonComponent } from '../../component/ui/base';
 
 const ButtonTestComponent = () => {
   const[counter,setCounter] = useState(0)
+  const Urldata = {
+    name:'abc',
+    surname:'xyz'
+  }
   return (
     <>
        <ButtonComponent
@@ -21,6 +25,8 @@ const ButtonTestComponent = () => {
 
        <ButtonComponent
         label="save"
+        baseUrl = "https://jsonplaceholder.typicode.com/users"
+        Urldata={Urldata}
       ></ButtonComponent>
       
     </>
