@@ -26,7 +26,7 @@ const ProjectListComponent = ({
 
   return (
     <>
-      <Box mt={2}>
+      <Box mt={2} width={"98.2%"}>
         <Paper variant="outlined">
           <Grid container>
             <Grid item xs={0.12}></Grid>

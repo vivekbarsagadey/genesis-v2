@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const InfoProjectComponent = ({ items }) => {
   return (
-    <Grid mt={0.6}>
+    <Grid mt={0.6} width={"98.2%"}>
       <Paper variant="outlined">
         <Grid container>
           <Grid item xs={0.12}></Grid>
