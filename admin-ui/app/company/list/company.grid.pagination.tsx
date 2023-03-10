@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function projectGridPagination(items, itemsPerPage) {
+function companyGridPagination(items, itemsPerPage) {
   const [currentPage, setCurrentPage] = useState(1);
   const maxPage = Math.ceil(items.length / itemsPerPage);
   function currentData() {
@@ -20,4 +20,4 @@ function projectGridPagination(items, itemsPerPage) {
   }
   return { next, prev, jump, currentData, currentPage, maxPage };
 }
-export default projectGridPagination;
+export default companyGridPagination;

@@ -6,7 +6,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CompanyFilterComponent from "./filters";
 import CompanyCalendarView from "./list/calendar.view";
 import CompanyGraphView from "./list/graph.view";
@@ -17,9 +17,32 @@ import CompanySearchDetails from "./search";
 import CompanyViewComponent from "./view";
 
 const CompanyHome = () => {
+  const [companyData, setCompanyData] = useState([]); // This is a original json Data
+  const [copyCompanyData, setCopyComponentData] = useState(companyData); // This is a duplicate Json Data
   const [count, setCount] = useState("List"); // This is a different different type of View Count (List,Grid,Calendar,etc)
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
+  const fetchData = () => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/companies`)
+      .then((r) => {
+        return r.json();
+      })
+      .then((d) => {
+        setCompanyData(d);
+      });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  // const itemsCallBackHandler = (_items) => {
+  //   setCompanyData(_items);
+  // };
+  useEffect(() => {
+    setCopyComponentData(companyData);
+  }, [companyData]);
 
   const handleCount = (data: string) => {
     setCount(data);
@@ -107,15 +130,15 @@ const CompanyHome = () => {
         {(() => {
           switch (count) {
             case "List":
-              return <ListViewComponent />;
+              return <ListViewComponent copyCompanyData={copyCompanyData} />;
             case "Graph":
               return <CompanyGraphView />;
             case "Kanban":
               return <CompanyKanbanView />;
             case "Calendar":
-              return <CompanyCalendarView></CompanyCalendarView>;
+              return <CompanyCalendarView copyCompanyData={copyCompanyData}></CompanyCalendarView>;
             default:
-              return <CompanyGridView />;
+              return <CompanyGridView copyCompanyData={copyCompanyData}/>;
           }
         })()}
       </div>

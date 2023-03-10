@@ -1,10 +1,12 @@
 "use client";
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import EditIcon from "@mui/icons-material/Edit";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-const InfoCompanyComponent = () => {
+
+const InfoCompanyComponent = ({ Items }) => {
+  console.log("Info Data", Items);
   return (
     <div>
       <Grid mt={0.6} width={"98.2%"}>
@@ -22,33 +24,25 @@ const InfoCompanyComponent = () => {
               </Tooltip>
             </Grid>
             <Grid item xs={2.2}>
-              <Typography variant="body2">
-                John Enterprises
-                {/* {items.name} */}
-              </Typography>
+              <Typography variant="body2">{Items.name}</Typography>
             </Grid>
             <Grid item xs={1.98}>
-              <Typography variant="body2">
-                {/* {items.customerName} */}
-                John@gmail.com
-              </Typography>
+              <Typography variant="body2">{Items.email}</Typography>
             </Grid>
             <Grid item xs={4} sm={2.43}>
               <Grid container display={"flex"} alignItems={"center"}>
                 <Grid item xs={12}>
                   <Typography variant="body2" noWrap>
-                    {/* {items.application} */}
-                    +91 8969857470
+                    {Items.mobile}
                   </Typography>
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={4} sm={2}>
+            <Grid item xs={4} sm={2.15}>
               <Grid container display={"flex"} alignItems={"center"}>
                 <Grid item xs={12}>
                   <Typography variant="body2" noWrap>
-                    {/* {items.application} */}
-                    Dhayri Pune Maharastra
+                    {Items.address}
                   </Typography>
                 </Grid>
               </Grid>
@@ -56,14 +50,11 @@ const InfoCompanyComponent = () => {
             <Grid item xs={1}>
               <Grid container>
                 <Grid item xs={3.8}>
-                  {/* <Link href={`/project/${items.id}`}
-                 passHref>
                   <Tooltip title="Edit">
                     <IconButton>
                       <EditIcon fontSize="small" />
                     </IconButton>
                   </Tooltip>
-                </Link> */}
                 </Grid>
                 <Grid item xs={4}>
                   <Tooltip title="Delete">

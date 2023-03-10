@@ -6,7 +6,7 @@ import Paper from "@mui/material/Paper";
 import InfoCompanyComponent from "../info";
 import InfoCompany from "../info";
 
-const ListViewComponent = () => {
+const ListViewComponent = ({ copyCompanyData }) => {
   return (
     <div>
       <Box mt={2} width={"98.2%"}>
@@ -44,7 +44,13 @@ const ListViewComponent = () => {
           </Grid>
         </Paper>
       </Box>
-      <InfoCompanyComponent />
+      {copyCompanyData?.map((Items, index) => {
+        return (
+          <Typography key={index}>
+            <InfoCompanyComponent Items={Items} />
+          </Typography>
+        );
+      })}
     </div>
   );
 };
