@@ -1,7 +1,5 @@
 "use client"
-import React from 'react'
-
-
+import { InputHolder } from './input.holder';
 
 type FormStore = {
   name: string;
@@ -11,9 +9,13 @@ type FormStore = {
 
 const formStore = new Map<string,FormStore>()
 const useForm = () => {
-  
-  const register = (name: string) => {
+  let message;
+
+  const register = ({name} : InputHolder) => {
     formStore.set(name,{name, value: '',errors:[]})
+    message = `this is ${name}`;
+    return update;
+
   };
 
   const update = ({name,value,errors = []}:FormStore) => {
@@ -26,9 +28,14 @@ const useForm = () => {
 
     }
 }
+   
+   const submit = () =>{
 
-  return { register, update,isError};
+   }
+
+  return { register, update,isError,message,submit};
 };
 
 
-export default useForm
+export  type {FormStore}
+export {useForm}

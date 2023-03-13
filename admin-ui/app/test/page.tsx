@@ -1,9 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { useForm } from "../../hooks/from";
+import {useForm} from "../../hooks/from";
 import {InputComponent}  from "../../component/ui/base/input/";
+
+
 const TestComponent = () => {
-  const { formState, register } = useForm();
+  const {message,register,submit} = useForm()
+
   return (
     <>
       <InputComponent
@@ -11,12 +14,14 @@ const TestComponent = () => {
             placeHolder="Enter email"
             label="Email"
             id="email"
+            register={register}
           ></InputComponent>
       <InputComponent
             type="number"
             placeHolder="Enter number"
             label="Number"
             id="number"
+            register={register}
           ></InputComponent>
     
       <InputComponent
@@ -24,6 +29,7 @@ const TestComponent = () => {
             placeHolder="Enter Password"
             label="Password"
             id="password"
+            register={register}
           ></InputComponent>
 
       <InputComponent
@@ -31,6 +37,7 @@ const TestComponent = () => {
             placeHolder="Enter Text"
             label="Text"
             id="text"
+            register={register}
           ></InputComponent>
     </>
   );

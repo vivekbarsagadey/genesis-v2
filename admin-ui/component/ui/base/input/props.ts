@@ -1,10 +1,11 @@
 // validatoters
 
-type defaultString = string | undefined | null;
-interface InputProps {
-  label?: defaultString;
+import { FormStore, InputHolder } from "../../../../hooks";
+
+  type InputProps = {
+  label?: string;
   id?: string;
-  value?: defaultString;
+  value?: string;
   placeHolder?: string;
   required?: boolean;
   type: string;
@@ -19,7 +20,8 @@ interface InputProps {
   onInput?: number;
 
   // this to send data back to parent
-  register?: (_: string) => any;
+  register?: (_: InputHolder) => (_: FormStore) => void;
+
 }
 
 export type { InputProps };

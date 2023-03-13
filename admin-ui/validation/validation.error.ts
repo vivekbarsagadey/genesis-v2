@@ -50,11 +50,12 @@ class ValidationError extends Error {
   }
 
   getErrorMessage() {
-    return this.constraint.message || `${this.constraint.field} is required`;
+    return this.constraint.message || `${this.constraint.field} is`
   }
   getErrorConstraint() {
     return this.constraint;
   }
 }
 
-export { ValidationError, ValidationErrors };
+export { ValidationError, ValidationErrors};
+export type {ValidationErrorRow}

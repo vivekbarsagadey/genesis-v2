@@ -10,7 +10,7 @@ import { ValidationEngine } from "../../../../validation/validation.engine";
 import { ErrorComponent, InputProps } from "./";
 import { ValidationErrors } from "../../../../validation/validation.error";
 import { Constraint } from "../../../../validation/constrain";
-import useForm from '../../../../hooks/from';
+
 
 const InputEmailComponent = ({
   label,
@@ -18,22 +18,23 @@ const InputEmailComponent = ({
   placeHolder,
   value,
   required,
+  register,
 }: InputProps) => {
-  const [_value, setValue] = useState<string | undefined | null>(value);
+  const [_value, setValue] = useState<string>("");
   const [errors, setErrors] = useState<string[]>();
-  const {register,update,isError} = useForm()
 
-  let updates = null
+  const update: any = register({name: label ?? " "});
+
   const onChangeHandller = (e: React.ChangeEvent<HTMLInputElement>) => {
     const _v = e.target.value;
     setValue(_v);
     doValidation(_v);
-    update({name:label! , value: e ,errors:['abc']})
+    update({ name: label, value: e, errors: [errors] });
   };
 
   let _error: ValidationErrors = new ValidationErrors();
   const context = {
-    constraints: new Array(),
+    constraints: new Array<Constraint>(),
   };
 
   const addValidator = (constraint: Constraint) => {
@@ -44,35 +45,27 @@ const InputEmailComponent = ({
     _error = new ValidationErrors();
     _error.add({
       row: _v,
-      _errors: ValidationEngine.validate({data: _v, constraints: context.constraints }), 
+      _errors: ValidationEngine.validate({
+        data: _v,
+        constraints: context.constraints,
+        name: label,
+      }),
     });
-    if(_error.isError()){
-      _error.getAllErrors().forEach((e)=>{
-        console.log('E',e.getErrorMessage())
-        setErrors(e?.getErrorMessage())
-      })
-    }
-  }
 
-    // console.log(_error?.errorRows); 
-    //  setErrors(
-    //   engine
-    //     .execute({
-    //       data: _v,
-    //       name: label,
-    //       status: [ValidationStatus.REQUIRED, ValidationStatus.EMAIL],
-    //     })
-    //     .map((e: any) => e.message)
-    // ); 
- 
+    if (_error.isError()) {
+      setErrors(_error.getAllErrors().map((e) => e.getErrorMessage()));
+    }
+  
+  };
 
   useEffect(() => {
-    register({name: label})
-    setValue(value || '');
-    addValidator({ field: label, validatorType: ValidatorType.REQUIRED });
-    addValidator({ field: label, validatorType: ValidatorType.EMAIL });
+    setValue(value ?? "");
+    addValidator({ field: label, validatorType: ValidatorType.REQUIRED,
+    message:`${label} is Required`});
+    addValidator({ field: label, validatorType: ValidatorType.EMAIL,
+    message:`${label} is Valid` });
   }, []);
-
+ 
   return (
     <Box component="form" noValidate autoComplete="off">
       <Typography>{label || "Field Name"}</Typography>

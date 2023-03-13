@@ -24,20 +24,10 @@ const InputTextComponent = ({
   const onChangeHandller = (e: React.ChangeEvent<HTMLInputElement>) => {
     const _v = e.target.value;
     setValue(_v);
-    // doValidation(_v);
+   
   };
 
-  // const doValidation = (_v: string) => {
-  //   // setErrors(
-  //   //   engine
-  //   //     .execute({
-  //   //       data: _v,
-  //   //       name: label || "",
-  //   //       status: [ValidationStatus.REQUIRED, ValidationStatus.TEXT],
-  //   //     })
-  //   //     .map((e) => e.message)
-  //   // );
-  // };
+
 
   return (
     <Box component="form" noValidate autoComplete="off">
