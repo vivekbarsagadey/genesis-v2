@@ -1,15 +1,20 @@
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
+import ICompany from "../company.model";
 import ICompanyComponentProps from "../company.props";
 
 
 
-interface SearchComponentProps extends ICompanyComponentProps {}
+interface CompanyComponentProps {
+  companyData: Array<ICompany>;
+  itemsCallBackHandler: any;
+}
+
 
 const CompanySearchDetails = ({
   companyData, itemsCallBackHandler = () => {},
-}:SearchComponentProps) => {
+}:CompanyComponentProps) => {
   const [search, setSearch] = useState("");
   const getSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);

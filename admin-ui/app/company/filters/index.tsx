@@ -6,10 +6,20 @@ import Menu from "@mui/material/Menu";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
-interface FilterComponentProps extends IUserComponentProps {
+import ICompany from "../company.model";
+// interface FilterComponentProps extends IUserComponentProps {
+//   handleClose: () => void;
+//   anchorEl: boolean;
+//   open: boolean;
+// }
+
+interface CompanyComponentProps {
   handleClose: () => void;
-  anchorEl: boolean;
+  companyData: Array<ICompany>;
   open: boolean;
+  anchorEl: boolean;
+  companySearchList: any;
+  itemsCallBackHandler: any;
 }
 
 const CompanyFilterComponent = ({
@@ -18,7 +28,7 @@ const CompanyFilterComponent = ({
   open,
   handleClose,
   itemsCallBackHandler = () => {},
-}: FilterComponentProps) => {
+}: CompanyComponentProps) => {
   const [filterDataName, setFilterDataName] = useState("");
   const [filterDataEmail, setFilterDataEmail] = useState("");
 

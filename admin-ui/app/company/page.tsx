@@ -1,11 +1,9 @@
-"use client"
-import React, { useEffect, useState } from 'react'
-import CompanyHome from '.'
-import ICompany from './company.model';
+"use client";
+import React, { useEffect, useState } from "react";
+import CompanyHome from ".";
+import ICompany from "./company.model";
 
-
-
-const company = Array<ICompany>()
+const company = Array<ICompany>();
 
 const page = () => {
   const [company, setCompany] = useState([]);
@@ -26,7 +24,7 @@ const page = () => {
     <div>
       <CompanyHome companyData={company}> </CompanyHome>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

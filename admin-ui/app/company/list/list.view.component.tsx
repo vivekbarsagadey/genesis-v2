@@ -4,11 +4,20 @@ import { Box, Grid, IconButton, Pagination, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Paper from "@mui/material/Paper";
 import { useState } from "react";
+import ICompany from "../company.model";
 import InfoCompanyComponent from "../info";
 import InfoCompany from "../info";
 import CompanyPagination from "./company.list.pagination";
 
-const ListViewComponent = ({ companyData, companySearchList }) => {
+interface CompanyComponentProps {
+  companyData: Array<ICompany>;
+  companySearchList: any;
+}
+
+const ListViewComponent = ({
+  companyData,
+  companySearchList,
+}: CompanyComponentProps) => {
   //pagination logic
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
@@ -19,6 +28,7 @@ const ListViewComponent = ({ companyData, companySearchList }) => {
     setPage(p);
     _DATA.jump(p);
   };
+
   return (
     <div>
       <Box mt={2} width={"98.2%"}>

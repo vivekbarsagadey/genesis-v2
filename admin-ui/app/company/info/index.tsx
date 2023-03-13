@@ -4,10 +4,31 @@ import EditIcon from "@mui/icons-material/Edit";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
+import Link from "next/link";
 
-const InfoCompanyComponent = ({ Items }) => {
+interface CompanyInfoProps {
+  id: string;
+  Items: any;
+  item: any;
+}
+const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
+  const deleteCompany = (id: CompanyInfoProps) => {
+    deleteCompanyData(id);
+    window.location.reload();
+  };
+  const deleteCompanyData = async (id: CompanyInfoProps) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}\\companies/${id}`,
+      {
+        credentials: "include",
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    return response;
+  };
   return (
-    <div>
+    <>
       <Grid mt={0.6} width={"98.2%"}>
         <Paper variant="outlined">
           <Grid container>
@@ -50,15 +71,20 @@ const InfoCompanyComponent = ({ Items }) => {
               <Grid container>
                 <Grid item xs={3.8}>
                   <Tooltip title="Edit">
-                    <IconButton>
-                      <EditIcon fontSize="small" />
-                    </IconButton>
+                    <Link href={`/company/${Items.id}`}>
+                      <IconButton>
+                        <EditIcon fontSize="small" />
+                      </IconButton>
+                    </Link>
                   </Tooltip>
                 </Grid>
                 <Grid item xs={4}>
                   <Tooltip title="Delete">
                     <IconButton>
-                      <DeleteOutlineIcon fontSize="small" />
+                      <DeleteOutlineIcon
+                        fontSize="small"
+                        onClick={() => deleteCompany(Items.id)}
+                      />
                     </IconButton>
                   </Tooltip>
                 </Grid>
@@ -67,7 +93,7 @@ const InfoCompanyComponent = ({ Items }) => {
           </Grid>
         </Paper>
       </Grid>
-    </div>
+    </>
   );
 };
 
