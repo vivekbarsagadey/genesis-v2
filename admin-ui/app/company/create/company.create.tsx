@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const CompanyCreateComponent = () => {
   const [ownerFirstName, setOwnerFirstName] = useState("");
@@ -64,20 +64,20 @@ const CompanyCreateComponent = () => {
 
   return (
     <>
-      <Grid item xs={3.16} display={"flex"} justifyContent={"flex-end"} mt={4}>
-        <Typography fontSize={"1.3rem"}>Create New Company</Typography>
+      <Grid item xs={3} display={"flex"} justifyContent={"flex-end"} mt={2}>
+        <Typography fontSize={"1.2rem"}>Create New Company</Typography>
       </Grid>
-      <Grid container mt={8}>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={5}>
+      <Grid container mt={5}>
+        <Grid item lg={1} xs={1} sm={1}></Grid>
+        <Grid item lg={5.5} xs={12} sm={5.5}>
           <Grid container>
-            <Grid item xs={3} mt={1}>
-              <Typography>First Name</Typography>
+            <Grid item xs={2.9} mt={1}>
+              <Typography noWrap>First Name</Typography>
             </Grid>
-            <Grid item xs={0.5} mt={1}>
+            <Grid item xs={0.8} mt={1}>
               :
             </Grid>
-            <Grid item xs={6.5}>
+            <Grid item xs={6}>
               <TextField
                 id="outlined-basic"
                 placeholder="First Name"
@@ -89,15 +89,15 @@ const CompanyCreateComponent = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item lg={5.5} xs={12} sm={5.5} mt={1}>
           <Grid container>
-            <Grid item xs={2.5} mt={1}>
-              <Typography>Last Name</Typography>
+            <Grid item xs={2.9} mt={1}>
+              <Typography noWrap>Last Name</Typography>
             </Grid>
-            <Grid item xs={0.5} mt={1}>
+            <Grid item xs={0.8} mt={1}>
               :
             </Grid>
-            <Grid item xs={6.5}>
+            <Grid item xs={6}>
               <TextField
                 id="outlined-basic"
                 placeholder="Last Name"
@@ -111,20 +111,20 @@ const CompanyCreateComponent = () => {
         </Grid>
       </Grid>
 
-      <Grid container mt={2}>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={5}>
+      <Grid container mt={1}>
+        <Grid item lg={1} xs={1} sm={1}></Grid>
+        <Grid item lg={5.5} xs={12} sm={5.5}>
           <Grid container>
-            <Grid item xs={3} mt={1}>
-              <Typography>Company Name</Typography>
+            <Grid item xs={2.9} mt={1}>
+              <Typography noWrap>Company Name</Typography>
             </Grid>
-            <Grid item xs={0.5} mt={1}>
+            <Grid item xs={0.8} mt={1}>
               :
             </Grid>
-            <Grid item xs={6.5}>
+            <Grid item xs={6}>
               <TextField
                 id="outlined-basic"
-                placeholder="Create Company Name"
+                placeholder="Company Name"
                 size={"small"}
                 fullWidth
                 value={companyName}
@@ -133,18 +133,18 @@ const CompanyCreateComponent = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item lg={5.5} xs={12} sm={5.5} mt={1}>
           <Grid container>
-            <Grid item xs={2.5} mt={1}>
+            <Grid item xs={2.9} mt={1}>
               <Typography>Email</Typography>
             </Grid>
-            <Grid item xs={0.5}>
+            <Grid item xs={0.8} mt={1}>
               :
             </Grid>
-            <Grid item xs={6.5}>
+            <Grid item xs={6}>
               <TextField
                 id="outlined-basic"
-                placeholder="Create Company Name"
+                placeholder="Email"
                 size={"small"}
                 fullWidth
                 value={companyEmail}
@@ -155,20 +155,20 @@ const CompanyCreateComponent = () => {
         </Grid>
       </Grid>
 
-      <Grid container mt={2}>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={5}>
+      <Grid container mt={1}>
+        <Grid item lg={1} xs={1} sm={1}></Grid>
+        <Grid item lg={5.5} xs={12} sm={5.5}>
           <Grid container>
-            <Grid item xs={3}>
+            <Grid item xs={2.9} mt={1}>
               <Typography>Phone</Typography>
             </Grid>
-            <Grid item xs={0.5}>
+            <Grid item xs={0.8} mt={1}>
               :
             </Grid>
-            <Grid item xs={6.5}>
+            <Grid item xs={6}>
               <TextField
                 id="outlined-basic"
-                placeholder="Phone Number"
+                placeholder="Phone"
                 size={"small"}
                 fullWidth
                 value={companyPhone}
@@ -177,15 +177,15 @@ const CompanyCreateComponent = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item lg={5.5} xs={12} sm={5.5} mt={1}>
           <Grid container>
-            <Grid item xs={2.5}>
+            <Grid item xs={2.9} mt={1}>
               <Typography>Address</Typography>
             </Grid>
-            <Grid item xs={0.5}>
+            <Grid item xs={0.8} mt={1}>
               :
             </Grid>
-            <Grid item xs={6.5}>
+            <Grid item xs={6}>
               <TextField
                 id="outlined-basic"
                 placeholder="Address"
@@ -198,17 +198,17 @@ const CompanyCreateComponent = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid container mt={2}>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={5}>
+      <Grid container mt={1}>
+        <Grid item lg={1} xs={1} sm={1}></Grid>
+        <Grid item lg={5.5} xs={12} sm={5.5}>
           <Grid container>
-            <Grid item xs={3}>
+            <Grid item xs={2.9} mt={1}>
               <Typography>Website</Typography>
             </Grid>
-            <Grid item xs={0.5}>
+            <Grid item xs={0.8} mt={1}>
               :
             </Grid>
-            <Grid item xs={6.5}>
+            <Grid item xs={6}>
               <TextField
                 id="outlined-basic"
                 placeholder="Website"
@@ -220,15 +220,15 @@ const CompanyCreateComponent = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item lg={5.5} xs={12} sm={5.5} mt={1}>
           <Grid container>
-            <Grid item xs={2.5}>
-              <Typography>Foundation Year</Typography>
+            <Grid item xs={2.9} mt={1}>
+              <Typography noWrap>Foundation Year</Typography>
             </Grid>
-            <Grid item xs={0.5}>
+            <Grid item xs={0.8} mt={1}>
               :
             </Grid>
-            <Grid item xs={6.5}>
+            <Grid item xs={6}>
               <TextField
                 id="outlined-basic"
                 placeholder="Foundation Year"
@@ -242,25 +242,30 @@ const CompanyCreateComponent = () => {
         </Grid>
       </Grid>
 
-      <Grid container mt={5}>
-        <Grid item xs={12}>
-          <Grid container display={"flex"} justifyContent={"flex-end"}>
-            <Grid item xs={1}>
-              <Link href={"/company"}>
-                <Button variant="contained" size="small">
-                  Cancel
-                </Button>
-              </Link>
-            </Grid>
-            <Grid item xs={1.93}>
-              <Button
-                variant="contained"
-                size="small"
-                onClick={updateMyCompanyData}
-              >
-                Save
+      <Grid container mt={3}>
+        <Grid
+          item
+          lg={12}
+          xs={6}
+          sm={12}
+          display={"flex"}
+          justifyContent={"flex-end"}
+        >
+          <Grid item lg={1.1} xs={6} sm={1.5}>
+            <Link href={"/company"}>
+              <Button variant="contained" size="small">
+                Cancel
               </Button>
-            </Grid>
+            </Link>
+          </Grid>
+          <Grid item lg={1.73} xs={1} sm={2.2}>
+            <Button
+              variant="contained"
+              size="small"
+              onClick={updateMyCompanyData}
+            >
+              Save
+            </Button>
           </Grid>
         </Grid>
       </Grid>

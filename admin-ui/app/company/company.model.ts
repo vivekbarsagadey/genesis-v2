@@ -11,6 +11,8 @@ interface ICompany {
   city: String;
   pincode: String;
   website: String;
+  createdAt:number;
+  updatedAt:number
 }
 
 export default ICompany;

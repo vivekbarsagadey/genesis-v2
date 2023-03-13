@@ -5,9 +5,14 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import Grid from "@mui/material/Grid";
+import ICompany from "../company.model";
 const localizer = momentLocalizer(moment);
 
-const CompanyCalendarView = ({ copyCompanyData }) => {
+interface CompanyComponentProps {
+  copyCompanyData: Array<ICompany>;
+}
+
+const CompanyCalendarView = ({ copyCompanyData }: CompanyComponentProps) => {
   const [events, setEvents] = useState([]);
 
   const CalendarData = copyCompanyData?.map((copyCompanyData) => {

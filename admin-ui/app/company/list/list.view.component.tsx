@@ -44,7 +44,7 @@ const ListViewComponent = ({
               </IconButton>
             </Grid>
             <Grid item xs={2.2} sm={2.2}>
-              <Typography variant="subtitle2">Company Name</Typography>
+              <Typography variant="subtitle2" noWrap>Company Name</Typography>
             </Grid>
             <Grid item xs={2} sm={2}>
               <Typography variant="subtitle2">Email</Typography>
