@@ -63,7 +63,7 @@ const CompanyCreateComponent = () => {
   };
 
   return (
-    <div>
+    <>
       <Grid item xs={3.16} display={"flex"} justifyContent={"flex-end"} mt={4}>
         <Typography fontSize={"1.3rem"}>Create New Company</Typography>
       </Grid>
@@ -264,7 +264,7 @@ const CompanyCreateComponent = () => {
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </>
   );
 };
 
