@@ -4,12 +4,14 @@ import { EmailRule } from "./email.rule";
 import { PasswordRule } from "./password.rule";
 import { RequiredRule } from "./required.rule";
 import { RuleContext } from "./rule.context";
+import { TextRule } from "./text.rule";
 
 const doValidation = (_errors: ValidationError[], context: RuleContext) => {
   const ruleSet = [];
   ruleSet.push(RequiredRule(context));
   ruleSet.push(EmailRule(context));
   ruleSet.push(PasswordRule(context));
+  ruleSet.push(TextRule(context));
 
   ruleSet.forEach((rule) => {
     try {

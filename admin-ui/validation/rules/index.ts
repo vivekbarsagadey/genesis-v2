@@ -4,6 +4,7 @@ import { EmailRule } from "./email.rule";
 import { ValidationError } from "../validation.error";
 import { ValidationContext } from "../validator.context";
 import { PasswordRule } from "./password.rule";
+import { NumberRule } from "./number.rule";
 
 export { EmailRule } from "./email.rule";
 export { NumberRule } from "./number.rule";
@@ -17,6 +18,8 @@ function doValidation(_errors: ValidationError[], context: RuleContext) {
   ruleSet.push(RequiredRule(context));
   ruleSet.push(EmailRule(context));
   ruleSet.push(PasswordRule(context));
+  ruleSet.push(NumberRule(context));
+
 
   ruleSet.forEach((rule) => {
     try {
