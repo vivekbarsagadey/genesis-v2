@@ -3,16 +3,10 @@ import { Button } from "@mui/material";
 import React, { useState } from "react";
 import { ButtonProps } from "./props";
 
-const data = [
-  { id: 1, content: "alpha" },
-  { id: 2, content: "beta" },
-  { id: 3, content: "gyama" },
-  { id: 4, content: "delta" },
-  { id: 5, content: "theta" },
-];
 
-var counterLength = data.length;
-const NextButtonComponent = ({ label, counter, setCounter }: ButtonProps) => {
+
+
+const NextButtonComponent = ({ label, counter, setCounter,dummydata,counterLength}: ButtonProps) => {
   const [disable, setDisable] = useState(false);
   const nextHandler = () => {
     if (counter < counterLength - 1) {
@@ -29,7 +23,7 @@ const NextButtonComponent = ({ label, counter, setCounter }: ButtonProps) => {
         {label}
       </Button>
 
-      {data[counter].content}
+      {dummydata[counter].content}
     </>
   );
 };
