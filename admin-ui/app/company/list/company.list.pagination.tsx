@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function projectPagination(items, itemsPerPage) {
+function CompanyPagination(items, itemsPerPage) {
   const [currentPage, setCurrentPage] = useState(1);
   const maxPage = Math.ceil(items.length / itemsPerPage);
   function currentData() {
@@ -20,4 +20,4 @@ function projectPagination(items, itemsPerPage) {
   }
   return { next, prev, jump, currentData, currentPage, maxPage };
 }
-export default projectPagination;
+export default CompanyPagination;

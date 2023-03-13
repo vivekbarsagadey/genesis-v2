@@ -6,7 +6,6 @@ import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 
 const InfoCompanyComponent = ({ Items }) => {
-  console.log("Info Data", Items);
   return (
     <div>
       <Grid mt={0.6} width={"98.2%"}>

@@ -10,14 +10,14 @@ const header = [
   "Customer Name",
   "Application",
 ];
-const ExcellGenerator = ({ projectData }) => {
+const CompanyExcellGenerator = ({ copyCompanyData }) => {
   function handleDownloadExcel() {
     downloadExcel({
       fileName: `Project ${new Date().toISOString().slice(0, 10)}`,
       sheet: "react-export-table-to-excel",
       tablePayload: {
         header,
-        body: projectData,
+        body: copyCompanyData,
       },
     });
   }
@@ -30,4 +30,4 @@ const ExcellGenerator = ({ projectData }) => {
   );
 }; 
 
-export default ExcellGenerator;
+export default CompanyExcellGenerator;

@@ -1,33 +1,40 @@
-import Autocomplete from "@mui/material/Autocomplete";
+import React, { useState } from "react";
+import IUserComponentProps from "../user.props";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Menu from "@mui/material/Menu";
 import Stack from "@mui/material/Stack";
+import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
+interface FilterComponentProps extends IUserComponentProps {
+  handleClose: () => void;
+  anchorEl: boolean;
+  open: boolean;
+}
 
-const CompanyFilterComponent = ({handleClose,anchorEl,open}) => {
+const CompanyFilterComponent = ({
+  companyData,
+  anchorEl,
+  open,
+  handleClose,
+  itemsCallBackHandler = () => {},
+}: FilterComponentProps) => {
+  const [filterDataName, setFilterDataName] = useState("");
+  const [filterDataEmail, setFilterDataEmail] = useState("");
 
-  // const [companyName, setCompanyName] = useState("");
-  // const [companyEmail, setCompanyEmail] = useState("");
+  const doFilter = () => {
+    const companyFilterData = companyData?.filter(
+      (u) =>
+        u.firstName.toLowerCase().includes(filterDataName.toLowerCase()) ||
+        u.email.toLowerCase().includes(filterDataEmail.toLowerCase())
+    );
+    itemsCallBackHandler(companyFilterData);
+    handleClose();
+  };
 
-  // const doFilter = () => {
-  //   if (companyName !== "" && companyEmail !== "") {
-  //     const filteredData = projectData?.filter(
-  //       (u) =>
-  //         u.name.toLowerCase().includes(projectDataName.toLowerCase()) ||
-  //         u.customerName
-  //           .toLowerCase()
-  //           .includes(projectCustomerName.toLowerCase())
-  //     );
-  //     itemsCallBackHandler(filteredData);
-  //     handleClose();
-  //     setFilterChipType(true);
-  //   }
-  // };
   return (
     <div>
-       <Menu
+      <Menu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
@@ -36,68 +43,75 @@ const CompanyFilterComponent = ({handleClose,anchorEl,open}) => {
           "aria-labelledby": "basic-button",
         }}
       >
-        <Stack width={300} padding={"1rem"}>
-          <Autocomplete
-            size="small"
-            freeSolo
-            disableClearable
-          
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Project Name"
-                InputProps={{
-                  ...params.InputProps,
-                  type: "search",
-                }}
-              />
-            )}
-          
-          />
-        </Stack>
+        <div>
+          <Stack sx={{ width: 300, padding: "1rem" }}>
+            <Autocomplete
+              size="small"
+              freeSolo
+              disableClearable
+              options={Array.from(new Set(companyData?.map((f) => f.name)))}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Name"
+                  InputProps={{
+                    ...params.InputProps,
+                    type: "search",
+                  }}
+                />
+              )}
+              onChange={(event, value) => setFilterDataName(value)}
+            />
+          </Stack>
+        </div>
 
-        <Stack width={300} padding={"1rem"}>
-          <Autocomplete
-            size="small"
-            freeSolo
-            disableClearable
-            // options={Array.from(new Set(projectData?.map((f) => f.name)))}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Project Name"
-                InputProps={{
-                  ...params.InputProps,
-                  type: "search",
-                }}
-              />
-            )}
-            // onChange={(event, value) => {
-            //   updateProjectName(value);
-            // }}
-          />
-        </Stack>
-
+        <div>
+          <Stack sx={{ width: 300, padding: "1rem" }}>
+            <Autocomplete
+              size="small"
+              freeSolo
+              disableClearable
+              options={Array.from(new Set(companyData.map((id) => id.email)))}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Email"
+                  InputProps={{
+                    ...params.InputProps,
+                    type: "search",
+                  }}
+                />
+              )}
+              onChange={(event, value) => setFilterDataEmail(value)}
+            />
+          </Stack>
+        </div>
         <Grid container mb={1} mt={2}>
           <Grid item xs={5.6}></Grid>
           <Grid item xs={3.2}>
-          <Button
+            <Button
               variant="contained"
               size="small"
+              style={{ textTransform: "capitalize" }}
               onClick={() => handleClose()}
             >
               Cancel
             </Button>
           </Grid>
           <Grid item xs={1}>
-            <Button variant="contained" size="small" >
+            <Button
+              variant="contained"
+              size="small"
+              style={{ textTransform: "capitalize" }}
+              onClick={doFilter}
+            >
               Save
             </Button>
           </Grid>
         </Grid>
       </Menu>
     </div>
-  )
-}
+  );
+};
 
-export default CompanyFilterComponent
+export default CompanyFilterComponent;

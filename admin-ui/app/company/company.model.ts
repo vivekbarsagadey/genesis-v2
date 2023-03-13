@@ -1,15 +1,16 @@
-
-interface ICompany{
-    _id:string;
-    name: string;
-    mobile: string;
-    email:string;
-    address:string
-    country:string
-      state:string
-      city:string
-      pincode:string
+interface ICompany {
+  _id: string;
+  name: string;
+  firstName: string;
+  lastName: string;
+  mobile: string;
+  email: string;
+  address: string;
+  country: string;
+  state: string;
+  city: string;
+  pincode: string;
+  website: string;
 }
 
-
-export default ICompany
+export default ICompany;

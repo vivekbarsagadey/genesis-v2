@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { Button, Grid, IconButton } from "@mui/material";
@@ -6,7 +7,9 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import CompanyCsvGenerator from "../utility/company/csv.generator";
+import CompanyExcellGenerator from "../utility/company/excell.generator";
+import CompanyPdfGenerator from "../utility/company/pdf.generator";
 import CompanyFilterComponent from "./filters";
 import CompanyCalendarView from "./list/calendar.view";
 import CompanyGraphView from "./list/graph.view";
@@ -15,31 +18,27 @@ import CompanyKanbanView from "./list/kanban.view";
 import ListViewComponent from "./list/list.view.component";
 import CompanySearchDetails from "./search";
 import CompanyViewComponent from "./view";
+import ICompany from "./company.model";
 
-const CompanyHome = () => {
-  const [companyData, setCompanyData] = useState([]); // This is a original json Data
+interface CompanyComponentProps {
+  companyData: Array<ICompany>;
+  copyCompanyData: Array<ICompany>;
+}
+
+const CompanyHome = ({ companyData }: CompanyComponentProps) => {
   const [copyCompanyData, setCopyComponentData] = useState(companyData); // This is a duplicate Json Data
-  const [count, setCount] = useState("List"); // This is a different different type of View Count (List,Grid,Calendar,etc)
+  const [count, setCount] = useState("List");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const [menuItem, setmenuItem] = useState<null | HTMLElement>(null);
+  const [companySearchList] = useState("");
 
-  const fetchData = () => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/companies`)
-      .then((r) => {
-        return r.json();
-      })
-      .then((d) => {
-        setCompanyData(d);
-      });
+  const open = Boolean(anchorEl);
+  const Open = Boolean(menuItem);
+
+  const itemsCallBackHandler = (_items: Array<ICompany>) => {
+    setCopyComponentData(_items);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  // const itemsCallBackHandler = (_items) => {
-  //   setCompanyData(_items);
-  // };
   useEffect(() => {
     setCopyComponentData(companyData);
   }, [companyData]);
@@ -50,11 +49,23 @@ const CompanyHome = () => {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+  const handleClickData = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setmenuItem(event.currentTarget);
+  };
+  const handleClose1 = () => {
+    setmenuItem(null);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <>
       <Grid container mt={1}>
         <Grid item xs={2.4} lg={3}>
-          <CompanySearchDetails />
+          <CompanySearchDetails
+            companyData={copyCompanyData}
+            itemsCallBackHandler={itemsCallBackHandler}
+          />
         </Grid>
         <Grid item xs={0.6} lg={0.4}>
           <Tooltip title="Filter" arrow>
@@ -71,50 +82,41 @@ const CompanyHome = () => {
         <Grid item xs={0.7} lg={0.37} md={0.5} sm={0.9}>
           <Tooltip title="Export" arrow>
             <IconButton
-            // aria-controls={Open ? "basic-menu" : undefined}
-            // aria-haspopup="true"
-            // aria-expanded={Open ? "true" : undefined}
-            // onClick={handleClickData}
+              aria-controls={Open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={Open ? "true" : undefined}
+              onClick={handleClickData}
             >
               <FileDownloadOutlinedIcon fontSize="small" />
             </IconButton>
           </Tooltip>
           <Menu
-            // id="basic-menu"
-            // anchorEl={menuItem}
-            // open={Open}
-            // onClose={handleClose1}
+            id="basic-menu"
+            anchorEl={menuItem}
+            open={Open}
+            onClose={handleClose1}
             MenuListProps={{
               "aria-labelledby": "basic-button",
             }}
           >
             <MenuItem>
-              {/* <ExcellGenerator projectData={projectData} /> */}
+              <CompanyExcellGenerator copyCompanyData={copyCompanyData} />
             </MenuItem>
             <MenuItem>
-              {/* <PdfGenerator projectData={projectData} /> */}
+              <CompanyPdfGenerator copyCompanyData={copyCompanyData} />
             </MenuItem>
             <MenuItem>
-              {/* <CsvGenerator projectData={projectData} /> */}
+              <CompanyCsvGenerator copyCompanyData={copyCompanyData} />
             </MenuItem>
           </Menu>
         </Grid>
         <Grid item xs={6} lg={2} md={3.9} sm={4.5}>
           <Grid container>
-            {/* <ProjectViewComponent handleCount={handleCount} /> */}
             <CompanyViewComponent handleCount={handleCount} />
           </Grid>
         </Grid>
         <Grid item xs={2} lg={6.2} md={4} sm={3} display={"flex"}>
-          <Grid item xs={2} lg={10.2} sm={6} mt={0.7}>
-            {/* {filterChipType ? (
-              <>
-                {filterSelected?.map((item) => {
-                  return <FilterChipComponent item={item} />;
-                })}
-              </>
-            ) : null} */}
-          </Grid>
+          <Grid item xs={2} lg={10.2} sm={6} mt={0.7}></Grid>
           <Grid item xs={12} lg={1} sm={12}>
             <Link href={"/company/create"} passHref>
               <Button variant="contained" size="small">
@@ -130,23 +132,33 @@ const CompanyHome = () => {
         {(() => {
           switch (count) {
             case "List":
-              return <ListViewComponent copyCompanyData={copyCompanyData} />;
+              return (
+                <ListViewComponent
+                  companyData={copyCompanyData}
+                  companySearchList={companySearchList}
+                />
+              );
             case "Graph":
               return <CompanyGraphView />;
             case "Kanban":
               return <CompanyKanbanView />;
             case "Calendar":
-              return <CompanyCalendarView copyCompanyData={copyCompanyData}></CompanyCalendarView>;
+              return (
+                <CompanyCalendarView
+                  copyCompanyData={copyCompanyData}
+                ></CompanyCalendarView>
+              );
             default:
-              return <CompanyGridView copyCompanyData={copyCompanyData}/>;
+              return <CompanyGridView copyCompanyData={copyCompanyData} />;
           }
         })()}
       </div>
-
       <CompanyFilterComponent
+        companyData={companyData}
         anchorEl={anchorEl}
         open={open}
-        // handleClose={handleClose}
+        handleClose={handleClose}
+        itemsCallBackHandler={itemsCallBackHandler}
       />
     </>
   );

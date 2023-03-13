@@ -2,12 +2,12 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import { CSVLink } from "react-csv";
 
-const CsvGenerator = ({ projectData }:any) => {
+const CompanyCsvGenerator = ({ copyCompanyData }:any) => {
   return (
     <Typography variant="subtitle1">
       <CSVLink
-        data={projectData}
-        filename={`projectData ${new Date().toISOString().slice(0, 10)}`}
+        data={copyCompanyData}
+        filename={`CompanyData ${new Date().toISOString().slice(0, 10)}`}
       >
         CSV
       </CSVLink>
@@ -15,4 +15,4 @@ const CsvGenerator = ({ projectData }:any) => {
   );
 };
 
-export default CsvGenerator;
+export default CompanyCsvGenerator;
