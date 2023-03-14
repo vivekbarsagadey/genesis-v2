@@ -14,6 +14,7 @@ const CompanyEditComponent = () => {
           <Grid container>
             <Grid item xs={3} mt={1}>
               <Typography>First Name</Typography>
+              
             </Grid>
             <Grid item xs={0.5} mt={1}>
               :
