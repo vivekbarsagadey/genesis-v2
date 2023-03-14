@@ -1,8 +1,76 @@
 "use client";
+import React, { useState } from "react";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import Link from "next/link";
+import ICompany from "../company.model";
+import { useRouter } from "next/navigation";
 
-const CompanyEditComponent = () => {
+interface CompanyComponentProps {
+  company: any;
+  _id: string;
+}
+
+const CompanyEditComponent = ({ company, _id }: CompanyComponentProps) => {
+  console.log(" company >>", company);
+  const router = useRouter();
+
+  const [firstName, setFirstName] = useState(company.firstName);
+  const [lastName, setLastName] = useState(company.lastName);
+  const [companyName, setCompanyName] = useState(company.name);
+  const [companyEmail, setCompanyEmail] = useState(company.email);
+  const [companyPhone, setCompanyPhone] = useState(company.mobile);
+  const [companyAddress, setCompanyAddress] = useState(company.address);
+  const [companyWebsite, setCompanyWebsite] = useState(company.website);
+  const [companyFoundationYear, setCompanyFoundationYear] = useState(
+    company.foundationYear
+  );
+
+  const updateOwnerFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFirstName(e.target.value);
+  };
+  const updateOwnerLastName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLastName(e.target.value);
+  };
+  const updateCompanyName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyName(e.target.value);
+  };
+  const updateCompanyEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyEmail(e.target.value);
+  };
+  const updateCompanyPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyPhone(e.target.value);
+  };
+  const updateCompanyAdress = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyAddress(e.target.value);
+  };
+  const updateCompanyWebsite = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyWebsite(e.target.value);
+  };
+  const updateCompanyFoundationYear = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setCompanyFoundationYear(e.target.value);
+  };
+
+  const updateMyCompanyEditedData = async () => {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/companies/${_id}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        firstName: firstName,
+        lastName: lastName,
+        name: companyName,
+        email: companyEmail,
+        mobile: companyPhone,
+        address: companyAddress,
+        website: companyWebsite,
+        foundationYear: companyFoundationYear,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }).then((res) => res.json());
+    router.push("/company");
+  };
   return (
     <>
       <Grid item xs={3.11} display={"flex"} justifyContent={"flex-end"} mt={4}>
@@ -14,7 +82,6 @@ const CompanyEditComponent = () => {
           <Grid container>
             <Grid item xs={3} mt={1}>
               <Typography>First Name</Typography>
-              
             </Grid>
             <Grid item xs={0.5} mt={1}>
               :
@@ -25,8 +92,8 @@ const CompanyEditComponent = () => {
                 placeholder="First Name"
                 size={"small"}
                 fullWidth
-                // value={ownerFirstName}
-                // onChange={updateOwnerFirstName}
+                value={firstName}
+                onChange={updateOwnerFirstName}
               />
             </Grid>
           </Grid>
@@ -45,8 +112,9 @@ const CompanyEditComponent = () => {
                 placeholder="Last Name"
                 size={"small"}
                 fullWidth
+                value={lastName}
                 // value={ownerLastName}
-                // onChange={updateOwnerLastName}
+                onChange={updateOwnerLastName}
               />
             </Grid>
           </Grid>
@@ -69,8 +137,8 @@ const CompanyEditComponent = () => {
                 placeholder="Create Company Name"
                 size={"small"}
                 fullWidth
-                // value={companyName}
-                // onChange={updateCompanyName}
+                value={companyName}
+                onChange={updateCompanyName}
               />
             </Grid>
           </Grid>
@@ -89,8 +157,8 @@ const CompanyEditComponent = () => {
                 placeholder="Email"
                 size={"small"}
                 fullWidth
-                // value={companyEmail}
-                // onChange={updateCompanyEmail}
+                value={companyEmail}
+                onChange={updateCompanyEmail}
               />
             </Grid>
           </Grid>
@@ -113,8 +181,8 @@ const CompanyEditComponent = () => {
                 placeholder="Phone Number"
                 size={"small"}
                 fullWidth
-                // value={companyPhone}
-                // onChange={updateCompanyPhone}
+                value={companyPhone}
+                onChange={updateCompanyPhone}
               />
             </Grid>
           </Grid>
@@ -133,8 +201,8 @@ const CompanyEditComponent = () => {
                 placeholder="Address"
                 size={"small"}
                 fullWidth
-                // value={companyAddress}
-                // onChange={updateCompanyAdress}
+                value={companyAddress}
+                onChange={updateCompanyAdress}
               />
             </Grid>
           </Grid>
@@ -156,8 +224,8 @@ const CompanyEditComponent = () => {
                 placeholder="Website"
                 size={"small"}
                 fullWidth
-                // value={companyWebsite}
-                // onChange={updateCompanyWebsite}
+                value={companyWebsite}
+                onChange={updateCompanyWebsite}
               />
             </Grid>
           </Grid>
@@ -176,8 +244,8 @@ const CompanyEditComponent = () => {
                 placeholder="Foundation Year"
                 size={"small"}
                 fullWidth
-                // value={companyFoundationYear}
-                // onChange={updateCompanyFoundationYear}
+                value={companyFoundationYear}
+                onChange={updateCompanyFoundationYear}
               />
             </Grid>
           </Grid>
@@ -198,7 +266,7 @@ const CompanyEditComponent = () => {
               <Button
                 variant="contained"
                 size="small"
-                // onClick={updateMyCompanyData}
+                onClick={updateMyCompanyEditedData}
               >
                 Save
               </Button>
