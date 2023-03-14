@@ -18,13 +18,13 @@ const ButtonTestComponent = () => {
   }
   return (
     <>
-       <ButtonComponent
+       {/* <ButtonComponent
         label="next"
         counter={counter}
         setCounter={setCounter}
         counterLength={counterLength}
         dummydata={dummydata}
-      ></ButtonComponent>
+      ></ButtonComponent> */}
 
        <ButtonComponent
         label="previous"
