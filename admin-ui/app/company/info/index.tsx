@@ -47,7 +47,9 @@ const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
               <Typography variant="body2">{Items.name}</Typography>
             </Grid>
             <Grid item xs={2} lg={1.98}>
-              <Typography variant="body2" noWrap>{Items.email}</Typography>
+              <Typography variant="body2" noWrap>
+                {Items.email}
+              </Typography>
             </Grid>
             <Grid item xs={2.2} sm={2.8} lg={2.43}>
               <Grid container display={"flex"} alignItems={"center"}>
@@ -58,7 +60,7 @@ const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={1.5} sm={1.8} lg={2.15} >
+            <Grid item xs={1.5} sm={1.8} lg={2.15}>
               <Grid container display={"flex"} alignItems={"center"}>
                 <Grid item xs={12}>
                   <Typography variant="body2" noWrap>

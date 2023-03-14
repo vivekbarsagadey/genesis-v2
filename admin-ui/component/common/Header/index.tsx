@@ -40,13 +40,13 @@ const HeaderComponent = ({ project }) => {
         >
           <Stack direction="row">
             <IconButton>
-              <MailIcon style={style.icon} />
+              <MailIcon fontSize="small" />
             </IconButton>
             <IconButton>
-              <SettingsIcon style={style.icon} />
+              <SettingsIcon fontSize="small" />
             </IconButton>
             <IconButton>
-              <NotificationsNoneIcon style={style.icon} />
+              <NotificationsNoneIcon fontSize="small" />
             </IconButton>
             <Box style={style.box}>
               <IconButton
@@ -73,7 +73,7 @@ const HeaderComponent = ({ project }) => {
             >
               <Link href={"/"} style={style.link}>
                 <MenuItem onClick={() => signOut()} style={style.menu}>
-                  <Typography style={style.signout}>Signout</Typography>
+                  <Typography variant="subtitle1">Signout</Typography>
                 </MenuItem>
               </Link>
             </Menu>
