@@ -1,6 +1,7 @@
-import { RuleContext } from './';
-import { ValidatorType } from '../validator';
-import { ValidationError } from '../validation.error';
+import { ValidationError } from "../engine";
+import {ValidatorType} from '../engine/validator'
+import { RuleContext } from "./rule.context";
+
 
 const EmailRule = ({ constraint, data }: RuleContext) => {
   const condition = (): boolean => {
@@ -10,8 +11,7 @@ const EmailRule = ({ constraint, data }: RuleContext) => {
   const action = () => {
     if (data.indexOf(' ') >= 0) {
       throw new ValidationError(constraint);
-    }
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data)) {
+    } else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data)) {
     } else {
       throw new ValidationError(constraint);
     }

@@ -1,16 +1,5 @@
 "use client";
-import { makeStyles } from "@mui/styles";
 import { InputStyle } from "./";
-
-// const useStyles = makeStyles({
-//   ...InputStyle,
-//   error: {
-//     ...InputStyle.error,
-//   },
-//   input: {
-//     ...InputStyle.input,
-//   },
-// });
 
 interface ErrorComponentProps {
   message: string;

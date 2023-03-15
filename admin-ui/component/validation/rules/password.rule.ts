@@ -1,8 +1,9 @@
-import { RuleContext } from './';
-import { ValidatorType } from '../validator';
-import { ValidationError } from '../validation.error';
+import { ValidationError } from "../engine";
+import { RuleContext } from "./rule.context";
+import {ValidatorType} from "../engine/validator"
 
-const PasswordRule = ({ constraint, data, name }: RuleContext) => {
+
+const PasswordRule = ({ constraint, data }: RuleContext) => {
   const condition = (): boolean => {
     return constraint.validatorType === ValidatorType.PASSWORD;
   };
@@ -14,11 +15,9 @@ const PasswordRule = ({ constraint, data, name }: RuleContext) => {
     // one lowercase, uppercase, number, special char and min-8 max-10 charchter
     // const strongPassword = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,10})(?=.*[$@$!%*?&])/;
 
-    if (data.length > 8) {
-    } else {
+    if (data.indexOf(' ') >= 0) {
       throw new ValidationError(constraint);
-    }
-    if (!data.match(strongPassword)) {
+    }  if (!strongPassword.test(data)) {
       throw new ValidationError(constraint);
     }
   };
