@@ -38,7 +38,7 @@ const InnerHeaderComponent = ({
     fetchData();
   }, []);
 
-  )
+
 
   const removeScreen = (screenR) => {
     // DEL Call for sreen remove
