@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { applicationType } from "../../../component/common/data/project/application.type";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
-interface IApplicationType {
+type IApplicationType={
   id: Number;
   type: String;
   label: String;

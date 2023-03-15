@@ -4,9 +4,15 @@ import Pagination from "@mui/material/Pagination";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
 import { useState } from "react";
+import IProject from "../project.model";
 import projectGridPagination from "./project.grid.pagination";
 
-const ProjectGridView = ({ copyProject }) => {
+type ProjectComponentProps={
+  copyProject:  Array<IProject>;
+  
+}
+
+const ProjectGridView = ({ copyProject }:ProjectComponentProps) => {
   // Pagination logic
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;

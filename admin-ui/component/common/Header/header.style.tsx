@@ -1,9 +1,6 @@
 const headerstyle = {
   headercontainer: {
-    backgroundColor: "#f1f5f9",
-  },
-  icon: {
-    fontSize: "1.2rem",
+    backgroundColor: "#f8fafc",
   },
   box: {
     display: "flex" as "flex",
@@ -17,9 +14,6 @@ const headerstyle = {
   menu: {
     height: "0.3rem",
     padding: "0.3rem",
-  },
-  signout: {
-    fontSize: "0.7rem",
   },
   link: {
     textDecoration: "none",

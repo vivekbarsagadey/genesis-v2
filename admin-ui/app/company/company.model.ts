@@ -1,4 +1,4 @@
-interface ICompany {
+type ICompany ={
   _id: String;
   name: String;
   firstName: String;
@@ -12,7 +12,8 @@ interface ICompany {
   pincode: String;
   website: String;
   createdAt:number;
-  updatedAt:number
+  updatedAt:number;
+  
 }
 
 export default ICompany;

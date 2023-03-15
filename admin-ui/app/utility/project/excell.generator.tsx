@@ -1,6 +1,11 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import { downloadExcel } from "react-export-table-to-excel";
+import IProject from "../../project/project.model";
+
+type ProjectProps={
+  projectData: Array<IProject>
+}
 
 const header = [
   "Id",
@@ -10,10 +15,10 @@ const header = [
   "Customer Name",
   "Application",
 ];
-const ExcellGenerator = ({ projectData }) => {
+const ExcellGenerator = ({ projectData }:ProjectProps) => {
   function handleDownloadExcel() {
     downloadExcel({
-      fileName: `Project ${new Date().toISOString().slice(0, 10)}`,
+      fileName: `Project${"-list"}${new Date().toISOString().slice(0, 10)}`,
       sheet: "react-export-table-to-excel",
       tablePayload: {
         header,

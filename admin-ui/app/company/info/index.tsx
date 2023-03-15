@@ -6,11 +6,11 @@ import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 
-interface CompanyInfoProps {
+type CompanyInfoProps = {
   id: string;
   Items: any;
   item: any;
-}
+};
 const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
   const deleteCompany = (id: CompanyInfoProps) => {
     deleteCompanyData(id);

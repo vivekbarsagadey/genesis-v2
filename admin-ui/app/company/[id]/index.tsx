@@ -5,7 +5,7 @@ import Link from "next/link";
 import ICompany from "../company.model";
 import { useRouter } from "next/navigation";
 
-interface CompanyComponentProps {
+type CompanyComponentProps={
   company: any;
   _id: string;
 }

@@ -7,19 +7,15 @@ const company = Array<ICompany>();
 
 const page = () => {
   const [company, setCompany] = useState([]);
-  const fetchData = () => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/companies`)
-      .then((r) => {
-        return r.json();
-      })
-      .then((d) => {
-        setCompany(d);
-      });
-  };
-
   useEffect(() => {
     fetchData();
   }, []);
+  const fetchData = async () => {
+    const users = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/companies`);
+    const result = await users.json();
+    setCompany(result);
+  };
+
   return (
     <div>
       <CompanyHome companyData={company}> </CompanyHome>

@@ -4,17 +4,15 @@ import { useState } from "react";
 import ICompany from "../company.model";
 import ICompanyComponentProps from "../company.props";
 
-
-
-interface CompanyComponentProps {
+type CompanyComponentProps = {
   companyData: Array<ICompany>;
   itemsCallBackHandler: any;
-}
-
+};
 
 const CompanySearchDetails = ({
-  companyData, itemsCallBackHandler = () => {},
-}:CompanyComponentProps) => {
+  companyData,
+  itemsCallBackHandler = () => {},
+}: CompanyComponentProps) => {
   const [search, setSearch] = useState("");
   const getSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);

@@ -8,7 +8,7 @@ import Grid from "@mui/material/Grid";
 import ICompany from "../company.model";
 const localizer = momentLocalizer(moment);
 
-interface CompanyComponentProps {
+type CompanyComponentProps={
   copyCompanyData: Array<ICompany>;
 }
 

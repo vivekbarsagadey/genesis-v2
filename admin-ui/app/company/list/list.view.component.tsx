@@ -9,7 +9,7 @@ import InfoCompanyComponent from "../info";
 import InfoCompany from "../info";
 import CompanyPagination from "./company.list.pagination";
 
-interface CompanyComponentProps {
+type CompanyComponentProps={
   companyData: Array<ICompany>;
   companySearchList: any;
 }

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import IUserComponentProps from "../user.props";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Menu from "@mui/material/Menu";
@@ -7,20 +6,15 @@ import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import ICompany from "../company.model";
-// interface FilterComponentProps extends IUserComponentProps {
-//   handleClose: () => void;
-//   anchorEl: boolean;
-//   open: boolean;
-// }
 
-interface CompanyComponentProps {
+type CompanyComponentProps = {
   handleClose: () => void;
   companyData: Array<ICompany>;
   open: boolean;
   anchorEl: boolean;
   companySearchList: any;
   itemsCallBackHandler: any;
-}
+};
 
 const CompanyFilterComponent = ({
   companyData,

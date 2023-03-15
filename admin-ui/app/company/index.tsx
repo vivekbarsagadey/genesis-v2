@@ -20,7 +20,7 @@ import CompanySearchDetails from "./search";
 import CompanyViewComponent from "./view";
 import ICompany from "./company.model";
 
-interface CompanyComponentProps {
+type CompanyComponentProps={
   companyData: Array<ICompany>;
   copyCompanyData: Array<ICompany>;
 }
@@ -73,8 +73,7 @@ const CompanyHome = ({ companyData }: CompanyComponentProps) => {
               aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
-              onClick={handleClick}
-            >
+              onClick={handleClick}>
               <FilterAltIcon fontSize="small" />
             </IconButton>
           </Tooltip>
