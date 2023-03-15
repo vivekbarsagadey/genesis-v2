@@ -5,16 +5,17 @@ import ICompany from "./company.model";
 
 const company = Array<ICompany>();
 
-const page = () => {
+const Page = () => {
   const [company, setCompany] = useState([]);
-  useEffect(() => {
-    fetchData();
-  }, []);
+
   const fetchData = async () => {
     const users = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/companies`);
     const result = await users.json();
     setCompany(result);
   };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div>
@@ -23,4 +24,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

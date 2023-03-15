@@ -20,7 +20,7 @@ type CompanyComponentProps = {
 
 const InfoProjectComponent = ({ items }: CompanyComponentProps) => {
   return (
-    <Box mt={0.6} width={"98.2%"}>
+    <Box mt={0.6} mr={2} >
       <Paper variant="outlined">
         <Grid container spacing={4}>
           <Grid item xs={0.12}></Grid>

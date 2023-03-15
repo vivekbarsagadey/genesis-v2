@@ -9,16 +9,15 @@ import InfoProjectComponent from "../info";
 import IProject from "../project.model";
 import projectPagination from "./project.list.pagination";
 
-type ProjectComponentProps={
-  copyProject:  Array<IProject>;
+type ProjectComponentProps = {
+  copyProject: Array<IProject>;
   projectSearchList: any;
-}
-
+};
 
 const ProjectListComponent = ({
   copyProject,
   projectSearchList,
-}:ProjectComponentProps) => {
+}: ProjectComponentProps) => {
   //pagination logic
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
@@ -32,14 +31,14 @@ const ProjectListComponent = ({
 
   return (
     <>
-      <Box mt={2} width={"98.2%"}>
+      <Box mt={2} mr={2} >
         <Paper variant="outlined">
           <Grid container spacing={4}>
             <Grid item xs={0.12}></Grid>
             <Grid item xs={0.488}>
               <Checkbox size="small" />
             </Grid>
-            <Grid item xs={1} style={{ display: "flex" }}>
+            <Grid item xs={1} >
               <IconButton>
                 <RemoveRedEyeIcon fontSize="small" />
               </IconButton>
@@ -66,7 +65,9 @@ const ProjectListComponent = ({
         {_DATA
           .currentData()
           .reverse()
-          .filter((ele) => ele.name.toLowerCase().includes(projectSearchList.toLowerCase()) )
+          .filter((ele) =>
+            ele.name.toLowerCase().includes(projectSearchList.toLowerCase())
+          )
           ?.map((items, index) => {
             return (
               <Typography key={index}>

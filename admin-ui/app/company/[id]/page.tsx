@@ -4,18 +4,16 @@ import CompanyEditComponent from ".";
 
 const _id = "641034daa9cd62cbc29a3099";
 
-const page = () => {
+const Page = () => {
   const [company, setCompany] = useState([]);
-  const fetchData = () => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/companies/${_id}`)
-      .then((r) => {
-        return r.json();
-      })
-      .then((d) => {
-        setCompany(d);
-      });
-  };
 
+  const fetchData = async () => {
+    const users = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/companies/${_id}`
+    );
+    const result = await users.json();
+    setCompany(result);
+  };
   useEffect(() => {
     fetchData();
   }, []);
@@ -26,4 +24,4 @@ const page = () => {
     </>
   );
 };
-export default page;
+export default Page;

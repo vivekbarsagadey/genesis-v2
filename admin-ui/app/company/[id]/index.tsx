@@ -11,9 +11,7 @@ type CompanyComponentProps={
 }
 
 const CompanyEditComponent = ({ company, _id }: CompanyComponentProps) => {
-  console.log(" company >>", company);
   const router = useRouter();
-
   const [firstName, setFirstName] = useState(company.firstName);
   const [lastName, setLastName] = useState(company.lastName);
   const [companyName, setCompanyName] = useState(company.name);
