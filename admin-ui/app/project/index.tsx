@@ -18,11 +18,17 @@ import ProjectCalendarView from "./list/calendar.view";
 import ProjectGraphView from "./list/graph.view";
 import ProjectGridView from "./list/grid.view";
 import ProjectKanbanView from "./list/kanban.view";
+import IProject from "./project.model";
 import ProjectSearch from "./search";
 import ProjectViewComponent from "./view";
 
-const ProjectHomeComponent = () => {
-  const [projectData, setProjectData] = useState([]); // This is a original json Data
+type ProjectComponentProps = {
+  projectData: any;
+  copyProject: any;
+  _items: any;
+};
+
+const ProjectHomeComponent = ({ projectData }: ProjectComponentProps) => {
   const [copyProject, setCopyProject] = useState(projectData); // This is a duplicate Json Data
   const [count, setCount] = useState("List"); // This is a different different type of View Count (List,Grid,Calendar,etc)
   const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
@@ -32,26 +38,9 @@ const ProjectHomeComponent = () => {
   const [filterChipType, setFilterChipType] = useState(false);
 
   const open = Boolean(anchorEl);
-
-  const fetchData = () => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`)
-      .then((r) => {
-        return r.json();
-      })
-      .then((d) => {
-        setProjectData(d);
-      });
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const itemsCallBackHandler = (_items) => {
-    setProjectData(_items);
+    setCopyProject(_items);
   };
-  console.log("projectData >>", projectData);
-
   useEffect(() => {
     setCopyProject(projectData);
   }, [projectData]);
@@ -79,7 +68,7 @@ const ProjectHomeComponent = () => {
     <>
       <Grid container mt={1}>
         <Grid item xs={2.4} lg={3}>
-          <ProjectSearch projectSearchList={projectSearchList} />
+          <ProjectSearch projectSearchList={projectSearchList}/>
         </Grid>
         <Grid item xs={0.6} lg={0.4}>
           <Tooltip title="Filter" arrow>
