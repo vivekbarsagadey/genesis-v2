@@ -18,6 +18,11 @@ import CompanyKanbanView from "./list/kanban.view";
 import ListViewComponent from "./list/list.view.component";
 import CompanySearchDetails from "./search";
 import CompanyViewComponent from "./view";
+import GridViewIcon from "@mui/icons-material/GridView";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import TimelineIcon from "@mui/icons-material/Timeline";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import ViewKanbanOutlinedIcon from "@mui/icons-material/ViewKanbanOutlined";
 import ICompany from "./company.model";
 
 type CompanyComponentProps = {
@@ -61,14 +66,34 @@ const CompanyHome = ({ companyData }: CompanyComponentProps) => {
   return (
     <Box sx={{ flexGrow: 1 }} mt={1}>
       <Grid container spacing={2}>
-        <Grid item xs={3}   md={3} lg={3} sm={3} >
+        <Grid item xs={3} md={3} lg={3} sm={3}>
           <CompanySearchDetails
             companyData={copyCompanyData}
             itemsCallBackHandler={itemsCallBackHandler}
           />
         </Grid>
         <Grid item xs={8}>
-          <div style={{ background:'red'}} >xs=4</div>
+          <IconButton>
+            <FilterAltIcon fontSize={"small"} />
+          </IconButton>
+          <IconButton>
+            <FileDownloadOutlinedIcon fontSize={"small"} />
+          </IconButton>
+          <IconButton>
+            <ListAltIcon fontSize={"small"} />
+          </IconButton>
+          <IconButton>
+            <GridViewIcon fontSize={"small"} />
+          </IconButton>
+          <IconButton>
+            <TimelineIcon fontSize={"small"} />
+          </IconButton>
+          <IconButton>
+            <CalendarMonthIcon fontSize={"small"} />
+          </IconButton>
+          <IconButton>
+            <ViewKanbanOutlinedIcon fontSize={"small"} />
+          </IconButton>
         </Grid>
         <Grid item xs={1}>
           <Link href={"/company/create"} passHref>

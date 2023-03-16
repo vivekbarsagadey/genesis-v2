@@ -1,4 +1,5 @@
 "use client";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import EditIcon from "@mui/icons-material/Edit";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -10,10 +11,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
-import ICompany from "../../company/company.model";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 
 type CompanyComponentProps = {
   items: any;
