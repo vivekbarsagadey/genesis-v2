@@ -3,6 +3,7 @@ import { Button, Grid, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { createCompany } from "../../../services/company.action";
 
 const CompanyCreateComponent = () => {
   const [ownerFirstName, setOwnerFirstName] = useState("");
@@ -15,10 +16,10 @@ const CompanyCreateComponent = () => {
   const [companyFoundationYear, setCompanyFoundationYear] = useState("");
   const router = useRouter();
 
+  // POST call
   const updateMyCompanyData = async () => {
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/companies`, {
-      method: "POST",
-      body: JSON.stringify({
+    try {
+      const body = {
         firstName: ownerFirstName,
         lastName: ownerLastName,
         name: companyName,
@@ -27,12 +28,13 @@ const CompanyCreateComponent = () => {
         address: companyAddress,
         website: companyWebsite,
         foundationYear: companyFoundationYear,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    }).then((res) => res.json());
-    router.push("/company");
+      };
+      //  console.log("this is body", body)
+      await createCompany(body);
+      await router.push("/company");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const updateOwnerFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {

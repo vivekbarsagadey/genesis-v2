@@ -4,11 +4,12 @@ import { Button, Grid, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import ICompany from "../company.model";
 import { useRouter } from "next/navigation";
+import { updateCompany } from "../../../services/company.action";
 
-type CompanyComponentProps={
+type CompanyComponentProps = {
   company: any;
   _id: string;
-}
+};
 
 const CompanyEditComponent = ({ company, _id }: CompanyComponentProps) => {
   const router = useRouter();
@@ -51,9 +52,8 @@ const CompanyEditComponent = ({ company, _id }: CompanyComponentProps) => {
   };
 
   const updateMyCompanyEditedData = async () => {
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/companies/${_id}`, {
-      method: "PUT",
-      body: JSON.stringify({
+    try {
+      const body = {
         firstName: firstName,
         lastName: lastName,
         name: companyName,
@@ -62,12 +62,12 @@ const CompanyEditComponent = ({ company, _id }: CompanyComponentProps) => {
         address: companyAddress,
         website: companyWebsite,
         foundationYear: companyFoundationYear,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    }).then((res) => res.json());
-    router.push("/company");
+      };
+      await updateCompany(_id, body);
+      await router.push("/company");
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <>

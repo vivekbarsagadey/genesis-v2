@@ -5,27 +5,16 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
-
+import { deleteCompany } from "../../../services/company.action";
 type CompanyInfoProps = {
   id: string;
   Items: any;
   item: any;
 };
 const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
-  const deleteCompany = (id: CompanyInfoProps) => {
-    deleteCompanyData(id);
+  const deleteCompanyHandler = async (id) => {
+    const response = await deleteCompany(id);
     window.location.reload();
-  };
-  const deleteCompanyData = async (id: CompanyInfoProps) => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}\\companies/${id}`,
-      {
-        credentials: "include",
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      }
-    );
-    return response;
   };
   return (
     <>
@@ -85,7 +74,7 @@ const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
                     <IconButton>
                       <DeleteOutlineIcon
                         fontSize="small"
-                        onClick={() => deleteCompany(Items.id)}
+                        onClick={() => deleteCompanyHandler(Items.id)}
                       />
                     </IconButton>
                   </Tooltip>
@@ -98,5 +87,4 @@ const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
     </>
   );
 };
-
 export default InfoCompanyComponent;
