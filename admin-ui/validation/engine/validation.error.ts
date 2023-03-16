@@ -1,4 +1,4 @@
-import { Constraint } from "./constrain";
+import { Constraint } from '.';
 
 interface ValidationErrorRow {
   row: any;
@@ -42,7 +42,6 @@ class ValidationErrors {
 class ValidationError extends Error {
   constructor(private constraint: Constraint) {
     super(constraint.message);
-    
     Object.setPrototypeOf(this, ValidationError.prototype);
   }
 
@@ -51,11 +50,12 @@ class ValidationError extends Error {
   }
 
   getErrorMessage() {
-    return this.constraint.message || `${this.constraint.field} is required`;
+    return this.constraint.message || `${this.constraint.field} is not valid`;
   }
   getErrorConstraint() {
-    return this.constraint.message;
+    return this.constraint;
   }
 }
 
 export { ValidationError, ValidationErrors };
+export type { ValidationErrorRow };

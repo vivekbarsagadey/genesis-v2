@@ -1,9 +1,6 @@
 "use client";
-import React from "react";
-import { useForm } from "../../hooks/from";
 import { InputComponent } from "../../component/ui/base/input/";
-import { ButtonComponent } from "../../component/ui/base/button";
-import { SearchComponent } from "../../component/ui/base";
+import { useForm } from "../../hooks/from";
 
 const TestComponent = () => {
   const { register } = useForm();
@@ -11,7 +8,7 @@ const TestComponent = () => {
     <>
       <InputComponent
         type="email"
-        placeHolder="Enter email"
+        placeHolder="Enter             email"
         label="Email"
         id="email"
         register={register}
@@ -37,11 +34,7 @@ const TestComponent = () => {
         id="text"
       ></InputComponent>
 
-      <ButtonComponent
-        label="Submit"
-        onClick={() => console.log("hello")}
-      ></ButtonComponent>
-      <SearchComponent placeHolder="Search" type="text"></SearchComponent>
+     
     </>
   );
 };

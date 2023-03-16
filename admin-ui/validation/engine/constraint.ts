@@ -1,4 +1,4 @@
-import { ValidatorType } from './validator';
+import { ValidatorType } from './';
 
 const Pattern = {
   DOMAIN_NAME: new RegExp(
@@ -6,11 +6,11 @@ const Pattern = {
   ),
 };
 interface Constraint {
-  field?: string;
+  field: string;
   dependents?: string[];
   validatorType: ValidatorType;
   message?: string;
   pattern?: RegExp;
 }
 
-export type { Constraint, Pattern };
+export type{ Constraint, Pattern };
