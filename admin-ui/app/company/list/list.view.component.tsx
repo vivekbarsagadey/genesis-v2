@@ -99,7 +99,7 @@ const ListViewComponent = ({
       </Grid>
 
       <Grid container mt={4}>
-        <Grid item xs={11.8} display={"flex"} justifyContent={"flex-end"}>
+        <Grid item xs={12} display={"flex"} justifyContent={"flex-end"}>
           <Grid style={{ position: "fixed" }}>
             <Pagination
               count={count}
@@ -111,7 +111,6 @@ const ListViewComponent = ({
             />
           </Grid>
         </Grid>
-        <Grid item xs={0.2}></Grid>
       </Grid>
     </>
   );

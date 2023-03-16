@@ -30,37 +30,6 @@ const ProjectListComponent = ({
 
   return (
     <>
-      {/* <Box mt={2} mr={2} >
-        <Paper variant="outlined">
-          <Grid container spacing={4}>
-            <Grid item xs={0.12}></Grid>
-            <Grid item xs={0.488}>
-              <Checkbox size="small" />
-            </Grid>
-            <Grid item xs={1} >
-              <IconButton>
-                <RemoveRedEyeIcon fontSize="small" />
-              </IconButton>
-            </Grid>
-            <Grid item xs={3} sm={3}>
-              <Typography variant="subtitle2">Project Name</Typography>
-            </Grid>
-            <Grid item xs={3} sm={3} spacing={1}>
-              <Typography variant="subtitle2">Company Name</Typography>
-            </Grid>
-            <Grid item xs={2} sm={3}>
-              <Typography variant="subtitle2">Application</Typography>
-            </Grid>
-
-            <Grid item xs={0.8}>
-              <Typography variant="subtitle2" noWrap>
-                Action
-              </Typography>
-            </Grid>
-          </Grid>
-        </Paper>
-      </Box> */}
-
       <Box mr={2} mt={2}>
         <Paper variant="outlined">
           <Grid container>
@@ -124,7 +93,7 @@ const ProjectListComponent = ({
           })}
       </Grid>
       <Grid container mt={4}>
-        <Grid item xs={11.8} display={"flex"} justifyContent={"flex-end"}>
+        <Grid item xs={12} display={"flex"} justifyContent={"flex-end"}>
           <Grid style={{ position: "fixed" }}>
             <Pagination
               count={count}
@@ -136,7 +105,6 @@ const ProjectListComponent = ({
             />
           </Grid>
         </Grid>
-        <Grid item xs={0.2}></Grid>
       </Grid>
     </>
   );
