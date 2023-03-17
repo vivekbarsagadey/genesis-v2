@@ -5,7 +5,7 @@ import { createTheme } from "@mui/material/styles";
 export const theme = createTheme({
   typography: {
     subtitle1: {
-      fontSize: 12,
+      fontSize: 18,
       textDecoration:'none',
     },
     subtitle2: {
