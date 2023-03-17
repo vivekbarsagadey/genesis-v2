@@ -12,11 +12,13 @@ type CompanyComponentProps = {
   companyData: Array<ICompany>;
   companySearchList: any;
   Items: any;
+  searchedCompany: String
 };
 
 const ListViewComponent = ({
   companyData,
   companySearchList,
+  searchedCompany
 }: CompanyComponentProps) => {
   //pagination logic
   let [page, setPage] = useState(1);

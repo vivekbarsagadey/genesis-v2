@@ -24,6 +24,7 @@ import TimelineIcon from "@mui/icons-material/Timeline";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ViewKanbanOutlinedIcon from "@mui/icons-material/ViewKanbanOutlined";
 import ICompany from "./company.model";
+import { Switch, Case, Default } from "react-if";
 
 type CompanyComponentProps = {
   companyData: Array<ICompany>;
@@ -64,47 +65,74 @@ const CompanyHome = ({ companyData }: CompanyComponentProps) => {
     setAnchorEl(null);
   };
   return (
-    <Box sx={{ flexGrow: 1 }} mt={1}>
-      <Grid container spacing={2}>
-        <Grid item xs={3} md={3} lg={3} sm={3}>
-          <CompanySearchDetails
-            companyData={copyCompanyData}
-            itemsCallBackHandler={itemsCallBackHandler}
-          />
+    <>
+      <Box sx={{ flexGrow: 1 }} mt={1}>
+        <Grid container spacing={2}>
+          <Grid item xs={3} md={3} lg={3} sm={3}>
+            <CompanySearchDetails
+              companyData={copyCompanyData}
+              itemsCallBackHandler={itemsCallBackHandler}
+            />
+          </Grid>
+          <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
+            <Grid container spacing={1}>
+              <Grid item xs={"auto"}>
+                
+                <IconButton
+                  aria-controls={open ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
+                >
+                  <FilterAltIcon fontSize={"small"} />
+                </IconButton>
+              </Grid>
+             
+              <Grid item xs={10}>
+                <CompanyViewComponent handleCount={handleCount} />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={1}>
+            <Link href={"/company/create"} passHref>
+              <Button variant="contained" size="small">
+                Create
+                <span>+</span>
+              </Button>
+            </Link>
+          </Grid>
         </Grid>
-        <Grid item xs={8}>
-          <IconButton>
-            <FilterAltIcon fontSize={"small"} />
-          </IconButton>
-          <IconButton>
-            <FileDownloadOutlinedIcon fontSize={"small"} />
-          </IconButton>
-          <IconButton>
-            <ListAltIcon fontSize={"small"} />
-          </IconButton>
-          <IconButton>
-            <GridViewIcon fontSize={"small"} />
-          </IconButton>
-          <IconButton>
-            <TimelineIcon fontSize={"small"} />
-          </IconButton>
-          <IconButton>
-            <CalendarMonthIcon fontSize={"small"} />
-          </IconButton>
-          <IconButton>
-            <ViewKanbanOutlinedIcon fontSize={"small"} />
-          </IconButton>
+        <Grid item xs={12}>
+          <Switch>
+            <Case condition={count === "Grid"}>
+              <CompanyGridView copyCompanyData={copyCompanyData} />
+            </Case>
+            <Case condition={count === "Graph"}>
+              <CompanyGraphView />
+            </Case>
+            <Case condition={count === "Kanban"}>
+              <CompanyKanbanView />
+            </Case>
+            <Case condition={count === "Calendar"}>
+              <CompanyCalendarView copyCompanyData={copyCompanyData} />
+            </Case>
+            <Default>
+              <ListViewComponent
+                companyData={copyCompanyData}
+                companySearchList={companySearchList}
+              />
+            </Default>
+          </Switch>
         </Grid>
-        <Grid item xs={1}>
-          <Link href={"/company/create"} passHref>
-            <Button variant="contained" size="small">
-              Create
-              <span>+</span>
-            </Button>
-          </Link>
-        </Grid>
-      </Grid>
-    </Box>
+      </Box>
+      <CompanyFilterComponent
+        companyData={companyData}
+        anchorEl={anchorEl}
+        open={open}
+        handleClose={handleClose}
+        itemsCallBackHandler={itemsCallBackHandler}
+      />
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ import TimelineIcon from "@mui/icons-material/Timeline";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ViewKanbanOutlinedIcon from "@mui/icons-material/ViewKanbanOutlined";
 
-const AllViews = [
+const viewIconsSet = [
   {
     id: 1,
     view: "List",
@@ -41,16 +41,8 @@ const AllViews = [
 const CompanyViewComponent = ({ handleCount }) => {
   return (
     <>
-      {AllViews?.map((data) => {
-        return (
-          <div key={data.id} style={{ margin: "0.2rem" }}>
-            <Tooltip title={data?.title}>
-              <IconButton size="small" onClick={() => handleCount(data.view)}>
-                {data.icon}
-              </IconButton>
-            </Tooltip>
-          </div>
-        );
+      {viewIconsSet?.map((viewIcon) => {
+        return <IconButton key={viewIcon.id} onClick={() => handleCount(viewIcon.view)}>{viewIcon.icon}</IconButton>;
       })}
     </>
   );
