@@ -5,6 +5,7 @@ import Link from "next/link";
 import ICompany from "../company.model";
 import { useRouter } from "next/navigation";
 import { updateCompany } from "../../../services/company.action";
+import Box from "@mui/material/Box/Box";
 
 type CompanyComponentProps = {
   company: any;
@@ -51,7 +52,7 @@ const CompanyEditComponent = ({ company, _id }: CompanyComponentProps) => {
     setCompanyFoundationYear(e.target.value);
   };
 
-  const updateMyCompanyEditedData = async () => {
+  const updateCompanyEditedData = async () => {
     try {
       const body = {
         firstName: firstName,
@@ -71,207 +72,215 @@ const CompanyEditComponent = ({ company, _id }: CompanyComponentProps) => {
   };
   return (
     <>
-      <Grid item xs={3.11} display={"flex"} justifyContent={"flex-end"} mt={4}>
-        <Typography fontSize={"1.3rem"}>Edit Company Details</Typography>
-      </Grid>
-      <Grid container mt={8}>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={5}>
-          <Grid container>
-            <Grid item xs={3} mt={1}>
-              <Typography>First Name</Typography>
-            </Grid>
-            <Grid item xs={0.5} mt={1}>
-              :
-            </Grid>
-            <Grid item xs={6.5}>
-              <TextField
-                id="outlined-basic"
-                placeholder="First Name"
-                size={"small"}
-                fullWidth
-                value={firstName}
-                onChange={updateOwnerFirstName}
-              />
-            </Grid>
+      <Box sx={{ flexGrow: 1 }} padding={4}>
+        <Grid container>
+          <Grid item xs={12}>
+            <Typography variant="subtitle1">Edit Company Details</Typography>
           </Grid>
         </Grid>
-        <Grid item xs={6}>
-          <Grid container>
-            <Grid item xs={2.5} mt={1}>
-              <Typography>Last Name</Typography>
-            </Grid>
-            <Grid item xs={0.5} mt={1}>
-              :
-            </Grid>
-            <Grid item xs={6.5}>
-              <TextField
-                id="outlined-basic"
-                placeholder="Last Name"
-                size={"small"}
-                fullWidth
-                value={lastName}
-                // value={ownerLastName}
-                onChange={updateOwnerLastName}
-              />
+        <Grid container spacing={2} mt={2}>
+          <Grid item xs={6}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
+                <Typography>First Name</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  id="first-name"
+                  placeholder="First Name"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  value={firstName}
+                  onChange={updateOwnerFirstName}
+                />
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </Grid>
 
-      <Grid container mt={2}>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={5}>
-          <Grid container>
-            <Grid item xs={3} mt={1}>
-              <Typography>Company Name</Typography>
-            </Grid>
-            <Grid item xs={0.5} mt={1}>
-              :
-            </Grid>
-            <Grid item xs={6.5}>
-              <TextField
-                id="outlined-basic"
-                placeholder="Create Company Name"
-                size={"small"}
-                fullWidth
-                value={companyName}
-                onChange={updateCompanyName}
-              />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={6}>
-          <Grid container>
-            <Grid item xs={2.5} mt={1}>
-              <Typography>Email</Typography>
-            </Grid>
-            <Grid item xs={0.5} mt={1}>
-              :
-            </Grid>
-            <Grid item xs={6.5}>
-              <TextField
-                id="outlined-basic"
-                placeholder="Email"
-                size={"small"}
-                fullWidth
-                value={companyEmail}
-                onChange={updateCompanyEmail}
-              />
+          <Grid item xs={6}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
+                <Typography>Last Name</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  id="last-name"
+                  placeholder="Last Name"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  value={lastName}
+                  onChange={updateOwnerLastName}
+                />
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </Grid>
 
-      <Grid container mt={2}>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={5}>
-          <Grid container>
-            <Grid item xs={3} mt={1}>
-              <Typography>Phone</Typography>
-            </Grid>
-            <Grid item xs={0.5} mt={1}>
-              :
-            </Grid>
-            <Grid item xs={6.5}>
-              <TextField
-                id="outlined-basic"
-                placeholder="Phone Number"
-                size={"small"}
-                fullWidth
-                value={companyPhone}
-                onChange={updateCompanyPhone}
-              />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={6}>
-          <Grid container>
-            <Grid item xs={2.5} mt={1}>
-              <Typography>Address</Typography>
-            </Grid>
-            <Grid item xs={0.5} mt={1}>
-              :
-            </Grid>
-            <Grid item xs={6.5}>
-              <TextField
-                id="outlined-basic"
-                placeholder="Address"
-                size={"small"}
-                fullWidth
-                value={companyAddress}
-                onChange={updateCompanyAdress}
-              />
+          <Grid item xs={6} mt={2}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
+                <Typography>Company Name</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  id="company-name"
+                  placeholder="Company Name"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  value={companyName}
+                  onChange={updateCompanyName}
+                />
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </Grid>
-      <Grid container mt={2}>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={5}>
-          <Grid container>
-            <Grid item xs={3} mt={1}>
-              <Typography>Website</Typography>
-            </Grid>
-            <Grid item xs={0.5} mt={1}>
-              :
-            </Grid>
-            <Grid item xs={6.5}>
-              <TextField
-                id="outlined-basic"
-                placeholder="Website"
-                size={"small"}
-                fullWidth
-                value={companyWebsite}
-                onChange={updateCompanyWebsite}
-              />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={6}>
-          <Grid container>
-            <Grid item xs={2.5} mt={1}>
-              <Typography>Foundation Year</Typography>
-            </Grid>
-            <Grid item xs={0.5} mt={1}>
-              :
-            </Grid>
-            <Grid item xs={6.5}>
-              <TextField
-                id="outlined-basic"
-                placeholder="Foundation Year"
-                size={"small"}
-                fullWidth
-                value={companyFoundationYear}
-                onChange={updateCompanyFoundationYear}
-              />
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
 
-      <Grid container mt={5}>
-        <Grid item xs={12}>
-          <Grid container display={"flex"} justifyContent={"flex-end"}>
-            <Grid item xs={1}>
-              <Link href={"/company"}>
-                <Button variant="contained" size="small">
-                  Cancel
-                </Button>
-              </Link>
+          <Grid item xs={6} mt={2}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
+                <Typography>Email</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  id="email"
+                  placeholder="Email"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  value={companyEmail}
+                  onChange={updateCompanyEmail}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={1.93}>
-              <Button
-                variant="contained"
-                size="small"
-                onClick={updateMyCompanyEditedData}
-              >
-                Save
-              </Button>
+          </Grid>
+          <Grid item xs={6} mt={2}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
+                <Typography>Phone</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  id="phone"
+                  placeholder="Phone"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  value={companyPhone}
+                  onChange={updateCompanyPhone}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={2}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
+                <Typography>Address</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  id="address"
+                  placeholder="Address"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  value={companyAddress}
+                  onChange={updateCompanyAdress}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={2}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
+                <Typography>Website</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  id="website"
+                  placeholder="Website"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  value={companyWebsite}
+                  onChange={updateCompanyWebsite}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={2}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
+                <Typography>Foundation Year</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  id="foundation-year"
+                  placeholder="Foundation Year"
+                  variant="outlined"
+                  size="small"
+                  fullWidth
+                  value={companyFoundationYear}
+                  onChange={updateCompanyFoundationYear}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={12} mt={2}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={9}></Grid>
+
+              <Grid item xs={3}>
+                <Grid container>
+                  <Grid item xs={6} ml={3}>
+                    <Link href={"/company"}>
+                      <Button variant="contained" size="small">
+                        Cancel
+                      </Button>
+                    </Link>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Button
+                      variant="contained"
+                      size="small"
+                      onClick={updateCompanyEditedData}
+                    >
+                      Save
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
+      </Box>
     </>
   );
 };
