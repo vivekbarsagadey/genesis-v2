@@ -19,7 +19,7 @@ const CompanyGridView = ({ copyCompanyData, searchCompany }) => {
   return (
     <>
       <Box style={{ height: "70.6vh" }}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2}  mt={1}>
           {_DATA
             .currentData()
             .reverse()
@@ -28,7 +28,7 @@ const CompanyGridView = ({ copyCompanyData, searchCompany }) => {
             )
             .map((item) => {
               return (
-                <Grid item xs={4} md={4} sm={4} lg={4} mt={1} key={item.id}>
+                <Grid item xs={4} md={4} sm={4} lg={4}  key={item.id}>
                   <Paper variant="outlined">
                     <Box paddingLeft={2} paddingTop={2}>
                       <Grid container>
