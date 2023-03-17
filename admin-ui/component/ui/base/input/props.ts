@@ -1,26 +1,23 @@
+// validaters
 
-
-interface InputProps {
-  label: string;
-  id?: string;
+import { InputHolder,FormStore } from "../../../../hooks";
+type InputProps = {
+  // sending data from parent to child
+  readonly label?: string | undefined;
+  readonly isLabelNotRequired?: boolean;
+  readonly id?: string;
   value?: string;
   placeHolder?: string;
   required?: boolean;
-  type: string;
-  readonly?: boolean;
-  disabled?: boolean;
-  size?: string;
-  autofocus?: boolean;
-  autocomplete?: string;
-  startAdornment?: any;
-  helperText?: any;
-  getError?: any;
-  onInput?: number;
-  variant?:any;
-  onClick?:any;
-
+  readonly type?: string;
+  readonly readonly?: boolean;
+  helperText?: string | undefined;
+  icons?: string;
+  readonly maxLength?: number;
+  readonly minLength?: number;
+  readonly autofocus?: boolean;
   // this to send data back to parent
-  register?: any;
-}
+  register: (_: InputHolder) => (_: FormStore) => void;
+};
 
 export type { InputProps };

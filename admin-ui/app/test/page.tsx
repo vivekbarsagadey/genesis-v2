@@ -8,7 +8,7 @@ const TestComponent = () => {
     <>
       <InputComponent
         type="email"
-        placeHolder="Enter             email"
+        placeHolder="Enter email"
         label="Email"
         id="email"
         register={register}
@@ -32,6 +32,7 @@ const TestComponent = () => {
         placeHolder="Enter Text"
         label="Text"
         id="text"
+        register={register}
       ></InputComponent>
 
      
