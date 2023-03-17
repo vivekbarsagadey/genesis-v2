@@ -1,63 +1,69 @@
 "use client";
+import CallIcon from '@mui/icons-material/Call';
 import Box from "@mui/material/Box";
-import InputAdornment from "@mui/material/InputAdornment";
-import React, { useState } from "react";
-// import { ValidatationEngine } from "../../../../validation/validatation.engine";
-// import {ValidationStatus} from "../../../../validation/validator.context";
-import { ErrorComponent, InputProps } from "./";
-import CallIcon from "@mui/icons-material/Call";
 import Input from "@mui/material/Input";
+import InputAdornment from "@mui/material/InputAdornment";
 import Typography from "@mui/material/Typography";
+import { useEffect, useState } from "react";
+import { ValidatorContextBuilder, ValidatorType } from '../../../../validation/engine';
 
+import { ErrorComponent, InputProps } from "./";
 const InputNumberComponent = ({
   label,
   type,
   placeHolder,
   value,
   required,
+  register
 }: InputProps) => {
   // const engine = ValidatationEngine();
-  const [_value, setValue] = useState<string | undefined | null>(value);
+  const [_value, setValue] = useState<string>("");
   const [errors, setErrors] = useState<string[]>();
-  const onChangeHandller = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const _v = e.target.value;
-    setValue(_v);
-    doValidation(_v);
+  const update: any = register({ name: label ?? '' });
+  const _builder = new ValidatorContextBuilder(label);
+  _builder.addValidator({
+    field: label ?? '',
+    validatorType: ValidatorType.REQUIRED,
+    message: `${label} is required`,
+  });
+  _builder.addValidator({
+    field: label ?? '',
+    validatorType: ValidatorType.NUMBER,
+    message: `${label} is unstatified`,
+  });
+
+  const onChangeHandler = (e: any) => {
+    setValue(e.target.value);
+    setErrors(_builder.doValidation(e.target.value));
+    update({ name: label, value:e.target.value, errors: [errors] });
   };
 
-  const doValidation = (_v: string) => {
-    // setErrors(
-    //   engine
-    //     .execute({
-    //       data: _v,
-    //       name: label || "",
-    //       status: [ValidationStatus.REQUIRED, ValidationStatus.NUMBER],
-    //     })
-    //     ?.map((e) => e.message)
-    // );
-  };
+  useEffect(() => {
+    setValue(value ?? '');
+  }, []);
 
   return (
     <Box component="form" noValidate autoComplete="off">
-      <Typography>{label || "Field Name"}</Typography>
+       <Typography>{label || "Field Name"}</Typography>
       <Input
         required={required}
         id="standard-required"
         placeholder={placeHolder}
         defaultValue={value}
         type="number"
-        // value={_value}
-        onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+        value={value}
+        onInput={(e: any) => {
           e.target.value = Math.max(0, parseInt(e.target.value))
             .toString()
             .slice(0, 10);
         }}
-        onChange={onChangeHandller}
-        startAdornment={
-          <InputAdornment position="start">
+        onChange={onChangeHandler}
+    
+          startAdornment= {
+            <InputAdornment position="start">
             <CallIcon />
           </InputAdornment>
-        }
+          }
       />
 
       {errors?.map((e, i) => (
@@ -68,3 +74,4 @@ const InputNumberComponent = ({
 };
 
 export { InputNumberComponent };
+

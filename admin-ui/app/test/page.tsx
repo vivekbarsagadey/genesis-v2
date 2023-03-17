@@ -18,6 +18,7 @@ const TestComponent = () => {
         placeHolder="Enter number"
         label="Number"
         id="number"
+        register={register}
       ></InputComponent>
 
       <InputComponent
