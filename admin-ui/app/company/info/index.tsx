@@ -44,10 +44,12 @@ const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
               <Typography variant="body2" noWrap>{Items.email}</Typography>
             </Grid>
             <Grid item xs={2}>
-              <Typography variant="body2" noWrap> {Items.mobile}</Typography>
+              <Typography variant="body2" noWrap display={"flex"}
+                justifyContent={"space-around"}> {Items.mobile}</Typography>
             </Grid>
             <Grid item xs={2} mr={7}>
-              <Typography variant="body2" noWrap>{Items.address}</Typography>
+              <Typography variant="body2" noWrap display={"flex"}
+                justifyContent={"space-around"}>{Items.address}</Typography>
             </Grid>
             <Grid item xs={1}>
               <Grid container>
