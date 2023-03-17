@@ -19,7 +19,7 @@ const CompanySearchDetails = ({
     <div>
       <Grid item xs={12}>
         <TextField
-          label="Search by Company Name"
+          placeholder="Search by Company Name"
           size="small"
           value={searchCompany}
           onChange={getSearch}
