@@ -37,7 +37,7 @@ const CompanyFilterComponent = ({
   };
 
   return (
-    <div>
+    <Grid container spacing={2}>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -47,7 +47,7 @@ const CompanyFilterComponent = ({
           "aria-labelledby": "basic-button",
         }}
       >
-        <div>
+        <Grid item xs={8}>
           <Stack sx={{ width: 300, padding: "1rem" }}>
             <Autocomplete
               size="small"
@@ -67,9 +67,9 @@ const CompanyFilterComponent = ({
               onChange={(event, value) => setFilterDataName(value)}
             />
           </Stack>
-        </div>
-
-        <div>
+        </Grid>
+        <Grid item xs={8}>
+          
           <Stack sx={{ width: 300, padding: "1rem" }}>
             <Autocomplete
               size="small"
@@ -89,10 +89,11 @@ const CompanyFilterComponent = ({
               onChange={(event, value) => setFilterDataEmail(value)}
             />
           </Stack>
-        </div>
+        </Grid>
+
         <Grid container mb={1} mt={2}>
-          <Grid item xs={5.6}></Grid>
-          <Grid item xs={3.2}>
+          <Grid item xs={6}></Grid>
+          <Grid item xs={3}>
             <Button
               variant="contained"
               size="small"
@@ -114,7 +115,7 @@ const CompanyFilterComponent = ({
           </Grid>
         </Grid>
       </Menu>
-    </div>
+    </Grid>
   );
 };
 
