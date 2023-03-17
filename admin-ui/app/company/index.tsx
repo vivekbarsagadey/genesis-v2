@@ -138,7 +138,10 @@ const CompanyHome = ({ companyData }: CompanyComponentProps) => {
         <Grid item xs={12}>
           <Switch>
             <Case condition={count === "Grid"}>
-              <CompanyGridView copyCompanyData={copyCompanyData} />
+              <CompanyGridView
+                copyCompanyData={copyCompanyData}
+                searchCompany={searchCompany}
+              />
             </Case>
             <Case condition={count === "Graph"}>
               <CompanyGraphView />

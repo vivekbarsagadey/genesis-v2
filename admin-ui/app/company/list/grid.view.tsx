@@ -5,7 +5,7 @@ import { Box } from "@mui/system";
 import { useState } from "react";
 import companyGridPagination from "./company.grid.pagination";
 
-const CompanyGridView = ({ copyCompanyData }) => {
+const CompanyGridView = ({ copyCompanyData, searchCompany }) => {
   // Pagination logic
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
@@ -19,75 +19,68 @@ const CompanyGridView = ({ copyCompanyData }) => {
   return (
     <>
       <Box style={{ height: "70.6vh" }}>
-        <Grid container spacing={1.5} mt={0.5}>
+        <Grid container spacing={2}>
           {_DATA
             .currentData()
             .reverse()
-            ?.map((item) => {
+            .filter((ele) =>
+              ele.name.toLowerCase().includes(searchCompany.toLowerCase())
+            )
+            .map((item) => {
               return (
-                <Grid item lg={4} xs={12} sm={6} md={4} mt={0} key={item.id}>
+                <Grid item xs={4} md={4} sm={4} lg={4} mt={1} key={item.id}>
                   <Paper variant="outlined">
                     <Box paddingLeft={2} paddingTop={2}>
                       <Grid container>
                         <Grid item xs={5}>
-                          <Typography variant="subtitle1">
-                            Company Name
-                          </Typography>
+                          <Typography>Company Name</Typography>
                         </Grid>
-                        <Grid item xs={1.5} paddingLeft={1}>
-                          <Typography variant="subtitle1"> :</Typography>
+                        <Grid item xs={1}>
+                          <Typography> :</Typography>
                         </Grid>
-                        <Grid item xs={5.5} paddingLeft={3}>
-                          <Typography noWrap variant="subtitle1">
-                            {item?.name}
-                          </Typography>
+                        <Grid item xs={6} paddingLeft={2}>
+                          <Typography noWrap>{item?.name}</Typography>
                         </Grid>
                       </Grid>
                     </Box>
 
                     <Box mt={1} paddingLeft={2}>
                       <Grid container>
-                        <Grid item xs={5.3}>
-                          <Typography variant="subtitle1">Email</Typography>
+                        <Grid item xs={5}>
+                          <Typography>Email</Typography>
                         </Grid>
-                        <Grid item xs={1.5}>
-                          <Typography variant="subtitle1"> :</Typography>
+                        <Grid item xs={1}>
+                          <Typography> :</Typography>
                         </Grid>
-                        <Grid item xs={5.2} paddingLeft={2}>
-                          <Typography noWrap variant="subtitle1">
-                            {item?.email}
-                          </Typography>
+                        <Grid item xs={6} paddingLeft={2}>
+                          <Typography noWrap>{item?.email}</Typography>
                         </Grid>
                       </Grid>
                     </Box>
                     <Box mt={1} paddingLeft={2}>
                       <Grid container>
-                        <Grid item xs={5.3}>
-                          <Typography variant="subtitle1">Contact</Typography>
+                        <Grid item xs={5}>
+                          <Typography>Contact</Typography>
                         </Grid>
-                        <Grid item xs={1.5}>
-                          <Typography variant="subtitle1"> :</Typography>
+                        <Grid item xs={1}>
+                          <Typography> :</Typography>
                         </Grid>
-                        <Grid item xs={5.2} paddingLeft={2}>
-                          <Typography variant="subtitle1" noWrap>
-                            {item?.mobile}
-                          </Typography>
+                        <Grid item xs={6} paddingLeft={2}>
+                          <Typography noWrap>{item?.mobile}</Typography>
                         </Grid>
                       </Grid>
                     </Box>
 
                     <Box mt={1} paddingLeft={2} paddingBottom={2}>
                       <Grid container>
-                        <Grid item xs={5.3}>
-                          <Typography variant="subtitle1">Address</Typography>
+                        <Grid item xs={5}>
+                          <Typography>Address</Typography>
                         </Grid>
-                        <Grid item xs={1.5}>
-                          <Typography variant="subtitle1"> :</Typography>
+                        <Grid item xs={1}>
+                          <Typography> :</Typography>
                         </Grid>
-                        <Grid item xs={5.2} paddingLeft={2}>
-                          <Typography variant="subtitle1" noWrap>
-                            {item?.address}
-                          </Typography>
+                        <Grid item xs={6} paddingLeft={2}>
+                          <Typography noWrap>{item?.address}</Typography>
                         </Grid>
                       </Grid>
                     </Box>
