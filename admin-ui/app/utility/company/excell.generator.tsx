@@ -17,7 +17,7 @@ const header = [
 const CompanyExcellGenerator = ({ copyCompanyData }:CompanyProps) => {
   function handleDownloadExcel() {
     downloadExcel({
-      fileName: `company${"-list-"}${new Date().toISOString().slice(0, 10)}`,
+      fileName: `company-list-${new Date().toISOString().slice(0, 10)}`,
       sheet: "react-export-table-to-excel",
       tablePayload: {
         header,

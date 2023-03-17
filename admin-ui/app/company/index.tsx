@@ -36,7 +36,7 @@ const CompanyHome = ({ companyData }: CompanyComponentProps) => {
   const [count, setCount] = useState("List");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [menuItem, setmenuItem] = useState<null | HTMLElement>(null);
-  const [companySearchList] = useState("");
+  const [searchCompany, setSearchCompany] = useState("");
 
   const open = Boolean(anchorEl);
   const Open = Boolean(menuItem);
@@ -64,6 +64,9 @@ const CompanyHome = ({ companyData }: CompanyComponentProps) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const getSearchedCompanyName = (_searchCompanyRecv) => {
+    setSearchCompany(_searchCompanyRecv);
+  };
   return (
     <>
       <Box sx={{ flexGrow: 1 }} mt={1}>
@@ -71,13 +74,12 @@ const CompanyHome = ({ companyData }: CompanyComponentProps) => {
           <Grid item xs={3} md={3} lg={3} sm={3}>
             <CompanySearchDetails
               companyData={copyCompanyData}
-              itemsCallBackHandler={itemsCallBackHandler}
+              getSearchedCompanyName={getSearchedCompanyName}
             />
           </Grid>
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
             <Grid container spacing={1}>
               <Grid item xs={"auto"}>
-                
                 <IconButton
                   aria-controls={open ? "basic-menu" : undefined}
                   aria-haspopup="true"
@@ -87,7 +89,38 @@ const CompanyHome = ({ companyData }: CompanyComponentProps) => {
                   <FilterAltIcon fontSize={"small"} />
                 </IconButton>
               </Grid>
-             
+              <Grid item xs={"auto"}>
+                <Tooltip title="Export" arrow>
+                  <IconButton
+                    aria-controls={Open ? "basic-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={Open ? "true" : undefined}
+                    onClick={handleClickData}
+                  >
+                    <FileDownloadOutlinedIcon fontSize="small" />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={menuItem}
+                  open={Open}
+                  onClose={handleClose1}
+                  MenuListProps={{
+                    "aria-labelledby": "basic-button",
+                  }}
+                >
+                  <MenuItem>
+                    <CompanyExcellGenerator copyCompanyData={copyCompanyData} />
+                  </MenuItem>
+                  <MenuItem>
+                    <CompanyPdfGenerator copyCompanyData={copyCompanyData} />
+                  </MenuItem>
+                  <MenuItem>
+                    <CompanyCsvGenerator copyCompanyData={copyCompanyData} />
+                  </MenuItem>
+                </Menu>
+              </Grid>
+
               <Grid item xs={10}>
                 <CompanyViewComponent handleCount={handleCount} />
               </Grid>
@@ -119,7 +152,7 @@ const CompanyHome = ({ companyData }: CompanyComponentProps) => {
             <Default>
               <ListViewComponent
                 companyData={copyCompanyData}
-                companySearchList={companySearchList}
+                searchCompany={searchCompany}
               />
             </Default>
           </Switch>

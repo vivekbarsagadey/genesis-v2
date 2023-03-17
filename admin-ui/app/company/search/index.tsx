@@ -1,26 +1,18 @@
+import { useState } from "react";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
-import ICompany from "../company.model";
-import ICompanyComponentProps from "../company.props";
 
 type CompanyComponentProps = {
-  companyData: Array<ICompany>;
-  itemsCallBackHandler: any;
+  getSearchedCompanyName: any;
 };
 
 const CompanySearchDetails = ({
-  companyData,
-  itemsCallBackHandler = () => {},
+  getSearchedCompanyName = () => {},
 }: CompanyComponentProps) => {
-  const [search, setSearch] = useState("");
+  const [searchCompany, setSearchCompany] = useState("");
   const getSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-    itemsCallBackHandler(
-      companyData?.filter((ele) =>
-        ele.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-      )
-    );
+    setSearchCompany(e.target.value);
+    getSearchedCompanyName(e.target.value);
   };
 
   return (
@@ -29,7 +21,7 @@ const CompanySearchDetails = ({
         <TextField
           label="Search"
           size="small"
-          value={search}
+          value={searchCompany}
           onChange={getSearch}
           fullWidth
         />

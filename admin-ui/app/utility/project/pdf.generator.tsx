@@ -19,7 +19,7 @@ const PdfGenerator = ({ projectData }: ProjectProps) => {
     ]);
     await download({
       headers,
-      projectData: pdfSendData,
+       pdfSendData,
       fileName,
     });
   };

@@ -10,15 +10,13 @@ import CompanyPagination from "./company.list.pagination";
 
 type CompanyComponentProps = {
   companyData: Array<ICompany>;
-  companySearchList: any;
   Items: any;
-  searchedCompany: String;
+  searchCompany: String;
 };
 
 const ListViewComponent = ({
   companyData,
-  companySearchList,
-  searchedCompany,
+  searchCompany,
 }: CompanyComponentProps) => {
   //pagination logic
   let [page, setPage] = useState(1);
@@ -99,7 +97,7 @@ const ListViewComponent = ({
           .currentData()
           .reverse()
           .filter((ele) =>
-            ele.name.toLowerCase().includes(companySearchList.toLowerCase())
+            ele.name.toLowerCase().includes(searchCompany.toLowerCase())
           )
           ?.map((Items: CompanyComponentProps, index) => {
             return (

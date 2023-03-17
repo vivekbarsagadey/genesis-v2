@@ -9,9 +9,7 @@ type CompanyProps = {
 
 const CompanyPdfGenerator = ({ copyCompanyData }: CompanyProps) => {
   const exportPDF = async () => {
-    const fileName = `company${"-list"}${new Date()
-      .toISOString()
-      .slice(0, 10)}`;
+    const fileName = `company-list-${new Date().toISOString().slice(0, 10)}`;
     const headers = [["Company Name", "Email", "Contact", "Address"]];
     const pdfSendData = copyCompanyData?.map((elt) => [
       elt.name,
@@ -21,7 +19,7 @@ const CompanyPdfGenerator = ({ copyCompanyData }: CompanyProps) => {
     ]);
     await download({
       headers,
-      copyCompanyData: pdfSendData,
+      pdfSendData,
       fileName,
     });
   };
