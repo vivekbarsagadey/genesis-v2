@@ -16,7 +16,7 @@ const PasswordRule = ({ constraint, data }: RuleContext) => {
 
     if (data.indexOf(' ') >= 0) {
       throw new ValidationError(constraint);
-    } else if (strongPassword.test(data)) {
+    } if (!strongPassword.test(data)) {
       throw new ValidationError(constraint);
     }
   };

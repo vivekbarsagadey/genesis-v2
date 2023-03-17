@@ -5,43 +5,50 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { IconButton, Input, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import InputAdornment from "@mui/material/InputAdornment";
-import React, { useState } from "react";
-// import { ValidatationEngine } from "../../../../validation/validatation.engine";
-// import {ValidationStatus} from "../../../../validation/validator.context";
-import { ErrorComponent, InputProps } from "./";
+import React, { useState, useEffect } from "react";
+import { ValidatorContextBuilder, ValidatorType } from "../../../../validation/engine";
 
-
+import { ErrorComponent } from "./error";
+import { InputProps } from "./props";
 
 const InputPasswordComponent = ({
   label,
   placeHolder,
   value,
   required,
+  register,
 }: InputProps) => {
-  // const engine = ValidatationEngine();
-  const [_value, setValue] = useState<string | undefined | null>(value);
+  // const engine = ValidationEngine();
+  const [_value, setValue] = useState<string>("");
   const [errors, setErrors] = useState<string[]>();
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const onChangeHandller = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const _v = e.target.value;
-    setValue(_v);
-    // doValidation(_v);
-  };
+
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  // const doValidation = (_v: string) => {
-  //   // setErrors(
-  //   //   engine
-  //   //     .execute({
-  //   //       data: _v,
-  //   //       name: label || "",
-  //   //       status: [ValidationStatus.REQUIRED, ValidationStatus.PASSWORD],
-  //   //     })
-  //   //     ?.map((e) => e.message)
-  //   // );
-  // };
+  const update: any = register({ name: label ?? "" });
+  const _builder = new ValidatorContextBuilder(label);
+  _builder.addValidator({
+    field: label ?? "",
+    validatorType: ValidatorType.REQUIRED,
+    message: `${label} is required`,
+  });
+  _builder.addValidator({
+    field: label ?? "",
+    validatorType: ValidatorType.PASSWORD,
+    message: `${label} is unstatified`,
+  });
+
+  const onChangeHandller = (e: any) => {
+    setValue(e.target.value);
+    setErrors(_builder.doValidation(e.target.value));
+    update({ name: label, value: e.target.value, errors: [errors] });
+  };
+
+  useEffect(() => {
+    setValue(value ?? "");
+  }, []);
 
   return (
     <Box component="form" noValidate autoComplete="off">
@@ -50,9 +57,8 @@ const InputPasswordComponent = ({
         required={required}
         id="standard-required"
         placeholder={placeHolder}
-        defaultValue={value}
         type={showPassword ? "text" : "password"}
-        // value={_value}
+        value={value}
         onChange={onChangeHandller}
         startAdornment={
           <InputAdornment position="start">
@@ -66,7 +72,6 @@ const InputPasswordComponent = ({
             </IconButton>
           </InputAdornment>
         }
-        
       />
 
       {errors?.map((e, i) => (

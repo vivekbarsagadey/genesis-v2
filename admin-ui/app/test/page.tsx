@@ -25,6 +25,7 @@ const TestComponent = () => {
         placeHolder="Enter Password"
         label="Password"
         id="password"
+        register={register}
       ></InputComponent>
 
       <InputComponent
