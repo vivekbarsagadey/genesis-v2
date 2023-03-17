@@ -1,10 +1,9 @@
-import { isBlank } from "../../utils/string.util";
-import { ValidationError } from "../validation.error";
-import { ValidatorType } from '../validator';
+import { ValidationError, ValidatorType } from "../engine";
+import { RuleContext } from "./rule.context";
+import { isBlank } from "./string.utils";
 
-import { RuleContext } from './';
 
-const RequiredRule = ({ constraint, data, name }: RuleContext) => {
+const RequiredRule = ({ constraint, data }: RuleContext) => {
   const condition = (): boolean => {
     return constraint.validatorType === ValidatorType.REQUIRED;
   };

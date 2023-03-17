@@ -1,33 +1,41 @@
-import { useState, useEffect } from "react";
+"use client"
+import { InputHolder } from './input.holder';
 
-interface InputHolder {
+type FormStore = {
   name: string;
   value: string;
-}
-const form: Map<string, any> = new Map();
-
-const useForm = () => {
-  const [message, setMessage] = useState("");
-
-  const register = (f: InputHolder) => {
-    form.set(f.name, f.value);
-    return update;
-  };
-
-  useEffect(() => {
-    setMessage("This is test message");
-  }, []);
-
-  const update = (f: InputHolder) => {
-    form.get(f.name).value = f.value;
-  };
-
-  const submit = () => {
-    form.forEach((f) => {
-    });
-  };
-
-  return { message, register, submit, update };
+  errors?: string[];
 };
 
-export { useForm };
+const formStore = new Map<string,FormStore>()
+const useForm = () => {
+  let message;
+
+  const register = ({name} : InputHolder) => {
+    formStore.set(name,{name, value: '',errors:[]})
+    message = `this is ${name}`;
+    return update;
+
+  };
+
+  const update = ({name,value,errors = []}:FormStore) => {
+    formStore.set(name,{name, value,errors})
+  };
+
+  const isError = ()=>{
+    for(const key of formStore.keys()){
+        console.log(key)
+
+    }
+}
+   
+   const submit = () =>{
+
+   }
+
+  return { register, update,isError,message,submit};
+};
+
+
+export  type {FormStore}
+export {useForm}

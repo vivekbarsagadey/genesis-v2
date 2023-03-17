@@ -1,9 +1,9 @@
-import { Constraint } from "../constrain";
+import { Constraint } from "../engine";
 
-export interface RuleContext {
+interface RuleContext {
   data: any;
   name?: string;
   constraint: Constraint;
 }
 
-
+export type{ RuleContext };
