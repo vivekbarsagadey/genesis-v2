@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "../../hooks/from";
 import {InputComponent}  from "../../component/ui/base/input/";
 const TestComponent = () => {
-  const { formState, register } = useForm();
+  const {  register } = useForm();
   return (
     <>
       <InputComponent
@@ -24,6 +24,7 @@ const TestComponent = () => {
             placeHolder="Enter Password"
             label="Password"
             id="password"
+            register={register}
           ></InputComponent>
 
       <InputComponent

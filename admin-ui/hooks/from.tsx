@@ -1,26 +1,41 @@
-import React, { useState, useEffect } from "react";
+"use client"
+import { InputHolder } from './input.holder';
 
-interface FormItem {
-  value?: string;
-  name?: string;
-  isValid?: boolean;
-}
-
-const useForm = () => {
-  const [formItems, setFormItems] = useState<FormItem[]>([]);
-  //const [formState, register] = useState<string>("");
-
-  const register = (name: string) => {
-    const formItem: FormItem = { name, value: "", isValid: true };
-    formItems.push(formItem);
-    return formItem;
-  };
-
-  const formState = (name: string) => {
-    return formItems?.find((f) => f.name === name);
-  };
-
-  return { formState, register };
+type FormStore = {
+  name: string;
+  value: string;
+  errors?: string[];
 };
 
-export { useForm };
+const formStore = new Map<string,FormStore>()
+const useForm = () => {
+  let message;
+
+  const register = ({name} : InputHolder) => {
+    formStore.set(name,{name, value: '',errors:[]})
+    message = `this is ${name}`;
+    return update;
+
+  };
+
+  const update = ({name,value,errors = []}:FormStore) => {
+    formStore.set(name,{name, value,errors})
+  };
+
+  const isError = ()=>{
+    for(const key of formStore.keys()){
+        console.log(key)
+
+    }
+}
+   
+   const submit = () =>{
+
+   }
+
+  return { register, update,isError,message,submit};
+};
+
+
+export  type {FormStore}
+export {useForm}

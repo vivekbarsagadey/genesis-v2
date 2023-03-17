@@ -1,4 +1,4 @@
-import { Constraint } from "./constrain";
+import { Constraint } from './';
 
 interface ValidationErrorRow {
   row: any;
@@ -50,7 +50,7 @@ class ValidationError extends Error {
   }
 
   getErrorMessage() {
-    return this.constraint.message || `${this.constraint.field} is required`;
+    return this.constraint.message || `${this.constraint.field} is not valid`;
   }
   getErrorConstraint() {
     return this.constraint;
@@ -58,3 +58,4 @@ class ValidationError extends Error {
 }
 
 export { ValidationError, ValidationErrors };
+export type{ ValidationErrorRow };
