@@ -33,7 +33,12 @@ CompanyComponentProps) => {
   const [filterDataName, setFilterDataName] = useState("");
   const [filterDataEmail, setFilterDataEmail] = useState("");
 
-
+  const handleChangeName = (e) => {
+    setFilterDataName(e.target.value);
+  };
+  const handleChangeEmail = (e) => {
+    setFilterDataEmail(e.target.value);
+  };
 
   return (
     <Grid container spacing={2}>
@@ -64,7 +69,8 @@ CompanyComponentProps) => {
                     }}
                   />
                 )}
-                onChange={(event, value) => setFilterDataName(value)}
+                // onChange={(event, value) => setFilterDataName(value)}
+                onChange={handleChangeName}
               />
             </Stack>
           </FilterStyle>
@@ -87,7 +93,8 @@ CompanyComponentProps) => {
                     }}
                   />
                 )}
-                onChange={(event, value) => setFilterDataEmail(value)}
+                // onChange={(event, value) => setFilterDataEmail(value)}
+                onChange={handleChangeEmail}
               />
             </Stack>
           </FilterStyle>
