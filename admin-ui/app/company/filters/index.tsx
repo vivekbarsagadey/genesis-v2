@@ -28,20 +28,12 @@ const CompanyFilterComponent = ({
   anchorEl,
   open,
   handleClose,
-  itemsCallBackHandler = () => {},
-}: CompanyComponentProps) => {
+}: // itemsCallBackHandler = () => {},
+CompanyComponentProps) => {
   const [filterDataName, setFilterDataName] = useState("");
   const [filterDataEmail, setFilterDataEmail] = useState("");
 
-  const doFilter = () => {
-    const companyFilterData = companyData?.filter(
-      (u) =>
-        u.firstName.toLowerCase().includes(filterDataName.toLowerCase()) ||
-        u.email.toLowerCase().includes(filterDataEmail.toLowerCase())
-    );
-    itemsCallBackHandler(companyFilterData);
-    handleClose();
-  };
+
 
   return (
     <Grid container spacing={2}>
@@ -113,7 +105,11 @@ const CompanyFilterComponent = ({
             </Button>
           </Grid>
           <Grid item xs={1}>
-            <Button variant="contained" size="small" onClick={doFilter}>
+            <Button
+              variant="contained"
+              size="small"
+              // onClick={doFilter}
+            >
               Save
             </Button>
           </Grid>

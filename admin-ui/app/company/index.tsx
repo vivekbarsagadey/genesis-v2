@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useState } from "react";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { Box, Button, Grid, IconButton } from "@mui/material";
@@ -7,9 +6,12 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Case, Default, Switch } from "react-if";
 import CompanyCsvGenerator from "../utility/company/csv.generator";
 import CompanyExcellGenerator from "../utility/company/excell.generator";
 import CompanyPdfGenerator from "../utility/company/pdf.generator";
+import ICompany from "./company.model";
 import CompanyFilterComponent from "./filters";
 import CompanyCalendarView from "./list/calendar.view";
 import CompanyGraphView from "./list/graph.view";
@@ -18,13 +20,6 @@ import CompanyKanbanView from "./list/kanban.view";
 import ListViewComponent from "./list/list.view.component";
 import CompanySearchDetails from "./search";
 import CompanyViewComponent from "./view";
-import GridViewIcon from "@mui/icons-material/GridView";
-import ListAltIcon from "@mui/icons-material/ListAlt";
-import TimelineIcon from "@mui/icons-material/Timeline";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import ViewKanbanOutlinedIcon from "@mui/icons-material/ViewKanbanOutlined";
-import ICompany from "./company.model";
-import { Switch, Case, Default } from "react-if";
 
 type CompanyComponentProps = {
   companyData: Array<ICompany>;
@@ -41,9 +36,7 @@ const CompanyHome = ({ companyData }: CompanyComponentProps) => {
   const open = Boolean(anchorEl);
   const Open = Boolean(menuItem);
 
-  const itemsCallBackHandler = (_items: Array<ICompany>) => {
-    setCopyComponentData(_items);
-  };
+ 
 
   useEffect(() => {
     setCopyComponentData(companyData);
@@ -73,7 +66,6 @@ const CompanyHome = ({ companyData }: CompanyComponentProps) => {
         <Grid container spacing={2}>
           <Grid item xs={3} md={3} lg={3} sm={3}>
             <CompanySearchDetails
-              companyData={copyCompanyData}
               getSearchedCompanyName={getSearchedCompanyName}
             />
           </Grid>
@@ -88,6 +80,12 @@ const CompanyHome = ({ companyData }: CompanyComponentProps) => {
                 >
                   <FilterAltIcon fontSize={"small"} />
                 </IconButton>
+                <CompanyFilterComponent
+                  companyData={companyData}
+                  anchorEl={anchorEl}
+                  open={open}
+                  handleClose={handleClose}
+                />
               </Grid>
               <Grid item xs={"auto"}>
                 <Tooltip title="Export" arrow>
@@ -161,13 +159,6 @@ const CompanyHome = ({ companyData }: CompanyComponentProps) => {
           </Switch>
         </Grid>
       </Box>
-      <CompanyFilterComponent
-        companyData={companyData}
-        anchorEl={anchorEl}
-        open={open}
-        handleClose={handleClose}
-        itemsCallBackHandler={itemsCallBackHandler}
-      />
     </>
   );
 };
