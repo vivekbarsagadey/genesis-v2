@@ -69,7 +69,7 @@ const CompanyCreateComponent = () => {
       <Box sx={{ flexGrow: 1 }} padding={4}>
         <Grid container>
           <Grid item xs={12}>
-            <Typography variant="subtitle1">Create New Company</Typography>
+            <Typography variant="h6">Create New Company</Typography>
           </Grid>
         </Grid>
         <Grid container spacing={2} mt={2}>

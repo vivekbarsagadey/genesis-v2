@@ -5,14 +5,14 @@ import { createTheme } from "@mui/material/styles";
 export const theme = createTheme({
   typography: {
     subtitle1: {
-      fontSize: 18,
-      textDecoration:'none',
+      fontSize: 12,
+      textDecoration: "none",
     },
     subtitle2: {
       fontSize: 12,
       fontWeight: 600,
       color: "#1e293b",
-      marginTop:'0.6rem'
+      marginTop: "0.6rem",
     },
     body1: {
       fontWeight: 500,
@@ -26,8 +26,7 @@ export const theme = createTheme({
       textTransform: "capitalize",
     },
   },
-  paper:{
-    backgroundColor:yellow [300]
-  }
-  
+  paper: {
+    backgroundColor: yellow[300],
+  },
 });
