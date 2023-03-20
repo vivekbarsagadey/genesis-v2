@@ -33,11 +33,17 @@ CompanyComponentProps) => {
   const [filterDataName, setFilterDataName] = useState("");
   const [filterDataEmail, setFilterDataEmail] = useState("");
 
-  const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFilterDataName(e.target.value);
+  const handleChangeName = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string[]
+  ) => {
+    setFilterDataName(value);
   };
-  const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFilterDataEmail(e.target.value);
+  const handleChangeEmail = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string[]
+  ) => {
+    setFilterDataEmail(value);
   };
 
   return (
@@ -56,6 +62,7 @@ CompanyComponentProps) => {
             <Stack>
               <Autocomplete
                 size="small"
+                onChange={handleChangeName}
                 freeSolo
                 disableClearable
                 options={Array.from(new Set(companyData?.map((f) => f.name)))}
@@ -69,8 +76,6 @@ CompanyComponentProps) => {
                     }}
                   />
                 )}
-                // onChange={(event, value) => setFilterDataName(value)}
-                onChange={handleChangeName}
               />
             </Stack>
           </FilterStyle>
@@ -80,6 +85,7 @@ CompanyComponentProps) => {
             <Stack>
               <Autocomplete
                 size="small"
+                onChange={handleChangeEmail}
                 freeSolo
                 disableClearable
                 options={Array.from(new Set(companyData.map((id) => id.email)))}
@@ -93,8 +99,6 @@ CompanyComponentProps) => {
                     }}
                   />
                 )}
-                // onChange={(event, value) => setFilterDataEmail(value)}
-                onChange={handleChangeEmail}
               />
             </Stack>
           </FilterStyle>
