@@ -7,8 +7,8 @@ const createCompany = async (company) => {
     });
     return response;
 }
-const updateCompany = async (_id,company) => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/companies/${_id}`, {
+const updateCompany = async (id,company) => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/companies/${id}`, {
         credentials: 'include',
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },

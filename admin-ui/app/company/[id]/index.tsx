@@ -9,10 +9,10 @@ import Box from "@mui/material/Box/Box";
 
 type CompanyComponentProps = {
   company: any;
-  _id: string;
+  id: string;
 };
 
-const CompanyEditComponent = ({ company, _id }: CompanyComponentProps) => {
+const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
   const router = useRouter();
   const [firstName, setFirstName] = useState(company.firstName);
   const [lastName, setLastName] = useState(company.lastName);
@@ -64,7 +64,7 @@ const CompanyEditComponent = ({ company, _id }: CompanyComponentProps) => {
         website: companyWebsite,
         foundationYear: companyFoundationYear,
       };
-      await updateCompany(_id, body);
+      await updateCompany(id, body);
       await router.push("/company");
     } catch (error) {
       console.error(error);
