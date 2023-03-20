@@ -6,6 +6,13 @@ import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import ICompany from "../company.model";
+import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
+
+const FilterStyle = styled(Grid)(({ theme }) => ({
+  width: 300,
+  padding: "1rem",
+}));
 
 type CompanyComponentProps = {
   handleClose: () => void;
@@ -48,47 +55,50 @@ const CompanyFilterComponent = ({
         }}
       >
         <Grid item xs={8}>
-          <Stack sx={{ width: 300, padding: "1rem" }}>
-            <Autocomplete
-              size="small"
-              freeSolo
-              disableClearable
-              options={Array.from(new Set(companyData?.map((f) => f.name)))}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Name"
-                  InputProps={{
-                    ...params.InputProps,
-                    type: "search",
-                  }}
-                />
-              )}
-              onChange={(event, value) => setFilterDataName(value)}
-            />
-          </Stack>
+          <FilterStyle>
+            <Stack>
+              <Autocomplete
+                size="small"
+                freeSolo
+                disableClearable
+                options={Array.from(new Set(companyData?.map((f) => f.name)))}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Name"
+                    InputProps={{
+                      ...params.InputProps,
+                      type: "search",
+                    }}
+                  />
+                )}
+                onChange={(event, value) => setFilterDataName(value)}
+              />
+            </Stack>
+          </FilterStyle>
         </Grid>
         <Grid item xs={8}>
-          
-          <Stack sx={{ width: 300, padding: "1rem" }}>
-            <Autocomplete
-              size="small"
-              freeSolo
-              disableClearable
-              options={Array.from(new Set(companyData.map((id) => id.email)))}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Email"
-                  InputProps={{
-                    ...params.InputProps,
-                    type: "search",
-                  }}
-                />
-              )}
-              onChange={(event, value) => setFilterDataEmail(value)}
-            />
-          </Stack>
+          <FilterStyle>
+            <Stack>
+              <Autocomplete
+                size="small"
+                freeSolo
+                disableClearable
+                options={Array.from(new Set(companyData.map((id) => id.email)))}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Email"
+                    InputProps={{
+                      ...params.InputProps,
+                      type: "search",
+                    }}
+                  />
+                )}
+                onChange={(event, value) => setFilterDataEmail(value)}
+              />
+            </Stack>
+          </FilterStyle>
         </Grid>
 
         <Grid container mb={1} mt={2}>
@@ -97,19 +107,13 @@ const CompanyFilterComponent = ({
             <Button
               variant="contained"
               size="small"
-              style={{ textTransform: "capitalize" }}
               onClick={() => handleClose()}
             >
               Cancel
             </Button>
           </Grid>
           <Grid item xs={1}>
-            <Button
-              variant="contained"
-              size="small"
-              style={{ textTransform: "capitalize" }}
-              onClick={doFilter}
-            >
+            <Button variant="contained" size="small" onClick={doFilter}>
               Save
             </Button>
           </Grid>
