@@ -1,53 +1,71 @@
 "use client";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import EditIcon from "@mui/icons-material/Edit";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
-import Checkbox from "@mui/material/Checkbox";
+import {
+  Box,
+  Grid,
+  IconButton,
+  Paper,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import Link from "next/link";
 
-const InfoProjectComponent = ({ items }) => {
+type CompanyComponentProps = {
+  items: any;
+};
+
+const InfoProjectComponent = ({ items }: CompanyComponentProps) => {
   return (
-    <Grid mt={0.6}>
+    <Box mr={2} mt={0.6}>
       <Paper variant="outlined">
         <Grid container>
-          <Grid item xs={0.12}></Grid>
-          <Grid item xs={0.5}>
-            <Checkbox size="small" />
-          </Grid>
-          <Grid item xs={1.45}>
-            <Tooltip title="View">
-              <IconButton>
-                <RemoveRedEyeIcon fontSize="small" />
-              </IconButton>
-            </Tooltip>
-          </Grid>
-          <Grid item xs={2.5}>
-            <Typography variant="body2"> {items.name}</Typography>
-          </Grid>
-          <Grid item xs={2.7}>
-            <Typography variant="body2">{items.customerName}</Typography>
-          </Grid>
-          <Grid item xs={4} sm={3.2}>
-            <Grid container display={"flex"} alignItems={"center"}>
-              <Grid item xs={12}>
-                <Typography variant="body2">{items.application}</Typography>
+          <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
+            <Grid container ml={1}>
+              <Grid item xs={4}>
+                <IconButton>
+                  <CheckBoxOutlineBlankIcon fontSize="small" />
+                </IconButton>
+              </Grid>
+              <Grid item xs={6}>
+                <IconButton>
+                  <RemoveRedEyeIcon fontSize="small" />
+                </IconButton>
               </Grid>
             </Grid>
           </Grid>
+
+          <Grid item xs={3}>
+            <Typography variant="body2" noWrap>
+              {items.name}
+            </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography variant="body2" noWrap>
+              {items.customerName}
+            </Typography>
+          </Grid>
+          <Grid item xs={2} mr={7}>
+            <Typography variant="body2" noWrap>
+              {items.application}
+            </Typography>
+          </Grid>
+
           <Grid item xs={1}>
             <Grid container>
-              <Grid item xs={3.8}>
-                <Link href={"/project/-1"} passHref>
-                  <Tooltip title="Edit">
+              <Grid item xs={4}>
+                <Tooltip title="Edit">
+                  <Link href={"/project/-1"} passHref>
                     <IconButton>
                       <EditIcon fontSize="small" />
                     </IconButton>
-                  </Tooltip>
-                </Link>
+                  </Link>
+                </Tooltip>
               </Grid>
-              <Grid item xs={4}>
-                <Tooltip title="Download">
+              <Grid item xs={2}>
+                <Tooltip title="Delete">
                   <IconButton>
                     <FileDownloadIcon fontSize="small" />
                   </IconButton>
@@ -57,7 +75,7 @@ const InfoProjectComponent = ({ items }) => {
           </Grid>
         </Grid>
       </Paper>
-    </Grid>
+    </Box>
   );
 };
 

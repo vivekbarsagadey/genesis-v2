@@ -1,162 +1,126 @@
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Box, Checkbox, Grid, Typography } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import Pagination from "@mui/material/Pagination";
+"use client";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import { Box, Grid, IconButton, Pagination, Typography } from "@mui/material";
+import Paper from "@mui/material/Paper";
 import { useState } from "react";
-import ICompanyComponentProps from "../company.props";
-import GridViewInfoComponent from "./grid.view.infocomponent";
-import usePagination from "./pagination";
+import ICompany from "../company.model";
+import InfoCompanyComponent from "../info";
+import CompanyPagination from "./company.list.pagination";
 
-interface ListComponentProps extends ICompanyComponentProps {
-  companies;
-  setCompanies;
-}
-const ListViewComponent = ({ companies, setCompanies }: ListComponentProps) => {
-  const [sortCompanyName, setSortCompanyName] = useState(true);
-  const [sortCompanyEmail, setSortCompanyEmail] = useState(true);
-  const [sortCompanyContact, setSortCompanyContact] = useState(true);
-  const [sortCompanyAddress, setSortCompanyAddress] = useState(true);
+type CompanyComponentProps = {
+  companyData: Array<ICompany>;
+  Items: any;
+  searchCompany: String;
+};
+
+const ListViewComponent = ({
+  companyData,
+  searchCompany,
+}: CompanyComponentProps) => {
+  //pagination logic
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
+  const count = Math.ceil(companyData.length / PER_PAGE);
+  const _DATA = CompanyPagination(companyData, PER_PAGE);
 
-  const count = Math.ceil(companies.length / PER_PAGE);
-  const _DATA = usePagination(companies, PER_PAGE);
-
-  const handleChange = (e, p) => {
+  const handleChangePage = (e, p) => {
     setPage(p);
     _DATA.jump(p);
   };
 
-  const handleClick = () => {
-    setSortCompanyName(!sortCompanyName);
-    const sortData = [...companies].sort((a, b) => {
-      return a.name > b.name ? 1 : -1;
-    });
-    setCompanies(sortData);
-  };
-  const handleSort = () => {
-    setSortCompanyName(!sortCompanyName);
-    const sortData = [...companies].sort().reverse();
-    setCompanies(sortData);
-  };
-
-  const handleClickEmail = () => {
-    setSortCompanyEmail(!sortCompanyEmail);
-    const sortData = [...companies].sort((a, b) => {
-      return a.email > b.email ? 1 : -1;
-    });
-    setCompanies(sortData);
-  };
-  const handleSortEmail = () => {
-    setSortCompanyEmail(!sortCompanyEmail);
-    const sortData = [...companies].sort().reverse();
-    setCompanies(sortData);
-  };
-
-  const handleClickContact = () => {
-    setSortCompanyContact(!sortCompanyContact);
-    const sortData = [...companies].sort((a, b) => {
-      return a.contact > b.contact ? 1 : -1;
-    });
-    setCompanies(sortData);
-  };
-  const handleSortContact = () => {
-    setSortCompanyContact(!sortCompanyContact);
-    const sortData = [...companies].sort().reverse();
-    setCompanies(sortData);
-  };
-
-  const handleClickAddress = () => {
-    setSortCompanyAddress(!sortCompanyContact);
-    const sortData = [...companies].sort((a, b) => {
-      return a.address > b.address ? 1 : -1;
-    });
-    setCompanies(sortData);
-  };
-  const handleSortAddress = () => {
-    setSortCompanyAddress(!sortCompanyContact);
-    const sortData = [...companies].sort().reverse();
-    setCompanies(sortData);
-  };
-
   return (
     <>
-      <Box>
-        <Grid container>
-          <Grid item xs={12} lg={1} sm={1} md={1}>
-            <Checkbox />
-          </Grid>
-          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}>
-            <Typography noWrap>Company Name</Typography>
+      <Box mr={2} mt={2}>
+        <Paper variant="outlined">
+          <Grid container>
+            <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
+              <Grid container ml={1}>
+                <Grid item xs={4}>
+                  <IconButton>
+                    <CheckBoxOutlineBlankIcon fontSize="small" />
+                  </IconButton>
+                </Grid>
+                <Grid item xs={6}>
+                  <IconButton>
+                    <RemoveRedEyeIcon fontSize="small" />
+                  </IconButton>
+                </Grid>
+              </Grid>
+            </Grid>
 
-            {sortCompanyName === true ? (
-              <IconButton onClick={handleClick} id="sort-a-z">
-                <ExpandLessIcon />
-              </IconButton>
-            ) : (
-              <IconButton onClick={handleSort}>
-                <KeyboardArrowDownIcon />
-              </IconButton>
-            )}
+            <Grid item xs={2}>
+              <Typography variant="subtitle2" noWrap>
+                Company Name
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography variant="subtitle2" noWrap>
+                Email
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                variant="subtitle2"
+                noWrap
+                display={"flex"}
+                justifyContent={"space-around"}
+              >
+                Contact
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                variant="subtitle2"
+                noWrap
+                display={"flex"}
+                justifyContent={"space-around"}
+              >
+                Address
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                variant="subtitle2"
+                display={"flex"}
+                justifyContent={"space-around"}
+                noWrap
+              >
+                Action
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}>
-            <Typography noWrap>Email</Typography>
-            {sortCompanyEmail === true ? (
-              <IconButton onClick={handleClickEmail} id="sort-a-z">
-                <ExpandLessIcon />
-              </IconButton>
-            ) : (
-              <IconButton onClick={handleSortEmail}>
-                <KeyboardArrowDownIcon />
-              </IconButton>
-            )}
-          </Grid>
-          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}>
-            <Typography noWrap>Contact</Typography>
-            {sortCompanyContact === true ? (
-              <IconButton onClick={handleClickContact} id="sort-a-z">
-                <ExpandLessIcon />
-              </IconButton>
-            ) : (
-              <IconButton onClick={handleSortContact}>
-                <KeyboardArrowDownIcon />
-              </IconButton>
-            )}
-          </Grid>
-          <Grid item xs={2.5} lg={2.5} sm={2.5} md={2.5}>
-            <Typography noWrap>Address</Typography>
-            {sortCompanyAddress === true ? (
-              <IconButton onClick={handleClickAddress} id="sort-a-z">
-                <ExpandLessIcon />
-              </IconButton>
-            ) : (
-              <IconButton onClick={handleSortAddress}>
-                <KeyboardArrowDownIcon />
-              </IconButton>
-            )}
-          </Grid>
-          <Grid item xs={1} lg={1} sm={1} md={1}>
-            <Typography noWrap>Action</Typography>
+        </Paper>
+      </Box>
+      <Grid style={{ height: "62vh" }}>
+        {_DATA
+          .currentData()
+          .reverse()
+          .filter((ele) =>
+            ele.name.toLowerCase().includes(searchCompany.toLowerCase())
+          )
+          ?.map((Items: CompanyComponentProps, index) => {
+            return (
+              <Typography key={index}>
+                <InfoCompanyComponent Items={Items} />
+              </Typography>
+            );
+          })}
+      </Grid>
+
+      <Grid container mt={4}>
+        <Grid item xs={12} display={"flex"} justifyContent={"flex-end"}>
+          <Grid style={{ position: "fixed" }}>
+            <Pagination
+              count={count}
+              size="small"
+              page={page}
+              variant="outlined"
+              color="primary"
+              onChange={handleChangePage}
+            />
           </Grid>
         </Grid>
-      </Box>
-
-      {_DATA.currentData()?.map((c) => {
-        return <GridViewInfoComponent key={c._id} c={c} />;
-      })}
-
-      <Grid container  pt={2}>
-        <div>
-          <Pagination
-            count={count}
-            size="medium"
-            page={page}
-            color="primary"
-            variant="outlined"
-            onChange={handleChange}
-          />
-        </div>
       </Grid>
     </>
   );

@@ -1,50 +1,32 @@
-import SearchIcon from "@mui/icons-material/Search";
-import { Grid, IconButton } from "@mui/material";
-import TextField from "@mui/material/TextField";
-import { Box } from "@mui/system";
 import { useState } from "react";
-import ICompanyComponentProps from "../company.props";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
 
-interface SearchComponentProps extends ICompanyComponentProps {}
+type CompanyComponentProps = {
+  getSearchedCompanyName: any;
+};
 
-const SearchComponent = ({
-  items,
-  itemsCallBackHandler = () => {},
-}: SearchComponentProps) => {
-  const [search, setSearch] = useState("");
-
+const CompanySearchDetails = ({
+  getSearchedCompanyName = () => {},
+}: CompanyComponentProps) => {
+  const [searchCompany, setSearchCompany] = useState("");
   const getSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-  };
-
-  const doSearch = () => {
-    itemsCallBackHandler(
-      items.filter((ele) =>
-        ele.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-      )
-    );
+    setSearchCompany(e.target.value);
+    getSearchedCompanyName(e.target.value);
   };
 
   return (
-    <>
+    <div>
       <Grid item xs={12}>
-        <Box>
-          <TextField
-            fullWidth
-            label="Search"
-            id="Search"
-            type="text"
-            size="small"
-            placeholder="Search"
-            onChange={getSearch}
-          />
-          <IconButton onClick={doSearch}>
-            <SearchIcon />
-          </IconButton>
-        </Box>
+        <TextField
+          placeholder="Search by Company Name"
+          size="small"
+          value={searchCompany}
+          onChange={getSearch}
+          fullWidth
+        />
       </Grid>
-    </>
+    </div>
   );
 };
-
-export default SearchComponent;
+export default CompanySearchDetails;

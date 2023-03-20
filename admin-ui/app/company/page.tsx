@@ -1,24 +1,26 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import HomeComponent from "./index";
+import CompanyHome from ".";
+import ICompany from "./company.model";
 
+const company = Array<ICompany>();
 
 const Page = () => {
-  const [companies, setCompanies] = useState([]);
+  const [company, setCompany] = useState([]);
 
+  const fetchData = async () => {
+    const users = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/companies`);
+    const result = await users.json();
+    setCompany(result);
+  };
   useEffect(() => {
     fetchData();
   }, []);
-  const fetchData = async () => {
-    const users = await fetch(`${process.env.NEXT_PUBLIC_API_URL}\\companies`);
-    const result = await users.json();
-    setCompanies(result);
-  };
 
   return (
-    <>
-      <HomeComponent items={companies}></HomeComponent>
-    </>
+    <div>
+      <CompanyHome companyData={company}> </CompanyHome>
+    </div>
   );
 };
 

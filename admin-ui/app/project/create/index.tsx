@@ -3,11 +3,11 @@ import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { applicationType } from "../../../component/common/data/project/application.type";
-
-
-interface IApplicationType {
+import Stack from "@mui/material/Stack";
+import Autocomplete from "@mui/material/Autocomplete";
+type IApplicationType={
   id: Number;
   type: String;
   label: String;
@@ -17,14 +17,36 @@ const ProjectCreate = () => {
   const [customerName, setCustomerName] = useState<String>("");
   const [application, setApplication] = useState<String>("");
   const router = useRouter();
+  const [companyList, setCompanyList] = useState([]);
+  const fetchData = async () => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/companies`
+    );
+    if (!response.ok) {
+      throw new Error("Data coud not be fetched!");
+    } else {
+      return response.json();
+    }
+  };
+  useEffect(() => {
+    fetchData()
+      .then((res) => {
+        setCompanyList(res);
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
+  }, []);
   const getApplicationType = (_TypeR) => {
     setApplication(_TypeR.label);
   };
   const updateProjectName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProjectName(e.target.value);
   };
-  const updateCustomerName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCustomerName(e.target.value);
+
+  const updateCustomerName = (e: React.SyntheticEvent, value: string[]) => {
+    console.log("value >>", value);
+    setCustomerName(value);
   };
 
   const updateMyProjectData = async () => {
@@ -41,7 +63,6 @@ const ProjectCreate = () => {
     }).then((res) => res.json());
     router.push("/project");
   };
-
   return (
     <div>
       <Grid container>
@@ -75,26 +96,39 @@ const ProjectCreate = () => {
                     />
                   </Grid>
                 </Grid>
-
                 <Grid container mt={3}>
                   <Grid item xs={3.3} mt={1}>
-                    <Typography>Customer Name </Typography>
+                    <Typography>Company Name </Typography>
                   </Grid>
                   <Grid item xs={0.7} mt={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6.5}>
-                    <TextField
-                      placeholder="Create Customer Name"
-                      id="outlined-basic"
-                      size={"small"}
-                      fullWidth
-                      value={customerName}
-                      onChange={updateCustomerName}
-                    />
+                    <Stack>
+                      <Autocomplete
+                        size="small"
+                        onChange={updateCustomerName}
+                        freeSolo
+                        id="free-solo-2-demo"
+                        disableClearable
+                        options={companyList?.map((company) => company.name)}
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            InputProps={{
+                              ...params.InputProps,
+                              type: "search",
+                            }}
+                            placeholder="Customer Name"
+                          />
+                        )}
+                      />
+                    </Stack>
                   </Grid>
+                  <Link   href={"/company/create"} >
+                    <Button>+Add Company</Button>
+                  </Link>
                 </Grid>
-
                 <Grid container mt={3}>
                   <Grid item xs={3.3} mt={3}>
                     <Typography>Application</Typography>
@@ -119,19 +153,17 @@ const ProjectCreate = () => {
                     </Grid>
                   </Grid>
                 </Grid>
-
                 <Grid container mt={6}>
                   <Grid item xs={8.3}></Grid>
                   <Grid item xs={3}>
                     <Grid container>
                       <Grid item xs={5.6}>
                         <Link href={"/project"} passHref>
-                          <Button variant="contained" size="small" >
+                          <Button variant="contained" size="small">
                             Cancel
                           </Button>
                         </Link>
                       </Grid>
-
                       <Grid item xs={6}>
                         <Button
                           variant="contained"
@@ -152,7 +184,6 @@ const ProjectCreate = () => {
     </div>
   );
 };
-
 const ApplicationDetails = ({ application, getApplicationType }) => {
   return (
     <Grid container alignItems={"center"}>
@@ -165,5 +196,4 @@ const ApplicationDetails = ({ application, getApplicationType }) => {
     </Grid>
   );
 };
-
 export default ProjectCreate;

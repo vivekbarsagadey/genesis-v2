@@ -3,7 +3,7 @@ import { Grid } from "@mui/material";
 import { useSession } from "next-auth/react";
 import HeaderComponent from "./header";
 import Logo from "./Sidebar/logo";
-import ProjectSidebar from "./../common/sidebar/projectsidebar/project.sidebar"
+import ProjectSidebar from "./../common/sidebar/projectsidebar/project.sidebar";
 
 const LayoutComponent = ({ children }: { children: React.ReactNode }) => {
   const { data: session } = useSession();
@@ -19,7 +19,6 @@ const LayoutComponent = ({ children }: { children: React.ReactNode }) => {
         <Grid container>
           <Grid
             pl={2}
-            pt={2}
             pr={1}
             item
             xs={show ? 1.5 : 1.5}

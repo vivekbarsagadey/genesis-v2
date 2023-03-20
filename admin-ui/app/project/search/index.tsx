@@ -2,8 +2,9 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 
 const ProjectSearch = ({ projectSearchList, handleCallback }) => {
-  const getSearch = (event) => {
-    handleCallback(event.target.value);
+  const getSearch = (e:React.ChangeEvent<HTMLInputElement>
+    ) => {
+    handleCallback(e.target.value);
   };
 
   return (

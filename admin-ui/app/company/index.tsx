@@ -1,132 +1,166 @@
 "use client";
-import AddIcon from "@mui/icons-material/Add";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
-import { Button, Grid, IconButton, Tooltip, Typography } from "@mui/material";
+import { Box, Button, Grid, IconButton } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Tooltip from "@mui/material/Tooltip";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Case, Default, Switch } from "react-if";
+import CompanyCsvGenerator from "../utility/company/csv.generator";
+import CompanyExcellGenerator from "../utility/company/excell.generator";
+import CompanyPdfGenerator from "../utility/company/pdf.generator";
 import ICompany from "./company.model";
-import FilterComponent from "./filters";
-import GridViewComponent from "./list";
-import CalenderViewComponent from "./list/calender.view.component";
-import GraphViewComponent from "./list/graph.view.component";
+import CompanyFilterComponent from "./filters";
+import CompanyCalendarView from "./list/calendar.view";
+import CompanyGraphView from "./list/graph.view";
+import CompanyGridView from "./list/grid.view";
+import CompanyKanbanView from "./list/kanban.view";
 import ListViewComponent from "./list/list.view.component";
-import SearchComponent from "./search";
-import ViewsComponent from "./view";
+import CompanySearchDetails from "./search";
+import CompanyViewComponent from "./view";
 
-interface HomeComponentProps {
-  items: Array<ICompany>;
-}
+type CompanyComponentProps = {
+  companyData: Array<ICompany>;
+  copyCompanyData: Array<ICompany>;
+};
 
-const HomeComponent = ({ items }: HomeComponentProps) => {
-  const [count, setCount] = useState("Grid");
-  const [companies, setCompanies] = useState(items);
+const CompanyHome = ({ companyData }: CompanyComponentProps) => {
+  const [copyCompanyData, setCopyComponentData] = useState(companyData); // This is a duplicate Json Data
+  const [count, setCount] = useState("List");
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [menuItem, setmenuItem] = useState<null | HTMLElement>(null);
+  const [searchCompany, setSearchCompany] = useState("");
+
+  const open = Boolean(anchorEl);
+  const Open = Boolean(menuItem);
+
+ 
 
   useEffect(() => {
-    setCompanies(items);
-  }, [items]);
+    setCopyComponentData(companyData);
+  }, [companyData]);
 
-  const itemsCallBackHandler = (_items: Array<ICompany>) => {
-    setCompanies(_items);
-  };
   const handleCount = (data: string) => {
     setCount(data);
   };
-
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClickData = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setmenuItem(event.currentTarget);
+  };
+  const handleClose1 = () => {
+    setmenuItem(null);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const getSearchedCompanyName = (_searchCompanyRecv) => {
+    setSearchCompany(_searchCompanyRecv);
+  };
   return (
     <>
-      <Grid container spacing={2} p={3}>
-        <Grid item xs={12} sm={4} md={4} lg={4}>
-          <SearchComponent
-            items={companies}
-            itemsCallBackHandler={itemsCallBackHandler}
-          />
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={6}
-          lg={6}
-          display="flex"
-          alignItems="center"
-        >
-          <Tooltip title="Filter">
-            <IconButton>
-              <FilterAltIcon />
-            </IconButton>
-          </Tooltip>
+      <Box sx={{ flexGrow: 1 }} mt={1}>
+        <Grid container spacing={2}>
+          <Grid item xs={3} md={3} lg={3} sm={3}>
+            <CompanySearchDetails
+              getSearchedCompanyName={getSearchedCompanyName}
+            />
+          </Grid>
+          <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
+            <Grid container spacing={1}>
+              <Grid item xs={"auto"}>
+                <IconButton
+                  aria-controls={open ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
+                >
+                  <FilterAltIcon fontSize={"small"} />
+                </IconButton>
+                <CompanyFilterComponent
+                  companyData={companyData}
+                  anchorEl={anchorEl}
+                  open={open}
+                  handleClose={handleClose}
+                />
+              </Grid>
+              <Grid item xs={"auto"}>
+                <Tooltip title="Export" arrow>
+                  <IconButton
+                    aria-controls={Open ? "basic-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={Open ? "true" : undefined}
+                    onClick={handleClickData}
+                  >
+                    <FileDownloadOutlinedIcon fontSize="small" />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={menuItem}
+                  open={Open}
+                  onClose={handleClose1}
+                  MenuListProps={{
+                    "aria-labelledby": "basic-button",
+                  }}
+                >
+                  <MenuItem>
+                    <CompanyExcellGenerator copyCompanyData={copyCompanyData} />
+                  </MenuItem>
+                  <MenuItem>
+                    <CompanyPdfGenerator copyCompanyData={copyCompanyData} />
+                  </MenuItem>
+                  <MenuItem>
+                    <CompanyCsvGenerator copyCompanyData={copyCompanyData} />
+                  </MenuItem>
+                </Menu>
+              </Grid>
 
-          <Tooltip title="Export">
-            <IconButton>
-              <FileDownloadOutlinedIcon />
-            </IconButton>
-          </Tooltip>
-          <Menu>
-            <MenuItem>
-              <Typography fontSize="0.8rem">Excel</Typography>
-            </MenuItem>
-            <MenuItem>
-              <Typography>PDF</Typography>
-            </MenuItem>
-            <MenuItem>
-              <Typography>CSV</Typography>
-            </MenuItem>
-          </Menu>
-          <ViewsComponent handleCount={handleCount} />
-        </Grid>
-
-        <Grid item xs={12} sm={2} md={2} lg={2} textAlign="right">
-          <IconButton>
-            <DeleteOutlineIcon />
-          </IconButton>
-          <Link passHref>
-            <Tooltip title="Create">
-              <Button variant="contained">
-                <AddIcon fontSize="small" /> Create
+              <Grid item xs={10}>
+                <CompanyViewComponent handleCount={handleCount} />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={1}>
+            <Link href={"/company/create"} passHref>
+              <Button variant="contained" size="small">
+                Create
+                <span>+</span>
               </Button>
-            </Tooltip>
-          </Link>
+            </Link>
+          </Grid>
         </Grid>
-      </Grid>
-
-      <Grid item xs={12} pl={3} pr={3} pt={1}>
-        {(() => {
-          switch (count) {
-            case "List":
-              return (
-                <ListViewComponent
-                  companies={companies}
-                  setCompanies={setCompanies}
-                ></ListViewComponent>
-              );
-            case "Graph":
-              return (
-                <GraphViewComponent items={companies}></GraphViewComponent>
-              );
-            case "Calender":
-              return (
-                <CalenderViewComponent
-                  items={companies}
-                ></CalenderViewComponent>
-              );
-            default:
-              return <GridViewComponent items={companies} />;
-          }
-        })()}
-      </Grid>
-
-      <div>
-        <FilterComponent
-          items={items}
-          itemsCallBackHandler={itemsCallBackHandler}
-        />
-      </div>
+        <Grid item xs={12}>
+          <Switch>
+            <Case condition={count === "Grid"}>
+              <CompanyGridView
+                copyCompanyData={copyCompanyData}
+                searchCompany={searchCompany}
+              />
+            </Case>
+            <Case condition={count === "Graph"}>
+              <CompanyGraphView />
+            </Case>
+            <Case condition={count === "Kanban"}>
+              <CompanyKanbanView />
+            </Case>
+            <Case condition={count === "Calendar"}>
+              <CompanyCalendarView copyCompanyData={copyCompanyData} />
+            </Case>
+            <Default>
+              <ListViewComponent
+                companyData={copyCompanyData}
+                searchCompany={searchCompany}
+              />
+            </Default>
+          </Switch>
+        </Grid>
+      </Box>
     </>
   );
 };
 
-export default HomeComponent;
+export default CompanyHome;

@@ -1,54 +1,100 @@
-import { Avatar, Card, IconButton, Tooltip, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid";
-import React from "react";
-import ICompanyComponentProps from "../company.props";
-
+"use client";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
 import Link from "next/link";
-
-interface InfoComponentProps extends ICompanyComponentProps {}
-const InfoComponent = ({ item }) => {
+import { deleteCompany } from "../../../services/company.action";
+type CompanyInfoProps = {
+  id: string;
+  Items: any;
+  item: any;
+};
+const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
+  const deleteCompanyHandler = async (id) => {
+    const response = await deleteCompany(id);
+    window.location.reload();
+  };
   return (
-    <Grid item xs={12} lg={4} sm={6}>
-      <Card>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Tooltip title="Delete">
-              <IconButton>
-                <DeleteOutlineIcon fontSize="small" />
-              </IconButton>
-            </Tooltip>
-            <Link href={`/company/${item._id}`}>
-              <Tooltip title="Edit">
-                <IconButton>
-                  <EditIcon fontSize="small" />
-                </IconButton>
-              </Tooltip>
-            </Link>
-          </Grid>
-          <Grid item xs={3} sm={3} lg={3} md={3}>
-            <Avatar />
-          </Grid>
-          <Grid item xs={9} sm={9} lg={9} md={9}>
-            <Grid container spacing={2}>
-              <Grid item xs={6} sm={6} lg={6} md={6}>
-                <Typography noWrap>Company Name:</Typography>
-                <Typography>Email:</Typography>
-                <Typography>Contact:</Typography>
-                <Typography>Address:</Typography>
+    <>
+      <Box mt={0.6} mr={2}>
+        <Paper variant="outlined">
+          <Grid container>
+            <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
+              <Grid container ml={1}>
+                <Grid item xs={4}>
+                  <IconButton>
+                    <CheckBoxOutlineBlankIcon fontSize="small" />
+                  </IconButton>
+                </Grid>
+                <Grid item xs={6}>
+                  <IconButton>
+                    <RemoveRedEyeIcon fontSize="small" />
+                  </IconButton>
+                </Grid>
               </Grid>
-              <Grid item xs={6} sm={6} lg={6} md={6}>
-                <Typography noWrap>{item.name}</Typography>
-                <Typography noWrap>{item.email}</Typography>
-                <Typography noWrap>{item.mobile}</Typography>
-                <Typography noWrap>{item.address}</Typography>
+            </Grid>
+
+            <Grid item xs={2}>
+              <Typography variant="body2" noWrap>
+                {Items.name}
+              </Typography>
+            </Grid>
+            <Grid item xs={2} mr={1}>
+              <Typography variant="body2" noWrap>
+                {Items.email}
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                variant="body2"
+                noWrap
+                display={"flex"}
+                justifyContent={"space-around"}
+              >
+                {" "}
+                {Items.mobile}
+              </Typography>
+            </Grid>
+            <Grid item xs={2} mr={6}>
+              <Typography
+                variant="body2"
+                noWrap
+                display={"flex"}
+                justifyContent={"space-around"}
+              >
+                {Items.address}
+              </Typography>
+            </Grid>
+            <Grid item xs={1}>
+              <Grid container>
+                <Grid item xs={4}>
+                  <Tooltip title="Edit">
+                    <Link href={`/company/${Items.id}`}>
+                      <IconButton>
+                        <EditIcon fontSize="small" />
+                      </IconButton>
+                    </Link>
+                  </Tooltip>
+                </Grid>
+                <Grid item xs={2}>
+                  <Tooltip title="Delete">
+                    <IconButton>
+                      <DeleteOutlineIcon
+                        fontSize="small"
+                        onClick={() => deleteCompanyHandler(Items.id)}
+                      />
+                    </IconButton>
+                  </Tooltip>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </Card>
-    </Grid>
+        </Paper>
+      </Box>
+    </>
   );
 };
-export default InfoComponent;
+export default InfoCompanyComponent;

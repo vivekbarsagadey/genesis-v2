@@ -1,29 +1,34 @@
 "use client";
+import DeleteIcon from "@mui/icons-material/Delete";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
-import { Button, Grid, IconButton, Typography } from "@mui/material";
+import { Button, Grid, IconButton } from "@mui/material";
+import Chip from "@mui/material/Chip";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { URL } from "../utility/apiurl/apiurl";
-import CsvGenerator from "../utility/project/CsvGenerator";
-import ExcellGenerator from "../utility/project/ExcellGenerator";
-import PdfGenerator from "../utility/project/PdfGenerator";
+import CsvGenerator from "../utility/project/csv.generator";
+import ExcellGenerator from "../utility/project/excell.generator";
+import PdfGenerator from "../utility/project/pdf.generator";
 import ProjectFilter from "./filter";
 import ProjectListComponent from "./list";
 import ProjectCalendarView from "./list/calendar.view";
 import ProjectGraphView from "./list/graph.view";
 import ProjectGridView from "./list/grid.view";
 import ProjectKanbanView from "./list/kanban.view";
+import IProject from "./project.model";
 import ProjectSearch from "./search";
 import ProjectViewComponent from "./view";
-import Chip from "@mui/material/Chip";
-import DeleteIcon from "@mui/icons-material/Delete";
 
-const ProjectHomeComponent = () => {
-  const [projectData, setProjectData] = useState([]); // This is a original json Data
+type ProjectComponentProps = {
+  projectData: any;
+  copyProject: any;
+  _items: any;
+};
+
+const ProjectHomeComponent = ({ projectData }: ProjectComponentProps) => {
   const [copyProject, setCopyProject] = useState(projectData); // This is a duplicate Json Data
   const [count, setCount] = useState("List"); // This is a different different type of View Count (List,Grid,Calendar,etc)
   const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
@@ -33,26 +38,9 @@ const ProjectHomeComponent = () => {
   const [filterChipType, setFilterChipType] = useState(false);
 
   const open = Boolean(anchorEl);
-
-  const fetchData = () => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`)
-      .then((r) => {
-        return r.json();
-      })
-      .then((d) => {
-        setProjectData(d);
-      });
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const itemsCallBackHandler = (_items) => {
-    setProjectData(_items);
+    setCopyProject(_items);
   };
-  console.log("projectData >>", projectData);
-
   useEffect(() => {
     setCopyProject(projectData);
   }, [projectData]);
@@ -80,7 +68,7 @@ const ProjectHomeComponent = () => {
     <>
       <Grid container mt={1}>
         <Grid item xs={2.4} lg={3}>
-          <ProjectSearch projectSearchList={projectSearchList} />
+          <ProjectSearch projectSearchList={projectSearchList}/>
         </Grid>
         <Grid item xs={0.6} lg={0.4}>
           <Tooltip title="Filter" arrow>

@@ -1,35 +1,47 @@
 "use client";
-import React, { useState } from "react";
-import { Button, Grid, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import Link from "next/link";
-import ICompany from "../company.model";
 import { useRouter } from "next/navigation";
-import { updateCompany } from "../../../services/company.action";
-import Box from "@mui/material/Box/Box";
+import { useState } from "react";
+import { createCompany } from "../../../services/company.action";
 
-type CompanyComponentProps = {
-  company: any;
-  id: string;
-};
-
-const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
+const CompanyCreateComponent = () => {
+  const [ownerFirstName, setOwnerFirstName] = useState("");
+  const [ownerLastName, setOwnerLastName] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [companyEmail, setCompanyEmail] = useState("");
+  const [companyPhone, setCompanyPhone] = useState("");
+  const [companyAddress, setCompanyAddress] = useState("");
+  const [companyWebsite, setCompanyWebsite] = useState("");
+  const [companyFoundationYear, setCompanyFoundationYear] = useState("");
   const router = useRouter();
-  const [firstName, setFirstName] = useState(company.firstName);
-  const [lastName, setLastName] = useState(company.lastName);
-  const [companyName, setCompanyName] = useState(company.name);
-  const [companyEmail, setCompanyEmail] = useState(company.email);
-  const [companyPhone, setCompanyPhone] = useState(company.mobile);
-  const [companyAddress, setCompanyAddress] = useState(company.address);
-  const [companyWebsite, setCompanyWebsite] = useState(company.website);
-  const [companyFoundationYear, setCompanyFoundationYear] = useState(
-    company.foundationYear
-  );
+
+  // POST call
+  const updateMyCompanyData = async () => {
+    try {
+      const body = {
+        firstName: ownerFirstName,
+        lastName: ownerLastName,
+        name: companyName,
+        email: companyEmail,
+        mobile: companyPhone,
+        address: companyAddress,
+        website: companyWebsite,
+        foundationYear: companyFoundationYear,
+      };
+      //  console.log("this is body", body)
+      await createCompany(body);
+      await router.push("/company");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const updateOwnerFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFirstName(e.target.value);
+    setOwnerFirstName(e.target.value);
   };
   const updateOwnerLastName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLastName(e.target.value);
+    setOwnerLastName(e.target.value);
   };
   const updateCompanyName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyName(e.target.value);
@@ -52,30 +64,12 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
     setCompanyFoundationYear(e.target.value);
   };
 
-  const updateCompanyEditedData = async () => {
-    try {
-      const body = {
-        firstName: firstName,
-        lastName: lastName,
-        name: companyName,
-        email: companyEmail,
-        mobile: companyPhone,
-        address: companyAddress,
-        website: companyWebsite,
-        foundationYear: companyFoundationYear,
-      };
-      await updateCompany(id, body);
-      await router.push("/company");
-    } catch (error) {
-      console.error(error);
-    }
-  };
   return (
     <>
       <Box sx={{ flexGrow: 1 }} padding={4}>
         <Grid container>
           <Grid item xs={12}>
-            <Typography variant="subtitle1">Edit Company Details</Typography>
+            <Typography variant="h6">Create New Company</Typography>
           </Grid>
         </Grid>
         <Grid container spacing={2} mt={2}>
@@ -94,7 +88,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
                   variant="outlined"
                   size="small"
                   fullWidth
-                  value={firstName}
+                  value={ownerFirstName}
                   onChange={updateOwnerFirstName}
                 />
               </Grid>
@@ -116,7 +110,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
                   variant="outlined"
                   size="small"
                   fullWidth
-                  value={lastName}
+                  value={ownerLastName}
                   onChange={updateOwnerLastName}
                 />
               </Grid>
@@ -270,7 +264,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
                     <Button
                       variant="contained"
                       size="small"
-                      onClick={updateCompanyEditedData}
+                      onClick={updateMyCompanyData}
                     >
                       Save
                     </Button>
@@ -285,4 +279,4 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
   );
 };
 
-export default CompanyEditComponent;
+export default CompanyCreateComponent;
