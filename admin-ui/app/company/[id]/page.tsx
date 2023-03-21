@@ -2,11 +2,9 @@
 import React, { useEffect, useState } from "react";
 import CompanyEditComponent from ".";
 
-const id = "641034daa9cd62cbc29a3099";
-
-const Page = () => {
+const Page = ({ params }) => {
   const [company, setCompany] = useState([]);
-
+  const id = params.id;
   const fetchData = async () => {
     const users = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/companies/${id}`
@@ -24,4 +22,5 @@ const Page = () => {
     </>
   );
 };
+
 export default Page;
