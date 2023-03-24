@@ -5,20 +5,17 @@ import { Box, Grid, IconButton, Pagination, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { useState } from "react";
 import { PaginationHandler } from "../../utility";
-import ICompany from "../company.model";
 import InfoCompanyComponent from "../info";
+import ICompany from "../models/company.model";
 import { ListComponentProps } from "./props";
 
-
-
 const ListViewComponent = ({ companies }: ListComponentProps) => {
-  //pagination logic
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(companies.length / PER_PAGE);
   const paginationHandler = PaginationHandler(companies, PER_PAGE);
 
-  const handleChangePage = (e:any, p: number) => {
+  const handleChangePage = (e: any, p: number) => {
     setPage(p);
     paginationHandler.jump(p);
   };

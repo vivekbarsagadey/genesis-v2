@@ -10,8 +10,8 @@ const CompanyGridView = ({ companies }: ListComponentProps) => {
   // Pagination logic
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
-  const count = Math.ceil(copyCompanyData.length / PER_PAGE);
-  const _DATA = companyGridPagination(copyCompanyData, PER_PAGE);
+  const count = Math.ceil(companies.length / PER_PAGE);
+  const _DATA = companyGridPagination(companies, PER_PAGE);
 
   const handleChangePage = (e, p) => {
     setPage(p);
