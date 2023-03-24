@@ -6,24 +6,29 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import Grid from "@mui/material/Grid";
 import ICompany from "../company.model";
+import { ListComponentProps } from "./props";
 const localizer = momentLocalizer(moment);
 
-type CompanyComponentProps={
-  copyCompanyData: Array<ICompany>;
+
+
+interface CalendarEventData {
+  title: string;
+  start: Date;
+  end: Date;
 }
 
-const CompanyCalendarView = ({ copyCompanyData }: CompanyComponentProps) => {
+const CompanyCalendarView = ({ companies }: ListComponentProps) => {
   const [events, setEvents] = useState([]);
 
-  const CalendarData = copyCompanyData?.map((copyCompanyData) => {
+  const calendarCompanies = companies.map((company : ICompany) => {
     return {
-      title: copyCompanyData.firstName,
-      start: new Date(copyCompanyData.createdAt),
-      end: new Date(copyCompanyData.updatedAt),
-    };
+      title: company.name,
+      start: new Date(company.createdAt),
+      end: new Date(company.updatedAt),
+    }
   });
   useEffect(() => {
-    setEvents(CalendarData);
+    setEvents(calendarCompanies);
   }, []);
   return (
     <Grid pt={1} container height={"80vh"}>

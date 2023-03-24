@@ -11,7 +11,7 @@ import Paper from "@mui/material/Paper";
 
 const FilterStyle = styled(Grid)(({ theme }) => ({
   width: 300,
-  padding: "1rem",
+  padding: "1rem", // this is worng
 }));
 
 type CompanyComponentProps = {
@@ -30,8 +30,8 @@ const CompanyFilterComponent = ({
   handleClose,
 }: // itemsCallBackHandler = () => {},
 CompanyComponentProps) => {
-  const [filterDataName, setFilterDataName] = useState("");
-  const [filterDataEmail, setFilterDataEmail] = useState("");
+  const [filterDataName, setFilterDataName] = useState<Array<string>>([]);
+  const [filterDataEmail, setFilterDataEmail] = useState<String>();
 
   const handleChangeName = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -41,7 +41,7 @@ CompanyComponentProps) => {
   };
   const handleChangeEmail = (
     e: React.ChangeEvent<HTMLInputElement>,
-    value: string[]
+    value: string
   ) => {
     setFilterDataEmail(value);
   };
@@ -50,7 +50,6 @@ CompanyComponentProps) => {
     <Grid container spacing={2}>
       <Menu
         id="basic-menu"
-        anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
         MenuListProps={{
@@ -63,7 +62,6 @@ CompanyComponentProps) => {
               <Autocomplete
                 size="small"
                 onChange={handleChangeName}
-                freeSolo
                 disableClearable
                 options={Array.from(new Set(companyData?.map((f) => f.name)))}
                 renderInput={(params) => (
@@ -87,7 +85,6 @@ CompanyComponentProps) => {
                 size="small"
                 onChange={handleChangeEmail}
                 freeSolo
-                disableClearable
                 options={Array.from(new Set(companyData.map((id) => id.email)))}
                 renderInput={(params) => (
                   <TextField

@@ -1,6 +1,7 @@
 import React from 'react'
+import { ListComponentProps } from './props'
 
-const CompanyKanbanView = () => {
+const CompanyKanbanView = ({ companies }: ListComponentProps) => {
   return (
     <div>CompanyKanbanView</div>
   )

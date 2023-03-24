@@ -7,15 +7,15 @@ import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Link from "next/link";
 import { deleteCompany } from "../../../services/company.action";
-type CompanyInfoProps = {
-  id: string;
-  Items: any;
-  item: any;
+import ICompany from "../company.model";
+type InfoCompanyComponentProps = {
+  company : ICompany
 };
-const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
-  const deleteCompanyHandler = async (id) => {
-    const response = await deleteCompany(id);
-    window.location.reload();
+const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
+  const deleteCompanyHandler = async () => {
+    const response = await deleteCompany(company._id);
+    // route to list screen
+    //window.location.reload();
   };
   return (
     <>
@@ -39,12 +39,12 @@ const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
 
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
-                {Items.name}
+                {company.name}
               </Typography>
             </Grid>
             <Grid item xs={2} mr={1}>
               <Typography variant="body2" noWrap>
-                {Items.email}
+                {company.email}
               </Typography>
             </Grid>
             <Grid item xs={2}>
@@ -54,8 +54,7 @@ const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
                 display={"flex"}
                 justifyContent={"space-around"}
               >
-                {" "}
-                {Items.mobile}
+                {company.mobile}
               </Typography>
             </Grid>
             <Grid item xs={2} mr={6}>
@@ -65,14 +64,14 @@ const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
                 display={"flex"}
                 justifyContent={"space-around"}
               >
-                {Items.address}
+                {company.address}
               </Typography>
             </Grid>
             <Grid item xs={1}>
               <Grid container>
                 <Grid item xs={4}>
                   <Tooltip title="Edit">
-                    <Link href={`/company/${Items.id}`}>
+                    <Link href={`/company/${company._id}`}>
                       <IconButton>
                         <EditIcon fontSize="small" />
                       </IconButton>
@@ -84,7 +83,7 @@ const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
                     <IconButton>
                       <DeleteOutlineIcon
                         fontSize="small"
-                        onClick={() => deleteCompanyHandler(Items.id)}
+                        onClick={()=> {deleteCompanyHandler()}}
                       />
                     </IconButton>
                   </Tooltip>

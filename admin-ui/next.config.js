@@ -3,6 +3,7 @@ const path = require('node:path');
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  /* concurrentFeatures: true, */
   experimental:{appDir: true},
   webpack(config) {
     config.resolve.alias = {

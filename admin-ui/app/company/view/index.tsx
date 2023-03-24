@@ -5,44 +5,57 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import TimelineIcon from "@mui/icons-material/Timeline";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ViewKanbanOutlinedIcon from "@mui/icons-material/ViewKanbanOutlined";
+import { ViewTypes } from "../../utility";
 
 const viewIconsSet = [
   {
     id: 1,
-    view: "List",
+    view: ViewTypes.LIST,
     title: "List",
     icon: <ListAltIcon fontSize="small" />,
   },
   {
     id: 2,
-    view: "Grid",
+    view: ViewTypes.GRID,
     title: "Grid",
     icon: <GridViewIcon fontSize="small" />,
   },
   {
     id: 3,
-    view: "Graph",
+    view: ViewTypes.GRAPH,
     title: "Graph",
     icon: <TimelineIcon fontSize="small" />,
   },
   {
     id: 3,
-    view: "Calendar",
+    view: ViewTypes.CALENDAR,
     title: "Calendar",
     icon: <CalendarMonthIcon fontSize="small" />,
   },
   {
     id: 4,
-    view: "Kanban",
+    view: ViewTypes.KANBAN,
     title: "Kanban",
     icon: <ViewKanbanOutlinedIcon fontSize="small" />,
   },
 ];
-const CompanyViewComponent = ({ handleCount }) => {
+
+interface CompanyViewComponentProps {
+  onViewSelect: (_: ViewTypes) => void;
+}
+
+const CompanyViewComponent = ({ onViewSelect }: CompanyViewComponentProps) => {
   return (
     <>
-      {viewIconsSet?.map((viewIcon) => {
-        return <IconButton key={viewIcon.id} onClick={() => handleCount(viewIcon.view)}>{viewIcon.icon}</IconButton>;
+      {viewIconsSet.sort(s=>s.id).map((viewIcon) => {
+        return (
+          <IconButton
+            key={viewIcon.id}
+            onClick={() => onViewSelect(viewIcon.view)}
+          >
+            {viewIcon.icon}
+          </IconButton>
+        );
       })}
     </>
   );

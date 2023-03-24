@@ -4,8 +4,9 @@ import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
 import { useState } from "react";
 import companyGridPagination from "./company.grid.pagination";
+import { ListComponentProps } from "./props";
 
-const CompanyGridView = ({ copyCompanyData, searchCompany }) => {
+const CompanyGridView = ({ companies }: ListComponentProps) => {
   // Pagination logic
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;

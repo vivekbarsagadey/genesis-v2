@@ -1,18 +1,29 @@
 import { useState } from "react";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
+import ICompany from "../company.model";
 
-type CompanyComponentProps = {
-  getSearchedCompanyName: any;
-};
+interface CompanySearchComponentProps {
+  companies: Array<ICompany>;
+  onSearchHandler: (_: Array<ICompany>) => void;
+}
 
 const CompanySearchDetails = ({
-  getSearchedCompanyName = () => {},
-}: CompanyComponentProps) => {
-  const [searchCompany, setSearchCompany] = useState("");
-  const getSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchCompany(e.target.value);
-    getSearchedCompanyName(e.target.value);
+  companies,
+  onSearchHandler,
+}: CompanySearchComponentProps) => {
+  const [searchStr, setSearchStr] = useState<string>("");
+
+  const filterByName = (name: string) =>  (f: ICompany): boolean => f.name.toLowerCase().includes(name.toLowerCase());
+
+  const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const _searchValue = e.target.value;
+    setSearchStr(_searchValue);
+    if (_searchValue == "") {
+      onSearchHandler(companies);
+      return;
+    }
+    onSearchHandler(companies.filter(filterByName(_searchValue)));
   };
 
   return (
@@ -21,8 +32,8 @@ const CompanySearchDetails = ({
         <TextField
           placeholder="Search by Company Name"
           size="small"
-          value={searchCompany}
-          onChange={getSearch}
+          value={searchStr}
+          onChange={onSearch}
           fullWidth
         />
       </Grid>
