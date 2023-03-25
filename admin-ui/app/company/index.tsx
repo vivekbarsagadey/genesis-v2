@@ -17,7 +17,7 @@ import CompanyGraphView from "./list/graph.view";
 import CompanyGridView from "./list/grid.view";
 import CompanyKanbanView from "./list/kanban.view";
 import ListViewComponent from "./list/list.view.component";
-import ICompany from "./models/company.model";
+import {ICompany} from "./models/company.model";
 import CompanySearchDetails from "./search";
 import CompanyViewComponent from "./view";
 
