@@ -19,7 +19,7 @@ export const theme = createTheme({
       fontSize: "0.8rem",
     },
     h5: {
-      padding:'1rem',
+      padding:'0.5rem 1rem 0.8rem',
       fontSize:'0.9rem'
     },
     body1: {

@@ -102,7 +102,7 @@ const ActiveCompanyComponent = ({ activeCompany }: IActiveCompany) => {
   return (
     <Box mt={1}>
       <Card>
-        <Paper>
+        <Paper  variant="outlined">
           <Typography noWrap variant="h5">
             {" "}
             Company - {activeCompany.name}
@@ -120,7 +120,7 @@ const InActiveCompanyComponent = ({ inActiveCompany }: IInActiveCompany) => {
   return (
     <Box mt={1}>
       <Card>
-        <Paper>
+        <Paper  variant="outlined">
           <Typography noWrap variant="h5">
             {" "}
             Company - {inActiveCompany.name}
