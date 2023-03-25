@@ -15,4 +15,4 @@ type ICompany = {
   updatedAt: number;
 };
 
-export default ICompany;
+export type { ICompany } ;
