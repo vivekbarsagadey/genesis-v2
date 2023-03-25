@@ -15,7 +15,6 @@ const CompanyCreateComponent = () => {
   const [companyPhone, setCompanyPhone] = useState("");
   const [companyAddress, setCompanyAddress] = useState("");
   const [companyWebsite, setCompanyWebsite] = useState("");
-  const [companyFoundationYear, setCompanyFoundationYear] = useState("");
   const [companyStatus, setCompanyStatus] = useState("NEW");
   const router = useRouter();
 
@@ -32,7 +31,6 @@ const CompanyCreateComponent = () => {
         mobile: companyPhone,
         address: companyAddress,
         website: companyWebsite,
-        foundationYear: companyFoundationYear,
         status: companyStatus,
       };
       //  console.log("this is body", body)
@@ -63,11 +61,6 @@ const CompanyCreateComponent = () => {
   };
   const updateCompanyWebsite = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyWebsite(e.target.value);
-  };
-  const updateCompanyFoundationYear = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setCompanyFoundationYear(e.target.value);
   };
 
   const getCompanyStatusValue = (
