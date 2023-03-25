@@ -241,30 +241,12 @@ const CompanyCreateComponent = () => {
           <Grid item xs={6} mt={2}>
             <Grid container display="flex" alignItems="center">
               <Grid item xs={4}>
-                <Typography>Foundation Year</Typography>
+                <Typography>Company Status</Typography>
               </Grid>
               <Grid item xs={1}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
-                <TextField
-                  id="foundation-year"
-                  placeholder="Foundation Year"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={companyFoundationYear}
-                  onChange={updateCompanyFoundationYear}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={12} mt={2}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={2}>
-                Company Status
-              </Grid>
-              <Grid item xs={2}>
                 <Autocomplete
                   value={companyStatus}
                   onChange={getCompanyStatusValue}
@@ -284,24 +266,30 @@ const CompanyCreateComponent = () => {
                   )}
                 />
               </Grid>
-
-              <Grid item xs={3}>
-                <Grid container>
-                  <Grid item xs={6}>
-                    <Link href={"/company"}>
-                      <Button variant="contained" size="small">
-                        Cancel
+            </Grid>
+          </Grid>
+          <Grid container mt={5}>
+            <Grid item xs={12}>
+              <Grid container>
+                <Grid item xs={9}></Grid>
+                <Grid item xs={3}>
+                  <Grid container>
+                    <Grid item xs={7}>
+                      <Link href={"/company"}>
+                        <Button variant="contained" size="small">
+                          Cancel
+                        </Button>
+                      </Link>
+                    </Grid>
+                    <Grid item xs={2} ml={1}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={updateMyCompanyData}
+                      >
+                        Save
                       </Button>
-                    </Link>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <Button
-                      variant="contained"
-                      size="small"
-                      onClick={updateMyCompanyData}
-                    >
-                      Save
-                    </Button>
+                    </Grid>
                   </Grid>
                 </Grid>
               </Grid>
