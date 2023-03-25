@@ -20,16 +20,13 @@ const CompanyGridView = ({ companies }: ListComponentProps) => {
   return (
     <>
       <Box style={{ height: "70.6vh" }}>
-        <Grid container spacing={2}  mt={1}>
+        <Grid container spacing={2} mt={1}>
           {_DATA
             .currentData()
-            .reverse()
-            .filter((ele) =>
-              ele.name.toLowerCase().includes(searchCompany.toLowerCase())
-            )
+            .reverse()?
             .map((item) => {
               return (
-                <Grid item xs={4} md={4} sm={4} lg={4}  key={item.id}>
+                <Grid item xs={4} md={4} sm={4} lg={4} key={item.id}>
                   <Paper variant="outlined">
                     <Box paddingLeft={2} paddingTop={2}>
                       <Grid container>
