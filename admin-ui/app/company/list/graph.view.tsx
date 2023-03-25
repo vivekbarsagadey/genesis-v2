@@ -1,50 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { ListComponentProps } from "./props";
+import React from "react";
 import PieChart from "react-pie-graph-chart";
-import { ICompany } from "../models/company.model";
+import { ICompany } from "../models";
+import { ListComponentProps } from "./props";
 
 const CompanyGraphView = ({ companies }: ListComponentProps) => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    let _data = [
-      {
-        type: "India",
-        value: companies.filter((item:ICompany) => item.country === "India")?.length,
-        color: "#E97D30",
-      },
-      {
-        type: "Australia",
-        value: companies.filter((item:ICompany) => item.country === "Australia").length,
-        color: "#62B170",
-      },
-      {
-        type: "America",
-        value: companies.filter((item:ICompany) => item.country === "America").length,
-        color: "#F1AF13",
-      },
-      {
-        type: "Spain",
-        value: companies.filter((item:ICompany) => item.country === "Spain").length,
-        color: "#4BA2DA",
-      },
-      {
-        type: "US",
-        value: companies.filter((item:ICompany) => item.country === "US").length,
-        color: "#F1AF13",
-      },
-      {
-        type: "UK",
-        value: companies.filter((item:ICompany) => item.country === "UK").length,
-        color: "#F1AF13",
-      },
-    ];
-    setData(_data);
-  }, [companies]);
+  const example = [
+    {
+      type: "NEW",
+      value: companies.filter((item: ICompany) => item.status === "NEW")
+        ?.length,
+      color: "#083ff3",
+    },
+    {
+      type: "ACTIVE",
+      value: companies.filter((item: ICompany) => item.status === "ACTIVE")
+        .length,
+      color: "#0a9523",
+    },
+    {
+      type: "INACTIVE",
+      value: companies.filter((item: ICompany) => item.status === "INACTIVE")
+        .length,
+      color: "#f42f08",
+    },
+  ];
+
   return (
     <div>
-      <div>
-        <PieChart data={data} />
-      </div>
+      <PieChart data={example} />
     </div>
   );
 };

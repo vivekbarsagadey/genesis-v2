@@ -13,6 +13,7 @@ type ICompany = {
   website?: string;
   createdAt: number;
   updatedAt: number;
+  status: string;
 };
 
 export type { ICompany } ;
