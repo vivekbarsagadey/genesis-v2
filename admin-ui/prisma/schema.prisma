@@ -84,6 +84,7 @@ model Company {
   registerNo     String?   @map("register_no")
   website        String?
   foundationYear String?
+  Status         String?
   tagLine        String?   @map("tag_line")
   projects       Project[]
 

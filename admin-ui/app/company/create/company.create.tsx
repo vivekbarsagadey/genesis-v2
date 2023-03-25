@@ -4,6 +4,26 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createCompany } from "../../../services/company.action";
+import Autocomplete from "@mui/material/Autocomplete";
+import { Status } from "../models";
+
+const StatusSet = [
+  {
+    id: 1,
+    statusType: Status.NEW, //0
+    label: "NEW",
+  },
+  {
+    id: 2,
+    statusType: Status.ACTIVE, //1
+    label: "ACTIVE",
+  },
+  {
+    id: 3,
+    statusType: Status.INACTIVE, //2
+    label: "INACTIVE",
+  },
+];
 
 const CompanyCreateComponent = () => {
   const [ownerFirstName, setOwnerFirstName] = useState("");
@@ -14,6 +34,7 @@ const CompanyCreateComponent = () => {
   const [companyAddress, setCompanyAddress] = useState("");
   const [companyWebsite, setCompanyWebsite] = useState("");
   const [companyFoundationYear, setCompanyFoundationYear] = useState("");
+  const [companyStatus, setCompanyStatus] = useState(0);
   const router = useRouter();
 
   // POST call
@@ -64,6 +85,12 @@ const CompanyCreateComponent = () => {
     setCompanyFoundationYear(e.target.value);
   };
 
+  const getCompanyStatusValue = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    console.log("value,,,,,,", value);
+  };
   return (
     <>
       <Box sx={{ flexGrow: 1 }} padding={4}>
@@ -249,11 +276,33 @@ const CompanyCreateComponent = () => {
           </Grid>
           <Grid item xs={12} mt={2}>
             <Grid container display="flex" alignItems="center">
-              <Grid item xs={9}></Grid>
+              <Grid item xs={2}>
+                Company Status
+              </Grid>
+              <Grid item xs={2}>
+                <Autocomplete
+                  value={companyStatus}
+                  onChange={getCompanyStatusValue}
+                  freeSolo
+                  id="company-status"
+                  disableClearable
+                  size="small"
+                  options={StatusSet?.map((option: any) => option.label)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      InputProps={{
+                        ...params.InputProps,
+                        type: "search",
+                      }}
+                    />
+                  )}
+                />
+              </Grid>
 
               <Grid item xs={3}>
                 <Grid container>
-                  <Grid item xs={6} ml={3}>
+                  <Grid item xs={6}>
                     <Link href={"/company"}>
                       <Button variant="contained" size="small">
                         Cancel
