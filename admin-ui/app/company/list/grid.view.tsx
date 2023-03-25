@@ -3,27 +3,30 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
 import { useState } from "react";
+import { PaginationHandler } from "../../utility";
 import companyGridPagination from "./company.grid.pagination";
 import { ListComponentProps } from "./props";
 
 const CompanyGridView = ({ companies }: ListComponentProps) => {
-  // Pagination logic
+
+//pagination 
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(companies.length / PER_PAGE);
-  const _DATA = companyGridPagination(companies, PER_PAGE);
+  const paginationHandler = PaginationHandler(companies, PER_PAGE);
 
-  const handleChangePage = (e, p) => {
+  const handleChangePage = (e: any, p: number) => {
     setPage(p);
-    _DATA.jump(p);
+    paginationHandler.jump(p);
   };
+
   return (
     <>
       <Box style={{ height: "70.6vh" }}>
         <Grid container spacing={2} mt={1}>
-          {_DATA
-            .currentData()
-            .reverse()?
+          {paginationHandler
+          .currentData()
+          .reverse()?
             .map((item) => {
               return (
                 <Grid item xs={4} md={4} sm={4} lg={4} key={item.id}>

@@ -6,7 +6,7 @@ import Paper from "@mui/material/Paper";
 import { useState } from "react";
 import { PaginationHandler } from "../../utility";
 import InfoCompanyComponent from "../info";
-import ICompany from "../models/company.model";
+import {ICompany} from "../models/company.model";
 import { ListComponentProps } from "./props";
 
 const ListViewComponent = ({ companies }: ListComponentProps) => {
