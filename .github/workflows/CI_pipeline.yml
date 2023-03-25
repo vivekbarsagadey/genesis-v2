@@ -15,4 +15,4 @@ jobs:
     steps:
         - uses: actions/checkout@v2
         - name: Build the Docker image
-          run: docker build  -t genesis-v2/admin-ui .
+          run: docker build --file ./gnesis-v2/admin-ui/Dockerfile --tag my-image-name:$(date +%s)
