@@ -1,10 +1,9 @@
+import React, { useState } from "react";
 import { Pagination, Paper } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
-import { useState } from "react";
 import { PaginationHandler } from "../../utility";
-import companyGridPagination from "./company.grid.pagination";
 import { ListComponentProps } from "./props";
 
 const CompanyGridView = ({ companies }: ListComponentProps) => {
@@ -26,8 +25,7 @@ const CompanyGridView = ({ companies }: ListComponentProps) => {
         <Grid container spacing={2} mt={1}>
           {paginationHandler
           .currentData()
-          .reverse()?
-            .map((item) => {
+          .reverse()?.map((item) => {
               return (
                 <Grid item xs={4} md={4} sm={4} lg={4} key={item.id}>
                   <Paper variant="outlined">

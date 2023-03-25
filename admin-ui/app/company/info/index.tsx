@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
@@ -7,7 +8,7 @@ import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Link from "next/link";
 import { deleteCompany } from "../../../services/company.action";
-import ICompany from "../company.model";
+import {ICompany} from "../models/company.model";
 type InfoCompanyComponentProps = {
   company : ICompany
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ListComponentProps } from "./props";
 import PieChart from "react-pie-graph-chart";
+import { ICompany } from "../models/company.model";
 
 const CompanyGraphView = ({ companies }: ListComponentProps) => {
   const [data, setData] = useState([]);

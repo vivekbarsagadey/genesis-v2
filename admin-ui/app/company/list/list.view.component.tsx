@@ -1,9 +1,9 @@
 "use client";
+import React, { useState } from "react";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Box, Grid, IconButton, Pagination, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
-import { useState } from "react";
 import { PaginationHandler } from "../../utility";
 import InfoCompanyComponent from "../info";
 import {ICompany} from "../models/company.model";

@@ -1,9 +1,9 @@
+import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import moment from "moment";
-import { useEffect, useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import ICompany from "../models/company.model";
+import {ICompany} from "../models/company.model";
 import { ListComponentProps } from "./props";
 const localizer = momentLocalizer(moment);
 

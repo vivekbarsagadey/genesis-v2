@@ -5,7 +5,7 @@ import Menu from "@mui/material/Menu";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
-import ICompany from "../company.model";
+import {ICompany} from "../models/company.model";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 
