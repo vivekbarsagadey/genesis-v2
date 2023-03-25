@@ -8,11 +8,13 @@ on:
    
 jobs:
   build:
-  
     runs-on: ubuntu-latest
     container: node:19.8.1
     
     steps:
-        - uses: actions/checkout@v2
-        - name: Build the Docker image
-          run: docker build --file ./gnesis-v2/admin-ui/Dockerfile --tag my-image-name:$(date +%s)
+        - name: Checkout Code
+          uses: actions/checkout@v2
+        - name: Install NPM dependencies
+          run: npm install 
+        - name: Build and Export
+          run: npm run generate
