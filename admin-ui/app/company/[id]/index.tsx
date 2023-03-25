@@ -2,10 +2,11 @@
 import React, { useState } from "react";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import Link from "next/link";
-import ICompany from "../company.model";
 import { useRouter } from "next/navigation";
 import { updateCompany } from "../../../services/company.action";
 import Box from "@mui/material/Box/Box";
+import { Status } from "../models";
+import Autocomplete from "@mui/material/Autocomplete";
 
 type CompanyComponentProps = {
   company: any;
@@ -13,6 +14,8 @@ type CompanyComponentProps = {
 };
 
 const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
+  console.log("company >>", company);
+
   const router = useRouter();
   const [firstName, setFirstName] = useState(company.firstName);
   const [lastName, setLastName] = useState(company.lastName);
@@ -21,9 +24,9 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
   const [companyPhone, setCompanyPhone] = useState(company.mobile);
   const [companyAddress, setCompanyAddress] = useState(company.address);
   const [companyWebsite, setCompanyWebsite] = useState(company.website);
-  const [companyFoundationYear, setCompanyFoundationYear] = useState(
-    company.foundationYear
-  );
+  const [companyStatus, setCompanyStatus] = useState(company.status);
+
+  const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
   const updateOwnerFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFirstName(e.target.value);
@@ -46,10 +49,12 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
   const updateCompanyWebsite = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyWebsite(e.target.value);
   };
-  const updateCompanyFoundationYear = (
-    e: React.ChangeEvent<HTMLInputElement>
+
+  const getCompanyStatusValue = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
   ) => {
-    setCompanyFoundationYear(e.target.value);
+    setCompanyStatus(value);
   };
 
   const updateCompanyEditedData = async () => {
@@ -62,7 +67,6 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
         mobile: companyPhone,
         address: companyAddress,
         website: companyWebsite,
-        foundationYear: companyFoundationYear,
       };
       await updateCompany(id, body);
       await router.push("/company");
@@ -75,7 +79,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
       <Box sx={{ flexGrow: 1 }} padding={4}>
         <Grid container>
           <Grid item xs={12}>
-            <Typography variant="subtitle1">Edit Company Details</Typography>
+            <Typography variant="h6">Edit Company Details</Typography>
           </Grid>
         </Grid>
         <Grid container spacing={2} mt={2}>
@@ -235,20 +239,29 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
           <Grid item xs={6} mt={2}>
             <Grid container display="flex" alignItems="center">
               <Grid item xs={4}>
-                <Typography>Foundation Year</Typography>
+                <Typography>Company Status</Typography>
               </Grid>
               <Grid item xs={1}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
-                <TextField
-                  id="foundation-year"
-                  placeholder="Foundation Year"
-                  variant="outlined"
+                <Autocomplete
+                  value={companyStatus}
+                  onChange={getCompanyStatusValue}
+                  freeSolo
+                  id="company-status"
+                  disableClearable
                   size="small"
-                  fullWidth
-                  value={companyFoundationYear}
-                  onChange={updateCompanyFoundationYear}
+                  options={statusSet?.map((option: any) => option)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      InputProps={{
+                        ...params.InputProps,
+                        type: "search",
+                      }}
+                    />
+                  )}
                 />
               </Grid>
             </Grid>

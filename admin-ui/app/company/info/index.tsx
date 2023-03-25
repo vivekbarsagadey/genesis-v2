@@ -7,16 +7,19 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { deleteCompany } from "../../../services/company.action";
 import {ICompany} from "../models/company.model";
 type InfoCompanyComponentProps = {
   company : ICompany
 };
 const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
+  const router = useRouter();
   const deleteCompanyHandler = async () => {
     const response = await deleteCompany(company.id);
     // route to list screen
-    window.location.reload();
+    // window.location.reload();
+   router.push("/company");
   };
   return (
     <>
