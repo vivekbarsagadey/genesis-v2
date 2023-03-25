@@ -14,9 +14,9 @@ type InfoCompanyComponentProps = {
 };
 const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
   const deleteCompanyHandler = async () => {
-    const response = await deleteCompany(company._id);
+    const response = await deleteCompany(company.id);
     // route to list screen
-    //window.location.reload();
+    window.location.reload();
   };
   return (
     <>
@@ -72,7 +72,7 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
               <Grid container>
                 <Grid item xs={4}>
                   <Tooltip title="Edit">
-                    <Link href={`/company/${company._id}`}>
+                    <Link href={`/company/${company.id}`}>
                       <IconButton>
                         <EditIcon fontSize="small" />
                       </IconButton>

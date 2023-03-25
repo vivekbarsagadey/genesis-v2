@@ -2,7 +2,7 @@
 import { use } from "react";
 import CompanyComponentHome from ".";
 import { findAll } from "../../services/api.service";
-import ICompany from "./models/company.model";
+import {ICompany} from "./models/company.model";
 
 const URL = "companies";
 
