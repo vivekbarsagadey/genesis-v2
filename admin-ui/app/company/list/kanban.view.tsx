@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid/Grid";
 import { ICompany } from "../models";
+import { Paper } from "@mui/material";
 
 type IActiveCompany = {
   activeCompany: ICompany;
@@ -81,23 +82,56 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
 
 const NewCompanyComponent = ({ newCompany }: INewCompany) => {
   return (
-    <Card >
-      <CardContent>{newCompany.status}</CardContent>
-    </Card>
+    <Box mt={1}>
+      <Card>
+        <Paper variant="outlined">
+          <Typography noWrap variant="h5">
+            {" "}
+            Company - {newCompany.name}
+          </Typography>
+          <Typography noWrap variant="h5">
+            {" "}
+            Status - {newCompany.status}
+          </Typography>
+        </Paper>
+      </Card>
+    </Box>
   );
 };
 const ActiveCompanyComponent = ({ activeCompany }: IActiveCompany) => {
   return (
-    <Card>
-      <CardContent>{activeCompany.status}</CardContent>
-    </Card>
+    <Box mt={1}>
+      <Card>
+        <Paper>
+          <Typography noWrap variant="h5">
+            {" "}
+            Company - {activeCompany.name}
+          </Typography>
+          <Typography noWrap variant="h5">
+            {" "}
+            Status - {activeCompany.status}
+          </Typography>
+        </Paper>
+      </Card>
+    </Box>
   );
 };
 const InActiveCompanyComponent = ({ inActiveCompany }: IInActiveCompany) => {
   return (
-    <Card>
-      <CardContent>{inActiveCompany.status}</CardContent>
-    </Card>
+    <Box mt={1}>
+      <Card>
+        <Paper>
+          <Typography noWrap variant="h5">
+            {" "}
+            Company - {inActiveCompany.name}
+          </Typography>
+          <Typography noWrap variant="h5">
+            {" "}
+            Status - {inActiveCompany.status}
+          </Typography>
+        </Paper>
+      </Card>
+    </Box>
   );
 };
 

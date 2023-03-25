@@ -18,6 +18,10 @@ export const theme = createTheme({
       fontWeight:800,
       fontSize: "0.8rem",
     },
+    h5: {
+      padding:'1rem',
+      fontSize:'0.9rem'
+    },
     body1: {
       fontWeight: 500,
       fontSize: "0.9rem",
