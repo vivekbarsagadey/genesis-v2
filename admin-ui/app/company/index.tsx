@@ -6,19 +6,18 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Case, Default, Switch } from "react-if";
 import { ViewTypes } from "../utility";
 import CompanyCsvGenerator from "../utility/company/csv.generator";
 import CompanyExcellGenerator from "../utility/company/excell.generator";
 import CompanyPdfGenerator from "../utility/company/pdf.generator";
-import ICompany from "./models/company.model";
-import CompanyFilterComponent from "./filters";
 import CompanyCalendarView from "./list/calendar.view";
 import CompanyGraphView from "./list/graph.view";
 import CompanyGridView from "./list/grid.view";
 import CompanyKanbanView from "./list/kanban.view";
 import ListViewComponent from "./list/list.view.component";
+import ICompany from "./models/company.model";
 import CompanySearchDetails from "./search";
 import CompanyViewComponent from "./view";
 
@@ -117,11 +116,7 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
         <Grid item xs={12}>
           <Switch>
             <Case condition={viewType === ViewTypes.GRID}>
-              <CompanyGridView
-                // copyCompanyData={copyCompanies}
-                // searchCompany={searchCompany}
-                companies={copyCompanies}
-              />
+              <CompanyGridView companies={copyCompanies} />
             </Case>
             <Case condition={viewType === ViewTypes.GRAPH}>
               <CompanyGraphView companies={copyCompanies} />

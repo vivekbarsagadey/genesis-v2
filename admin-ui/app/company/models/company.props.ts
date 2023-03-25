@@ -5,4 +5,4 @@ interface ICompanyComponentProps {
     itemsCallBackHandler? : (_items: Array<ICompany> ) => void;
 }
 
-export default ICompanyComponentProps
+export default ICompanyComponentProps ;
