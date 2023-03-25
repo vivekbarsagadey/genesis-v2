@@ -14,8 +14,6 @@ type CompanyComponentProps = {
 };
 
 const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
-  console.log("company >>", company);
-
   const router = useRouter();
   const [firstName, setFirstName] = useState(company.firstName);
   const [lastName, setLastName] = useState(company.lastName);
@@ -67,6 +65,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
         mobile: companyPhone,
         address: companyAddress,
         website: companyWebsite,
+        status:companyStatus,
       };
       await updateCompany(id, body);
       await router.push("/company");

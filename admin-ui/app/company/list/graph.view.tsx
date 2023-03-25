@@ -4,7 +4,7 @@ import { ICompany } from "../models";
 import { ListComponentProps } from "./props";
 
 const CompanyGraphView = ({ companies }: ListComponentProps) => {
-  const example = [
+  const companyStatus = [
     {
       type: "NEW",
       value: companies.filter((item: ICompany) => item.status === "NEW")
@@ -27,7 +27,7 @@ const CompanyGraphView = ({ companies }: ListComponentProps) => {
 
   return (
     <div>
-      <PieChart data={example} />
+      <PieChart data={companyStatus} />
     </div>
   );
 };
