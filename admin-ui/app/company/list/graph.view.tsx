@@ -21,7 +21,7 @@ const CompanyGraphView = ({ companies }: ListComponentProps) => {
       type: "INACTIVE",
       value: companies.filter((item: ICompany) => item.status === "INACTIVE")
         .length,
-      color: "#f42f08",
+      color: "#f50a0a",
     },
   ];
 
