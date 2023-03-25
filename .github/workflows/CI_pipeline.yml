@@ -9,7 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: node:19.8.1
     
     steps:
         - name: Checkout Code
