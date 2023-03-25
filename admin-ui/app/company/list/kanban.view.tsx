@@ -7,7 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid/Grid";
-import { ICompany } from "../models";
+import { ICompany, Status } from "../models";
 import { Paper } from "@mui/material";
 
 type IActiveCompany = {
@@ -20,14 +20,16 @@ type IInActiveCompany = {
   inActiveCompany: ICompany;
 };
 const CompanyKanbanView = ({ companies }: ListComponentProps) => {
+  const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
+
   const newCompanies = companies.filter((ele: ICompany) => {
-    return ele.status === "NEW";
+    return ele.status == statusSet[0];
   });
   const activeCompanies = companies.filter((ele: ICompany) => {
-    return ele.status === "ACTIVE";
+    return ele.status == statusSet[1];
   });
   const inActiveCompanies = companies.filter((ele: ICompany) => {
-    return ele.status === "INACTIVE";
+    return ele.status == statusSet[2];
   });
 
   return (
@@ -102,7 +104,7 @@ const ActiveCompanyComponent = ({ activeCompany }: IActiveCompany) => {
   return (
     <Box mt={1}>
       <Card>
-        <Paper  variant="outlined">
+        <Paper variant="outlined">
           <Typography noWrap variant="h5">
             {" "}
             Company - {activeCompany.name}
@@ -120,7 +122,7 @@ const InActiveCompanyComponent = ({ inActiveCompany }: IInActiveCompany) => {
   return (
     <Box mt={1}>
       <Card>
-        <Paper  variant="outlined">
+        <Paper variant="outlined">
           <Typography noWrap variant="h5">
             {" "}
             Company - {inActiveCompany.name}
