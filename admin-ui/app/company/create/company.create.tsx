@@ -7,24 +7,6 @@ import { createCompany } from "../../../services/company.action";
 import Autocomplete from "@mui/material/Autocomplete";
 import { Status } from "../models";
 
-const StatusSet = [
-  {
-    id: 1,
-    statusType: Status.NEW, //0
-    label: "NEW",
-  },
-  {
-    id: 2,
-    statusType: Status.ACTIVE, //1
-    label: "ACTIVE",
-  },
-  {
-    id: 3,
-    statusType: Status.INACTIVE, //2
-    label: "INACTIVE",
-  },
-];
-
 const CompanyCreateComponent = () => {
   const [ownerFirstName, setOwnerFirstName] = useState("");
   const [ownerLastName, setOwnerLastName] = useState("");
@@ -34,8 +16,10 @@ const CompanyCreateComponent = () => {
   const [companyAddress, setCompanyAddress] = useState("");
   const [companyWebsite, setCompanyWebsite] = useState("");
   const [companyFoundationYear, setCompanyFoundationYear] = useState("");
-  const [companyStatus, setCompanyStatus] = useState(0);
+  const [companyStatus, setCompanyStatus] = useState("NEW");
   const router = useRouter();
+
+  const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
   // POST call
   const updateMyCompanyData = async () => {
@@ -49,6 +33,7 @@ const CompanyCreateComponent = () => {
         address: companyAddress,
         website: companyWebsite,
         foundationYear: companyFoundationYear,
+        status: companyStatus,
       };
       //  console.log("this is body", body)
       await createCompany(body);
@@ -89,7 +74,7 @@ const CompanyCreateComponent = () => {
     e: React.ChangeEvent<HTMLInputElement>,
     value: string
   ) => {
-    console.log("value,,,,,,", value);
+    setCompanyStatus(value);
   };
   return (
     <>
@@ -287,7 +272,7 @@ const CompanyCreateComponent = () => {
                   id="company-status"
                   disableClearable
                   size="small"
-                  options={StatusSet?.map((option: any) => option.label)}
+                  options={statusSet?.map((option: any) => option)}
                   renderInput={(params) => (
                     <TextField
                       {...params}
