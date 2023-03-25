@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import ICompany from "../company.model";
+import {ICompany} from "../models/company.model";
 
 interface CompanySearchComponentProps {
   companies: Array<ICompany>;
