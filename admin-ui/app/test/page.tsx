@@ -1,6 +1,7 @@
 "use client";
 import { InputComponent } from "../../component/ui/base/input/";
-import { useForm } from "../../hooks/from";
+import { useForm } from "../../hooks";
+
 
 const TestComponent = () => {
   const { register } = useForm();
@@ -8,7 +9,7 @@ const TestComponent = () => {
     <>
       <InputComponent
         type="email"
-        placeHolder="Enter             email"
+        placeHolder="Enter email"
         label="Email"
         id="email"
         register={register}

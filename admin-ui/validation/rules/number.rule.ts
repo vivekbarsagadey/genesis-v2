@@ -16,7 +16,7 @@ const NumberRule = ({ constraint, data }: RuleContext) => {
       throw new ValidationError(constraint);
      }
       
-  };
+  }; 
 
   return { condition, action };
 };
