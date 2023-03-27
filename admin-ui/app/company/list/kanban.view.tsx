@@ -1,14 +1,17 @@
-import React from "react";
-import { ListComponentProps } from "./props";
+import { Paper } from "@mui/material";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid/Grid";
+import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 import { ICompany, Status } from "../models";
-import { Paper } from "@mui/material";
+import { ListComponentProps } from "./props";
+
+const CardStyle = styled(Grid)(({ theme }) => ({
+  height: "80vh",
+  overflowY: "auto",
+}));
 
 type IActiveCompany = {
   activeCompany: ICompany;
@@ -36,47 +39,53 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
     <>
       <Grid container spacing={2} mt={1}>
         <Grid item xs={4}>
-          <Card style={{ height: "80vh", overflowY: "auto" }}>
-            <CardContent>
-              <Typography variant="h6">NEW</Typography>
-              {newCompanies?.map((newCompany, index) => {
-                return (
-                  <NewCompanyComponent newCompany={newCompany} key={index} />
-                );
-              })}
-            </CardContent>
-          </Card>
+          <CardStyle>
+            <Card>
+              <CardContent>
+                <Typography variant="h6">NEW</Typography>
+                {newCompanies?.map((newCompany, index) => {
+                  return (
+                    <NewCompanyComponent newCompany={newCompany} key={index} />
+                  );
+                })}
+              </CardContent>
+            </Card>
+          </CardStyle>
         </Grid>
         <Grid item xs={4}>
-          <Card style={{ height: "80vh", overflowY: "auto" }}>
-            <CardContent>
-              <Typography variant="h6">ACTIVE</Typography>
-              {activeCompanies?.map((activeCompany, index) => {
-                return (
-                  <ActiveCompanyComponent
-                    activeCompany={activeCompany}
-                    key={index}
-                  />
-                );
-              })}
-            </CardContent>
-          </Card>
+          <CardStyle>
+            <Card>
+              <CardContent>
+                <Typography variant="h6">ACTIVE</Typography>
+                {activeCompanies?.map((activeCompany, index) => {
+                  return (
+                    <ActiveCompanyComponent
+                      activeCompany={activeCompany}
+                      key={index}
+                    />
+                  );
+                })}
+              </CardContent>
+            </Card>
+          </CardStyle>
         </Grid>
         <Grid item xs={4}>
-          <Card style={{ height: "80vh", overflowY: "auto" }}>
-            <CardContent>
-            <Typography variant="h6">INACTIVE</Typography>
+          <CardStyle>
+            <Card>
+              <CardContent>
+                <Typography variant="h6">INACTIVE</Typography>
 
-              {inActiveCompanies?.map((inActiveCompany, index) => {
-                return (
-                  <InActiveCompanyComponent
-                    inActiveCompany={inActiveCompany}
-                    key={index}
-                  />
-                );
-              })}
-            </CardContent>
-          </Card>
+                {inActiveCompanies?.map((inActiveCompany, index) => {
+                  return (
+                    <InActiveCompanyComponent
+                      inActiveCompany={inActiveCompany}
+                      key={index}
+                    />
+                  );
+                })}
+              </CardContent>
+            </Card>
+          </CardStyle>
         </Grid>
       </Grid>
     </>
