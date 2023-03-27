@@ -1,35 +1,37 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
 import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { IconButton } from "@mui/material";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
-import {ICompany} from "../models/company.model";
 import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
+import { ICompany } from "../models";
+import Tooltip from "@mui/material/Tooltip";
 
 const FilterStyle = styled(Grid)(({ theme }) => ({
   width: 300,
-  padding: "1rem", // this is worng
+  padding: "1rem",
 }));
 
-type CompanyComponentProps = {
-  handleClose: () => void;
-  companyData: Array<ICompany>;
-  open: boolean;
-  anchorEl: boolean;
-  companySearchList: any;
-  itemsCallBackHandler: any;
-};
+interface CompanyFilterComponentProps {
+  companies: Array<ICompany>;
+  onSearchHandler: (_: Array<ICompany>) => void;
+}
 
-const CompanyFilterComponent = ({
-  companyData,
-  anchorEl,
-  open,
-  handleClose,
-}: // itemsCallBackHandler = () => {},
-CompanyComponentProps) => {
+const FilterComponent = ({ companies }: CompanyFilterComponentProps) => {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const [filterDataName, setFilterDataName] = useState<Array<string>>([]);
   const [filterDataEmail, setFilterDataEmail] = useState<String>();
 
@@ -47,9 +49,21 @@ CompanyComponentProps) => {
   };
 
   return (
-    <Grid container spacing={2}>
+    <>
+      <Tooltip title="Filter">
+        <IconButton
+          id="basic-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+        >
+          <FilterAltIcon fontSize="small" />
+        </IconButton>
+      </Tooltip>
       <Menu
         id="basic-menu"
+        anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
         MenuListProps={{
@@ -63,7 +77,7 @@ CompanyComponentProps) => {
                 size="small"
                 onChange={handleChangeName}
                 disableClearable
-                options={Array.from(new Set(companyData?.map((f) => f.name)))}
+                options={Array.from(new Set(companies?.map((f) => f.name)))}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -85,7 +99,7 @@ CompanyComponentProps) => {
                 size="small"
                 onChange={handleChangeEmail}
                 freeSolo
-                options={Array.from(new Set(companyData.map((id) => id.email)))}
+                options={Array.from(new Set(companies.map((id) => id.email)))}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -123,8 +137,8 @@ CompanyComponentProps) => {
           </Grid>
         </Grid>
       </Menu>
-    </Grid>
+    </>
   );
 };
 
-export default CompanyFilterComponent;
+export default FilterComponent;

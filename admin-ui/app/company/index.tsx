@@ -12,12 +12,14 @@ import { ViewTypes } from "../utility";
 import CompanyCsvGenerator from "../utility/company/csv.generator";
 import CompanyExcellGenerator from "../utility/company/excell.generator";
 import CompanyPdfGenerator from "../utility/company/pdf.generator";
+import FilterComponent from "./filters";
 import CompanyCalendarView from "./list/calendar.view";
+import ExportComponent from "./list/export.component";
 import CompanyGraphView from "./list/graph.view";
 import CompanyGridView from "./list/grid.view";
 import CompanyKanbanView from "./list/kanban.view";
 import ListViewComponent from "./list/list.view.component";
-import {ICompany} from "./models/company.model";
+import { ICompany } from "./models/company.model";
 import CompanySearchDetails from "./search";
 import CompanyViewComponent from "./view";
 
@@ -52,51 +54,10 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
             <Grid container spacing={1}>
               <Grid item xs={"auto"}>
-                <IconButton
-                // aria-controls={open ? "basic-menu" : undefined}
-                // aria-haspopup="true"
-                // aria-expanded={open ? "true" : undefined}
-                // onClick={}
-                >
-                  <FilterAltIcon fontSize={"small"} />
-                </IconButton>
-                {/* <CompanyFilterComponent
-                  companyData={companyData}
-                  anchorEl={anchorEl}
-                  open={open}
-                  handleClose={handleClose}
-                /> */}
+                <FilterComponent companies={companies} />
               </Grid>
               <Grid item xs={"auto"}>
-                <Tooltip title="Export" arrow>
-                  <IconButton
-                  // aria-controls={Open ? "basic-menu" : undefined}
-                  // aria-haspopup="true"
-                  // aria-expanded={Open ? "true" : undefined}
-                  // onClick={handleClickData}
-                  >
-                    <FileDownloadOutlinedIcon fontSize="small" />
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                // id="basic-menu"
-                // anchorEl={menuItem}
-                // open={Open}
-                // onClose={handleClose1}
-                // MenuListProps={{
-                //   "aria-labelledby": "basic-button",
-                // }}
-                >
-                  <MenuItem>
-                    <CompanyExcellGenerator copyCompanyData={copyCompanies} />
-                  </MenuItem>
-                  <MenuItem>
-                    <CompanyPdfGenerator copyCompanyData={copyCompanies} />
-                  </MenuItem>
-                  <MenuItem>
-                    <CompanyCsvGenerator copyCompanyData={copyCompanies} />
-                  </MenuItem>
-                </Menu>
+                <ExportComponent copyCompanyData={copyCompanies} />
               </Grid>
 
               <Grid item xs={10}>
