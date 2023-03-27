@@ -52,6 +52,7 @@ const InputNumberComponent = ({
         defaultValue={value}
         type="number"
         value={value}
+      
         onChange={onChangeHandler}
     
           startAdornment= {
