@@ -45,8 +45,6 @@ const FilterComponent = ({
   };
 
   const emailFilter = (value: string) => (item: ICompany) => {
-    console.log("value 5>>", value);
-
     if (isNotBlank(item.email)) {
       if (!item.email.toLowerCase().includes(value.toLowerCase())) {
         return false;
