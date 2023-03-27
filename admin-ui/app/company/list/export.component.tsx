@@ -1,15 +1,18 @@
 import React from "react";
-import Button from "@mui/material/Button";
+import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
+import { IconButton } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { IconButton } from "@mui/material";
-import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
+import Tooltip from "@mui/material/Tooltip";
+import CompanyCsvGenerator from "../../utility/company/csv.generator";
 import CompanyExcellGenerator from "../../utility/company/excell.generator";
 import CompanyPdfGenerator from "../../utility/company/pdf.generator";
-import CompanyCsvGenerator from "../../utility/company/csv.generator";
-import Tooltip from "@mui/material/Tooltip";
+import { ICompany } from "../models";
 
-const ExportComponent = ({ copyCompanyData }) => {
+interface CompanyExportComponentProps {
+  copyCompanyData: Array<ICompany>;
+}
+const ExportComponent = ({ copyCompanyData }: CompanyExportComponentProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {

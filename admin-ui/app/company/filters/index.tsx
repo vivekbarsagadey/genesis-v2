@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { IconButton } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -8,7 +9,6 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
-import React, { useState } from "react";
 import { ICompany } from "../models";
 
 const FilterStyle = styled(Grid)(({ theme }) => ({
@@ -18,7 +18,6 @@ const FilterStyle = styled(Grid)(({ theme }) => ({
 
 interface CompanyFilterComponentProps {
   companies: Array<ICompany>;
-  onSearchHandler: (_: Array<ICompany>) => void;
 }
 
 const FilterComponent = ({ companies }: CompanyFilterComponentProps) => {
