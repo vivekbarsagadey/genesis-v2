@@ -1,5 +1,5 @@
 type ICompany = {
-  _id: string;
+  id: string;
   name: string;
   firstName: string;
   lastName: string;

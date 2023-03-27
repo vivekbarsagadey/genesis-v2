@@ -1,17 +1,16 @@
 "use client";
-import React from "react";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
+import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { deleteCompany } from "../../../services/company.action";
-import {ICompany} from "../models/company.model";
+import { ICompany } from "../models/company.model";
 type InfoCompanyComponentProps = {
-  company : ICompany
+  company: ICompany;
 };
 const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
   const router = useRouter();
@@ -19,7 +18,7 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
     const response = await deleteCompany(company.id);
     // route to list screen
     // window.location.reload();
-   router.push("/company");
+    router.push("/company");
   };
   return (
     <>
@@ -29,9 +28,7 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
             <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
               <Grid container ml={1}>
                 <Grid item xs={4}>
-                  <IconButton>
-                    <CheckBoxOutlineBlankIcon fontSize="small" />
-                  </IconButton>
+                  <Checkbox size="small" />
                 </Grid>
                 <Grid item xs={6}>
                   <IconButton>
@@ -87,7 +84,9 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
                     <IconButton>
                       <DeleteOutlineIcon
                         fontSize="small"
-                        onClick={()=> {deleteCompanyHandler()}}
+                        onClick={() => {
+                          deleteCompanyHandler();
+                        }}
                       />
                     </IconButton>
                   </Tooltip>
