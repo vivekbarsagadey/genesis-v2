@@ -8,9 +8,15 @@ const NumberRule = ({ constraint, data }: RuleContext) => {
   };
 
   const action = () => {
+     
     if (isNaN(data)) {
       throw new ValidationError(constraint);
     }
+      else if(data == "e") { 
+        debugger;
+        throw new ValidationError(constraint);
+    }
+      
   };
 
   return { condition, action };
