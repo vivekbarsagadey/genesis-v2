@@ -46,6 +46,7 @@ interface CompanyViewComponentProps {
   onViewSelect: (_: ViewTypes) => void;
 }
 
+
 const CompanyViewComponent = ({ onViewSelect }: CompanyViewComponentProps) => {
   const [alignment, setAlignment] = React.useState("left");
 
