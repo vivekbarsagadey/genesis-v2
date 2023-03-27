@@ -74,7 +74,7 @@ const FilterComponent = ({ companies }: CompanyFilterComponentProps) => {
             <Stack>
               <Autocomplete
                 size="small"
-                onChange={handleChangeEmail}
+                onChange={handleChangeName}
                 freeSolo
                 options={Array.from(new Set(companies?.map((f) => f.name)))}
                 renderInput={(params) => (
