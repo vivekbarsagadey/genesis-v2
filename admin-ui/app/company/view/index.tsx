@@ -90,4 +90,5 @@ const CompanyViewComponent = ({ onViewSelect }: CompanyViewComponentProps) => {
   );
 };
 
+
 export default CompanyViewComponent;
