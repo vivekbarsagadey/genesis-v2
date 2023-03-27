@@ -1,4 +1,4 @@
 
-export type {FormStore} from './from'
+export type {FormStore} from './form'
 export type {InputHolder} from './input.holder'
-export {useForm} from './from'
+export {useForm} from "./form"

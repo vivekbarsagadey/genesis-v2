@@ -16,7 +16,7 @@ const InputNumberComponent = ({
   required,
   register
 }: InputProps) => {
-  // const engine = ValidatationEngine();
+  // const engine = ValidationEngine();
   const [_value, setValue] = useState<string>("");
   const [errors, setErrors] = useState<string[]>();
   const update: any = register({ name: label ?? '' });
@@ -29,7 +29,7 @@ const InputNumberComponent = ({
   _builder.addValidator({
     field: label ?? '',
     validatorType: ValidatorType.NUMBER,
-    message: `${label} is unstatified`,
+    message: `${label} is unsatisfied`,
   });
 
   const onChangeHandler = (e: any) => {
@@ -52,11 +52,6 @@ const InputNumberComponent = ({
         defaultValue={value}
         type="number"
         value={value}
-        onInput={(e: any) => {
-          e.target.value = Math.max(0, parseInt(e.target.value))
-            .toString()
-            .slice(0, 10);
-        }}
         onChange={onChangeHandler}
     
           startAdornment= {
