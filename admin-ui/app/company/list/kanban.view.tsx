@@ -36,7 +36,7 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
     <>
       <Grid container spacing={2} mt={1}>
         <Grid item xs={4}>
-          <Card>
+          <Card style={{ height: "80vh", overflowY: "auto" }}>
             <CardContent>
               <Typography variant="h6">NEW</Typography>
               {newCompanies?.map((newCompany, index) => {
@@ -48,7 +48,7 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
           </Card>
         </Grid>
         <Grid item xs={4}>
-          <Card>
+          <Card style={{ height: "80vh", overflowY: "auto" }}>
             <CardContent>
               <Typography variant="h6">ACTIVE</Typography>
               {activeCompanies?.map((activeCompany, index) => {
@@ -63,9 +63,10 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
           </Card>
         </Grid>
         <Grid item xs={4}>
-          <Card>
+          <Card style={{ height: "80vh", overflowY: "auto" }}>
             <CardContent>
-              <Typography variant="h6">INACTIVE</Typography>
+            <Typography variant="h6">INACTIVE</Typography>
+
               {inActiveCompanies?.map((inActiveCompany, index) => {
                 return (
                   <InActiveCompanyComponent
