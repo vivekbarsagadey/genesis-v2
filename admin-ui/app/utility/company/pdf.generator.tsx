@@ -1,7 +1,8 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import { download } from "../pdf-util";
-import ICompany from "../../company/company.model";
+import { ICompany } from "../../company/models";
+
 
 type CompanyProps = {
   copyCompanyData: Array<ICompany>;

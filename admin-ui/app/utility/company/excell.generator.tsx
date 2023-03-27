@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import { downloadExcel } from "react-export-table-to-excel";
-import ICompany from "../../company/company.model";
+import { ICompany } from "../../company/models";
 
 type CompanyProps={
   copyCompanyData: Array<ICompany>
