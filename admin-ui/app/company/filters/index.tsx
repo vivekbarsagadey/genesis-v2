@@ -1,16 +1,15 @@
-import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import { IconButton } from "@mui/material";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
-import Grid from "@mui/material/Grid";
-import Stack from "@mui/material/Stack";
+import { IconButton } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
-import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import Menu from "@mui/material/Menu";
+import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
-import { ICompany } from "../models";
+import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
+import React, { useState } from "react";
+import { ICompany } from "../models";
 
 const FilterStyle = styled(Grid)(({ theme }) => ({
   width: 300,
@@ -75,13 +74,13 @@ const FilterComponent = ({ companies }: CompanyFilterComponentProps) => {
             <Stack>
               <Autocomplete
                 size="small"
-                onChange={handleChangeName}
-                disableClearable
+                onChange={handleChangeEmail}
+                freeSolo
                 options={Array.from(new Set(companies?.map((f) => f.name)))}
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    label="Name"
+                    label="Company Name"
                     InputProps={{
                       ...params.InputProps,
                       type: "search",
