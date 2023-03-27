@@ -21,8 +21,8 @@ const CompanyGridView = ({ companies }: ListComponentProps) => {
 
   return (
     <>
-      <Box style={{ height: "70.6vh" }}>
-        <Grid container spacing={2} mt={1}>
+      <Box style={{ height: "70.6vh" }} mr={2}>
+        <Grid container spacing={1} mt={1}>
           {paginationHandler
           .currentData()
           .reverse()?.map((item) => {
