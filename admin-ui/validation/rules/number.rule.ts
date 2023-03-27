@@ -12,10 +12,9 @@ const NumberRule = ({ constraint, data }: RuleContext) => {
     if (isNaN(data)) {
       throw new ValidationError(constraint);
     }
-      else if(data == "e") { 
-        debugger;
-        throw new ValidationError(constraint);
-    }
+     else if(data.length>10 ||data.length<10){
+      throw new ValidationError(constraint);
+     }
       
   };
 
