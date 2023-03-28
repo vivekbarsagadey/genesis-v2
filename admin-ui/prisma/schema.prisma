@@ -120,6 +120,8 @@ model Screen {
   updatedAt       DateTime @updatedAt
   name            String?
   components      Component[]
+  projectJsonId   String?  @map("project_json_id") @db.ObjectId
+  projectJson     projectJson? @relation(fields: [projectJsonId], references: [id]) 
 
   @@map("tb_screen")
 }
@@ -137,13 +139,14 @@ model Component{
 }
 
 
-model ProjectJson{
+model projectJson{
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   name          String?
   projectData   Json?
-
+  pages         Screen[]     
+  
 
   @@map("tb_project_json")
 
@@ -153,9 +156,9 @@ model VerificationToken {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
-  identifier String
-  token      String   @unique
-  expires    DateTime
+  identifier    String
+  token         String   @unique
+  expires       DateTime
 
   @@unique([identifier, token])
   @@map("tb_verification_tokens")
