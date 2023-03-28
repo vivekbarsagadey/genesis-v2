@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "feature/CI_CD_pipeline" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "feature/CI_CD_pipeline" ]
+    branches: [ "main" ]
 
 jobs:
 
