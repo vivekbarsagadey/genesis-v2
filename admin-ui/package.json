@@ -58,7 +58,7 @@
     "@svgr/webpack": "^6.5.1",
     "@types/cors": "^2.8.13",
     "@types/react-big-calendar": "^1.6.1",
-    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-prettier": "^8.8.0",
     "prisma": "^4.10.1",
     "sass": "^1.58.3",
     "ts-node": "^10.9.1"

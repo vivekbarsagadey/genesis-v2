@@ -81,13 +81,12 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
                 </Grid>
                 <Grid item xs={2}>
                   <Tooltip title="Delete">
-                    <IconButton>
-                      <DeleteOutlineIcon
-                        fontSize="small"
-                        onClick={() => {
-                          deleteCompanyHandler();
-                        }}
-                      />
+                    <IconButton
+                      onClick={() => {
+                        deleteCompanyHandler();
+                      }}
+                    >
+                      <DeleteOutlineIcon fontSize="small" />
                     </IconButton>
                   </Tooltip>
                 </Grid>

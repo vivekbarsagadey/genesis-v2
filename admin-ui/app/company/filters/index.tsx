@@ -27,6 +27,11 @@ type FilterFields = {
   label: string;
 };
 
+interface FilterProps {
+  filterField: FilterFields;
+  options: Array<String>;
+}
+
 const FilterComponent = ({
   companies,
   onFilterHandler,
@@ -34,7 +39,6 @@ const FilterComponent = ({
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const [fileds, setFileds] = useState<Array<FilterFields>>([]);
-  const [companyEmail, setCompanyEmail] = useState<string>("");
 
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -45,6 +49,8 @@ const FilterComponent = ({
   };
 
   const emailFilter = (value: string) => (item: ICompany) => {
+    console.log("value ??", value);
+
     if (isNotBlank(item.email)) {
       if (!item.email.toLowerCase().includes(value.toLowerCase())) {
         return false;
@@ -64,7 +70,10 @@ const FilterComponent = ({
   };
 
   const applyFilter = () => {
-    onFilterHandler(companies.filter(() => emailFilter(companyEmail)));
+    const emailData = fileds.map((ele) => ele.values);
+    const d = companies.filter(() => emailFilter(emailData[0]));
+   
+    // onFilterHandler();
   };
 
   useEffect(() => {
@@ -72,14 +81,7 @@ const FilterComponent = ({
     filterFields.push({ key: "email", values: [], label: "Email" });
     filterFields.push({ key: "name", values: [], label: "Name" });
     setFileds(filterFields);
-  }, [companies]);
-
-  const filterUpdateHandler = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
-  ) => {
-    setCompanyEmail(value);
-  };
+  }, []);
 
   return (
     <>
@@ -103,32 +105,19 @@ const FilterComponent = ({
           "aria-labelledby": "basic-button",
         }}
       >
-        {fileds.map((feild, index) => {
-          return (
-            <Grid item xs={8} key={index}>
-              <FilterStyle>
-                <Stack>
-                  <Autocomplete
-                    size="small"
-                    onChange={filterUpdateHandler}
-                    freeSolo
-                    options={Array.from(new Set(companies?.map((f) => f.name)))}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        InputProps={{
-                          ...params.InputProps,
-                          type: "search",
-                        }}
-                        placeholder={feild.label}
-                      />
-                    )}
-                  />
-                </Stack>
-              </FilterStyle>
-            </Grid>
-          );
-        })}
+        {companies &&
+          fileds?.map((feild, index) => {
+            const key = feild.key;
+            return (
+              <Filter
+                filterField={feild}
+                options={Array.from(
+                  new Set(companies?.map((f) => f[`${key}`]))
+                )}
+                key={index}
+              ></Filter>
+            );
+          })}
 
         <Grid container mb={1} mt={2}>
           <Grid item xs={6}></Grid>
@@ -149,6 +138,40 @@ const FilterComponent = ({
         </Grid>
       </Menu>
     </>
+  );
+};
+
+const Filter = ({ filterField, options }: FilterProps) => {
+  const filterUpdateHandler = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    filterField.values.push(value);
+  };
+
+  return (
+    <Grid item xs={8}>
+      <FilterStyle>
+        <Stack>
+          <Autocomplete
+            size="small"
+            onChange={filterUpdateHandler}
+            freeSolo
+            options={options}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search",
+                }}
+                placeholder={filterField.label}
+              />
+            )}
+          />
+        </Stack>
+      </FilterStyle>
+    </Grid>
   );
 };
 

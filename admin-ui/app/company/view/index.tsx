@@ -40,12 +40,11 @@ const viewIconsSet = [
     title: "Kanban",
     icon: <ViewKanbanOutlinedIcon fontSize="small" />,
   },
-]; 
+];
 
 interface CompanyViewComponentProps {
   onViewSelect: (_: ViewTypes) => void;
 }
-
 
 const CompanyViewComponent = ({ onViewSelect }: CompanyViewComponentProps) => {
   const [alignment, setAlignment] = React.useState("left");
@@ -68,8 +67,9 @@ const CompanyViewComponent = ({ onViewSelect }: CompanyViewComponentProps) => {
               exclusive
               onChange={handleAlignment}
               aria-label="text alignment"
+              key={item.id}
             >
-              <ToggleButton 
+              <ToggleButton
                 value={item.id}
                 aria-label="left aligned"
                 key={item.id}
@@ -78,7 +78,6 @@ const CompanyViewComponent = ({ onViewSelect }: CompanyViewComponentProps) => {
                   border: "none",
                   borderRadius: "50%",
                   background: "transparent",
-                  
                 }}
               >
                 {item.icon}
