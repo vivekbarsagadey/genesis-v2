@@ -1,5 +1,6 @@
 import { ValidationError, ValidatorType } from "../engine";
 import { RuleContext } from "./rule.context";
+import { isLength } from "./length.rule";
 
 
 const NumberRule = ({ constraint, data }: RuleContext) => {
@@ -12,7 +13,8 @@ const NumberRule = ({ constraint, data }: RuleContext) => {
     if (isNaN(data)) {
       throw new ValidationError(constraint);
     }
-     else if(data.length>10 ||data.length<10){
+     if(isLength(data)){
+      console.log(isLength)
       throw new ValidationError(constraint);
      }
       

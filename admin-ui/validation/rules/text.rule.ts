@@ -7,7 +7,7 @@ const TextRule = ({ constraint, data }: RuleContext) => {
   };
 
   const action = () => {
-    if (data.includes(' ')) {
+    if (data.includes(" ")) {
     } else {
       throw new ValidationError(constraint);
     }
