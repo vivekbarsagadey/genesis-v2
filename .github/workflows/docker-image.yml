@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file https://github.com/vivekbarsagadey/genesis-v2/blob/feature/CI_CD_pipeline/admin-ui/dockerfile --tag Dockerfile
+      run: docker build . --file https://github.com/vivekbarsagadey/genesis-v2/blob/feature/CI_CD_pipeline/admin-ui/dockerfile --tag dockerfile
