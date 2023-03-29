@@ -19,6 +19,7 @@ const TestComponent = () => {
         placeHolder="Enter number"
         label="Number"
         id="number"
+        maxLength={10}
         register={register}
       ></InputComponent>
 
@@ -27,6 +28,7 @@ const TestComponent = () => {
         placeHolder="Enter Password"
         label="Password"
         id="password"
+        register={register}
       ></InputComponent>
 
       <InputComponent
@@ -34,6 +36,7 @@ const TestComponent = () => {
         placeHolder="Enter Text"
         label="Text"
         id="text"
+        register={register}
       ></InputComponent>
 
      

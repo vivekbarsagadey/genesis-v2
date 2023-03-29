@@ -14,7 +14,6 @@ const NumberRule = ({ constraint, data }: RuleContext) => {
       throw new ValidationError(constraint);
     }
      if(isLength(data)){
-      console.log(isLength)
       throw new ValidationError(constraint);
      }
       

@@ -1,19 +1,17 @@
 "use client";
 import CallIcon from '@mui/icons-material/Call';
 import Box from "@mui/material/Box";
-import Input from "@mui/material/Input";
-import InputAdornment from "@mui/material/InputAdornment";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import { ValidatorContextBuilder, ValidatorType } from '../../../../validation/engine';
-
-import { ErrorComponent, InputProps } from "./";
+import { ErrorComponent, InputProps, InputStyle } from "./";
 const InputNumberComponent = ({
   label,
   type,
   placeHolder,
   value,
   required,
+  maxLength,
   register
 }: InputProps) => {
   // const engine = ValidationEngine();
@@ -45,23 +43,20 @@ const InputNumberComponent = ({
   return (
     <Box component="form" noValidate autoComplete="off">
        <Typography>{label || "Field Name"}</Typography>
-      <Input
+       <div style={InputStyle.input.container}>
+       <CallIcon />
+      <input
         required={required}
         id="standard-required"
         placeholder={placeHolder}
         defaultValue={value}
         type="number"
         value={value}
-      
         onChange={onChangeHandler}
-    
-          startAdornment= {
-            <InputAdornment position="start">
-            <CallIcon />
-          </InputAdornment>
-          }
+        maxLength={10}
+        style={InputStyle.input.item}
       />
-
+       </div>
       {errors?.map((e, i) => (
         <ErrorComponent key={i} message={e}></ErrorComponent>
       ))}

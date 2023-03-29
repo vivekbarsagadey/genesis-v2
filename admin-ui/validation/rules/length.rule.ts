@@ -3,10 +3,10 @@ const isLength = (value: string): boolean => {
 };
 
 const isNotLength = (value: string): boolean => {
-  if (value.length > 10 || value.length<10) {
-    return false;
+  if (value.length ==10) {
+    return true;
   }
-  return true;
+  return false;
 };
 
 export { isLength, isNotLength };
