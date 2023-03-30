@@ -24,6 +24,8 @@ const Page = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  console.log("project >>><<<",project)
   return (
     <div>
       <ProjectHomeComponent projectData={project} />

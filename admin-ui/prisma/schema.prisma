@@ -106,10 +106,11 @@ model Project {
  webUrl         String? @map("web_url")
  currentVersion String? @map("current_version")
  status         String? @map("status")
- companyId      String?  @map("company_id") @db.ObjectId
  customerName   String? @map("customer_name")
  application    String? @map("application")
+ companyId      String? @map("company_id") @db.ObjectId
  company        Company? @relation(fields: [companyId], references: [id])
+ projectJson    Json?   
 
   @@map("tb_project")
 }
@@ -120,8 +121,7 @@ model Screen {
   updatedAt       DateTime @updatedAt
   name            String?
   components      Component[]
-  projectJsonId   String?  @map("project_json_id") @db.ObjectId
-  projectJson     projectJson? @relation(fields: [projectJsonId], references: [id]) 
+
 
   @@map("tb_screen")
 }
@@ -139,18 +139,7 @@ model Component{
 }
 
 
-model projectJson{
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  name          String?
-  projectData   Json?
-  pages         Screen[]     
-  
 
-  @@map("tb_project_json")
-
-}
 
 model VerificationToken {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId

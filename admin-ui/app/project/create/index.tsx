@@ -7,15 +7,15 @@ import { useState, useEffect } from "react";
 import { applicationType } from "../../../component/common/data/project/application.type";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
-type IApplicationType={
+type IApplicationType = {
   id: Number;
   type: String;
   label: String;
-}
+};
 const ProjectCreate = () => {
   const [projectName, setProjectName] = useState<String>("");
   const [customerName, setCustomerName] = useState<String>("");
-  const [application, setApplication] = useState<String>("");
+  const [application, setApplication] = useState([]);
   const router = useRouter();
   const [companyList, setCompanyList] = useState([]);
   const fetchData = async () => {
@@ -38,31 +38,51 @@ const ProjectCreate = () => {
       });
   }, []);
   const getApplicationType = (_TypeR) => {
-    setApplication(_TypeR.label);
+    var app = _TypeR.label;
+    setApplication([...application, app]);
   };
+  // console.log("application >>???", application);
+
   const updateProjectName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProjectName(e.target.value);
   };
 
   const updateCustomerName = (e: React.SyntheticEvent, value: string[]) => {
-    console.log("value >>", value);
     setCustomerName(value);
   };
 
   const updateMyProjectData = async () => {
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
-      method: "POST",
-      body: JSON.stringify({
-        name: projectName,
-        customerName,
-        application,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    }).then((res) => res.json());
-    router.push("/project");
+    // run this function for length of application[]
+    for (var i = 0; i < application.length; i++) {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+        method: "POST",
+        body: JSON.stringify({
+          name: projectName,
+          customerName,
+          application,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((res) => res.json());
+    }
+
+    // previous 
+    
+    // await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     name: projectName,
+    //     customerName,
+    //     application,
+    //   }),
+    //   headers: {
+    //     "Content-type": "application/json; charset=UTF-8",
+    //   },
+    // }).then((res) => res.json());
+    // router.push("/project");
   };
+
   return (
     <div>
       <Grid container>
@@ -125,7 +145,7 @@ const ProjectCreate = () => {
                       />
                     </Stack>
                   </Grid>
-                  <Link   href={"/company/create"} >
+                  <Link href={"/company/create"}>
                     <Button>+Add Company</Button>
                   </Link>
                 </Grid>
@@ -184,6 +204,7 @@ const ProjectCreate = () => {
     </div>
   );
 };
+
 const ApplicationDetails = ({ application, getApplicationType }) => {
   return (
     <Grid container alignItems={"center"}>
@@ -196,4 +217,5 @@ const ApplicationDetails = ({ application, getApplicationType }) => {
     </Grid>
   );
 };
+
 export default ProjectCreate;
