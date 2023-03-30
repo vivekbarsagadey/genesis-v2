@@ -16,6 +16,12 @@ const ProjectCreate = () => {
   const [projectName, setProjectName] = useState<String>("");
   const [customerName, setCustomerName] = useState<String>("");
   const [application, setApplication] = useState([]);
+
+  const [customerWeb, setCustomerWeb] = useState(false);
+  const [customerMobile, setCustomerMobile] = useState(false);
+  const [businessWeb, setBusinessWeb] = useState(false);
+  const [businessMobile, setBusinessMobile] = useState(false);
+
   const router = useRouter();
   const [companyList, setCompanyList] = useState([]);
   const fetchData = async () => {
@@ -37,11 +43,21 @@ const ProjectCreate = () => {
         console.log(e.message);
       });
   }, []);
-  const getApplicationType = (_TypeR) => {
-    var app = _TypeR.label;
-    setApplication([...application, app]);
+  const getApplicationType = (typeRecv: string) => {
+    if (typeRecv === "Business to Customer - Web") {
+      setCustomerWeb((s) => !s);
+    }
+    if (typeRecv === "Business to Customer - Mobile") {
+      setCustomerMobile((s) => !s);
+    }
+    if (typeRecv === "Business to Business - Web") {
+      setBusinessWeb((s) => !s);
+    }
+    if (typeRecv === "Business to Business - Mobile") {
+      setBusinessMobile((s) => !s);
+    }
+    // setApplication([...application, app]);
   };
-  // console.log("application >>???", application);
 
   const updateProjectName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProjectName(e.target.value);
@@ -52,14 +68,53 @@ const ProjectCreate = () => {
   };
 
   const updateMyProjectData = async () => {
-    // run this function for length of application[]
-    for (var i = 0; i < application.length; i++) {
+    
+    if (customerWeb) {
       await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
         method: "POST",
         body: JSON.stringify({
           name: projectName,
           customerName,
-          application,
+          application: "Business to Customer - Web",
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((res) => res.json());
+    }
+    if (customerMobile) {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+        method: "POST",
+        body: JSON.stringify({
+          name: projectName,
+          customerName,
+          application: "Business to Customer - Mobile",
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((res) => res.json());
+    }
+    if (businessWeb) {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+        method: "POST",
+        body: JSON.stringify({
+          name: projectName,
+          customerName,
+          application: "Business to Business - Web",
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((res) => res.json());
+    }
+    if (businessMobile) {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+        method: "POST",
+        body: JSON.stringify({
+          name: projectName,
+          customerName,
+          application: "Business to Business - Mobile",
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -67,20 +122,7 @@ const ProjectCreate = () => {
       }).then((res) => res.json());
     }
 
-    // previous 
-    
-    // await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     name: projectName,
-    //     customerName,
-    //     application,
-    //   }),
-    //   headers: {
-    //     "Content-type": "application/json; charset=UTF-8",
-    //   },
-    // }).then((res) => res.json());
-    // router.push("/project");
+    router.push("/project");
   };
 
   return (
@@ -158,18 +200,56 @@ const ProjectCreate = () => {
                   </Grid>
                   <Grid item xs={7}>
                     <Grid container>
-                      {applicationType?.map(
-                        (application: IApplicationType, index) => {
-                          return (
-                            <Grid item xs={5.8} key={index}>
-                              <ApplicationDetails
-                                application={application}
-                                getApplicationType={getApplicationType}
-                              />
-                            </Grid>
-                          );
-                        }
-                      )}
+                      <Grid container alignItems={"center"}>
+                        <Grid item xs={2}>
+                          <Checkbox
+                            value={customerWeb}
+                            onClick={() =>
+                              getApplicationType("Business to Customer - Web")
+                            }
+                          />
+                        </Grid>
+                        <Grid item xs={10}>
+                          <Typography>Business to Customer - Web</Typography>
+                        </Grid>
+                        <Grid item xs={2}>
+                          <Checkbox
+                            value={customerMobile}
+                            onClick={() =>
+                              getApplicationType(
+                                "Business to Customer - Mobile"
+                              )
+                            }
+                          />
+                        </Grid>
+                        <Grid item xs={10}>
+                          <Typography>Business to Customer - Mobile</Typography>
+                        </Grid>
+                        <Grid item xs={2}>
+                          <Checkbox
+                            value={businessWeb}
+                            onClick={() =>
+                              getApplicationType("Business to Business - Web")
+                            }
+                          />
+                        </Grid>
+                        <Grid item xs={10}>
+                          <Typography>Business to Business - Web</Typography>
+                        </Grid>
+                        <Grid item xs={2}>
+                          <Checkbox
+                            value={businessMobile}
+                            onClick={() =>
+                              getApplicationType(
+                                "Business to Business - Mobile"
+                              )
+                            }
+                          />
+                        </Grid>
+                        <Grid item xs={10}>
+                          <Typography>Business to Business - Mobile</Typography>
+                        </Grid>
+                      </Grid>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -202,19 +282,6 @@ const ProjectCreate = () => {
         </Grid>
       </Grid>
     </div>
-  );
-};
-
-const ApplicationDetails = ({ application, getApplicationType }) => {
-  return (
-    <Grid container alignItems={"center"}>
-      <Grid item xs={2}>
-        <Checkbox onClick={() => getApplicationType(application)} />
-      </Grid>
-      <Grid item xs={10}>
-        <Typography>{application.label}</Typography>
-      </Grid>
-    </Grid>
   );
 };
 
