@@ -46,6 +46,7 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
             <Grid container spacing={1}>
               <Grid item xs={"auto"}>
+                
                 <FilterComponent companies={companies} onFilterHandler={onSearchHandler}/>
               </Grid>
               <Grid item xs={"auto"}>
