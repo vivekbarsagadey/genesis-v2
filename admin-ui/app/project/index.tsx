@@ -51,7 +51,6 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
                 />
               </Grid>
               <Grid item xs={"auto"}>
-                {/* <ExportComponent copyCompanyData={copyCompanies} /> */}
                 <ProjectExportComponent projects={copyProject}/>
               </Grid>
 
@@ -61,7 +60,7 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
             </Grid>
           </Grid>
           <Grid item xs={1}>
-            <Link href={"/company/create"} passHref>
+            <Link href={"/project/create"} passHref>
               <Button variant="contained" size="small">
                 Create
                 <span>+</span>
