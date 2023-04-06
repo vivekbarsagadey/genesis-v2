@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { IconButton, Tooltip } from "@mui/material";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
-import "react-big-calendar/lib/css/react-big-calendar.css";
 import Grid from "@mui/material/Grid";
+import moment from "moment";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import { ListComponentProps } from "./props";
+import IProject from "../project.model";
+
 const localizer = momentLocalizer(moment);
 
+interface CalendarEventData {
+  title: string;
+  start: Date;
+  end: Date;
+}
 
-const ProjectCalendarView = ({ projectData }) => {
+const ProjectCalendarView = ({ projects}: ListComponentProps) => {
   const [events, setEvents] = useState([]);
 
-  const CalendarData = projectData?.map((projectData) => {
+  const calendarProjects = projects?.map((projects : IProject) => {
     return {
-      title: projectData.firstName,
-      start: new Date(projectData.createdAt),
-      end: new Date(projectData.updatedAt),
-    };
+      title: projects.name,
+      start: new Date(projects.createdAt),
+      end: new Date(projects.updatedAt),
+    }
   });
   useEffect(() => {
-    setEvents(CalendarData);
+    setEvents(calendarProjects);
   }, []);
   return (
     <Grid pt={1} container height={"80vh"}>

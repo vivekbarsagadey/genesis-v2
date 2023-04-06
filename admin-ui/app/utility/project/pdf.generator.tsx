@@ -1,18 +1,19 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import { download } from "../pdf-util";
+import IProject from "../../project/project.model";
 
 type ProjectProps = {
-  projectData: Array<IProject>;
+  projects: Array<IProject>;
 };
 
-const PdfGenerator = ({ projectData }: ProjectProps) => {
+const ProjectPdfGenerator = ({ projects }: ProjectProps) => {
   const exportPDF = async () => {
     const fileName = `Project${"-list"}${new Date()
       .toISOString()
       .slice(0, 10)}`;
     const headers = [["Project Name", "Customer Name", "Application"]];
-    const pdfSendData = projectData?.map((elt) => [
+    const pdfSendData = projects?.map((elt) => [
       elt.name,
       elt.customerName,
       elt.application,
@@ -32,4 +33,4 @@ const PdfGenerator = ({ projectData }: ProjectProps) => {
   );
 };
 
-export default PdfGenerator;
+export default ProjectPdfGenerator;

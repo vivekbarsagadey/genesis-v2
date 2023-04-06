@@ -16,7 +16,7 @@ interface CalendarEventData {
 const CustomerCalendarView = ({ customer }: ListComponentProps) => {
   const [events, setEvents] = useState([]);
 
-  const calendarCompanies = customer?.map((customers : ICustomer) => {
+  const calendarCustomer = customer?.map((customers : ICustomer) => {
     return {
       title: customers.name,
       start: new Date(customers.createdAt),
@@ -24,7 +24,7 @@ const CustomerCalendarView = ({ customer }: ListComponentProps) => {
     }
   });
   useEffect(() => {
-    setEvents(calendarCompanies);
+    setEvents(calendarCustomer);
   }, []);
   return (
     <Grid pt={1} container height={"80vh"}>

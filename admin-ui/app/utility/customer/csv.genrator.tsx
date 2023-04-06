@@ -3,14 +3,14 @@ import { CSVLink } from "react-csv";
 import { ICustomer } from "../../customer/models";
 
 type CustomerProps = {
-  copyCompanyData: Array<ICustomer>;
+  customer: Array<ICustomer>;
 };
 
-const CustomerCsvGenerator = ({ copyCompanyData }: CustomerProps) => {
+const CustomerCsvGenerator = ({ customer }: CustomerProps) => {
   return (
     <Typography variant="subtitle1">
       <CSVLink
-        data={copyCompanyData}
+        data={customer}
         filename={`customer-list-${new Date().toISOString().slice(0, 10)}`}
       >
         CSV

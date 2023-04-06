@@ -4,15 +4,16 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 import React from "react";
-import CustomerCsvGenerator from "../../utility/customer/csv.genrator";
-import CustomerExcellGenerator from "../../utility/customer/excell.generator";
-import CustomerPdfGenerator from "../../utility/customer/pdf.generator";
-import { ICustomer } from "../models";
+import ProjectCsvGenerator from "../../utility/project/csv.generator";
+import ProjectExcellGenerator from "../../utility/project/excell.generator";
+import ProjectPdfGenerator from "../../utility/project/pdf.generator";
+import IProject from "../project.model";
+
 
 interface CompanyExportComponentProps {
-  customer: Array<ICustomer>;
+  projects: Array<IProject>;
 }
-const ExportComponent = ({ customer }: CompanyExportComponentProps) => {
+const ProjectExportComponent = ({ projects }: CompanyExportComponentProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -45,17 +46,17 @@ const ExportComponent = ({ customer }: CompanyExportComponentProps) => {
         }}
       >
         <MenuItem onClick={handleClose}>
-          <CustomerExcellGenerator customer={customer} />
+          <ProjectExcellGenerator projects={projects} />
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <CustomerPdfGenerator customer={customer} />
+          <ProjectPdfGenerator projects={projects} />
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <CustomerCsvGenerator customer={customer} />
+          <ProjectCsvGenerator projects={projects} />
         </MenuItem>
       </Menu>
     </>
   );
 };
 
-export default ExportComponent;
+export default ProjectExportComponent;

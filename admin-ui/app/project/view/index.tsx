@@ -1,57 +1,91 @@
-import React from "react";
-import { IconButton, Tooltip } from "@mui/material";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import GridViewIcon from "@mui/icons-material/GridView";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import TimelineIcon from "@mui/icons-material/Timeline";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ViewKanbanOutlinedIcon from "@mui/icons-material/ViewKanbanOutlined";
+import Stack from "@mui/material/Stack";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import React from "react";
+import { ViewTypes } from "../../utility";
 
-const AllViews = [
+const viewIconsSet = [
   {
     id: 1,
-    view: "List",
+    view: ViewTypes.LIST,
     title: "List",
     icon: <ListAltIcon fontSize="small" />,
   },
   {
     id: 2,
-    view: "Grid",
+    view: ViewTypes.GRID,
     title: "Grid",
     icon: <GridViewIcon fontSize="small" />,
   },
   {
     id: 3,
-    view: "Graph",
+    view: ViewTypes.GRAPH,
     title: "Graph",
     icon: <TimelineIcon fontSize="small" />,
   },
   {
-    id: 3,
-    view: "Calendar",
+    id: 4,
+    view: ViewTypes.CALENDAR,
     title: "Calendar",
     icon: <CalendarMonthIcon fontSize="small" />,
   },
   {
-    id: 4,
-    view: "Kanban",
+    id: 5,
+    view: ViewTypes.KANBAN,
     title: "Kanban",
     icon: <ViewKanbanOutlinedIcon fontSize="small" />,
   },
 ];
-const ProjectViewComponent = ({ handleCount }) => {
+
+interface ProjectViewComponentProps {
+  onViewSelect: (_: ViewTypes) => void;
+}
+
+const ProjectViewComponent = ({ onViewSelect }: ProjectViewComponentProps) => {
+  const [alignment, setAlignment] = React.useState("left");
+
+  const handleAlignment = (
+    event: React.MouseEvent<HTMLElement>,
+    newAlignment: string | null
+  ) => {
+    if (newAlignment !== null) {
+      setAlignment(newAlignment);
+    }
+  };
   return (
     <>
-      {AllViews?.map((data) => {
-        return (
-          <div key={data.id} style={{ margin: "0.2rem" }}>
-            <Tooltip title={data?.title}>
-              <IconButton size="small" onClick={() => handleCount(data.view)}>
-                {data.icon}
-              </IconButton>
-            </Tooltip>
-          </div>
-        );
-      })}
+      <Stack direction="row">
+        {viewIconsSet.map((item) => {
+          return (
+            <ToggleButtonGroup
+              value={alignment}
+              exclusive
+              onChange={handleAlignment}
+              aria-label="text alignment"
+              key={item.id}
+            >
+              <ToggleButton
+                value={item.id}
+                aria-label="left aligned"
+                key={item.id}
+                onClick={() => onViewSelect(item.view)}
+                style={{
+                  border: "none",
+                  borderRadius: "50%",
+                  background: "transparent",
+                }}
+              >
+                {item.icon}
+              </ToggleButton>
+            </ToggleButtonGroup>
+          );
+        })}
+      </Stack>
     </>
   );
 };

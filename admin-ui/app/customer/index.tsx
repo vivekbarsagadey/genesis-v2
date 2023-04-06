@@ -52,7 +52,7 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
                 />
               </Grid>
               <Grid item xs={"auto"}>
-                <ExportComponent copyCompanyData={copyCustomer} />
+                <ExportComponent customer={copyCustomer} />
               </Grid>
 
               <Grid item xs={10}>

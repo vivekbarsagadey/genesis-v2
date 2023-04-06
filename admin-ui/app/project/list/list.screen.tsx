@@ -1,31 +1,23 @@
 "use client";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import { Box, Grid, IconButton, Typography } from "@mui/material";
-import Pagination from "@mui/material/Pagination";
+import { Box, Grid, IconButton, Pagination, Typography } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
 import Paper from "@mui/material/Paper";
 import { useState } from "react";
+import { PaginationHandler } from "../../utility";
 import InfoProjectComponent from "../info";
+import InfoCustomerComponent from "../info";
 import IProject from "../project.model";
-import projectPagination from "./project.list.pagination";
-type ProjectComponentProps = {
-  copyProject: Array<IProject>;
-  projectSearchList: any;
-};
 
-const ProjectListComponent = ({
-  copyProject,
-  projectSearchList,
-}: ProjectComponentProps) => {
-  //pagination logic
+const ProjectListViewComponent = ({ projects }: any) => {
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
-  const count = Math.ceil(copyProject.length / PER_PAGE);
-  const _DATA = projectPagination(copyProject, PER_PAGE);
+  const count = Math.ceil(projects.length / PER_PAGE);
+  const paginationHandler = PaginationHandler(projects, PER_PAGE);
 
-  const handleChangePage = (e, p) => {
+  const handleChangePage = (e: any, p: number) => {
     setPage(p);
-    _DATA.jump(p);
+    paginationHandler.jump(p);
   };
 
   return (
@@ -36,12 +28,10 @@ const ProjectListComponent = ({
             <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
               <Grid container ml={1}>
                 <Grid item xs={4}>
-                  <IconButton>
-                    <CheckBoxOutlineBlankIcon fontSize="small" />
-                  </IconButton>
+                  <Checkbox size="small" />
                 </Grid>
                 <Grid item xs={6}>
-                  <IconButton   >
+                  <IconButton>
                     <RemoveRedEyeIcon fontSize="small" />
                   </IconButton>
                 </Grid>
@@ -59,7 +49,12 @@ const ProjectListComponent = ({
               </Typography>
             </Grid>
             <Grid item xs={2}>
-              <Typography variant="subtitle2" noWrap>
+              <Typography
+                variant="subtitle2"
+                noWrap
+                display={"flex"}
+                justifyContent={"space-around"}
+              >
                 Application
               </Typography>
             </Grid>
@@ -68,6 +63,7 @@ const ProjectListComponent = ({
                 variant="subtitle2"
                 display={"flex"}
                 justifyContent={"space-around"}
+                ml={8}
                 noWrap
               >
                 Action
@@ -76,15 +72,11 @@ const ProjectListComponent = ({
           </Grid>
         </Paper>
       </Box>
-
       <Grid style={{ height: "62vh" }}>
-        {_DATA
+        {paginationHandler
           .currentData()
           .reverse()
-          .filter((ele) =>
-            ele.name.toLowerCase().includes(projectSearchList.toLowerCase())
-          )
-          ?.map((items, index) => {
+          ?.map((items: IProject, index: number) => {
             return (
               <Typography key={index}>
                 <InfoProjectComponent items={items} />
@@ -92,22 +84,22 @@ const ProjectListComponent = ({
             );
           })}
       </Grid>
+
       <Grid container mt={4}>
         <Grid item xs={12} display={"flex"} justifyContent={"flex-end"}>
-          <Grid style={{ position: "fixed" }}>
-            <Pagination
-              count={count}
-              size="small"
-              page={page}
-              variant="outlined"
-              color="primary"
-              onChange={handleChangePage}
-            />
-          </Grid>
+          <Grid style={{ position: "fixed" }}></Grid>
+          <Pagination
+            count={count}
+            size="small"
+            page={page}
+            variant="outlined"
+            color="primary"
+            onChange={handleChangePage}
+          />
         </Grid>
       </Grid>
     </>
   );
 };
 
-export default ProjectListComponent;
+export default ProjectListViewComponent;

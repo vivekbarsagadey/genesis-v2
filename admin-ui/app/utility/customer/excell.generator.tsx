@@ -1,10 +1,11 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import { downloadExcel } from "react-export-table-to-excel";
-import { ICompany } from "../../company/models";
+import { ICustomer } from "../../customer/models";
+
 
 type CustomerProps={
-  copyCompanyData: Array<ICompany>
+  customer: Array<ICustomer>
 }
 const header = [
   "Id",
@@ -14,14 +15,14 @@ const header = [
   "Customer Name",
   "Application",
 ];
-const CustomerExcellGenerator = ({ copyCompanyData }:CustomerProps) => {
+const CustomerExcellGenerator = ({ customer }:CustomerProps) => {
   function handleDownloadExcel() {
     downloadExcel({
       fileName: `customer-list-${new Date().toISOString().slice(0, 10)}`,
       sheet: "react-export-table-to-excel",
       tablePayload: {
         header,
-        body: copyCompanyData,
+        body: customer,
       },
     });
   }

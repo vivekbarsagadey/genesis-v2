@@ -4,13 +4,13 @@ import { CSVLink } from "react-csv";
 import IProject from "../../project/project.model";
 
 type ProjectProps={
-  copyCompanyData: Array<IProject>
+  projects: Array<IProject>
 }
-const CsvGenerator = ({ projectData }:ProjectProps) => {
+const ProjectCsvGenerator = ({ projects }:ProjectProps) => {
   return (
     <Typography variant="subtitle1">
       <CSVLink
-        data={projectData}
+        data={projects}
         filename={`projectData${"-list"}${new Date().toISOString().slice(0, 10)}`}
       >
         CSV
@@ -19,4 +19,4 @@ const CsvGenerator = ({ projectData }:ProjectProps) => {
   );
 };
 
-export default CsvGenerator;
+export default ProjectCsvGenerator;

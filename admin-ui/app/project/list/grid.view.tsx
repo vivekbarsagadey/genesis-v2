@@ -1,38 +1,33 @@
-import { Paper } from "@mui/material";
+import React, { useState } from "react";
+import { Pagination, Paper } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import Pagination from "@mui/material/Pagination";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
-import { useState } from "react";
-import IProject from "../project.model";
-import projectGridPagination from "./project.grid.pagination";
+import { PaginationHandler } from "../../utility";
+import { ListComponentProps } from "./props";
 
-type ProjectComponentProps={
-  copyProject:  Array<IProject>;
-  
-}
-
-const ProjectGridView = ({ copyProject }:ProjectComponentProps) => {
-  // Pagination logic
+const ProjectGridView = ({ projects }: ListComponentProps) => {
+  //pagination
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
-  const count = Math.ceil(copyProject.length / PER_PAGE);
-  const _DATA = projectGridPagination(copyProject, PER_PAGE);
+  const count = Math.ceil(projects.length / PER_PAGE);
+  const paginationHandler = PaginationHandler(projects, PER_PAGE);
 
-  const handleChangePage = (e, p) => {
+  const handleChangePage = (e: any, p: number) => {
     setPage(p);
-    _DATA.jump(p);
+    paginationHandler.jump(p);
   };
+
   return (
     <>
-      <Box>
-        <Grid container spacing={1.5} mt={0.5}>
-          {_DATA
+      <Box style={{ height: "70.6vh" }} mr={2}>
+        <Grid container spacing={1} mt={1}>
+          {paginationHandler
             .currentData()
             .reverse()
             ?.map((item) => {
               return (
-                <Grid item lg={4} xs={12} sm={6} md={4} mt={0} key={item.id}>
+                <Grid item xs={4} md={4} sm={4} lg={4} key={item.id}>
                   <Paper variant="outlined">
                     <Box paddingLeft={2} paddingTop={2}>
                       <Grid container>
@@ -41,11 +36,11 @@ const ProjectGridView = ({ copyProject }:ProjectComponentProps) => {
                             Project Name
                           </Typography>
                         </Grid>
-                        <Grid item xs={1.5} paddingLeft={1}>
-                          <Typography variant="subtitle1"> :</Typography>
+                        <Grid item xs={1}>
+                          <Typography> :</Typography>
                         </Grid>
-                        <Grid item xs={5.5} paddingLeft={3}>
-                          <Typography noWrap variant="subtitle1">
+                        <Grid item xs={6} paddingLeft={2}>
+                          <Typography variant="subtitle1" noWrap>
                             {item?.name}
                           </Typography>
                         </Grid>
@@ -54,35 +49,33 @@ const ProjectGridView = ({ copyProject }:ProjectComponentProps) => {
 
                     <Box mt={1} paddingLeft={2}>
                       <Grid container>
-                        <Grid item xs={5.3}>
+                        <Grid item xs={5}>
                           <Typography variant="subtitle1">
-                            Customer Name
+                            Company Name
                           </Typography>
                         </Grid>
-                        <Grid item xs={1.5}>
-                          <Typography variant="subtitle1"> :</Typography>
+                        <Grid item xs={1}>
+                          <Typography> :</Typography>
                         </Grid>
-                        <Grid item xs={5.2} paddingLeft={2}>
-                          <Typography noWrap variant="subtitle1">
-                            {" "}
+                        <Grid item xs={6} paddingLeft={2}>
+                          <Typography variant="subtitle1" noWrap>
                             {item?.customerName}
                           </Typography>
                         </Grid>
                       </Grid>
                     </Box>
-
                     <Box mt={1} paddingLeft={2} paddingBottom={2}>
                       <Grid container>
-                        <Grid item xs={5.3}>
+                        <Grid item xs={5}>
                           <Typography variant="subtitle1">
                             Application
                           </Typography>
                         </Grid>
-                        <Grid item xs={1.5}>
-                          <Typography variant="subtitle1"> :</Typography>
+                        <Grid item xs={1}>
+                          <Typography> :</Typography>
                         </Grid>
-                        <Grid item xs={5.2} paddingLeft={2}>
-                          <Typography variant="subtitle1">
+                        <Grid item xs={6} paddingLeft={2}>
+                          <Typography variant="subtitle1" noWrap>
                             {item?.application}
                           </Typography>
                         </Grid>
@@ -93,22 +86,22 @@ const ProjectGridView = ({ copyProject }:ProjectComponentProps) => {
               );
             })}
         </Grid>
-        <Grid container mt={7.3}>
-          <Grid item xs={11.8} display={"flex"} justifyContent={"flex-end"}>
-            <div style={{ position: "fixed" }}>
-              <Pagination
-                count={count}
-                size="small"
-                page={page}
-                variant="outlined"
-                color="primary"
-                onChange={handleChangePage}
-              />
-            </div>
-          </Grid>
-          <Grid item xs={0.2}></Grid>
-        </Grid>
       </Box>
+      <Grid container mt={4}>
+        <Grid item xs={11.8} display={"flex"} justifyContent={"flex-end"}>
+          <Grid style={{ position: "fixed" }}>
+            <Pagination
+              count={count}
+              size="small"
+              page={page}
+              variant="outlined"
+              color="primary"
+              onChange={handleChangePage}
+            />
+          </Grid>
+        </Grid>
+        <Grid item xs={0.2}></Grid>
+      </Grid>
     </>
   );
 };
