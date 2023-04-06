@@ -23,8 +23,6 @@ const deleteCustomer = async (id) => {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
     });
-    // console.log("this is createBranch Deleted",response);
-
     return response;
 }
 export {createCustomer, updateCustomer ,deleteCustomer}

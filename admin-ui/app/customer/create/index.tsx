@@ -1,19 +1,39 @@
 "use client";
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import {
+  Avatar,
+  Box,
+  Button,
+  Grid,
+  IconButton,
+  TextField,
+  Typography,
+} from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { makeStyles } from "@mui/styles";
 import Link from "next/link";
-import { useState } from "react";
-import { Status } from "../models";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { createCustomer } from "../../../services/customer/customer.action";
-import Autocomplete from "@mui/material/Autocomplete";
+import { Status } from "../models";
+
+const useStyles = makeStyles({
+  avtar: {
+    opacity: "1",
+    "&:hover": {
+      opacity: "0.8",
+      color: "black",
+    },
+    width: "120px",
+    height: "125px",
+  },
+});
 
 const CustomerCreateComponent = () => {
+  const classes = useStyles();
   const [customerFirstName, setCustomerFirstName] = useState("");
   const [customerLastName, setCustomerLastName] = useState("");
   const [gender, setGender] = useState("");
@@ -26,15 +46,10 @@ const CustomerCreateComponent = () => {
   const [customerCity, setCustomerCity] = useState("");
   const [customerState, setCustomerState] = useState("");
   const [customerCountry, setCustomerCountry] = useState("");
-  const [customerDateOfBirth, setCustomerDateOfBirth] = useState("");
   const [customerProfilePic, setCustomerProfilePic] = useState("");
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setGender(event.target.value as string);
-  };
+  const [hover, setHover] = useState(false);
 
   const router = useRouter();
-
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
   // POST call
@@ -45,6 +60,7 @@ const CustomerCreateComponent = () => {
         lastName: customerLastName,
         gender: gender,
         email: customerEmail,
+        age: customerAge,
         mobile: customerPhone,
         address: customerAddress,
         status: customerStatus,
@@ -52,10 +68,8 @@ const CustomerCreateComponent = () => {
         city: customerCity,
         state: customerState,
         country: customerCountry,
-        dateOfBirth: customerDateOfBirth,
-        pic: customerProfilePic,
+        profilePic: customerProfilePic,
       };
-      //  console.log("this is body", body)
       await createCustomer(body);
       await router.push("/customer");
     } catch (error) {
@@ -96,10 +110,12 @@ const CustomerCreateComponent = () => {
   const updateCustomerCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerCountry(e.target.value);
   };
-
-  // const updateCustomerDatePicker = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setCustomerDateOfBirth(e.target.value);
-  // };
+  const updateCustomerProfilePic = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerProfilePic(e.target.value);
+  };
+  const customerChange = (event: SelectChangeEvent) => {
+    setGender(event.target.value as string);
+  };
 
   const updateCustomerStatus = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -108,15 +124,54 @@ const CustomerCreateComponent = () => {
     setCustomerStatus(value);
   };
 
+  const handleMouseIn = () => {
+    setHover(true);
+  };
+
+  const handleMouseOut = () => {
+    setHover(false);
+  };
+
   return (
     <Box>
       <Grid container style={{ display: "flex", alignItems: "center" }}>
         <Grid item xs={2}>
-          <Typography
-            style={{ background: "red", height: "10rem", borderRadius: "50%" }}
-          >
-            Image
-          </Typography>
+          <Grid item xs={4}>
+            <div className="App">
+              <input
+                type="file"
+                id="upload"
+                accept="image/*"
+                style={{ display: "none" }}
+                value={customerProfilePic}
+                onChange={updateCustomerProfilePic}
+              />
+              <label htmlFor="upload">
+                <IconButton
+                  color="primary"
+                  aria-label="upload picture"
+                  component="Image"
+                  type="submit"
+                >
+                  <Avatar
+                    id="avatar"
+                    onMouseOver={handleMouseIn}
+                    onMouseOut={handleMouseOut}
+                    className={classes.avtar}
+                  >
+                    {hover ? (
+                      <span>
+                        <Typography variant="body2">Upload</Typography>
+                        <CameraAltIcon />
+                      </span>
+                    ) : (
+                      ""
+                    )}
+                  </Avatar>
+                </IconButton>
+              </label>
+            </div>
+          </Grid>
         </Grid>
         <Grid item xs={10}>
           <Box sx={{ flexGrow: 1 }} padding={4}>
@@ -184,7 +239,7 @@ const CustomerCreateComponent = () => {
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={gender}
-                        onChange={handleChange}
+                        onChange={customerChange}
                         size="small"
                       >
                         <MenuItem value={"Male"}>Male</MenuItem>
@@ -205,8 +260,8 @@ const CustomerCreateComponent = () => {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                      id="email"
-                      placeholder="Email"
+                      id="age"
+                      placeholder="Age"
                       variant="outlined"
                       size="small"
                       fullWidth
@@ -268,15 +323,6 @@ const CustomerCreateComponent = () => {
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    {/* <TextField
-                      id="address"
-                      placeholder="Address"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerStatus}
-                      onChange={updateCustomerStatus}
-                    /> */}
                     <Autocomplete
                       value={customerStatus}
                       onChange={updateCustomerStatus}
@@ -404,25 +450,6 @@ const CustomerCreateComponent = () => {
                       value={customerCountry}
                       onChange={updateCustomerCountry}
                     />
-                  </Grid>
-                </Grid>
-              </Grid>
-
-              <Grid item xs={6} mt={2}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
-                    <Typography>Date Of Birth</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DatePicker
-                        // value={customerDateOfBirth}
-                        // onChange={updateCustomerDatePicker}
-                      />
-                    </LocalizationProvider>
                   </Grid>
                 </Grid>
               </Grid>

@@ -22,7 +22,7 @@ const ListViewComponent = ({ customer }:any) => {
 
   return (
     <>
-      <Box mr={2} mt={2}>
+      {/* <Box mr={2} mt={2}>
         <Paper variant="outlined">
           <Grid container>
             <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
@@ -51,6 +51,66 @@ const ListViewComponent = ({ customer }:any) => {
                 display={"flex"}
                 justifyContent={"space-around"}
               >
+                Email
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                variant="subtitle2"
+                noWrap
+                display={"flex"}
+                justifyContent={"space-around"}
+              >
+                Contact
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                variant="subtitle2"
+                noWrap
+                display={"flex"}
+                justifyContent={"space-around"}
+              >
+                Address
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                variant="subtitle2"
+                display={"flex"}
+                justifyContent={"space-around"}
+                noWrap
+              >
+                Action
+              </Typography>
+            </Grid>
+          </Grid>
+        </Paper>
+      </Box> */}
+
+<Box mr={2} mt={2}>
+        <Paper variant="outlined">
+          <Grid container>
+            <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
+              <Grid container ml={1}>
+                <Grid item xs={4}>
+                  <Checkbox size="small" />
+                </Grid>
+                <Grid item xs={6}>
+                  <IconButton>
+                    <RemoveRedEyeIcon fontSize="small" />
+                  </IconButton>
+                </Grid>
+              </Grid>
+            </Grid>
+
+            <Grid item xs={2}>
+              <Typography variant="subtitle2" noWrap>
+                Customer Name
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography variant="subtitle2" noWrap>
                 Email
               </Typography>
             </Grid>

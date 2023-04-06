@@ -145,7 +145,8 @@ model Customer {
   mobile         String?
   status         String?
   gender         String?
-  dateofBirth    String?
+  age            String?
+  email          String?   @unique
   
   @@map("tb_customer")
 }

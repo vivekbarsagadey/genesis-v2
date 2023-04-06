@@ -23,7 +23,7 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
   };
   return (
     <>
-      <Box mt={0.6} mr={2}>
+      {/* <Box mt={0.6} mr={2}>
         <Paper variant="outlined">
           <Grid container>
             <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
@@ -41,7 +41,7 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
 
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
-                {customer.name}
+                {customer.firstName}{customer.lastName}
               </Typography>
             </Grid>
             <Grid item xs={2} mr={1}>
@@ -65,6 +65,83 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
                 noWrap
                 display={"flex"}
                 justifyContent={"space-around"}
+              >
+                {customer.address}
+              </Typography>
+            </Grid>
+            <Grid item xs={1}>
+              <Grid container>
+                <Grid item xs={4}>
+                  <Tooltip title="Edit">
+                    <Link href={`/customer/${customer.id}`}>
+                      <IconButton>
+                        <EditIcon fontSize="small" />
+                      </IconButton>
+                    </Link>
+                  </Tooltip>
+                </Grid>
+                <Grid item xs={2}>
+                  <Tooltip title="Delete">
+                    <IconButton
+                      onClick={() => {
+                        deleteCustomerHandler();
+                      }}
+                    >
+                      <DeleteOutlineIcon fontSize="small" />
+                    </IconButton>
+                  </Tooltip>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Paper>
+      </Box> */}
+
+      <Box mt={0.6} mr={2}>
+        <Paper variant="outlined">
+          <Grid container>
+            <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
+              <Grid container ml={1}>
+                <Grid item xs={4}>
+                  <Checkbox size="small" />
+                </Grid>
+                <Grid item xs={6}>
+                  <IconButton>
+                    <RemoveRedEyeIcon fontSize="small" />
+                  </IconButton>
+                </Grid>
+              </Grid>
+            </Grid>
+
+            <Grid item xs={2}>
+              <Typography variant="body2" noWrap>
+                {customer.firstName}
+                {customer.lastName}
+              </Typography>
+            </Grid>
+            <Grid item xs={2} mr={1}>
+              <Typography variant="body2" noWrap>
+                {customer.email}
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                variant="body2"
+                noWrap
+                display={"flex"}
+                justifyContent={"space-around"}
+                mr={3}
+              >
+                {customer.mobile}
+              </Typography>
+            </Grid>
+            <Grid item xs={2} mr={6}>
+              <Typography
+                variant="body2"
+                noWrap
+                display={"flex"}
+                justifyContent={"space-around"}
+                mr={4}
               >
                 {customer.address}
               </Typography>
