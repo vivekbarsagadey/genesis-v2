@@ -11,6 +11,7 @@ import { useState } from "react";
 import { Status } from "../models";
 import { useRouter } from "next/navigation";
 import { createCustomer } from "../../../services/customer/customer.action";
+import Autocomplete from "@mui/material/Autocomplete";
 
 const CustomerCreateComponent = () => {
   const [customerFirstName, setCustomerFirstName] = useState("");
@@ -20,7 +21,6 @@ const CustomerCreateComponent = () => {
   const [customerEmail, setCustomerEmail] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
   const [customerAddress, setCustomerAddress] = useState("");
-  const [customerWebsite, setCustomerWebsite] = useState("");
   const [customerStatus, setCustomerStatus] = useState("Active");
   const [customerZipCode, setCustomerZipCode] = useState("");
   const [customerCity, setCustomerCity] = useState("");
@@ -47,14 +47,13 @@ const CustomerCreateComponent = () => {
         email: customerEmail,
         mobile: customerPhone,
         address: customerAddress,
-        website: customerWebsite,
         status: customerStatus,
-        zipCode:customerZipCode,
-        city:customerCity,
-        state:customerState,
-        country:customerCountry,
-        dateOfBirth:customerDateOfBirth,
-        pic:customerProfilePic,
+        zipCode: customerZipCode,
+        city: customerCity,
+        state: customerState,
+        country: customerCountry,
+        dateOfBirth: customerDateOfBirth,
+        pic: customerProfilePic,
       };
       //  console.log("this is body", body)
       await createCustomer(body);
@@ -70,7 +69,7 @@ const CustomerCreateComponent = () => {
   const updateCustomerLastName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerLastName(e.target.value);
   };
-  
+
   const updateCustomerAge = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerAge(e.target.value);
   };
@@ -78,13 +77,35 @@ const CustomerCreateComponent = () => {
   const updateCustomerEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerEmail(e.target.value);
   };
-  
 
-  const getCompanyStatusValue = (
+  const updateCustomerPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerPhone(e.target.value);
+  };
+  const updateCustomerAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerAddress(e.target.value);
+  };
+  const updateCustomerZipCode = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerZipCode(e.target.value);
+  };
+  const updateCustomerCity = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerCity(e.target.value);
+  };
+  const updateCustomerState = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerState(e.target.value);
+  };
+  const updateCustomerCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerCountry(e.target.value);
+  };
+
+  // const updateCustomerDatePicker = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setCustomerDateOfBirth(e.target.value);
+  // };
+
+  const updateCustomerStatus = (
     e: React.ChangeEvent<HTMLInputElement>,
     value: string
   ) => {
-    setCompanyStatus(value);
+    setCustomerStatus(value);
   };
 
   return (
@@ -120,7 +141,7 @@ const CustomerCreateComponent = () => {
                       variant="outlined"
                       size="small"
                       fullWidth
-                      // value={ownerFirstName}
+                      value={customerFirstName}
                       onChange={updateCustomerFirstName}
                     />
                   </Grid>
@@ -142,7 +163,7 @@ const CustomerCreateComponent = () => {
                       variant="outlined"
                       size="small"
                       fullWidth
-                      // value={ownerLastName}
+                      value={customerLastName}
                       onChange={updateCustomerLastName}
                     />
                   </Grid>
@@ -189,7 +210,7 @@ const CustomerCreateComponent = () => {
                       variant="outlined"
                       size="small"
                       fullWidth
-                      // value={companyEmail}
+                      value={customerAge}
                       onChange={updateCustomerAge}
                     />
                   </Grid>
@@ -210,7 +231,7 @@ const CustomerCreateComponent = () => {
                       variant="outlined"
                       size="small"
                       fullWidth
-                      // value={companyEmail}
+                      value={customerEmail}
                       onChange={updateCustomerEmail}
                     />
                   </Grid>
@@ -231,7 +252,7 @@ const CustomerCreateComponent = () => {
                       variant="outlined"
                       size="small"
                       fullWidth
-                      // value={companyPhone}
+                      value={customerPhone}
                       onChange={updateCustomerPhone}
                     />
                   </Grid>
@@ -247,14 +268,32 @@ const CustomerCreateComponent = () => {
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <TextField
+                    {/* <TextField
                       id="address"
                       placeholder="Address"
                       variant="outlined"
                       size="small"
                       fullWidth
-                      // value={companyAddress}
-                      onChange={updateCustomerAdress}
+                      value={customerStatus}
+                      onChange={updateCustomerStatus}
+                    /> */}
+                    <Autocomplete
+                      value={customerStatus}
+                      onChange={updateCustomerStatus}
+                      freeSolo
+                      id="company-status"
+                      disableClearable
+                      size="small"
+                      options={statusSet?.map((option: any) => option)}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          InputProps={{
+                            ...params.InputProps,
+                            type: "search",
+                          }}
+                        />
+                      )}
                     />
                   </Grid>
                 </Grid>
@@ -270,12 +309,12 @@ const CustomerCreateComponent = () => {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                      id="website"
-                      placeholder="Website"
+                      id="address"
+                      placeholder="Address"
                       variant="outlined"
                       size="small"
                       fullWidth
-                      // value={companyWebsite}
+                      value={customerAddress}
                       onChange={updateCustomerAddress}
                     />
                   </Grid>
@@ -291,12 +330,12 @@ const CustomerCreateComponent = () => {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                      id="website"
+                      id="zipcode"
                       placeholder="Zip Code"
                       variant="outlined"
                       size="small"
                       fullWidth
-                      // value={companyWebsite}
+                      value={customerZipCode}
                       onChange={updateCustomerZipCode}
                     />
                   </Grid>
@@ -313,12 +352,12 @@ const CustomerCreateComponent = () => {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                      id="website"
+                      id="city"
                       placeholder="City"
                       variant="outlined"
                       size="small"
                       fullWidth
-                      // value={companyWebsite}
+                      value={customerCity}
                       onChange={updateCustomerCity}
                     />
                   </Grid>
@@ -335,12 +374,12 @@ const CustomerCreateComponent = () => {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                      id="website"
+                      id="state"
                       placeholder="State"
                       variant="outlined"
                       size="small"
                       fullWidth
-                      // value={companyWebsite}
+                      value={customerState}
                       onChange={updateCustomerState}
                     />
                   </Grid>
@@ -357,12 +396,12 @@ const CustomerCreateComponent = () => {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                      id="website"
+                      id="country"
                       placeholder="Country"
                       variant="outlined"
                       size="small"
                       fullWidth
-                      // value={companyWebsite}
+                      value={customerCountry}
                       onChange={updateCustomerCountry}
                     />
                   </Grid>
@@ -379,7 +418,10 @@ const CustomerCreateComponent = () => {
                   </Grid>
                   <Grid item xs={6}>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DatePicker />
+                      <DatePicker
+                        // value={customerDateOfBirth}
+                        // onChange={updateCustomerDatePicker}
+                      />
                     </LocalizationProvider>
                   </Grid>
                 </Grid>
@@ -392,7 +434,7 @@ const CustomerCreateComponent = () => {
                     <Grid item xs={3}>
                       <Grid container>
                         <Grid item xs={7}>
-                          <Link href={"/company"}>
+                          <Link href={"/customer"}>
                             <Button variant="contained" size="small">
                               Cancel
                             </Button>
