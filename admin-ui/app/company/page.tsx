@@ -1,7 +1,7 @@
 "use client";
 import { use } from "react";
 import CompanyComponentHome from ".";
-import { findAll } from "../../services/api.service";
+import { findAll } from "../../services/company/api.service";
 import {ICompany} from "./models/company.model";
 
 const URL = "companies";

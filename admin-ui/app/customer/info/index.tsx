@@ -7,19 +7,19 @@ import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { deleteCompany } from "../../../services/company/company.action";
+import { deleteCustomer } from "../../../services/customer/customer.action";
+import { ICustomer } from "../models";
 
-import { ICompany } from "../models/company.model";
-type InfoCompanyComponentProps = {
-  company: ICompany;
+type InfoCustomerComponentProps = {
+  customer: ICustomer;
 };
-const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
+const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
   const router = useRouter();
-  const deleteCompanyHandler = async () => {
-    const response = await deleteCompany(company.id);
+  const deleteCustomerHandler = async () => {
+    const response = await deleteCustomer(customer.id);
     // route to list screen
-    // window.location.reload();
-    router.push("/company");
+    window.location.reload();
+    router.push("/customer");
   };
   return (
     <>
@@ -41,12 +41,12 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
 
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
-                {company.name}
+                {customer.name}
               </Typography>
             </Grid>
             <Grid item xs={2} mr={1}>
               <Typography variant="body2" noWrap>
-                {company.email}
+                {customer.email}
               </Typography>
             </Grid>
             <Grid item xs={2}>
@@ -56,7 +56,7 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
                 display={"flex"}
                 justifyContent={"space-around"}
               >
-                {company.mobile}
+                {customer.mobile}
               </Typography>
             </Grid>
             <Grid item xs={2} mr={6}>
@@ -66,14 +66,14 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
                 display={"flex"}
                 justifyContent={"space-around"}
               >
-                {company.address}
+                {customer.address}
               </Typography>
             </Grid>
             <Grid item xs={1}>
               <Grid container>
                 <Grid item xs={4}>
                   <Tooltip title="Edit">
-                    <Link href={`/company/${company.id}`}>
+                    <Link href={`/customer/${customer.id}`}>
                       <IconButton>
                         <EditIcon fontSize="small" />
                       </IconButton>
@@ -84,7 +84,7 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
                   <Tooltip title="Delete">
                     <IconButton
                       onClick={() => {
-                        deleteCompanyHandler();
+                        deleteCustomerHandler();
                       }}
                     >
                       <DeleteOutlineIcon fontSize="small" />
@@ -99,4 +99,4 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
     </>
   );
 };
-export default InfoCompanyComponent;
+export default InfoCustomerComponent;

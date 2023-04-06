@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { updateCompany } from "../../../services/company.action";
 import Box from "@mui/material/Box/Box";
 import { Status } from "../models";
 import Autocomplete from "@mui/material/Autocomplete";
+import { updateCompany } from "../../../services/company/company.action";
 
 type CompanyComponentProps = {
   company: any;

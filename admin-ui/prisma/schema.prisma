@@ -92,6 +92,8 @@ model Company {
 }
 
 
+
+
 model Project {
  id             String   @id @default(auto()) @map("_id") @db.ObjectId
  createdAt      DateTime @default(now())
@@ -125,7 +127,28 @@ model Screen {
 
   @@map("tb_screen")
 }
-
+model Customer {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  profilePic     String?
+  country_code   String?
+  description    String?
+  address        String?
+  streetAddress  String?   @map("street_address")
+  city           String?
+  state          String?
+  zipCode        String?   @map("zip_code")
+  country        String?
+  firstName      String?   @map("first_name")
+  lastName       String?   @map("last_name")
+  mobile         String?
+  status         String?
+  gender         String?
+  dateofBirth    String?
+  
+  @@map("tb_customer")
+}
 
 model Component{
   id             String   @id @default(auto()) @map("_id") @db.ObjectId

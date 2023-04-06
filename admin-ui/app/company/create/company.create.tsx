@@ -3,9 +3,10 @@ import { useState } from "react";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { createCompany } from "../../../services/company.action";
+
 import Autocomplete from "@mui/material/Autocomplete";
 import { Status } from "../models";
+import { createCompany } from "../../../services/company/company.action";
 
 const CompanyCreateComponent = () => {
   const [ownerFirstName, setOwnerFirstName] = useState("");

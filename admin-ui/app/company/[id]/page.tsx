@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import CompanyEditComponent from ".";
 import { use } from "react";
-import { findById } from "../../../services/api.service";
+import { findById } from "../../../services/company/api.service";
 
 type Company = {
   name: string;

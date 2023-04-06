@@ -4,62 +4,66 @@ import Link from "next/link";
 import { useState } from "react";
 import { Case, Default, Switch } from "react-if";
 import { ViewTypes } from "../utility";
-import FilterComponent from "./filters";
-import CompanyCalendarView from "./list/calendar.view";
+import FilterComponent from "./filter";
+import CustomerCalendarView from "./list/calendar.view";
 import ExportComponent from "./list/export.component";
-import CompanyGraphView from "./list/graph.view";
-import CompanyGridView from "./list/grid.view";
-import CompanyKanbanView from "./list/kanban.view";
-import ListViewComponent from "./list/list.view.component";
-import { ICompany } from "./models/company.model";
-import CompanySearchDetails from "./search";
-import CompanyViewComponent from "./view";
+import CustomerGraphView from "./list/graph.view";
+import CustomerGridView from "./list/grid.view";
+import CustomerKanbanView from "./list/kanban.view";
+import CustomerListScereen from "./list/list.screen";
+import { ICustomer } from "./models";
+import CustomerSearchDetails from "./search";
+import CustomerViewComponent from "./view";
 
-interface CompanyComponentProps {
-  companies: Array<ICompany>;
+interface CustomerComponentProps {
+  companies: Array<ICustomer>;
 }
 
-const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
-  const [copyCompanies, setCopyCompanies] = useState<Array<ICompany>>([
-    ...companies,
+const CustomerComponentHome = ({ customer }: any) => {
+  const [copyCustomer, setCopyCustomer] = useState<Array<ICustomer>>([
+    ...customer,
   ]);
   const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
 
-  const onSearchHandler = (c: Array<ICompany>) => {
-    setCopyCompanies(c);
+  const onSearchHandler = (c: Array<ICustomer>) => {
+    setCopyCustomer(c);
   };
 
   const onViewSelect = (view: ViewTypes) => {
     setViewType(view);
   };
 
+  console.log("customerdata>>", customer);
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }} mt={1}>
         <Grid container spacing={2}>
           <Grid item xs={3} md={3} lg={3} sm={3}>
-            <CompanySearchDetails
-              companies={companies}
+            <CustomerSearchDetails
+              customer={customer}
               onSearchHandler={onSearchHandler}
             />
           </Grid>
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
             <Grid container spacing={1}>
               <Grid item xs={"auto"}>
-                
-                <FilterComponent companies={companies} onFilterHandler={onSearchHandler}/>
+                <FilterComponent
+                  customer={customer}
+                  onFilterHandler={onSearchHandler}
+                />
               </Grid>
               <Grid item xs={"auto"}>
-                <ExportComponent copyCompanyData={copyCompanies} />
+                <ExportComponent copyCompanyData={copyCustomer} />
               </Grid>
 
               <Grid item xs={10}>
-                <CompanyViewComponent onViewSelect={onViewSelect} />
+                <CustomerViewComponent onViewSelect={onViewSelect} />
               </Grid>
             </Grid>
           </Grid>
           <Grid item xs={1}>
-            <Link href={"/company/create"} passHref>
+            <Link href={"/customer/create"} passHref>
               <Button variant="contained" size="small">
                 Create
                 <span>+</span>
@@ -70,19 +74,19 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
         <Grid item xs={12}>
           <Switch>
             <Case condition={viewType === ViewTypes.GRID}>
-              <CompanyGridView companies={copyCompanies} />
+              <CustomerGridView customer={copyCustomer} />
             </Case>
             <Case condition={viewType === ViewTypes.GRAPH}>
-              <CompanyGraphView companies={copyCompanies} />
+              <CustomerGraphView customer={copyCustomer} />
             </Case>
             <Case condition={viewType === ViewTypes.KANBAN}>
-              <CompanyKanbanView companies={copyCompanies} />
+              <CustomerKanbanView customer={copyCustomer} />
             </Case>
             <Case condition={viewType === ViewTypes.CALENDAR}>
-              <CompanyCalendarView companies={copyCompanies} />
+              <CustomerCalendarView customer={copyCustomer} />
             </Case>
             <Default>
-              <ListViewComponent companies={copyCompanies} />
+              <CustomerListScereen customer={copyCustomer} />
             </Default>
           </Switch>
         </Grid>
@@ -91,4 +95,4 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
   );
 };
 
-export default CompanyComponentHome;
+export default CustomerComponentHome;
