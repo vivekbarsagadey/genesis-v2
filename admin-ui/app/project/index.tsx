@@ -64,6 +64,7 @@ const ProjectHomeComponent = ({ projectData }: ProjectComponentProps) => {
     setmenuItem(null);
   };
 
+  
   return (
     <>
       <Grid container mt={1}>

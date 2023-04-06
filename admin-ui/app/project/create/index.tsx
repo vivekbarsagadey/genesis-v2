@@ -56,7 +56,6 @@ const ProjectCreate = () => {
     if (typeRecv === "Business to Business - Mobile") {
       setBusinessMobile((s) => !s);
     }
-    // setApplication([...application, app]);
   };
 
   const updateProjectName = (e: React.ChangeEvent<HTMLInputElement>) => {

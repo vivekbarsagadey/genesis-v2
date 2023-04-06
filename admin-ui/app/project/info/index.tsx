@@ -12,12 +12,19 @@ import {
   Typography,
 } from "@mui/material";
 import Link from "next/link";
+import downloadJsonFile from "../../utility/project/json.downloder";
 
 type CompanyComponentProps = {
   items: any;
 };
 
 const InfoProjectComponent = ({ items }: CompanyComponentProps) => {
+  console.log("items <>", items);
+
+  const jsonFileDownload = () => {
+    downloadJsonFile(items);
+  };
+
   return (
     <Box mr={2} mt={0.6}>
       <Paper variant="outlined">
@@ -65,8 +72,8 @@ const InfoProjectComponent = ({ items }: CompanyComponentProps) => {
                 </Tooltip>
               </Grid>
               <Grid item xs={2}>
-                <Tooltip title="Delete">
-                  <IconButton>
+                <Tooltip title="Download JSON">
+                  <IconButton onClick={jsonFileDownload}>
                     <FileDownloadIcon fontSize="small" />
                   </IconButton>
                 </Tooltip>

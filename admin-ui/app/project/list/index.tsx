@@ -41,7 +41,7 @@ const ProjectListComponent = ({
                   </IconButton>
                 </Grid>
                 <Grid item xs={6}>
-                  <IconButton>
+                  <IconButton   >
                     <RemoveRedEyeIcon fontSize="small" />
                   </IconButton>
                 </Grid>
