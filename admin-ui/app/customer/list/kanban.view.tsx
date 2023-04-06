@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Paper } from "@mui/material";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -18,18 +17,12 @@ const CardStyle = styled(Grid)(({ theme }) => ({
 type IActiveCustomer = {
   activeCustomer: ICustomer;
 };
-type INewCustomer = {
-  newCustomer: ICustomer;
-};
 type IInActiveCustomer = {
   inActiveCustomer: ICustomer;
 };
 const CustomerKanbanView = ({ customer }: ListComponentProps) => {
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
-  const newCustomers = customer.filter((ele: ICustomer) => {
-    return ele.status == statusSet[0];
-  });
   const activeustomers = customer.filter((ele: ICustomer) => {
     return ele.status == statusSet[1];
   });
@@ -45,7 +38,7 @@ const CustomerKanbanView = ({ customer }: ListComponentProps) => {
           <CardStyle>
             <Card>
               <CardContent>
-                <Typography variant="h6">ACTIVE</Typography>
+                <Typography variant="h6">INACTIVE</Typography>
                 {activeustomers?.map((activeCustomer, index) => {
                   return (
                     <ActiveCustomerComponent
@@ -62,8 +55,7 @@ const CustomerKanbanView = ({ customer }: ListComponentProps) => {
           <CardStyle>
             <Card>
               <CardContent>
-                <Typography variant="h6">INACTIVE</Typography>
-
+                <Typography variant="h6">ACTIVE</Typography>
                 {inActiveCustomer?.map((inActiveCustomer, index) => {
                   return (
                     <InActiveCustomerComponent
@@ -88,7 +80,7 @@ const ActiveCustomerComponent = ({ activeCustomer }: IActiveCustomer) => {
         <Paper variant="outlined">
           <Typography noWrap variant="h5">
             {" "}
-            Name - {activeCustomer.name}
+            Name - {activeCustomer.firstName} {activeCustomer.lastName}
           </Typography>
           <Typography noWrap variant="h5">
             {" "}

@@ -1,5 +1,5 @@
 import { ICompany } from "../../company/models";
 
 export interface ListComponentProps {
-  customers: Array<ICompany>;
+  customer: Array<ICompany>;
 }
