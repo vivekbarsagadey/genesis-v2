@@ -15,7 +15,6 @@ type Company = {
   foundationYear: string;
 };
 const Page = ({ params }) => {
-  // const [company, setCompany] = useState(null);
   const id = params.id;
 
   const company = use<Company>(findById("companies", id));

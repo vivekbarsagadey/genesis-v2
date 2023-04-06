@@ -40,20 +40,7 @@ const CustomerKanbanView = ({ customer }: ListComponentProps) => {
   return (
     <>
       <Grid container spacing={2} mt={1}>
-        <Grid item xs={4}>
-          <CardStyle>
-            <Card>
-              <CardContent>
-                <Typography variant="h6">NEW</Typography>
-                {newCustomers?.map((newCustomer, index) => {
-                  return (
-                    <NewCustomerComponent newCustomer={newCustomer} key={index} />
-                  );
-                })}
-              </CardContent>
-            </Card>
-          </CardStyle>
-        </Grid>
+        <Grid item xs={2}></Grid>
         <Grid item xs={4}>
           <CardStyle>
             <Card>
@@ -94,24 +81,6 @@ const CustomerKanbanView = ({ customer }: ListComponentProps) => {
   );
 };
 
-const NewCustomerComponent = ({ newCustomer }: INewCustomer) => {
-  return (
-    <Box mt={1}>
-      <Card>
-        <Paper variant="outlined">
-          <Typography noWrap variant="h5">
-            {" "}
-            Name - {newCustomer.name}
-          </Typography>
-          <Typography noWrap variant="h5">
-            {" "}
-            Status - {newCustomer.status}
-          </Typography>
-        </Paper>
-      </Card>
-    </Box>
-  );
-};
 const ActiveCustomerComponent = ({ activeCustomer }: IActiveCustomer) => {
   return (
     <Box mt={1}>
@@ -137,7 +106,7 @@ const InActiveCustomerComponent = ({ inActiveCustomer }: IInActiveCustomer) => {
         <Paper variant="outlined">
           <Typography noWrap variant="h5">
             {" "}
-            Name - {inActiveCustomer.name}
+            Name - {inActiveCustomer.firstName} {inActiveCustomer.lastName}
           </Typography>
           <Typography noWrap variant="h5">
             {" "}

@@ -134,6 +134,11 @@ const CustomerCreateComponent = () => {
 
   return (
     <Box>
+      <Grid container>
+        <Grid item xs={12} mt={2} ml={2}>
+          <Typography fontSize={"1.2rem"}>Create New Customer</Typography>
+        </Grid>
+      </Grid>
       <Grid container style={{ display: "flex", alignItems: "center" }}>
         <Grid item xs={2}>
           <Grid item xs={4}>
@@ -174,12 +179,7 @@ const CustomerCreateComponent = () => {
           </Grid>
         </Grid>
         <Grid item xs={10}>
-          <Box sx={{ flexGrow: 1 }} padding={4}>
-            <Grid container>
-              <Grid item xs={12}>
-                <Typography fontSize={"1.2rem"}>Create New Customer</Typography>
-              </Grid>
-            </Grid>
+          <Box sx={{ flexGrow: 1 }} padding={2}>
             <Grid container spacing={2} mt={2}>
               <Grid item xs={6}>
                 <Grid container display="flex" alignItems="center">

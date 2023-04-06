@@ -3,8 +3,8 @@ import Grid from "@mui/material/Grid";
 import moment from "moment";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import {ICompany} from "../models/company.model";
 import { ListComponentProps } from "./props";
+import { ICustomer } from "../models";
 const localizer = momentLocalizer(moment);
 
 interface CalendarEventData {
@@ -13,14 +13,14 @@ interface CalendarEventData {
   end: Date;
 }
 
-const CustomerCalendarView = ({ companies }: ListComponentProps) => {
+const CustomerCalendarView = ({ customer }: ListComponentProps) => {
   const [events, setEvents] = useState([]);
 
-  const calendarCompanies = companies.map((company : ICompany) => {
+  const calendarCompanies = customer?.map((customers : ICustomer) => {
     return {
-      title: company.name,
-      start: new Date(company.createdAt),
-      end: new Date(company.updatedAt),
+      title: customers.name,
+      start: new Date(customers.createdAt),
+      end: new Date(customers.updatedAt),
     }
   });
   useEffect(() => {

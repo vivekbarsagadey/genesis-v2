@@ -1,12 +1,26 @@
-import React from 'react'
-import CustomerEditComponent from '.'
+"use client";
+import { use } from "react";
+import CustomerEditComponent from ".";
+import { findById } from "../../../services/customer/api.service";
 
-const page = () => {
+type Customer = {
+  name: string;
+  address: string;
+  firstName: string;
+  lastname: string;
+  email: string;
+  mobile: string;
+  website: string;
+  foundationYear: string;
+};
+const Page = ({ params }) => {
+  const id = params.id;
+
+  const customers = use<Customer>(findById("customer", id));
+
   return (
-    <>
-        <CustomerEditComponent/>
-    </>
-  )
-}
+    <>{customers && <CustomerEditComponent customers={customers} id={id} />}</>
+  );
+};
 
-export default page
+export default Page;
