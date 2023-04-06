@@ -16,10 +16,10 @@ import CustomerSearchDetails from "./search";
 import CustomerViewComponent from "./view";
 
 interface CustomerComponentProps {
-  companies: Array<ICustomer>;
+  customer: Array<ICustomer>;
 }
 
-const CustomerComponentHome = ({ customer }: any) => {
+const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
   const [copyCustomer, setCopyCustomer] = useState<Array<ICustomer>>([
     ...customer,
   ]);
@@ -32,8 +32,6 @@ const CustomerComponentHome = ({ customer }: any) => {
   const onViewSelect = (view: ViewTypes) => {
     setViewType(view);
   };
-
-  console.log("customerdata>>", customer);
 
   return (
     <>

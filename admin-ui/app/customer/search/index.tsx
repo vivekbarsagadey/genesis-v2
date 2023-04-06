@@ -3,15 +3,15 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { ICustomer } from "../models";
 
-interface CompanySearchComponentProps {
-  companies: Array<ICustomer>;
+interface CustomerSearchComponentProps {
+  customer: Array<ICustomer>;
   onSearchHandler: (_: Array<ICustomer>) => void;
 }
 
 const CustomerSearchDetails = ({
   customer,
   onSearchHandler,
-}: CompanySearchComponentProps) => {
+}: CustomerSearchComponentProps) => {
   const [searchStr, setSearchStr] = useState<string>("");
 
   const filterByName = (name: string) =>  (f: ICustomer): boolean => f.name.toLowerCase().includes(name.toLowerCase());
