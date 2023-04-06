@@ -19,8 +19,6 @@ type CompanyComponentProps = {
 };
 
 const InfoProjectComponent = ({ items }: CompanyComponentProps) => {
-  console.log("items <>", items);
-
   const jsonFileDownload = () => {
     downloadJsonFile(items);
   };
@@ -64,7 +62,7 @@ const InfoProjectComponent = ({ items }: CompanyComponentProps) => {
             <Grid container>
               <Grid item xs={4}>
                 <Tooltip title="Edit">
-                  <Link href={"/project/-1"} passHref>
+                  <Link href={`/project/${items.id}`} passHref>
                     <IconButton>
                       <EditIcon fontSize="small" />
                     </IconButton>
