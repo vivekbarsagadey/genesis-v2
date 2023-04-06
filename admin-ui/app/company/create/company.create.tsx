@@ -6,8 +6,7 @@ import { useRouter } from "next/navigation";
 
 import Autocomplete from "@mui/material/Autocomplete";
 import { Status } from "../models";
-import { createCompany } from "../../../services/company/company.action";
-
+import { createCompany } from "../../../services/company.action";
 const CompanyCreateComponent = () => {
   const [ownerFirstName, setOwnerFirstName] = useState("");
   const [ownerLastName, setOwnerLastName] = useState("");

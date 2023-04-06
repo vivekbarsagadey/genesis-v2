@@ -1,7 +1,7 @@
 "use client";
 import { use } from "react";
 import CustomerEditComponent from ".";
-import { findById } from "../../../services/customer/api.service";
+import { findById } from "../../../services/api.service";
 
 type Customer = {
   name: string;

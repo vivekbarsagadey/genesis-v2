@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Box from "@mui/material/Box/Box";
 import { Status } from "../models";
 import Autocomplete from "@mui/material/Autocomplete";
-import { updateCompany } from "../../../services/company/company.action";
+import { updateCompany } from "../../../services/company.action";
 
 type CompanyComponentProps = {
   company: any;

@@ -7,8 +7,7 @@ import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { deleteCompany } from "../../../services/company/company.action";
-
+import { deleteCompany } from "../../../services/company.action";
 import { ICompany } from "../models/company.model";
 type InfoCompanyComponentProps = {
   company: ICompany;

@@ -1,7 +1,7 @@
 "use client";
 import { use } from "react";
 import CustomerComponentHome from ".";
-import { findAll } from "../../services/customer/api.service";
+import { findAll } from "../../services/api.service";
 import { ICustomer } from "./models";
 
 const URL = "customer";
