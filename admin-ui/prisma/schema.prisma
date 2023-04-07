@@ -133,16 +133,15 @@ model Customer {
   updatedAt      DateTime @updatedAt
   profilePic     String?
   country_code   String?
-  description    String?
+  firstName      String?   @map("first_name")
+  lastName       String?   @map("last_name")
   address        String?
-  streetAddress  String?   @map("street_address")
   city           String?
   state          String?
   zipCode        String?   @map("zip_code")
   country        String?
-  firstName      String?   @map("first_name")
-  lastName       String?   @map("last_name")
   mobile         String?
+  streetAddress  String?   @map("street_address")
   status         String?
   gender         String?
   age            String?

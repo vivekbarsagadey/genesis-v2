@@ -25,18 +25,10 @@ const ProjectSidebar = ({ show }) => {
     <Box>
       <List component="nav" aria-label="main mailbox folders">
         <Link href="/dashboard" passHref style={{ textDecoration: "none" }}>
-          <ListItemButton
-            selected={selectedIndex === 0}
-            onClick={(event) => handleListItemClick(event, 0)}
-          >
-            <ListItemIcon>
-              <DashboardIcon fontSize={"small"} />
-            </ListItemIcon>
+          <ListItemButton selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 0)}>
+            <ListItemIcon><DashboardIcon fontSize={"small"} /></ListItemIcon>
             {show && (
-              <Typography
-                display={{ xs: "none", sm: "none", md: "block" }}
-                style={style.typography}
-              >
+              <Typography display={{ xs: "none", sm: "none", md: "block" }} style={style.typography}>
                 Dashboard
               </Typography>
             )}
@@ -44,18 +36,10 @@ const ProjectSidebar = ({ show }) => {
         </Link>
 
         <Link href="/report" passHref style={{ textDecoration: "none" }}>
-          <ListItemButton
-            selected={selectedIndex === 1}
-            onClick={(event) => handleListItemClick(event, 1)}
-          >
-            <ListItemIcon>
-              <ReportIcon fontSize={"small"} />
-            </ListItemIcon>{" "}
+          <ListItemButton selected={selectedIndex === 1} onClick={(event) => handleListItemClick(event, 1)}>
+            <ListItemIcon><ReportIcon fontSize={"small"} /></ListItemIcon>{" "}
             {show && (
-              <Typography
-                display={{ xs: "none", sm: "none", md: "block" }}
-                style={style.typography}
-              >
+              <Typography display={{ xs: "none", sm: "none", md: "block" }} style={style.typography}>
                 Report
               </Typography>
             )}
@@ -63,18 +47,10 @@ const ProjectSidebar = ({ show }) => {
         </Link>
 
         <Link href="/project" passHref style={{ textDecoration: "none" }}>
-          <ListItemButton
-            selected={selectedIndex === 2}
-            onClick={(event) => handleListItemClick(event, 2)}
-          >
-            <ListItemIcon>
-              <AppsIcon fontSize={"small"} />
-            </ListItemIcon>
+          <ListItemButton selected={selectedIndex === 2} onClick={(event) => handleListItemClick(event, 2)}>
+            <ListItemIcon> <AppsIcon fontSize={"small"} /></ListItemIcon>
             {show && (
-              <Typography
-                display={{ xs: "none", sm: "none", md: "block" }}
-                style={style.typography}
-              >
+              <Typography display={{ xs: "none", sm: "none", md: "block" }} style={style.typography}>
                 Project
               </Typography>
             )}
@@ -82,18 +58,10 @@ const ProjectSidebar = ({ show }) => {
         </Link>
 
         <Link href="/company" passHref style={{ textDecoration: "none" }}>
-          <ListItemButton
-            selected={selectedIndex === 3}
-            onClick={(event) => handleListItemClick(event, 3)}
-          >
-            <ListItemIcon>
-              <StoreIcon fontSize={"small"} />
-            </ListItemIcon>
+          <ListItemButton selected={selectedIndex === 3} onClick={(event) => handleListItemClick(event, 3)}>
+            <ListItemIcon><StoreIcon fontSize={"small"} /></ListItemIcon>
             {show && (
-              <Typography
-                display={{ xs: "none", sm: "none", md: "block" }}
-                style={style.typography}
-              >
+              <Typography display={{ xs: "none", sm: "none", md:"block"}}style={style.typography}>
                 Company
               </Typography>
             )}
@@ -104,14 +72,9 @@ const ProjectSidebar = ({ show }) => {
             selected={selectedIndex === 4}
             onClick={(event) => handleListItemClick(event, 4)}
           >
-            <ListItemIcon>
-              <SupportAgentIcon fontSize={"small"} />
-            </ListItemIcon>
+            <ListItemIcon><SupportAgentIcon fontSize={"small"} /></ListItemIcon>
             {show && (
-              <Typography
-                display={{ xs: "none", sm: "none", md: "block" }}
-                style={style.typography}
-              >
+              <Typography display={{ xs: "none", sm: "none", md: "block" }} style={style.typography}>
                 Customer
               </Typography>
             )}
