@@ -123,14 +123,23 @@ const CustomerCreateComponent = () => {
   const updateCustomerState = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerState(e.target.value);
   };
-  const updateCustomerCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCustomerCountry(e.target.value);
-  };
+  // const updateCustomerCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setCustomerCountry(e.target.value);
+  // };
   const updateCustomerProfilePic = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerProfilePic(e.target.value);
   };
-  const customerChange = (event: SelectChangeEvent) => {
-    setGender(event.target.value as string);
+  const updateCustomerChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    setGender(value);
+  };
+  const updateCustomerCountry = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    setCustomerCountry(value);
   };
 
   const updateCustomerStatus = (
@@ -251,14 +260,16 @@ const CustomerCreateComponent = () => {
                   <Grid item xs={6}>
                     <Stack spacing={2}>
                       <Autocomplete
+                        value={gender}
+                        onChange={updateCustomerChange}
                         freeSolo
-                        id="free-solo-2-demo"
+                        id="gender"
                         disableClearable
-                        options={genderType.map((option) => option.title)}
+                        size="small"
+                        options={genderType?.map((option) => option.title)}
                         renderInput={(params) => (
                           <TextField
                             {...params}
-                            size="small"
                             InputProps={{
                               ...params.InputProps,
                               type: "search",
@@ -359,7 +370,8 @@ const CustomerCreateComponent = () => {
                           InputProps={{
                             ...params.InputProps,
                             type: "search",
-                          }} placeholder="Select Status"
+                          }}
+                          placeholder="Select Status"
                         />
                       )}
                     />
@@ -465,6 +477,8 @@ const CustomerCreateComponent = () => {
                   <Grid item xs={6}>
                     <Stack spacing={2}>
                       <Autocomplete
+                        value={customerCountry}
+                        onChange={updateCustomerCountry}
                         freeSolo
                         id="free-solo-2-demo"
                         disableClearable

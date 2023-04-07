@@ -6,6 +6,7 @@ import {
   Button,
   Grid,
   IconButton,
+  Stack,
   TextField,
   Typography,
 } from "@mui/material";
@@ -19,6 +20,22 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { updateCustomer } from "../../../services/customer.action";
 import { Status } from "../models";
+
+const genderType = [{ title: "Male" }, { title: "Female" }];
+const countrySelect = [
+  { country: "India" },
+  { country: "Australia" },
+  { country: "America" },
+  { country: "Spain" },
+  { country: "US" },
+  { country: "UK" },
+  { country: "Dubai" },
+  { country: "Hong Kong" },
+  { country: "Pakistan" },
+  { country: "Bangladesh" },
+  { country: "Srilanka" },
+  { country: "Thailand" },
+];
 
 const useStyles = makeStyles({
   avtar: {
@@ -113,14 +130,20 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
   const updateCustomerState = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerState(e.target.value);
   };
-  const updateCustomerCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCustomerCountry(e.target.value);
-  };
   const updateCustomerProfilePic = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerProfilePic(e.target.value);
   };
-  const customerChange = (event: SelectChangeEvent) => {
-    setGender(event.target.value as string);
+  const updateCustomerChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    setGender(value);
+  };
+  const updateCustomerCountry = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    setCustomerCountry(value);
   };
 
   const updateCustomerStatus = (
@@ -242,18 +265,27 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <FormControl fullWidth>
-                        <Select
-                          labelId="demo-simple-select-label"
-                          id="demo-simple-select"
+                      <Stack spacing={2}>
+                        <Autocomplete
                           value={gender}
-                          onChange={customerChange}
+                          onChange={updateCustomerChange}
+                          freeSolo
+                          id="gender"
+                          disableClearable
                           size="small"
-                        >
-                          <MenuItem value={"Male"}>Male</MenuItem>
-                          <MenuItem value={"Female"}>Female</MenuItem>
-                        </Select>
-                      </FormControl>
+                          options={genderType?.map((option) => option.title)}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              InputProps={{
+                                ...params.InputProps,
+                                type: "search",
+                              }}
+                              placeholder="Select Gender"
+                            />
+                          )}
+                        />
+                      </Stack>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -449,15 +481,29 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <TextField
-                        id="country"
-                        placeholder="Country"
-                        variant="outlined"
-                        size="small"
-                        fullWidth
-                        value={customerCountry}
-                        onChange={updateCustomerCountry}
-                      />
+                      <Stack spacing={2}>
+                        <Autocomplete
+                          value={customerCountry}
+                          onChange={updateCustomerCountry}
+                          freeSolo
+                          id="country"
+                          disableClearable
+                          size="small"
+                          options={countrySelect?.map(
+                            (option) => option.country
+                          )}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              InputProps={{
+                                ...params.InputProps,
+                                type: "search",
+                              }}
+                              placeholder="Select Gender"
+                            />
+                          )}
+                        />
+                      </Stack>
                     </Grid>
                   </Grid>
                 </Grid>

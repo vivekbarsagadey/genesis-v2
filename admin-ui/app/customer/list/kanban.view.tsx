@@ -1,13 +1,11 @@
-import React from "react";
 import { Paper } from "@mui/material";
 import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid/Grid";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import { ListComponentProps } from "./props";
 import { ICustomer, Status } from "../models";
+import { ListComponentProps } from "./props";
 
 const CardStyle = styled(Grid)(({ theme }) => ({
   height: "80vh",
@@ -23,25 +21,25 @@ type IInActiveCustomer = {
 const CustomerKanbanView = ({ customer }: ListComponentProps) => {
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
-  const activeustomers = customer.filter((ele: ICustomer) => {
-    return ele.status == statusSet[1];
+  const activeCompanies = customer.filter((ele: ICustomer) => {
+    return ele.status == statusSet[0];
   });
   const inActiveCustomer = customer.filter((ele: ICustomer) => {
-    return ele.status == statusSet[2];
+    return ele.status == statusSet[1];
   });
 
   return (
     <>
       <Grid container spacing={2} mt={1}>
-        <Grid item xs={2}></Grid>
+        <Grid item xs={1}></Grid>
         <Grid item xs={4}>
           <CardStyle>
             <Paper variant="outlined">
               <CardContent>
-                <Typography variant="h6">INACTIVE</Typography>
-                {activeustomers?.map((activeCustomer, index) => {
+                <Typography variant="h6">ACTIVE</Typography>
+                {activeCompanies?.map((activeCustomer, index) => {
                   return (
-                    <ActiveCustomerComponent
+                    <ActiveCompanyComponent
                       activeCustomer={activeCustomer}
                       key={index}
                     />
@@ -51,11 +49,12 @@ const CustomerKanbanView = ({ customer }: ListComponentProps) => {
             </Paper>
           </CardStyle>
         </Grid>
+        <Grid item xs={1}></Grid>
         <Grid item xs={4}>
           <CardStyle>
             <Paper variant="outlined">
               <CardContent>
-                <Typography variant="h6">ACTIVE</Typography>
+                <Typography variant="h6">INACTIVE</Typography>
                 {inActiveCustomer?.map((inActiveCustomer, index) => {
                   return (
                     <InActiveCustomerComponent
@@ -73,16 +72,14 @@ const CustomerKanbanView = ({ customer }: ListComponentProps) => {
   );
 };
 
-const ActiveCustomerComponent = ({ activeCustomer }: IActiveCustomer) => {
+const ActiveCompanyComponent = ({ activeCustomer }: IActiveCustomer) => {
   return (
     <Box mt={1}>
       <Paper variant="outlined">
         <Typography noWrap variant="h5">
-          {" "}
-          Name - {activeCustomer.firstName} {activeCustomer.lastName}
+          Company - {activeCustomer.firstName} {activeCustomer.lastName}
         </Typography>
         <Typography noWrap variant="h5">
-          {" "}
           Status - {activeCustomer.status}
         </Typography>
       </Paper>
@@ -95,7 +92,7 @@ const InActiveCustomerComponent = ({ inActiveCustomer }: IInActiveCustomer) => {
       <Paper variant="outlined">
         <Typography noWrap variant="h5">
           {" "}
-          Name - {inActiveCustomer.firstName} {inActiveCustomer.lastName}
+          Company - {inActiveCustomer.firstName} {inActiveCustomer.lastName}
         </Typography>
         <Typography noWrap variant="h5">
           {" "}

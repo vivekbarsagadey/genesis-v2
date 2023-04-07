@@ -3,38 +3,19 @@ import { ListComponentProps } from "./props";
 
 const CustomerGraphView = ({ customer }: ListComponentProps) => {
   const companyStatus = [
-    {
-      type: "India",
-      value: customer?.filter((item) => item.country === "India")?.length,
-      color: "#4d7c0f",
-    },
-    {
-      type: "Australia",
-      value: customer.filter((item) => item.country === "Australia").length,
-      color: "#62B170",
-    },
-    {
-      type: "America",
-      value: customer.filter((item) => item.country === "America").length,
-      color: "#86198f",
-    },
-    {
-      type: "Spain",
-      value: customer.filter((item) => item.country === "Spain").length,
-      color: "#4BA2DA",
-    },
-    {
-      type: "US",
-      value: customer.filter((item) => item.country === "US").length,
-      color: "#F1AF13",
-    },
-    {
-      type: "UK",
-      value: customer.filter((item) => item.country === "UK").length,
-      color: "#1d4ed8",
-    },
+    {type: "India",value: customer?.filter((item) => item.country ==="India")?.length,color:"#c026d3"},
+    {type: "Australia",value: customer.filter((item) => item.country ==="Australia").length,color: "#030712"},
+    {type: "America",value: customer.filter((item) => item.country === "America").length,color: "#86198f"},
+    {type: "Spain",value: customer.filter((item) => item.country === "Spain").length,color: "#4BA2DA"},
+    {type: "US",value: customer.filter((item) => item.country === "US").length,color: "#F1AF13"},
+    {type: "UK",value: customer.filter((item) => item.country === "UK").length,color: "#1d4ed8"},
+    {type: "Dubai",value: customer.filter((item) => item.country === "Dubai").length,color: "#b91c1c"},
+    {type: "Hong Kong",value: customer.filter((item) => item.country === "Hong Kong").length,color: "#fb923c"},
+    {type: "Pakistan",value: customer.filter((item) => item.country === "Pakistan").length,color: "#4d7c0f"},
+    {type: "Bangladesh",value: customer.filter((item) => item.country === "Bangladesh").length,color: "#00f8e8",},
+    {type: "Srilanka",value: customer.filter((item) => item.country === "Srilanka").length,color: "#1e1b4b"},
+    {type: "Thailand",value: customer.filter((item) => item.country === "Thailand").length,color: "#4c0519"},
   ];
-
   return (
     <div>
       <PieChart data={companyStatus} />

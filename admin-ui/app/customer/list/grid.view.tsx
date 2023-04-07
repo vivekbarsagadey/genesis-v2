@@ -7,8 +7,7 @@ import { PaginationHandler } from "../../utility";
 import { ListComponentProps } from "./props";
 
 const CustomerGridView = ({ customer }: ListComponentProps) => {
-
-//pagination 
+  //pagination
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(customer.length / PER_PAGE);
@@ -24,21 +23,26 @@ const CustomerGridView = ({ customer }: ListComponentProps) => {
       <Box style={{ height: "70.6vh" }} mr={2}>
         <Grid container spacing={1} mt={1}>
           {paginationHandler
-          .currentData()
-          .reverse()?.map((item) => {
+            .currentData()
+            .reverse()
+            ?.map((item) => {
               return (
                 <Grid item xs={4} md={4} sm={4} lg={4} key={item.id}>
                   <Paper variant="outlined">
-                    <Box paddingLeft={2} paddingTop={2}>
+                    <Box paddingLeft={2} paddingTop={1}>
                       <Grid container>
                         <Grid item xs={5}>
-                          <Typography>Company Name</Typography>
+                          <Typography variant="subtitle1">
+                            Company Name
+                          </Typography>
                         </Grid>
                         <Grid item xs={1}>
                           <Typography> :</Typography>
                         </Grid>
                         <Grid item xs={6} paddingLeft={2}>
-                          <Typography noWrap>{item.firstName} {item.lastName}</Typography>
+                          <Typography noWrap variant="subtitle1">
+                            {item.firstName} {item.lastName}
+                          </Typography>
                         </Grid>
                       </Grid>
                     </Box>
@@ -46,40 +50,46 @@ const CustomerGridView = ({ customer }: ListComponentProps) => {
                     <Box mt={1} paddingLeft={2}>
                       <Grid container>
                         <Grid item xs={5}>
-                          <Typography>Email</Typography>
+                          <Typography variant="subtitle1">Email</Typography>
                         </Grid>
                         <Grid item xs={1}>
                           <Typography> :</Typography>
                         </Grid>
                         <Grid item xs={6} paddingLeft={2}>
-                          <Typography noWrap>{item?.email}</Typography>
+                          <Typography noWrap variant="subtitle1">
+                            {item?.email}
+                          </Typography>
                         </Grid>
                       </Grid>
                     </Box>
                     <Box mt={1} paddingLeft={2}>
                       <Grid container>
                         <Grid item xs={5}>
-                          <Typography>Contact</Typography>
+                          <Typography variant="subtitle1">Contact</Typography>
                         </Grid>
                         <Grid item xs={1}>
                           <Typography> :</Typography>
                         </Grid>
                         <Grid item xs={6} paddingLeft={2}>
-                          <Typography noWrap>{item?.mobile}</Typography>
+                          <Typography variant="subtitle1" noWrap>
+                            {item?.mobile}
+                          </Typography>
                         </Grid>
                       </Grid>
                     </Box>
 
-                    <Box mt={1} paddingLeft={2} paddingBottom={2}>
+                    <Box mt={1} paddingLeft={2} paddingBottom={1}>
                       <Grid container>
                         <Grid item xs={5}>
-                          <Typography>Address</Typography>
+                          <Typography variant="subtitle1">Address</Typography>
                         </Grid>
                         <Grid item xs={1}>
                           <Typography> :</Typography>
                         </Grid>
                         <Grid item xs={6} paddingLeft={2}>
-                          <Typography noWrap>{item?.address}</Typography>
+                          <Typography noWrap variant="subtitle1">
+                            {item?.address}
+                          </Typography>
                         </Grid>
                       </Grid>
                     </Box>

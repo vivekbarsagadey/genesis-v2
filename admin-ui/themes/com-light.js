@@ -15,12 +15,12 @@ export const theme = createTheme({
       marginTop: "0.6rem",
     },
     h6: {
-      fontWeight:800,
-      fontSize: "0.8rem",
+      fontWeight: 700,
+      fontSize: "0.9rem",
     },
     h5: {
-      padding:'0.5rem 1rem 0.8rem',
-      fontSize:'0.9rem'
+      padding: "0.5rem 1rem 0.8rem",
+      fontSize: "0.8rem",
     },
     body1: {
       fontWeight: 500,
