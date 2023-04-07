@@ -1,9 +1,10 @@
 import ProjectEditComponent from '.'
 
-const page = () => {
+const page = ({ params }) => {
+  const id =params.id
   return (
     <div>
-        <ProjectEditComponent/>
+        <ProjectEditComponent   id={id} />
     </div>
   )
 }

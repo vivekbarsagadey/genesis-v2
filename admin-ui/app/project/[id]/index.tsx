@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import BuilderHome from "../../../builder";
 
-const ProjectEditComponent = () => {
+const ProjectEditComponent = ({ id }) => {
   return (
-    <div>Project Edit Page</div>
-  )
-}
+    <div>
+      <BuilderHome id={id} />
+    </div>
+  );
+};
 
-export default ProjectEditComponent
+export default ProjectEditComponent;
