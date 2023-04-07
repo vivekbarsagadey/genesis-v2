@@ -141,7 +141,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
             </Grid>
           </Grid>
         </Paper>
-
+        {/* Theme model  */}
         <Modal
           open={openTheme}
           onClose={handleCloseTheme}

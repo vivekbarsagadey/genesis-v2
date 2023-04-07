@@ -20,12 +20,10 @@ type CategoryProps = {
   handleClick: (id: string) => void;
   open: { [key: string]: boolean };
   classes: Record<string, string>;
-  
 };
 
 function Category(props: CategoryProps) {
-  const { id, name, icon, items, handleClick, open, classes, } = props;
-
+  const { id, name, icon, items, handleClick, open, classes } = props;
 
   return (
     <div key={id}>

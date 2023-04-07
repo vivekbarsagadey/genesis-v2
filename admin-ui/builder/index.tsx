@@ -6,6 +6,7 @@ import { styled } from "@mui/material/styles";
 import genisys from "../data/genisys.json";
 import Category from "./menu/menu";
 import Grid from "@mui/material/Grid";
+import Header from "./menu/header/header";
 
 const BuilderHome = ({ projectid }) => {
   console.log("id at builder >>", projectid);
@@ -18,14 +19,22 @@ const BuilderHome = ({ projectid }) => {
           <Grid item xs={2}>
             <>
               {/* {genisys.categories?.map((category, index) => {
-                return <Category id={category.id} />;
+                return (
+                  <Category
+                    key={index}
+                    id={index}
+                    name={category.name}
+                    icon={category.icon}
+                    title={category.title}
+                    items={category.items}
+                  />
+                );
               })} */}
-              kjlsdflisdli
             </>
           </Grid>
           <Grid item xs={10}>
             <Grid item xs={12}>
-              <>Header with New btn , Project Name </>
+            <Header/>
             </Grid>
             <Grid container spacing={2} mt={1}>
               <Grid item xs={9}>
