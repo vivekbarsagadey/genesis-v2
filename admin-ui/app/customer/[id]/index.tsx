@@ -38,31 +38,21 @@ type CustomerComponentProps = {
 };
 const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
   const [customerFirstName, setCustomerFirstName] = useState(
-    customers.customerFirstName
+    customers.firstName
   );
-  const [customerLastName, setCustomerLastName] = useState(
-    customers.customerLastName
-  );
+  const [customerLastName, setCustomerLastName] = useState(customers.lastName);
   const [gender, setGender] = useState(customers.gender);
-  const [customerAge, setCustomerAge] = useState(customers.customerAge);
-  const [customerEmail, setCustomerEmail] = useState(customers.customerEmail);
-  const [customerPhone, setCustomerPhone] = useState(customers.customerPhone);
-  const [customerAddress, setCustomerAddress] = useState(
-    customers.customerAddress
-  );
-  const [customerStatus, setCustomerStatus] = useState(
-    customers.customerStatus
-  );
-  const [customerZipCode, setCustomerZipCode] = useState(
-    customers.customerZipCode
-  );
-  const [customerCity, setCustomerCity] = useState(customers.customerCity);
-  const [customerState, setCustomerState] = useState(customers.customerState);
-  const [customerCountry, setCustomerCountry] = useState(
-    customers.customerCountry
-  );
+  const [customerAge, setCustomerAge] = useState(customers.age);
+  const [customerEmail, setCustomerEmail] = useState(customers.email);
+  const [customerPhone, setCustomerPhone] = useState(customers.mobile);
+  const [customerAddress, setCustomerAddress] = useState(customers.address);
+  const [customerStatus, setCustomerStatus] = useState(customers.status);
+  const [customerZipCode, setCustomerZipCode] = useState(customers.zipCode);
+  const [customerCity, setCustomerCity] = useState(customers.city);
+  const [customerState, setCustomerState] = useState(customers.state);
+  const [customerCountry, setCustomerCountry] = useState(customers.country);
   const [customerProfilePic, setCustomerProfilePic] = useState(
-    customers.customerProfilePic
+    customers.profilePic
   );
   const [hover, setHover] = useState(false);
 
@@ -157,7 +147,7 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
           </Grid>
         </Grid>
 
-        <Grid container style={{ display: "flex", alignItems: "center" }}>
+        <Grid container style={{ display: "flex" }}>
           <Grid item xs={2}>
             <Grid item xs={4}>
               <div className="App">

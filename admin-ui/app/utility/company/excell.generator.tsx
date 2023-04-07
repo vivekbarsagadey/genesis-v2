@@ -1,20 +1,23 @@
-import React from "react";
 import { Typography } from "@mui/material";
 import { downloadExcel } from "react-export-table-to-excel";
 import { ICompany } from "../../company/models";
 
-type CompanyProps={
-  copyCompanyData: Array<ICompany>
-}
+type CompanyProps = {
+  copyCompanyData: Array<ICompany>;
+};
 const header = [
-  "Id",
-  "createdAt",
-  "updatedAt",
-  " Project Name",
-  "Customer Name",
-  "Application",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
 ];
-const CompanyExcellGenerator = ({ copyCompanyData }:CompanyProps) => {
+const CompanyExcellGenerator = ({ copyCompanyData }: CompanyProps) => {
   function handleDownloadExcel() {
     downloadExcel({
       fileName: `company-list-${new Date().toISOString().slice(0, 10)}`,
@@ -32,6 +35,6 @@ const CompanyExcellGenerator = ({ copyCompanyData }:CompanyProps) => {
       </Typography>
     </div>
   );
-}; 
+};
 
 export default CompanyExcellGenerator;

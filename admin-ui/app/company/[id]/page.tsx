@@ -18,8 +18,6 @@ const Page = ({ params }) => {
   const id = params.id;
 
   const company = use<Company>(findById("companies", id));
- 
-
   return <>{company && <CompanyEditComponent company={company} id={id} />}</>;
 };
 
