@@ -13,7 +13,7 @@ import { deleteProject } from "../../../services/project.action";
 import downloadJsonFile from "../../utility/json.downloder";
 import IProject from "../project.model";
 import Modal from "@mui/material/Modal";
-import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 
 const style = {
   position: "absolute" as "absolute",
