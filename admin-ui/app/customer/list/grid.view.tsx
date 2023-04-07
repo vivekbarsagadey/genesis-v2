@@ -38,7 +38,7 @@ const CustomerGridView = ({ customer }: ListComponentProps) => {
                           <Typography> :</Typography>
                         </Grid>
                         <Grid item xs={6} paddingLeft={2}>
-                          <Typography noWrap>{item?.name}</Typography>
+                          <Typography noWrap>{item.firstName} {item.lastName}</Typography>
                         </Grid>
                       </Grid>
                     </Box>

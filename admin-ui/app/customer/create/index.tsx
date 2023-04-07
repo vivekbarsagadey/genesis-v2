@@ -441,15 +441,22 @@ const CustomerCreateComponent = () => {
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <TextField
-                      id="country"
-                      placeholder="Country"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerCountry}
-                      onChange={updateCustomerCountry}
-                    />
+                    <FormControl fullWidth>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={customerCountry}
+                        onChange={updateCustomerCountry}
+                        size="small"
+                      >
+                        <MenuItem value={"India"}>India</MenuItem>
+                        <MenuItem value={"Australia"}>Australia</MenuItem>
+                        <MenuItem value={"America"}>America</MenuItem>
+                        <MenuItem value={"Spain"}>Spain</MenuItem>
+                        <MenuItem value={"US"}>US</MenuItem>
+                        <MenuItem value={"UK"}>UK</MenuItem>
+                      </Select>
+                    </FormControl>
                   </Grid>
                 </Grid>
               </Grid>

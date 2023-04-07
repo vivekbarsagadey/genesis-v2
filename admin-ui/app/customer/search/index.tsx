@@ -14,7 +14,7 @@ const CustomerSearchDetails = ({
 }: CustomerSearchComponentProps) => {
   const [searchStr, setSearchStr] = useState<string>("");
 
-  const filterByName = (name: string) =>  (f: ICustomer): boolean => f.name.toLowerCase().includes(name.toLowerCase());
+  const filterByName = (firstName: string) =>  (f: ICustomer): boolean => f.firstName.toLowerCase().includes(firstName.toLowerCase());
 
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const _searchValue = e.target.value;

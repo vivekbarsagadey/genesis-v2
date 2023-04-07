@@ -13,6 +13,7 @@ import { deleteProject } from "../../../services/project.action";
 import downloadJsonFile from "../../utility/json.downloder";
 import IProject from "../project.model";
 import Modal from "@mui/material/Modal";
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
 const style = {
   position: "absolute" as "absolute",
@@ -96,7 +97,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
                 <Grid item xs={2}>
                   <Tooltip title="Download JSON">
                     <IconButton onClick={jsonFileDownload}>
-                      <DeleteOutlineIcon fontSize="small" />
+                      <FileDownloadIcon fontSize="small" />
                     </IconButton>
                   </Tooltip>
                 </Grid>

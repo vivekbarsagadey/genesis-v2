@@ -12,9 +12,9 @@ type CustomerProps = {
 const CustomerPdfGenerator = ({ customer }: CustomerProps) => {
   const exportPDF = async () => {
     const fileName = `customer-list-${new Date().toISOString().slice(0, 10)}`;
-    const headers = [["Company Name", "Email", "Contact", "Address"]];
+    const headers = [["Customer Name", "Email", "Contact", "Address"]];
     const pdfSendData = customer?.map((elt) => [
-      elt.name,
+      elt.firstName,
       elt.email,
       elt.mobile,
       elt.address,

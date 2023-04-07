@@ -17,7 +17,7 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
   const deleteCompanyHandler = async () => {
     const response = await deleteCompany(company.id);
     // route to list screen
-    // window.location.reload();
+    window.location.reload();
     router.push("/company");
   };
   return (

@@ -1,8 +1,6 @@
-import React from "react";
 
 import { Paper } from "@mui/material";
 import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid/Grid";
 import { styled } from "@mui/material/styles";
@@ -42,7 +40,7 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
       <Grid container spacing={2} mt={1}>
         <Grid item xs={4}>
           <CardStyle>
-            <Card>
+            <Paper variant="outlined">
               <CardContent>
                 <Typography variant="h6">NEW</Typography>
                 {newCompanies?.map((newCompany, index) => {
@@ -51,12 +49,12 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
                   );
                 })}
               </CardContent>
-            </Card>
+            </Paper>
           </CardStyle>
         </Grid>
         <Grid item xs={4}>
           <CardStyle>
-            <Card>
+            <Paper variant="outlined">
               <CardContent>
                 <Typography variant="h6">ACTIVE</Typography>
                 {activeCompanies?.map((activeCompany, index) => {
@@ -68,12 +66,12 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
                   );
                 })}
               </CardContent>
-            </Card>
+            </Paper>
           </CardStyle>
         </Grid>
         <Grid item xs={4}>
           <CardStyle>
-            <Card>
+            <Paper variant="outlined">
               <CardContent>
                 <Typography variant="h6">INACTIVE</Typography>
 
@@ -86,7 +84,7 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
                   );
                 })}
               </CardContent>
-            </Card>
+            </Paper>
           </CardStyle>
         </Grid>
       </Grid>
@@ -97,54 +95,48 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
 const NewCompanyComponent = ({ newCompany }: INewCompany) => {
   return (
     <Box mt={1}>
-      <Card>
-        <Paper variant="outlined">
-          <Typography noWrap variant="h5">
-            {" "}
-            Company - {newCompany.name}
-          </Typography>
-          <Typography noWrap variant="h5">
-            {" "}
-            Status - {newCompany.status}
-          </Typography>
-        </Paper>
-      </Card>
+      <Paper variant="outlined">
+        <Typography noWrap variant="h5">
+          {" "}
+          Company - {newCompany.name}
+        </Typography>
+        <Typography noWrap variant="h5">
+          {" "}
+          Status - {newCompany.status}
+        </Typography>
+      </Paper>
     </Box>
   );
 };
 const ActiveCompanyComponent = ({ activeCompany }: IActiveCompany) => {
   return (
     <Box mt={1}>
-      <Card>
-        <Paper variant="outlined">
-          <Typography noWrap variant="h5">
-            {" "}
-            Company - {activeCompany.name}
-          </Typography>
-          <Typography noWrap variant="h5">
-            {" "}
-            Status - {activeCompany.status}
-          </Typography>
-        </Paper>
-      </Card>
+      <Paper variant="outlined">
+        <Typography noWrap variant="h5">
+          {" "}
+          Company - {activeCompany.name}
+        </Typography>
+        <Typography noWrap variant="h5">
+          {" "}
+          Status - {activeCompany.status}
+        </Typography>
+      </Paper>
     </Box>
   );
 };
 const InActiveCompanyComponent = ({ inActiveCompany }: IInActiveCompany) => {
   return (
     <Box mt={1}>
-      <Card>
-        <Paper variant="outlined">
-          <Typography noWrap variant="h5">
-            {" "}
-            Company - {inActiveCompany.name}
-          </Typography>
-          <Typography noWrap variant="h5">
-            {" "}
-            Status - {inActiveCompany.status}
-          </Typography>
-        </Paper>
-      </Card>
+      <Paper variant="outlined">
+        <Typography noWrap variant="h5">
+          {" "}
+          Company - {inActiveCompany.name}
+        </Typography>
+        <Typography noWrap variant="h5">
+          {" "}
+          Status - {inActiveCompany.status}
+        </Typography>
+      </Paper>
     </Box>
   );
 };

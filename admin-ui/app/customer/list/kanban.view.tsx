@@ -36,36 +36,36 @@ const CustomerKanbanView = ({ customer }: ListComponentProps) => {
         <Grid item xs={2}></Grid>
         <Grid item xs={4}>
           <CardStyle>
-            <Card>
+            <Paper variant="outlined">
               <CardContent>
                 <Typography variant="h6">INACTIVE</Typography>
                 {activeustomers?.map((activeCustomer, index) => {
                   return (
                     <ActiveCustomerComponent
-                    activeCustomer={activeCustomer}
+                      activeCustomer={activeCustomer}
                       key={index}
                     />
                   );
                 })}
               </CardContent>
-            </Card>
+            </Paper>
           </CardStyle>
         </Grid>
         <Grid item xs={4}>
           <CardStyle>
-            <Card>
+            <Paper variant="outlined">
               <CardContent>
                 <Typography variant="h6">ACTIVE</Typography>
                 {inActiveCustomer?.map((inActiveCustomer, index) => {
                   return (
                     <InActiveCustomerComponent
-                    inActiveCustomer={inActiveCustomer}
+                      inActiveCustomer={inActiveCustomer}
                       key={index}
                     />
                   );
                 })}
               </CardContent>
-            </Card>
+            </Paper>
           </CardStyle>
         </Grid>
       </Grid>
@@ -76,36 +76,32 @@ const CustomerKanbanView = ({ customer }: ListComponentProps) => {
 const ActiveCustomerComponent = ({ activeCustomer }: IActiveCustomer) => {
   return (
     <Box mt={1}>
-      <Card>
-        <Paper variant="outlined">
-          <Typography noWrap variant="h5">
-            {" "}
-            Name - {activeCustomer.firstName} {activeCustomer.lastName}
-          </Typography>
-          <Typography noWrap variant="h5">
-            {" "}
-            Status - {activeCustomer.status}
-          </Typography>
-        </Paper>
-      </Card>
+      <Paper variant="outlined">
+        <Typography noWrap variant="h5">
+          {" "}
+          Name - {activeCustomer.firstName} {activeCustomer.lastName}
+        </Typography>
+        <Typography noWrap variant="h5">
+          {" "}
+          Status - {activeCustomer.status}
+        </Typography>
+      </Paper>
     </Box>
   );
 };
 const InActiveCustomerComponent = ({ inActiveCustomer }: IInActiveCustomer) => {
   return (
     <Box mt={1}>
-      <Card>
-        <Paper variant="outlined">
-          <Typography noWrap variant="h5">
-            {" "}
-            Name - {inActiveCustomer.firstName} {inActiveCustomer.lastName}
-          </Typography>
-          <Typography noWrap variant="h5">
-            {" "}
-            Status - {inActiveCustomer.status}
-          </Typography>
-        </Paper>
-      </Card>
+      <Paper variant="outlined">
+        <Typography noWrap variant="h5">
+          {" "}
+          Name - {inActiveCustomer.firstName} {inActiveCustomer.lastName}
+        </Typography>
+        <Typography noWrap variant="h5">
+          {" "}
+          Status - {inActiveCustomer.status}
+        </Typography>
+      </Paper>
     </Box>
   );
 };
