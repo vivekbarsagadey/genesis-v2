@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { use } from "react";
 import Box from "@mui/material/Box";
 import genisys from "../data/genisys.json";
 import Category from "./menu/menu";
@@ -8,10 +8,13 @@ import { ProjectContext } from "../app/project/info";
 import Screens from "./screens/screens";
 import BuilderHeaderComponent from "./header/header";
 import BuilderScreenComponent from "./screens/screens";
+import { findById } from "../services/api.service";
 
 const BuilderHome = () => {
   const value = React.useContext(ProjectContext);
-
+  const project = use(findById("projects", value));
+  console.log(" project -->",project);
+  
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -35,10 +38,9 @@ const BuilderHome = () => {
           <Grid item xs={12}>
             <BuilderHeaderComponent />
           </Grid>
-          <Grid item xs={12} >
+          <Grid item xs={12}>
             <BuilderScreenComponent />
           </Grid>
-          
         </Grid>
       </Grid>
     </Box>
