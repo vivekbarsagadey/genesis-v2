@@ -1,0 +1,56 @@
+{
+    "categories": [
+      {
+        "id": "components",
+        "name": "Components",
+        "label": "Components",
+        "title": "Components",
+        "icon": "fas fa-cubes",
+        "items": [
+          {
+            "id": "buttons",
+            "name": "Buttons",
+            "label": "Buttons",
+            "title": "Buttons",
+            "icon": "far fa-circle",
+            "componentId": "buttonComponent"
+          }
+        ]
+      },
+      {
+        "id": "containers",
+        "name": "Containers",
+        "label": "Containers",
+        "title": "Containers",
+        "icon": "fas fa-boxes",
+        "items": [
+          {
+            "id": "tabs",
+            "name": "Tabs",
+            "label": "Tabs",
+            "title": "Tabs",
+            "icon": "far fa-folder",
+            "componentId": "tabComponent"
+          }
+        ]
+      },
+      {
+        "id": "grid",
+        "name": "Grid",
+        "label": "Grid",
+        "title": "Grid",
+        "icon": "fas fa-th",
+        "items": [
+          {
+            "id": "flexbox",
+            "name": "Flexbox",
+            "label": "Flexbox",
+            "title": "Flexbox",
+            "icon": "far fa-object-group",
+            "componentId": "flexboxComponent"
+          }
+        ]
+      }
+    ]
+  }
+  
