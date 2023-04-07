@@ -1,8 +1,14 @@
-import React from 'react';
-import { List, ListItem, ListItemIcon, ListItemText, Collapse } from '@material-ui/core';
-import { ExpandLess, ExpandMore } from '@material-ui/icons';
-import { Item } from './menu.item';
-import MenuItem from './menu.item';
+import React from "react";
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Collapse,
+} from "@material-ui/core";
+import { ExpandLess, ExpandMore } from "@material-ui/icons";
+import { Item } from "./menu.item";
+import MenuItem from "./menu.item";
 
 type CategoryProps = {
   id: string;
@@ -14,14 +20,13 @@ type CategoryProps = {
   handleClick: (id: string) => void;
   open: { [key: string]: boolean };
   classes: Record<string, string>;
-  genisys: JSON;
+  
 };
 
 function Category(props: CategoryProps) {
-  const { id, name, icon, items, handleClick, open, classes,genisys } = props;
+  const { id, name, icon, items, handleClick, open, classes, } = props;
 
-  console.log("genisys >>",genisys);
-  
+
   return (
     <div key={id}>
       <ListItem button onClick={() => handleClick(id)}>
@@ -33,7 +38,13 @@ function Category(props: CategoryProps) {
         <Collapse in={open[id]} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             {items.map((item: Item) => (
-              <MenuItem key={item.id} item={item} handleClick={handleClick} open={open} classes={classes} />
+              <MenuItem
+                key={item.id}
+                item={item}
+                handleClick={handleClick}
+                open={open}
+                classes={classes}
+              />
             ))}
           </List>
         </Collapse>
