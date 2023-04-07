@@ -6,6 +6,7 @@ import {
   Button,
   Grid,
   IconButton,
+  Stack,
   TextField,
   Typography,
 } from "@mui/material";
@@ -32,6 +33,21 @@ const useStyles = makeStyles({
   },
 });
 
+const genderType = [{ title: "Male" }, { title: "Female" }];
+const countrySelect = [
+  { country: "India" },
+  { country: "Australia" },
+  { country: "America" },
+  { country: "Spain" },
+  { country: "US" },
+  { country: "UK" },
+  { country: "Dubai" },
+  { country: "Hong Kong" },
+  { country: "Pakistan" },
+  { country: "Bangladesh" },
+  { country: "Srilanka" },
+  { country: "Thailand" },
+];
 const CustomerCreateComponent = () => {
   const classes = useStyles();
   const [customerFirstName, setCustomerFirstName] = useState("");
@@ -41,7 +57,7 @@ const CustomerCreateComponent = () => {
   const [customerEmail, setCustomerEmail] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
   const [customerAddress, setCustomerAddress] = useState("");
-  const [customerStatus, setCustomerStatus] = useState("Active");
+  const [customerStatus, setCustomerStatus] = useState("");
   const [customerZipCode, setCustomerZipCode] = useState("");
   const [customerCity, setCustomerCity] = useState("");
   const [customerState, setCustomerState] = useState("");
@@ -139,7 +155,7 @@ const CustomerCreateComponent = () => {
           <Typography fontSize={"1.2rem"}>Create New Customer</Typography>
         </Grid>
       </Grid>
-      <Grid container style={{ display: "flex", alignItems: "center" }}>
+      <Grid container>
         <Grid item xs={2}>
           <Grid item xs={4}>
             <div className="App">
@@ -224,7 +240,6 @@ const CustomerCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-
               <Grid item xs={6} mt={2}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
@@ -234,18 +249,25 @@ const CustomerCreateComponent = () => {
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <FormControl fullWidth>
-                      <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={gender}
-                        onChange={customerChange}
-                        size="small"
-                      >
-                        <MenuItem value={"Male"}>Male</MenuItem>
-                        <MenuItem value={"Female"}>Female</MenuItem>
-                      </Select>
-                    </FormControl>
+                    <Stack spacing={2}>
+                      <Autocomplete
+                        freeSolo
+                        id="free-solo-2-demo"
+                        disableClearable
+                        options={genderType.map((option) => option.title)}
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            size="small"
+                            InputProps={{
+                              ...params.InputProps,
+                              type: "search",
+                            }}
+                            placeholder="Select Gender"
+                          />
+                        )}
+                      />
+                    </Stack>
                   </Grid>
                 </Grid>
               </Grid>
@@ -337,7 +359,7 @@ const CustomerCreateComponent = () => {
                           InputProps={{
                             ...params.InputProps,
                             type: "search",
-                          }}
+                          }} placeholder="Select Status"
                         />
                       )}
                     />
@@ -441,22 +463,25 @@ const CustomerCreateComponent = () => {
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <FormControl fullWidth>
-                      <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={customerCountry}
-                        onChange={updateCustomerCountry}
-                        size="small"
-                      >
-                        <MenuItem value={"India"}>India</MenuItem>
-                        <MenuItem value={"Australia"}>Australia</MenuItem>
-                        <MenuItem value={"America"}>America</MenuItem>
-                        <MenuItem value={"Spain"}>Spain</MenuItem>
-                        <MenuItem value={"US"}>US</MenuItem>
-                        <MenuItem value={"UK"}>UK</MenuItem>
-                      </Select>
-                    </FormControl>
+                    <Stack spacing={2}>
+                      <Autocomplete
+                        freeSolo
+                        id="free-solo-2-demo"
+                        disableClearable
+                        options={countrySelect.map((option) => option.country)}
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            size="small"
+                            InputProps={{
+                              ...params.InputProps,
+                              type: "search",
+                            }}
+                            placeholder="Select Country"
+                          />
+                        )}
+                      />
+                    </Stack>
                   </Grid>
                 </Grid>
               </Grid>

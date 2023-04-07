@@ -29,7 +29,7 @@ const ProjectGridView = ({ projects }: ListComponentProps) => {
               return (
                 <Grid item xs={4} md={4} sm={4} lg={4} key={item.id}>
                   <Paper variant="outlined">
-                    <Box paddingLeft={2} paddingTop={2}>
+                    <Box paddingLeft={2} paddingTop={1}>
                       <Grid container>
                         <Grid item xs={5}>
                           <Typography variant="subtitle1">
