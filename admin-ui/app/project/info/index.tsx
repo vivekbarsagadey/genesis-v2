@@ -51,10 +51,12 @@ const style = {
 type InfoCustomerComponentProps = {
   items: IProject;
 };
+
+export const ProjectContext = React.createContext();
+
 const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
   const router = useRouter();
   const [openTheme, setOpenTheme] = useState(false);
-  const [projectInfo, setProjectInfo] = useState("");
 
   const handleOpenTheme = () => setOpenTheme((s) => !s);
   const handleCloseTheme = () => setOpenTheme((s) => !s);
@@ -66,7 +68,6 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
   };
   const handelOpenBuilder = () => {
     setOpneBuilder((s) => !s);
-    setProjectInfo(items);
   };
 
   const jsonFileDownload = () => {
@@ -165,7 +166,9 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
           onClose={handelCloseBuilder}
           TransitionComponent={Transition}
         >
-          <BuilderHome projectInfo={projectInfo} />
+          <ProjectContext.Provider value={items.id}>
+            <BuilderHome />
+          </ProjectContext.Provider>
         </Dialog>
       </Box>
     </>
