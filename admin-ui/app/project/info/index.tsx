@@ -54,7 +54,7 @@ type InfoCustomerComponentProps = {
 const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
   const router = useRouter();
   const [openTheme, setOpenTheme] = useState(false);
-  const [projectid, setProjectId] = useState("");
+  const [projectInfo, setProjectInfo] = useState("");
 
   const handleOpenTheme = () => setOpenTheme((s) => !s);
   const handleCloseTheme = () => setOpenTheme((s) => !s);
@@ -66,7 +66,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
   };
   const handelOpenBuilder = () => {
     setOpneBuilder((s) => !s);
-    setProjectId(items.id);
+    setProjectInfo(items);
   };
 
   const jsonFileDownload = () => {
@@ -165,7 +165,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
           onClose={handelCloseBuilder}
           TransitionComponent={Transition}
         >
-          <BuilderHome projectid={projectid} />
+          <BuilderHome projectInfo={projectInfo} />
         </Dialog>
       </Box>
     </>

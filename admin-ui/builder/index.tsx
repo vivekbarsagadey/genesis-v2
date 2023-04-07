@@ -8,8 +8,8 @@ import Category from "./menu/menu";
 import Grid from "@mui/material/Grid";
 import Header from "./menu/header/header";
 
-const BuilderHome = ({ projectid }) => {
-  console.log("id at builder >>", projectid);
+const BuilderHome = ({ projectInfo }) => {
+  console.log("projectInfo >>", projectInfo);
   console.log("genisys >>", genisys);
 
   return (
@@ -34,7 +34,7 @@ const BuilderHome = ({ projectid }) => {
           </Grid>
           <Grid item xs={10}>
             <Grid item xs={12}>
-            <Header/>
+            <Header   projectInfo={projectInfo}   />
             </Grid>
             <Grid container spacing={2} mt={1}>
               <Grid item xs={9}>
