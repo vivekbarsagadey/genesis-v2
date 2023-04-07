@@ -5,6 +5,7 @@ interface IProject{
     customerName: string;
     application: string;
     length:number;
+    projectJson:JSON;
     
 }
 

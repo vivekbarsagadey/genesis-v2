@@ -1,34 +1,16 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import ProjectHomeComponent from "./index";
+import { use } from "react";
+import ProjectHomeComponent from ".";
+import CustomerComponentHome from ".";
+import { findAll } from "../../services/api.service";
+import IProject from "./project.model";
+
+
+const URL = "projects";
 
 const Page = () => {
-  // const [project, setProject] = useState([]);
-
-  // const fetchData = async () => {
-  //   const users = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`);
-  //   const result = await users.json();
-  //   setProject(result);
-  // };
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
-  const [project, setProject] = useState([]);
-
-  const fetchData = async () => {
-    const users = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`);
-    const result = await users.json();
-    setProject(result);
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
-  return (
-    <div>
-      <ProjectHomeComponent projectData={project} />
-    </div>
-  );
+  const projects = use<Array<IProject>>(findAll(URL));
+  return <ProjectHomeComponent projects={projects}/>;
 };
 
 export default Page;

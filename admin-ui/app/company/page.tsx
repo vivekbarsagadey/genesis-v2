@@ -1,27 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import CompanyHome from ".";
-import ICompany from "./company.model";
+import { use } from "react";
+import CompanyComponentHome from ".";
+import { findAll } from "../../services/api.service";
+import {ICompany} from "./models/company.model";
 
-const company = Array<ICompany>();
+const URL = "companies";
 
 const Page = () => {
-  const [company, setCompany] = useState([]);
-
-  const fetchData = async () => {
-    const users = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/companies`);
-    const result = await users.json();
-    setCompany(result);
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  return (
-    <div>
-      <CompanyHome companyData={company}> </CompanyHome>
-    </div>
-  );
+  const companies = use<Array<ICompany>>(findAll(URL));
+  return <CompanyComponentHome companies={companies}/>;
 };
 
 export default Page;

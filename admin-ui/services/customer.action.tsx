@@ -1,8 +1,5 @@
-
-
 const createCustomer = async (customer) => {
-   
-    const response = await fetch(`/api/customer`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/customer`, {
         credentials: 'include',
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -10,10 +7,8 @@ const createCustomer = async (customer) => {
     });
     return response;
 }
-
-const updateCustomer = async (customer) => {
-   
-    const response = await fetch(`/api/customer/${customer.id}`, {
+const updateCustomer = async (id,customer) => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/customer/${id}`, {
         credentials: 'include',
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -22,4 +17,12 @@ const updateCustomer = async (customer) => {
     return response;
 }
 
-export {createCustomer, updateCustomer}
+const deleteCustomer = async (id) => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/customer/${id}`, {
+        credentials: 'include',
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+    });
+    return response;
+}
+export {createCustomer, updateCustomer ,deleteCustomer}

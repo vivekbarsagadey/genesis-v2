@@ -1,32 +1,23 @@
 "use client";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Box, Grid, IconButton, Pagination, Typography } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
 import Paper from "@mui/material/Paper";
 import { useState } from "react";
-import ICompany from "../company.model";
+import { PaginationHandler } from "../../utility";
 import InfoCompanyComponent from "../info";
-import CompanyPagination from "./company.list.pagination";
+import { ICompany } from "../models/company.model";
+import { ListComponentProps } from "./props";
 
-type CompanyComponentProps = {
-  companyData: Array<ICompany>;
-  Items: any;
-  searchCompany: String;
-};
-
-const ListViewComponent = ({
-  companyData,
-  searchCompany,
-}: CompanyComponentProps) => {
-  //pagination logic
+const ListViewComponent = ({ companies }: ListComponentProps) => {
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
-  const count = Math.ceil(companyData.length / PER_PAGE);
-  const _DATA = CompanyPagination(companyData, PER_PAGE);
+  const count = Math.ceil(companies.length / PER_PAGE);
+  const paginationHandler = PaginationHandler(companies, PER_PAGE);
 
-  const handleChangePage = (e, p) => {
+  const handleChangePage = (e: any, p: number) => {
     setPage(p);
-    _DATA.jump(p);
+    paginationHandler.jump(p);
   };
 
   return (
@@ -37,9 +28,7 @@ const ListViewComponent = ({
             <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
               <Grid container ml={1}>
                 <Grid item xs={4}>
-                  <IconButton>
-                    <CheckBoxOutlineBlankIcon fontSize="small" />
-                  </IconButton>
+                  <Checkbox size="small" />
                 </Grid>
                 <Grid item xs={6}>
                   <IconButton>
@@ -93,16 +82,13 @@ const ListViewComponent = ({
         </Paper>
       </Box>
       <Grid style={{ height: "62vh" }}>
-        {_DATA
+        {paginationHandler
           .currentData()
           .reverse()
-          .filter((ele) =>
-            ele.name.toLowerCase().includes(searchCompany.toLowerCase())
-          )
-          ?.map((Items: CompanyComponentProps, index) => {
+          ?.map((company: ICompany, index: number) => {
             return (
               <Typography key={index}>
-                <InfoCompanyComponent Items={Items} />
+                <InfoCompanyComponent company={company} />
               </Typography>
             );
           })}
@@ -110,16 +96,15 @@ const ListViewComponent = ({
 
       <Grid container mt={4}>
         <Grid item xs={12} display={"flex"} justifyContent={"flex-end"}>
-          <Grid style={{ position: "fixed" }}>
-            <Pagination
-              count={count}
-              size="small"
-              page={page}
-              variant="outlined"
-              color="primary"
-              onChange={handleChangePage}
-            />
-          </Grid>
+          <Grid style={{ position: "fixed" }}></Grid>
+          <Pagination
+            count={count}
+            size="small"
+            page={page}
+            variant="outlined"
+            color="primary"
+            onChange={handleChangePage}
+          />
         </Grid>
       </Grid>
     </>

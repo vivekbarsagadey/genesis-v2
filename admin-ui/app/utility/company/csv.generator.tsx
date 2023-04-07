@@ -1,7 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import { CSVLink } from "react-csv";
-import ICompany from "../../company/company.model";
+import { ICompany } from "../../company/models";
 
 type CompanyProps = {
   copyCompanyData: Array<ICompany>;

@@ -4,7 +4,7 @@ import { downloadExcel } from "react-export-table-to-excel";
 import IProject from "../../project/project.model";
 
 type ProjectProps={
-  projectData: Array<IProject>
+  projects: Array<IProject>
 }
 
 const header = [
@@ -15,14 +15,14 @@ const header = [
   "Customer Name",
   "Application",
 ];
-const ExcellGenerator = ({ projectData }:ProjectProps) => {
+const ProjectExcellGenerator = ({ projects }:ProjectProps) => {
   function handleDownloadExcel() {
     downloadExcel({
       fileName: `Project${"-list"}${new Date().toISOString().slice(0, 10)}`,
       sheet: "react-export-table-to-excel",
       tablePayload: {
         header,
-        body: projectData,
+        body: projects,
       },
     });
   }
@@ -35,4 +35,4 @@ const ExcellGenerator = ({ projectData }:ProjectProps) => {
   );
 }; 
 
-export default ExcellGenerator;
+export default ProjectExcellGenerator;

@@ -14,6 +14,14 @@ export const theme = createTheme({
       color: "#1e293b",
       marginTop: "0.6rem",
     },
+    h6: {
+      fontWeight:800,
+      fontSize: "0.8rem",
+    },
+    h5: {
+      padding:'0.5rem 1rem 0.8rem',
+      fontSize:'0.9rem'
+    },
     body1: {
       fontWeight: 500,
       fontSize: "0.9rem",

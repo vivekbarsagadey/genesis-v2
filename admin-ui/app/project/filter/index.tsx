@@ -1,50 +1,102 @@
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import { IconButton } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Menu from "@mui/material/Menu";
 import Stack from "@mui/material/Stack";
+import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
+import Tooltip from "@mui/material/Tooltip";
+import React, { useEffect, useState } from "react";
+import { isNotBlank } from "../../../utils/string.util";
+import IProject from "../project.model";
 
-const ProjectFilter = ({
-  projectData,
-  anchorEl,
-  open,
-  handleClose,
-  itemsCallBackHandler = () => {},
-  filterSelected,
-  setFilterSelected,
-  setFilterChipType,
-}) => {
-  const [projectDataName, setProjectDataName] = useState("");
-  const [projectCustomerName, setProjectCustomerName] = useState("");
 
-  const doFilter = () => {
-    if (projectDataName !== "" && projectCustomerName !== "") {
-      const filteredData = projectData?.filter(
-        (u) =>
-          u.name.toLowerCase().includes(projectDataName.toLowerCase()) ||
-          u.customerName
-            .toLowerCase()
-            .includes(projectCustomerName.toLowerCase())
-      );
-      itemsCallBackHandler(filteredData);
-      handleClose();
-      setFilterChipType(true);
+const FilterStyle = styled(Grid)(({ theme }) => ({
+  width: 300,
+  padding: "1rem",
+}));
+
+interface CompanyFilterComponentProps {
+  projects: Array<IProject>;
+  onFilterHandler: (_: Array<IProject>) => void;
+}
+type FilterFields = {
+  key: string;
+  values: string[];
+  label: string;
+};
+
+interface FilterProps {
+  filterField: FilterFields;
+  options: Array<String>;
+}
+
+const ProjectFilterComponent = ({
+  projects,
+  onFilterHandler,
+}: CompanyFilterComponentProps) => {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  const [fileds, setFileds] = useState<Array<FilterFields>>([]);
+
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const emailFilter = (value: string) => (item: IProject) => {
+    console.log("value ??", value);
+
+    if (isNotBlank(item.email)) {
+      if (!item.email.toLowerCase().includes(value.toLowerCase())) {
+        return false;
+      }
+      return true;
     }
+    return true;
+  };
+  const nameFilter = (value: string) => (item: IProject) => {
+    if (isNotBlank(item.name)) {
+      if (!item.name.toLowerCase().includes(value.toLowerCase())) {
+        return false;
+      }
+      return true;
+    }
+    return true;
   };
 
-  const updateProjectName = (value) => {
-    setProjectDataName(value);
-    setFilterSelected([...filterSelected, "Project Name"]);
+  const applyFilter = () => {
+    const emailData = fileds.map((ele) => ele.values);
+    const d = projects.filter(() => emailFilter(emailData[0]));
+   
+    // onFilterHandler();
   };
 
-  const updateCustomerName = (value) => {
-    setProjectCustomerName(value);
-    setFilterSelected([...filterSelected, "Customer  Name"]);
-  };
+  useEffect(() => {
+    var filterFields = [];
+    filterFields.push({ key: "email", values: [], label: "Email" });
+    filterFields.push({ key: "name", values: [], label: "Name" });
+    setFileds(filterFields);
+  }, []);
+
   return (
     <>
+      <Tooltip title="Filter">
+        <IconButton
+          id="basic-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+        >
+          <FilterAltIcon fontSize="small" />
+        </IconButton>
+      </Tooltip>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -54,55 +106,23 @@ const ProjectFilter = ({
           "aria-labelledby": "basic-button",
         }}
       >
-        <Stack width={300} padding={"1rem"}>
-          <Autocomplete
-            size="small"
-            freeSolo
-            disableClearable
-            options={Array.from(new Set(projectData?.map((f) => f.name)))}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Project Name"
-                InputProps={{
-                  ...params.InputProps,
-                  type: "search",
-                }}
-              />
-            )}
-            onChange={(event, value) => {
-              updateProjectName(value);
-            }}
-          />
-        </Stack>
-
-        <Stack width={300} padding={"1rem"}>
-          <Autocomplete
-            size="small"
-            freeSolo
-            disableClearable
-            options={Array.from(
-              new Set(projectData?.map((id) => id.customerName))
-            )}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Customer Name"
-                InputProps={{
-                  ...params.InputProps,
-                  type: "search",
-                }}
-              />
-            )}
-            onChange={(event, value) => {
-              updateCustomerName(value);
-            }}
-          />
-        </Stack>
+        {projects &&
+          fileds?.map((feild, index) => {
+            const key = feild.key;
+            return (
+              <Filter
+                filterField={feild}
+                options={Array.from(
+                  new Set(projects?.map((f) => f[`${key}`]))
+                )}
+                key={index}
+              ></Filter>
+            );
+          })}
 
         <Grid container mb={1} mt={2}>
-          <Grid item xs={5.6}></Grid>
-          <Grid item xs={3.2}>
+          <Grid item xs={6}></Grid>
+          <Grid item xs={3}>
             <Button
               variant="contained"
               size="small"
@@ -112,7 +132,7 @@ const ProjectFilter = ({
             </Button>
           </Grid>
           <Grid item xs={1}>
-            <Button variant="contained" size="small" onClick={doFilter}>
+            <Button variant="contained" size="small" onClick={applyFilter}>
               Save
             </Button>
           </Grid>
@@ -122,4 +142,38 @@ const ProjectFilter = ({
   );
 };
 
-export default ProjectFilter;
+const Filter = ({ filterField, options }: FilterProps) => {
+  const filterUpdateHandler = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    filterField.values.push(value);
+  };
+
+  return (
+    <Grid item xs={8}>
+      <FilterStyle>
+        <Stack>
+          <Autocomplete
+            size="small"
+            onChange={filterUpdateHandler}
+            freeSolo
+            options={options}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                InputProps={{
+                  ...params.InputProps,
+                  type: "search",
+                }}
+                placeholder={filterField.label}
+              />
+            )}
+          />
+        </Stack>
+      </FilterStyle>
+    </Grid>
+  );
+};
+
+export default ProjectFilterComponent;

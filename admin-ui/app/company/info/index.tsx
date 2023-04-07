@@ -1,21 +1,24 @@
 "use client";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
+import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { deleteCompany } from "../../../services/company.action";
-type CompanyInfoProps = {
-  id: string;
-  Items: any;
-  item: any;
+import { ICompany } from "../models/company.model";
+type InfoCompanyComponentProps = {
+  company: ICompany;
 };
-const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
-  const deleteCompanyHandler = async (id) => {
-    const response = await deleteCompany(id);
+const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
+  const router = useRouter();
+  const deleteCompanyHandler = async () => {
+    const response = await deleteCompany(company.id);
+    // route to list screen
     window.location.reload();
+    router.push("/company");
   };
   return (
     <>
@@ -25,9 +28,7 @@ const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
             <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
               <Grid container ml={1}>
                 <Grid item xs={4}>
-                  <IconButton>
-                    <CheckBoxOutlineBlankIcon fontSize="small" />
-                  </IconButton>
+                  <Checkbox size="small" />
                 </Grid>
                 <Grid item xs={6}>
                   <IconButton>
@@ -39,12 +40,12 @@ const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
 
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
-                {Items.name}
+                {company.name}
               </Typography>
             </Grid>
             <Grid item xs={2} mr={1}>
               <Typography variant="body2" noWrap>
-                {Items.email}
+                {company.email}
               </Typography>
             </Grid>
             <Grid item xs={2}>
@@ -54,8 +55,7 @@ const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
                 display={"flex"}
                 justifyContent={"space-around"}
               >
-                {" "}
-                {Items.mobile}
+                {company.mobile}
               </Typography>
             </Grid>
             <Grid item xs={2} mr={6}>
@@ -65,14 +65,14 @@ const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
                 display={"flex"}
                 justifyContent={"space-around"}
               >
-                {Items.address}
+                {company.address}
               </Typography>
             </Grid>
             <Grid item xs={1}>
               <Grid container>
                 <Grid item xs={4}>
                   <Tooltip title="Edit">
-                    <Link href={`/company/${Items.id}`}>
+                    <Link href={`/company/${company.id}`}>
                       <IconButton>
                         <EditIcon fontSize="small" />
                       </IconButton>
@@ -81,11 +81,12 @@ const InfoCompanyComponent = ({ Items }: CompanyInfoProps) => {
                 </Grid>
                 <Grid item xs={2}>
                   <Tooltip title="Delete">
-                    <IconButton>
-                      <DeleteOutlineIcon
-                        fontSize="small"
-                        onClick={() => deleteCompanyHandler(Items.id)}
-                      />
+                    <IconButton
+                      onClick={() => {
+                        deleteCompanyHandler();
+                      }}
+                    >
+                      <DeleteOutlineIcon fontSize="small" />
                     </IconButton>
                   </Tooltip>
                 </Grid>

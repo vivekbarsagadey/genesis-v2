@@ -1,34 +1,33 @@
+import React, { useState } from "react";
 import { Pagination, Paper } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
-import { useState } from "react";
-import companyGridPagination from "./company.grid.pagination";
+import { PaginationHandler } from "../../utility";
+import { ListComponentProps } from "./props";
 
-const CompanyGridView = ({ copyCompanyData, searchCompany }) => {
-  // Pagination logic
+const CompanyGridView = ({ companies }: ListComponentProps) => {
+
+//pagination 
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
-  const count = Math.ceil(copyCompanyData.length / PER_PAGE);
-  const _DATA = companyGridPagination(copyCompanyData, PER_PAGE);
+  const count = Math.ceil(companies.length / PER_PAGE);
+  const paginationHandler = PaginationHandler(companies, PER_PAGE);
 
-  const handleChangePage = (e, p) => {
+  const handleChangePage = (e: any, p: number) => {
     setPage(p);
-    _DATA.jump(p);
+    paginationHandler.jump(p);
   };
+
   return (
     <>
-      <Box style={{ height: "70.6vh" }}>
-        <Grid container spacing={2}  mt={1}>
-          {_DATA
-            .currentData()
-            .reverse()
-            .filter((ele) =>
-              ele.name.toLowerCase().includes(searchCompany.toLowerCase())
-            )
-            .map((item) => {
+      <Box style={{ height: "70.6vh" }} mr={2}>
+        <Grid container spacing={1} mt={1}>
+          {paginationHandler
+          .currentData()
+          .reverse()?.map((item) => {
               return (
-                <Grid item xs={4} md={4} sm={4} lg={4}  key={item.id}>
+                <Grid item xs={4} md={4} sm={4} lg={4} key={item.id}>
                   <Paper variant="outlined">
                     <Box paddingLeft={2} paddingTop={2}>
                       <Grid container>

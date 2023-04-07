@@ -84,11 +84,14 @@ model Company {
   registerNo     String?   @map("register_no")
   website        String?
   foundationYear String?
+  status         String?
   tagLine        String?   @map("tag_line")
   projects       Project[]
 
   @@map("tb_company")
 }
+
+
 
 
 model Project {
@@ -105,10 +108,11 @@ model Project {
  webUrl         String? @map("web_url")
  currentVersion String? @map("current_version")
  status         String? @map("status")
- companyId      String?  @map("company_id") @db.ObjectId
  customerName   String? @map("customer_name")
  application    String? @map("application")
+ companyId      String? @map("company_id") @db.ObjectId
  company        Company? @relation(fields: [companyId], references: [id])
+ projectJson    Json?   
 
   @@map("tb_project")
 }
@@ -120,9 +124,32 @@ model Screen {
   name            String?
   components      Component[]
 
+
   @@map("tb_screen")
 }
-
+model Customer {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  profilePic     String?
+  country_code   String?
+  description    String?
+  address        String?
+  streetAddress  String?   @map("street_address")
+  city           String?
+  state          String?
+  zipCode        String?   @map("zip_code")
+  country        String?
+  firstName      String?   @map("first_name")
+  lastName       String?   @map("last_name")
+  mobile         String?
+  status         String?
+  gender         String?
+  age            String?
+  email          String?   @unique
+  
+  @@map("tb_customer")
+}
 
 model Component{
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
@@ -136,25 +163,15 @@ model Component{
 }
 
 
-model ProjectJson{
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  name          String?
-  projectData   Json?
 
-
-  @@map("tb_project_json")
-
-}
 
 model VerificationToken {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
-  identifier String
-  token      String   @unique
-  expires    DateTime
+  identifier    String
+  token         String   @unique
+  expires       DateTime
 
   @@unique([identifier, token])
   @@map("tb_verification_tokens")
