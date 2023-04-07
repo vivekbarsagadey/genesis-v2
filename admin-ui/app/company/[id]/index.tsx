@@ -272,7 +272,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
               <Grid item xs={3}>
                 <Grid container>
                   <Grid item xs={6} ml={3}>
-                    <Link href={"/company"}>
+                    <Link href={"/company"} style={{textDecoration:'none'}}>
                       <Button variant="contained" size="small">
                         Cancel
                       </Button>

@@ -59,7 +59,7 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
             </Grid>
           </Grid>
           <Grid item xs={1}>
-            <Link href={"/company/create"} passHref>
+            <Link href={"/company/create"} passHref style={{textDecoration:'none'}}>
               <Button variant="contained" size="small">
                 Create
                 <span>+</span>

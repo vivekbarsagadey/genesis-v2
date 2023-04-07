@@ -61,7 +61,7 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
             </Grid>
           </Grid>
           <Grid item xs={1}>
-            <Link href={"/customer/create"} passHref>
+            <Link href={"/customer/create"} passHref style={{textDecoration:'none'}}>
               <Button variant="contained" size="small">
                 Create
                 <span>+</span>

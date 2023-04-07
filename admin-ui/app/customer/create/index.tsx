@@ -507,13 +507,16 @@ const CustomerCreateComponent = () => {
                     <Grid item xs={3}>
                       <Grid container>
                         <Grid item xs={7}>
-                          <Link href={"/customer"}>
+                          <Link
+                            href={"/customer"}
+                            style={{ textDecoration: "none" }}
+                          >
                             <Button variant="contained" size="small">
                               Cancel
                             </Button>
                           </Link>
                         </Grid>
-                        <Grid item xs={2} ml={1}>
+                        <Grid item xs={2}>
                           <Button
                             variant="contained"
                             size="small"

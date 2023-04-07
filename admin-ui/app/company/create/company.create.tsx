@@ -268,7 +268,7 @@ const CompanyCreateComponent = () => {
                 <Grid item xs={3}>
                   <Grid container>
                     <Grid item xs={7}>
-                      <Link href={"/company"}>
+                      <Link href={"/company"} style={{textDecoration:'none'}}>
                         <Button variant="contained" size="small">
                           Cancel
                         </Button>

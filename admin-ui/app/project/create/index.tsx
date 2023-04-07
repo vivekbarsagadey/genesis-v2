@@ -1,12 +1,12 @@
 "use client";
-import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import { Button, Grid, IconButton, Paper, TextField, Tooltip, Typography } from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
 import Checkbox from "@mui/material/Checkbox";
+import Stack from "@mui/material/Stack";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-import { applicationType } from "../../../component/common/data/project/application.type";
-import Stack from "@mui/material/Stack";
-import Autocomplete from "@mui/material/Autocomplete";
+import { useEffect, useState } from "react";
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 type IApplicationType = {
   id: Number;
   type: String;
@@ -67,7 +67,6 @@ const ProjectCreate = () => {
   };
 
   const updateMyProjectData = async () => {
-    
     if (customerWeb) {
       await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
         method: "POST",
@@ -115,7 +114,7 @@ const ProjectCreate = () => {
           customerName,
           application: "Business to Business - Mobile",
         }),
-        
+
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
@@ -181,14 +180,19 @@ const ProjectCreate = () => {
                               ...params.InputProps,
                               type: "search",
                             }}
-                            placeholder="Customer Name"
+                            placeholder="Company Name"
                           />
                         )}
                       />
                     </Stack>
                   </Grid>
                   <Link href={"/company/create"}>
-                    <Button>+Add Company</Button>
+                    <Tooltip title="Add Customer" arrow>
+
+                    <IconButton>
+                      <PersonAddIcon fontSize="small"/>
+                    </IconButton>
+                    </Tooltip>
                   </Link>
                 </Grid>
                 <Grid container mt={3}>
@@ -258,7 +262,11 @@ const ProjectCreate = () => {
                   <Grid item xs={3}>
                     <Grid container>
                       <Grid item xs={5.6}>
-                        <Link href={"/project"} passHref>
+                        <Link
+                          href={"/project"}
+                          passHref
+                          style={{ textDecoration: "none" }}
+                        >
                           <Button variant="contained" size="small">
                             Cancel
                           </Button>
