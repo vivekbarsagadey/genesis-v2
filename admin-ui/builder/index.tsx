@@ -7,19 +7,20 @@ import genisys from "../data/genisys.json";
 import Category from "./menu/menu";
 import Grid from "@mui/material/Grid";
 
-const BuilderHome = ({ id }) => {
-  console.log("id at builder >>", id);
+const BuilderHome = ({ projectid }) => {
+  console.log("id at builder >>", projectid);
   console.log("genisys >>", genisys);
 
   return (
-    <div>
+    <>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={2}>
             <>
-              {genisys.categories?.map((category, index) => {
+              {/* {genisys.categories?.map((category, index) => {
                 return <Category id={category.id} />;
-              })}
+              })} */}
+              kjlsdflisdli
             </>
           </Grid>
           <Grid item xs={10}>
@@ -28,16 +29,16 @@ const BuilderHome = ({ id }) => {
             </Grid>
             <Grid container spacing={2} mt={1}>
               <Grid item xs={9}>
-                <>Screen Page </>
+                <>Screen Page</>
               </Grid>
               <Grid item xs={3}>
-                <>Property 4 Section </>
+                <>Property 4 Section</>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       </Box>
-    </div>
+    </>
   );
 };
 

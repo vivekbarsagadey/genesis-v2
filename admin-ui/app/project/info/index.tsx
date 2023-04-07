@@ -3,7 +3,14 @@ import React, { useState } from "react";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
+import {
+  Grid,
+  IconButton,
+  List,
+  Paper,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
@@ -14,6 +21,21 @@ import downloadJsonFile from "../../utility/json.downloder";
 import IProject from "../project.model";
 import Modal from "@mui/material/Modal";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import Dialog from "@mui/material/Dialog";
+import { AppBar, Toolbar } from "@material-ui/core";
+import CloseIcon from "@mui/icons-material/Close";
+import Slide from "@mui/material/Slide";
+import { TransitionProps } from "@mui/material/transitions";
+import BuilderHome from "../../../builder";
+
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement;
+  },
+  ref: React.Ref<unknown>
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const style = {
   position: "absolute" as "absolute",
@@ -32,16 +54,30 @@ type InfoCustomerComponentProps = {
 const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
   const router = useRouter();
   const [openTheme, setOpenTheme] = useState(false);
-  const handleOpen = () => setOpenTheme((s) => !s);
-  const handleClose = () => setOpenTheme((s) => !s);
+  const [projectid, setProjectId] = useState("");
+
+  const handleOpenTheme = () => setOpenTheme((s) => !s);
+  const handleCloseTheme = () => setOpenTheme((s) => !s);
+
+  const [openBuilder, setOpneBuilder] = useState(false);
+
+  const handelCloseBuilder = () => {
+    setOpneBuilder((s) => !s);
+  };
+  const handelOpenBuilder = () => {
+    setOpneBuilder((s) => !s);
+    setProjectId(items.id);
+  };
+
   const jsonFileDownload = () => {
     downloadJsonFile(items);
   };
-  const openBuilder = () => {
+
+  const openBuilderMethod = () => {
     if (items.projectJson !== null) {
-      router.push(`/project/${items.id}`);
+      handelOpenBuilder();
     } else {
-      handleOpen();
+      handleOpenTheme();
     }
   };
 
@@ -88,7 +124,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
                 <Grid item xs={4}>
                   <Tooltip title="Edit">
                     {/* <Link href={`/project/${items.id}`}> */}
-                    <IconButton onClick={openBuilder}>
+                    <IconButton onClick={openBuilderMethod}>
                       <EditIcon fontSize="small" />
                     </IconButton>
                     {/* </Link> */}
@@ -108,7 +144,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
 
         <Modal
           open={openTheme}
-          onClose={handleClose}
+          onClose={handleCloseTheme}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
@@ -121,6 +157,16 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
             </Typography>
           </Box>
         </Modal>
+
+        {/* Builder full screen  */}
+        <Dialog
+          fullScreen
+          open={openBuilder}
+          onClose={handelCloseBuilder}
+          TransitionComponent={Transition}
+        >
+          <BuilderHome projectid={projectid} />
+        </Dialog>
       </Box>
     </>
   );

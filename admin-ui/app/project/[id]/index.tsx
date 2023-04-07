@@ -4,7 +4,7 @@ import BuilderHome from "../../../builder";
 const ProjectEditComponent = ({ id }) => {
   return (
     <div>
-      <BuilderHome id={id} />
+      {/* <BuilderHome id={id} /> */}
     </div>
   );
 };
