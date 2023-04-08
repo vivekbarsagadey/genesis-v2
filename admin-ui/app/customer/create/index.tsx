@@ -19,6 +19,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createCustomer } from "../../../services/customer.action";
+import { countrySelect, stateSelect, citySelect } from "../grpahdata/graphdata";
 import { Status } from "../models";
 
 const useStyles = makeStyles({
@@ -34,39 +35,7 @@ const useStyles = makeStyles({
 });
 
 const genderType = [{ title: "Male" }, { title: "Female" }];
-const countrySelect = [
-  { country: "India" },
-  { country: "Australia" },
-  { country: "America" },
-  { country: "Spain" },
-  { country: "US" },
-  { country: "UK" },
-  { country: "Dubai" },
-  { country: "Srilanka" },
-  { country: "Thailand" },
-];
-const stateSelect = [
-  { state: "Bihar" },
-  { state: "Madhya Pradesh" },
-  { state: "UP" },
-  { state: "Maharastra" },
-  { state: "Punjab" },
-  { state: "Gujrat" },
-  { state: "Karnataka" },
-  { state: "Jammu & Kashmir" },
-];
-const citySelect = [
-  { city: "Patna" },
-  { city: "Mumbai" },
-  { city: "Pune" },
-  { city: "Banglore" },
-  { city: "Ahmedabad" },
-  { city: "Kolkata" },
-  { city: "Rajasthan" },
-  { city: "Hyderabad" },
-  { city: "Lucknow" },
 
-];
 const CustomerCreateComponent = () => {
   const classes = useStyles();
   const [customerFirstName, setCustomerFirstName] = useState("");
@@ -136,7 +105,6 @@ const CustomerCreateComponent = () => {
   const updateCustomerZipCode = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerZipCode(e.target.value);
   };
-
 
   const updateCustomerProfilePic = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerProfilePic(e.target.value);
@@ -455,7 +423,6 @@ const CustomerCreateComponent = () => {
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                
                     <Autocomplete
                       value={customerCity}
                       onChange={updateCustomerCity}

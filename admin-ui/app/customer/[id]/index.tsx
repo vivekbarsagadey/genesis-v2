@@ -1,47 +1,26 @@
 "use client";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import { Avatar,Box,Button,Grid,IconButton,Stack,TextField,Typography} from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  Grid,
+  IconButton,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import { makeStyles } from "@mui/styles";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { updateCustomer } from "../../../services/customer.action";
+import { countrySelect, stateSelect, citySelect } from "../grpahdata/graphdata";
 import { Status } from "../models";
 
 const genderType = [{ title: "Male" }, { title: "Female" }];
-const countrySelect = [
-  { country: "India" },
-  { country: "Australia" },
-  { country: "America" },
-  { country: "Spain" },
-  { country: "US" },
-  { country: "UK" },
-  { country: "Dubai" },
-  { country: "Srilanka" },
-  { country: "Thailand" },
-];
-const stateSelect = [
-  { state: "Bihar" },
-  { state: "Madhya Pradesh" },
-  { state: "UP" },
-  { state: "Maharastra" },
-  { state: "Punjab" },
-  { state: "Gujrat" },
-  { state: "Karnataka" },
-  { state: "Jammu & Kashmir" },
-];
-const citySelect = [
-  { city: "Patna" },
-  { city: "Mumbai" },
-  { city: "Pune" },
-  { city: "Banglore" },
-  { city: "Ahmedabad" },
-  { city: "Kolkata" },
-  { city: "Rajasthan" },
-  { city: "Hyderabad" },
-  { city: "Lucknow" },
-];
+
 const useStyles = makeStyles({
   avtar: {
     opacity: "1",
@@ -129,27 +108,46 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
   const updateCustomerZipCode = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerZipCode(e.target.value);
   };
-  const updateCustomerState = (e: React.ChangeEvent<HTMLInputElement>,value: string) => {
+  const updateCustomerState = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
     setCustomerState(value);
   };
-  const updateCustomerCity = (e: React.ChangeEvent<HTMLInputElement>,value: string) => {
+  const updateCustomerCity = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
     setCustomerCity(value);
   };
   const updateCustomerProfilePic = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerProfilePic(e.target.value);
   };
-  const updateCustomerChange = (e: React.ChangeEvent<HTMLInputElement>,value: string) => {
+  const updateCustomerChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
     setGender(value);
   };
-  const updateCustomerCountry = (e: React.ChangeEvent<HTMLInputElement>,value: string) => {
+  const updateCustomerCountry = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
     setCustomerCountry(value);
   };
-  const updateCustomerStatus = (e: React.ChangeEvent<HTMLInputElement>,value: string) => {
+  const updateCustomerStatus = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
     setCustomerStatus(value);
   };
-  const handleMouseIn = () => {setHover(true);};
+  const handleMouseIn = () => {
+    setHover(true);
+  };
 
-  const handleMouseOut = () => {setHover(false);};
+  const handleMouseOut = () => {
+    setHover(false);
+  };
 
   return (
     <div>
