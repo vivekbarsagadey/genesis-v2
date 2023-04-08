@@ -18,9 +18,6 @@ const countrySelect = [
   { country: "US" },
   { country: "UK" },
   { country: "Dubai" },
-  { country: "Hong Kong" },
-  { country: "Pakistan" },
-  { country: "Bangladesh" },
   { country: "Srilanka" },
   { country: "Thailand" },
 ];
