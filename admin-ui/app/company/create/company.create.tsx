@@ -3,10 +3,11 @@ import { useState } from "react";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
 import Autocomplete from "@mui/material/Autocomplete";
 import { Status } from "../models";
 import { createCompany } from "../../../services/company.action";
+import { countrySelect, stateSelect } from "../graphdata/graph.data";
+
 const CompanyCreateComponent = () => {
   const [ownerFirstName, setOwnerFirstName] = useState("");
   const [ownerLastName, setOwnerLastName] = useState("");
@@ -16,6 +17,8 @@ const CompanyCreateComponent = () => {
   const [companyAddress, setCompanyAddress] = useState("");
   const [companyWebsite, setCompanyWebsite] = useState("");
   const [companyStatus, setCompanyStatus] = useState("NEW");
+  const [companyState, setCompanyState] = useState("");
+  const [companyCountry, setCompanyCountry] = useState("");
   const router = useRouter();
 
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
@@ -32,6 +35,8 @@ const CompanyCreateComponent = () => {
         address: companyAddress,
         website: companyWebsite,
         status: companyStatus,
+        state:companyState,
+        country:companyCountry,
       };
       //  console.log("this is body", body)
       await createCompany(body);
@@ -62,6 +67,12 @@ const CompanyCreateComponent = () => {
   const updateCompanyWebsite = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyWebsite(e.target.value);
   };
+  const updateCompanyState = ( e: React.ChangeEvent<HTMLInputElement>, value: string) => {
+    setCompanyState(value);
+  };
+  const updateCompanyCountry = ( e: React.ChangeEvent<HTMLInputElement>, value: string) => {
+    setCompanyCountry(value);
+  };
 
   const getCompanyStatusValue = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -71,13 +82,13 @@ const CompanyCreateComponent = () => {
   };
   return (
     <>
-      <Box sx={{ flexGrow: 1 }} padding={4}>
+      <Box padding={4}>
         <Grid container>
           <Grid item xs={12}>
-            <Typography variant="h6">Create New Company</Typography>
+            <Typography fontSize={"1.1rem"}>Create New Company</Typography>
           </Grid>
         </Grid>
-        <Grid container spacing={2} mt={2}>
+        <Grid container spacing={2} mt={1}>
           <Grid item xs={6}>
             <Grid container display="flex" alignItems="center">
               <Grid item xs={4}>
@@ -122,7 +133,7 @@ const CompanyCreateComponent = () => {
             </Grid>
           </Grid>
 
-          <Grid item xs={6} mt={2}>
+          <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
               <Grid item xs={4}>
                 <Typography>Company Name</Typography>
@@ -144,7 +155,7 @@ const CompanyCreateComponent = () => {
             </Grid>
           </Grid>
 
-          <Grid item xs={6} mt={2}>
+          <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
               <Grid item xs={4}>
                 <Typography>Email</Typography>
@@ -165,7 +176,7 @@ const CompanyCreateComponent = () => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={6} mt={2}>
+          <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
               <Grid item xs={4}>
                 <Typography>Phone</Typography>
@@ -187,7 +198,7 @@ const CompanyCreateComponent = () => {
             </Grid>
           </Grid>
 
-          <Grid item xs={6} mt={2}>
+          <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
               <Grid item xs={4}>
                 <Typography>Address</Typography>
@@ -208,8 +219,71 @@ const CompanyCreateComponent = () => {
               </Grid>
             </Grid>
           </Grid>
+          <Grid item xs={6} mt={1}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
+                <Typography>State</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+              <Autocomplete
+                      value={companyState}
+                      onChange={updateCompanyState}
+                      freeSolo
+                      id="free-solo-2-demo"
+                      disableClearable
+                      options={stateSelect.map((option) => option.state)}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          InputProps={{
+                            ...params.InputProps,
+                            type: "search",
+                          }}
+                          placeholder="Select State"
+                        />
+                      )}
+                    />
+              </Grid>
+            </Grid>
+          </Grid>
 
-          <Grid item xs={6} mt={2}>
+          <Grid item xs={6} mt={1}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
+                <Typography>Country</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+              <Autocomplete
+                      value={companyCountry}
+                      onChange={updateCompanyCountry}
+                      freeSolo
+                      id="free-solo-2-demo"
+                      disableClearable
+                      options={countrySelect.map((option) => option.country)}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          InputProps={{
+                            ...params.InputProps,
+                            type: "search",
+                          }}
+                          placeholder="Select Country"
+                        />
+                      )}
+                    />
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
               <Grid item xs={4}>
                 <Typography>Website</Typography>
@@ -231,7 +305,7 @@ const CompanyCreateComponent = () => {
             </Grid>
           </Grid>
 
-          <Grid item xs={6} mt={2}>
+          <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
               <Grid item xs={4}>
                 <Typography>Company Status</Typography>

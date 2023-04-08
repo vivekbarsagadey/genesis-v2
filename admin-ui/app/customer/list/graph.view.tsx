@@ -1,12 +1,10 @@
-
-
-import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
-import Stack from "@mui/material/Stack";
+import { Box, Grid, Paper, Typography } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
-import { Grid, Paper } from "@mui/material";
+import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
+import React, { useState } from "react";
+import { Case, Default, Switch } from "react-if";
 import PieChart from "react-pie-graph-chart";
-import { Switch, Case, Default } from "react-if";
 
 const CustomerGraphView = ({ customer }: ListComponentProps) => {
   const [graphView, setGraphView] = useState<string>("");
@@ -187,11 +185,11 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
   ];
 
   return (
-    <Paper elevation={3}>
-      <Grid container mt={2} p={2}>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={10}>
-          <Stack spacing={2} sx={{ width: 300 }}>
+    <Box mr={2}>
+    <Paper variant="outlined" style={{height:'83vh'}}>
+      <Grid container mt={2} >
+        <Grid item xs={2.8} ml={0.5}>
+          <Stack>
             <Autocomplete
               value={graphView}
               onChange={updateGrpahView}
@@ -213,8 +211,13 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
             />
           </Stack>
         </Grid>
+        <Grid item xs={5}>
+        <Typography fontSize={"1.1rem"} mt={2} textAlign={"center"}>
+            {graphView.toUpperCase()} GRAPH
+          </Typography>
+        </Grid>
         <Grid item xs={12}>
-          <h6>{graphView.toUpperCase()} GRAPH</h6>
+         
           <Switch>
             <Case condition={graphView === "country"}>
               <CountryChart countryData={countryData} />
@@ -232,6 +235,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
         </Grid>
       </Grid>
     </Paper>
+    </Box>
   );
 };
 

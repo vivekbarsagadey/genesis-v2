@@ -7,6 +7,7 @@ import Box from "@mui/material/Box/Box";
 import { Status } from "../models";
 import Autocomplete from "@mui/material/Autocomplete";
 import { updateCompany } from "../../../services/company.action";
+import { countrySelect, stateSelect } from "../graphdata/graph.data";
 
 type CompanyComponentProps = {
   company: any;
@@ -23,6 +24,8 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
   const [companyAddress, setCompanyAddress] = useState(company.address);
   const [companyWebsite, setCompanyWebsite] = useState(company.website);
   const [companyStatus, setCompanyStatus] = useState(company.status);
+  const [companyState, setCompanyState] = useState(company.state);
+  const [companyCountry, setCompanyCountry] = useState(company.country);
 
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
@@ -55,6 +58,19 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
     setCompanyStatus(value);
   };
 
+  const updateCompanyState = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    setCompanyState(value);
+  };
+  const updateCompanyCountry = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    setCompanyCountry(value);
+  };
+
   const updateCompanyEditedData = async () => {
     try {
       const body = {
@@ -65,7 +81,9 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
         mobile: companyPhone,
         address: companyAddress,
         website: companyWebsite,
-        status:companyStatus,
+        status: companyStatus,
+        state: companyState,
+        country: companyCountry,
       };
       await updateCompany(id, body);
       await router.push("/company");
@@ -75,10 +93,10 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
   };
   return (
     <>
-      <Box sx={{ flexGrow: 1 }} padding={4}>
+      <Box padding={4}>
         <Grid container>
           <Grid item xs={12}>
-            <Typography variant="h6">Edit Company Details</Typography>
+            <Typography fontSize={"1.1rem"}>Edit Company Details</Typography>
           </Grid>
         </Grid>
         <Grid container spacing={2} mt={2}>
@@ -216,6 +234,70 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
           <Grid item xs={6} mt={2}>
             <Grid container display="flex" alignItems="center">
               <Grid item xs={4}>
+                <Typography>State</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Autocomplete
+                  value={companyState}
+                  onChange={updateCompanyState}
+                  freeSolo
+                  id="free-solo-2-demo"
+                  disableClearable
+                  options={stateSelect.map((option) => option.state)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      size="small"
+                      InputProps={{
+                        ...params.InputProps,
+                        type: "search",
+                      }}
+                      placeholder="Select State"
+                    />
+                  )}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={2}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
+                <Typography>Country</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Autocomplete
+                  value={companyCountry}
+                  onChange={updateCompanyCountry}
+                  freeSolo
+                  id="free-solo-2-demo"
+                  disableClearable
+                  options={countrySelect.map((option) => option.country)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      size="small"
+                      InputProps={{
+                        ...params.InputProps,
+                        type: "search",
+                      }}
+                      placeholder="Select Country"
+                    />
+                  )}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={2}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
                 <Typography>Website</Typography>
               </Grid>
               <Grid item xs={1}>
@@ -272,7 +354,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
               <Grid item xs={3}>
                 <Grid container>
                   <Grid item xs={6} ml={3}>
-                    <Link href={"/company"} style={{textDecoration:'none'}}>
+                    <Link href={"/company"} style={{ textDecoration: "none" }}>
                       <Button variant="contained" size="small">
                         Cancel
                       </Button>

@@ -19,7 +19,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { createCustomer } from "../../../services/customer.action";
-import { countrySelect, stateSelect, citySelect } from "../grpahdata/graphdata";
+import { countrySelect, stateSelect, citySelect } from "../grpahdata/graph.data";
 import { Status } from "../models";
 
 const useStyles = makeStyles({
