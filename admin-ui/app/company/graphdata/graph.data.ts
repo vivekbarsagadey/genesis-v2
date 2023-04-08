@@ -19,5 +19,4 @@ const countrySelect = [
     { state: "Karnataka" },
     { state: "Jammu & Kashmir" },
   ];
-
   export {countrySelect,stateSelect}
