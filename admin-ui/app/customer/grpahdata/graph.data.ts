@@ -29,7 +29,6 @@ const countrySelect = [
     { city: "Rajasthan" },
     { city: "Hyderabad" },
     { city: "Lucknow" },
-  
   ]
 
   export {countrySelect,citySelect,stateSelect}

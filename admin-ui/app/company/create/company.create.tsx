@@ -22,7 +22,6 @@ const CompanyCreateComponent = () => {
   const router = useRouter();
 
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
-
   // POST call
   const updateMyCompanyData = async () => {
     try {

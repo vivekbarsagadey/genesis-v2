@@ -1,8 +1,7 @@
 "use client";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import {
-  Avatar,
-  Box,
+  Avatar,Box,
   Button,
   Grid,
   IconButton,
