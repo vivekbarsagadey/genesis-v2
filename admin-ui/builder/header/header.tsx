@@ -11,6 +11,7 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import React, { useState } from "react";
 import { headerstyle as style } from "../../component/common/Header/header.style";
+import { Button } from "@material-ui/core";
 
 const BuilderHeaderComponent = () => {
   const [openMenu, setOpenMenu] = useState<null | HTMLElement>(null);
@@ -24,7 +25,11 @@ const BuilderHeaderComponent = () => {
   };
   return (
     <Grid container style={style.headercontainer}>
-      <Grid item xs={12}>
+      <Grid item xs={6} style={{display:'flex',alignItems:'center'}}>
+        <Button variant="contained" color="primary">New</Button>
+        <Typography p={2}>Project Name</Typography>
+      </Grid>
+      <Grid item xs={6}>
         <Grid
           item
           lg={12}
