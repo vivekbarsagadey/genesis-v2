@@ -8,6 +8,8 @@ import genisys from "../data/genisys.json";
 import BuilderHeaderComponent from "./header/header";
 import BuilderSidebarComponent from "./menu/sidebar/builder.sidebar.component";
 import ScreenHeader from "./screens/screen.header";
+import MainPageComponent from "./screens/main.page";
+import Properties from "./screens/properties";
 
 const BuilderHome = () => {
   const value = React.useContext(ProjectContext);
@@ -50,10 +52,10 @@ const BuilderHome = () => {
                 <ScreenHeader />
               </Grid>
               <Grid item xs={8}>
-                4 different screens
+               <MainPageComponent/>
               </Grid>
               <Grid item xs={4}>
-                4 property
+                <Properties/>
               </Grid>
             </Grid>
           </Grid>

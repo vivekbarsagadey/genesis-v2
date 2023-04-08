@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 // import Component2 from "./component2";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import IconButton from '@mui/material/IconButton'
+import MainPageComponent from './main.page';
 
 const ScreenHeader = () => {
   const [openPage, setOpenPage] = useState("");
@@ -49,9 +50,10 @@ const ScreenHeader = () => {
           {/* </Grid> */}
         {/* </Grid> */}
       </Grid>
-      <Grid item xs={12}>
+      {/* <Grid item xs={12}>
         {openPage}
-      </Grid>
+      </Grid> */}
+      {/* <MainPageComponent openPage={openPage}/> */}
     </div>
   )
 }
