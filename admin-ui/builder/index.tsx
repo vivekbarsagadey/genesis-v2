@@ -22,25 +22,10 @@ const BuilderHome = () => {
 
   return (
     <Box>
-      <Grid container >
+      <Grid container>
         <Grid item xs={2} pl={2} pr={1}>
-        
-          
           <Logo handleMenu={handleMenu} show={show} />
-           <BuilderSidebarComponent show={show}/>
-            {/* {genisys.categories?.map((category, index) => {
-              return (
-                <Category
-                  key={index}
-                  id={category.id}
-                  name={category.name}
-                  icon={category.icon}
-                  title={category.title}
-                  items={category.items}
-                />
-              );
-            })} */}
-    
+          <BuilderSidebarComponent show={show} />
         </Grid>
         <Grid item xs={10}>
           <Grid item xs={12}>
@@ -52,10 +37,10 @@ const BuilderHome = () => {
                 <ScreenHeader />
               </Grid>
               <Grid item xs={8}>
-               <MainPageComponent/>
+                <MainPageComponent />
               </Grid>
               <Grid item xs={4}>
-                <Properties/>
+                <Properties />
               </Grid>
             </Grid>
           </Grid>
