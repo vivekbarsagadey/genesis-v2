@@ -39,8 +39,17 @@ const BuilderHome = () => {
             <BuilderHeaderComponent />
           </Grid>
           <Grid item xs={12}>
-            <BuilderScreenComponent />
+           
+            <Grid   container spacing={2} >
+
+                <Grid  item xs={12} >Header </Grid>
+                <Grid  item xs={8} >4 different screens</Grid>
+                <Grid  item xs={4} >4 property</Grid>
+            </Grid>
+
+
           </Grid>
+          
         </Grid>
       </Grid>
     </Box>
