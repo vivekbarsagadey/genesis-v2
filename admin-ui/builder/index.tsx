@@ -55,20 +55,22 @@ const BuilderHome = () => {
                 <CloseIcon fontSize="small" />
               </Grid>
 
-              <Grid item xs={8}>
-                <Switch>
-                  <Case condition={screenToggle === "screen1"}>
-                    <Grid item xs={12}>
-                      <Typography>1 data</Typography>
-                    </Grid>
-                  </Case>
+              <Grid item xs={8} style={{ border: "1px solid", background:'grey', height:'60vh' }}>
+                
+                  <Switch>
+                    <Case condition={screenToggle === "screen1"}>
+                      <Grid item xs={12}   style={{ background:'red'}} >
+                        <Typography>1 data</Typography>
+                      </Grid>
+                    </Case>
 
-                  <Case condition={screenToggle === "screen2"}>
-                    <Grid item xs={12}>
-                      <Typography>2 Data</Typography>
-                    </Grid>
-                  </Case>
-                </Switch>
+                    <Case condition={screenToggle === "screen2"}>
+                      <Grid item xs={12}>
+                        <Typography>2 Data</Typography>
+                      </Grid>
+                    </Case>
+                  </Switch>
+                
               </Grid>
               <Grid item xs={4}>
                 <Properties />
