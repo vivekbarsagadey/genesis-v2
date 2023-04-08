@@ -1,29 +1,31 @@
 "use client";
-import React, { use } from "react";
 import Box from "@mui/material/Box";
-import genisys from "../data/genisys.json";
-import Category from "./menu/menu";
 import Grid from "@mui/material/Grid";
+import React, { useState } from "react";
 import { ProjectContext } from "../app/project/info";
-import Screens from "./screens/screens";
+import Logo from "../component/common/Sidebar/logo";
+import genisys from "../data/genisys.json";
 import BuilderHeaderComponent from "./header/header";
-import BuilderScreenComponent from "./screens/screens";
-import { findById } from "../services/api.service";
+import BuilderSidebarComponent from "./menu/sidebar/builder.sidebar.component";
 import ScreenHeader from "./screens/screen.header";
 
 const BuilderHome = () => {
   const value = React.useContext(ProjectContext);
 
-  // id fetched Project Data, if Im using use hook then my model is not working poperly
-  // const project = use(findById("projects", value));
-  console.log("genisys >>", genisys);
+  const [show, setShow] = useState(true);
+
+  const handleMenu = () => {
+    setShow(!show);
+  };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        <Grid item xs={2}>
-          <>
-            meu bar section
+    <Box>
+      <Grid container >
+        <Grid item xs={2} pl={2} pr={1}>
+        
+          
+          <Logo handleMenu={handleMenu} show={show} />
+           <BuilderSidebarComponent show={show}/>
             {/* {genisys.categories?.map((category, index) => {
               return (
                 <Category
@@ -36,7 +38,7 @@ const BuilderHome = () => {
                 />
               );
             })} */}
-          </>
+    
         </Grid>
         <Grid item xs={10}>
           <Grid item xs={12}>

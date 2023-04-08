@@ -5,7 +5,7 @@
         "name": "Components",
         "label": "Components",
         "title": "Components",
-        "icon": "fas fa-cubes",
+        "icon": "ViewSidebarIcon",
         "items": [
           {
             "id": "buttons",
