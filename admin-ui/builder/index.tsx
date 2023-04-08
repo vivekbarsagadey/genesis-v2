@@ -13,8 +13,7 @@ import { Grid, Typography } from "@material-ui/core";
 import CloseIcon from "@mui/icons-material/Close";
 import { Case, Switch } from "react-if";
 const BuilderHome = () => {
-  const value = React.useContext(ProjectContext);
-
+  const value = React.useContext(ProjectContext); // id value is inside value for fetch call 
   const [show, setShow] = useState(true);
   const [screenToggle, setScreenToggle] = useState<string>("");
   const handleMenu = () => {
@@ -28,7 +27,7 @@ const BuilderHome = () => {
   return (
     <Box>
       <Grid container>
-        <Grid item xs={2} pl={2} pr={1}>
+        <Grid item xs={2} >
           <Logo handleMenu={handleMenu} show={show} />
           <BuilderSidebarComponent show={show} />
         </Grid>
@@ -36,8 +35,8 @@ const BuilderHome = () => {
           <Grid item xs={12}>
             <BuilderHeaderComponent />
           </Grid>
-          <Grid item xs={12}>
-            <Grid container spacing={2}>
+          <Grid item xs={12}  ml={1} >
+            <Grid container spacing={0}  >
               <Grid item xs={12} style={{ display: "flex" }}>
                 <Typography
                   variant="subtitle2"
@@ -55,11 +54,10 @@ const BuilderHome = () => {
                 <CloseIcon fontSize="small" />
               </Grid>
 
-              <Grid item xs={8} style={{ border: "1px solid", background:'grey', height:'60vh' }}>
-                
+              <Grid item xs={8} style={{  background:'grey', height:'80vh' }}>
                   <Switch>
                     <Case condition={screenToggle === "screen1"}>
-                      <Grid item xs={12}   style={{ background:'red'}} >
+                      <Grid item xs={12}   style={{ background:'white' , marginTop:'1rem'}}   >
                         <Typography>1 data</Typography>
                       </Grid>
                     </Case>
