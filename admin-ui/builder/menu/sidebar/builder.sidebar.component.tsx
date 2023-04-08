@@ -110,7 +110,7 @@ const BuilderSidebarComponent = ({ show }) => {
                         color: "#334D6E",
                         fontSize: "0.9rem",
                       }}
-                    >
+                    ml={2}>
                       {menu.name}
                     </Typography>
                   )}

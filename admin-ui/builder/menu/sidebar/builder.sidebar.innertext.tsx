@@ -3,9 +3,8 @@ import { Typography } from "@mui/material";
 const BuilderSideBarInnerText = ({ item }) => {
   return (
     <Typography
-      fontSize={"0.8rem"}
       color={"#334D6E"}
-      style={{ cursor: "pointer", marginLeft: "1.5rem" }}
+      style={{ cursor: "pointer", marginLeft: "1.5rem", fontSize: "0.8rem" }}
     >
       {item.label}
     </Typography>

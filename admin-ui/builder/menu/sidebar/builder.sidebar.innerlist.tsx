@@ -9,7 +9,7 @@ import BuilderSideBarInnerText from "./builder.sidebar.innertext";
 
 const BuilderSideBarInnerList = ({ item, show }) => {
   return (
-    <Grid container mt={-6} ml={2}>
+    <Grid container mt={-4} ml={2}>
       <Grid item xs={4}>
         {show && (
           <ListItemIcon>
