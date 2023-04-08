@@ -48,6 +48,28 @@ const countrySelect = [
   { country: "Srilanka" },
   { country: "Thailand" },
 ];
+const stateSelect = [
+  { state: "Bihar" },
+  { state: "Madhya Pradesh" },
+  { state: "UP" },
+  { state: "Maharastra" },
+  { state: "Punjab" },
+  { state: "Gujrat" },
+  { state: "Karnataka" },
+  { state: "Jammu & Kashmir" },
+];
+const citySelect = [
+  { city: "Patna" },
+  { city: "Mumbai" },
+  { city: "Pune" },
+  { city: "Banglore" },
+  { city: "Ahmedabad" },
+  { city: "Kolkata" },
+  { city: "Rajasthan" },
+  { city: "Hyderabad" },
+  { city: "Lucknow" },
+
+];
 const CustomerCreateComponent = () => {
   const classes = useStyles();
   const [customerFirstName, setCustomerFirstName] = useState("");
@@ -117,15 +139,8 @@ const CustomerCreateComponent = () => {
   const updateCustomerZipCode = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerZipCode(e.target.value);
   };
-  const updateCustomerCity = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCustomerCity(e.target.value);
-  };
-  const updateCustomerState = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCustomerState(e.target.value);
-  };
-  // const updateCustomerCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setCustomerCountry(e.target.value);
-  // };
+
+
   const updateCustomerProfilePic = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerProfilePic(e.target.value);
   };
@@ -140,6 +155,18 @@ const CustomerCreateComponent = () => {
     value: string
   ) => {
     setCustomerCountry(value);
+  };
+  const updateCustomerState = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    setCustomerState(value);
+  };
+  const updateCustomerCity = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    setCustomerCity(value);
   };
 
   const updateCustomerStatus = (
@@ -431,14 +458,25 @@ const CustomerCreateComponent = () => {
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <TextField
-                      id="city"
-                      placeholder="City"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
+                
+                    <Autocomplete
                       value={customerCity}
                       onChange={updateCustomerCity}
+                      freeSolo
+                      id="free-solo-2-demo"
+                      disableClearable
+                      options={citySelect.map((option) => option.city)}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          InputProps={{
+                            ...params.InputProps,
+                            type: "search",
+                          }}
+                          placeholder="Select City"
+                        />
+                      )}
                     />
                   </Grid>
                 </Grid>
@@ -453,14 +491,24 @@ const CustomerCreateComponent = () => {
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <TextField
-                      id="state"
-                      placeholder="State"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
+                    <Autocomplete
                       value={customerState}
                       onChange={updateCustomerState}
+                      freeSolo
+                      id="free-solo-2-demo"
+                      disableClearable
+                      options={stateSelect.map((option) => option.state)}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          InputProps={{
+                            ...params.InputProps,
+                            type: "search",
+                          }}
+                          placeholder="Select State"
+                        />
+                      )}
                     />
                   </Grid>
                 </Grid>

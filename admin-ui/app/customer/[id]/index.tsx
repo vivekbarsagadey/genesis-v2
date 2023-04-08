@@ -1,19 +1,7 @@
 "use client";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import {
-  Avatar,
-  Box,
-  Button,
-  Grid,
-  IconButton,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Avatar,Box,Button,Grid,IconButton,Stack,TextField,Typography} from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
-import FormControl from "@mui/material/FormControl";
-import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { makeStyles } from "@mui/styles";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -36,7 +24,27 @@ const countrySelect = [
   { country: "Srilanka" },
   { country: "Thailand" },
 ];
-
+const stateSelect = [
+  { state: "Bihar" },
+  { state: "Madhya Pradesh" },
+  { state: "UP" },
+  { state: "Maharastra" },
+  { state: "Punjab" },
+  { state: "Gujrat" },
+  { state: "Karnataka" },
+  { state: "Jammu & Kashmir" },
+];
+const citySelect = [
+  { city: "Patna" },
+  { city: "Mumbai" },
+  { city: "Pune" },
+  { city: "Banglore" },
+  { city: "Ahmedabad" },
+  { city: "Kolkata" },
+  { city: "Rajasthan" },
+  { city: "Hyderabad" },
+  { city: "Lucknow" },
+];
 const useStyles = makeStyles({
   avtar: {
     opacity: "1",
@@ -124,42 +132,27 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
   const updateCustomerZipCode = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerZipCode(e.target.value);
   };
-  const updateCustomerCity = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCustomerCity(e.target.value);
+  const updateCustomerState = (e: React.ChangeEvent<HTMLInputElement>,value: string) => {
+    setCustomerState(value);
   };
-  const updateCustomerState = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCustomerState(e.target.value);
+  const updateCustomerCity = (e: React.ChangeEvent<HTMLInputElement>,value: string) => {
+    setCustomerCity(value);
   };
   const updateCustomerProfilePic = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerProfilePic(e.target.value);
   };
-  const updateCustomerChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
-  ) => {
+  const updateCustomerChange = (e: React.ChangeEvent<HTMLInputElement>,value: string) => {
     setGender(value);
   };
-  const updateCustomerCountry = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
-  ) => {
+  const updateCustomerCountry = (e: React.ChangeEvent<HTMLInputElement>,value: string) => {
     setCustomerCountry(value);
   };
-
-  const updateCustomerStatus = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
-  ) => {
+  const updateCustomerStatus = (e: React.ChangeEvent<HTMLInputElement>,value: string) => {
     setCustomerStatus(value);
   };
+  const handleMouseIn = () => {setHover(true);};
 
-  const handleMouseIn = () => {
-    setHover(true);
-  };
-
-  const handleMouseOut = () => {
-    setHover(false);
-  };
+  const handleMouseOut = () => {setHover(false);};
 
   return (
     <div>
@@ -437,14 +430,24 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <TextField
-                        id="city"
-                        placeholder="City"
-                        variant="outlined"
-                        size="small"
-                        fullWidth
+                      <Autocomplete
                         value={customerCity}
                         onChange={updateCustomerCity}
+                        freeSolo
+                        id="free-solo-2-demo"
+                        disableClearable
+                        options={citySelect.map((option) => option.city)}
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            size="small"
+                            InputProps={{
+                              ...params.InputProps,
+                              type: "search",
+                            }}
+                            placeholder="Select City"
+                          />
+                        )}
                       />
                     </Grid>
                   </Grid>
@@ -459,14 +462,24 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <TextField
-                        id="state"
-                        placeholder="State"
-                        variant="outlined"
-                        size="small"
-                        fullWidth
+                      <Autocomplete
                         value={customerState}
                         onChange={updateCustomerState}
+                        freeSolo
+                        id="free-solo-2-demo"
+                        disableClearable
+                        options={stateSelect.map((option) => option.state)}
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            size="small"
+                            InputProps={{
+                              ...params.InputProps,
+                              type: "search",
+                            }}
+                            placeholder="Select State"
+                          />
+                        )}
                       />
                     </Grid>
                   </Grid>
