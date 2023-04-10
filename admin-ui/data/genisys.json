@@ -6,6 +6,7 @@
         "label": "Components",
         "title": "Components",
         "icon": "ViewSidebarIcon",
+       
         "items": [
           {
             "id": "buttons",
@@ -13,7 +14,66 @@
             "label": "Buttons",
             "title": "Buttons",
             "icon": "far fa-circle",
-            "componentId": "buttonComponent"
+            "componentId": "buttonComponent",
+            "image":"../public/item/Button_Default_Active.png",
+            "image_disabled_button":"../public/item/Button_Disabled.png",
+            "image_hover_button":"../public/item/Button_Hover_Color.png"
+          },
+          {
+            "id": "emails",
+            "name": "Emails",
+            "label": "Emails",
+            "title": "Emails",
+            "icon": "EmailIcon",
+            "componentId": "emailComponent",
+            "image":"../public/item/Input_Email.png"
+
+          },
+          {
+            "id": "passwords",
+            "name": "Passwords",
+            "label": "Passwords",
+            "title": "Passwords",
+            "icon": "KeyIcon",
+            "componentId": "passwordComponent",
+            "image":"../public/item/Input_Password.png",
+            "image_confirm_password":"../public/item/Input_Confirm_Password.png"
+          },
+          {
+            "id": "numbers",
+            "name": "Numbers",
+            "label": "Numbers",
+            "title": "Numbers",
+            "icon": "NumbersIcon",
+            "componentId": "numberComponent",
+            "image":"../public/item/Input_Number.png"
+          },
+          {
+            "id": "checkboxes",
+            "name": "Checkboxes",
+            "label": "Checkboxes",
+            "title": "Checkboxes",
+            "icon": "CheckBoxIcon",
+            "componentId": "checkboxComponent",
+            "image":"../public/item/Checkbox.png"
+          },
+          {
+            "id": "dropdowns",
+            "name": "Dropdowns",
+            "label": "Dropdowns",
+            "title": "Dropdowns",
+            "icon": "ArrowDropDownCircleIcon",
+            "componentId": "dropdownComponent",
+            "image":"../public/item/Input_Dropdown.png"
+          },
+          {
+            "id": "text",
+            "name": "Texts",
+            "label": "Texts",
+            "title": "Texts",
+            "icon": "TitleIcon",
+            "componentId": "textComponent",
+            "image":"../public/item/text.png"
           }
         ]
       },
@@ -25,12 +85,49 @@
         "icon": "fas fa-boxes",
         "items": [
           {
-            "id": "tabs",
-            "name": "Tabs",
-            "label": "Tabs",
-            "title": "Tabs",
+            "id": "login",
+            "name": "Login",
+            "label": "Login",
+            "title": "Login",
             "icon": "far fa-folder",
-            "componentId": "tabComponent"
+            "componentId": "loginComponent"
+           
+          },
+          {
+            "id": "emailLogin",
+            "name": "EmailLogin",
+            "label": "EmailLogin",
+            "title": "EmailLogin",
+            "icon": "EmailIcon",
+            "componentId": "emailLoginComponent",
+            "image":"../public/item/Login with email.png"
+          },
+          {
+            "id": "socialMediaLogin",
+            "name": "SocialMediaLogin",
+            "label": "SocialMediaLogin",
+            "title": "SocialMediaLogin",
+            "icon": "far fa-folder",
+            "componentId": "socialMediaLoginComponent",
+            "image":"../public/item/login with social media.png"
+          },
+          {
+            "id": "numberLogin",
+            "name": "NumberLogin",
+            "label": "NumberLogin",
+            "title": "NumberLogin",
+            "icon": "NumbersIcon",
+            "componentId": "numberLoginComponent",
+            "image":"../public/item/Input_Number.png"
+          },
+          {
+            "id": "registration",
+            "name": "Registration",
+            "label": "Registration",
+            "title": "Registration",
+            "icon": "far fa-folder",
+            "componentId": "registrationComponent",
+            "image":"../public/item/Register 1.png"
           }
         ]
       },
@@ -39,15 +136,31 @@
         "name": "Grid",
         "label": "Grid",
         "title": "Grid",
-        "icon": "fas fa-th",
+        "icon": "GridViewIcon",
         "items": [
           {
-            "id": "flexbox",
-            "name": "Flexbox",
-            "label": "Flexbox",
-            "title": "Flexbox",
-            "icon": "far fa-object-group",
-            "componentId": "flexboxComponent"
+            "id": "grid_12",
+            "name": "Grid_12",
+            "label": "Grid_12",
+            "title": "Grid_12",
+            "icon": "WidthFullIcon",
+            "componentId": "Grid_12Component"
+          },
+          {
+            "id": "grid_6x2",
+            "name": "Grid_6x2",
+            "label": "Grid_6x2",
+            "title": "Grid_6x2",
+            "icon": "GridGoldenratioIcon",
+            "componentId": "Grid_6x2Component"
+          },
+          {
+            "id": "grid_4x3",
+            "name": "Grid_4x3",
+            "label": "Grid_4x3",
+            "title": "Grid_4x3",
+            "icon": "Grid4x4Icon",
+            "componentId": "Grid_4x3Component"
           }
         ]
       }
