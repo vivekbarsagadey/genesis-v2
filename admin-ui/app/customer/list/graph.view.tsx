@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import moment from "moment";
 import React, { useState } from "react";
 import { Chart } from "react-google-charts";
+import ComparisonGraphComponent from "./comparison.graph";
 
 const options = {
   vAxis: { title: "Customer Created" },
@@ -13,8 +14,19 @@ const options = {
   series: { type: "line" },
 };
 
+const comparisonGraphDataVal = [
+ 
+    { id: 1, label: "Active" },
+    { id: 2, label: "Inactive" },
+    { id: 3, label: "Male" },
+    { id: 4, label: "Female" },
+ 
+];
 const CustomerGraphView = ({ customer }: ListComponentProps) => {
   const [graphView, setGraphView] = useState<string>("");
+  const [graphBase, setGrpahBase] = useState<string>("");
+  const [graph1, setGrpah1] = useState<string>("");
+  const [graph2, setGraph2] = useState<string>("");
 
   let keys = Object.keys(customer[0]);
   const graphTypeVal = keys.filter((element) => {
@@ -28,6 +40,20 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
     }
     return false;
   });
+
+  const graphTypeBaseVal = keys.filter((element) => {
+    if (
+      element === "country" ||
+      element === "state" ||
+      element === "city" ||
+      element === "status" ||
+      element === "gender"
+    ) {
+      return true;
+    }
+    return false;
+  });
+
   const updateGrpahView = (
     e: React.ChangeEvent<HTMLInputElement>,
     value: string
@@ -90,11 +116,104 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
     ["Lucknow", customer.filter((item) => item.city === "Lucknow").length],
   ];
 
-  console.log(
-    "customer >>",
-    customer.map((ele) => moment(ele.updatedAt).format("MMM"))
-  );
+  const createdDataData = [
+    ["Month", "Count"],
+    [
+      "JAN",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Jan").length,
+    ],
+    [
+      "FEB",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Feb").length,
+    ],
+    [
+      "MAR",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Mar").length,
+    ],
+    [
+      "APR",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Apr").length,
+    ],
+    [
+      "MAY",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "May").length,
+    ],
+    [
+      "JUN",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Jun").length,
+    ],
+    [
+      "JUL",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Jul").length,
+    ],
+    [
+      "AUG",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Aug").length,
+    ],
+    [
+      "SEP",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Sep").length,
+    ],
+    [
+      "OCT",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Oct").length,
+    ],
+    [
+      "NOV",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Nov").length,
+    ],
+    [
+      "DEC",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Dec").length,
+    ],
+  ];
 
+  //Base Value
+  const updateGraphBase = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    setGrpahBase(value);
+  };
+
+  // First graph value
+  const updateFirstGraph=(  e: React.ChangeEvent<HTMLInputElement>,
+    value: string)=>{
+      setGrpah1(value)
+  }
+  const updateSecondGraph = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    setGraph2(value);
+  };
+
+  console.log("1-2-3",graphBase, graph1,graph2);
+  
   const CompariosnCountryData = [
     ["Country", "ACTIVE", "INACTIVE"],
     [
@@ -179,81 +298,12 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
         .filter((ele) => ele.status === "INACTIVE").length,
     ],
   ];
+  const CompariosnData = [
 
-  const createdDataData = [
-    ["Month", "Count"],
-    [
-      "JAN",
-      customer
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Jan").length,
-    ],
-    [
-      "FEB",
-      customer
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Feb").length,
-    ],
-    [
-      "MAR",
-      customer
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Mar").length,
-    ],
-    [
-      "APR",
-      customer
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Apr").length,
-    ],
-    [
-      "MAY",
-      customer
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "May").length,
-    ],
-    [
-      "JUN",
-      customer
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Jun").length,
-    ],
-    [
-      "JUL",
-      customer
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Jul").length,
-    ],
-    [
-      "AUG",
-      customer
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Aug").length,
-    ],
-    [
-      "SEP",
-      customer
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Sep").length,
-    ],
-    [
-      "OCT",
-      customer
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Oct").length,
-    ],
-    [
-      "NOV",
-      customer
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Nov").length,
-    ],
-    [
-      "DEC",
-      customer
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Dec").length,
-    ],
+    [graphBase,graph1,graph2],
+    
+
+
   ];
   return (
     <>
@@ -262,6 +312,10 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
           <Grid item xs={6}>
             <Grid container spacing={2}>
               <Grid item xs={9}>
+
+
+             
+
                 <Chart
                   chartType="PieChart"
                   data={cityData}
@@ -306,44 +360,79 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
             </>
           </Grid>
           <Grid item xs={12}>
-            <Grid container mb={2}>
+            <Grid container spacing={2}>
               <Grid item xs={3}>
                 <Stack>
                   <Autocomplete
+                    value={graphBase}
+                    onChange={updateGraphBase}
                     freeSolo
-                    id="free-solo-2-demo"
+                    id="graph-base"
                     disableClearable
                     size="small"
-                    options={graphTypeVal?.map((option) => option)}
+                    options={graphTypeBaseVal?.map((option) => option)}
                     renderInput={(params) => (
                       <TextField
                         {...params}
-                        label="Search input"
                         InputProps={{
                           ...params.InputProps,
                           type: "search",
                         }}
+                        placeholder="Select Base"
                       />
                     )}
                   />
                 </Stack>
               </Grid>
-              <Grid item xs={3} ml={2}>
+
+              {/* MAPPED 2 Dropdowns -> ask vivek sir  */}
+
+              {/* {comparisonGraphDataVal.map((data, index) => {
+                return <ComparisonGraphComponent key={index} index={index}  data={data}  callBackGraph={callBackGraph} />;
+              })} */}
+              {/* second  */}
+              <Grid item xs={3}>
                 <Stack>
                   <Autocomplete
+                    value={graph1}
+                    onChange={updateFirstGraph}
                     freeSolo
-                    id="free-solo-2-demo"
+                    id="graph-base"
                     disableClearable
                     size="small"
-                    options={graphTypeVal?.map((option) => option)}
+                    options={comparisonGraphDataVal?.map((option) => option.label)}
                     renderInput={(params) => (
                       <TextField
                         {...params}
-                        label="Search input"
                         InputProps={{
                           ...params.InputProps,
                           type: "search",
                         }}
+                        placeholder="Select Base"
+                      />
+                    )}
+                  />
+                </Stack>
+              </Grid>
+              {/* Third  */}
+              <Grid item xs={3}>
+                <Stack>
+                  <Autocomplete
+                    value={graph2}
+                    onChange={updateSecondGraph}
+                    freeSolo
+                    id="graph-base"
+                    disableClearable
+                    size="small"
+                    options={comparisonGraphDataVal?.map((option) => option.label)}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        InputProps={{
+                          ...params.InputProps,
+                          type: "search",
+                        }}
+                        placeholder="Select Base"
                       />
                     )}
                   />
@@ -356,6 +445,14 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
                 width="100%"
                 height="300px"
                 data={CompariosnCountryData}
+              />
+              comparison data graph
+
+              <Chart
+                chartType="Bar"
+                width="100%"
+                height="300px"
+                data={CompariosnData}
               />
             </>
           </Grid>
