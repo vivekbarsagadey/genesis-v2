@@ -18,7 +18,9 @@ const BuilderHeaderComponent = () => {
           alignItems="center"
           justifyContent="space-between"
         >
-          <Button variant="contained" size="small">New</Button>
+          <Button variant="contained" size="small">
+            New
+          </Button>
           <Typography>Project Name</Typography>
         </Grid>
         <Grid item xs={8}></Grid>
@@ -30,17 +32,19 @@ const BuilderHeaderComponent = () => {
           justifyContent="space-between"
         >
           <IconButton>
-            <EmailIcon />
+            <EmailIcon fontSize="small" />
           </IconButton>
           <IconButton>
-            <SettingsIcon />
+            <SettingsIcon fontSize="small" />
           </IconButton>
           <IconButton>
-            <NotificationsActiveIcon />
+            <NotificationsActiveIcon fontSize="small" />
           </IconButton>
           <IconButton>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" 
-            sx={{ width: 26, height: 26 }}
+            <Avatar
+              alt="Remy Sharp"
+              src="/static/images/avatar/1.jpg"
+              sx={{ width: 22, height: 22 }}
             />
           </IconButton>
         </Grid>
