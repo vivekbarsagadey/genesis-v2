@@ -185,68 +185,43 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
   ];
 
   return (
-    <Box mr={2}>
-    <Paper variant="outlined" style={{height:'83vh'}}>
-      <Grid container mt={2} >
-        <Grid item xs={2.8} ml={0.5}>
-          <Stack>
-            <Autocomplete
-              value={graphView}
-              onChange={updateGrpahView}
-              freeSolo
-              id="customer-select-type"
-              disableClearable
-              size="small"
-              options={graphTypeVal?.map((option) => option)}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  InputProps={{
-                    ...params.InputProps,
-                    type: "search",
-                  }}
-                  placeholder="Select Graph View"
-                />
-              )}
-            />
-          </Stack>
+    <>
+      <Box>
+        <Grid container>
+          <Grid item xs={6}   style={{ background:'red'}} >
+            {/* <Paper variant="outlined">
+              <Typography>xs 6</Typography>
+            </Paper> */}
+            a
+          </Grid>
+          <Grid item xs={6}>
+            <Paper variant="outlined">
+              <Typography>xs 6</Typography>
+            </Paper>
+          </Grid>
         </Grid>
-        <Grid item xs={5}>
-        <Typography fontSize={"1.1rem"} mt={2} textAlign={"center"}>
-            {graphView.toUpperCase()} GRAPH
-          </Typography>
+      </Box>
+      <Box mt={2}>
+        <Grid container>
+          <Grid item xs={12}>
+            <Paper variant="outlined">
+              <Typography>xs 12</Typography>
+            </Paper>
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-         
-          <Switch>
-            <Case condition={graphView === "country"}>
-              <CountryChart countryData={countryData} />
-            </Case>
-            <Case condition={graphView === "state"}>
-              <StateChart stateData={stateData} />
-            </Case>
-            <Case condition={graphView === "city"}>
-              <CityChart cityData={cityData} />
-            </Case>
-            <Default>
-              <PieChart data={statusData} />
-            </Default>
-          </Switch>
-        </Grid>
-      </Grid>
-    </Paper>
-    </Box>
+      </Box>
+    </>
   );
 };
 
-const CountryChart = ({ countryData }) => {
-  return <PieChart data={countryData} />;
-};
-const StateChart = ({ stateData }) => {
-  return <PieChart data={stateData} />;
-};
-const CityChart = ({ cityData }) => {
-  return <PieChart data={cityData} />;
-};
+// const CountryChart = ({ countryData }) => {
+//   return <PieChart data={countryData} />;
+// };
+// const StateChart = ({ stateData }) => {
+//   return <PieChart data={stateData} />;
+// };
+// const CityChart = ({ cityData }) => {
+//   return <PieChart data={cityData} />;
+// };
 
 export default CustomerGraphView;

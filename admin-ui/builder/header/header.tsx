@@ -1,93 +1,51 @@
-"use client";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import EmailIcon from "@mui/icons-material/Email";
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import SettingsIcon from "@mui/icons-material/Settings";
-import { Box, Grid, IconButton, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
-import { signOut } from "next-auth/react";
-import Link from "next/link";
-import React, { useState } from "react";
-import { headerstyle as style } from "../../component/common/Header/header.style";
-import { Button } from "@material-ui/core";
-
 const BuilderHeaderComponent = () => {
-  const [openMenu, setOpenMenu] = useState<null | HTMLElement>(null);
-  const open = Boolean(openMenu);
-
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setOpenMenu(event.currentTarget);
-  };
-  const handleClose = () => {
-    setOpenMenu(null);
-  };
   return (
-    <Grid container style={style.headercontainer}>
-      <Grid item xs={6} style={{display:'flex',alignItems:'center'}}>
-        <Button variant="contained" color="primary">New</Button>
-        <Typography p={2}>Project Name</Typography>
-      </Grid>
-      <Grid item xs={6}>
+    <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={2}>
         <Grid
           item
-          lg={12}
-          md={12}
-          sm={12}
-          xs={12}
-          py={0.5}
-          px={0.5}
-          display={"flex"}
-          justifyContent={"flex-end"}
+          xs={2}
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
         >
-          <Stack direction="row">
-            <IconButton>
-              <MailIcon fontSize="small" />
-            </IconButton>
-            <IconButton>
-              <SettingsIcon fontSize="small" />
-            </IconButton>
-            <IconButton>
-              <NotificationsNoneIcon fontSize="small" />
-            </IconButton>
-            <Box style={style.box}>
-              <IconButton
-                onClick={handleClick}
-                size="small"
-                sx={{ mr: 2 }}
-                aria-haspopup="true"
-              >
-                <Avatar
-                  style={style.avtar}
-                  alt="Remy Sharp"
-                  src="./images/avtar.png"
-                />
-              </IconButton>
-            </Box>
-            <Menu
-              anchorEl={openMenu}
-              id="account-menu"
-              open={open}
-              onClose={handleClose}
-              onClick={handleClose}
-              transformOrigin={{ horizontal: "right", vertical: "top" }}
-              anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-            >
-              <Link href={"/"} style={style.link}>
-                <MenuItem
-                  // onClick={() => signOut()}
-                  style={style.menu}
-                >
-                  <Typography variant="subtitle1">Signout</Typography>
-                </MenuItem>
-              </Link>
-            </Menu>
-          </Stack>
+          <Button variant="contained">New</Button>
+          <Typography>Project Name</Typography>
+        </Grid>
+        <Grid item xs={8}></Grid>
+        <Grid
+          item
+          xs={2}
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <IconButton>
+            <EmailIcon />
+          </IconButton>
+          <IconButton>
+            <SettingsIcon />
+          </IconButton>
+          <IconButton>
+            <NotificationsActiveIcon />
+          </IconButton>
+          <IconButton>
+            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" 
+            sx={{ width: 26, height: 26 }}
+            />
+          </IconButton>
         </Grid>
       </Grid>
-    </Grid>
+    </Box>
   );
 };
-
 export default BuilderHeaderComponent;

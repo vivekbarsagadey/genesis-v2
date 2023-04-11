@@ -17,7 +17,20 @@
             "componentId": "buttonComponent",
             "image":"../public/item/Button_Default_Active.png",
             "image_disabled_button":"../public/item/Button_Disabled.png",
-            "image_hover_button":"../public/item/Button_Hover_Color.png"
+            "image_hover_button":"../public/item/Button_Hover_Color.png",
+            "items": [
+              {
+                "id": "sbmitButtons",
+                "name": "sbuButtons",
+                "label": "SubButtons",
+                "title": "SubButtons",
+                "icon": "far fa-circle",
+                "componentId": "buttonComponent",
+                "image":"../public/item/Button_Default_Active.png",
+                "image_disabled_button":"../public/item/Button_Disabled.png",
+                "image_hover_button":"../public/item/Button_Hover_Color.png",
+                "items":null
+              }]
           },
           {
             "id": "emails",
