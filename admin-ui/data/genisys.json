@@ -16,21 +16,27 @@
             "icon": "far fa-circle",
             "componentId": "buttonComponent",
             "image":"../public/item/Button_Default_Active.png",
-            "image_disabled_button":"../public/item/Button_Disabled.png",
-            "image_hover_button":"../public/item/Button_Hover_Color.png",
             "items": [
               {
                 "id": "sbmitButtons",
                 "name": "sbuButtons",
-                "label": "SubButtons",
+                "label": "SubmitButtons",
                 "title": "SubButtons",
                 "icon": "far fa-circle",
                 "componentId": "buttonComponent",
-                "image":"../public/item/Button_Default_Active.png",
                 "image_disabled_button":"../public/item/Button_Disabled.png",
+                "items":null
+              },{
+                "id": "hoverButtons",
+                "name": "hovrButtons",
+                "label": "Hover Buttons",
+                "title": "HoverButtons",
+                "icon": "far fa-circle",
+                "componentId": "buttonComponent",
                 "image_hover_button":"../public/item/Button_Hover_Color.png",
                 "items":null
-              }]
+              }
+            ]
           },
           {
             "id": "emails",
@@ -40,7 +46,6 @@
             "icon": "EmailIcon",
             "componentId": "emailComponent",
             "image":"../public/item/Input_Email.png"
-
           },
           {
             "id": "passwords",
@@ -50,6 +55,15 @@
             "icon": "KeyIcon",
             "componentId": "passwordComponent",
             "image":"../public/item/Input_Password.png",
+
+          },
+          {
+            "id": "cnfrmpasswords",
+            "name": "confrmPasswords",
+            "label": "Confirm Password",
+            "title": "Confirm Passwords",
+            "icon": "KeyIcon",
+            "componentId": "confirmpasswordComponent",
             "image_confirm_password":"../public/item/Input_Confirm_Password.png"
           },
           {
@@ -116,12 +130,30 @@
             "image":"../public/item/Login with email.png"
           },
           {
+            "id": "loginwithEmail",
+            "name": "LoginwithEmail",
+            "label": "Login With Email",
+            "title": "LoginwithEmail",
+            "icon": "EmailIcon",
+            "componentId": "loginwithEmail",
+            "image":"../public/item/Login with email.png"
+          },
+          {
             "id": "socialMediaLogin",
             "name": "SocialMediaLogin",
             "label": "SocialMediaLogin",
             "title": "SocialMediaLogin",
             "icon": "far fa-folder",
             "componentId": "socialMediaLoginComponent",
+            "image":"../public/item/login with social media.png"
+          },
+          {
+            "id": "loginwithsocialmedia",
+            "name": "LoginWithSocialMedia",
+            "label": "LoginWithSocialMedia",
+            "title": "LoginWithSocialMedia",
+            "icon": "far fa-folder",
+            "componentId": "loginwithsocialMediaComponent",
             "image":"../public/item/login with social media.png"
           },
           {

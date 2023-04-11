@@ -102,7 +102,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
               <Grid item xs={9}>
                 <Chart
                   chartType="PieChart"
-                  data={cityData}
+                  data={countryData}
                   width={"100%"}
                   height={"320px"}
                   // options={options}
