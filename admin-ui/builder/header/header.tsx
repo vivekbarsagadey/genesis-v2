@@ -9,8 +9,8 @@ import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 const BuilderHeaderComponent = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
+    <Box padding={2}>
+      <Grid container>
         <Grid
           item
           xs={2}
@@ -18,7 +18,7 @@ const BuilderHeaderComponent = () => {
           alignItems="center"
           justifyContent="space-between"
         >
-          <Button variant="contained">New</Button>
+          <Button variant="contained" size="small">New</Button>
           <Typography>Project Name</Typography>
         </Grid>
         <Grid item xs={8}></Grid>

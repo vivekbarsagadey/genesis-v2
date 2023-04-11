@@ -58,7 +58,7 @@ const BuilderHome = () => {
               <Grid
                 item
                 xs={9}
-                style={{ background: "#e2e8f0", height: "85vh" }}
+                style={{ background: "#e2e8f0", height: "84vh" }}
               >
                 <Switch>
                   <Case condition={screenToggle === "screen1"}>
