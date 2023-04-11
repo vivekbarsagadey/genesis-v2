@@ -1,12 +1,10 @@
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
+import moment from "moment";
 import React, { useState } from "react";
-import { Case, Default, Switch } from "react-if";
 import { Chart } from "react-google-charts";
-import moment from 'moment'
-
 
 const options = {
   vAxis: { title: "Customer Created" },
@@ -24,8 +22,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
       element === "country" ||
       element === "state" ||
       element === "city" ||
-      element === "status" ||
-      element === "gender"
+      element === "status"
     ) {
       return true;
     }
@@ -43,11 +40,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
     ["ACTIVE", customer.filter((item) => item.status === "ACTIVE").length],
     ["INACTIVE", customer.filter((item) => item.status === "INACTIVE").length],
   ];
-  const genderData = [
-    ["Customer", "Gender"],
-    ["MALE", customer.filter((item) => item.gender === "Male").length],
-    ["FEMALE", customer.filter((item) => item.gender === "Female").length],
-  ];
+
   const stateData = [
     ["Customer", "State"],
     ["Bihar", customer.filter((item) => item.state === "Bihar").length],
@@ -101,7 +94,6 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
     "customer >>",
     customer.map((ele) => moment(ele.updatedAt).format("MMM"))
   );
- 
 
   const CompariosnCountryData = [
     ["Country", "ACTIVE", "INACTIVE"],
@@ -190,18 +182,78 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
 
   const createdDataData = [
     ["Month", "Count"],
-    ["JAN", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Jan" ).length     ],
-    ["FEB", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Feb" ).length],
-    ["MAR", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Mar" ).length],
-    ["APR", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Apr" ).length],
-    ["MAY", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "May" ).length],
-    ["JUN", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Jun" ).length],
-    ["JUL", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Jul" ).length],
-    ["AUG", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Aug" ).length],
-    ["SEP", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Sep" ).length],
-    ["OCT", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Oct" ).length],
-    ["NOV", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Nov" ).length],
-    ["DEC", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Dec" ).length],
+    [
+      "JAN",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Jan").length,
+    ],
+    [
+      "FEB",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Feb").length,
+    ],
+    [
+      "MAR",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Mar").length,
+    ],
+    [
+      "APR",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Apr").length,
+    ],
+    [
+      "MAY",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "May").length,
+    ],
+    [
+      "JUN",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Jun").length,
+    ],
+    [
+      "JUL",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Jul").length,
+    ],
+    [
+      "AUG",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Aug").length,
+    ],
+    [
+      "SEP",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Sep").length,
+    ],
+    [
+      "OCT",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Oct").length,
+    ],
+    [
+      "NOV",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Nov").length,
+    ],
+    [
+      "DEC",
+      customer
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Dec").length,
+    ],
   ];
   return (
     <>
@@ -251,11 +303,53 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
                 data={createdDataData}
                 options={options}
               />
-
-           
             </>
           </Grid>
           <Grid item xs={12}>
+            <Grid container mb={2}>
+              <Grid item xs={3}>
+                <Stack>
+                  <Autocomplete
+                    freeSolo
+                    id="free-solo-2-demo"
+                    disableClearable
+                    size="small"
+                    options={graphTypeVal?.map((option) => option)}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="Search input"
+                        InputProps={{
+                          ...params.InputProps,
+                          type: "search",
+                        }}
+                      />
+                    )}
+                  />
+                </Stack>
+              </Grid>
+              <Grid item xs={3} ml={2}>
+                <Stack>
+                  <Autocomplete
+                    freeSolo
+                    id="free-solo-2-demo"
+                    disableClearable
+                    size="small"
+                    options={graphTypeVal?.map((option) => option)}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="Search input"
+                        InputProps={{
+                          ...params.InputProps,
+                          type: "search",
+                        }}
+                      />
+                    )}
+                  />
+                </Stack>
+              </Grid>
+            </Grid>
             <>
               <Chart
                 chartType="Bar"

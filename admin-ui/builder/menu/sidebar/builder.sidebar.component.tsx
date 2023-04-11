@@ -7,7 +7,7 @@ import { Grid, Typography } from "@mui/material";
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import MuiAccordionSummary, {
-  AccordionSummaryProps
+  AccordionSummaryProps,
 } from "@mui/material/AccordionSummary";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import { styled } from "@mui/material/styles";
@@ -16,6 +16,7 @@ import { Default } from "react-if";
 import Switch, { Case } from "react-switch-case";
 import genisys from "../../../data/genisys.json";
 import BuilderSideBarInnerList from "./builder.sidebar.innerlist";
+import CategorieComponent from "./categorie.component";
 const style = {
   position: "absolute" as "absolute",
   top: "40%",
@@ -64,9 +65,11 @@ const BuilderSidebarComponent = ({ show }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  console.log("genisys.categories >>",genisys.categories);
+  
   return (
     <>
-      {genisys.categories?.map((menu, index) => {
+      {/* {genisys.categories?.map((menu, index) => {
         return (
           <Accordion
             key={index}
@@ -147,6 +150,13 @@ const BuilderSidebarComponent = ({ show }) => {
               </Grid>
             </AccordionDetails>
           </Accordion>
+        );
+      })} */}
+      {genisys.categories.map((menu, index) => {
+        return (
+          <div>
+            <CategorieComponent menu={menu} />
+          </div>
         );
       })}
     </>

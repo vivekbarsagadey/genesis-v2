@@ -54,7 +54,7 @@
             "title": "Passwords",
             "icon": "KeyIcon",
             "componentId": "passwordComponent",
-            "image":"../public/item/Input_Password.png",
+            "image":"../public/item/Input_Password.png"
 
           },
           {
