@@ -5,14 +5,18 @@ import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import { Case, Default, Switch } from "react-if";
 import { Chart } from "react-google-charts";
+import moment from 'moment'
 
-export const options = {
-  is3D: true,
+
+const options = {
+  vAxis: { title: "Customer Created" },
+  hAxis: { title: "Month" },
+  seriesType: "bars",
+  series: { type: "line" },
 };
 
 const CustomerGraphView = ({ customer }: ListComponentProps) => {
   const [graphView, setGraphView] = useState<string>("");
-  console.log("customer >>", customer);
 
   let keys = Object.keys(customer[0]);
   const graphTypeVal = keys.filter((element) => {
@@ -93,6 +97,112 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
     ["Lucknow", customer.filter((item) => item.city === "Lucknow").length],
   ];
 
+  console.log(
+    "customer >>",
+    customer.map((ele) => moment(ele.updatedAt).format("MMM"))
+  );
+ 
+
+  const CompariosnCountryData = [
+    ["Country", "ACTIVE", "INACTIVE"],
+    [
+      "India",
+      customer
+        .filter((ele) => ele.country === "India")
+        .filter((ele) => ele.status === "ACTIVE").length,
+      customer
+        .filter((ele) => ele.country === "India")
+        .filter((ele) => ele.status === "INACTIVE").length,
+    ],
+    [
+      "Australia",
+      customer
+        .filter((ele) => ele.country === "Australia")
+        .filter((ele) => ele.status === "ACTIVE").length,
+      customer
+        .filter((ele) => ele.country === "Australia")
+        .filter((ele) => ele.status === "INACTIVE").length,
+    ],
+    [
+      "America",
+      customer
+        .filter((ele) => ele.country === "America")
+        .filter((ele) => ele.status === "ACTIVE").length,
+      customer
+        .filter((ele) => ele.country === "America")
+        .filter((ele) => ele.status === "INACTIVE").length,
+    ],
+    [
+      "Spain",
+      customer
+        .filter((ele) => ele.country === "Spain")
+        .filter((ele) => ele.status === "ACTIVE").length,
+      customer
+        .filter((ele) => ele.country === "Spain")
+        .filter((ele) => ele.status === "INACTIVE").length,
+    ],
+    [
+      "US",
+      customer
+        .filter((ele) => ele.country === "US")
+        .filter((ele) => ele.status === "ACTIVE").length,
+      customer
+        .filter((ele) => ele.country === "US")
+        .filter((ele) => ele.status === "INACTIVE").length,
+    ],
+    [
+      "UK",
+      customer
+        .filter((ele) => ele.country === "UK")
+        .filter((ele) => ele.status === "ACTIVE").length,
+      customer
+        .filter((ele) => ele.country === "UK")
+        .filter((ele) => ele.status === "INACTIVE").length,
+    ],
+    [
+      "Dubai",
+      customer
+        .filter((ele) => ele.country === "Dubai")
+        .filter((ele) => ele.status === "ACTIVE").length,
+      customer
+        .filter((ele) => ele.country === "Dubai")
+        .filter((ele) => ele.status === "INACTIVE").length,
+    ],
+    [
+      "Srilanka",
+      customer
+        .filter((ele) => ele.country === "Srilanka")
+        .filter((ele) => ele.status === "ACTIVE").length,
+      customer
+        .filter((ele) => ele.country === "Srilanka")
+        .filter((ele) => ele.status === "INACTIVE").length,
+    ],
+    [
+      "Thailand",
+      customer
+        .filter((ele) => ele.country === "Thailand")
+        .filter((ele) => ele.status === "ACTIVE").length,
+      customer
+        .filter((ele) => ele.country === "Thailand")
+        .filter((ele) => ele.status === "INACTIVE").length,
+    ],
+  ];
+
+  const createdDataData = [
+    ["Month", "Count"],
+    ["JAN", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Jan" ).length     ],
+    ["FEB", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Feb" ).length],
+    ["MAR", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Mar" ).length],
+    ["APR", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Apr" ).length],
+    ["MAY", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "May" ).length],
+    ["JUN", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Jun" ).length],
+    ["JUL", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Jul" ).length],
+    ["AUG", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Aug" ).length],
+    ["SEP", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Sep" ).length],
+    ["OCT", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Oct" ).length],
+    ["NOV", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Nov" ).length],
+    ["DEC", customer.map((ele) => moment(ele.updatedAt).format("MMM")).filter(  (d)=> d === "Dec" ).length],
+  ];
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -102,10 +212,9 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
               <Grid item xs={9}>
                 <Chart
                   chartType="PieChart"
-                  data={countryData}
+                  data={cityData}
                   width={"100%"}
                   height={"320px"}
-                  // options={options}
                 />
               </Grid>
               <Grid item xs={3} mt={2}>
@@ -134,10 +243,27 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
             </Grid>
           </Grid>
           <Grid item xs={6}>
-            <>xs=4</>
+            <>
+              <Chart
+                chartType="ComboChart"
+                width="100%"
+                height="400px"
+                data={createdDataData}
+                options={options}
+              />
+
+           
+            </>
           </Grid>
           <Grid item xs={12}>
-            <>xs=4</>
+            <>
+              <Chart
+                chartType="Bar"
+                width="100%"
+                height="300px"
+                data={CompariosnCountryData}
+              />
+            </>
           </Grid>
         </Grid>
       </Box>
