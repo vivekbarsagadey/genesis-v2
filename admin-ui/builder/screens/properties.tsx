@@ -11,12 +11,29 @@ const Properties = () => {
     <div>
       <Grid container>
         <Grid item xs={12}>
-          <Button onClick={() => updateSection("properties")}>
-            properties
-          </Button>
-          <Button onClick={() => updateSection("css")}>css</Button>
-          <Button onClick={() => updateSection("model")}>model</Button>
-          <Button onClick={() => updateSection("api")}>api</Button>
+          <Grid container>
+            <Grid item xs={4}>
+              <Button onClick={() => updateSection("properties")} size="small">
+                {" "}
+                properties
+              </Button>
+            </Grid>
+            <Grid item xs={3.5}>
+              <Button onClick={() => updateSection("css")} size="small">
+                css
+              </Button>
+            </Grid>
+            <Grid item xs={2}>
+              <Button onClick={() => updateSection("model")} size="small">
+                model
+              </Button>
+            </Grid>
+            <Grid item xs={1}>
+              <Button onClick={() => updateSection("api")} size="small">
+                api
+              </Button>
+            </Grid>
+          </Grid>
         </Grid>
         <Switch>
           <Case condition={sectionType === "properties"}>
@@ -26,7 +43,7 @@ const Properties = () => {
           </Case>
           <Case condition={sectionType === "css"}>
             <Grid item xs={12}>
-              css
+              CSS
             </Grid>
           </Case>
           <Case condition={sectionType === "model"}>

@@ -1,23 +1,23 @@
 "use client";
-import React, { useState } from "react";
+import { Grid } from "@material-ui/core";
+import { Chip, Paper, Stack } from "@mui/material";
 import Box from "@mui/material/Box";
+import React, { useState } from "react";
+import { Case, Switch } from "react-if";
 import { ProjectContext } from "../app/project/info";
 import Logo from "../component/common/Sidebar/logo";
-import genisys from "../data/genisys.json";
 import BuilderHeaderComponent from "./header/header";
 import BuilderSidebarComponent from "./menu/sidebar/builder.sidebar.component";
-import ScreenHeader from "./screens/screen.header";
-import MainPageComponent from "./screens/main.page";
 import Properties from "./screens/properties";
-import { Grid, Typography } from "@material-ui/core";
-import CloseIcon from "@mui/icons-material/Close";
-import { Case, Switch } from "react-if";
 const BuilderHome = () => {
-  const value = React.useContext(ProjectContext); // id value is inside value for fetch call 
+  const value = React.useContext(ProjectContext); // id value is inside value for fetch call
   const [show, setShow] = useState(true);
   const [screenToggle, setScreenToggle] = useState<string>("");
   const handleMenu = () => {
     setShow(!show);
+  };
+  const handleDelete = () => {
+    console.info("You clicked the delete icon.");
   };
 
   const updateScreen = (typeRec: string) => {
@@ -27,7 +27,7 @@ const BuilderHome = () => {
   return (
     <Box>
       <Grid container>
-        <Grid item xs={2} >
+        <Grid item xs={2}>
           <Logo handleMenu={handleMenu} show={show} />
           <BuilderSidebarComponent show={show} />
         </Grid>
@@ -35,42 +35,58 @@ const BuilderHome = () => {
           <Grid item xs={12}>
             <BuilderHeaderComponent />
           </Grid>
-          <Grid item xs={12}  ml={1} >
-            <Grid container spacing={0}  >
+
+          <Grid item xs={12}>
+            <Grid container spacing={0}>
               <Grid item xs={12} style={{ display: "flex" }}>
-                <Typography
-                  variant="subtitle2"
-                  onClick={() => updateScreen("screen1")}
-                >
-                  Screen 1{" "}
-                </Typography>
-                <CloseIcon fontSize="small" />
-                <Typography
-                  variant="subtitle2"
-                  onClick={() => updateScreen("screen2")}
-                >
-                  Screen 2{" "}
-                </Typography>
-                <CloseIcon fontSize="small" />
+                <Stack direction="row" spacing={1}>
+                  <Chip
+                    label="Screen 1"
+                    variant="outlined"
+                    onClick={() => updateScreen("screen1")}
+                    onDelete={handleDelete}
+                  />
+                  <Chip
+                    label="Screen 2"
+                    variant="outlined"
+                    onClick={() => updateScreen("screen2")}
+                    onDelete={handleDelete}
+                  />
+                </Stack>
               </Grid>
 
-              <Grid item xs={8} style={{  background:'grey', height:'80vh' }}>
-                  <Switch>
-                    <Case condition={screenToggle === "screen1"}>
-                      <Grid item xs={12}   style={{ background:'white' , marginTop:'1rem'}}   >
-                        <Typography>1 data</Typography>
+              <Grid
+                item
+                xs={9}
+                style={{ background: "#e2e8f0", height: "85vh" }}
+              >
+                <Switch>
+                  <Case condition={screenToggle === "screen1"}>
+                    <Grid container>
+                      <Grid item xs={3}></Grid>
+                      <Grid item xs={6}>
+                        <Box mt={2}>
+                          <Paper variant="outlined">Screen 1</Paper>
+                        </Box>
                       </Grid>
-                    </Case>
+                    </Grid>
+                  </Case>
 
-                    <Case condition={screenToggle === "screen2"}>
-                      <Grid item xs={12}>
-                        <Typography>2 Data</Typography>
+                  <Case condition={screenToggle === "screen2"}>
+                    <Grid item xs={12}>
+                      <Grid container>
+                        <Grid item xs={3}></Grid>
+                        <Grid item xs={6}>
+                          <Box mt={2}>
+                            <Paper variant="outlined">Screen 2</Paper>
+                          </Box>
+                        </Grid>
                       </Grid>
-                    </Case>
-                  </Switch>
-                
+                    </Grid>
+                  </Case>
+                </Switch>
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 <Properties />
               </Grid>
             </Grid>

@@ -102,15 +102,15 @@ const BuilderSidebarComponent = ({ show }) => {
                     </Switch>
                   </ListItemIcon>
                 </Grid>
-                <Grid item xs={2.2}>
+                <Grid item xs={3}>
                   {show && (
                     <Typography
                       display={{ xs: "none", sm: "none", md: "block" }}
                       style={{
                         color: "#334D6E",
-                        fontSize: "0.9rem",
+                        fontSize: "0.9rem",textAlign:"center"
                       }}
-                    ml={2}>
+                    >
                       {menu.name}
                     </Typography>
                   )}
