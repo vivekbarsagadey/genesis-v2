@@ -4,17 +4,24 @@ import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import { Case, Default, Switch } from "react-if";
-import PieChart from "react-pie-graph-chart";
+import { Chart } from "react-google-charts";
+
+export const options = {
+  is3D: true,
+};
 
 const CustomerGraphView = ({ customer }: ListComponentProps) => {
   const [graphView, setGraphView] = useState<string>("");
+  console.log("customer >>", customer);
+
   let keys = Object.keys(customer[0]);
   const graphTypeVal = keys.filter((element) => {
     if (
       element === "country" ||
       element === "state" ||
       element === "city" ||
-      element === "status"
+      element === "status" ||
+      element === "gender"
     ) {
       return true;
     }
@@ -26,187 +33,67 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
   ) => {
     setGraphView(value);
   };
-  console.log("graphTypeVal >>>", graphTypeVal);
 
-  const countryData = [
-    {
-      type: "India",
-      value: customer?.filter((item) => item.country === "India")?.length,
-      color: "#c026d3",
-    },
-    {
-      type: "Australia",
-      value: customer.filter((item) => item.country === "Australia").length,
-      color: "#030712",
-    },
-    {
-      type: "America",
-      value: customer.filter((item) => item.country === "America").length,
-      color: "#86198f",
-    },
-    {
-      type: "Spain",
-      value: customer.filter((item) => item.country === "Spain").length,
-      color: "#4BA2DA",
-    },
-    {
-      type: "US",
-      value: customer.filter((item) => item.country === "US").length,
-      color: "#F1AF13",
-    },
-    {
-      type: "UK",
-      value: customer.filter((item) => item.country === "UK").length,
-      color: "#1d4ed8",
-    },
-    {
-      type: "Dubai",
-      value: customer.filter((item) => item.country === "Dubai").length,
-      color: "#b91c1c",
-    },
-    {
-      type: "Srilanka",
-      value: customer.filter((item) => item.country === "Srilanka").length,
-      color: "#1e1b4b",
-    },
-    {
-      type: "Thailand",
-      value: customer.filter((item) => item.country === "Thailand").length,
-      color: "#4c0519",
-    },
-  ];
-  const stateData = [
-    {
-      type: "Bihar",
-      value: customer?.filter((item) => item.state === "Bihar")?.length,
-      color: "#c026d3",
-    },
-    {
-      type: "Madhya Pradesh",
-      value: customer.filter((item) => item.state === "Madhya Pradesh").length,
-      color: "#030712",
-    },
-    {
-      type: "UP",
-      value: customer.filter((item) => item.state === "UP").length,
-      color: "#86198f",
-    },
-    {
-      type: "Maharastra",
-      value: customer.filter((item) => item.state === "Maharastra").length,
-      color: "#4BA2DA",
-    },
-    {
-      type: "Punjab",
-      value: customer.filter((item) => item.state === "Punjab").length,
-      color: "#F1AF13",
-    },
-    {
-      type: "UK",
-      value: customer.filter((item) => item.state === "UK").length,
-      color: "#1d4ed8",
-    },
-    {
-      type: "Gujrat",
-      value: customer.filter((item) => item.state === "Gujrat").length,
-      color: "#b91c1c",
-    },
-    {
-      type: "Karnataka",
-      value: customer.filter((item) => item.state === "Karnataka").length,
-      color: "#fb923c",
-    },
-    {
-      type: "Jammu & Kashmir",
-      value: customer.filter((item) => item.state === "Jammu & Kashmir").length,
-      color: "#4d7c0f",
-    },
-  ];
-  const cityData = [
-    {
-      type: "Patna",
-      value: customer?.filter((item) => item.city === "Patna")?.length,
-      color: "#c026d3",
-    },
-    {
-      type: "Mumbai",
-      value: customer.filter((item) => item.city === "Mumbai").length,
-      color: "#030712",
-    },
-    {
-      type: "Pune",
-      value: customer.filter((item) => item.city === "Pune").length,
-      color: "#86198f",
-    },
-    {
-      type: "Banglore",
-      value: customer.filter((item) => item.city === "Banglore").length,
-      color: "#4BA2DA",
-    },
-
-    {
-      type: "Ahmedabad",
-      value: customer.filter((item) => item.city === "Ahmedabad").length,
-      color: "#1d4ed8",
-    },
-    {
-      type: "Kolkata",
-      value: customer.filter((item) => item.city === "Kolkata").length,
-      color: "#b91c1c",
-    },
-    {
-      type: "Rajasthan",
-      value: customer.filter((item) => item.city === "Rajasthan").length,
-      color: "#fb923c",
-    },
-    {
-      type: "Hyderabad",
-      value: customer.filter((item) => item.city === "Hyderabad").length,
-      color: "#4d7c0f",
-    },
-    {
-      type: "Lucknow",
-      value: customer.filter((item) => item.city === "Lucknow").length,
-      color: "#00f8e8",
-    },
+  const data = [
+    ["Task", "Hours per Day"],
+    ["Work", 11],
+    ["Eat", 2],
+    ["Commute", 2],
+    ["Watch TV", 2],
+    ["Sleep", 7],
   ];
 
   const statusData = [
-    {
-      type: "ACTIVE",
-      value: customer.filter((item) => item.status === "ACTIVE").length,
-      color: "#0a9523",
-    },
-    {
-      type: "INACTIVE",
-      value: customer.filter((item) => item.status === "INACTIVE").length,
-      color: "#f50a0a",
-    },
+    ["Status", "Users"],
+    ["ACTIVE", customer.filter((item) => item.status === "ACTIVE").length],
+    ["INACTIVE", customer.filter((item) => item.status === "INACTIVE").length],
   ];
 
   return (
     <>
-      <Box>
-        <Grid container>
-          <Grid item xs={6}   style={{ background:'red'}} >
-            {/* <Paper variant="outlined">
-              <Typography>xs 6</Typography>
-            </Paper> */}
-            a
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <Grid container spacing={2}>
+              <Grid item xs={9}>
+                <Chart
+                  chartType="PieChart"
+                  data={statusData}
+                  width={"100%"}
+                  height={"320px"}
+                  options={options}
+                />
+              </Grid>
+              <Grid item xs={3} mt={2}>
+                <Stack>
+                  <Autocomplete
+                    value={graphView}
+                    onChange={updateGrpahView}
+                    freeSolo
+                    id="customer-select-type"
+                    disableClearable
+                    size="small"
+                    options={graphTypeVal?.map((option) => option)}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        InputProps={{
+                          ...params.InputProps,
+                          type: "search",
+                        }}
+                        placeholder="Select Graph View"
+                      />
+                    )}
+                  />
+                </Stack>
+              </Grid>
+            </Grid>
           </Grid>
           <Grid item xs={6}>
-            <Paper variant="outlined">
-              <Typography>xs 6</Typography>
-            </Paper>
+            <>xs=4</>
           </Grid>
-        </Grid>
-      </Box>
-      <Box mt={2}>
-        <Grid container>
           <Grid item xs={12}>
-            <Paper variant="outlined">
-              <Typography>xs 12</Typography>
-            </Paper>
+            <>xs=4</>
           </Grid>
         </Grid>
       </Box>
