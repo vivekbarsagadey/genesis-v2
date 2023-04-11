@@ -1,6 +1,7 @@
 "use client";
 import FormatColorTextIcon from "@mui/icons-material/FormatColorText";
 import GridOnIcon from "@mui/icons-material/GridOn";
+import KeyboardHideIcon from "@mui/icons-material/KeyboardHide";
 import ViewSidebarIcon from "@mui/icons-material/ViewSidebar";
 import WebAssetIcon from "@mui/icons-material/WebAsset";
 import { Grid, Typography } from "@mui/material";
@@ -12,22 +13,19 @@ import MuiAccordionSummary, {
 import ListItemIcon from "@mui/material/ListItemIcon";
 import { styled } from "@mui/material/styles";
 import React from "react";
-import { Default } from "react-if";
-import Switch, { Case } from "react-switch-case";
+import Switch, { Case, Default } from "react-switch-case";
 import genisys from "../../../data/genisys.json";
-import BuilderSideBarInnerList from "./builder.sidebar.innerlist";
-import CategorieComponent from "./categorie.component";
-const style = {
-  position: "absolute" as "absolute",
-  top: "40%",
-  left: "44%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 4,
-};
+import ItemComponet from "./item.componet";
+import SmartDisplayIcon from "@mui/icons-material/SmartDisplay";
+import AppsIcon from "@mui/icons-material/Apps";
+import { IMenuListSet } from "../../../app/template/templateInterface/template.interface";
+import Grid4x4Icon from "@mui/icons-material/Grid4x4";
 
+interface ISideBar {
+  menuList: IMenuListSet[];
+  show: Boolean;
+  updateMyDragImages: any;
+}
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -54,113 +52,108 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
-
-const BuilderSidebarComponent = ({ show }) => {
+const BuilderSidebarComponent = ({
+  menuList,
+  show,
+  updateMyDragImages,
+}: ISideBar) => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
     };
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  console.log("genisys.categories >>",genisys.categories);
-  
   return (
     <>
-      {/* {genisys.categories?.map((menu, index) => {
+      {genisys.categories?.map((menu) => {
         return (
-          <Accordion
-            key={index}
-            onChange={handleChange("panel1")}
-            style={{ marginTop: "-1rem" }}
-          >
-            <AccordionSummary>
-              <Grid container>
-                <Grid item xs={1.5}>
-                  <ListItemIcon>
-                    <Switch>
-                      <Case value="ViewSidebarIcon">
-                        <ViewSidebarIcon
-                          style={{ fontSize: "1.2rem", color: "#334D6E" }}
-                        />
-                      </Case>
-                      <Case value="WebAssetIcon">
-                        <WebAssetIcon
-                          style={{ fontSize: "1.2rem", color: "#334D6E" }}
-                        />
-                      </Case>
-                      <Case value="GridOnIcon">
-                        <GridOnIcon
-                          style={{ fontSize: "1rem", color: "#334D6E" }}
-                        />
-                      </Case>
-                      <Default>
-                {" "}
-                <FormatColorTextIcon
-                  style={{ fontSize: "1rem", color: "#334D6E" }}
-                />
-              </Default>
-                    </Switch>
-                  </ListItemIcon>
-                </Grid>
-                <Grid item xs={3}>
-                  {show && (
-                    <Typography
-                      display={{ xs: "none", sm: "none", md: "block" }}
+          <div key={menu.id} style={{ display: "flex" }}>
+            <Grid item xs={1.5} mt={1.8}>
+              <ListItemIcon>
+                <Switch condition={menu.icon}>
+                  <Case value="ViewSidebarIcon">
+                    <ViewSidebarIcon
                       style={{
+                        fontSize: "1.2rem",
                         color: "#334D6E",
-                        fontSize: "0.9rem",textAlign:"center"
+                        marginTop: "0.9rem",
                       }}
-                    >
-                      {menu.name}
-                    </Typography>
-                  )}
-                </Grid>
-              </Grid>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Grid
-                container
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-evenly",
-                }}
-              >
-                {show && (
-                  <Grid item xs={12} ml={1}>
+                    />
+                  </Case>
+                  <Case value="AppsIcon">
+                    <AppsIcon
+                      style={{
+                        fontSize: "1.2rem",
+                        color: "#334D6E",
+                        marginTop: "0.9rem",
+                      }}
+                    />
+                  </Case>
+                  <Case value="Grid4x4Icon">
+                    <GridOnIcon
+                      style={{
+                        fontSize: "1.2rem",
+                        color: "#334D6E",
+                        marginTop: "0.9rem",
+                      }}
+                    />
+                  </Case>
+                  <Default>
+                    <FormatColorTextIcon
+                      color="primary"
+                      style={{
+                        fontSize: "1.2rem",
+                        color: "#334D6E",
+                        marginTop: "0.9rem",
+                      }}
+                    />
+                  </Default>
+                </Switch>
+              </ListItemIcon>
+            </Grid>
+            <Grid container mb={-1.7}>
+              <Grid item xs={7.6}>
+                <Accordion onChange={handleChange("panel1")}>
+                  <AccordionSummary>
                     <Grid container>
-                      <Grid item xs={2}>
-                        {menu.items?.map((item) => {
-                          return (
-                            <AccordionDetails key={item.id}>
-                              <BuilderSideBarInnerList
-                                item={item}
-                                show={show}
-                              />
-                            </AccordionDetails>
-                          );
-                        })}
-                      </Grid>
+                      {show && (
+                        <Grid item xs={1}>
+                          <Typography
+                            style={{
+                              color: "#334D6E",
+                              fontSize: "0.9rem",
+                            }}
+                          >
+                            {menu.name}
+                          </Typography>
+                        </Grid>
+                      )}
+                    </Grid>
+                  </AccordionSummary>
+                  <Grid container>
+                    <Grid item xs={12} style={{ marginTop: "-1.5rem" }}>
+                      {menu.items.map((d) => {
+                        return (
+                          <AccordionDetails key={d.id}>
+                            <Grid item xs={12}>
+                              <Grid container>
+                                <Grid item xs={9}>
+                                  <ItemComponet d={d} show={show} />
+                                </Grid>
+                              </Grid>
+                            </Grid>
+                          </AccordionDetails>
+                        );
+                      })}
                     </Grid>
                   </Grid>
-                )}
+                </Accordion>
               </Grid>
-            </AccordionDetails>
-          </Accordion>
-        );
-      })} */}
-      {genisys.categories.map((menu, index) => {
-        return (
-          <div>
-            <CategorieComponent menu={menu} />
+            </Grid>
           </div>
         );
       })}
     </>
   );
 };
-
 export default BuilderSidebarComponent;

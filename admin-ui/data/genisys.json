@@ -1,214 +1,212 @@
 {
-    "categories": [
-      {
-        "id": "components",
-        "name": "Components",
-        "label": "Components",
-        "title": "Components",
-        "icon": "ViewSidebarIcon",
-       
-        "items": [
-          {
-            "id": "buttons",
-            "name": "Buttons",
-            "label": "Buttons",
-            "title": "Buttons",
-            "icon": "far fa-circle",
-            "componentId": "buttonComponent",
-            "image":"../public/item/Button_Default_Active.png",
-            "items": [
-              {
-                "id": "sbmitButtons",
-                "name": "sbuButtons",
-                "label": "SubmitButtons",
-                "title": "SubButtons",
-                "icon": "far fa-circle",
-                "componentId": "buttonComponent",
-                "image_disabled_button":"../public/item/Button_Disabled.png",
-                "items":null
-              },{
-                "id": "hoverButtons",
-                "name": "hovrButtons",
-                "label": "Hover Buttons",
-                "title": "HoverButtons",
-                "icon": "far fa-circle",
-                "componentId": "buttonComponent",
-                "image_hover_button":"../public/item/Button_Hover_Color.png",
-                "items":null
-              }
-            ]
-          },
-          {
-            "id": "emails",
-            "name": "Emails",
-            "label": "Emails",
-            "title": "Emails",
-            "icon": "EmailIcon",
-            "componentId": "emailComponent",
-            "image":"../public/item/Input_Email.png"
-          },
-          {
-            "id": "passwords",
-            "name": "Passwords",
-            "label": "Passwords",
-            "title": "Passwords",
-            "icon": "KeyIcon",
-            "componentId": "passwordComponent",
-            "image":"../public/item/Input_Password.png"
+  "categories": [
+    {
+      "id": "components",
+      "name": "Components",
+      "label": "Components",
+      "title": "Components",
+      "icon": "ViewSidebarIcon",
 
-          },
-          {
-            "id": "cnfrmpasswords",
-            "name": "confrmPasswords",
-            "label": "Confirm Password",
-            "title": "Confirm Passwords",
-            "icon": "KeyIcon",
-            "componentId": "confirmpasswordComponent",
-            "image_confirm_password":"../public/item/Input_Confirm_Password.png"
-          },
-          {
-            "id": "numbers",
-            "name": "Numbers",
-            "label": "Numbers",
-            "title": "Numbers",
-            "icon": "NumbersIcon",
-            "componentId": "numberComponent",
-            "image":"../public/item/Input_Number.png"
-          },
-          {
-            "id": "checkboxes",
-            "name": "Checkboxes",
-            "label": "Checkboxes",
-            "title": "Checkboxes",
-            "icon": "CheckBoxIcon",
-            "componentId": "checkboxComponent",
-            "image":"../public/item/Checkbox.png"
-          },
-          {
-            "id": "dropdowns",
-            "name": "Dropdowns",
-            "label": "Dropdowns",
-            "title": "Dropdowns",
-            "icon": "ArrowDropDownCircleIcon",
-            "componentId": "dropdownComponent",
-            "image":"../public/item/Input_Dropdown.png"
-          },
-          {
-            "id": "text",
-            "name": "Texts",
-            "label": "Texts",
-            "title": "Texts",
-            "icon": "TitleIcon",
-            "componentId": "textComponent",
-            "image":"../public/item/text.png"
-          }
-        ]
-      },
-      {
-        "id": "containers",
-        "name": "Containers",
-        "label": "Containers",
-        "title": "Containers",
-        "icon": "fas fa-boxes",
-        "items": [
-          {
-            "id": "login",
-            "name": "Login",
-            "label": "Login",
-            "title": "Login",
-            "icon": "far fa-folder",
-            "componentId": "loginComponent"
-           
-          },
-          {
-            "id": "emailLogin",
-            "name": "EmailLogin",
-            "label": "EmailLogin",
-            "title": "EmailLogin",
-            "icon": "EmailIcon",
-            "componentId": "emailLoginComponent",
-            "image":"../public/item/Login with email.png"
-          },
-          {
-            "id": "loginwithEmail",
-            "name": "LoginwithEmail",
-            "label": "Login With Email",
-            "title": "LoginwithEmail",
-            "icon": "EmailIcon",
-            "componentId": "loginwithEmail",
-            "image":"../public/item/Login with email.png"
-          },
-          {
-            "id": "socialMediaLogin",
-            "name": "SocialMediaLogin",
-            "label": "SocialMediaLogin",
-            "title": "SocialMediaLogin",
-            "icon": "far fa-folder",
-            "componentId": "socialMediaLoginComponent",
-            "image":"../public/item/login with social media.png"
-          },
-          {
-            "id": "loginwithsocialmedia",
-            "name": "LoginWithSocialMedia",
-            "label": "LoginWithSocialMedia",
-            "title": "LoginWithSocialMedia",
-            "icon": "far fa-folder",
-            "componentId": "loginwithsocialMediaComponent",
-            "image":"../public/item/login with social media.png"
-          },
-          {
-            "id": "numberLogin",
-            "name": "NumberLogin",
-            "label": "NumberLogin",
-            "title": "NumberLogin",
-            "icon": "NumbersIcon",
-            "componentId": "numberLoginComponent",
-            "image":"../public/item/Input_Number.png"
-          },
-          {
-            "id": "registration",
-            "name": "Registration",
-            "label": "Registration",
-            "title": "Registration",
-            "icon": "far fa-folder",
-            "componentId": "registrationComponent",
-            "image":"../public/item/Register 1.png"
-          }
-        ]
-      },
-      {
-        "id": "grid",
-        "name": "Grid",
-        "label": "Grid",
-        "title": "Grid",
-        "icon": "GridViewIcon",
-        "items": [
-          {
-            "id": "grid_12",
-            "name": "Grid_12",
-            "label": "Grid_12",
-            "title": "Grid_12",
-            "icon": "WidthFullIcon",
-            "componentId": "Grid_12Component"
-          },
-          {
-            "id": "grid_6x2",
-            "name": "Grid_6x2",
-            "label": "Grid_6x2",
-            "title": "Grid_6x2",
-            "icon": "GridGoldenratioIcon",
-            "componentId": "Grid_6x2Component"
-          },
-          {
-            "id": "grid_4x3",
-            "name": "Grid_4x3",
-            "label": "Grid_4x3",
-            "title": "Grid_4x3",
-            "icon": "Grid4x4Icon",
-            "componentId": "Grid_4x3Component"
-          }
-        ]
-      }
-    ]
-  }
-  
+      "items": [
+        {
+          "id": "buttons",
+          "name": "Button",
+          "label": "Button",
+          "title": "Buttons",
+          "icon": "LabelIcon",
+          "componentId": "buttonComponent",
+          "image": "../public/item/Button_Default_Active.png",
+          "items": [
+            {
+              "id": "sbmitButtons",
+              "name": "sbuButtons",
+              "label": "Submit",
+              "title": "SubButtons",
+              "icon": "SmartDisplayIcon",
+              "componentId": "buttonComponent",
+              "image_disabled_button": "../public/item/Button_Disabled.png",
+              "items": null
+            },
+            {
+              "id": "hoverButtons",
+              "name": "hovrButtons",
+              "label": "Hover",
+              "title": "HoverButtons",
+              "icon": "FiberSmartRecordIcon",
+              "componentId": "buttonComponent",
+              "image_hover_button": "../public/item/Button_Hover_Color.png",
+              "items": null
+            }
+          ]
+        },
+        {
+          "id": "emails",
+          "name": "Emails",
+          "label": "Emails",
+          "title": "Emails",
+          "icon": "EmailIcon",
+          "componentId": "emailComponent",
+          "image": "../public/item/Input_Email.png"
+        },
+        {
+          "id": "passwords",
+          "name": "Passwords",
+          "label": "Passwords",
+          "title": "Passwords",
+          "icon": "LockOpenIcon",
+          "componentId": "passwordComponent",
+          "image": "../public/item/Input_Password.png"
+        },
+        {
+          "id": "cnfrmpasswords",
+          "name": "confrmPasswords",
+          "label": "ConfirmPassword",
+          "title": "ConfirmPasswords",
+          "icon": "LockClockIcon",
+          "componentId": "confirmpasswordComponent",
+          "image_confirm_password": "../public/item/Input_Confirm_Password.png"
+        },
+        {
+          "id": "numbers",
+          "name": "Numbers",
+          "label": "Number",
+          "title": "Numbers",
+          "icon": "FormatListNumberedIcon",
+          "componentId": "numberComponent",
+          "image": "../public/item/Input_Number.png"
+        },
+        {
+          "id": "checkboxes",
+          "name": "Checkboxes",
+          "label": "Checkbox",
+          "title": "Checkboxes",
+          "icon": "CheckBoxIcon",
+          "componentId": "checkboxComponent",
+          "image": "../public/item/Checkbox.png"
+        },
+        {
+          "id": "dropdowns",
+          "name": "Dropdown",
+          "label": "Dropdown",
+          "title": "Dropdown",
+          "icon": "ArrowDropDownCircleIcon",
+          "componentId": "dropdownComponent",
+          "image": "../public/item/Input_Dropdown.png"
+        },
+        {
+          "id": "text",
+          "name": "Text",
+          "label": "Text",
+          "title": "Text",
+          "icon": "FormatSizeIcon",
+          "componentId": "textComponent",
+          "image": "../public/item/text.png"
+        }
+      ]
+    },
+    {
+      "id": "containers",
+      "name": "Container",
+      "label": "Container",
+      "title": "Container",
+      "icon": "AppsIcon",
+      "items": [
+        {
+          "id": "login",
+          "name": "Login",
+          "label": "Login",
+          "title": "Login",
+          "icon": "LoginIcon",
+          "componentId": "loginComponent"
+        },
+        {
+          "id": "emailLogin",
+          "name": "EmailLogin",
+          "label": "EmailLogin",
+          "title": "EmailLogin",
+          "icon": "AlternateEmailIcon",
+          "componentId": "emailLoginComponent",
+          "image": "../public/item/Login with email.png"
+        },
+        {
+          "id": "loginwithEmail",
+          "name": "LoginwithEmail",
+          "label": "Login With Email",
+          "title": "LoginwithEmail",
+          "icon": "EmailIcon",
+          "componentId": "loginwithEmail",
+          "image": "../public/item/Login with email.png"
+        },
+        {
+          "id": "socialMediaLogin",
+          "name": "SocialMediaLogin",
+          "label": "SocialMediaLogin",
+          "title": "SocialMediaLogin",
+          "icon": "far fa-folder",
+          "componentId": "socialMediaLoginComponent",
+          "image": "../public/item/login with social media.png"
+        },
+        {
+          "id": "loginwithsocialmedia",
+          "name": "LoginWithSocialMedia",
+          "label": "LoginWithSocialMedia",
+          "title": "LoginWithSocialMedia",
+          "icon": "far fa-folder",
+          "componentId": "loginwithsocialMediaComponent",
+          "image": "../public/item/login with social media.png"
+        },
+        {
+          "id": "numberLogin",
+          "name": "NumberLogin",
+          "label": "NumberLogin",
+          "title": "NumberLogin",
+          "icon": "NumbersIcon",
+          "componentId": "numberLoginComponent",
+          "image": "../public/item/Input_Number.png"
+        },
+        {
+          "id": "registration",
+          "name": "Registration",
+          "label": "Registration",
+          "title": "Registration",
+          "icon": "far fa-folder",
+          "componentId": "registrationComponent",
+          "image": "../public/item/Register 1.png"
+        }
+      ]
+    },
+    {
+      "id": "grid",
+      "name": "Grid",
+      "label": "Grid",
+      "title": "Grid",
+      "icon": "Grid4x4Icon",
+      "items": [
+        {
+          "id": "grid_12",
+          "name": "Grid_12",
+          "label": "Grid_12",
+          "title": "Grid_12",
+          "icon": "WidthFullIcon",
+          "componentId": "Grid_12Component"
+        },
+        {
+          "id": "grid_6x2",
+          "name": "Grid_6x2",
+          "label": "Grid_6x2",
+          "title": "Grid_6x2",
+          "icon": "GridGoldenratioIcon",
+          "componentId": "Grid_6x2Component"
+        },
+        {
+          "id": "grid_4x3",
+          "name": "Grid_4x3",
+          "label": "Grid_4x3",
+          "title": "Grid_4x3",
+          "icon": "Grid4x4Icon",
+          "componentId": "Grid_4x3Component"
+        }
+      ]
+    }
+  ]
+}
