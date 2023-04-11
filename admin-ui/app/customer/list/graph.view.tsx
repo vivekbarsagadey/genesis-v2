@@ -34,19 +34,63 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
     setGraphView(value);
   };
 
-  const data = [
-    ["Task", "Hours per Day"],
-    ["Work", 11],
-    ["Eat", 2],
-    ["Commute", 2],
-    ["Watch TV", 2],
-    ["Sleep", 7],
-  ];
-
   const statusData = [
     ["Status", "Users"],
     ["ACTIVE", customer.filter((item) => item.status === "ACTIVE").length],
     ["INACTIVE", customer.filter((item) => item.status === "INACTIVE").length],
+  ];
+  const genderData = [
+    ["Customer", "Gender"],
+    ["MALE", customer.filter((item) => item.gender === "Male").length],
+    ["FEMALE", customer.filter((item) => item.gender === "Female").length],
+  ];
+  const stateData = [
+    ["Customer", "State"],
+    ["Bihar", customer.filter((item) => item.state === "Bihar").length],
+    [
+      "Madhya Pradesh",
+      customer.filter((item) => item.state === "Madhya Pradesh").length,
+    ],
+    ["UP", customer.filter((item) => item.state === "UP").length],
+    [
+      "Maharastra",
+      customer.filter((item) => item.state === "Maharastra").length,
+    ],
+    ["Punjab", customer.filter((item) => item.state === "Punjab").length],
+    ["UK", customer.filter((item) => item.state === "UK").length],
+    ["Gujrat", customer.filter((item) => item.state === "Gujrat").length],
+    ["Karnataka", customer.filter((item) => item.state === "Karnataka").length],
+    [
+      "Jammu & Kashmir",
+      customer.filter((item) => item.state === "Jammu & Kashmir").length,
+    ],
+  ];
+  const countryData = [
+    ["Customer", "Country"],
+    ["India", customer.filter((item) => item.country === "India").length],
+    [
+      "Australia",
+      customer.filter((item) => item.country === "Australia").length,
+    ],
+    ["America", customer.filter((item) => item.country === "America").length],
+    ["Spain", customer.filter((item) => item.country === "Spain").length],
+    ["US", customer.filter((item) => item.country === "US").length],
+    ["UK", customer.filter((item) => item.country === "UK").length],
+    ["Dubai", customer.filter((item) => item.country === "Dubai").length],
+    ["Srilanka", customer.filter((item) => item.country === "Srilanka").length],
+    ["Thailand", customer.filter((item) => item.country === "Thailand").length],
+  ];
+  const cityData = [
+    ["Customer", "City"],
+    ["Patna", customer.filter((item) => item.city === "Patna").length],
+    ["Mumbai", customer.filter((item) => item.city === "Mumbai").length],
+    ["Pune", customer.filter((item) => item.city === "Pune").length],
+    ["Banglore", customer.filter((item) => item.city === "Banglore").length],
+    ["Ahmedabad", customer.filter((item) => item.city === "Ahmedabad").length],
+    ["Kolkata", customer.filter((item) => item.city === "Kolkata").length],
+    ["Rajasthan", customer.filter((item) => item.city === "Rajasthan").length],
+    ["Hyderabad", customer.filter((item) => item.city === "Hyderabad").length],
+    ["Lucknow", customer.filter((item) => item.city === "Lucknow").length],
   ];
 
   return (
@@ -58,10 +102,10 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
               <Grid item xs={9}>
                 <Chart
                   chartType="PieChart"
-                  data={statusData}
+                  data={cityData}
                   width={"100%"}
                   height={"320px"}
-                  options={options}
+                  // options={options}
                 />
               </Grid>
               <Grid item xs={3} mt={2}>
