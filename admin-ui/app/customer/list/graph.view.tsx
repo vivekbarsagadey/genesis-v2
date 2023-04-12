@@ -5,7 +5,6 @@ import TextField from "@mui/material/TextField";
 import moment from "moment";
 import React, { useState } from "react";
 import { Chart } from "react-google-charts";
-import ComparisonGraphComponent from "./comparison.graph";
 import CustomerPieChart from "./pie.chart";
 
 const options = {
@@ -307,9 +306,13 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
           <Grid item xs={6}>
             <Grid container spacing={2}>
               <Grid item xs={9}>
-                <CustomerPieChart   cityData={cityData} />
-
-               
+                <CustomerPieChart
+                  stateData={stateData}
+                  cityData={cityData}
+                  graphView={graphView}
+                  statusData={statusData}
+                  countryData={countryData}
+                />
               </Grid>
               <Grid item xs={3} mt={2}>
                 <Stack>
