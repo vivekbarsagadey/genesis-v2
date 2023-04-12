@@ -48,6 +48,8 @@ const SidebarComponent = ({ toggleMenu }) => {
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
     };
+  
+  console.log("genisys --->",genisys);
 
   return (
     <>

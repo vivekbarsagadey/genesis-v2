@@ -25,7 +25,37 @@
               "icon": "SmartDisplayIcon",
               "componentId": "buttonComponent",
               "image_disabled_button": "../public/item/Button_Disabled.png",
-              "items": null
+              "items": [
+                {
+                  "id":"properties",
+                  "parentId":"sbmitButtons",
+                  "background":"red",
+                  "borderRadius":"20px",
+                  "height":"80vh",
+                  "overflowY":"overflowY",
+                  "position":"absolute",
+                  "width":"80%"
+                },
+                {
+                  "id":"css",
+                  "parentId":"sbmitButtons",
+                  "borderRadius":"20px",
+                  "height":"60vh",
+                  "overflowY":"overflowY",
+                  "width":"20%"
+                },
+                {
+                  "id":"model",
+                  "parentId":"sbmitButtons",
+                  "width":"50%"
+                },
+                {
+                  "id":"api",
+                  "parentId":"sbmitButtons",
+                  "url":"https://tailwindcss.com/docs"
+
+                }
+              ]
             },
             {
               "id": "hoverButtons",
@@ -35,7 +65,37 @@
               "icon": "FiberSmartRecordIcon",
               "componentId": "buttonComponent",
               "image_hover_button": "../public/item/Button_Hover_Color.png",
-              "items": null
+              "items": [
+                {
+                  "id":"properties",
+                  "parentId":"hoverButtons",
+                  "background":"green",
+                  "borderRadius":"50px",
+                  "height":"50vh",
+                  "overflowY":"overflowX",
+                  "position":"absolute",
+                  "width":"20%"
+                },
+                {
+                  "id":"css",
+                  "parentId":"hoverButtons",
+                  "borderRadius":"30px",
+                  "height":"80vh",
+                  "overflowY":"overflowY",
+                  "width":"90%"
+                },
+                {
+                  "id":"model",
+                  "parentId":"hoverButtons",
+                  "width":"40%"
+                },
+                {
+                  "id":"api",
+                  "parentId":"hoverButtons",
+                  "url":"https://stackoverflow.com/questions/64983425/mui-button-hover-background-color-and-text-color"
+
+                }
+              ]
             }
           ]
         },
@@ -46,7 +106,43 @@
           "title": "Emails",
           "icon": "EmailIcon",
           "componentId": "emailComponent",
-          "image": "../public/item/Input_Email.png"
+          "image": "../public/item/Input_Email.png",
+          "items":[
+            {
+              "id":"emails",
+              "items":[
+                {
+                  "id":"properties",
+                  "parentId":"emails",
+                  "background":"black",
+                  "borderRadius":"2px",
+                  "height":"17vh",
+                  "overflowY":"overflowY",
+                  "position":"absolute",
+                  "width":"60%"
+                },
+                {
+                  "id":"css",
+                  "parentId":"emails",
+                  "borderRadius":"24px",
+                  "height":"90vh",
+                  "overflowY":"overflowY",
+                  "width":"90%"
+                },
+                {
+                  "id":"model",
+                  "parentId":"emails",
+                  "width":"10%"
+                },
+                {
+                  "id":"api",
+                  "parentId":"emails",
+                  "url":"https://google.com/docs"
+
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "passwords",
@@ -55,7 +151,43 @@
           "title": "Passwords",
           "icon": "LockOpenIcon",
           "componentId": "passwordComponent",
-          "image": "../public/item/Input_Password.png"
+          "image": "../public/item/Input_Password.png",
+          "items":[
+            {
+              "id":"passwords",
+              "items":[
+                {
+                  "id":"properties",
+                  "parentId":"passwords",
+                  "background":"pink",
+                  "borderRadius":"112px",
+                  "height":"19vh",
+                  "overflowY":"overflowY",
+                  "position":"absolute",
+                  "width":"66%"
+                },
+                {
+                  "id":"css",
+                  "parentId":"passwords",
+                  "borderRadius":"21px",
+                  "height":"88vh",
+                  "overflowY":"overflowY",
+                  "width":"10%"
+                },
+                {
+                  "id":"model",
+                  "parentId":"passwords",
+                  "width":"1%"
+                },
+                {
+                  "id":"api",
+                  "parentId":"passwords",
+                  "url":"https://youtube.com/docs"
+
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "cnfrmpasswords",
@@ -64,7 +196,43 @@
           "title": "ConfirmPasswords",
           "icon": "LockClockIcon",
           "componentId": "confirmpasswordComponent",
-          "image_confirm_password": "../public/item/Input_Confirm_Password.png"
+          "image_confirm_password": "../public/item/Input_Confirm_Password.png",
+          "items":[
+            {
+              "id":"cnfrmpasswords",
+              "items":[
+                {
+                  "id":"properties",
+                  "parentId":"cnfrmpasswords",
+                  "background":"yellow",
+                  "borderRadius":"86px",
+                  "height":"99vh",
+                  "overflowY":"overflowY",
+                  "position":"absolute",
+                  "width":"54%"
+                },
+                {
+                  "id":"css",
+                  "parentId":"cnfrmpasswords",
+                  "borderRadius":"29px",
+                  "height":"78vh",
+                  "overflowY":"overflowY",
+                  "width":"98%"
+                },
+                {
+                  "id":"model",
+                  "parentId":"cnfrmpasswords",
+                  "width":"51%"
+                },
+                {
+                  "id":"api",
+                  "parentId":"cnfrmpasswords",
+                  "url":"https://hr.com/docs"
+
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "numbers",
@@ -73,7 +241,43 @@
           "title": "Numbers",
           "icon": "FormatListNumberedIcon",
           "componentId": "numberComponent",
-          "image": "../public/item/Input_Number.png"
+          "image": "../public/item/Input_Number.png",
+          "items":[
+            {
+              "id":"numbers",
+              "items":[
+                {
+                  "id":"properties",
+                  "parentId":"numbers",
+                  "background":"brown",
+                  "borderRadius":"89px",
+                  "height":"90vh",
+                  "overflowY":"overflowY",
+                  "position":"absolute",
+                  "width":"52%"
+                },
+                {
+                  "id":"css",
+                  "parentId":"numbers",
+                  "borderRadius":"99px",
+                  "height":"77vh",
+                  "overflowY":"overflowY",
+                  "width":"77%"
+                },
+                {
+                  "id":"model",
+                  "parentId":"numbers",
+                  "width":"85%"
+                },
+                {
+                  "id":"api",
+                  "parentId":"numbers",
+                  "url":"https://ceo.com/docs"
+
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "checkboxes",
@@ -82,7 +286,43 @@
           "title": "Checkboxes",
           "icon": "CheckBoxIcon",
           "componentId": "checkboxComponent",
-          "image": "../public/item/Checkbox.png"
+          "image": "../public/item/Checkbox.png",
+          "items":[
+            {
+              "id":"checkboxes",
+              "items":[
+                {
+                  "id":"properties",
+                  "parentId":"checkboxes",
+                  "background":"brown",
+                  "borderRadius":"89px",
+                  "height":"90vh",
+                  "overflowY":"overflowY",
+                  "position":"absolute",
+                  "width":"52%"
+                },
+                {
+                  "id":"css",
+                  "parentId":"checkboxes",
+                  "borderRadius":"99px",
+                  "height":"77vh",
+                  "overflowY":"overflowY",
+                  "width":"77%"
+                },
+                {
+                  "id":"model",
+                  "parentId":"checkboxes",
+                  "width":"85%"
+                },
+                {
+                  "id":"api",
+                  "parentId":"checkboxes",
+                  "url":"https://ceo.com/docs"
+
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "dropdowns",
@@ -91,7 +331,43 @@
           "title": "Dropdown",
           "icon": "ArrowDropDownCircleIcon",
           "componentId": "dropdownComponent",
-          "image": "../public/item/Input_Dropdown.png"
+          "image": "../public/item/Input_Dropdown.png",
+          "items":[
+            {
+              "id":"dropdowns",
+              "items":[
+                {
+                  "id":"properties",
+                  "parentId":"dropdowns",
+                  "background":"grey",
+                  "borderRadius":"89px",
+                  "height":"10vh",
+                  "overflowY":"overflowY",
+                  "position":"absolute",
+                  "width":"22%"
+                },
+                {
+                  "id":"css",
+                  "parentId":"dropdowns",
+                  "borderRadius":"9px",
+                  "height":"70vh",
+                  "overflowY":"overflowY",
+                  "width":"37%"
+                },
+                {
+                  "id":"model",
+                  "parentId":"dropdowns",
+                  "width":"75%"
+                },
+                {
+                  "id":"api",
+                  "parentId":"dropdowns",
+                  "url":"https://dropdowns.com/docs"
+
+                }
+              ]
+            }
+          ]
         },
         {
           "id": "text",
@@ -100,7 +376,44 @@
           "title": "Text",
           "icon": "FormatSizeIcon",
           "componentId": "textComponent",
-          "image": "../public/item/text.png"
+          "image": "../public/item/text.png",
+          "items":[
+            {
+              "id":"text",
+              "items":[
+                {
+                  "id":"properties",
+                  "parentId":"text",
+                  "background":"grey",
+                  "borderRadius":"66px",
+                  "height":"18vh",
+                  "overflowY":"overflowY",
+                  "position":"absolute",
+                  "width":"27%"
+                },
+                {
+                  "id":"css",
+                  "parentId":"text",
+                  "borderRadius":"19px",
+                  "height":"76vh",
+                  "overflowY":"overflowY",
+                  "width":"44%"
+                },
+                {
+                  "id":"model",
+                  "parentId":"text",
+                  "width":"60%"
+                },
+                {
+                  "id":"api",
+                  "parentId":"text",
+                  "url":"https://text.com/docs"
+
+                }
+              ]
+            }
+          ]
+          
         }
       ]
     },
