@@ -42,7 +42,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
-const SidebarComponent = ({ toggleMenu }) => {
+const SidebarComponent = ({ toggleMenu,getItemValue }) => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -117,6 +117,7 @@ const SidebarComponent = ({ toggleMenu }) => {
                                 <SideBarInnerList
                                   d={d}
                                   toggleMenu={toggleMenu}
+                                  getItemValue={getItemValue}
                                 />
                               </AccordionDetails>
                             );

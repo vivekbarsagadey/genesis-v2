@@ -27,6 +27,7 @@ const BuilderHome = ({ id }) => {
   }, []);
   const [toggleMenu, setToggleMenu] = useState(true);
   const [screenToggle, setScreenToggle] = useState<string>("");
+  const [generalData, setGeneralData]= useState(null)
   const handleMenu = () => {
     setToggleMenu(!toggleMenu);
   };
@@ -37,13 +38,19 @@ const BuilderHome = ({ id }) => {
     setScreenToggle(typeRec);
   };
 
+  const getItemValue=(items)=>{
+    console.log("items ()-()",items );
+    setGeneralData(items)
+    
+
+  }
   return (
     <Box>
       <Grid container>
         <Grid item xs={2}>
           <Logo handleMenu={handleMenu} toggleMenu={toggleMenu} />
           {/* <BuilderSidebarComponent toggleMenu={toggleMenu} /> */}
-          <SidebarComponent toggleMenu={toggleMenu}/>
+          <SidebarComponent toggleMenu={toggleMenu}   getItemValue={getItemValue}  />
         </Grid>
         <Grid item xs={10}>
           <Grid item xs={12}>
@@ -65,7 +72,7 @@ const BuilderHome = ({ id }) => {
                 <ScreenSelectComponent screenToggle={screenToggle} />
               </Grid>
               <Grid item xs={3}>
-                <PropertiesComponent />
+                <PropertiesComponent  generalData={generalData} />
               </Grid>
             </Grid>
           </Grid>

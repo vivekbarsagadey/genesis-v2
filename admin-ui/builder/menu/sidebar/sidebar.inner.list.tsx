@@ -14,8 +14,15 @@ import Collapse from "@mui/material/Collapse";
 import Switch, { Case, Default } from "react-switch-case";
 import SideBarInnerText from "./sidebar.inner.text";
 
-const SideBarInnerList = ({ d, toggleMenu }) => {
-  const [open, setOpen] = useState(false);
+const SideBarInnerList = ({ d, toggleMenu,getItemValue }) => {
+  const [openInnerList, setOpenInnerList] = useState(false);
+
+  const expandInnerList = (ItemRecv) => {
+    
+    getItemValue(ItemRecv)
+    setOpenInnerList(!openInnerList);
+  };
+
   return (
     <Grid container mt={-2.5}>
       <Grid item xs={4}>
@@ -111,7 +118,7 @@ const SideBarInnerList = ({ d, toggleMenu }) => {
       <Grid item xs={8}>
         <AccordionDetails>
           <Typography
-            onClick={() => setOpen(!open)}
+            onClick={() => expandInnerList(d)}
             fontSize={"0.8rem"}
             color={"#334D6E"}
             style={{ cursor: "pointer", marginLeft: "1.5rem" }}
@@ -121,7 +128,7 @@ const SideBarInnerList = ({ d, toggleMenu }) => {
         </AccordionDetails>
 
         <Grid item xs={12}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
+          <Collapse in={openInnerList} timeout="auto" unmountOnExit>
             {d.items?.map((ele) => {
               return (
                 <AccordionDetails key={ele.id}>
@@ -135,5 +142,4 @@ const SideBarInnerList = ({ d, toggleMenu }) => {
     </Grid>
   );
 };
-
 export default SideBarInnerList;
