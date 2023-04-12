@@ -6,6 +6,7 @@ import moment from "moment";
 import React, { useState } from "react";
 import { Chart } from "react-google-charts";
 import ComparisonGraphComponent from "./comparison.graph";
+import CustomerPieChart from "./pie.chart";
 
 const options = {
   vAxis: { title: "Customer Created" },
@@ -15,12 +16,10 @@ const options = {
 };
 
 const comparisonGraphDataVal = [
- 
-    { id: 1, label: "Active" },
-    { id: 2, label: "Inactive" },
-    { id: 3, label: "Male" },
-    { id: 4, label: "Female" },
- 
+  { id: 1, label: "Active" },
+  { id: 2, label: "Inactive" },
+  { id: 3, label: "Male" },
+  { id: 4, label: "Female" },
 ];
 const CustomerGraphView = ({ customer }: ListComponentProps) => {
   const [graphView, setGraphView] = useState<string>("");
@@ -201,10 +200,12 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
   };
 
   // First graph value
-  const updateFirstGraph=(  e: React.ChangeEvent<HTMLInputElement>,
-    value: string)=>{
-      setGrpah1(value)
-  }
+  const updateFirstGraph = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    setGrpah1(value);
+  };
   const updateSecondGraph = (
     e: React.ChangeEvent<HTMLInputElement>,
     value: string
@@ -212,8 +213,8 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
     setGraph2(value);
   };
 
-  console.log("1-2-3",graphBase, graph1,graph2);
-  
+  console.log("1-2-3", graphBase, graph1, graph2);
+
   const CompariosnCountryData = [
     ["Country", "ACTIVE", "INACTIVE"],
     [
@@ -298,13 +299,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
         .filter((ele) => ele.status === "INACTIVE").length,
     ],
   ];
-  const CompariosnData = [
-
-    [graphBase,graph1,graph2],
-    
-
-
-  ];
+  const CompariosnData = [[graphBase, graph1, graph2]];
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -312,16 +307,9 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
           <Grid item xs={6}>
             <Grid container spacing={2}>
               <Grid item xs={9}>
+                <CustomerPieChart   cityData={cityData} />
 
-
-             
-
-                <Chart
-                  chartType="PieChart"
-                  data={cityData}
-                  width={"100%"}
-                  height={"320px"}
-                />
+               
               </Grid>
               <Grid item xs={3} mt={2}>
                 <Stack>
@@ -400,7 +388,9 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
                     id="graph-base"
                     disableClearable
                     size="small"
-                    options={comparisonGraphDataVal?.map((option) => option.label)}
+                    options={comparisonGraphDataVal?.map(
+                      (option) => option.label
+                    )}
                     renderInput={(params) => (
                       <TextField
                         {...params}
@@ -424,7 +414,9 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
                     id="graph-base"
                     disableClearable
                     size="small"
-                    options={comparisonGraphDataVal?.map((option) => option.label)}
+                    options={comparisonGraphDataVal?.map(
+                      (option) => option.label
+                    )}
                     renderInput={(params) => (
                       <TextField
                         {...params}
@@ -447,7 +439,6 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
                 data={CompariosnCountryData}
               />
               comparison data graph
-
               <Chart
                 chartType="Bar"
                 width="100%"
