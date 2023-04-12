@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
-const BuilderHeaderComponent = ({projectInfo}) => {
+const BuilderHeaderComponent = ({ projectInfo }) => {
   return (
     <Box padding={2}>
       <Grid container>
