@@ -4,7 +4,7 @@ import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import HeaderComponent from "../../component/common/header";
 import Logo from "../../component/common/Sidebar/logo";
-import SidebarComponent from "../../component/common/Sidebar/sidebar.component";
+import SidebarComponent from "../../builder/menu/sidebar/sidebar.component";
 import InnerLayout from "./inner-layout/inner.layout";
 import { IMenuListSet } from "./templateInterface/template.interface";
 const LayoutTemplate = ({

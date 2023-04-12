@@ -7,7 +7,7 @@ interface logoProps {
   toggleMenu: boolean;
   handleMenu: () => void;
 }
-const Logo = ({ handleMenu, toggleMenu }: logoProps) => {
+const SidebarLogo = ({ handleMenu, toggleMenu }: logoProps) => {
   return (
     <div
       style={{ display: "flex", alignItems: "center", paddingBottom: "1rem" }}
@@ -34,4 +34,4 @@ const Logo = ({ handleMenu, toggleMenu }: logoProps) => {
   );
 };
 
-export default Logo;
+export default SidebarLogo;

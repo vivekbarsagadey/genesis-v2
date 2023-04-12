@@ -12,7 +12,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { headerstyle as style } from "./header.style";
 
-const HeaderComponent = ({ project }) => {
+const HeaderComponent = () => {
   const { data: session } = useSession();
   const [openMenu, setOpenMenu] = useState<null | HTMLElement>(null);
   const open = Boolean(openMenu);

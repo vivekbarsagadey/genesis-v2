@@ -13,7 +13,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { headerstyle as style } from "./project.style";
 
-const ProjectSidebar = ({ show }) => {
+interface sidebarProps {
+  toggleMenu: boolean;
+}
+
+const ProjectSidebar = ({ toggleMenu }:sidebarProps) => {
   const [selectedIndex, setSelectedIndex] = useState();
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -27,7 +31,7 @@ const ProjectSidebar = ({ show }) => {
         <Link href="/dashboard" passHref style={{ textDecoration: "none" }}>
           <ListItemButton selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 0)}>
             <ListItemIcon><DashboardIcon fontSize={"small"} /></ListItemIcon>
-            {show && (
+            {toggleMenu && (
               <Typography display={{ xs: "none", sm: "none", md: "block" }} style={style.typography}>
                 Dashboard
               </Typography>
@@ -38,7 +42,7 @@ const ProjectSidebar = ({ show }) => {
         <Link href="/report" passHref style={{ textDecoration: "none" }}>
           <ListItemButton selected={selectedIndex === 1} onClick={(event) => handleListItemClick(event, 1)}>
             <ListItemIcon><ReportIcon fontSize={"small"} /></ListItemIcon>{" "}
-            {show && (
+            {toggleMenu && (
               <Typography display={{ xs: "none", sm: "none", md: "block" }} style={style.typography}>
                 Report
               </Typography>
@@ -49,7 +53,7 @@ const ProjectSidebar = ({ show }) => {
         <Link href="/project" passHref style={{ textDecoration: "none" }}>
           <ListItemButton selected={selectedIndex === 2} onClick={(event) => handleListItemClick(event, 2)}>
             <ListItemIcon> <AppsIcon fontSize={"small"} /></ListItemIcon>
-            {show && (
+            {toggleMenu && (
               <Typography display={{ xs: "none", sm: "none", md: "block" }} style={style.typography}>
                 Project
               </Typography>
@@ -60,7 +64,7 @@ const ProjectSidebar = ({ show }) => {
         <Link href="/company" passHref style={{ textDecoration: "none" }}>
           <ListItemButton selected={selectedIndex === 3} onClick={(event) => handleListItemClick(event, 3)}>
             <ListItemIcon><StoreIcon fontSize={"small"} /></ListItemIcon>
-            {show && (
+            {toggleMenu && (
               <Typography display={{ xs: "none", sm: "none", md:"block"}}style={style.typography}>
                 Company
               </Typography>
@@ -73,7 +77,7 @@ const ProjectSidebar = ({ show }) => {
             onClick={(event) => handleListItemClick(event, 4)}
           >
             <ListItemIcon><SupportAgentIcon fontSize={"small"} /></ListItemIcon>
-            {show && (
+            {toggleMenu && (
               <Typography display={{ xs: "none", sm: "none", md: "block" }} style={style.typography}>
                 Customer
               </Typography>

@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import { useState, useEffect } from "react";
 import { Case, Switch } from "react-if";
 import Logo from "../component/common/Sidebar/logo";
+import SidebarComponent from "./menu/sidebar/sidebar.component";
 import { findById } from "../services/api.service";
 import BuilderHeaderComponent from "./header/header";
 import BuilderSidebarComponent from "./menu/sidebar/builder.sidebar.component";
@@ -35,12 +36,14 @@ const BuilderHome = ({ id }) => {
   const updateScreen = (typeRec: string) => {
     setScreenToggle(typeRec);
   };
+
   return (
     <Box>
       <Grid container>
         <Grid item xs={2}>
           <Logo handleMenu={handleMenu} toggleMenu={toggleMenu} />
-          <BuilderSidebarComponent toggleMenu={toggleMenu} />
+          {/* <BuilderSidebarComponent toggleMenu={toggleMenu} /> */}
+          <SidebarComponent toggleMenu={toggleMenu}/>
         </Grid>
         <Grid item xs={10}>
           <Grid item xs={12}>

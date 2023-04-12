@@ -20,7 +20,7 @@
             {
               "id": "sbmitButtons",
               "name": "sbuButtons",
-              "label": "Submit",
+              "label": "SubmitButton",
               "title": "SubButtons",
               "icon": "SmartDisplayIcon",
               "componentId": "buttonComponent",
@@ -30,7 +30,7 @@
             {
               "id": "hoverButtons",
               "name": "hovrButtons",
-              "label": "Hover",
+              "label": "HoverButton",
               "title": "HoverButtons",
               "icon": "FiberSmartRecordIcon",
               "componentId": "buttonComponent",
@@ -131,7 +131,7 @@
         {
           "id": "loginwithEmail",
           "name": "LoginwithEmail",
-          "label": "Login With Email",
+          "label": "LoginWithEmail",
           "title": "LoginwithEmail",
           "icon": "EmailIcon",
           "componentId": "loginwithEmail",
