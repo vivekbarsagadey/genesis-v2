@@ -1,10 +1,8 @@
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
-import { Case, Default, Switch } from "react-if";
-import PieChart from "react-pie-graph-chart";
 import CompanyPieChart from "./pie.chart";
 import { ListComponentProps } from "./props";
 
@@ -83,52 +81,6 @@ const CustomerGraphView = ({ companies }: ListComponentProps) => {
 
   return (
     <Box mr={2}>
-      {/* <Paper variant="outlined" style={{ height: "83vh" }}>
-        <Grid container mt={2}>
-          <Grid item xs={2.8} ml={0.5}>
-            <Stack>
-              <Autocomplete
-                value={graphView}
-                onChange={updateGrpahView}
-                freeSolo
-                id="companies-select-type"
-                disableClearable
-                size="small"
-                options={graphTypeVal?.map((option) => option)}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    InputProps={{
-                      ...params.InputProps,
-                      type: "search",
-                    }}
-                    placeholder="Select Graph View"
-                  />
-                )}
-              />
-            </Stack>
-          </Grid>
-          <Grid item xs={5}>
-            <Typography fontSize={"1.1rem"} mt={2} textAlign={"center"}>
-              {graphView.toUpperCase()} GRAPH
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Switch>
-              <Case condition={graphView === "country"}>
-                <CountryChart countryData={countryData} />
-              </Case>
-              <Case condition={graphView === "state"}>
-                <StateChart stateData={stateData} />
-              </Case>
-
-              <Default>
-                <PieChart data={statusData} />
-              </Default>
-            </Switch>
-          </Grid>
-        </Grid>
-      </Paper> */}
       <Grid container>
         <Grid item xs={6}>
           <Grid container>
@@ -171,12 +123,5 @@ const CustomerGraphView = ({ companies }: ListComponentProps) => {
     </Box>
   );
 };
-
-// const CountryChart = ({ countryData }) => {
-//   return <PieChart data={countryData} />;
-// };
-// const StateChart = ({ stateData }) => {
-//   return <PieChart data={stateData} />;
-// };
 
 export default CustomerGraphView;

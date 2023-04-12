@@ -13,7 +13,7 @@
           "name": "Button",
           "label": "Button",
           "title": "Buttons",
-          "icon": "LabelIcon",
+          "icon": "DoneIcon",
           "componentId": "buttonComponent",
           "image": "../public/item/Button_Default_Active.png",
           "items": [
@@ -22,7 +22,7 @@
               "name": "sbuButtons",
               "label": "SubmitButton",
               "title": "SubButtons",
-              "icon": "SmartDisplayIcon",
+              "icon": "DoneIcon",
               "componentId": "buttonComponent",
               "image_disabled_button": "../public/item/Button_Disabled.png",
               "items": [
@@ -62,7 +62,7 @@
               "name": "hovrButtons",
               "label": "HoverButton",
               "title": "HoverButtons",
-              "icon": "FiberSmartRecordIcon",
+              "icon": "EditAttributesIcon",
               "componentId": "buttonComponent",
               "image_hover_button": "../public/item/Button_Hover_Color.png",
               "items": [
