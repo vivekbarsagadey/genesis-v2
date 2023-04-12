@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
-const BuilderHeaderComponent = () => {
+const BuilderHeaderComponent = ({projectInfo}) => {
   return (
     <Box padding={2}>
       <Grid container>
@@ -21,7 +21,7 @@ const BuilderHeaderComponent = () => {
           <Button variant="contained" size="small">
             New
           </Button>
-          <Typography>Project Name</Typography>
+          <Typography>{projectInfo.name}</Typography>
         </Grid>
         <Grid item xs={8}></Grid>
         <Grid

@@ -5,7 +5,7 @@ import { Switch, Case, Default } from "react-if";
 import {  Typography } from "@mui/material";
 
 
-const Properties = () => {
+const PropertiesComponent = () => {
   const [sectionType, setSectionType] = useState<string>("");
   const updateSection = (typeRecv: string) => {
     setSectionType(typeRecv);
@@ -168,4 +168,4 @@ const Properties = () => {
     </div>
   );
 };
-export default Properties;
+export default PropertiesComponent;

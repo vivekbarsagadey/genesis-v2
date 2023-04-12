@@ -83,7 +83,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
   };
 
   return (
-    <>
+    <ProjectContext.Provider value={items.id}>
       <Box mt={0.6} mr={2}>
         <Paper variant="outlined">
           <Grid container>
@@ -166,12 +166,10 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
           onClose={handelCloseBuilder}
           TransitionComponent={Transition}
         >
-          <ProjectContext.Provider value={items.id}>
-            <BuilderHome />
-          </ProjectContext.Provider>
+          <BuilderHome   id={items.id} />
         </Dialog>
       </Box>
-    </>
+    </ProjectContext.Provider>
   );
 };
 export default InfoProjectComponent;
