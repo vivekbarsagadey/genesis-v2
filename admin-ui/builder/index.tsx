@@ -11,10 +11,10 @@ import BuilderSidebarComponent from "./menu/sidebar/builder.sidebar.component";
 import Properties from "./screens/properties";
 const BuilderHome = () => {
   const value = React.useContext(ProjectContext); // id value is inside value for fetch call
-  const [show, setShow] = useState(true);
+  const [toggleMenu, setToggleMenu] = useState(true);
   const [screenToggle, setScreenToggle] = useState<string>("");
   const handleMenu = () => {
-    setShow(!show);
+    setToggleMenu(!toggleMenu);
   };
   const handleDelete = () => {
     console.info("You clicked the delete icon.");
@@ -28,8 +28,8 @@ const BuilderHome = () => {
     <Box>
       <Grid container>
         <Grid item xs={2}>
-          <Logo handleMenu={handleMenu} show={show} />
-          <BuilderSidebarComponent show={show} />
+          <Logo handleMenu={handleMenu} toggleMenu={toggleMenu} />
+          <BuilderSidebarComponent toggleMenu={toggleMenu} />
         </Grid>
         <Grid item xs={10}>
           <Grid item xs={12}>

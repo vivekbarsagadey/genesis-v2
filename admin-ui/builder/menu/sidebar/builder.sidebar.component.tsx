@@ -23,7 +23,7 @@ import Grid4x4Icon from "@mui/icons-material/Grid4x4";
 
 interface ISideBar {
   menuList: IMenuListSet[];
-  show: Boolean;
+  toggleMenu: Boolean;
   updateMyDragImages: any;
 }
 const Accordion = styled((props: AccordionProps) => (
@@ -54,7 +54,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 const BuilderSidebarComponent = ({
   menuList,
-  show,
+  toggleMenu,
   updateMyDragImages,
 }: ISideBar) => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
@@ -116,7 +116,7 @@ const BuilderSidebarComponent = ({
                 <Accordion onChange={handleChange("panel1")}>
                   <AccordionSummary>
                     <Grid container>
-                      {show && (
+                      {toggleMenu && (
                         <Grid item xs={1}>
                           <Typography
                             style={{
@@ -138,7 +138,7 @@ const BuilderSidebarComponent = ({
                             <Grid item xs={12}>
                               <Grid container>
                                 <Grid item xs={9}>
-                                  <ItemComponet d={d} show={show} />
+                                  <ItemComponet d={d} toggleMenu={toggleMenu} />
                                 </Grid>
                               </Grid>
                             </Grid>

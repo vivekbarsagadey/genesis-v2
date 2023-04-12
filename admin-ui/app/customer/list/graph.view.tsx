@@ -6,6 +6,7 @@ import moment from "moment";
 import React, { useState } from "react";
 import { Chart } from "react-google-charts";
 import CustomerPieChart from "./pie.chart";
+import { ListComponentProps } from "./props";
 
 const options = {
   vAxis: { title: "Customer Created" },
@@ -388,7 +389,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
                     value={graph1}
                     onChange={updateFirstGraph}
                     freeSolo
-                    id="graph-base"
+                    id="graph-1"
                     disableClearable
                     size="small"
                     options={comparisonGraphDataVal?.map(
@@ -401,7 +402,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
                           ...params.InputProps,
                           type: "search",
                         }}
-                        placeholder="Select Base"
+                        placeholder="Select Graph 1"
                       />
                     )}
                   />
@@ -414,7 +415,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
                     value={graph2}
                     onChange={updateSecondGraph}
                     freeSolo
-                    id="graph-base"
+                    id="graph-2"
                     disableClearable
                     size="small"
                     options={comparisonGraphDataVal?.map(
@@ -427,7 +428,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
                           ...params.InputProps,
                           type: "search",
                         }}
-                        placeholder="Select Base"
+                        placeholder="Select Graph 2"
                       />
                     )}
                   />

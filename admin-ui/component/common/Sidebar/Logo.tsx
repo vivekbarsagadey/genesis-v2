@@ -4,15 +4,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ListIcon from "@mui/icons-material/List";
 
 interface logoProps {
-  show: boolean;
+  toggleMenu: boolean;
   handleMenu: () => void;
 }
-const Logo = ({ handleMenu, show }: logoProps) => {
+const Logo = ({ handleMenu, toggleMenu }: logoProps) => {
   return (
     <div
       style={{ display: "flex", alignItems: "center", paddingBottom: "1rem" }}
     >
-      {show && (
+      {toggleMenu && (
         <Grid
           textAlign={"left"}
           pt={1}
@@ -27,7 +27,7 @@ const Logo = ({ handleMenu, show }: logoProps) => {
       )}
       <div>
         <IconButton onClick={handleMenu}>
-          {show ? <MenuIcon /> : <ListIcon />}
+          {toggleMenu ? <MenuIcon /> : <ListIcon />}
         </IconButton>
       </div>
     </div>
