@@ -42,14 +42,14 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
-const SidebarComponent = ({ toggleMenu,getItemValue }) => {
+const SidebarComponent = ({ toggleMenu,getGeneralData }) => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
     };
   
-  console.log("genisys --->",genisys);
+  // console.log("genisys --->",genisys);
 
   return (
     <>
@@ -117,7 +117,7 @@ const SidebarComponent = ({ toggleMenu,getItemValue }) => {
                                 <SideBarInnerList
                                   d={d}
                                   toggleMenu={toggleMenu}
-                                  getItemValue={getItemValue}
+                                  getGeneralData={getGeneralData}
                                 />
                               </AccordionDetails>
                             );

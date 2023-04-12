@@ -14,12 +14,12 @@ import Collapse from "@mui/material/Collapse";
 import Switch, { Case, Default } from "react-switch-case";
 import SideBarInnerText from "./sidebar.inner.text";
 
-const SideBarInnerList = ({ d, toggleMenu,getItemValue }) => {
+const SideBarInnerList = ({ d, toggleMenu, getGeneralData }) => {
   const [openInnerList, setOpenInnerList] = useState(false);
 
   const expandInnerList = (ItemRecv) => {
-    
-    getItemValue(ItemRecv)
+   getGeneralData(ItemRecv.id)
+   
     setOpenInnerList(!openInnerList);
   };
 

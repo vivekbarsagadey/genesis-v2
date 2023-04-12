@@ -2,7 +2,7 @@
 import { Grid } from "@material-ui/core";
 import { Chip, Paper, Stack } from "@mui/material";
 import Box from "@mui/material/Box";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { Case, Switch } from "react-if";
 import Logo from "../component/common/Sidebar/logo";
 import SidebarComponent from "./menu/sidebar/sidebar.component";
@@ -12,8 +12,10 @@ import BuilderSidebarComponent from "./menu/sidebar/builder.sidebar.component";
 import PropertiesComponent from "./screens/properties.component";
 import ScreenComponent from "./screens/screen.component";
 import ScreenSelectComponent from "./screens/screen.select.component";
+
+export const ProjectContext = createContext();
+
 const BuilderHome = ({ id }) => {
-  // const value = React.useContext(ProjectContext); // id value is inside value for fetch call
   const [projectInfo, setProjectInfo] = useState([]);
   const info = findById("projects", id);
   useEffect(() => {
@@ -27,7 +29,12 @@ const BuilderHome = ({ id }) => {
   }, []);
   const [toggleMenu, setToggleMenu] = useState(true);
   const [screenToggle, setScreenToggle] = useState<string>("");
-  const [generalData, setGeneralData]= useState(null)
+  const [generalData, setGeneralData] = useState([]);
+
+  const getGeneralData = (idRecv) => {
+    setGeneralData(idRecv);
+  };
+
   const handleMenu = () => {
     setToggleMenu(!toggleMenu);
   };
@@ -38,47 +45,45 @@ const BuilderHome = ({ id }) => {
     setScreenToggle(typeRec);
   };
 
-  const getItemValue=(items)=>{
-    console.log("items ()-()",items );
-    setGeneralData(items)
-    
-
-  }
   return (
-    <Box>
-      <Grid container>
-        <Grid item xs={2}>
-          <Logo handleMenu={handleMenu} toggleMenu={toggleMenu} />
-          {/* <BuilderSidebarComponent toggleMenu={toggleMenu} /> */}
-          <SidebarComponent toggleMenu={toggleMenu}   getItemValue={getItemValue}  />
-        </Grid>
-        <Grid item xs={10}>
-          <Grid item xs={12}>
-            <BuilderHeaderComponent projectInfo={projectInfo} />
+    <ProjectContext.Provider value={generalData}>
+      <Box>
+        <Grid container>
+          <Grid item xs={2}>
+            <Logo handleMenu={handleMenu} toggleMenu={toggleMenu} />
+            <SidebarComponent
+              toggleMenu={toggleMenu}
+              getGeneralData={getGeneralData}
+            />
           </Grid>
-          <Grid item xs={12}>
-            <Grid container spacing={0}>
-              <Grid item xs={12} style={{ display: "flex" }}>
-                <ScreenComponent
-                  updateScreen={updateScreen}
-                  handleDelete={handleDelete}
-                />
-              </Grid>
-              <Grid
-                item
-                xs={9}
-                style={{ background: "#e2e8f0", height: "84vh" }}
-              >
-                <ScreenSelectComponent screenToggle={screenToggle} />
-              </Grid>
-              <Grid item xs={3}>
-                <PropertiesComponent  generalData={generalData} />
+          <Grid item xs={10}>
+            <Grid item xs={12}>
+              <BuilderHeaderComponent projectInfo={projectInfo} />
+            </Grid>
+            <Grid item xs={12}>
+              <Grid container spacing={0}>
+                <Grid item xs={12} style={{ display: "flex" }}>
+                  <ScreenComponent
+                    updateScreen={updateScreen}
+                    handleDelete={handleDelete}
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={9}
+                  style={{ background: "#e2e8f0", height: "84vh" }}
+                >
+                  <ScreenSelectComponent screenToggle={screenToggle} />
+                </Grid>
+                <Grid item xs={3}>
+                  <PropertiesComponent />
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </ProjectContext.Provider>
   );
 };
 export default BuilderHome;

@@ -52,7 +52,7 @@ type InfoCustomerComponentProps = {
   items: IProject;
 };
 
-export const ProjectContext = React.createContext();
+// export const ProjectContext = React.createContext();
 
 const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
   const router = useRouter();
@@ -83,7 +83,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
   };
 
   return (
-    <ProjectContext.Provider value={items.id}>
+    <>
       <Box mt={0.6} mr={2}>
         <Paper variant="outlined">
           <Grid container>
@@ -166,10 +166,10 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
           onClose={handelCloseBuilder}
           TransitionComponent={Transition}
         >
-          <BuilderHome   id={items.id} />
+          <BuilderHome id={items.id} />
         </Dialog>
       </Box>
-    </ProjectContext.Provider>
+    </>
   );
 };
 export default InfoProjectComponent;

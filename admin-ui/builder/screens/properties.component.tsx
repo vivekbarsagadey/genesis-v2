@@ -1,24 +1,32 @@
-import { Button, Grid } from "@material-ui/core";
 import React, { useState } from "react";
+import { Button, Grid } from "@material-ui/core";
 import Property from "../../app/template/property-component/Property";
 import { Switch, Case, Default } from "react-if";
 import { Typography } from "@mui/material";
+import { ProjectContext } from "..";
+import genisys from "../../data/genisys.json";
 
-const PropertiesComponent = ({ generalData }) => {
+const PropertiesComponent = () => {
+  const value = React.useContext(ProjectContext);
+
+  const dataSet = genisys.categories.map((d) => d.items);
+
+  var filterData = [];
+  for (var i = 0; i < dataSet.length; i++) {
+    filterData = filterData.concat(dataSet[i]);
+  }
+
+  const generalInformation = filterData.filter((d) => d.id == value);
+  const propertyTabInfo = generalInformation.map((d) => d.general);
+
+  const info =propertyTabInfo[0]  
+  console.log("propertyTabInfo ", info.map(  (d)=> d ));
+
   const [sectionType, setSectionType] = useState<string>("");
+
   const updateSection = (typeRecv: string) => {
     setSectionType(typeRecv);
   };
-  console.log("generalData >>",generalData);
-  
-  const propertyData = generalData?.general.filter(
-    (ele) => ele.id === "properties"
-  );
-  const cssData = generalData?.general.filter((ele) => ele.id === "css");
-
-  const modelData = generalData?.general.filter((ele) => ele.id === "model");
-  const apiData = generalData?.general.filter((ele) => ele.id === "api");
- 
 
   return (
     <div>
@@ -88,7 +96,8 @@ const PropertiesComponent = ({ generalData }) => {
                   </Grid>
                   <Grid item xs={6}>
                     <Grid container>
-                      {propertyData?.map((property, index) => {
+                      skjdkjsdkj
+                      {info?.map((property, index) => {
                         return (
                           <Grid item xs={12} key={index}>
                             <Typography>{property.background}</Typography>
