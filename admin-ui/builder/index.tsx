@@ -27,14 +27,14 @@ const BuilderHome = ({ id }) => {
         console.log(e.message);
       });
   }, []);
-  console.log("projectInfo >>",projectInfo);
   
   const [toggleMenu, setToggleMenu] = useState(true);
   const [screenToggle, setScreenToggle] = useState<string>("");
-  const [generalData, setGeneralData] = useState(null);
+  // const [generalData, setGeneralData] = useState(null);
+  const [componentId, setComponentId] = useState(null);
 
-  const getGeneralData = (idRecv) => {
-    setGeneralData(idRecv);
+  const getComponentId = (idRecv) => {
+    setComponentId(idRecv);
   };
 
   const handleMenu = () => {
@@ -49,14 +49,14 @@ const BuilderHome = ({ id }) => {
 
   
   return (
-    <ProjectContext.Provider value={generalData}>
+    <ProjectContext.Provider value={componentId}>
       <Box>
         <Grid container>
           <Grid item xs={2}>
             <Logo handleMenu={handleMenu} toggleMenu={toggleMenu} />
             <SidebarComponent
               toggleMenu={toggleMenu}
-              getGeneralData={getGeneralData}
+              getComponentId={getComponentId}
             />
           </Grid>
           <Grid item xs={10}>

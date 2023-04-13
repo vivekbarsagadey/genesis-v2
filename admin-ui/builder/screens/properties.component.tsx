@@ -14,11 +14,19 @@ import Divider from '@mui/material/Divider';
 
 const PropertiesComponent = () => {
   const value = React.useContext(ProjectContext);
-  console.log("Value >>>", value);
   const [sectionType, setSectionType] = useState<string>("");
   const updateSection = (typeRecv: string) => {
     setSectionType(typeRecv);
   };
+
+  console.log("Component Id >>>", value);
+
+  console.log("genisys >>",genisys);
+
+  console.log("getComponentMetaData", 
+      genisys?.component.filter(  (ele)=> ele.id == value  )
+  );
+
   return (
     <div>
       <Grid container>
