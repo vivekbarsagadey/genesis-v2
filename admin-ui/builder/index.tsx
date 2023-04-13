@@ -27,6 +27,8 @@ const BuilderHome = ({ id }) => {
         console.log(e.message);
       });
   }, []);
+  console.log("projectInfo >>",projectInfo);
+  
   const [toggleMenu, setToggleMenu] = useState(true);
   const [screenToggle, setScreenToggle] = useState<string>("");
   const [generalData, setGeneralData] = useState(null);

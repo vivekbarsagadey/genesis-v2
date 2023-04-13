@@ -35,36 +35,6 @@
               "componentId": "buttonComponent",
               "image_hover_button": "../public/item/Button_Hover_Color.png"
             }
-          ],
-          "general": [
-            {
-              "id": "properties",
-              "parentId": "buttons",
-              "background": "red",
-              "borderRadius": "20px",
-              "height": "80vh",
-              "overflowY": "overflowY",
-              "position": "absolute",
-              "width": "80%"
-            },
-            {
-              "id": "css",
-              "parentId": "buttons",
-              "borderRadius": "20px",
-              "height": "60vh",
-              "overflowY": "overflowY",
-              "width": "20%"
-            },
-            {
-              "id": "model",
-              "parentId": "buttons",
-              "width": "50%"
-            },
-            {
-              "id": "api",
-              "parentId": "buttons",
-              "url": "https://tailwindcss.com/docs"
-            }
           ]
         },
         {
@@ -74,37 +44,7 @@
           "title": "Emails",
           "icon": "EmailIcon",
           "componentId": "emailComponent",
-          "image": "../public/item/Input_Email.png",
-          "general": [
-            {
-              "id": "properties",
-              "parentId": "emails",
-              "background": "yellow",
-              "borderRadius": "30px",
-              "height": "98vh",
-              "overflowY": "overflowY",
-              "position": "absolute",
-              "width": "80%"
-            },
-            {
-              "id": "css",
-              "parentId": "emails",
-              "borderRadius": "20px",
-              "height": "320vh",
-              "overflowY": "overflowY",
-              "width": "20%"
-            },
-            {
-              "id": "model",
-              "parentId": "emails",
-              "width": "20%"
-            },
-            {
-              "id": "api",
-              "parentId": "emails",
-              "url": "https://emailsdata.com/docs"
-            }
-          ]
+          "image": "../public/item/Input_Email.png"
         },
         {
           "id": "passwords",
@@ -113,37 +53,7 @@
           "title": "Passwords",
           "icon": "LockOpenIcon",
           "componentId": "passwordComponent",
-          "image": "../public/item/Input_Password.png",
-          "general": [
-            {
-              "id": "properties",
-              "parentId": "passwords",
-              "background": "red",
-              "borderRadius": "20px",
-              "height": "80vh",
-              "overflowY": "overflowY",
-              "position": "absolute",
-              "width": "80%"
-            },
-            {
-              "id": "css",
-              "parentId": "passwords",
-              "borderRadius": "20px",
-              "height": "60vh",
-              "overflowY": "overflowY",
-              "width": "20%"
-            },
-            {
-              "id": "model",
-              "parentId": "passwords",
-              "width": "50%"
-            },
-            {
-              "id": "api",
-              "parentId": "passwords",
-              "url": "https://passwords.com/docs"
-            }
-          ]
+          "image": "../public/item/Input_Password.png"
         },
         {
           "id": "cnfrmpasswords",
@@ -152,37 +62,7 @@
           "title": "ConfirmPasswords",
           "icon": "LockClockIcon",
           "componentId": "confirmpasswordComponent",
-          "image_confirm_password": "../public/item/Input_Confirm_Password.png",
-          "general": [
-            {
-              "id": "properties",
-              "parentId": "cnfrmpasswords",
-              "background": "red",
-              "borderRadius": "20px",
-              "height": "80vh",
-              "overflowY": "overflowY",
-              "position": "absolute",
-              "width": "80%"
-            },
-            {
-              "id": "css",
-              "parentId": "cnfrmpasswords",
-              "borderRadius": "20px",
-              "height": "60vh",
-              "overflowY": "overflowY",
-              "width": "20%"
-            },
-            {
-              "id": "model",
-              "parentId": "cnfrmpasswords",
-              "width": "50%"
-            },
-            {
-              "id": "api",
-              "parentId": "cnfrmpasswords",
-              "url": "https://cnfrmpasswords.com/docs"
-            }
-          ]
+          "image_confirm_password": "../public/item/Input_Confirm_Password.png"
         },
         {
           "id": "numbers",
@@ -191,37 +71,7 @@
           "title": "Numbers",
           "icon": "FormatListNumberedIcon",
           "componentId": "numberComponent",
-          "image": "../public/item/Input_Number.png",
-          "general": [
-            {
-              "id": "properties",
-              "parentId": "numbers",
-              "background": "red",
-              "borderRadius": "20px",
-              "height": "80vh",
-              "overflowY": "overflowY",
-              "position": "absolute",
-              "width": "80%"
-            },
-            {
-              "id": "css",
-              "parentId": "numbers",
-              "borderRadius": "20px",
-              "height": "60vh",
-              "overflowY": "overflowY",
-              "width": "20%"
-            },
-            {
-              "id": "model",
-              "parentId": "numbers",
-              "width": "50%"
-            },
-            {
-              "id": "api",
-              "parentId": "numbers",
-              "url": "https://numbers.com/docs"
-            }
-          ]
+          "image": "../public/item/Input_Number.png"
         },
         {
           "id": "checkboxes",
@@ -230,37 +80,7 @@
           "title": "Checkboxes",
           "icon": "CheckBoxIcon",
           "componentId": "checkboxComponent",
-          "image": "../public/item/Checkbox.png",
-          "general": [
-            {
-              "id": "properties",
-              "parentId": "numbers",
-              "background": "red",
-              "borderRadius": "20px",
-              "height": "80vh",
-              "overflowY": "overflowY",
-              "position": "absolute",
-              "width": "80%"
-            },
-            {
-              "id": "css",
-              "parentId": "numbers",
-              "borderRadius": "20px",
-              "height": "60vh",
-              "overflowY": "overflowY",
-              "width": "20%"
-            },
-            {
-              "id": "model",
-              "parentId": "numbers",
-              "width": "50%"
-            },
-            {
-              "id": "api",
-              "parentId": "numbers",
-              "url": "https://numbers.com/docs"
-            }
-          ]
+          "image": "../public/item/Checkbox.png"
         },
         {
           "id": "dropdowns",
@@ -269,37 +89,7 @@
           "title": "Dropdown",
           "icon": "ArrowDropDownCircleIcon",
           "componentId": "dropdownComponent",
-          "image": "../public/item/Input_Dropdown.png",
-          "general": [
-            {
-              "id": "properties",
-              "parentId": "numbers",
-              "background": "red",
-              "borderRadius": "20px",
-              "height": "80vh",
-              "overflowY": "overflowY",
-              "position": "absolute",
-              "width": "80%"
-            },
-            {
-              "id": "css",
-              "parentId": "numbers",
-              "borderRadius": "20px",
-              "height": "60vh",
-              "overflowY": "overflowY",
-              "width": "20%"
-            },
-            {
-              "id": "model",
-              "parentId": "numbers",
-              "width": "50%"
-            },
-            {
-              "id": "api",
-              "parentId": "numbers",
-              "url": "https://numbers.com/docs"
-            }
-          ]
+          "image": "../public/item/Input_Dropdown.png"
         },
         {
           "id": "text",
@@ -308,37 +98,7 @@
           "title": "Text",
           "icon": "FormatSizeIcon",
           "componentId": "textComponent",
-          "image": "../public/item/text.png",
-          "general": [
-            {
-              "id": "properties",
-              "parentId": "numbers",
-              "background": "red",
-              "borderRadius": "20px",
-              "height": "80vh",
-              "overflowY": "overflowY",
-              "position": "absolute",
-              "width": "80%"
-            },
-            {
-              "id": "css",
-              "parentId": "numbers",
-              "borderRadius": "20px",
-              "height": "60vh",
-              "overflowY": "overflowY",
-              "width": "20%"
-            },
-            {
-              "id": "model",
-              "parentId": "numbers",
-              "width": "50%"
-            },
-            {
-              "id": "api",
-              "parentId": "numbers",
-              "url": "https://numbers.com/docs"
-            }
-          ]
+          "image": "../public/item/text.png"
         }
       ]
     },
@@ -445,6 +205,18 @@
           "componentId": "Grid_4x3Component"
         }
       ]
+    }
+  ],
+  "grid": [],
+  "component": [
+    {
+      
+      "id": "buttons",
+      "label": "Button",
+      "property": {
+        "label": ""
+      },
+      "ui": {}
     }
   ]
 }
