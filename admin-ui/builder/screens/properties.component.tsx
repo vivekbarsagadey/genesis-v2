@@ -10,6 +10,34 @@ import ButtonCssComponent from "../components/button/css.component";
 import ButtonModelComponent from "../components/button/model.component";
 import ButtonApiComponent from "../components/button/api.component";
 import Divider from "@mui/material/Divider";
+import EmailPropertiesComponent from "../components/email/properties.component";
+import PasswordPropertiesComponent from "../components/password/properties.component";
+import ConfirmPasswordPropertiesComponent from "../components/confirm.password/properties.component";
+import DropdownPropertiesComponent from "../components/dropdown/properties.component";
+import NumberPropertiesComponent from "../components/number/properties.component";
+import TextPropertiesComponent from "../components/text/properties.component";
+import CheckboxPropertiesComponent from "../components/checkbox/properties.component";
+import EmailCssComponent from "../components/email/css.component";
+import PasswordCssComponent from "../components/password/css.component";
+import ConfirmPasswordCssComponent from "../components/confirm.password/css.component";
+import DropdownCssComponent from "../components/dropdown/css.component";
+import NumberCssComponent from "../components/number/css.component";
+import TextCssComponent from "../components/text/css.component";
+import CheckboxCssComponent from "../components/checkbox/css.component";
+import EmailModelComponent from "../components/email/model.component";
+import PasswordModelComponent from "../components/password/model.component";
+import ConfirmPasswordModelComponent from "../components/confirm.password/model.component";
+import DropdownModelComponent from "../components/dropdown/model.component";
+import NumberModelComponent from "../components/number/model.component";
+import TextModelComponent from "../components/text/model.component";
+import CheckboxModelComponent from "../components/checkbox/model.component";
+import EmailApiComponent from "../components/email/api.component";
+import PasswordApiComponent from "../components/password/api.component";
+import ConfirmPasswordApiComponent from "../components/confirm.password/api.component";
+import DropdownApiComponent from "../components/dropdown/api.component";
+import NumberApiComponent from "../components/number/api.component";
+import TextApiComponent from "../components/text/api.component";
+import CheckboxApiComponent from "../components/checkbox/api.component";
 
 const PropertiesComponent = () => {
   const value = React.useContext(ProjectContext);
@@ -100,15 +128,44 @@ const PropertiesComponent = () => {
         <Switch>
           <Case condition={sectionType === "properties"}>
             <ButtonPropertiesComponent />
+            <EmailPropertiesComponent />
+            <PasswordPropertiesComponent />
+            <ConfirmPasswordPropertiesComponent />
+            <DropdownPropertiesComponent />
+            <NumberPropertiesComponent />
+            <TextPropertiesComponent />
+            <CheckboxPropertiesComponent />
+
           </Case>
           <Case condition={sectionType === "css"}>
             <ButtonCssComponent />
+            <EmailCssComponent />
+            <PasswordCssComponent />
+            <ConfirmPasswordCssComponent />
+            <DropdownCssComponent />
+            <NumberCssComponent />
+            <TextCssComponent />
+            <CheckboxCssComponent />
           </Case>
           <Case condition={sectionType === "model"}>
             <ButtonModelComponent />
+            <EmailModelComponent />
+            <PasswordModelComponent />
+            <ConfirmPasswordModelComponent />
+            <DropdownModelComponent />
+            <NumberModelComponent />
+            <TextModelComponent />
+            <CheckboxModelComponent />
           </Case>
           <Case condition={sectionType === "api"}>
             <ButtonApiComponent />
+            <EmailApiComponent />
+            <PasswordApiComponent />
+            <ConfirmPasswordApiComponent />
+            <DropdownApiComponent />
+            <NumberApiComponent />
+            <TextApiComponent />
+            <CheckboxApiComponent />
           </Case>
         </Switch>
       </Grid>
