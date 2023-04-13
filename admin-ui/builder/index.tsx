@@ -47,6 +47,7 @@ const BuilderHome = ({ id }) => {
     setScreenToggle(typeRec);
   };
 
+  
   return (
     <ProjectContext.Provider value={generalData}>
       <Box>

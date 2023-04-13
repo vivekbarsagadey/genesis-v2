@@ -5,6 +5,10 @@ import { Switch, Case, Default } from "react-if";
 import { Typography } from "@mui/material";
 import { ProjectContext } from "..";
 import genisys from "../../data/genisys.json";
+import ButtonPropertiesComponent from "../components/button/properties.component";
+import ButtonCssComponent from "../components/button/css.component";
+import ButtonModelComponent from "../components/button/model.component";
+import ButtonApiComponent from "../components/button/api.component";
 const PropertiesComponent = () => {
   const value = React.useContext(ProjectContext);
   console.log("Value >>>", value);
@@ -53,98 +57,16 @@ const PropertiesComponent = () => {
         </Grid>
         <Switch>
           <Case condition={sectionType === "properties"}>
-            <Grid container>
-              <Grid item xs={4.5}>
-                <Grid container>
-                  <Grid item xs={6}>
-                    <Grid container>
-                      <Grid item xs={12}>
-                        <Typography>background</Typography>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Typography>borderRadius</Typography>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Typography>height</Typography>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Typography>overflowY</Typography>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Typography>position</Typography>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Typography>width</Typography>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Grid container>
-                      skjdkjsdkj
-                      
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
+            <ButtonPropertiesComponent />
           </Case>
           <Case condition={sectionType === "css"}>
-            <Grid item xs={12}>
-              <Grid container>
-                <Grid item xs={6}>
-                  <Grid container>
-                    <Grid container>
-                      <Grid item xs={12}>
-                        <Typography>borderRadius</Typography>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Typography>height</Typography>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Typography>overflowY</Typography>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Typography>width</Typography>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
-                <Grid item xs={6}>
-                  <Grid container>
-                    <Grid container>
-                      <Grid item xs={12}>
-                        <Typography>20px</Typography>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Typography>60vh</Typography>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Typography>overflowY</Typography>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Typography>20%</Typography>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
+            <ButtonCssComponent />
           </Case>
           <Case condition={sectionType === "model"}>
-            <Grid item xs={6}>
-              <Typography>width</Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <Typography>50%</Typography>
-            </Grid>
+            <ButtonModelComponent />
           </Case>
           <Case condition={sectionType === "api"}>
-            <Grid item xs={4}>
-              <Typography>url</Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <Typography>https://tailwindcss.com/docs</Typography>
-            </Grid>
+            <ButtonApiComponent />
           </Case>
         </Switch>
       </Grid>

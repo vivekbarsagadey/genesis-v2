@@ -210,13 +210,228 @@
   "grid": [],
   "component": [
     {
-      
       "id": "buttons",
       "label": "Button",
       "property": {
-        "label": ""
+        "parentId": "buttons",
+        "background": "red",
+        "borderRadius": "20px",
+        "height": "80vh",
+        "overflowY": "overflowY",
+        "position": "absolute",
+        "width": "80%"
       },
-      "ui": {}
+      "css": {
+        "parentId": "buttons",
+        "borderRadius": "20px",
+        "height": "60vh",
+        "overflowY": "overflowY",
+        "width": "20%"
+      },
+      "model": {
+        "parentId": "buttons",
+        "width": "50%"
+      },
+      "api": {
+        "parentId": "buttons",
+        "url": "https://api.com/docs"
+      }
+    },
+    {
+      "id": "emails",
+      "label": "Email",
+      "property": {
+        "parentId": "emails",
+        "background": "green",
+        "borderRadius": "10px",
+        "height": "11vh",
+        "overflowY": "overflowY",
+        "position": "absolute",
+        "width": "87%"
+      },
+      "css": {
+        "parentId": "emails",
+        "borderRadius": "2px",
+        "height": "6vh",
+        "overflowY": "overflowY",
+        "width": "2%"
+      },
+      "model": {
+        "parentId": "emails",
+        "width": "50%"
+      },
+      "api": {
+        "parentId": "emails",
+        "url": "https://emails.com/docs"
+      }
+    },
+    {
+      "id": "passwords",
+      "label": "Password",
+      "property": {
+        "parentId": "passwords",
+        "background": "yellow",
+        "borderRadius": "1px",
+        "height": "21vh",
+        "overflowY": "overflowY",
+        "position": "absolute",
+        "width": "82%"
+      },
+      "css": {
+        "parentId": "passwords",
+        "borderRadius": "22px",
+        "height": "62vh",
+        "overflowY": "overflowY",
+        "width": "22%"
+      },
+      "model": {
+        "parentId": "passwords",
+        "width": "20%"
+      },
+      "api": {
+        "parentId": "passwords",
+        "url": "https://passwords.com/docs"
+      }
+    },
+    {
+      "id": "cnfrmpasswords",
+      "label": "ConfirmPassword",
+      "property": {
+        "parentId": "cnfrmpasswords",
+        "background": "grey",
+        "borderRadius": "31px",
+        "height": "91vh",
+        "overflowY": "overflowY",
+        "position": "absolute",
+        "width": "32%"
+      },
+      "css": {
+        "parentId": "cnfrmpasswords",
+        "borderRadius": "92px",
+        "height": "87vh",
+        "overflowY": "overflowY",
+        "width": "26%"
+      },
+      "model": {
+        "parentId": "cnfrmpasswords",
+        "width": "90%"
+      },
+      "api": {
+        "parentId": "cnfrmpasswords",
+        "url": "https://cnfrmpasswords.com/docs"
+      }
+    },
+    {
+      "id": "numbers",
+      "label": "Number",
+      "property": {
+        "parentId": "numbers",
+        "background": "blue",
+        "borderRadius": "01px",
+        "height": "1vh",
+        "overflowY": "overflowY",
+        "position": "absolute",
+        "width": "32%"
+      },
+      "css": {
+        "parentId": "numbers",
+        "borderRadius": "92px",
+        "height": "67vh",
+        "overflowY": "overflowY",
+        "width": "26%"
+      },
+      "model": {
+        "parentId": "numbers",
+        "width": "40%"
+      },
+      "api": {
+        "parentId": "numbers",
+        "url": "https://numbers.com/docs"
+      }
+    },
+    {
+      "id": "checkboxes",
+      "label": "Number",
+      "property": {
+        "parentId": "checkboxes",
+        "background": "blue",
+        "borderRadius": "41px",
+        "height": "10vh",
+        "overflowY": "overflowY",
+        "position": "absolute",
+        "width": "52%"
+      },
+      "css": {
+        "parentId": "checkboxes",
+        "borderRadius": "32px",
+        "height": "66vh",
+        "overflowY": "overflowY",
+        "width": "46%"
+      },
+      "model": {
+        "parentId": "checkboxes",
+        "width": "30%"
+      },
+      "api": {
+        "parentId": "checkboxes",
+        "url": "https://checkboxes.com/docs"
+      }
+    },
+    {
+      "id": "dropdowns",
+      "label": "Number",
+      "property": {
+        "parentId": "dropdowns",
+        "background": "orange",
+        "borderRadius": "21px",
+        "height": "70vh",
+        "overflowY": "overflowY",
+        "position": "absolute",
+        "width": "51%"
+      },
+      "css": {
+        "parentId": "dropdowns",
+        "borderRadius": "35px",
+        "height": "69vh",
+        "overflowY": "overflowY",
+        "width": "26%"
+      },
+      "model": {
+        "parentId": "dropdowns",
+        "width": "70%"
+      },
+      "api": {
+        "parentId": "dropdowns",
+        "url": "https://dropdowns.com/docs"
+      }
+    },
+    {
+      "id": "text",
+      "label": "Number",
+      "property": {
+        "parentId": "text",
+        "background": "vilot",
+        "borderRadius": "31px",
+        "height": "30vh",
+        "overflowY": "overflowY",
+        "position": "absolute",
+        "width": "53%"
+      },
+      "css": {
+        "parentId": "text",
+        "borderRadius": "33px",
+        "height": "64vh",
+        "overflowY": "overflowY",
+        "width": "76%"
+      },
+      "model": {
+        "parentId": "text",
+        "width": "10%"
+      },
+      "api": {
+        "parentId": "text",
+        "url": "https://text.com/docs"
+      }
     }
   ]
 }
