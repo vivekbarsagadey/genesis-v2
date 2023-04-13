@@ -9,6 +9,9 @@ import ButtonPropertiesComponent from "../components/button/properties.component
 import ButtonCssComponent from "../components/button/css.component";
 import ButtonModelComponent from "../components/button/model.component";
 import ButtonApiComponent from "../components/button/api.component";
+import Divider from '@mui/material/Divider';
+
+
 const PropertiesComponent = () => {
   const value = React.useContext(ProjectContext);
   console.log("Value >>>", value);
@@ -28,6 +31,8 @@ const PropertiesComponent = () => {
               >
                 Properties
               </Typography>
+                <Divider sx={{ height: 28,}} orientation="vertical" />
+            
             </Grid>
             <Grid item xs={4}>
               <Typography
