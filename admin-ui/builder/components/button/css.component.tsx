@@ -29,7 +29,7 @@ const ButtonCssComponent = () => {
           <Grid item xs={6}>
             <Grid container>
               <Grid item xs={12}>
-                <Typography>yellow</Typography>
+                <Typography>yellow css</Typography>
               </Grid>
               <Grid item xs={12}>
                 <Typography>40px</Typography>

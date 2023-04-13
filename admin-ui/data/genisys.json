@@ -219,22 +219,22 @@
         "height": "80vh",
         "overflowY": "overflowY",
         "position": "absolute",
-        "width": "80%"
+        "width": "85554540%"
       },
       "css": {
         "parentId": "buttons",
         "borderRadius": "20px",
         "height": "60vh",
         "overflowY": "overflowY",
-        "width": "20%"
+        "width": "299999990%"
       },
       "model": {
         "parentId": "buttons",
-        "width": "50%"
+        "width": "58978970%"
       },
       "api": {
         "parentId": "buttons",
-        "url": "https://api.com/docs"
+        "url": "https://api9887897897.com/docs"
       }
     },
     {
@@ -351,7 +351,7 @@
     },
     {
       "id": "checkboxes",
-      "label": "Number",
+      "label": "Checkbox",
       "property": {
         "parentId": "checkboxes",
         "background": "blue",
@@ -379,7 +379,7 @@
     },
     {
       "id": "dropdowns",
-      "label": "Number",
+      "label": "Dropdown",
       "property": {
         "parentId": "dropdowns",
         "background": "orange",
@@ -407,7 +407,7 @@
     },
     {
       "id": "text",
-      "label": "Number",
+      "label": "Text",
       "property": {
         "parentId": "text",
         "background": "vilot",

@@ -1,6 +1,8 @@
 import React from 'react'
 
-const EmailPropertiesComponent = () => {
+const EmailPropertiesComponent = ({metaData}) => {
+  console.log("metadata e",metaData);
+  
   return (
     <div>EmailPropertiesComponent</div>
   )

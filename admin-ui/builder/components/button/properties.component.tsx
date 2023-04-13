@@ -1,7 +1,9 @@
+import React, { useState } from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import React from "react";
+import TextField from "@mui/material/TextField";
 
-const ButtonPropertiesComponent = () => {
+const ButtonPropertiesComponent = ({ metaData }) => {
+  const [background, setBackground] = useState<string>(metaData.background);
   return (
     <>
       <Box padding={3}>
@@ -31,22 +33,26 @@ const ButtonPropertiesComponent = () => {
           <Grid item xs={6}>
             <Grid container>
               <Grid item xs={12}>
-                <Typography>red</Typography>
+                <Typography>{background}</Typography>
               </Grid>
               <Grid item xs={12}>
-                <Typography>20px</Typography>
+                <TextField
+                  id="standard-basic"
+                  variant="standard"
+                  value={metaData.borderRadius}
+                />
               </Grid>
               <Grid item xs={12}>
-                <Typography>80vh</Typography>
+                <Typography>{metaData.height}</Typography>
               </Grid>
               <Grid item xs={12}>
-                <Typography>overflowY</Typography>
+                <Typography>{metaData.overflowY}</Typography>
               </Grid>
               <Grid item xs={12}>
-                <Typography>absolute</Typography>
+                <Typography>{metaData.position}</Typography>
               </Grid>
               <Grid item xs={12}>
-                <Typography>80%</Typography>
+                <Typography>{metaData.width}</Typography>
               </Grid>
             </Grid>
           </Grid>

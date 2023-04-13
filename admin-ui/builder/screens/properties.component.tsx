@@ -48,25 +48,23 @@ const PropertiesComponent = () => {
 
   console.log("Component Id >>>", value);
 
-  console.log("genisys >>", genisys);
-
-  console.log(
-    "getComponentMetaData",
-    genisys?.component.filter((ele) => ele.id == value)
+  const getComponentMetaData = genisys?.component.filter(
+    (ele) => ele.id == value
   );
+  const metaData = getComponentMetaData[0];
 
   return (
     <div>
       <Grid container>
         <Grid item xs={12} style={{ background: "#e2e8f0", padding: "0.3rem" }}>
           <Grid container>
-
-
             <Grid item xs={4}>
               <Grid container>
                 <Grid item xs={6}>
                   <Typography
-                    onClick={() => updateSection("properties")} style={{ cursor: "pointer" }}>
+                    onClick={() => updateSection("properties")}
+                    style={{ cursor: "pointer" }}
+                  >
                     Properties
                   </Typography>
                 </Grid>
@@ -76,13 +74,13 @@ const PropertiesComponent = () => {
               </Grid>
             </Grid>
 
-
-
-
             <Grid item xs={2}>
               <Grid container>
                 <Grid item xs={6}>
-                  <Typography onClick={() => updateSection("css")} style={{ cursor: "pointer" }}>
+                  <Typography
+                    onClick={() => updateSection("css")}
+                    style={{ cursor: "pointer" }}
+                  >
                     Css
                   </Typography>
                 </Grid>
@@ -92,13 +90,14 @@ const PropertiesComponent = () => {
               </Grid>
             </Grid>
 
-
-
             <Grid item xs={4}>
               <Grid container>
                 <Grid item xs={6}>
-                  <Typography onClick={() => updateSection("model")}
-                    style={{ cursor: "pointer" }} textAlign="center">
+                  <Typography
+                    onClick={() => updateSection("model")}
+                    style={{ cursor: "pointer" }}
+                    textAlign="center"
+                  >
                     Model
                   </Typography>
                 </Grid>
@@ -108,12 +107,13 @@ const PropertiesComponent = () => {
               </Grid>
             </Grid>
 
-
             <Grid item xs={2}>
               <Grid container>
                 <Grid item xs={7}>
-                  <Typography onClick={() => updateSection("api")}
-                    style={{ cursor: "pointer" }}>
+                  <Typography
+                    onClick={() => updateSection("api")}
+                    style={{ cursor: "pointer" }}
+                  >
                     Api
                   </Typography>
                 </Grid>
@@ -127,45 +127,118 @@ const PropertiesComponent = () => {
 
         <Switch>
           <Case condition={sectionType === "properties"}>
-            <ButtonPropertiesComponent />
-            <EmailPropertiesComponent />
-            <PasswordPropertiesComponent />
-            <ConfirmPasswordPropertiesComponent />
-            <DropdownPropertiesComponent />
-            <NumberPropertiesComponent />
-            <TextPropertiesComponent />
-            <CheckboxPropertiesComponent />
-
+            <Switch>
+              <Case condition={value === "buttons"}>
+                <ButtonPropertiesComponent metaData={metaData?.property} />
+              </Case>
+              <Case condition={value === "emails"}>
+                <EmailPropertiesComponent metaData={metaData?.property} />
+              </Case>
+              <Case condition={value === "passwords"}>
+                <PasswordPropertiesComponent metaData={metaData?.property} />
+              </Case>
+              <Case condition={value === "cnfrmpasswords"}>
+                <ConfirmPasswordPropertiesComponent
+                  metaData={metaData?.property}
+                />
+              </Case>
+              <Case condition={value === "numbers"}>
+                <NumberPropertiesComponent metaData={metaData?.property} />
+              </Case>
+              <Case condition={value === "checkboxes"}>
+                <CheckboxPropertiesComponent metaData={metaData?.property} />
+              </Case>
+              <Case condition={value === "dropdowns"}>
+                <DropdownPropertiesComponent metaData={metaData?.property} />
+              </Case>
+              <Case condition={value === "text"}>
+                <TextPropertiesComponent metaData={metaData?.property} />
+              </Case>
+            </Switch>
           </Case>
           <Case condition={sectionType === "css"}>
-            <ButtonCssComponent />
-            <EmailCssComponent />
-            <PasswordCssComponent />
-            <ConfirmPasswordCssComponent />
-            <DropdownCssComponent />
-            <NumberCssComponent />
-            <TextCssComponent />
-            <CheckboxCssComponent />
+            <Switch>
+              <Case condition={value === "buttons"}>
+                <ButtonCssComponent metaData={metaData?.css} />
+              </Case>
+              <Case condition={value === "emails"}>
+                <EmailCssComponent metaData={metaData?.css} />
+              </Case>
+              <Case condition={value === "passwords"}>
+                <PasswordCssComponent metaData={metaData?.css} />
+              </Case>
+              <Case condition={value === "cnfrmpasswords"}>
+                <ConfirmPasswordCssComponent metaData={metaData?.css} />
+              </Case>
+              <Case condition={value === "numbers"}>
+                <NumberCssComponent metaData={metaData?.css} />
+              </Case>
+              <Case condition={value === "checkboxes"}>
+                <CheckboxCssComponent metaData={metaData?.css} />
+              </Case>
+              <Case condition={value === "dropdowns"}>
+                <DropdownCssComponent metaData={metaData?.css} />
+              </Case>
+              <Case condition={value === "text"}>
+                <TextCssComponent metaData={metaData?.css} />
+              </Case>
+            </Switch>
           </Case>
           <Case condition={sectionType === "model"}>
-            <ButtonModelComponent />
-            <EmailModelComponent />
-            <PasswordModelComponent />
-            <ConfirmPasswordModelComponent />
-            <DropdownModelComponent />
-            <NumberModelComponent />
-            <TextModelComponent />
-            <CheckboxModelComponent />
+            <Switch>
+              <Case condition={value === "buttons"}>
+                <ButtonModelComponent metaData={metaData?.model} />
+              </Case>
+              <Case condition={value === "emails"}>
+                <EmailModelComponent metaData={metaData?.model} />
+              </Case>
+              <Case condition={value === "passwords"}>
+                <PasswordModelComponent metaData={metaData?.model} />
+              </Case>
+              <Case condition={value === "cnfrmpasswords"}>
+                <ConfirmPasswordModelComponent metaData={metaData?.model} />
+              </Case>
+              <Case condition={value === "numbers"}>
+                <NumberModelComponent metaData={metaData?.model} />
+              </Case>
+              <Case condition={value === "checkboxes"}>
+                <CheckboxModelComponent metaData={metaData?.model} />
+              </Case>
+              <Case condition={value === "dropdowns"}>
+                <DropdownModelComponent metaData={metaData?.model} />
+              </Case>
+              <Case condition={value === "text"}>
+                <TextModelComponent metaData={metaData?.model} />
+              </Case>
+            </Switch>
           </Case>
           <Case condition={sectionType === "api"}>
-            <ButtonApiComponent />
-            <EmailApiComponent />
-            <PasswordApiComponent />
-            <ConfirmPasswordApiComponent />
-            <DropdownApiComponent />
-            <NumberApiComponent />
-            <TextApiComponent />
-            <CheckboxApiComponent />
+            <Switch>
+              <Case condition={value === "buttons"}>
+                <ButtonApiComponent metaData={metaData?.api} />
+              </Case>
+              <Case condition={value === "emails"}>
+                <EmailApiComponent metaData={metaData?.api} />
+              </Case>
+              <Case condition={value === "passwords"}>
+                <PasswordApiComponent metaData={metaData?.api} />
+              </Case>
+              <Case condition={value === "cnfrmpasswords"}>
+                <ConfirmPasswordApiComponent metaData={metaData?.api} />
+              </Case>
+              <Case condition={value === "numbers"}>
+                <NumberApiComponent metaData={metaData?.api} />
+              </Case>
+              <Case condition={value === "checkboxes"}>
+                <CheckboxApiComponent metaData={metaData?.api} />
+              </Case>
+              <Case condition={value === "dropdowns"}>
+                <DropdownApiComponent metaData={metaData?.api} />
+              </Case>
+              <Case condition={value === "text"}>
+                <TextApiComponent metaData={metaData?.api} />
+              </Case>
+            </Switch>
           </Case>
         </Switch>
       </Grid>
