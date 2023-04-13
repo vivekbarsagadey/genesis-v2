@@ -108,6 +108,8 @@ model Project {
  webUrl         String? @map("web_url")
  currentVersion String? @map("current_version")
  status         String? @map("status")
+ state          String?
+ country          String?
  customerName   String? @map("customer_name")
  application    String? @map("application")
  companyId      String? @map("company_id") @db.ObjectId

@@ -79,9 +79,9 @@
             {
               "id": "properties",
               "parentId": "emails",
-              "background": "red",
-              "borderRadius": "20px",
-              "height": "80vh",
+              "background": "yellow",
+              "borderRadius": "30px",
+              "height": "98vh",
               "overflowY": "overflowY",
               "position": "absolute",
               "width": "80%"
@@ -90,19 +90,19 @@
               "id": "css",
               "parentId": "emails",
               "borderRadius": "20px",
-              "height": "60vh",
+              "height": "320vh",
               "overflowY": "overflowY",
               "width": "20%"
             },
             {
               "id": "model",
               "parentId": "emails",
-              "width": "50%"
+              "width": "20%"
             },
             {
               "id": "api",
               "parentId": "emails",
-              "url": "https://emails.com/docs"
+              "url": "https://emailsdata.com/docs"
             }
           ]
         },

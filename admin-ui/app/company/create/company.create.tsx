@@ -34,8 +34,8 @@ const CompanyCreateComponent = () => {
         address: companyAddress,
         website: companyWebsite,
         status: companyStatus,
-        state:companyState,
-        country:companyCountry,
+        state: companyState,
+        country: companyCountry,
       };
       //  console.log("this is body", body)
       await createCompany(body);
@@ -66,10 +66,16 @@ const CompanyCreateComponent = () => {
   const updateCompanyWebsite = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyWebsite(e.target.value);
   };
-  const updateCompanyState = ( e: React.ChangeEvent<HTMLInputElement>, value: string) => {
+  const updateCompanyState = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
     setCompanyState(value);
   };
-  const updateCompanyCountry = ( e: React.ChangeEvent<HTMLInputElement>, value: string) => {
+  const updateCompanyCountry = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
     setCompanyCountry(value);
   };
 
@@ -227,25 +233,25 @@ const CompanyCreateComponent = () => {
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
-              <Autocomplete
-                      value={companyState}
-                      onChange={updateCompanyState}
-                      freeSolo
-                      id="free-solo-2-demo"
-                      disableClearable
-                      options={stateSelect.map((option) => option.state)}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          size="small"
-                          InputProps={{
-                            ...params.InputProps,
-                            type: "search",
-                          }}
-                          placeholder="Select State"
-                        />
-                      )}
+                <Autocomplete
+                  value={companyState}
+                  onChange={updateCompanyState}
+                  freeSolo
+                  id="free-solo-2-demo"
+                  disableClearable
+                  options={stateSelect.map((option) => option.state)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      size="small"
+                      InputProps={{
+                        ...params.InputProps,
+                        type: "search",
+                      }}
+                      placeholder="Select State"
                     />
+                  )}
+                />
               </Grid>
             </Grid>
           </Grid>
@@ -259,25 +265,25 @@ const CompanyCreateComponent = () => {
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
-              <Autocomplete
-                      value={companyCountry}
-                      onChange={updateCompanyCountry}
-                      freeSolo
-                      id="free-solo-2-demo"
-                      disableClearable
-                      options={countrySelect.map((option) => option.country)}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          size="small"
-                          InputProps={{
-                            ...params.InputProps,
-                            type: "search",
-                          }}
-                          placeholder="Select Country"
-                        />
-                      )}
+                <Autocomplete
+                  value={companyCountry}
+                  onChange={updateCompanyCountry}
+                  freeSolo
+                  id="free-solo-2-demo"
+                  disableClearable
+                  options={countrySelect.map((option) => option.country)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      size="small"
+                      InputProps={{
+                        ...params.InputProps,
+                        type: "search",
+                      }}
+                      placeholder="Select Country"
                     />
+                  )}
+                />
               </Grid>
             </Grid>
           </Grid>
@@ -341,7 +347,10 @@ const CompanyCreateComponent = () => {
                 <Grid item xs={3}>
                   <Grid container>
                     <Grid item xs={7}>
-                      <Link href={"/company"} style={{textDecoration:'none'}}>
+                      <Link
+                        href={"/company"}
+                        style={{ textDecoration: "none" }}
+                      >
                         <Button variant="contained" size="small">
                           Cancel
                         </Button>

@@ -1,32 +1,127 @@
-import React from "react";
-import PieChart from "react-pie-graph-chart";
-import {  Status } from "../models";
-import IProject from "../project.model";
-
+import { Box, Grid } from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
+import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
+import React, { useState } from "react";
+import ProjectPieChart from "./pie.chart";
 import { ListComponentProps } from "./props";
 
-const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
-
 const ProjectGraphView = ({ projects }: ListComponentProps) => {
-  const companyStatus = [
-    {
-      type: "ACTIVE",
-      value: projects.filter((item: IProject) => item.status == statusSet[1])
-        .length,
-      color: "#0a9523",
-    },
-    {
-      type: "INACTIVE",
-      value: projects.filter((item: IProject) => item.status == statusSet[2])
-        .length,
-      color: "#f50a0a",
-    },
+  const [graphView, setGraphView] = useState<string>("");
+  const updateGrpahView = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    setGraphView(value);
+  };
+
+  let keys = Object.keys(projects[0]);
+  const graphTypeVal = keys.filter((element) => {
+    if (
+      element === "country" ||
+      element === "state" ||
+      element === "city" ||
+      element === "status"||
+      element === "application"
+    ) {
+      return true;
+    }
+    return false;
+  });
+  const statusData = [
+    ["Status", "Users"],
+    ["ACTIVE", projects.filter((item) => item.status === "ACTIVE").length],
+    ["INACTIVE", projects.filter((item) => item.status === "INACTIVE").length],
+  ];
+
+  const stateData = [
+    ["projects", "State"],
+    ["Bihar", projects.filter((item) => item.state === "Bihar").length],
+    [
+      "Madhya Pradesh",
+      projects.filter((item) => item.state === "Madhya Pradesh").length,
+    ],
+    ["UP", projects.filter((item) => item.state === "UP").length],
+    [
+      "Maharastra",
+      projects.filter((item) => item.state === "Maharastra").length,
+    ],
+    ["Punjab", projects.filter((item) => item.state === "Punjab").length],
+    ["UK", projects.filter((item) => item.state === "UK").length],
+    ["Gujrat", projects.filter((item) => item.state === "Gujrat").length],
+    ["Karnataka", projects.filter((item) => item.state === "Karnataka").length],
+    [
+      "Jammu & Kashmir",
+      projects.filter((item) => item.state === "Jammu & Kashmir").length,
+    ],
+  ];
+  const countryData = [
+    ["projects", "Country"],
+    ["India", projects.filter((item) => item.country === "India").length],
+    [
+      "Australia",
+      projects.filter((item) => item.country === "Australia").length,
+    ],
+    ["America", projects.filter((item) => item.country === "America").length],
+    ["Spain", projects.filter((item) => item.country === "Spain").length],
+    ["US", projects.filter((item) => item.country === "US").length],
+    ["UK", projects.filter((item) => item.country === "UK").length],
+    ["Dubai", projects.filter((item) => item.country === "Dubai").length],
+    ["Srilanka", projects.filter((item) => item.country === "Srilanka").length],
+    ["Thailand", projects.filter((item) => item.country === "Thailand").length],
+  ];
+  const applicationData = [
+    ["projects", "Application"],
+    ["Business to Customer - Web", projects.filter((item) => item.application === "Business to Customer - Web").length],
+    ["Business to Customer - Mobile", projects.filter((item) => item.application === "Business to Customer - Mobile").length,],
+    ["Business to Business - Web", projects.filter((item) => item.application === "Business to Business - Web").length],
+    ["Business to Business - Mobile", projects.filter((item) => item.application === "Business to Business - Mobile").length],
+    
   ];
 
   return (
-    <div>
-      <PieChart data={companyStatus} />
-    </div>
+    <Box mr={2} mt={2}>
+      <Grid container>
+        <Grid item xs={6}>
+          <Grid container>
+            <Grid item xs={9}>
+              <ProjectPieChart
+                stateData={stateData}
+                graphView={graphView}
+                statusData={statusData}
+                countryData={countryData}
+                applicationData={applicationData}
+              />
+            </Grid>
+            <Grid item xs={3}>
+              <Stack>
+                <Autocomplete
+                  value={graphView}
+                  onChange={updateGrpahView}
+                  freeSolo
+                  id="customer-select-type"
+                  disableClearable
+                  size="small"
+                  options={graphTypeVal?.map((option) => option)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      InputProps={{
+                        ...params.InputProps,
+                        type: "search",
+                      }}
+                      placeholder="Select Graph View" fullWidth
+                    />
+                  )}
+                />
+              </Stack>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={6}></Grid>
+        <Grid item xs={12}></Grid>
+      </Grid>
+    </Box>
   );
 };
 
