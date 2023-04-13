@@ -18,7 +18,7 @@ const BuilderHeaderComponent = ({ projectInfo }) => {
           alignItems="center"
           justifyContent="space-between"
         >
-          <Button variant="contained" size="small">
+          <Button variant="contained" size="small" style={{height:'4vh'}}>
             New
           </Button>
           <Typography>{projectInfo.name}</Typography>

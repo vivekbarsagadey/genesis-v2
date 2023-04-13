@@ -27,7 +27,7 @@ const BuilderHome = ({ id }) => {
         console.log(e.message);
       });
   }, []);
-  
+
   const [toggleMenu, setToggleMenu] = useState(true);
   const [screenToggle, setScreenToggle] = useState<string>("");
   // const [generalData, setGeneralData] = useState(null);
@@ -47,7 +47,6 @@ const BuilderHome = ({ id }) => {
     setScreenToggle(typeRec);
   };
 
-  
   return (
     <ProjectContext.Provider value={componentId}>
       <Box>
@@ -74,7 +73,10 @@ const BuilderHome = ({ id }) => {
                 <Grid
                   item
                   xs={9}
-                  style={{ background: "#e2e8f0", height: "84vh" }}
+                  style={{
+                    background: "#64748b",
+                    height: "82vh",
+                  }}
                 >
                   <ScreenSelectComponent screenToggle={screenToggle} />
                 </Grid>
