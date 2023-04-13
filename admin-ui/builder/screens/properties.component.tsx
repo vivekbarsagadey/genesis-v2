@@ -8,16 +8,17 @@ import genisys from "../../data/genisys.json";
 
 const PropertiesComponent = () => {
   const value = React.useContext(ProjectContext);
+  console.log("Value >>>", value);
+  
+  // const dataSet = genisys.categories.map((d) => d.items);
 
-  const dataSet = genisys.categories.map((d) => d.items);
+  // var filterData = [];
+  // for (var i = 0; i < dataSet.length; i++) {
+  //   filterData = filterData.concat(dataSet[i]);
+  // }
 
-  var filterData = [];
-  for (var i = 0; i < dataSet.length; i++) {
-    filterData = filterData.concat(dataSet[i]);
-  }
-
-  const generalInformation = filterData.filter((d) => d.id == value);
-  const propertyTabInfo = generalInformation.map((d) => d.general);
+  // const generalInformation = filterData.filter((d) => d.id == value);
+  // const propertyTabInfo = generalInformation.map((d) => d.general);
 
   const [sectionType, setSectionType] = useState<string>("");
 
@@ -94,7 +95,7 @@ const PropertiesComponent = () => {
                   <Grid item xs={6}>
                     <Grid container>
                       skjdkjsdkj
-                      {info?.map((property, index) => {
+                      {/* {info?.map((property, index) => {
                         return (
                           <Grid item xs={12} key={index}>
                             <Typography>{property.background}</Typography>
@@ -105,7 +106,7 @@ const PropertiesComponent = () => {
                             <Typography>{property.width}</Typography>
                           </Grid>
                         );
-                      })}
+                      })} */}
                     </Grid>
                   </Grid>
                 </Grid>

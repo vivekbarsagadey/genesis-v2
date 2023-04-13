@@ -29,7 +29,7 @@ const BuilderHome = ({ id }) => {
   }, []);
   const [toggleMenu, setToggleMenu] = useState(true);
   const [screenToggle, setScreenToggle] = useState<string>("");
-  const [generalData, setGeneralData] = useState([]);
+  const [generalData, setGeneralData] = useState(null);
 
   const getGeneralData = (idRecv) => {
     setGeneralData(idRecv);
