@@ -19,9 +19,6 @@ const PropertiesComponent = () => {
   const generalInformation = filterData.filter((d) => d.id == value);
   const propertyTabInfo = generalInformation.map((d) => d.general);
 
-  const info =propertyTabInfo[0]  
-  console.log("propertyTabInfo ", info.map(  (d)=> d ));
-
   const [sectionType, setSectionType] = useState<string>("");
 
   const updateSection = (typeRecv: string) => {
