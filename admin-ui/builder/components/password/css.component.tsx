@@ -1,9 +1,84 @@
-import React from 'react'
+import React, { useState } from "react";
+import { Box, Grid, Typography } from "@mui/material";
+import TextField from "@mui/material/TextField";
 
-const PasswordCssComponent = () => {
+const PasswordCssComponent = ({ metaData }) => {
+  const [background, setBackground] = useState<string>(metaData.background);
+  const [borderRadius, setBorderRadius] = useState<string>(
+    metaData.borderRadius
+  );
+  const [height, setHeight] = useState<string>(metaData.height);
+  const [overflow, setOverflow] = useState<string>(metaData.overflowY);
+  const [width, setWidth] = useState<string>(metaData.width);
   return (
-    <div>PasswordCssComponent</div>
-  )
-}
+    <>
+      <Box padding={3}>
+        <Grid container>
+          <Grid item xs={12} mt={2}>
+            <Grid container>
+              <Grid item xs={12}>
+                <Grid container alignItems={"center"}>
+                  <Grid item xs={6}>
+                    <Typography fontWeight={"600"}>borderRadius</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      id="standard-basic"
+                      variant="standard"
+                      value={borderRadius}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid item xs={12}>
+                <Grid container alignItems={"center"}>
+                  <Grid item xs={6}>
+                    <Typography fontWeight={"600"}>height</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      id="standard-basic"
+                      variant="standard"
+                      value={height}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid item xs={12}>
+                <Grid container alignItems={"center"}>
+                  <Grid item xs={6}>
+                    <Typography fontWeight={"600"}>overflowY</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      id="standard-basic"
+                      variant="standard"
+                      value={overflow}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
 
-export default PasswordCssComponent
+              <Grid item xs={12}>
+                <Grid container alignItems={"center"}>
+                  <Grid item xs={6}>
+                    <Typography fontWeight={"600"}>width</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      id="standard-basic"
+                      variant="standard"
+                      value={width}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Box>
+    </>
+  );
+};
+
+export default PasswordCssComponent;
