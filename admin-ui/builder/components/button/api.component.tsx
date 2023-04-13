@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
 const ButtonApiComponent = ({ metaData }) => {
   const [url, setUrl] = useState<string>(metaData.url);
+
+  const updatedUrl=(e)=>{
+    setUrl(e.target.value)
+  }
+  console.log("urlurl>>>>",url);
+  
   return (
     <>
       <Box padding={3}>
@@ -20,13 +26,22 @@ const ButtonApiComponent = ({ metaData }) => {
                       id="standard-basic"
                       variant="standard"
                       value={url}
+                      onChange={updatedUrl}
                     />
                   </Grid>
                 </Grid>
               </Grid>
             </Grid>
+
           </Grid>
         </Grid>
+      </Box>
+      <Box mt={40}>
+
+           <Grid item xs={12}>
+           <Button variant="contained" size="small">Cancel</Button>
+           <Button variant="contained" size="small">Save</Button>
+           </Grid>
       </Box>
     </>
   );
