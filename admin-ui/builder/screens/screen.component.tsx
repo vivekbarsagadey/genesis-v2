@@ -13,13 +13,13 @@ const ScreenComponent = ({ updateScreen, handleDelete }) => {
             onClick={() => updateScreen("screen1")}
             onDelete={handleDelete}
             style={{ background: "#e2e8f0" }} />
-          <Chip
+          {/* <Chip
             label="Screen 2"
             variant="outlined"
             onClick={() => updateScreen("screen2")}
             onDelete={handleDelete}
             style={{ background: "#e2e8f0" }}
-          />
+          /> */}
         </Stack>
         </Grid>
         <Grid item xs={1}>

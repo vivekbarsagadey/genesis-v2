@@ -204,6 +204,22 @@
           "title": "Grid_4x3",
           "icon": "Grid4x4Icon",
           "componentId": "Grid_4x3Component"
+        },
+        {
+          "id": "grid_3x4",
+          "name": "Grid_3x4",
+          "label": "Grid_3x4",
+          "title": "Grid_3x4",
+          "icon": "Grid4x4Icon",
+          "componentId": "Grid_3x4Component"
+        },
+        {
+          "id": "grid_2",
+          "name": "Grid_2",
+          "label": "Grid_2",
+          "title": "Grid_2",
+          "icon": "Grid2Icon",
+          "componentId": "Grid_2Component"
         }
       ]
     }

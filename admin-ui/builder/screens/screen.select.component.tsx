@@ -2,23 +2,52 @@ import React from "react";
 import { Box, Grid } from "@material-ui/core";
 import { Case, Switch } from "react-if";
 import { Chip, Paper, Stack } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
 const ScreenSelectComponent = ({ screenToggle }) => {
   return (
     <>
       <Switch>
         <Case condition={screenToggle === "screen1"}>
           <Grid container>
-            <Grid item xs={3}></Grid>
-            <Grid item xs={6}>
+            <Grid item xs={2}></Grid>
+            <Grid item xs={8}>
               <Box mt={2}>
-                <Paper variant="outlined">Screen 1</Paper>
+                <Paper variant="outlined" style={{ height: "75vh" }}>
+                  {/* grid layout  */}
+                  <Box sx={{ flexGrow: 1 }}>
+                    <Grid container spacing={2}>
+                      <Grid item xs={12}>
+                        <Item>xs=8</Item>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Item>xs=4</Item>
+                      </Grid>
+                      <Grid item xs={3}>
+                        <Item>xs=4</Item>
+                      </Grid>
+                      <Grid item xs={4}>
+                        <Item>xs=8</Item>
+                      </Grid>
+                      <Grid item xs={2}>
+                        <Item>xs=8</Item>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </Paper>
               </Box>
             </Grid>
           </Grid>
         </Case>
 
-        <Case condition={screenToggle === "screen2"}>
+        {/* <Case condition={screenToggle === "screen2"}>
           <Grid item xs={12}>
             <Grid container>
               <Grid item xs={3}></Grid>
@@ -29,7 +58,7 @@ const ScreenSelectComponent = ({ screenToggle }) => {
               </Grid>
             </Grid>
           </Grid>
-        </Case>
+        </Case> */}
       </Switch>
     </>
   );
