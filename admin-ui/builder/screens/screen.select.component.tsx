@@ -25,21 +25,46 @@ const ScreenSelectComponent = ({ screenToggle }) => {
                   <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={2}>
                       <Grid item xs={12}>
-                        <Item>xs=8</Item>
+                        <Item>xs=12</Item>
                       </Grid>
                       <Grid item xs={6}>
-                        <Item>xs=4</Item>
+                        <Item>xs=6</Item>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Item>xs=6</Item>
                       </Grid>
                       <Grid item xs={3}>
+                        <Item>xs=3</Item>
+                      </Grid>
+                      <Grid item xs={3}>
+                        <Item>xs=3</Item>
+                      </Grid>
+                      <Grid item xs={3}>
+                        <Item>xs=3</Item>
+                      </Grid>
+                      <Grid item xs={3}>
+                        <Item>xs=3</Item>
+                      </Grid>
+                      <Grid item xs={4}>
                         <Item>xs=4</Item>
                       </Grid>
                       <Grid item xs={4}>
-                        <Item>xs=8</Item>
+                        <Item>xs=4</Item>
                       </Grid>
-                      <Grid item xs={2}>
-                        <Item>xs=8</Item>
+                      <Grid item xs={4}>
+                        <Item>xs=4</Item>
                       </Grid>
+                      <Grid item xs={4}>
+                        <Item>xs=4x1</Item>
+                      </Grid>
+                     
                     </Grid>
+                    <Grid item xs={2}>
+                        <Item>xs=2x1</Item>
+                      </Grid>
+                    <Grid item xs={1}>
+                        <Item>xs=1x1</Item>
+                      </Grid>
                   </Box>
                 </Paper>
               </Box>
