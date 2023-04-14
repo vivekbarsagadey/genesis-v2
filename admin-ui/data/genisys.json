@@ -182,28 +182,20 @@
       "icon": "Grid4x4Icon",
       "items": [
         {
-          "id": "grid_12",
-          "name": "Grid_12",
-          "label": "Grid_12",
-          "title": "Grid_12",
+          "id": "grid_2",
+          "name": "Grid_2",
+          "label": "Grid_2",
+          "title": "Grid_2",
           "icon": "WidthFullIcon",
-          "componentId": "Grid_12Component"
+          "componentId": "Grid_2Component"
         },
         {
-          "id": "grid_6x2",
-          "name": "Grid_6x2",
-          "label": "Grid_6x2",
-          "title": "Grid_6x2",
+          "id": "grid_2x6",
+          "name": "Grid_2x6",
+          "label": "Grid_2x6",
+          "title": "Grid_2x6",
           "icon": "GridGoldenratioIcon",
-          "componentId": "Grid_6x2Component"
-        },
-        {
-          "id": "grid_4x3",
-          "name": "Grid_4x3",
-          "label": "Grid_4x3",
-          "title": "Grid_4x3",
-          "icon": "Grid4x4Icon",
-          "componentId": "Grid_4x3Component"
+          "componentId": "Grid_2x6Component"
         },
         {
           "id": "grid_3x4",
@@ -214,12 +206,28 @@
           "componentId": "Grid_3x4Component"
         },
         {
-          "id": "grid_2",
-          "name": "Grid_2",
-          "label": "Grid_2",
-          "title": "Grid_2",
-          "icon": "Grid2Icon",
-          "componentId": "Grid_2Component"
+          "id": "grid_4x3",
+          "name": "Grid_4x3",
+          "label": "Grid_4x3",
+          "title": "Grid_4x3",
+          "icon": "Grid4x4Icon",
+          "componentId": "Grid_4x3Component"
+        },
+        {
+          "id": "grid_6x2",
+          "name": "Grid_6x2",
+          "label": "Grid_6x2",
+          "title": "Grid_6x2",
+          "icon": "Grid6x2Icon",
+          "componentId": "Grid_6x2Component"
+        },
+        {
+          "id": "grid_12x1",
+          "name": "Grid_12x1",
+          "label": "Grid_12x1",
+          "title": "Grid_12x1",
+          "icon": "Grid12x1Icon",
+          "componentId": "Grid_12x1Component"
         }
       ]
     }
