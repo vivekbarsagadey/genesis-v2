@@ -56,8 +56,12 @@ const PropertiesComponent = () => {
   return (
     <div>
       <Grid container>
-        <Grid item xs={12} style={{ background: "#e2e8f0", padding: "0.3rem" }}>
-          <Grid container>
+        <Grid
+          item
+          xs={12}
+          style={{ background: "#e2e8f0", padding: "0.3rem", display: "flex" }}
+        >
+          {/* <Grid container>
             <Grid item xs={4}>
               <Grid container>
                 <Grid item xs={6}>
@@ -122,6 +126,42 @@ const PropertiesComponent = () => {
                 </Grid>
               </Grid>
             </Grid>
+          </Grid> */}
+
+          <Grid item xs={4}>
+            <Typography
+              onClick={() => updateSection("properties")}
+              style={{ cursor: "pointer" }}
+              textAlign="center"
+            >
+              Properties
+            </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography
+              onClick={() => updateSection("css")}
+              style={{ cursor: "pointer" }}
+              textAlign="center"
+            >
+              Css
+            </Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography
+              onClick={() => updateSection("model")}
+              style={{ cursor: "pointer" }}
+              textAlign="center"
+            >
+              Model
+            </Typography>
+          </Grid>
+          <Grid item xs={2}>
+            <Typography
+              onClick={() => updateSection("api")}
+              style={{ cursor: "pointer" }} textAlign="center"
+            >
+              Api
+            </Typography>
           </Grid>
         </Grid>
 
