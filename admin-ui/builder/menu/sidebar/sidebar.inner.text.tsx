@@ -11,6 +11,14 @@ import LockClockIcon from "@mui/icons-material/LockClock";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import DoneIcon from "@mui/icons-material/Done";
 import EditAttributesIcon from "@mui/icons-material/EditAttributes";
+import { styled } from "@mui/material/styles";
+
+const TypographyStyle = styled(Typography)(({ theme }) => ({
+  marginLeft: theme.spacing(1),
+  marginTop: "-1.3rem",
+  cursor: "pointer",
+}));
+
 const SideBarInnerText = ({ ele }) => {
   return (
     <>
@@ -44,18 +52,19 @@ const SideBarInnerText = ({ ele }) => {
           />
         </Default>
       </Switch>
-
-      <Typography
-        fontSize={"0.75rem"}
-        color={"#334D6E"}
-        style={{
-          cursor: "pointer",
-          marginLeft: "1.5rem",
-          marginTop: "-1.3rem",
-        }}
-      >
-        {ele.label}
-      </Typography>
+      <TypographyStyle>
+        <Typography
+          fontSize={"0.75rem"}
+          color={"#334D6E"}
+          // style={{
+          //   cursor: "pointer",
+          //   marginLeft: "1.5rem",
+          //   marginTop: "-1.3rem",
+          // }}
+        >
+          {ele.label}
+        </Typography>
+      </TypographyStyle>
     </>
   );
 };

@@ -9,11 +9,13 @@ import MuiAccordionSummary, {
   AccordionSummaryProps,
 } from "@mui/material/AccordionSummary";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import { styled } from "@mui/material/styles";
 import React from "react";
 import Switch, { Case } from "react-switch-case";
 import genisys from "../../../data/genisys.json";
 import SideBarInnerList from "./sidebar.inner.list";
+import { styled } from "@mui/material/styles";
+import { Container } from "@material-ui/core";
+
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -42,14 +44,12 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
-const SidebarComponent = ({ toggleMenu,getComponentId }) => {
+const SidebarComponent = ({ toggleMenu, getComponentId }) => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
     };
-  
-  // console.log("genisys --->",genisys);
 
   return (
     <>
@@ -62,7 +62,7 @@ const SidebarComponent = ({ toggleMenu,getComponentId }) => {
             >
               <AccordionSummary>
                 <Grid container>
-                  <Grid item xs={1.5} ml={1} mr={0.6}>
+                  <Grid item xs={2}>
                     <ListItemIcon>
                       <Switch condition={menu.icon}>
                         <Case value="ViewSidebarIcon">
@@ -87,10 +87,8 @@ const SidebarComponent = ({ toggleMenu,getComponentId }) => {
                     {toggleMenu && (
                       <Typography
                         display={{ xs: "none", sm: "none", md: "block" }}
-                        style={{
-                          color: "#334D6E",
-                          fontSize: "0.9rem",
-                        }}
+                        color={"#334D6E"}
+                        fontSize={"0.9rem"}
                       >
                         {menu.name}
                       </Typography>
@@ -99,14 +97,7 @@ const SidebarComponent = ({ toggleMenu,getComponentId }) => {
                 </Grid>
               </AccordionSummary>
               <AccordionDetails>
-                <Grid
-                  container
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-evenly",
-                  }}
-                >
+                <Grid container>
                   {toggleMenu && (
                     <Grid item xs={12} ml={1}>
                       <Grid container>
