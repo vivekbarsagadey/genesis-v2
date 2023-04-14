@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography,Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
 const EmailApiComponent = ({ metaData }) => {
@@ -28,6 +28,25 @@ const EmailApiComponent = ({ metaData }) => {
           </Grid>
         </Grid>
       </Box>
+      <Grid item xs={12}>
+        <Grid
+          container
+          display="flex"
+          justifyContent="flex-end"
+          style={{ marginTop: "22rem" }}
+        >
+          <Grid item xs={4}>
+            <Button variant="contained" size="small">
+              Cancel
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button variant="contained" size="small">
+              Save
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
     </>
   );
 };

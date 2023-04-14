@@ -35,16 +35,26 @@ const ButtonApiComponent = ({ metaData }) => {
           </Grid>
         </Grid>
       </Box>
-      <Box mt={40}>
-        <Grid item xs={12}>
-          <Button variant="contained" size="small">
-            Cancel
-          </Button>
-          <Button variant="contained" size="small">
-            Save
-          </Button>
+
+      <Grid item xs={12}>
+        <Grid
+          container
+          display="flex"
+          justifyContent="flex-end"
+          style={{ marginTop: "22rem" }}
+        >
+          <Grid item xs={4}>
+            <Button variant="contained" size="small">
+              Cancel
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button variant="contained" size="small">
+              Save
+            </Button>
+          </Grid>
         </Grid>
-      </Box>
+      </Grid>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
 const EmailCssComponent = ({ metaData }) => {
@@ -11,7 +11,7 @@ const EmailCssComponent = ({ metaData }) => {
   const [overflow, setOverflow] = useState<string>(metaData.overflowY);
   const [width, setWidth] = useState<string>(metaData.width);
   return (
-    <div>
+    <>
       <Box padding={3}>
         <Grid container>
           <Grid item xs={12} mt={2}>
@@ -77,7 +77,26 @@ const EmailCssComponent = ({ metaData }) => {
           </Grid>
         </Grid>
       </Box>
-    </div>
+      <Grid item xs={12}>
+        <Grid
+          container
+          display="flex"
+          justifyContent="flex-end"
+          style={{ marginTop: "16.4rem" }}
+        >
+          <Grid item xs={4}>
+            <Button variant="contained" size="small">
+              Cancel
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button variant="contained" size="small">
+              Save
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
+    </>
   );
 };
 
