@@ -169,7 +169,7 @@ const PropertiesComponent = () => {
           <Case condition={sectionType === "properties"}>
             <Switch>
               <Case condition={value === "buttons"}>
-                <ButtonPropertiesComponent metaData={metaData?.property} />
+                <ButtonPropertiesComponent metaData={metaData?.property}   sectionType={sectionType} />
               </Case>
               <Case condition={value === "emails"}>
                 <EmailPropertiesComponent metaData={metaData?.property} />

@@ -115,7 +115,8 @@
           "label": "Login",
           "title": "Login",
           "icon": "LoginIcon",
-          "componentId": "loginComponent"
+          "componentId": "loginComponent",
+          "image":null
         },
         {
           "id": "emailLogin",
