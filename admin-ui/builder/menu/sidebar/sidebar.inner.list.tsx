@@ -20,7 +20,7 @@ const TypographyStyle = styled(Typography)(({ theme }) => ({
   cursor: "pointer",
 }));
 const ContainerStyle = styled(Container)(({ theme }) => ({
-  marginTop: "-2rem",
+  marginTop: "-1.5rem",
 }));
 
 const SideBarInnerList = ({ d, toggleMenu, getComponentId }) => {

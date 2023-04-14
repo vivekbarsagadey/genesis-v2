@@ -1,11 +1,12 @@
 import React from "react";
 import { Box, Grid } from "@material-ui/core";
-import { Case, Switch } from "react-if";
 import { Chip, Paper, Stack } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import Switch, { Case, Default } from "react-switch-case";
+import Switch, { Case } from "react-switch-case";
 
-
+type Screentype={
+  screenToggle:string
+}
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -14,7 +15,8 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
-const ScreenSelectComponent = ({ screenToggle }) => {
+
+const ScreenSelectComponent = ({ screenToggle }:Screentype) => {
   return (
     <>
       <Switch>
