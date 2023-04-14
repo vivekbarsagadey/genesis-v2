@@ -5,6 +5,15 @@ import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import ProjectPieChart from "./pie.chart";
 import { ListComponentProps } from "./props";
+import moment from "moment";
+import { Chart } from "react-google-charts";
+
+const options = {
+  vAxis: { title: "Customer Created" },
+  hAxis: { title: "Month" },
+  seriesType: "bars",
+  series: { type: "line" },
+};
 
 const ProjectGraphView = ({ projects }: ListComponentProps) => {
   const [graphView, setGraphView] = useState<string>("");
@@ -21,7 +30,7 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
       element === "country" ||
       element === "state" ||
       element === "city" ||
-      element === "status"||
+      element === "status" ||
       element === "application"
     ) {
       return true;
@@ -72,11 +81,106 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
   ];
   const applicationData = [
     ["projects", "Application"],
-    ["Business to Customer - Web", projects.filter((item) => item.application === "Business to Customer - Web").length],
-    ["Business to Customer - Mobile", projects.filter((item) => item.application === "Business to Customer - Mobile").length,],
-    ["Business to Business - Web", projects.filter((item) => item.application === "Business to Business - Web").length],
-    ["Business to Business - Mobile", projects.filter((item) => item.application === "Business to Business - Mobile").length],
-    
+    [
+      "Business to Customer - Web",
+      projects.filter(
+        (item) => item.application === "Business to Customer - Web"
+      ).length,
+    ],
+    [
+      "Business to Customer - Mobile",
+      projects.filter(
+        (item) => item.application === "Business to Customer - Mobile"
+      ).length,
+    ],
+    [
+      "Business to Business - Web",
+      projects.filter(
+        (item) => item.application === "Business to Business - Web"
+      ).length,
+    ],
+    [
+      "Business to Business - Mobile",
+      projects.filter(
+        (item) => item.application === "Business to Business - Mobile"
+      ).length,
+    ],
+  ];
+
+  const createdDataData = [
+    ["Month", "Count"],
+    [
+      "JAN",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Jan").length,
+    ],
+    [
+      "FEB",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Feb").length,
+    ],
+    [
+      "MAR",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Mar").length,
+    ],
+    [
+      "APR",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Apr").length,
+    ],
+    [
+      "MAY",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "May").length,
+    ],
+    [
+      "JUN",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Jun").length,
+    ],
+    [
+      "JUL",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Jul").length,
+    ],
+    [
+      "AUG",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Aug").length,
+    ],
+    [
+      "SEP",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Sep").length,
+    ],
+    [
+      "OCT",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Oct").length,
+    ],
+    [
+      "NOV",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Nov").length,
+    ],
+    [
+      "DEC",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Dec").length,
+    ],
   ];
 
   return (
@@ -110,7 +214,8 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
                         ...params.InputProps,
                         type: "search",
                       }}
-                      placeholder="Select Graph View" fullWidth
+                      placeholder="Select Graph View"
+                      fullWidth
                     />
                   )}
                 />
@@ -118,7 +223,17 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={6}></Grid>
+        <Grid item xs={6}>
+          <Grid>
+            <Chart
+              chartType="ComboChart"
+              width="100%"
+              height="400px"
+              data={createdDataData}
+              options={options}
+            />
+          </Grid>
+        </Grid>
         <Grid item xs={12}></Grid>
       </Grid>
     </Box>

@@ -5,6 +5,17 @@ import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import CompanyPieChart from "./pie.chart";
 import { ListComponentProps } from "./props";
+import moment from "moment";
+import { Chart } from "react-google-charts";
+
+const options = {
+  vAxis: { title: "Customer Created" },
+  hAxis: { title: "Month" },
+  seriesType: "bars",
+  series: { type: "line" },
+};
+
+
 
 const CustomerGraphView = ({ companies }: ListComponentProps) => {
   const [graphView, setGraphView] = useState<string>("");
@@ -79,6 +90,82 @@ const CustomerGraphView = ({ companies }: ListComponentProps) => {
     ],
   ];
 
+  const createdDataData = [
+    ["Month", "Count"],
+    [
+      "JAN",
+      companies
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Jan").length,
+    ],
+    [
+      "FEB",
+      companies
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Feb").length,
+    ],
+    [
+      "MAR",
+      companies
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Mar").length,
+    ],
+    [
+      "APR",
+      companies
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Apr").length,
+    ],
+    [
+      "MAY",
+      companies
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "May").length,
+    ],
+    [
+      "JUN",
+      companies
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Jun").length,
+    ],
+    [
+      "JUL",
+      companies
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Jul").length,
+    ],
+    [
+      "AUG",
+      companies
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Aug").length,
+    ],
+    [
+      "SEP",
+      companies
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Sep").length,
+    ],
+    [
+      "OCT",
+      companies
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Oct").length,
+    ],
+    [
+      "NOV",
+      companies
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Nov").length,
+    ],
+    [
+      "DEC",
+      companies
+        .map((ele) => moment(ele.updatedAt).format("MMM"))
+        .filter((d) => d === "Dec").length,
+    ],
+  ];
+
   return (
     <Box mr={2}>
       <Grid container>
@@ -117,7 +204,15 @@ const CustomerGraphView = ({ companies }: ListComponentProps) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={6}></Grid>
+        <Grid item xs={6}>
+        <Chart
+                chartType="ComboChart"
+                width="100%"
+                height="400px"
+                data={createdDataData}
+                options={options}
+              />
+        </Grid>
         <Grid item xs={12}></Grid>
       </Grid>
     </Box>

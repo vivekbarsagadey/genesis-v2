@@ -1,6 +1,7 @@
 
 interface IProject{
     id:string;
+    updatedAt:number;
     name: string;
     customerName: string;
     state: string;
