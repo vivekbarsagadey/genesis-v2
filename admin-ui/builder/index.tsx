@@ -32,13 +32,15 @@ const BuilderHome = ({ id }) => {
   const [screenToggle, setScreenToggle] = useState<string>("");
   const [componentId, setComponentId] = useState(null);
   const [gridVal, setGridVal] = useState([]);
+  const [componentVal, setComponentVal] = useState([]);
 
-  const getComponentId = (idRecv : string) => {
+  const getComponentId = (idRecv: string) => {
     setComponentId(idRecv);
+    setComponentVal([...componentVal, idRecv]);
   };
 
-  const getGridId = (itemRecv : string) => {
-    setGridVal([...gridVal, itemRecv]);
+  const getGridId = (idRecv: string) => {
+    setGridVal([...gridVal, idRecv]);
   };
 
   const handleMenu = () => {
@@ -86,6 +88,7 @@ const BuilderHome = ({ id }) => {
                   <ScreenSelectComponent
                     screenToggle={screenToggle}
                     gridVal={gridVal}
+                    componentVal={componentVal}
                   />
                 </Grid>
                 <Grid item xs={3}>

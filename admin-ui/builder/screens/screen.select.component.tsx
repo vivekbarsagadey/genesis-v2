@@ -4,7 +4,14 @@ import { styled } from "@mui/material/styles";
 import React, { useEffect, useState } from "react";
 import { Case, Switch } from "react-if";
 import { ProjectContext } from "..";
-import genisys from "../../data/genisys.json";
+import ButtonBuilderComponent from "./builder.component/button.builder.component";
+import CheckboxComponent from "./builder.component/checkbox.component";
+import CnfPasswordComponent from "./builder.component/cnf.password.component";
+import DropdownComponent from "./builder.component/dropdown.component";
+import EmailComponent from "./builder.component/email.component";
+import NumberComponent from "./builder.component/number.component";
+import PasswordComponent from "./builder.component/password.component";
+import TextComponent from "./builder.component/text.component";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -13,7 +20,7 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
-const ScreenSelectComponent = ({ screenToggle, gridVal }) => {
+const ScreenSelectComponent = ({ screenToggle, gridVal, componentVal }) => {
   const value = React.useContext(ProjectContext);
 
   return (
@@ -29,72 +36,168 @@ const ScreenSelectComponent = ({ screenToggle, gridVal }) => {
                   style={{ height: "75vh", overflowY: "scroll" }}
                 >
                   <Grid container spacing={1}>
-                    {gridVal?.map((val, index) => {
+                    {gridVal?.map((val, indexOuter) => {
                       return (
-                        <Switch key={index}>
+                        <Switch key={indexOuter}>
                           <Case condition={val === "grid_1x12"}>
                             <Grid item xs={12}>
-                              <Item>xs=12</Item>
+                              <Item>
+                                {componentVal?.map((data, indexInner) => {
+                                  return (
+                                    <div key={indexInner}>
+                                      {(() => {
+                                        if (indexOuter == indexInner) {
+                                          return (
+                                            <Switch>
+                                              <Case
+                                                condition={data === "buttons"}
+                                              >
+                                                <ButtonBuilderComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "emails"}
+                                              >
+                                                <EmailComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "passwords"}
+                                              >
+                                                <PasswordComponent />
+                                              </Case>
+                                              <Case
+                                                condition={
+                                                  data === "cnfrmpasswords"
+                                                }
+                                              >
+                                                <CnfPasswordComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "numbers"}
+                                              >
+                                                <NumberComponent />
+                                              </Case>
+                                              <Case
+                                                condition={
+                                                  data === "checkboxes"
+                                                }
+                                              >
+                                                <CheckboxComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "dropdowns"}
+                                              >
+                                                <DropdownComponent />
+                                              </Case>
+                                              <Case condition={data === "text"}>
+                                                <TextComponent />
+                                              </Case>
+                                            </Switch>
+                                          );
+                                        }
+
+                                        return null;
+                                      })()}
+                                    </div>
+                                  );
+                                })}
+                              </Item>
                             </Grid>
                           </Case>
                           <Case condition={val === "grid_1x6"}>
                             <Grid item xs={6}>
-                              <Item>xs=6</Item>
+                              <Item>
+                                {componentVal?.map((data, indexInner) => {
+                                  return (
+                                    <div key={indexInner}>
+                                      {(() => {
+                                        if (indexOuter == indexInner) {
+                                          return <div>{data}</div>;
+                                        }
+
+                                        return null;
+                                      })()}
+                                    </div>
+                                  );
+                                })}
+                              </Item>
                             </Grid>
-                            {/* <Grid item xs={6}>
-                              <Item>xs=6</Item>
-                            </Grid> */}
                           </Case>
                           <Case condition={val === "grid_1x4"}>
                             <Grid item xs={4}>
-                              <Item>xs=4</Item>
+                              <Item>
+                                {componentVal?.map((data, indexInner) => {
+                                  return (
+                                    <div key={indexInner}>
+                                      {(() => {
+                                        if (indexOuter == indexInner) {
+                                          return <div>{data}</div>;
+                                        }
+
+                                        return null;
+                                      })()}
+                                    </div>
+                                  );
+                                })}
+                              </Item>
                             </Grid>
-                            {/* <Grid item xs={3}>
-                              <Item>xs=3</Item>
-                            </Grid>
-                            <Grid item xs={3}>
-                              <Item>xs=3</Item>
-                            </Grid>
-                            <Grid item xs={3}>
-                              <Item>xs=3</Item>
-                            </Grid> */}
                           </Case>
                           <Case condition={val === "grid_1x3"}>
                             <Grid item xs={3}>
-                              <Item>xs=3</Item>
+                              <Item>
+                                {componentVal?.map((data, indexInner) => {
+                                  return (
+                                    <div key={indexInner}>
+                                      {(() => {
+                                        if (indexOuter == indexInner) {
+                                          return <div>{data}</div>;
+                                        }
+
+                                        return null;
+                                      })()}
+                                    </div>
+                                  );
+                                })}
+                              </Item>
                             </Grid>
-                            {/* <Grid item xs={4}>
-                              <Item>xs=4</Item>
-                            </Grid>
-                            <Grid item xs={4}>
-                              <Item>xs=4</Item>
-                            </Grid> */}
                           </Case>
                           <Case condition={val === "grid_1x2"}>
                             <Grid item xs={2}>
-                              <Item>xs=2</Item>
+                              <Item>
+                                {componentVal?.map((data, indexInner) => {
+                                  return (
+                                    <div key={indexInner}>
+                                      {(() => {
+                                        if (indexOuter == indexInner) {
+                                          return <div>{data}</div>;
+                                        }
+
+                                        return null;
+                                      })()}
+                                    </div>
+                                  );
+                                })}
+                              </Item>
                             </Grid>
                           </Case>
                           <Case condition={val === "grid_1x1"}>
                             <Grid item xs={1}>
-                              <Item>xs=1</Item>
+                              <Item>
+                                {componentVal?.map((data, indexInner) => {
+                                  return (
+                                    <div key={indexInner}>
+                                      {(() => {
+                                        if (indexOuter == indexInner) {
+                                          return <div>{data}</div>;
+                                        }
+
+                                        return null;
+                                      })()}
+                                    </div>
+                                  );
+                                })}
+                              </Item>
                             </Grid>
                           </Case>
-                          {/* <Case condition={val === "grid_3x1"}>
-                            <Grid item xs={3}>
-                              <Item>xs=2x1</Item>
-                            </Grid>
-                          </Case>
-                          <Case condition={val === "grid_2x1"}>
-                            <Grid item xs={2}>
-                              <Item>xs=1x1</Item>
-                            </Grid>
-                          </Case>
-                          <Case condition={val === "grid_1x1"}>
-                            <Grid item xs={1}>
-                              <Item>xs=1x1</Item>
-                            </Grid>
-                          </Case> */}
                         </Switch>
                       );
                     })}
