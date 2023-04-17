@@ -2,12 +2,7 @@
 import EditIcon from "@mui/icons-material/Edit";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import {
-  Grid,
-  IconButton, Paper,
-  Tooltip,
-  Typography
-} from "@mui/material";
+import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import Dialog from "@mui/material/Dialog";
@@ -104,11 +99,9 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
               <Grid container>
                 <Grid item xs={4}>
                   <Tooltip title="Edit">
-                    {/* <Link href={`/project/${items.id}`}> */}
                     <IconButton onClick={openBuilderMethod}>
                       <EditIcon fontSize="small" />
                     </IconButton>
-                    {/* </Link> */}
                   </Tooltip>
                 </Grid>
                 <Grid item xs={2}>
@@ -122,7 +115,6 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
             </Grid>
           </Grid>
         </Paper>
-
         {/* Builder Theme screen  */}
         <Dialog
           fullScreen
