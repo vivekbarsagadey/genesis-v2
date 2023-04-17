@@ -33,7 +33,7 @@ const BuilderHome = ({ id }) => {
   const [componentId, setComponentId] = useState(null);
   const [gridVal, setGridVal] = useState([]);
   const [componentVal, setComponentVal] = useState([]);
-
+  const [sectionalData, setSectionalData] = useState("");
   const getComponentId = (idRecv: string) => {
     setComponentId(idRecv);
     setComponentVal([...componentVal, idRecv]);
@@ -52,9 +52,11 @@ const BuilderHome = ({ id }) => {
   const updateScreen = (typeRec: string) => {
     setScreenToggle(typeRec);
   };
-
+  const updateSectionData = (typeRecv: string) => {
+    setSectionalData(typeRecv);
+  };
   return (
-    <ProjectContext.Provider value={componentId}>
+    <ProjectContext.Provider value={sectionalData}>
       <Box>
         <Grid container>
           <Grid item xs={2}>
@@ -89,6 +91,7 @@ const BuilderHome = ({ id }) => {
                     screenToggle={screenToggle}
                     gridVal={gridVal}
                     componentVal={componentVal}
+                    updateSectionData={updateSectionData}
                   />
                 </Grid>
                 <Grid item xs={3}>
