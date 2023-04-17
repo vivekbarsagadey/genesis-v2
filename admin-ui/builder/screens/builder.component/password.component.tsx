@@ -5,7 +5,6 @@ const PasswordComponent = () => {
   return (
     <TextField
       id="outlined-password-input"
-      label="Password"
       type="password"
       placeholder="password" fullWidth size="small"
     />

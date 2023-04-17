@@ -8,7 +8,6 @@ const EmailComponent = () => {
     <>
        <TextField
       id="outlined-builder-password-input"
-      label="Confirm Password"
       type="password"
       placeholder="Confirm Password" fullWidth size="small"
     />
