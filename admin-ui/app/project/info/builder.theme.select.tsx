@@ -42,6 +42,13 @@ const Transition = React.forwardRef(function Transition(
 const BuilderThemeComponent = ({ handleCloseTheme }) => {
   const classes = useStyles();
   const [builderThemes, setBuilderThemes] = React.useState(false);
+  const [blankTheme, setBlankTheme] =React.useState("blank");
+  const [blackTheme, setBlackTheme] =React.useState("black");
+  const [whiteTheme, setWhiteTheme] =React.useState("white");
+  const [glassmorphismTheme, setGlassmorphismTheme] =React.useState("glassmorphism");
+  // const [builderThemes, setBuilderThemes] = React.useState(false);
+  // const [builderThemes, setBuilderThemes] = React.useState(false);
+  // const [builderThemes, setBuilderThemes] = React.useState(false);
 
   const handleClickOpen = () => {
     setBuilderThemes(true);
@@ -78,7 +85,7 @@ const BuilderThemeComponent = ({ handleCloseTheme }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" />
+                  <Checkbox style={{ color: "white" }} size="small" value={blankTheme} />
                 </Grid>
               </Grid>
               <Grid container>
@@ -104,7 +111,7 @@ const BuilderThemeComponent = ({ handleCloseTheme }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" />
+                  <Checkbox style={{ color: "white" }} size="small" value={blackTheme} />
                 </Grid>
               </Grid>
               <Grid container>
@@ -135,7 +142,7 @@ const BuilderThemeComponent = ({ handleCloseTheme }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" />
+                  <Checkbox style={{ color: "white" }} size="small" value={whiteTheme}/>
                 </Grid>
               </Grid>
               <Grid container>
@@ -165,7 +172,7 @@ const BuilderThemeComponent = ({ handleCloseTheme }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" />
+                  <Checkbox style={{ color: "white" }} size="small" value={glassmorphismTheme} />
                 </Grid>
               </Grid>
               <Grid container>

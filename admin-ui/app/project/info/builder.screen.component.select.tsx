@@ -2,6 +2,7 @@ import { Button, Card, Grid, Typography } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Checkbox from "@mui/material/Checkbox";
 import { makeStyles } from "@mui/styles";
+import { useState } from "react";
 
 const useStyles = makeStyles({
   background_genesis1: {
@@ -27,6 +28,14 @@ const useStyles = makeStyles({
 
 const BuilderScreenSelectComponent = ({ handleClose }) => {
   const classes = useStyles();
+  const [blankScreen, setBlankScreen] = useState("blank");
+  const [loginScreen, setLoginScreen] = useState("login");
+  const [profileScreen, setProfileScreen] = useState("profile");
+  const [homePageScreen, setHomePageScreen] = useState("homePage");
+  const [editProfileScreen, setEditProfileScreen] = useState("editProfile");
+  const [signupScreen, setSignupScreen] = useState("signup");
+  const [sideMenuScreen, setSideMenuScreen] = useState("sideMenu");
+  const [settingScreen, setSettingScreen] = useState("setting");
 
   return (
     <div>
@@ -48,7 +57,7 @@ const BuilderScreenSelectComponent = ({ handleClose }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" />
+                  <Checkbox style={{ color: "white" }} size="small" value={blankScreen} />
                 </Grid>
               </Grid>
               <Grid container>
@@ -73,7 +82,7 @@ const BuilderScreenSelectComponent = ({ handleClose }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" />
+                  <Checkbox style={{ color: "white" }} size="small" value={loginScreen}/>
                 </Grid>
               </Grid>
               <Grid container>
@@ -103,7 +112,7 @@ const BuilderScreenSelectComponent = ({ handleClose }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" />
+                  <Checkbox style={{ color: "white" }} size="small" value={profileScreen}/>
                 </Grid>
               </Grid>
               <Grid container>
@@ -133,7 +142,7 @@ const BuilderScreenSelectComponent = ({ handleClose }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" />
+                  <Checkbox style={{ color: "white" }} size="small" value={homePageScreen} />
                 </Grid>
               </Grid>
               <Grid container>
@@ -163,7 +172,7 @@ const BuilderScreenSelectComponent = ({ handleClose }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" />
+                  <Checkbox style={{ color: "white" }} size="small" value={editProfileScreen}/>
                 </Grid>
               </Grid>
               <Grid container>
@@ -193,7 +202,7 @@ const BuilderScreenSelectComponent = ({ handleClose }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" />
+                  <Checkbox style={{ color: "white" }} size="small" value={signupScreen}/>
                 </Grid>
               </Grid>
               <Grid container>
@@ -223,7 +232,7 @@ const BuilderScreenSelectComponent = ({ handleClose }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" />
+                  <Checkbox style={{ color: "white" }} size="small" value={sideMenuScreen} />
                 </Grid>
               </Grid>
               <Grid container>
@@ -253,7 +262,7 @@ const BuilderScreenSelectComponent = ({ handleClose }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" />
+                  <Checkbox style={{ color: "white" }} size="small" value={settingScreen}/>
                 </Grid>
               </Grid>
               <Grid container>
