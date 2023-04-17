@@ -10,7 +10,7 @@ const EmailComponent = () => {
       id="outlined-builder-password-input"
       label="Confirm Password"
       type="password"
-      placeholder="Confirm Password"
+      placeholder="Confirm Password" fullWidth size="small"
     />
     </>
   );

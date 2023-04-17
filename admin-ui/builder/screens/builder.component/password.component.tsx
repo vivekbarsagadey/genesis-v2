@@ -7,7 +7,7 @@ const PasswordComponent = () => {
       id="outlined-password-input"
       label="Password"
       type="password"
-      placeholder="password"
+      placeholder="password" fullWidth size="small"
     />
   );
 };

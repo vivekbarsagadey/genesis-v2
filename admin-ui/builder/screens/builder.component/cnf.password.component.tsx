@@ -33,7 +33,8 @@ const CnfPasswordComponent = () => {
             </IconButton>
           </InputAdornment>
         }
-        label="Password"
+        fullWidth
+        size="small"
       />
     </>
   );

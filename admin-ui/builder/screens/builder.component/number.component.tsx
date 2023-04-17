@@ -5,12 +5,11 @@ const NumberComponent = () => {
   return (
     <TextField
       id="outlined-number"
-      label="Number"
       type="number"
       InputLabelProps={{
         shrink: true,
       }}
-      placeholder="Number"
+      placeholder="Number" fullWidth size="small"
     />
   );
 };

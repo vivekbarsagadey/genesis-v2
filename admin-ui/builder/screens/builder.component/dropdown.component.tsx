@@ -5,9 +5,8 @@ const DropdownComponent = () => {
   return (
     <Autocomplete
       disablePortal
-      id="combo-box-demo"
-      //   options={top100Films.map()}
-      sx={{ width: 300 }}
+      id="combo-box-demo" fullWidth size="small"
+      //   options={top100Films.map()} 
       renderInput={(params) => <TextField {...params} label="Movie" />}
     />
   );
