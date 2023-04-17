@@ -157,7 +157,6 @@ const BuilderThemeComponent = ({ handleCloseTheme }) => {
                 </Grid>
               </Grid>
             </Grid>
-
             <Grid item xs={4}>
               <Grid container display="flex" justifyContent="space-around">
                 <Grid item xs={10}>

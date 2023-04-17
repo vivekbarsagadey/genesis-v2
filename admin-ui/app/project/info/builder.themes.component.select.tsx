@@ -275,7 +275,6 @@ const BuilderThemesSelectComponent = ({ handleClose }) => {
                 </Grid>
               </Grid>
             </Grid>
-
             <Grid item xs={12}>
               <Grid container display="flex" justifyContent={"flex-end"}>
                 <Grid item xs={2}>

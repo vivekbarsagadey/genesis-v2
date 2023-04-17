@@ -132,7 +132,6 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
         >
           <BuilderThemeComponent handleCloseTheme={handleCloseTheme} />
         </Dialog>
-
         {/* Builder full screen  */}
         <Dialog
           fullScreen
