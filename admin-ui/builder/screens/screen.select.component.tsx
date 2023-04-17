@@ -17,7 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  textAlign: "center",
+  textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
 const ScreenSelectComponent = ({ screenToggle, gridVal, componentVal }) => {
@@ -111,7 +111,52 @@ const ScreenSelectComponent = ({ screenToggle, gridVal, componentVal }) => {
                                     <div key={indexInner}>
                                       {(() => {
                                         if (indexOuter == indexInner) {
-                                          return <div>{data}</div>;
+                                          return (
+                                            <Switch>
+                                              <Case
+                                                condition={data === "buttons"}
+                                              >
+                                                <ButtonBuilderComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "emails"}
+                                              >
+                                                <EmailComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "passwords"}
+                                              >
+                                                <PasswordComponent />
+                                              </Case>
+                                              <Case
+                                                condition={
+                                                  data === "cnfrmpasswords"
+                                                }
+                                              >
+                                                <CnfPasswordComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "numbers"}
+                                              >
+                                                <NumberComponent />
+                                              </Case>
+                                              <Case
+                                                condition={
+                                                  data === "checkboxes"
+                                                }
+                                              >
+                                                <CheckboxComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "dropdowns"}
+                                              >
+                                                <DropdownComponent />
+                                              </Case>
+                                              <Case condition={data === "text"}>
+                                                <TextComponent />
+                                              </Case>
+                                            </Switch>
+                                          );
                                         }
 
                                         return null;
@@ -130,7 +175,52 @@ const ScreenSelectComponent = ({ screenToggle, gridVal, componentVal }) => {
                                     <div key={indexInner}>
                                       {(() => {
                                         if (indexOuter == indexInner) {
-                                          return <div>{data}</div>;
+                                          return (
+                                            <Switch>
+                                              <Case
+                                                condition={data === "buttons"}
+                                              >
+                                                <ButtonBuilderComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "emails"}
+                                              >
+                                                <EmailComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "passwords"}
+                                              >
+                                                <PasswordComponent />
+                                              </Case>
+                                              <Case
+                                                condition={
+                                                  data === "cnfrmpasswords"
+                                                }
+                                              >
+                                                <CnfPasswordComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "numbers"}
+                                              >
+                                                <NumberComponent />
+                                              </Case>
+                                              <Case
+                                                condition={
+                                                  data === "checkboxes"
+                                                }
+                                              >
+                                                <CheckboxComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "dropdowns"}
+                                              >
+                                                <DropdownComponent />
+                                              </Case>
+                                              <Case condition={data === "text"}>
+                                                <TextComponent />
+                                              </Case>
+                                            </Switch>
+                                          );
                                         }
 
                                         return null;
@@ -149,7 +239,52 @@ const ScreenSelectComponent = ({ screenToggle, gridVal, componentVal }) => {
                                     <div key={indexInner}>
                                       {(() => {
                                         if (indexOuter == indexInner) {
-                                          return <div>{data}</div>;
+                                          return (
+                                            <Switch>
+                                              <Case
+                                                condition={data === "buttons"}
+                                              >
+                                                <ButtonBuilderComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "emails"}
+                                              >
+                                                <EmailComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "passwords"}
+                                              >
+                                                <PasswordComponent />
+                                              </Case>
+                                              <Case
+                                                condition={
+                                                  data === "cnfrmpasswords"
+                                                }
+                                              >
+                                                <CnfPasswordComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "numbers"}
+                                              >
+                                                <NumberComponent />
+                                              </Case>
+                                              <Case
+                                                condition={
+                                                  data === "checkboxes"
+                                                }
+                                              >
+                                                <CheckboxComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "dropdowns"}
+                                              >
+                                                <DropdownComponent />
+                                              </Case>
+                                              <Case condition={data === "text"}>
+                                                <TextComponent />
+                                              </Case>
+                                            </Switch>
+                                          );
                                         }
 
                                         return null;
@@ -168,7 +303,52 @@ const ScreenSelectComponent = ({ screenToggle, gridVal, componentVal }) => {
                                     <div key={indexInner}>
                                       {(() => {
                                         if (indexOuter == indexInner) {
-                                          return <div>{data}</div>;
+                                          return (
+                                            <Switch>
+                                              <Case
+                                                condition={data === "buttons"}
+                                              >
+                                                <ButtonBuilderComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "emails"}
+                                              >
+                                                <EmailComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "passwords"}
+                                              >
+                                                <PasswordComponent />
+                                              </Case>
+                                              <Case
+                                                condition={
+                                                  data === "cnfrmpasswords"
+                                                }
+                                              >
+                                                <CnfPasswordComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "numbers"}
+                                              >
+                                                <NumberComponent />
+                                              </Case>
+                                              <Case
+                                                condition={
+                                                  data === "checkboxes"
+                                                }
+                                              >
+                                                <CheckboxComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "dropdowns"}
+                                              >
+                                                <DropdownComponent />
+                                              </Case>
+                                              <Case condition={data === "text"}>
+                                                <TextComponent />
+                                              </Case>
+                                            </Switch>
+                                          );
                                         }
 
                                         return null;
@@ -187,7 +367,52 @@ const ScreenSelectComponent = ({ screenToggle, gridVal, componentVal }) => {
                                     <div key={indexInner}>
                                       {(() => {
                                         if (indexOuter == indexInner) {
-                                          return <div>{data}</div>;
+                                          return (
+                                            <Switch>
+                                              <Case
+                                                condition={data === "buttons"}
+                                              >
+                                                <ButtonBuilderComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "emails"}
+                                              >
+                                                <EmailComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "passwords"}
+                                              >
+                                                <PasswordComponent />
+                                              </Case>
+                                              <Case
+                                                condition={
+                                                  data === "cnfrmpasswords"
+                                                }
+                                              >
+                                                <CnfPasswordComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "numbers"}
+                                              >
+                                                <NumberComponent />
+                                              </Case>
+                                              <Case
+                                                condition={
+                                                  data === "checkboxes"
+                                                }
+                                              >
+                                                <CheckboxComponent />
+                                              </Case>
+                                              <Case
+                                                condition={data === "dropdowns"}
+                                              >
+                                                <DropdownComponent />
+                                              </Case>
+                                              <Case condition={data === "text"}>
+                                                <TextComponent />
+                                              </Case>
+                                            </Switch>
+                                          );
                                         }
 
                                         return null;

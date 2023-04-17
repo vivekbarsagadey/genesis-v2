@@ -7,7 +7,6 @@ const PasswordComponent = () => {
       id="outlined-password-input"
       label="Password"
       type="password"
-      autoComplete="current-password"
       placeholder="password"
     />
   );
