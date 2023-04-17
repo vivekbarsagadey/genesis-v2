@@ -1,32 +1,23 @@
 "use client";
-import React, { useState } from "react";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import {
   Grid,
-  IconButton,
-  List,
-  Paper,
+  IconButton, Paper,
   Tooltip,
-  Typography,
+  Typography
 } from "@mui/material";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { deleteCustomer } from "../../../services/customer.action";
-import { deleteProject } from "../../../services/project.action";
-import downloadJsonFile from "../../utility/json.downloder";
-import IProject from "../project.model";
-import Modal from "@mui/material/Modal";
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import Dialog from "@mui/material/Dialog";
-import { AppBar, Toolbar } from "@material-ui/core";
-import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 import BuilderHome from "../../../builder";
+import downloadJsonFile from "../../utility/json.downloder";
+import IProject from "../project.model";
 import BuilderThemeComponent from "./builder.theme.select";
 
 const Transition = React.forwardRef(function Transition(
@@ -132,13 +123,14 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
           </Grid>
         </Paper>
 
-      {/* Builder Theme screen  */}
+        {/* Builder Theme screen  */}
         <Dialog
           fullScreen
           open={openTheme}
           onClose={handleCloseTheme}
-          TransitionComponent={Transition}>
-          <BuilderThemeComponent />
+          TransitionComponent={Transition}
+        >
+          <BuilderThemeComponent handleCloseTheme={handleCloseTheme} />
         </Dialog>
 
         {/* Builder full screen  */}
@@ -146,7 +138,8 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
           fullScreen
           open={openBuilder}
           onClose={handelCloseBuilder}
-          TransitionComponent={Transition}>
+          TransitionComponent={Transition}
+        >
           <BuilderHome id={items.id} />
         </Dialog>
       </Box>

@@ -1,7 +1,12 @@
 import { Button, Card, Grid, Typography } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Checkbox from "@mui/material/Checkbox";
+import Dialog from "@mui/material/Dialog";
+import Slide from "@mui/material/Slide";
+import { TransitionProps } from "@mui/material/transitions";
 import { makeStyles } from "@mui/styles";
+import * as React from "react";
+import BuilderThemesSelectComponent from "./builder.themes.component.select";
 
 const useStyles = makeStyles({
   background_genesis1: {
@@ -25,8 +30,26 @@ const useStyles = makeStyles({
   },
 });
 
-const BuilderThemeComponent = () => {
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement;
+  },
+  ref: React.Ref<unknown>
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+const BuilderThemeComponent = ({ handleCloseTheme }) => {
   const classes = useStyles();
+  const [builderThemes, setBuilderThemes] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setBuilderThemes(true);
+  };
+
+  const handleClose = () => {
+    setBuilderThemes(false);
+  };
 
   return (
     <div>
@@ -77,7 +100,7 @@ const BuilderThemeComponent = () => {
               <Grid container display="flex" justifyContent="space-around">
                 <Grid item xs={10}>
                   <Typography variant="body2" color={"white"}>
-                    Blank
+                    Black Theme
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
@@ -97,7 +120,7 @@ const BuilderThemeComponent = () => {
                       component="img"
                       alt="green iguana"
                       height="170"
-                      image="./images/cardimage1.png"
+                      image="./images/Black_theme.png"
                     />
                   </Card>
                 </Grid>
@@ -108,7 +131,7 @@ const BuilderThemeComponent = () => {
               <Grid container display="flex" justifyContent="space-around">
                 <Grid item xs={10}>
                   <Typography variant="body2" color={"white"}>
-                    Blank
+                    White Theme
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
@@ -128,7 +151,7 @@ const BuilderThemeComponent = () => {
                       component="img"
                       alt="green iguana"
                       height="170"
-                      image="./images/cardimage2.png"
+                      image="./images/White_theme.png"
                     />
                   </Card>
                 </Grid>
@@ -139,7 +162,7 @@ const BuilderThemeComponent = () => {
               <Grid container display="flex" justifyContent="space-around">
                 <Grid item xs={10}>
                   <Typography variant="body2" color={"white"}>
-                    Blank
+                    Glassmorphism Theme
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
@@ -159,85 +182,30 @@ const BuilderThemeComponent = () => {
                       component="img"
                       alt="green iguana"
                       height="170"
-                      image="./images/cardimage3.png"
+                      image="./images/Glassmorphism_theme.png"
                     />
                   </Card>
                 </Grid>
               </Grid>
             </Grid>
-
-            <Grid item xs={4}>
-              <Grid container display="flex" justifyContent="space-around">
-                <Grid item xs={10}>
-                  <Typography variant="body2" color={"white"}>
-                    Blank
-                  </Typography>
-                </Grid>
-                <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" />
-                </Grid>
-              </Grid>
-              <Grid container>
-                <Grid
-                  item
-                  xs={6}
-                  display="flex"
-                  justifyContent={"space-around"}
-                ></Grid>
-                <Grid item xs={12}>
-                  <Card>
-                    <CardMedia
-                      component="img"
-                      alt="green iguana"
-                      height="170"
-                      image="./images/cardimage4.png"
-                    />
-                  </Card>
-                </Grid>
-              </Grid>
-            </Grid>
-
-            <Grid item xs={4}>
-              <Grid container display="flex" justifyContent="space-around">
-                <Grid item xs={10}>
-                  <Typography variant="body2" color={"white"}>
-                    Blank
-                  </Typography>
-                </Grid>
-                <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" />
-                </Grid>
-              </Grid>
-              <Grid container>
-                <Grid
-                  item
-                  xs={6}
-                  display="flex"
-                  justifyContent={"space-around"}
-                ></Grid>
-                <Grid item xs={12}>
-                  <Card>
-                    <CardMedia
-                      component="img"
-                      alt="green iguana"
-                      height="170"
-                      image="./images/cardimage5.png"
-                    />
-                  </Card>
-                </Grid>
-              </Grid>
-            </Grid>
-
             <Grid item xs={12}>
               <Grid container display="flex" justifyContent={"flex-end"}>
                 <Grid item xs={2}>
-                  <Button variant="contained" size="large">
+                  <Button
+                    variant="contained"
+                    size="large"
+                    onClick={handleCloseTheme}
+                  >
                     Cancel
                   </Button>
                 </Grid>
-                
+
                 <Grid item xs={1} mr={1}>
-                  <Button variant="contained" size="large" >
+                  <Button
+                    variant="contained"
+                    size="large"
+                    onClick={handleClickOpen}
+                  >
                     Next
                   </Button>
                 </Grid>
@@ -246,6 +214,15 @@ const BuilderThemeComponent = () => {
           </Grid>
         </Grid>
       </Grid>
+
+      <Dialog
+        fullScreen
+        open={builderThemes}
+        onClose={handleClose}
+        TransitionComponent={Transition}
+      >
+        <BuilderThemesSelectComponent handleClose={handleClose} />
+      </Dialog>
     </div>
   );
 };
