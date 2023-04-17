@@ -8,6 +8,7 @@ const PasswordComponent = () => {
       label="Password"
       type="password"
       autoComplete="current-password"
+      placeholder="password"
     />
   );
 };

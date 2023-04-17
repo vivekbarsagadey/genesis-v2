@@ -10,6 +10,7 @@ const NumberComponent = () => {
       InputLabelProps={{
         shrink: true,
       }}
+      placeholder="Number"
     />
   );
 };

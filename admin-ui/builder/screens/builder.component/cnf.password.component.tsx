@@ -8,6 +8,7 @@ const CnfPasswordComponent = () => {
       label="Confirm Password"
       type="password"
       autoComplete="current-password"
+      placeholder="Confirm Password"
     />
   );
 };
