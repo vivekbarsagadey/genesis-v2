@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-const BuilderThemesSelectComponent = ({ handleClose }) => {
+const BuilderScreenSelectComponent = ({ handleClose }) => {
   const classes = useStyles();
 
   return (
@@ -301,4 +301,4 @@ const BuilderThemesSelectComponent = ({ handleClose }) => {
   );
 };
 
-export default BuilderThemesSelectComponent;
+export default BuilderScreenSelectComponent;

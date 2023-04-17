@@ -6,7 +6,7 @@ import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import { makeStyles } from "@mui/styles";
 import * as React from "react";
-import BuilderThemesSelectComponent from "./builder.themes.component.select";
+import BuilderThemesSelectComponent from "./builder.screen.component.select";
 
 const useStyles = makeStyles({
   background_genesis1: {
