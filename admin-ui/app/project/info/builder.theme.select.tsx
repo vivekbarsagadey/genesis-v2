@@ -46,18 +46,23 @@ const BuilderThemeComponent = () => {
           </Grid>
           <Grid container spacing={4} padding={3}>
             <Grid item xs={4}>
+              <Grid container display="flex" justifyContent="space-around">
+                <Grid item xs={10}>
+                  <Typography variant="body2" color={"white"}>
+                    Blank
+                  </Typography>
+                </Grid>
+                <Grid item xs={1}>
+                  <Checkbox style={{ color: "white" }} size="small" />
+                </Grid>
+              </Grid>
               <Grid container>
                 <Grid
                   item
                   xs={6}
                   display="flex"
                   justifyContent={"space-around"}
-                >
-                  <Typography variant="body2" color={"white"}>
-                    Blank
-                  </Typography>
-                  <Checkbox style={{ color: "white" }} size="small" />
-                </Grid>
+                ></Grid>
                 <Grid item xs={12}>
                   <Card>
                     <CardMedia component="img" height="175" />
@@ -65,20 +70,25 @@ const BuilderThemeComponent = () => {
                 </Grid>
               </Grid>
             </Grid>
+
             <Grid item xs={4}>
+              <Grid container display="flex" justifyContent="space-around">
+                <Grid item xs={10}>
+                  <Typography variant="body2" color={"white"}>
+                    Blank
+                  </Typography>
+                </Grid>
+                <Grid item xs={1}>
+                  <Checkbox style={{ color: "white" }} size="small" />
+                </Grid>
+              </Grid>
               <Grid container>
                 <Grid
                   item
                   xs={6}
                   display="flex"
                   justifyContent={"space-around"}
-                >
-                  <Typography variant="body2" color={"white"}>
-                    Blank
-                  </Typography>
-                  <Checkbox style={{ color: "white" }} size="small" />
-                </Grid>
-
+                ></Grid>
                 <Grid item xs={12}>
                   <Card>
                     <CardMedia
@@ -91,19 +101,25 @@ const BuilderThemeComponent = () => {
                 </Grid>
               </Grid>
             </Grid>
+
             <Grid item xs={4}>
+              <Grid container display="flex" justifyContent="space-around">
+                <Grid item xs={10}>
+                  <Typography variant="body2" color={"white"}>
+                    Blank
+                  </Typography>
+                </Grid>
+                <Grid item xs={1}>
+                  <Checkbox style={{ color: "white" }} size="small" />
+                </Grid>
+              </Grid>
               <Grid container>
                 <Grid
                   item
                   xs={6}
                   display="flex"
                   justifyContent={"space-around"}
-                >
-                  <Typography variant="body2" color={"white"}>
-                    Blank
-                  </Typography>
-                  <Checkbox style={{ color: "white" }} size="small" />
-                </Grid>
+                ></Grid>
                 <Grid item xs={12}>
                   <Card>
                     <CardMedia
@@ -116,20 +132,25 @@ const BuilderThemeComponent = () => {
                 </Grid>
               </Grid>
             </Grid>
+
             <Grid item xs={4}>
+              <Grid container display="flex" justifyContent="space-around">
+                <Grid item xs={10}>
+                  <Typography variant="body2" color={"white"}>
+                    Blank
+                  </Typography>
+                </Grid>
+                <Grid item xs={1}>
+                  <Checkbox style={{ color: "white" }} size="small" />
+                </Grid>
+              </Grid>
               <Grid container>
                 <Grid
                   item
                   xs={6}
                   display="flex"
                   justifyContent={"space-around"}
-                >
-                  <Typography variant="body2" color={"white"}>
-                    Blank
-                  </Typography>
-                  <Checkbox style={{ color: "white" }} size="small" />
-                </Grid>
-
+                ></Grid>
                 <Grid item xs={12}>
                   <Card>
                     <CardMedia
@@ -142,20 +163,25 @@ const BuilderThemeComponent = () => {
                 </Grid>
               </Grid>
             </Grid>
+
             <Grid item xs={4}>
+              <Grid container display="flex" justifyContent="space-around">
+                <Grid item xs={10}>
+                  <Typography variant="body2" color={"white"}>
+                    Blank
+                  </Typography>
+                </Grid>
+                <Grid item xs={1}>
+                  <Checkbox style={{ color: "white" }} size="small" />
+                </Grid>
+              </Grid>
               <Grid container>
                 <Grid
                   item
                   xs={6}
                   display="flex"
                   justifyContent={"space-around"}
-                >
-                  <Typography variant="body2" color={"white"}>
-                    Blank
-                  </Typography>
-                  <Checkbox style={{ color: "white" }} size="small" />
-                </Grid>
-
+                ></Grid>
                 <Grid item xs={12}>
                   <Card>
                     <CardMedia
@@ -168,20 +194,25 @@ const BuilderThemeComponent = () => {
                 </Grid>
               </Grid>
             </Grid>
+
             <Grid item xs={4}>
+              <Grid container display="flex" justifyContent="space-around">
+                <Grid item xs={10}>
+                  <Typography variant="body2" color={"white"}>
+                    Blank
+                  </Typography>
+                </Grid>
+                <Grid item xs={1}>
+                  <Checkbox style={{ color: "white" }} size="small" />
+                </Grid>
+              </Grid>
               <Grid container>
                 <Grid
                   item
                   xs={6}
                   display="flex"
                   justifyContent={"space-around"}
-                >
-                  <Typography variant="body2" color={"white"}>
-                    Blank
-                  </Typography>
-                  <Checkbox style={{ color: "white" }} size="small" />
-                </Grid>
-
+                ></Grid>
                 <Grid item xs={12}>
                   <Card>
                     <CardMedia
@@ -194,6 +225,7 @@ const BuilderThemeComponent = () => {
                 </Grid>
               </Grid>
             </Grid>
+
             <Grid item xs={12}>
               <Grid container display="flex" justifyContent={"flex-end"}>
                 <Grid item xs={2}>
