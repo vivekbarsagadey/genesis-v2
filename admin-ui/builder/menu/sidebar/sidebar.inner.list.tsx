@@ -23,15 +23,20 @@ const ContainerStyle = styled(Container)(({ theme }) => ({
   marginTop: "-1.5rem",
 }));
 
-const SideBarInnerList = ({ d, toggleMenu, getComponentId }) => {
+const SideBarInnerList = ({ d, toggleMenu, getComponentId,getGridId }) => {
   const [openInnerList, setOpenInnerList] = useState(false);
 
-  const [gridVal, setGridVal] = useState([]);
   const expandInnerList = (ItemRecv) => {
-    getComponentId(ItemRecv.id);
+    if (ItemRecv.type === "component") {
+      // console.log("component ");
+      getComponentId(ItemRecv.id);
+    }
+    if (ItemRecv.type === "grid") {
+      console.log("grid vvvvalue ");
+      getGridId(ItemRecv.id)
+    }
 
     setOpenInnerList(!openInnerList);
-    
   };
 
   return (

@@ -15,7 +15,6 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 const ScreenSelectComponent = ({ screenToggle, gridVal }) => {
   const value = React.useContext(ProjectContext);
-  // console.log("gridVal >>", gridVal);
 
   return (
     <>

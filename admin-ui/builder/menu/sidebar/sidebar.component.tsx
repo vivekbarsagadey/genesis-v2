@@ -44,7 +44,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
-const SidebarComponent = ({ toggleMenu, getComponentId }) => {
+const SidebarComponent = ({ toggleMenu, getComponentId,getGridId }) => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -109,6 +109,7 @@ const SidebarComponent = ({ toggleMenu, getComponentId }) => {
                                   d={d}
                                   toggleMenu={toggleMenu}
                                   getComponentId={getComponentId}
+                                  getGridId={getGridId}
                                 />
                               </AccordionDetails>
                             );

@@ -31,22 +31,15 @@ const BuilderHome = ({ id }) => {
   const [toggleMenu, setToggleMenu] = useState(true);
   const [screenToggle, setScreenToggle] = useState<string>("");
   const [componentId, setComponentId] = useState(null);
-  
-  
-  
-  
   const [gridVal, setGridVal] = useState([]);
+
   const getComponentId = (idRecv) => {
     setComponentId(idRecv);
-    // grid id value
-    const gridId = genisys.grid.filter((ele) => ele.id == componentId);
-    const xsVal = gridId[0]?.id;
-    setGridVal([...gridVal, xsVal]);
   };
 
-const getGridId =()=>{
-  
-}
+  const getGridId = (itemRecv) => {
+    setGridVal([...gridVal, itemRecv]);
+  };
 
   const handleMenu = () => {
     setToggleMenu(!toggleMenu);
@@ -67,6 +60,7 @@ const getGridId =()=>{
             <SidebarComponent
               toggleMenu={toggleMenu}
               getComponentId={getComponentId}
+              getGridId={getGridId}
             />
           </Grid>
           <Grid item xs={10}>

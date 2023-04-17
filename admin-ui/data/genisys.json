@@ -16,6 +16,7 @@
           "icon": "DoneIcon",
           "componentId": "buttonComponent",
           "image": "../public/item/Button_Default_Active.png",
+          "type": "component",
           "items": [
             {
               "id": "sbmitButtons",
@@ -44,6 +45,7 @@
           "title": "Emails",
           "icon": "EmailIcon",
           "componentId": "emailComponent",
+          "type": "component",
           "image": "../public/item/Input_Email.png"
         },
         {
@@ -53,6 +55,7 @@
           "title": "Passwords",
           "icon": "LockOpenIcon",
           "componentId": "passwordComponent",
+          "type": "component",
           "image": "../public/item/Input_Password.png"
         },
         {
@@ -62,6 +65,7 @@
           "title": "ConfirmPasswords",
           "icon": "LockClockIcon",
           "componentId": "confirmpasswordComponent",
+          "type": "component",
           "image_confirm_password": "../public/item/Input_Confirm_Password.png"
         },
         {
@@ -71,6 +75,7 @@
           "title": "Numbers",
           "icon": "FormatListNumberedIcon",
           "componentId": "numberComponent",
+          "type": "component",
           "image": "../public/item/Input_Number.png"
         },
         {
@@ -80,6 +85,7 @@
           "title": "Checkboxes",
           "icon": "CheckBoxIcon",
           "componentId": "checkboxComponent",
+          "type": "component",
           "image": "../public/item/Checkbox.png"
         },
         {
@@ -89,6 +95,7 @@
           "title": "Dropdown",
           "icon": "ArrowDropDownCircleIcon",
           "componentId": "dropdownComponent",
+          "type": "component",
           "image": "../public/item/Input_Dropdown.png"
         },
         {
@@ -98,6 +105,7 @@
           "title": "Text",
           "icon": "FormatSizeIcon",
           "componentId": "textComponent",
+          "type": "component",
           "image": "../public/item/text.png"
         }
       ]
@@ -116,6 +124,7 @@
           "title": "Login",
           "icon": "LoginIcon",
           "componentId": "loginComponent",
+          "type": "container",
           "image": null
         },
         {
@@ -125,6 +134,7 @@
           "title": "EmailLogin",
           "icon": "AlternateEmailIcon",
           "componentId": "emailLoginComponent",
+          "type": "container",
           "image": "../public/item/Login with email.png"
         },
         {
@@ -134,6 +144,7 @@
           "title": "LoginwithEmail",
           "icon": "EmailIcon",
           "componentId": "loginwithEmail",
+          "type": "container",
           "image": "../public/item/Login with email.png"
         },
         {
@@ -143,6 +154,7 @@
           "title": "SocialMediaLogin",
           "icon": "far fa-folder",
           "componentId": "socialMediaLoginComponent",
+          "type": "container",
           "image": "../public/item/login with social media.png"
         },
         {
@@ -152,6 +164,7 @@
           "title": "LoginWithSocialMedia",
           "icon": "far fa-folder",
           "componentId": "loginwithsocialMediaComponent",
+          "type": "container",
           "image": "../public/item/login with social media.png"
         },
         {
@@ -161,6 +174,7 @@
           "title": "NumberLogin",
           "icon": "NumbersIcon",
           "componentId": "numberLoginComponent",
+          "type": "container",
           "image": "../public/item/Input_Number.png"
         },
         {
@@ -170,6 +184,7 @@
           "title": "Registration",
           "icon": "far fa-folder",
           "componentId": "registrationComponent",
+          "type": "container",
           "image": "../public/item/Register 1.png"
         }
       ]
@@ -187,6 +202,7 @@
           "label": "Grid_1x12",
           "title": "Grid_1x12",
           "icon": "WidthFullIcon",
+          "type": "grid",
           "componentId": "Grid_1x12Component"
         },
         {
@@ -195,6 +211,7 @@
           "label": "Grid_2x6",
           "title": "Grid_2x6",
           "icon": "GridGoldenratioIcon",
+          "type": "grid",
           "componentId": "Grid_2x6Component"
         },
         {
@@ -203,6 +220,7 @@
           "label": "Grid_3x4",
           "title": "Grid_3x4",
           "icon": "Grid3x4Icon",
+          "type": "grid",
           "componentId": "Grid_3x4Component"
         },
         {
@@ -211,6 +229,7 @@
           "label": "Grid_4x3",
           "title": "Grid_4x3",
           "icon": "Grid4x3Icon",
+          "type": "grid",
           "componentId": "Grid_4x3Component"
         },
         {
@@ -219,6 +238,7 @@
           "label": "Grid_6x1",
           "title": "Grid_6x1",
           "icon": "Grid6x1Icon",
+          "type": "grid",
           "componentId": "Grid_6x1Component"
         },
         {
@@ -227,6 +247,7 @@
           "label": "Grid_4x1",
           "title": "Grid_4x1",
           "icon": "Grid4x1Icon",
+          "type": "grid",
           "componentId": "Grid_4x1Component"
         },
         {
@@ -235,6 +256,7 @@
           "label": "Grid_3x1",
           "title": "Grid_3x1",
           "icon": "Grid3x1Icon",
+          "type": "grid",
           "componentId": "Grid_3x1Component"
         },
         {
@@ -243,6 +265,7 @@
           "label": "Grid_2x1",
           "title": "Grid_2x1",
           "icon": "Grid2x1Icon",
+          "type": "grid",
           "componentId": "Grid_2x1Component"
         },
         {
@@ -251,6 +274,7 @@
           "label": "Grid_1x1",
           "title": "Grid_1x1",
           "icon": "Grid1x1Icon",
+          "type": "grid",
           "componentId": "Grid_1x1Component"
         }
       ]
@@ -259,45 +283,55 @@
   "grid": [
     {
       "id": "grid_1x12",
-      "label": "Grid_1x12"
+      "label": "Grid_1x12",
+      "type": "grid"
     },
     {
       "id": "grid_2x6",
-      "label": "Grid_2x6"
+      "label": "Grid_2x6",
+      "type": "grid"
     },
     {
       "id": "grid_3x4",
-      "label": "Grid_3x4"
+      "label": "Grid_3x4",
+      "type": "grid"
     },
     {
       "id": "grid_4x3",
-      "label": "Grid_4x3"
+      "label": "Grid_4x3",
+      "type": "grid"
     },
     {
       "id": "grid_6x1",
-      "label": "Grid_6x1"
+      "label": "Grid_6x1",
+      "type": "grid"
     },
     {
       "id": "grid_4x1",
-      "label": "Grid_4x1"
+      "label": "Grid_4x1",
+      "type": "grid"
     },
     {
       "id": "grid_3x1",
-      "label": "Grid_3x1"
+      "label": "Grid_3x1",
+      "type": "grid"
     },
     {
       "id": "grid_2x1",
-      "label": "Grid_2x1"
+      "label": "Grid_2x1",
+      "type": "grid"
     },
     {
       "id": "grid_1x1",
-      "label": "Grid_1x1"
+      "label": "Grid_1x1",
+      "type": "grid"
     }
   ],
   "component": [
     {
       "id": "buttons",
       "label": "Button",
+      "type": "component",
       "property": {
         "parentId": "buttons",
         "background": "red",
@@ -326,6 +360,7 @@
     {
       "id": "emails",
       "label": "Email",
+      "type": "component",
       "property": {
         "parentId": "emails",
         "background": "green",
@@ -354,6 +389,7 @@
     {
       "id": "passwords",
       "label": "Password",
+      "type": "component",
       "property": {
         "parentId": "passwords",
         "background": "yellow",
@@ -382,6 +418,7 @@
     {
       "id": "cnfrmpasswords",
       "label": "ConfirmPassword",
+      "type": "component",
       "property": {
         "parentId": "cnfrmpasswords",
         "background": "grey",
@@ -410,6 +447,7 @@
     {
       "id": "numbers",
       "label": "Number",
+      "type": "component",
       "property": {
         "parentId": "numbers",
         "background": "blue",
@@ -438,6 +476,7 @@
     {
       "id": "checkboxes",
       "label": "Checkbox",
+      "type": "component",
       "property": {
         "parentId": "checkboxes",
         "background": "blue",
@@ -466,6 +505,7 @@
     {
       "id": "dropdowns",
       "label": "Dropdown",
+      "type": "component",
       "property": {
         "parentId": "dropdowns",
         "background": "orange",
@@ -494,6 +534,7 @@
     {
       "id": "text",
       "label": "Text",
+      "type": "component",
       "property": {
         "parentId": "text",
         "background": "vilot",
