@@ -26,10 +26,12 @@ const ContainerStyle = styled(Container)(({ theme }) => ({
 const SideBarInnerList = ({ d, toggleMenu, getComponentId }) => {
   const [openInnerList, setOpenInnerList] = useState(false);
 
+  const [gridVal, setGridVal] = useState([]);
   const expandInnerList = (ItemRecv) => {
     getComponentId(ItemRecv.id);
 
     setOpenInnerList(!openInnerList);
+    
   };
 
   return (

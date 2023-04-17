@@ -12,7 +12,7 @@ import BuilderSidebarComponent from "./menu/sidebar/builder.sidebar.component";
 import PropertiesComponent from "./screens/properties.component";
 import ScreenComponent from "./screens/screen.component";
 import ScreenSelectComponent from "./screens/screen.select.component";
-
+import genisys from "../data/genisys.json";
 export const ProjectContext = createContext();
 
 const BuilderHome = ({ id }) => {
@@ -30,12 +30,23 @@ const BuilderHome = ({ id }) => {
 
   const [toggleMenu, setToggleMenu] = useState(true);
   const [screenToggle, setScreenToggle] = useState<string>("");
-  // const [generalData, setGeneralData] = useState(null);
   const [componentId, setComponentId] = useState(null);
-
+  
+  
+  
+  
+  const [gridVal, setGridVal] = useState([]);
   const getComponentId = (idRecv) => {
     setComponentId(idRecv);
+    // grid id value
+    const gridId = genisys.grid.filter((ele) => ele.id == componentId);
+    const xsVal = gridId[0]?.id;
+    setGridVal([...gridVal, xsVal]);
   };
+
+const getGridId =()=>{
+  
+}
 
   const handleMenu = () => {
     setToggleMenu(!toggleMenu);
@@ -78,7 +89,10 @@ const BuilderHome = ({ id }) => {
                     height: "82vh",
                   }}
                 >
-                  <ScreenSelectComponent screenToggle={screenToggle} />
+                  <ScreenSelectComponent
+                    screenToggle={screenToggle}
+                    gridVal={gridVal}
+                  />
                 </Grid>
                 <Grid item xs={3}>
                   <PropertiesComponent />

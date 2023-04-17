@@ -116,7 +116,7 @@
           "title": "Login",
           "icon": "LoginIcon",
           "componentId": "loginComponent",
-          "image":null
+          "image": null
         },
         {
           "id": "emailLogin",
@@ -182,12 +182,12 @@
       "icon": "Grid4x4Icon",
       "items": [
         {
-          "id": "grid_2",
-          "name": "Grid_2",
-          "label": "Grid_2",
-          "title": "Grid_2",
+          "id": "grid_1x12",
+          "name": "Grid_1x12",
+          "label": "Grid_1x12",
+          "title": "Grid_1x12",
           "icon": "WidthFullIcon",
-          "componentId": "Grid_2Component"
+          "componentId": "Grid_1x12Component"
         },
         {
           "id": "grid_2x6",
@@ -202,7 +202,7 @@
           "name": "Grid_3x4",
           "label": "Grid_3x4",
           "title": "Grid_3x4",
-          "icon": "Grid4x4Icon",
+          "icon": "Grid3x4Icon",
           "componentId": "Grid_3x4Component"
         },
         {
@@ -210,29 +210,90 @@
           "name": "Grid_4x3",
           "label": "Grid_4x3",
           "title": "Grid_4x3",
-          "icon": "Grid4x4Icon",
+          "icon": "Grid4x3Icon",
           "componentId": "Grid_4x3Component"
         },
         {
-          "id": "grid_6x2",
-          "name": "Grid_6x2",
-          "label": "Grid_6x2",
-          "title": "Grid_6x2",
-          "icon": "Grid6x2Icon",
-          "componentId": "Grid_6x2Component"
+          "id": "grid_6x1",
+          "name": "Grid_6x1",
+          "label": "Grid_6x1",
+          "title": "Grid_6x1",
+          "icon": "Grid6x1Icon",
+          "componentId": "Grid_6x1Component"
         },
         {
-          "id": "grid_12x1",
-          "name": "Grid_12x1",
-          "label": "Grid_12x1",
-          "title": "Grid_12x1",
-          "icon": "Grid12x1Icon",
-          "componentId": "Grid_12x1Component"
+          "id": "grid_4x1",
+          "name": "Grid_4x1",
+          "label": "Grid_4x1",
+          "title": "Grid_4x1",
+          "icon": "Grid4x1Icon",
+          "componentId": "Grid_4x1Component"
+        },
+        {
+          "id": "grid_3x1",
+          "name": "Grid_3x1",
+          "label": "Grid_3x1",
+          "title": "Grid_3x1",
+          "icon": "Grid3x1Icon",
+          "componentId": "Grid_3x1Component"
+        },
+        {
+          "id": "grid_2x1",
+          "name": "Grid_2x1",
+          "label": "Grid_2x1",
+          "title": "Grid_2x1",
+          "icon": "Grid2x1Icon",
+          "componentId": "Grid_2x1Component"
+        },
+        {
+          "id": "grid_1x1",
+          "name": "Grid_1x1",
+          "label": "Grid_1x1",
+          "title": "Grid_1x1",
+          "icon": "Grid1x1Icon",
+          "componentId": "Grid_1x1Component"
         }
       ]
     }
   ],
-  "grid": [],
+  "grid": [
+    {
+      "id": "grid_1x12",
+      "label": "Grid_1x12"
+    },
+    {
+      "id": "grid_2x6",
+      "label": "Grid_2x6"
+    },
+    {
+      "id": "grid_3x4",
+      "label": "Grid_3x4"
+    },
+    {
+      "id": "grid_4x3",
+      "label": "Grid_4x3"
+    },
+    {
+      "id": "grid_6x1",
+      "label": "Grid_6x1"
+    },
+    {
+      "id": "grid_4x1",
+      "label": "Grid_4x1"
+    },
+    {
+      "id": "grid_3x1",
+      "label": "Grid_3x1"
+    },
+    {
+      "id": "grid_2x1",
+      "label": "Grid_2x1"
+    },
+    {
+      "id": "grid_1x1",
+      "label": "Grid_1x1"
+    }
+  ],
   "component": [
     {
       "id": "buttons",
