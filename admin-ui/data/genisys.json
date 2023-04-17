@@ -206,74 +206,47 @@
           "componentId": "Grid_1x12Component"
         },
         {
-          "id": "grid_2x6",
-          "name": "Grid_2x6",
-          "label": "Grid_2x6",
-          "title": "Grid_2x6",
+          "id": "grid_1x6",
+          "name": "Grid_1x6",
+          "label": "Grid_1x6",
+          "title": "Grid_1x6",
           "icon": "GridGoldenratioIcon",
           "type": "grid",
-          "componentId": "Grid_2x6Component"
+          "componentId": "Grid_1x6Component"
         },
         {
-          "id": "grid_3x4",
-          "name": "Grid_3x4",
-          "label": "Grid_3x4",
-          "title": "Grid_3x4",
+          "id": "grid_1x4",
+          "name": "Grid_1x4",
+          "label": "Grid_1x4",
+          "title": "Grid_1x4",
           "icon": "Grid3x4Icon",
           "type": "grid",
-          "componentId": "Grid_3x4Component"
+          "componentId": "Grid_1x4Component"
         },
         {
-          "id": "grid_4x3",
-          "name": "Grid_4x3",
-          "label": "Grid_4x3",
-          "title": "Grid_4x3",
+          "id": "grid_1x3",
+          "name": "Grid_1x3",
+          "label": "Grid_1x3",
+          "title": "Grid_1x3",
           "icon": "Grid4x3Icon",
           "type": "grid",
-          "componentId": "Grid_4x3Component"
+          "componentId": "Grid_1x3Component"
         },
         {
-          "id": "grid_6x1",
-          "name": "Grid_6x1",
-          "label": "Grid_6x1",
-          "title": "Grid_6x1",
+          "id": "grid_1x2",
+          "name": "Grid_1x2",
+          "label": "Grid_1x2",
+          "title": "Grid_1x2",
           "icon": "Grid6x1Icon",
           "type": "grid",
-          "componentId": "Grid_6x1Component"
-        },
-        {
-          "id": "grid_4x1",
-          "name": "Grid_4x1",
-          "label": "Grid_4x1",
-          "title": "Grid_4x1",
-          "icon": "Grid4x1Icon",
-          "type": "grid",
-          "componentId": "Grid_4x1Component"
-        },
-        {
-          "id": "grid_3x1",
-          "name": "Grid_3x1",
-          "label": "Grid_3x1",
-          "title": "Grid_3x1",
-          "icon": "Grid3x1Icon",
-          "type": "grid",
-          "componentId": "Grid_3x1Component"
-        },
-        {
-          "id": "grid_2x1",
-          "name": "Grid_2x1",
-          "label": "Grid_2x1",
-          "title": "Grid_2x1",
-          "icon": "Grid2x1Icon",
-          "type": "grid",
-          "componentId": "Grid_2x1Component"
+          "componentId": "Grid_1x2Component"
         },
         {
           "id": "grid_1x1",
           "name": "Grid_1x1",
           "label": "Grid_1x1",
           "title": "Grid_1x1",
-          "icon": "Grid1x1Icon",
+          "icon": "Grid4x1Icon",
           "type": "grid",
           "componentId": "Grid_1x1Component"
         }
@@ -287,38 +260,23 @@
       "type": "grid"
     },
     {
-      "id": "grid_2x6",
-      "label": "Grid_2x6",
+      "id": "grid_1x6",
+      "label": "Grid_1x6",
       "type": "grid"
     },
     {
-      "id": "grid_3x4",
-      "label": "Grid_3x4",
+      "id": "grid_1x4",
+      "label": "Grid_1x4",
       "type": "grid"
     },
     {
-      "id": "grid_4x3",
-      "label": "Grid_4x3",
+      "id": "grid_1x3",
+      "label": "Grid_1x3",
       "type": "grid"
     },
     {
-      "id": "grid_6x1",
-      "label": "Grid_6x1",
-      "type": "grid"
-    },
-    {
-      "id": "grid_4x1",
-      "label": "Grid_4x1",
-      "type": "grid"
-    },
-    {
-      "id": "grid_3x1",
-      "label": "Grid_3x1",
-      "type": "grid"
-    },
-    {
-      "id": "grid_2x1",
-      "label": "Grid_2x1",
+      "id": "grid_1x2",
+      "label": "Grid_1x2",
       "type": "grid"
     },
     {

@@ -37,50 +37,50 @@ const ScreenSelectComponent = ({ screenToggle, gridVal }) => {
                               <Item>xs=12</Item>
                             </Grid>
                           </Case>
-                          <Case condition={val === "grid_2x6"}>
+                          <Case condition={val === "grid_1x6"}>
                             <Grid item xs={6}>
                               <Item>xs=6</Item>
                             </Grid>
-                            <Grid item xs={6}>
+                            {/* <Grid item xs={6}>
                               <Item>xs=6</Item>
-                            </Grid>
+                            </Grid> */}
                           </Case>
-                          <Case condition={val === "grid_3x4"}>
-                            <Grid item xs={3}>
-                              <Item>xs=3</Item>
-                            </Grid>
-                            <Grid item xs={3}>
-                              <Item>xs=3</Item>
-                            </Grid>
-                            <Grid item xs={3}>
-                              <Item>xs=3</Item>
-                            </Grid>
-                            <Grid item xs={3}>
-                              <Item>xs=3</Item>
-                            </Grid>
-                          </Case>
-                          <Case condition={val === "grid_4x3"}>
+                          <Case condition={val === "grid_1x4"}>
                             <Grid item xs={4}>
+                              <Item>xs=4</Item>
+                            </Grid>
+                            {/* <Grid item xs={3}>
+                              <Item>xs=3</Item>
+                            </Grid>
+                            <Grid item xs={3}>
+                              <Item>xs=3</Item>
+                            </Grid>
+                            <Grid item xs={3}>
+                              <Item>xs=3</Item>
+                            </Grid> */}
+                          </Case>
+                          <Case condition={val === "grid_1x3"}>
+                            <Grid item xs={3}>
+                              <Item>xs=3</Item>
+                            </Grid>
+                            {/* <Grid item xs={4}>
                               <Item>xs=4</Item>
                             </Grid>
                             <Grid item xs={4}>
                               <Item>xs=4</Item>
-                            </Grid>
-                            <Grid item xs={4}>
-                              <Item>xs=4</Item>
+                            </Grid> */}
+                          </Case>
+                          <Case condition={val === "grid_1x2"}>
+                            <Grid item xs={2}>
+                              <Item>xs=2</Item>
                             </Grid>
                           </Case>
-                          <Case condition={val === "grid_6x1"}>
-                            <Grid item xs={6}>
-                              <Item>xs=6x1</Item>
+                          <Case condition={val === "grid_1x1"}>
+                            <Grid item xs={1}>
+                              <Item>xs=1</Item>
                             </Grid>
                           </Case>
-                          <Case condition={val === "grid_4x1"}>
-                            <Grid item xs={4}>
-                              <Item>xs=4x1</Item>
-                            </Grid>
-                          </Case>
-                          <Case condition={val === "grid_3x1"}>
+                          {/* <Case condition={val === "grid_3x1"}>
                             <Grid item xs={3}>
                               <Item>xs=2x1</Item>
                             </Grid>
@@ -94,7 +94,7 @@ const ScreenSelectComponent = ({ screenToggle, gridVal }) => {
                             <Grid item xs={1}>
                               <Item>xs=1x1</Item>
                             </Grid>
-                          </Case>
+                          </Case> */}
                         </Switch>
                       );
                     })}

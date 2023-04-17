@@ -33,11 +33,11 @@ const BuilderHome = ({ id }) => {
   const [componentId, setComponentId] = useState(null);
   const [gridVal, setGridVal] = useState([]);
 
-  const getComponentId = (idRecv) => {
+  const getComponentId = (idRecv : string) => {
     setComponentId(idRecv);
   };
 
-  const getGridId = (itemRecv) => {
+  const getGridId = (itemRecv : string) => {
     setGridVal([...gridVal, itemRecv]);
   };
 
