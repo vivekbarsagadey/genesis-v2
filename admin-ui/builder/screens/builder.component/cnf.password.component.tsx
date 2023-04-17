@@ -1,9 +1,15 @@
-import React from 'react'
+import TextField from "@mui/material/TextField";
+import React from "react";
 
 const CnfPasswordComponent = () => {
   return (
-    <div>CnfPasswordComponent</div>
-  )
-}
+    <TextField
+      id="outlined-password-input"
+      label="Confirm Password"
+      type="password"
+      autoComplete="current-password"
+    />
+  );
+};
 
-export default CnfPasswordComponent
+export default CnfPasswordComponent;

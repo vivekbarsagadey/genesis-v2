@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import TextField from '@mui/material/TextField';
 
 const NumberComponent = () => {
   return (
-    <div>NumberComponent</div>
-  )
-}
+    <TextField
+      id="outlined-number"
+      label="Number"
+      type="number"
+      InputLabelProps={{
+        shrink: true,
+      }}
+    />
+  );
+};
 
-export default NumberComponent
+export default NumberComponent;
