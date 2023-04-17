@@ -27,6 +27,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import BuilderHome from "../../../builder";
+import BuilderThemeComponent from "./builder.theme.select";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -142,23 +143,14 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
             </Grid>
           </Grid>
         </Paper>
-        {/* Theme model  */}
-        <Modal
+      {/* Builder Theme screen  */}
+        <Dialog
+          fullScreen
           open={openTheme}
           onClose={handleCloseTheme}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              Text in a modal
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
-          </Box>
-        </Modal>
-
+          TransitionComponent={Transition}>
+          <BuilderThemeComponent />
+        </Dialog>
         {/* Builder full screen  */}
         <Dialog
           fullScreen
