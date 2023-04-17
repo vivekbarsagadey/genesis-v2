@@ -42,13 +42,11 @@ const Transition = React.forwardRef(function Transition(
 const BuilderThemeComponent = ({ handleCloseTheme }) => {
   const classes = useStyles();
   const [builderThemes, setBuilderThemes] = React.useState(false);
-  const [blankTheme, setBlankTheme] =React.useState("blank");
-  const [blackTheme, setBlackTheme] =React.useState("black");
-  const [whiteTheme, setWhiteTheme] =React.useState("white");
-  const [glassmorphismTheme, setGlassmorphismTheme] =React.useState("glassmorphism");
-  // const [builderThemes, setBuilderThemes] = React.useState(false);
-  // const [builderThemes, setBuilderThemes] = React.useState(false);
-  // const [builderThemes, setBuilderThemes] = React.useState(false);
+  const [blankTheme, setBlankTheme] = React.useState<boolean>(false);
+  const [blackTheme, setBlackTheme] = React.useState<boolean>(false);
+  const [whiteTheme, setWhiteTheme] = React.useState<boolean>(false);
+  const [glassmorphismTheme, setGlassmorphismTheme] =
+    React.useState<boolean>(false);
 
   const handleClickOpen = () => {
     setBuilderThemes(true);
@@ -56,6 +54,20 @@ const BuilderThemeComponent = ({ handleCloseTheme }) => {
 
   const handleClose = () => {
     setBuilderThemes(false);
+  };
+  const updateTheme = (themeRecv: string) => {
+    if (themeRecv === "blank") {
+      setBlankTheme((s) => !s);
+    }
+    if (themeRecv === "black") {
+      setBlackTheme((s) => !s);
+    }
+    if (themeRecv === "white") {
+      setWhiteTheme((s) => !s);
+    }
+    if (themeRecv === "glassmorphism") {
+      setGlassmorphismTheme((s) => !s);
+    }
   };
 
   return (
@@ -85,7 +97,12 @@ const BuilderThemeComponent = ({ handleCloseTheme }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" value={blankTheme} />
+                  <Checkbox
+                    style={{ color: "white" }}
+                    size="small"
+                    value={blankTheme}
+                    onClick={() => updateTheme("blank")}
+                  />
                 </Grid>
               </Grid>
               <Grid container>
@@ -111,7 +128,12 @@ const BuilderThemeComponent = ({ handleCloseTheme }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" value={blackTheme} />
+                  <Checkbox
+                    style={{ color: "white" }}
+                    size="small"
+                    value={blackTheme}
+                    onClick={() => updateTheme("blackTheme")}
+                  />
                 </Grid>
               </Grid>
               <Grid container>
@@ -142,7 +164,12 @@ const BuilderThemeComponent = ({ handleCloseTheme }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" value={whiteTheme}/>
+                  <Checkbox
+                    style={{ color: "white" }}
+                    size="small"
+                    value={whiteTheme}
+                    onClick={() => updateTheme("whiteTheme")}
+                  />
                 </Grid>
               </Grid>
               <Grid container>
@@ -172,7 +199,12 @@ const BuilderThemeComponent = ({ handleCloseTheme }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox style={{ color: "white" }} size="small" value={glassmorphismTheme} />
+                  <Checkbox
+                    style={{ color: "white" }}
+                    size="small"
+                    value={glassmorphismTheme}
+                    onClick={() => updateTheme("glassmorphismTheme")}
+                  />
                 </Grid>
               </Grid>
               <Grid container>
