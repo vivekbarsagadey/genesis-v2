@@ -20,9 +20,17 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
-const ScreenSelectComponent = ({ screenToggle, gridVal, componentVal }) => {
+const ScreenSelectComponent = ({
+  screenToggle,
+  gridVal,
+  componentVal,
+  updateSectionData,
+}) => {
   const value = React.useContext(ProjectContext);
 
+  const updateComponentData = (valueRec) => {
+    updateSectionData(valueRec);
+  };
   return (
     <>
       <Switch>
@@ -44,7 +52,10 @@ const ScreenSelectComponent = ({ screenToggle, gridVal, componentVal }) => {
                               <Item>
                                 {componentVal?.map((data, indexInner) => {
                                   return (
-                                    <div key={indexInner}>
+                                    <div
+                                      key={indexInner}
+                                      onClick={() => updateComponentData(data)}
+                                    >
                                       {(() => {
                                         if (indexOuter == indexInner) {
                                           return (
@@ -108,7 +119,10 @@ const ScreenSelectComponent = ({ screenToggle, gridVal, componentVal }) => {
                               <Item>
                                 {componentVal?.map((data, indexInner) => {
                                   return (
-                                    <div key={indexInner}>
+                                    <div
+                                      key={indexInner}
+                                      onClick={() => updateComponentData(data)}
+                                    >
                                       {(() => {
                                         if (indexOuter == indexInner) {
                                           return (
@@ -172,7 +186,10 @@ const ScreenSelectComponent = ({ screenToggle, gridVal, componentVal }) => {
                               <Item>
                                 {componentVal?.map((data, indexInner) => {
                                   return (
-                                    <div key={indexInner}>
+                                    <div
+                                      key={indexInner}
+                                      onClick={() => updateComponentData(data)}
+                                    >
                                       {(() => {
                                         if (indexOuter == indexInner) {
                                           return (
@@ -236,7 +253,10 @@ const ScreenSelectComponent = ({ screenToggle, gridVal, componentVal }) => {
                               <Item>
                                 {componentVal?.map((data, indexInner) => {
                                   return (
-                                    <div key={indexInner}>
+                                    <div
+                                      key={indexInner}
+                                      onClick={() => updateComponentData(data)}
+                                    >
                                       {(() => {
                                         if (indexOuter == indexInner) {
                                           return (
@@ -300,7 +320,10 @@ const ScreenSelectComponent = ({ screenToggle, gridVal, componentVal }) => {
                               <Item>
                                 {componentVal?.map((data, indexInner) => {
                                   return (
-                                    <div key={indexInner}>
+                                    <div
+                                      key={indexInner}
+                                      onClick={() => updateComponentData(data)}
+                                    >
                                       {(() => {
                                         if (indexOuter == indexInner) {
                                           return (
@@ -364,7 +387,10 @@ const ScreenSelectComponent = ({ screenToggle, gridVal, componentVal }) => {
                               <Item>
                                 {componentVal?.map((data, indexInner) => {
                                   return (
-                                    <div key={indexInner}>
+                                    <div
+                                      key={indexInner}
+                                      onClick={() => updateComponentData(data)}
+                                    >
                                       {(() => {
                                         if (indexOuter == indexInner) {
                                           return (

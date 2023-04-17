@@ -38,13 +38,11 @@ import TextModelComponent from "../components/text/model.component";
 import TextPropertiesComponent from "../components/text/properties.component";
 
 const PropertiesComponent = () => {
-  const value = React.useContext(ProjectContext);
+  const value = React.useContext(ProjectContext); // component id
   const [sectionType, setSectionType] = useState<string>("");
   const updateSection = (typeRecv: string) => {
     setSectionType(typeRecv);
   };
-
-  // console.log("Component Id >>>", value);
 
   const getComponentMetaData = genisys?.component.filter(
     (ele) => ele.id == value
