@@ -3,13 +3,25 @@ import { Box, Grid, Typography,Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
 const ButtonCssComponent = ({ metaData }) => {
-  const [background, setBackground] = useState<string>(metaData.background);
-  const [borderRadius, setBorderRadius] = useState<string>(
-    metaData.borderRadius
+  const [borderRadius, setBorderRadius] = useState<string>(metaData.borderRadius
   );
   const [height, setHeight] = useState<string>(metaData.height);
   const [overflow, setOverflow] = useState<string>(metaData.overflowY);
   const [width, setWidth] = useState<string>(metaData.width);
+
+const updateBorderRadius=(e)=>{
+  setBorderRadius(e.target.value)
+}
+
+const updateHeight=(e)=>{
+  setHeight(e.target.value)
+}
+const updateOverflow=(e)=>{
+  setOverflow(e.target.value)
+}
+const updateWidth=(e)=>{
+  setWidth(e.target.value)
+}
 
   return (
     <>
@@ -27,6 +39,7 @@ const ButtonCssComponent = ({ metaData }) => {
                       id="standard-basic"
                       variant="standard"
                       value={borderRadius}
+                      onChange={updateBorderRadius}
                     />
                   </Grid>
                 </Grid>
@@ -41,6 +54,7 @@ const ButtonCssComponent = ({ metaData }) => {
                       id="standard-basic"
                       variant="standard"
                       value={height}
+                      onChange={updateHeight}
                     />
                   </Grid>
                 </Grid>
@@ -55,6 +69,7 @@ const ButtonCssComponent = ({ metaData }) => {
                       id="standard-basic"
                       variant="standard"
                       value={overflow}
+                      onChange={updateOverflow}
                     />
                   </Grid>
                 </Grid>
@@ -70,6 +85,7 @@ const ButtonCssComponent = ({ metaData }) => {
                       id="standard-basic"
                       variant="standard"
                       value={width}
+                      onChange={updateWidth}
                     />
                   </Grid>
                 </Grid>

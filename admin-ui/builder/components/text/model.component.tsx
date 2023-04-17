@@ -4,6 +4,9 @@ import TextField from "@mui/material/TextField";
 
 const TextModelComponent = ({ metaData }) => {
   const [width, setWidth] = useState<string>(metaData.width);
+  const updateWidth = (e) => {
+    setWidth(e.target.value);
+  };
   return (
     <>
       <Box padding={3}>
@@ -20,6 +23,7 @@ const TextModelComponent = ({ metaData }) => {
                       id="standard-basic"
                       variant="standard"
                       value={width}
+                      onChange={updateWidth}
                     />
                   </Grid>
                 </Grid>
@@ -50,5 +54,4 @@ const TextModelComponent = ({ metaData }) => {
     </>
   );
 };
-
 export default TextModelComponent;

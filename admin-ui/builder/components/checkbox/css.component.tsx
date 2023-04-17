@@ -10,94 +10,112 @@ const CheckboxCssComponent = ({ metaData }) => {
   const [height, setHeight] = useState<string>(metaData.height);
   const [overflow, setOverflow] = useState<string>(metaData.overflowY);
   const [width, setWidth] = useState<string>(metaData.width);
-  return (
-    <>
-      <Box padding={3}>
-        <Grid container>
-          <Grid item xs={12} mt={2}>
-            <Grid container>
-              <Grid item xs={12}>
-                <Grid container alignItems={"center"}>
-                  <Grid item xs={6}>
-                    <Typography fontWeight={"600"}>borderRadius</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <TextField
-                      id="standard-basic"
-                      variant="standard"
-                      value={borderRadius}
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={12}>
-                <Grid container alignItems={"center"}>
-                  <Grid item xs={6}>
-                    <Typography fontWeight={"600"}>height</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <TextField
-                      id="standard-basic"
-                      variant="standard"
-                      value={height}
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={12}>
-                <Grid container alignItems={"center"}>
-                  <Grid item xs={6}>
-                    <Typography fontWeight={"600"}>overflowY</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <TextField
-                      id="standard-basic"
-                      variant="standard"
-                      value={overflow}
-                    />
+  const updateBorderRadius=(e)=>{
+    setBorderRadius(e.target.value)
+  }
+  
+  const updateHeight=(e)=>{
+    setHeight(e.target.value)
+  }
+  const updateOverflow=(e)=>{
+    setOverflow(e.target.value)
+  }
+  const updateWidth=(e)=>{
+    setWidth(e.target.value)
+  }
+  
+    return (
+      <>
+        <Box padding={3}>
+          <Grid container>
+            <Grid item xs={12} mt={2}>
+              <Grid container>
+                <Grid item xs={12}>
+                  <Grid container alignItems={"center"}>
+                    <Grid item xs={6}>
+                      <Typography fontWeight={"600"}>borderRadius</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        id="standard-basic"
+                        variant="standard"
+                        value={borderRadius}
+                        onChange={updateBorderRadius}
+                      />
+                    </Grid>
                   </Grid>
                 </Grid>
-              </Grid>
-
-              <Grid item xs={12}>
-                <Grid container alignItems={"center"}>
-                  <Grid item xs={6}>
-                    <Typography fontWeight={"600"}>width</Typography>
+                <Grid item xs={12}>
+                  <Grid container alignItems={"center"}>
+                    <Grid item xs={6}>
+                      <Typography fontWeight={"600"}>height</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        id="standard-basic"
+                        variant="standard"
+                        value={height}
+                        onChange={updateHeight}
+                      />
+                    </Grid>
                   </Grid>
-                  <Grid item xs={6}>
-                    <TextField
-                      id="standard-basic"
-                      variant="standard"
-                      value={width}
-                    />
+                </Grid>
+                <Grid item xs={12}>
+                  <Grid container alignItems={"center"}>
+                    <Grid item xs={6}>
+                      <Typography fontWeight={"600"}>overflowY</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        id="standard-basic"
+                        variant="standard"
+                        value={overflow}
+                        onChange={updateOverflow}
+                      />
+                    </Grid>
+                  </Grid>
+                </Grid>
+  
+                <Grid item xs={12}>
+                  <Grid container alignItems={"center"}>
+                    <Grid item xs={6}>
+                      <Typography fontWeight={"600"}>width</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        id="standard-basic"
+                        variant="standard"
+                        value={width}
+                        onChange={updateWidth}
+                      />
+                    </Grid>
                   </Grid>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </Box>
-      <Grid item xs={12}>
-        <Grid
-          container
-          display="flex"
-          justifyContent="flex-end"
-          style={{ marginTop: "16.4rem" }}
-        >
-          <Grid item xs={4}>
-            <Button variant="contained" size="small">
-              Cancel
-            </Button>
+        </Box>
+        <Grid item xs={12}>
+          <Grid
+            container
+            display="flex"
+            justifyContent="flex-end"
+            style={{ marginTop: "16.4rem" }}
+          >
+            <Grid item xs={4}>
+              <Button variant="contained" size="small">
+                Cancel
+              </Button>
+            </Grid>
+            <Grid item xs={3}>
+              <Button variant="contained" size="small">
+                Save
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item xs={3}>
-            <Button variant="contained" size="small">
-              Save
-            </Button>
-          </Grid>
         </Grid>
-      </Grid>
-    </>
-  );
-};
+      </>
+    );
+  };
 
 export default CheckboxCssComponent;

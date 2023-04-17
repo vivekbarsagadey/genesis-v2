@@ -4,6 +4,10 @@ import TextField from "@mui/material/TextField";
 
 const ButtonModelComponent = ({ metaData }) => {
   const [width, setWidth] = useState<string>(metaData.width);
+
+  const updateWidth=(e)=>{
+    setWidth(e.target.value)
+  }
   return (
     <>
       <Box padding={3}>
@@ -20,6 +24,7 @@ const ButtonModelComponent = ({ metaData }) => {
                       id="standard-basic"
                       variant="standard"
                       value={width}
+                      onChange={updateWidth}
                     />
                   </Grid>
                 </Grid>

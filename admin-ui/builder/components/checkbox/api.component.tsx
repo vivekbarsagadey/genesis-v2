@@ -4,6 +4,11 @@ import TextField from "@mui/material/TextField";
 
 const CheckboxApiComponent = ({ metaData }) => {
   const [url, setUrl] = useState<string>(metaData.url);
+  const updatedUrl = (e) => {
+    setUrl(e.target.value);
+  };
+  console.log("urlurl>>>>", url);
+
   return (
     <>
       <Box padding={3}>
@@ -20,6 +25,7 @@ const CheckboxApiComponent = ({ metaData }) => {
                       id="standard-basic"
                       variant="standard"
                       value={url}
+                      onChange={updatedUrl}
                     />
                   </Grid>
                 </Grid>
@@ -28,6 +34,7 @@ const CheckboxApiComponent = ({ metaData }) => {
           </Grid>
         </Grid>
       </Box>
+
       <Grid item xs={12}>
         <Grid
           container

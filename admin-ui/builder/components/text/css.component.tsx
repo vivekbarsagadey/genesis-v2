@@ -10,6 +10,20 @@ const TextCssComponent = ({ metaData }) => {
   const [height, setHeight] = useState<string>(metaData.height);
   const [overflow, setOverflow] = useState<string>(metaData.overflowY);
   const [width, setWidth] = useState<string>(metaData.width);
+  const updateBorderRadius = (e) => {
+    setBorderRadius(e.target.value);
+  };
+
+  const updateHeight = (e) => {
+    setHeight(e.target.value);
+  };
+  const updateOverflow = (e) => {
+    setOverflow(e.target.value);
+  };
+  const updateWidth = (e) => {
+    setWidth(e.target.value);
+  };
+
   return (
     <>
       <Box padding={3}>
@@ -26,6 +40,7 @@ const TextCssComponent = ({ metaData }) => {
                       id="standard-basic"
                       variant="standard"
                       value={borderRadius}
+                      onChange={updateBorderRadius}
                     />
                   </Grid>
                 </Grid>
@@ -40,6 +55,7 @@ const TextCssComponent = ({ metaData }) => {
                       id="standard-basic"
                       variant="standard"
                       value={height}
+                      onChange={updateHeight}
                     />
                   </Grid>
                 </Grid>
@@ -54,6 +70,7 @@ const TextCssComponent = ({ metaData }) => {
                       id="standard-basic"
                       variant="standard"
                       value={overflow}
+                      onChange={updateOverflow}
                     />
                   </Grid>
                 </Grid>
@@ -69,6 +86,7 @@ const TextCssComponent = ({ metaData }) => {
                       id="standard-basic"
                       variant="standard"
                       value={width}
+                      onChange={updateWidth}
                     />
                   </Grid>
                 </Grid>
