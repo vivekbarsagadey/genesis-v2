@@ -37,18 +37,6 @@ const Transition = React.forwardRef(function Transition(
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 type InfoCustomerComponentProps = {
   items: IProject;
 };
@@ -143,6 +131,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
             </Grid>
           </Grid>
         </Paper>
+
       {/* Builder Theme screen  */}
         <Dialog
           fullScreen
@@ -151,13 +140,13 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
           TransitionComponent={Transition}>
           <BuilderThemeComponent />
         </Dialog>
+
         {/* Builder full screen  */}
         <Dialog
           fullScreen
           open={openBuilder}
           onClose={handelCloseBuilder}
-          TransitionComponent={Transition}
-        >
+          TransitionComponent={Transition}>
           <BuilderHome id={items.id} />
         </Dialog>
       </Box>

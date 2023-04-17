@@ -24,8 +24,10 @@ const useStyles = makeStyles({
     margin: "-50px 0 0 -50px",
   },
 });
+
 const BuilderThemeComponent = () => {
   const classes = useStyles();
+
   return (
     <div>
       <Grid container>
@@ -65,7 +67,7 @@ const BuilderThemeComponent = () => {
                 ></Grid>
                 <Grid item xs={12}>
                   <Card>
-                    <CardMedia component="img" height="175" />
+                    <CardMedia component="img" height="170" />
                   </Card>
                 </Grid>
               </Grid>
@@ -94,7 +96,7 @@ const BuilderThemeComponent = () => {
                     <CardMedia
                       component="img"
                       alt="green iguana"
-                      height="175"
+                      height="170"
                       image="./images/cardimage1.png"
                     />
                   </Card>
@@ -125,7 +127,7 @@ const BuilderThemeComponent = () => {
                     <CardMedia
                       component="img"
                       alt="green iguana"
-                      height="175"
+                      height="170"
                       image="./images/cardimage2.png"
                     />
                   </Card>
@@ -156,7 +158,7 @@ const BuilderThemeComponent = () => {
                     <CardMedia
                       component="img"
                       alt="green iguana"
-                      height="175"
+                      height="170"
                       image="./images/cardimage3.png"
                     />
                   </Card>
@@ -187,7 +189,7 @@ const BuilderThemeComponent = () => {
                     <CardMedia
                       component="img"
                       alt="green iguana"
-                      height="175"
+                      height="170"
                       image="./images/cardimage4.png"
                     />
                   </Card>
@@ -218,7 +220,7 @@ const BuilderThemeComponent = () => {
                     <CardMedia
                       component="img"
                       alt="green iguana"
-                      height="175"
+                      height="170"
                       image="./images/cardimage5.png"
                     />
                   </Card>
@@ -229,13 +231,13 @@ const BuilderThemeComponent = () => {
             <Grid item xs={12}>
               <Grid container display="flex" justifyContent={"flex-end"}>
                 <Grid item xs={2}>
-                  <Button variant="contained" size="small">
+                  <Button variant="contained" size="large">
                     Cancel
                   </Button>
                 </Grid>
-                <Grid item xs={1}>
-                  <Button variant="contained" size="small">
-                    Save
+                <Grid item xs={1} mr={1}>
+                  <Button variant="contained" size="large" >
+                    Next
                   </Button>
                 </Grid>
               </Grid>
