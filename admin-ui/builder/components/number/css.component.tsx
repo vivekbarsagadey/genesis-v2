@@ -117,5 +117,4 @@ const NumberCssComponent = ({ metaData }) => {
       </>
     );
   };
-
 export default NumberCssComponent;

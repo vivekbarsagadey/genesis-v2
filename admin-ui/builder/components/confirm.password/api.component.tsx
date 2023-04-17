@@ -57,5 +57,4 @@ const ConfirmPasswordApiComponent = ({ metaData }) => {
     </>
   );
 };
-
 export default ConfirmPasswordApiComponent;

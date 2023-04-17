@@ -152,4 +152,5 @@ const TextPropertiesComponent = ({ metaData }) => {
     </>
   );
 };
+
 export default TextPropertiesComponent;

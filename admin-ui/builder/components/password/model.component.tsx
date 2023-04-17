@@ -54,4 +54,5 @@ const PasswordModelComponent = ({ metaData }) => {
     </>
   );
 };
+
 export default PasswordModelComponent;

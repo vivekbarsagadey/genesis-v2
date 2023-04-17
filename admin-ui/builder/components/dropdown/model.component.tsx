@@ -54,5 +54,4 @@ const DropdownModelComponent = ({ metaData }) => {
     </>
   );
 };
-
 export default DropdownModelComponent;

@@ -117,5 +117,4 @@ const PasswordCssComponent = ({ metaData }) => {
       </>
     );
   };
-
 export default PasswordCssComponent;

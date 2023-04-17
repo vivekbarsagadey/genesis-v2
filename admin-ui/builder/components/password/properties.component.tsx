@@ -155,4 +155,5 @@ const PasswordPropertiesComponent = ({ metaData }) => {
     </>
   );
 };
+
 export default PasswordPropertiesComponent;

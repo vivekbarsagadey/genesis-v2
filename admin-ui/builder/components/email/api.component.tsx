@@ -57,5 +57,4 @@ const EmailApiComponent = ({ metaData }) => {
     </>
   );
 };
-
 export default EmailApiComponent;

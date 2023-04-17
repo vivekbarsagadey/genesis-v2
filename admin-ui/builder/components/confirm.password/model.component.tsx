@@ -54,4 +54,5 @@ const ConfirmPasswordModelComponent = ({ metaData }) => {
     </>
   );
 };
+
 export default ConfirmPasswordModelComponent;

@@ -54,4 +54,5 @@ const TextModelComponent = ({ metaData }) => {
     </>
   );
 };
+
 export default TextModelComponent;

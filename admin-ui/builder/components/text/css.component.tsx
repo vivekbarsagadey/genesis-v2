@@ -117,5 +117,4 @@ const TextCssComponent = ({ metaData }) => {
     </>
   );
 };
-
 export default TextCssComponent;

@@ -154,5 +154,4 @@ const DropdownPropertiesComponent = ({ metaData }) => {
     </>
   );
 };
-
 export default DropdownPropertiesComponent;

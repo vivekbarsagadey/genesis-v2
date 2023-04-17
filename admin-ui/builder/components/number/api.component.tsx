@@ -57,5 +57,4 @@ const NumberApiComponent = ({ metaData }) => {
     </>
   );
 };
-
 export default NumberApiComponent;

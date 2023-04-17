@@ -116,5 +116,4 @@ const updateWidth=(e)=>{
     </>
   );
 };
-
 export default ButtonCssComponent;

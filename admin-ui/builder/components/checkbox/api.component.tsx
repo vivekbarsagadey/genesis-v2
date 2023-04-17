@@ -7,8 +7,6 @@ const CheckboxApiComponent = ({ metaData }) => {
   const updatedUrl = (e) => {
     setUrl(e.target.value);
   };
-  console.log("urlurl>>>>", url);
-
   return (
     <>
       <Box padding={3}>

@@ -54,4 +54,5 @@ const NumberModelComponent = ({ metaData }) => {
     </>
   );
 };
+
 export default NumberModelComponent;

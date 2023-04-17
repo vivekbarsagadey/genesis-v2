@@ -57,4 +57,5 @@ const TextApiComponent = ({ metaData }) => {
     </>
   );
 };
+
 export default TextApiComponent;

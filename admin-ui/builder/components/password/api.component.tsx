@@ -57,5 +57,4 @@ const PasswordApiComponent = ({ metaData }) => {
     </>
   );
 };
-
 export default PasswordApiComponent;

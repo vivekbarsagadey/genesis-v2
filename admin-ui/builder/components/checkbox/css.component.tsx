@@ -23,7 +23,6 @@ const CheckboxCssComponent = ({ metaData }) => {
   const updateWidth=(e)=>{
     setWidth(e.target.value)
   }
-  
     return (
       <>
         <Box padding={3}>

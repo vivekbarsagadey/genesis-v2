@@ -154,5 +154,4 @@ const CheckboxPropertiesComponent = ({ metaData }) => {
     </>
   );
 };
-
 export default CheckboxPropertiesComponent;

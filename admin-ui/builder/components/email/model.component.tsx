@@ -54,4 +54,5 @@ const EmailModelComponent = ({ metaData }) => {
     </>
   );
 };
+
 export default EmailModelComponent;

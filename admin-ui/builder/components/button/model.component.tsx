@@ -55,5 +55,4 @@ const ButtonModelComponent = ({ metaData }) => {
     </>
   );
 };
-
 export default ButtonModelComponent;

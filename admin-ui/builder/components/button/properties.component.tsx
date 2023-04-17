@@ -35,7 +35,6 @@ const ButtonPropertiesComponent = ({ metaData, sectionType }) => {
   const updateWidth = (e) => {
     setWidth(e.target.value);
   };
-
   console.log("project json >>", project.pages[0].components);
   console.log(
     "post call  >>",

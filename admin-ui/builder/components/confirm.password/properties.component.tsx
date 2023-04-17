@@ -154,5 +154,4 @@ const ConfirmPasswordPropertiesComponent = ({ metaData }) => {
     </>
   );
 };
-
 export default ConfirmPasswordPropertiesComponent;

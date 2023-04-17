@@ -154,5 +154,4 @@ const NumberPropertiesComponent = ({ metaData }) => {
     </>
   );
 };
-
 export default NumberPropertiesComponent;

@@ -156,5 +156,4 @@ const EmailPropertiesComponent = ({ metaData }) => {
     </>
   );
 };
-
 export default EmailPropertiesComponent;

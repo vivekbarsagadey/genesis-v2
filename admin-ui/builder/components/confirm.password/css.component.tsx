@@ -117,5 +117,4 @@ const ConfirmPasswordCssComponent = ({ metaData }) => {
       </>
     );
   };
-
 export default ConfirmPasswordCssComponent;

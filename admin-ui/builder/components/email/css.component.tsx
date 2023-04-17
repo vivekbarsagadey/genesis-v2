@@ -117,5 +117,4 @@ const EmailCssComponent = ({ metaData }) => {
       </>
     );
   };
-
 export default EmailCssComponent;
