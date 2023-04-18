@@ -34,7 +34,7 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }} mt={1}>
+      <Grid sx={{ flexGrow: 1 }} mt={1}>
         <Grid container spacing={2}>
           <Grid item xs={3} md={3} lg={3} sm={3}>
             <ProjectSearch
@@ -87,7 +87,7 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
             </Default>
           </Switch>
         </Grid>
-      </Box>
+      </Grid>
     </>
   );
 };

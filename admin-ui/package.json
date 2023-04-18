@@ -36,6 +36,7 @@
     "eslint-config-next": "13.1.6",
     "events": "^3.3.0",
     "file-saver": "^2.0.5",
+    "framer-motion": "^10.12.2",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.28",
     "moment": "^2.29.4",

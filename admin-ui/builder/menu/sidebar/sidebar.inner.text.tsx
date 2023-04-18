@@ -1,5 +1,5 @@
 import { Typography, ListItemIcon } from "@mui/material";
-import Switch, { Case, Default } from "react-switch-case";
+import { Case, Default, Switch } from "react-if";
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import EmailIcon from "@mui/icons-material/Email";

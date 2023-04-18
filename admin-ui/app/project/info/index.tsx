@@ -58,7 +58,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <Box mt={0.6} mr={2}>
         <Paper variant="outlined">
           <Grid container>
@@ -134,7 +134,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
           <BuilderHome id={items.id} />
         </Dialog>
       </Box>
-    </>
+    </React.Fragment>
   );
 };
 export default InfoProjectComponent;

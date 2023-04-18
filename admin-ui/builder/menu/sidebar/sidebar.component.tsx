@@ -10,7 +10,7 @@ import MuiAccordionSummary, {
 } from "@mui/material/AccordionSummary";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import React from "react";
-import { Case, Default, Switch } from "react-if";
+import { Case, Switch } from "react-if";
 import genisys from "../../../data/genisys.json";
 import SideBarInnerList from "./sidebar.inner.list";
 import { styled } from "@mui/material/styles";

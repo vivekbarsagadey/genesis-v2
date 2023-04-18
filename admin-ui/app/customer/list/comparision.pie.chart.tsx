@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import { Chart } from "react-google-charts";
-import { Case, Default, Switch } from "react-if";
+import { Case, Switch } from "react-if";
 
 const CustomerComparisionPieChart = ({
     CompariosnCountryData,comarisionGraphView
@@ -17,16 +17,7 @@ const CustomerComparisionPieChart = ({
               height={"320px"}
             />
           </Case>
-         
-
-          <Default>
-            {/* <Chart
-              chartType="PieChart"
-              data={cityData}
-              width={"100%"}
-              height={"320px"}
-            /> */}
-          </Default>
+  
         </Switch>
       </Grid>
     </>

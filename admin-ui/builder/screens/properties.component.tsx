@@ -1,7 +1,7 @@
 import { Grid } from "@material-ui/core";
 import { Typography } from "@mui/material";
 import React, { useState } from "react";
-import { Case, Default, Switch } from "react-if";
+import { Case, Switch } from "react-if";
 import { ProjectContext } from "..";
 import genisys from "../../data/genisys.json";
 import ButtonApiComponent from "../components/button/api.component";
