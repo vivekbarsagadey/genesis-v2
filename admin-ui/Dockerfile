@@ -1,32 +1,25 @@
-# stage1 as builder
-FROM node:10-alpine as builder
+FROM node:lts as dependencies
+WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
 
-# copy the package.json to install dependencies
-COPY package.json ./
 
-# Install the dependencies and make the folder
-RUN npm install && mkdir /admin-ui && mv ./node_modules ./admin-ui
-
-WORKDIR /admin-ui
-
+FROM node:lts as builder
+WORKDIR /app
 COPY . .
+COPY --from=dependencies /app/node_modules ./node_modules
+RUN yarn build
 
-# Build the project and copy the files
-RUN npm run build
 
+FROM node:lts as runner
+WORKDIR /app
+ENV NODE_ENV production
+# If you are using a custom next.config.js file, uncomment this line.
+# COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
 
-FROM nginx:alpine
-
-#!/bin/sh
-
-COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
-
-## Remove default nginx index page
-RUN rm -rf /usr/share/nginx/html/*
-
-# Copy from the stage1
-COPY from stage1 /admin-ui/out /usr/share/nginx/html/
-
-EXPOSE 3000 
-
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+EXPOSE 3000
+CMD ["yarn", "start"]
