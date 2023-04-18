@@ -82,7 +82,7 @@ const BuilderScreenSelectComponent = ({ handleClose }) => {
   };
 
   return (
-    <div>
+    <>
       <Grid container>
         <Grid item xs={4} className={classes.background_genesis1}>
           <Grid container className={classes.genesislogo}>
@@ -394,7 +394,7 @@ const BuilderScreenSelectComponent = ({ handleClose }) => {
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </>
   );
 };
 

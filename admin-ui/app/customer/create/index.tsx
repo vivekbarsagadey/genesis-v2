@@ -158,7 +158,7 @@ const CustomerCreateComponent = () => {
       <Grid container>
         <Grid item xs={2}>
           <Grid item xs={4}>
-            <div className="App">
+            <>
               <input
                 type="file"
                 id="upload"
@@ -191,7 +191,7 @@ const CustomerCreateComponent = () => {
                   </Avatar>
                 </IconButton>
               </label>
-            </div>
+            </>
           </Grid>
         </Grid>
         <Grid item xs={10}>

@@ -71,7 +71,7 @@ const BuilderThemeComponent = ({ handleCloseTheme }) => {
   };
 
   return (
-    <div>
+    <>
       <Grid container>
         <Grid item xs={4} className={classes.background_genesis1}>
           <Grid container className={classes.genesislogo}>
@@ -261,7 +261,7 @@ const BuilderThemeComponent = ({ handleCloseTheme }) => {
       >
         <BuilderThemesSelectComponent handleClose={handleClose} />
       </Dialog>
-    </div>
+    </>
   );
 };
 

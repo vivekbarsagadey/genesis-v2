@@ -149,7 +149,7 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
   };
 
   return (
-    <div>
+    <>
       <Box>
         <Grid container>
           <Grid item xs={12} mt={2} ml={2}>
@@ -160,7 +160,7 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
         <Grid container style={{ display: "flex" }}>
           <Grid item xs={2}>
             <Grid item xs={4}>
-              <div className="App">
+              <>
                 <input
                   type="file"
                   id="upload"
@@ -193,7 +193,7 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                     </Avatar>
                   </IconButton>
                 </label>
-              </div>
+              </>
             </Grid>
           </Grid>
           <Grid item xs={10}>
@@ -547,7 +547,7 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
           </Grid>
         </Grid>
       </Box>
-    </div>
+    </>
   );
 };
 

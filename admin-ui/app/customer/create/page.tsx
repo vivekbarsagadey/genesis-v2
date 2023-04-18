@@ -3,9 +3,9 @@ import CustomerCreateComponent from '.'
 
 const page = () => {
   return (
-    <div>
+    <>
         <CustomerCreateComponent/>
-    </div>
+    </>
   )
 }
 
