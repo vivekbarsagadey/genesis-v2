@@ -12,7 +12,7 @@ const DragComponent = ({ data, setChildData, childData }) => {
 
   return (
     <Draggable>
-      <div
+      <Grid
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}
       >
@@ -28,7 +28,7 @@ const DragComponent = ({ data, setChildData, childData }) => {
             )}
           </Grid>
         </Grid>
-      </div>
+      </Grid>
     </Draggable>
   );
 };

@@ -20,7 +20,7 @@ const FilterUserComponent = ({
   itemsCallBackHandler = () => {},
 }: FilterComponentProps) => {
   return (
-    <div>
+    <>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -30,7 +30,7 @@ const FilterUserComponent = ({
           "aria-labelledby": "basic-button",
         }}
       >
-        <div>
+        <>
           <Stack>
             <Autocomplete
               size="small"
@@ -49,9 +49,9 @@ const FilterUserComponent = ({
               )}
             />
           </Stack>
-        </div>
+        </>
 
-        <div>
+        <>
           <Stack>
             <Autocomplete
               size="small"
@@ -70,7 +70,7 @@ const FilterUserComponent = ({
               )}
             />
           </Stack>
-        </div>
+        </>
         <Grid container mb={1} mt={2}>
           <Grid item xs={5.6}></Grid>
           <Grid item xs={3.2}>
@@ -89,7 +89,7 @@ const FilterUserComponent = ({
           </Grid>
         </Grid>
       </Menu>
-    </div>
+    </>
   );
 };
 

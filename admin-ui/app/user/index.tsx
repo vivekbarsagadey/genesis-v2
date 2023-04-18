@@ -186,7 +186,7 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
         </Grid>
       </Grid>
 
-      <div>
+      <Grid>
         {(() => {
           switch (count) {
             case "List":
@@ -208,9 +208,9 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
               return <GridViewComponent items={users}></GridViewComponent>;
           }
         })()}
-      </div>
+      </Grid>
 
-      <div>
+      <Grid>
         <FilterUserComponent
           items={items}
           anchorEl={anchorEl}
@@ -218,9 +218,8 @@ const HomeComponent = ({ items }: HomeComponentProps) => {
           handleClose={handleClose}
           itemsCallBackHandler={itemsCallBackHandler}
         />
-      </div>
+      </Grid>
 
-      <div></div>
     </>
   );
 };

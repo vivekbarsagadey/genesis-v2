@@ -27,7 +27,7 @@ const CustomerSearchDetails = ({
   };
 
   return (
-    <div>
+    <>
       <Grid item xs={12}>
         <TextField
           placeholder="Search by Project Name"
@@ -37,7 +37,7 @@ const CustomerSearchDetails = ({
           fullWidth
         />
       </Grid>
-    </div>
+    </>
   );
 };
 export default CustomerSearchDetails;

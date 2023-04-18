@@ -26,11 +26,11 @@ const CustomerPdfGenerator = ({ customer }: CustomerProps) => {
     });
   };
   return (
-    <div>
+    <>
       <Typography variant="subtitle1" onClick={() => exportPDF()}>
         PDF
       </Typography>
-    </div>
+    </>
   );
 };
 

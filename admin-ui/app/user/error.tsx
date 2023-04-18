@@ -1,4 +1,5 @@
 'use client';
+import { Grid } from "@mui/material";
 
 import { useEffect } from 'react';
 
@@ -15,9 +16,9 @@ export default function Error({
   }, [error]);
 
   return (
-    <div>
+    <Grid>
       <p>Something went wrong!</p>
       <button onClick={() => reset()}>Reset error boundary</button>
-    </div>
+    </Grid>
   );
 }

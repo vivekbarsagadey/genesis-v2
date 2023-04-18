@@ -22,13 +22,13 @@ const InnerSectionComponent = ({
               <Typography color={"white"}>
                 {dragList?.map((data) => {
                   return (
-                    <div key={data.id}>
+                    <Grid key={data.id}>
                       <RemoveDrag
                         data={data}
                         dragList={dragList}
                         removeItemDrag={removeItemDrag}
                       />
-                    </div>
+                    </Grid>
                   );
                 })}
               </Typography>

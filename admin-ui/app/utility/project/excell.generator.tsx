@@ -21,14 +21,14 @@ const ProjectExcellGenerator = ({ projects }: ProjectProps) => {
   };
 
   return (
-    <div>
+    <>
       <Typography
         variant="subtitle1"
         onClick={(e) => exportToCSV(projects, fileName)}
       >
         Excel
       </Typography>
-    </div>
+    </>
   );
 };
 

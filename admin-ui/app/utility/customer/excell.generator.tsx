@@ -21,14 +21,14 @@ const CustomerExcellGenerator = ({ customer }: CustomerProps) => {
   };
 
   return (
-    <div>
+    <>
       <Typography
         variant="subtitle1"
         onClick={(e) => exportToCSV(customer, fileName)}
       >
         Excel
       </Typography>
-    </div>
+    </>
   );
 };
 

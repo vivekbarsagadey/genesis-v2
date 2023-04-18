@@ -5,7 +5,7 @@ import { Case, Default, Switch } from "react-if";
 
 const CompanyPieChart = ({ graphView, statusData, countryData, stateData }) => {
   return (
-    <div>
+    <>
       <Grid item xs={12}>
         <Switch>
           <Case condition={graphView === "state"}>
@@ -43,7 +43,7 @@ const CompanyPieChart = ({ graphView, statusData, countryData, stateData }) => {
           </Default>
         </Switch>
       </Grid>
-    </div>
+    </>
   );
 };
 

@@ -46,13 +46,13 @@ const ViewsComponent = ({ handleCount }: IViewProps) => {
     <>
       {AllViews?.map((data) => {
         return (
-          <div key={data.id} style={{margin:'0.2rem'}}>
+          <Grid key={data.id} style={{margin:'0.2rem'}}>
             <Tooltip title={data?.title}>
             <IconButton size="small" onClick={() => handleCount(data.view)}>
               {data.icon}
             </IconButton>
             </Tooltip>
-          </div>
+          </Grid>
         );
       })}
     </>

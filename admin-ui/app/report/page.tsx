@@ -2,9 +2,9 @@ import React from "react";
 import ProjectReport from ".";
 
 const Report = () => {
-  return <div>
+  return <>
     <ProjectReport/>
-  </div>;
+  </>;
 };
 
 export default Report;

@@ -3,9 +3,9 @@ import ScreensComponent from "./screens.component";
 
 const page = () => {
   return (
-    <div>
+    <>
       <ScreensComponent />
-    </div>
+    </>
   );
 };
 

@@ -22,14 +22,14 @@ const CompanyExcellGenerator = ({ copyCompanyData }: CompanyProps) => {
   };
 
   return (
-    <div>
+    <Grid>
       <Typography
         variant="subtitle1"
         onClick={(e) => exportToCSV(copyCompanyData, fileName)}
       >
         Excel
       </Typography>
-    </div>
+    </Grid>
   );
 };
 

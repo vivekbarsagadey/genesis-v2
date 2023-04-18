@@ -213,15 +213,15 @@ const ListComponent = ({
         </Grid>
       </Box>
 
-      <div >
+      < >
         {_DATA.currentData()?.map((f) => {
           return <InfoUserComponent f={f} key={f.id} />;
         })}
-      </div>
-      <div>
+      </>
+      <>
         <Grid container>
           <Grid item xs={11.8}>
-            <div >
+            < >
               <Pagination
                 count={count}
                 size="small"
@@ -230,11 +230,11 @@ const ListComponent = ({
                 color="primary"
                 onChange={handleChangePage}
               />
-            </div>
+            </>
           </Grid>
           <Grid item xs={0.2}></Grid>
         </Grid>
-      </div>
+      </>
     </>
   );
 };

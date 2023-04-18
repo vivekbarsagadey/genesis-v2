@@ -19,7 +19,7 @@ interface TabPanelProps {
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
   return (
-    <div
+    <Grid
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
@@ -31,7 +31,7 @@ function TabPanel(props: TabPanelProps) {
           <Typography>{children}</Typography>
         </Box>
       )}
-    </div>
+    </Grid>
   );
 }
 function a11yProps(index: number) {

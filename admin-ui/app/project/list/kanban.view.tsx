@@ -75,7 +75,7 @@ const board = {
 };
 const ProjectKanbanView = ({ projectData }) => {
   return (
-    <div>
+    <>
       <Grid container px={2.5} pt={2}>
         <Grid item xs={12}>
           KanbanView
@@ -96,7 +96,7 @@ const ProjectKanbanView = ({ projectData }) => {
       })}
       onCardNew={console.log}
     /> */}
-    </div>
+    </>
   );
 };
 

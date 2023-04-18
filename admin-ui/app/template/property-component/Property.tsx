@@ -38,11 +38,11 @@ const Property = ({ menuList }) => {
         <Grid item xs={6}>
           {properties?.map((p) => {
             return (
-              <div key={p.id}>
+              <Grid key={p.id}>
                 <Grid container>
                   <PropertyList p={p} />
                 </Grid>
-              </div>
+              </Grid>
             );
           })}
         </Grid>

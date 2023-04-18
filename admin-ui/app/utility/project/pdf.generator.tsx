@@ -25,11 +25,11 @@ const ProjectPdfGenerator = ({ projects }: ProjectProps) => {
     });
   };
   return (
-    <div>
+    <>
       <Typography variant="subtitle1" onClick={() => exportPDF()}>
         PDF
       </Typography>
-    </div>
+    </>
   );
 };
 

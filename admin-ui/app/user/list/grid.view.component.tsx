@@ -118,7 +118,7 @@ const GridViewComponent = ({ items }: GridComponentProps) => {
         </Grid>
         <Grid container>
           <Grid item xs={11.8}>
-            <div>
+            <>
               <Pagination
                 count={count}
                 size="small"
@@ -127,7 +127,7 @@ const GridViewComponent = ({ items }: GridComponentProps) => {
                 color="primary"
                 onChange={handleChangePage}
               />
-            </div>
+            </>
           </Grid>
           <Grid item xs={0.2}></Grid>
         </Grid>

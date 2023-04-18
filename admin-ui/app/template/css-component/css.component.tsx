@@ -29,7 +29,7 @@ const Css = ({ menuList }) => {
         <Grid item xs={6}>
           {cssP[0]?.map((p) => {
             return (
-              <div key={p.id}>
+              <Grid key={p.id}>
                 <Grid container>
                   <Grid item xs={12} mt={1}>
                     <Typography>
@@ -53,7 +53,7 @@ const Css = ({ menuList }) => {
                     <Typography>{p.width}</Typography>
                   </Grid>
                 </Grid>
-              </div>
+              </Grid>
             );
           })}
         </Grid>

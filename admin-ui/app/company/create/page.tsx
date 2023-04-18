@@ -3,9 +3,9 @@ import CompanyCreateComponent from './company.create'
 
 const page = () => {
   return (
-    <div>
+    <>
         <CompanyCreateComponent/>
-    </div>
+    </>
   )
 }
 

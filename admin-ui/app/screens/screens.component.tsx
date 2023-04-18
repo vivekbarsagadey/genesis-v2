@@ -21,7 +21,7 @@ const ScreensComponent = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <Grid container mt={1}>
         <Grid
           item
@@ -57,7 +57,7 @@ const ScreensComponent = () => {
       </Grid>
       {screens?.map((f) => {
         return (
-          <div key={f.id}>
+          <Grid key={f.id}>
             <Grid container>
               <Grid item xs={3}></Grid>
               <Grid item xs={4}>
@@ -67,10 +67,10 @@ const ScreensComponent = () => {
                 <Typography>{f.updatedAt}</Typography>
               </Grid>
             </Grid>
-          </div>
+          </Grid>
         );
       })}
-    </div>
+    </>
   );
 };
 

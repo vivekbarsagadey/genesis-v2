@@ -23,7 +23,7 @@ const Api = ({ menuList }) => {
         <Grid item xs={9.3}>
           {apiData[0]?.map((p) => {
             return (
-              <div key={p.id}>
+              <Grid key={p.id}>
                 <Grid container>
                   <Grid item xs={12} mt={1}>
                     <Typography >
@@ -31,7 +31,7 @@ const Api = ({ menuList }) => {
                     </Typography>
                   </Grid>
                 </Grid>
-              </div>
+              </Grid>
             );
           })}
         </Grid>

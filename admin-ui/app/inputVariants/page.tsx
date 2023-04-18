@@ -1,4 +1,5 @@
 "use client"
+import { Typography } from '@material-ui/core'
 import React from 'react'
 import {InputVariantOne,InputVariantTwo,InputVariantThree,InputVariantFour,InputVariantFive} from "."
 
@@ -6,7 +7,7 @@ import {InputVariantOne,InputVariantTwo,InputVariantThree,InputVariantFour,Input
 const InputVariants = () => {
   return (
     <>
-        <div style={{margin:'6px'}}>
+        <Typography style={{margin:'6px'}}>
         <InputVariantOne
          type="text"
          placeHolder="Enter text"
@@ -14,39 +15,39 @@ const InputVariants = () => {
          id="text"
          
         />
-        </div>
+        </Typography>
     
-        <div style={{margin:'10px'}}>
+        <Typography style={{margin:'10px'}}>
         <InputVariantTwo
          type="text"
          placeHolder="Enter text"
          label=" Text"
          id="text"/>
-        </div>
+        </Typography>
         
-        <div style={{margin:'10px'}}>
+        <Typography style={{margin:'10px'}}>
         <InputVariantThree
          type="text"
          placeHolder="Enter text"
          label=" Text"
          id="text"/>
-        </div>
+        </Typography>
 
-         <div style={{margin:'10px'}}>
+         <Typography style={{margin:'10px'}}>
         <InputVariantFour
          type="text"
          placeHolder="Enter text"
          label=" Text"
          id="text"/>
-         </div>
+         </Typography>
 
-         <div style={{margin:'10px'}}>
+         <Typography style={{margin:'10px'}}>
         <InputVariantFive
          type="text"
          placeHolder="Enter text"
          label=" Text"
          id="text"/>
-         </div>
+         </Typography>
     </>
   )
 }

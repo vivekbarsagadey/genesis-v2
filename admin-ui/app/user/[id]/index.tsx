@@ -49,7 +49,7 @@ const UserComponent = ({ user }: IUserProp) => {
   });
 
   return (
-    <div>
+    <>
       <Typography variant="h6" pb={3}>
         Create Form
       </Typography>
@@ -118,7 +118,7 @@ const UserComponent = ({ user }: IUserProp) => {
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </>
   );
 };
 

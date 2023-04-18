@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import { Typography,Grid } from "@mui/material";
 import { download } from "../pdf-util";
 import { ICompany } from "../../company/models";
 
@@ -25,11 +25,11 @@ const CompanyPdfGenerator = ({ copyCompanyData }: CompanyProps) => {
     });
   };
   return (
-    <div>
+    <Grid>
       <Typography variant="subtitle1" onClick={() => exportPDF()}>
         PDF
       </Typography>
-    </div>
+    </Grid>
   );
 };
 
