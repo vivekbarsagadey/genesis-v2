@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import { Status } from "../models";
 import IProject from "../project.model";
 import { ListComponentProps } from "./props";
+import Divider from "@mui/material/Divider";
 
 const CardStyle = styled(Grid)(({ theme }) => ({
   height: "80vh",
@@ -37,6 +38,7 @@ const ProjectKanbanView = ({ projects }: ListComponentProps) => {
             <Paper variant="outlined">
               <CardContent>
                 <Typography variant="h6">ACTIVE</Typography>
+                <Divider />
                 {activeCompanies?.map((activeProject, index) => {
                   return (
                     <ActiveCompanyComponent
@@ -54,6 +56,7 @@ const ProjectKanbanView = ({ projects }: ListComponentProps) => {
             <Paper variant="outlined">
               <CardContent>
                 <Typography variant="h6">INACTIVE</Typography>
+                <Divider />
                 {inActiveProject?.map((inActiveProject, index) => {
                   return (
                     <InActiveProjectComponent
@@ -73,7 +76,7 @@ const ProjectKanbanView = ({ projects }: ListComponentProps) => {
 
 const ActiveCompanyComponent = ({ activeProject }: IActiveProject) => {
   return (
-    <Box mt={1}>
+    <Box mt={2}>
       <Paper variant="outlined">
         <Typography noWrap variant="h5">
           Company Name - {activeProject.customerName}
@@ -87,7 +90,7 @@ const ActiveCompanyComponent = ({ activeProject }: IActiveProject) => {
 };
 const InActiveProjectComponent = ({ inActiveProject }: IInActiveProject) => {
   return (
-    <Box mt={1}>
+    <Box mt={2}>
       <Paper variant="outlined">
         <Typography noWrap variant="h5">
           Company Name - {inActiveProject.customerName}
