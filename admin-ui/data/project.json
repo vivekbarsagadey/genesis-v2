@@ -5,7 +5,8 @@
   "app": {
     "type": "MOBILE",
     "project": "customer",
-    "name": "astrocare"
+    "name": "astrocare",
+    "theme":""
   },
   "credential": {
     "auth": {
