@@ -16,12 +16,12 @@ interface CalendarEventData {
 const CustomerCalendarView = ({ customer }: ListComponentProps) => {
   const [events, setEvents] = useState([]);
 
-  const calendarCustomer = customer?.map((customers : ICustomer) => {
+  const calendarCustomer = customer?.map((customers: ICustomer) => {
     return {
-      title: customers.name,
+      title: customers.firstName,
       start: new Date(customers.createdAt),
       end: new Date(customers.updatedAt),
-    }
+    };
   });
   useEffect(() => {
     setEvents(calendarCustomer);

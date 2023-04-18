@@ -10,7 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Account {
   id                 String  @id @default(auto()) @map("_id") @db.ObjectId
   createdAt      DateTime @default(now())
@@ -32,7 +31,6 @@ model Account {
   @@unique([provider, providerAccountId])
   @@map("accounts")
 }
-
 model Session {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt      DateTime @default(now())
@@ -58,7 +56,6 @@ model User {
 
   @@map("users")
 }
-
 model Company {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt      DateTime @default(now())
@@ -91,9 +88,6 @@ model Company {
   @@map("tb_company")
 }
 
-
-
-
 model Project {
  id             String   @id @default(auto()) @map("_id") @db.ObjectId
  createdAt      DateTime @default(now())
@@ -125,8 +119,6 @@ model Screen {
   updatedAt       DateTime @updatedAt
   name            String?
   components      Component[]
-
-
   @@map("tb_screen")
 }
 model Customer {
@@ -148,7 +140,6 @@ model Customer {
   gender         String?
   age            String?
   email          String?   @unique
-  
   @@map("tb_customer")
 }
 
@@ -162,9 +153,6 @@ model Component{
 
   @@map("tb_component")
 }
-
-
-
 
 model VerificationToken {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
