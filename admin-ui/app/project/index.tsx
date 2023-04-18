@@ -9,6 +9,7 @@ import ProjectCalendarView from "./list/calendar.view";
 import ProjectExportComponent from "./list/export.component";
 import ProjectGraphView from "./list/graph.view";
 import ProjectGridView from "./list/grid.view";
+import ProjectKanbanView from "./list/kanban.view";
 import ProjectListViewComponent from "./list/list.screen";
 import IProject from "./project.model";
 import ProjectSearch from "./search";
@@ -77,7 +78,7 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
               <ProjectGraphView projects={projects} />
             </Case>
             <Case condition={viewType === ViewTypes.KANBAN}>
-              {/* <ProjectKanbanView  /> */}
+              <ProjectKanbanView projects={projects} />
             </Case>
             <Case condition={viewType === ViewTypes.CALENDAR}>
               <ProjectCalendarView projects={projects}  />

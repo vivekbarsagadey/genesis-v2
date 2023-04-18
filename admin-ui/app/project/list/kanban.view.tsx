@@ -1,102 +1,106 @@
-import React from "react";
-import { IconButton, Tooltip } from "@mui/material";
-import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
-import Grid from "@mui/material/Grid";
-// import Board from "@asseinfo/react-kanban";
-// import "@asseinfo/react-kanban/dist/styles.css";
+import { Paper } from "@mui/material";
+import Box from "@mui/material/Box";
+import CardContent from "@mui/material/CardContent";
+import Grid from "@mui/material/Grid/Grid";
+import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import { Status } from "../models";
+import IProject from "../project.model";
+import { ListComponentProps } from "./props";
 
-const board = {
-  columns: [
-    {
-      id: 1,
-      title: "Backlog",
-      cards: [
-        {
-          id: 1,
-          title: "Card title 1",
-          description: "Card content",
-        },
-        {
-          id: 2,
-          title: "Card title 2",
-          description: "Card content",
-        },
-        {
-          id: 3,
-          title: "Card title 3",
-          description: "Card content",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Doing",
-      cards: [
-        {
-          id: 9,
-          title: "Card title 9",
-          description: "Card content",
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: "Q&A",
-      cards: [
-        {
-          id: 10,
-          title: "Card title 10",
-          description: "Card content",
-        },
-        {
-          id: 11,
-          title: "Card title 11",
-          description: "Card content",
-        },
-      ],
-    },
-    {
-      id: 4,
-      title: "Production",
-      cards: [
-        {
-          id: 12,
-          title: "Card title 12",
-          description: "Card content",
-        },
-        {
-          id: 13,
-          title: "Card title 13",
-          description: "Card content",
-        },
-      ],
-    },
-  ],
+const CardStyle = styled(Grid)(({ theme }) => ({
+  height: "80vh",
+  overflowY: "auto",
+}));
+
+type IActiveProject = {
+  activeProject: IProject;
 };
-const ProjectKanbanView = ({ projectData }) => {
+type IInActiveProject = {
+  inActiveProject: IProject;
+};
+const ProjectKanbanView = ({ projects }: ListComponentProps) => {
+  const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
+
+  const activeCompanies = projects.filter((ele: IProject) => {
+    return ele.status == statusSet[0];
+  });
+  const inActiveProject = projects.filter((ele: IProject) => {
+    return ele.status == statusSet[1];
+  });
+
   return (
     <>
-      <Grid container px={2.5} pt={2}>
-        <Grid item xs={12}>
-          KanbanView
+      <Grid container spacing={2} mt={1}>
+        <Grid item xs={1}></Grid>
+        <Grid item xs={4}>
+          <CardStyle>
+            <Paper variant="outlined">
+              <CardContent>
+                <Typography variant="h6">ACTIVE</Typography>
+                {activeCompanies?.map((activeProject, index) => {
+                  return (
+                    <ActiveCompanyComponent
+                      activeProject={activeProject}
+                      key={index}
+                    />
+                  );
+                })}
+              </CardContent>
+            </Paper>
+          </CardStyle>
+        </Grid>
+        <Grid item xs={1}></Grid>
+        <Grid item xs={4}>
+          <CardStyle>
+            <Paper variant="outlined">
+              <CardContent>
+                <Typography variant="h6">INACTIVE</Typography>
+                {inActiveProject?.map((inActiveProject, index) => {
+                  return (
+                    <InActiveProjectComponent
+                      inActiveProject={inActiveProject}
+                      key={index}
+                    />
+                  );
+                })}
+              </CardContent>
+            </Paper>
+          </CardStyle>
         </Grid>
       </Grid>
-      {/* <Board
-      allowRemoveLane
-      allowRenameColumn
-      allowRemoveCard
-      onLaneRemove={console.log}
-      onCardRemove={console.log}
-      onLaneRename={console.log}
-      initialBoard={board}
-      allowAddCard={{ on: "top" }}
-      onNewCardConfirm={(draftCard) => ({
-        id: new Date().getTime(),
-        ...draftCard
-      })}
-      onCardNew={console.log}
-    /> */}
     </>
+  );
+};
+
+const ActiveCompanyComponent = ({ activeProject }: IActiveProject) => {
+  return (
+    <Box mt={1}>
+      <Paper variant="outlined">
+        <Typography noWrap variant="h5">
+          Company - {activeProject.firstName} {activeProject.lastName}
+        </Typography>
+        <Typography noWrap variant="h5">
+          Status - {activeProject.status}
+        </Typography>
+      </Paper>
+    </Box>
+  );
+};
+const InActiveProjectComponent = ({ inActiveProject }: IInActiveProject) => {
+  return (
+    <Box mt={1}>
+      <Paper variant="outlined">
+        <Typography noWrap variant="h5">
+          {" "}
+          Company - {inActiveProject.firstName} {inActiveProject.lastName}
+        </Typography>
+        <Typography noWrap variant="h5">
+          {" "}
+          Status - {inActiveProject.status}
+        </Typography>
+      </Paper>
+    </Box>
   );
 };
 
