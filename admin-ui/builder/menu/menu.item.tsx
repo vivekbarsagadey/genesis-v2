@@ -38,7 +38,7 @@ function MenuItem(props: MenuItemProps) {
       </ListItem>
       {items && (
         <Collapse in={open[id]} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
+          <List component="p" disablePadding>
             {items.map((item: Item) => (
               <MenuItem key={item.id} item={item} handleClick={handleClick} open={open} classes={classes} />
             ))}

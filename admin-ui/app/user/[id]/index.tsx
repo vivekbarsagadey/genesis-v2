@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import IUser from "../user.model";
 
+
 interface IUserProp {
   user: IUser | undefined;
 }
@@ -59,12 +60,12 @@ const UserComponent = ({ user }: IUserProp) => {
         <Grid item xs={12} sm={6} md={4} lg={4} pl={1} pr={1}>
           <Typography>First Name</Typography>
           <TextField fullWidth {...register("firstName")} size="small" />
-          <p>{errors.firstName?.message}</p>
+          <Typography>{errors.firstName?.message}</Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={4} pl={1} pr={1}>
           <Typography>Last Name</Typography>
           <TextField fullWidth {...register("lastName")} size="small" />
-          <p>{errors.lastName?.message}</p>
+          <Typography>{errors.lastName?.message}</Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={4} pl={1} pr={1}>
           <Typography>Email</Typography>
@@ -74,17 +75,17 @@ const UserComponent = ({ user }: IUserProp) => {
             {...register("email")}
             size="small"
           />
-          <p>{errors.email?.message}</p>
+          <Typography>{errors.email?.message}</Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={4} pl={1} pr={1}>
           <Typography>Mobile</Typography>
           <TextField fullWidth {...register("mobile")} size="small" />
-          <p>{errors.mobile?.message}</p>
+          <Typography>{errors.mobile?.message}</Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={4} pl={1} pr={1}>
           <Typography>Address</Typography>
           <TextField fullWidth {...register("address")} size="small" />
-          <p>{errors.address?.message}</p>
+          <Typography>{errors.address?.message}</Typography>
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={4} pl={1} pr={1}>
           <Typography>State</Typography>
@@ -98,7 +99,7 @@ const UserComponent = ({ user }: IUserProp) => {
         <Grid item xs={12} sm={6} md={4} lg={4} pl={1} pr={1}>
           <Typography>PinCode</Typography>
           <TextField fullWidth {...register("pinCode")} size="small" />
-          <p>{errors.pinCode?.message}</p>
+          <Typography>{errors.pinCode?.message}</Typography>
         </Grid>
 
         <Grid item xs={12} sm={12} md={12} lg={12} mt={2} pl={1} pr={1}>
