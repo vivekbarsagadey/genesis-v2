@@ -1,0 +1,10 @@
+pip
+stringcase
+pyyaml
+mako
+pytesseract
+pillow
+cloudinary
+requests
+GitPython
+python-dotenv

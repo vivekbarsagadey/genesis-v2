@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  // posts Post[]
+}
+
+model Project {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  title  String?
+  logo String?
+  modules Module[]
+   @@map("tb_project")
+}
+model Module {
+   id    Int     @id @default(autoincrement())
+   name  String?
+   project   Project @relation(fields: [projectId], references: [id])
+   projectId Int @map("project_id")
+   screens Screen[]
+    @@map("tb_module")
+}
+model Screen {
+  id    Int     @id @default(autoincrement())
+  name  String?
+  module   Module @relation(fields: [moduleId], references: [id])
+  moduleId Int   @map("module_id")
+  @@map("tb_screen")
+}
