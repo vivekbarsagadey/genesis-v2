@@ -6,10 +6,10 @@ import Paper from "@mui/material/Paper";
 import { useState } from "react";
 import { PaginationHandler } from "../../utility";
 import InfoProjectComponent from "../info";
-import InfoCustomerComponent from "../info";
 import IProject from "../project.model";
+import { ListComponentProps } from "./props";
 
-const ProjectListViewComponent = ({ projects }: any) => {
+const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(projects.length / PER_PAGE);

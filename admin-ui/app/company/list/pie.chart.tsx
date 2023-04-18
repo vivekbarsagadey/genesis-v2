@@ -3,7 +3,19 @@ import { Grid } from "@mui/material";
 import { Chart } from "react-google-charts";
 import { Case, Default, Switch } from "react-if";
 
-const CompanyPieChart = ({ graphView, statusData, countryData, stateData }) => {
+type companyChartProps = {
+  graphView: string;
+  statusData: string;
+  countryData: string;
+  stateData: string;
+};
+
+const CompanyPieChart = ({
+  graphView,
+  statusData,
+  countryData,
+  stateData,
+}: companyChartProps) => {
   return (
     <>
       <Grid item xs={12}>

@@ -2,8 +2,23 @@ import React from "react";
 import { Grid } from "@mui/material";
 import { Chart } from "react-google-charts";
 import { Case, Default, Switch } from "react-if";
+import { ListComponentProps } from "./props";
 
-const ProjectPieChart = ({ graphView, statusData, countryData, stateData,applicationData }) => {
+type projectChartProps = {
+  graphView: string;
+  statusData: string;
+  countryData: string;
+  stateData: string;
+  applicationData: string;
+};
+
+const ProjectPieChart = ({
+  graphView,
+  statusData,
+  countryData,
+  stateData,
+  applicationData,
+}: projectChartProps) => {
   return (
     <>
       <Grid item xs={12}>

@@ -8,12 +8,9 @@ import ProjectCsvGenerator from "../../utility/project/csv.generator";
 import ProjectExcellGenerator from "../../utility/project/excell.generator";
 import ProjectPdfGenerator from "../../utility/project/pdf.generator";
 import IProject from "../project.model";
+import { ListComponentProps } from "./props";
 
-
-interface CompanyExportComponentProps {
-  projects: Array<IProject>;
-}
-const ProjectExportComponent = ({ projects }: CompanyExportComponentProps) => {
+const ProjectExportComponent = ({ projects }: ListComponentProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {

@@ -2,13 +2,21 @@ import { Grid } from "@mui/material";
 import { Chart } from "react-google-charts";
 import { Case, Default, Switch } from "react-if";
 
+type customerChartProps = {
+  graphView: string;
+  statusData: string;
+  countryData: string;
+  stateData: string;
+  cityData: string;
+};
+
 const CustomerPieChart = ({
   cityData,
   graphView,
   statusData,
   countryData,
   stateData,
-}) => {
+}: customerChartProps) => {
   return (
     <>
       <Grid item xs={12}>

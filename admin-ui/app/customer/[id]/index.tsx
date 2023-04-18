@@ -1,21 +1,13 @@
 "use client";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import {
-  Avatar,Box,
-  Button,
-  Grid,
-  IconButton,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import {Avatar,Box,Button,Grid,IconButton,Stack,TextField,Typography} from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import { makeStyles } from "@mui/styles";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { updateCustomer } from "../../../services/customer.action";
-import { countrySelect, stateSelect, citySelect } from "../grpahdata/graph.data";
+import {citySelect,countrySelect,stateSelect,} from "../grpahdata/graph.data";
 import { Status } from "../models";
 
 const genderType = [{ title: "Male" }, { title: "Female" }];
@@ -51,11 +43,8 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
   const [customerCity, setCustomerCity] = useState(customers.city);
   const [customerState, setCustomerState] = useState(customers.state);
   const [customerCountry, setCustomerCountry] = useState(customers.country);
-  const [customerProfilePic, setCustomerProfilePic] = useState(
-    customers.profilePic
-  );
+  const [customerProfilePic, setCustomerProfilePic] = useState(customers.profilePic);
   const [hover, setHover] = useState(false);
-
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   const router = useRouter();
   const classes = useStyles();
@@ -89,15 +78,12 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
   const updateCustomerLastName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerLastName(e.target.value);
   };
-
   const updateCustomerAge = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerAge(e.target.value);
   };
-
   const updateCustomerEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerEmail(e.target.value);
   };
-
   const updateCustomerPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerPhone(e.target.value);
   };
@@ -143,11 +129,9 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
   const handleMouseIn = () => {
     setHover(true);
   };
-
   const handleMouseOut = () => {
     setHover(false);
   };
-
   return (
     <>
       <Box>
@@ -170,18 +154,10 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                   onChange={updateCustomerProfilePic}
                 />
                 <label htmlFor="upload">
-                  <IconButton
-                    color="primary"
-                    aria-label="upload picture"
-                    component="Image"
-                    type="submit"
-                  >
-                    <Avatar
-                      id="avatar"
-                      onMouseOver={handleMouseIn}
-                      onMouseOut={handleMouseOut}
-                      className={classes.avtar}
-                    >
+                  <IconButton color="primary"
+                    aria-label="upload picture" component="Image" type="submit">
+                    <Avatar id="avatar" onMouseOver={handleMouseIn} onMouseOut={handleMouseOut}
+                     className={classes.avtar}>
                       {hover ? (
                         <span>
                           <Typography variant="body2">Upload</Typography>
@@ -208,15 +184,8 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <TextField
-                        id="first-name"
-                        placeholder="First Name"
-                        variant="outlined"
-                        size="small"
-                        fullWidth
-                        value={customerFirstName}
-                        onChange={updateCustomerFirstName}
-                      />
+                      <TextField id="first-name" placeholder="First Name" variant="outlined" 
+                      size="small" fullWidth value={customerFirstName} onChange={updateCustomerFirstName}/>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -230,15 +199,8 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <TextField
-                        id="last-name"
-                        placeholder="Last Name"
-                        variant="outlined"
-                        size="small"
-                        fullWidth
-                        value={customerLastName}
-                        onChange={updateCustomerLastName}
-                      />
+                      <TextField id="last-name" placeholder="Last Name" variant="outlined"
+                        size="small" fullWidth value={customerLastName} onChange={updateCustomerLastName}/>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -253,25 +215,15 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Stack spacing={2}>
-                        <Autocomplete
-                          value={gender}
-                          onChange={updateCustomerChange}
-                          freeSolo
-                          id="gender"
-                          disableClearable
-                          size="small"
-                          options={genderType?.map((option) => option.title)}
-                          renderInput={(params) => (
+                        <Autocomplete value={gender} onChange={updateCustomerChange} freeSolo id="gender" 
+                        disableClearable size="small" options={genderType?.map((option) => option.title)}
+                        renderInput={(params) => (
                             <TextField
                               {...params}
                               InputProps={{
                                 ...params.InputProps,
                                 type: "search",
-                              }}
-                              placeholder="Select Gender"
-                            />
-                          )}
-                        />
+                              }} placeholder="Select Gender"/>)}/>
                       </Stack>
                     </Grid>
                   </Grid>
@@ -286,15 +238,8 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <TextField
-                        id="age"
-                        placeholder="Age"
-                        variant="outlined"
-                        size="small"
-                        fullWidth
-                        value={customerAge}
-                        onChange={updateCustomerAge}
-                      />
+                      <TextField id="age" placeholder="Age" variant="outlined"
+                        size="small" fullWidth value={customerAge} onChange={updateCustomerAge} />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -307,15 +252,8 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <TextField
-                        id="email"
-                        placeholder="Email"
-                        variant="outlined"
-                        size="small"
-                        fullWidth
-                        value={customerEmail}
-                        onChange={updateCustomerEmail}
-                      />
+                      <TextField id="email" placeholder="Email" variant="outlined" size="small"
+                        fullWidth value={customerEmail} onChange={updateCustomerEmail} />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -328,15 +266,8 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <TextField
-                        id="phone"
-                        placeholder="Phone"
-                        variant="outlined"
-                        size="small"
-                        fullWidth
-                        value={customerPhone}
-                        onChange={updateCustomerPhone}
-                      />
+                      <TextField id="phone" placeholder="Phone" variant="outlined" size="small"
+                        fullWidth value={customerPhone} onChange={updateCustomerPhone} />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -350,24 +281,15 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Autocomplete
-                        value={customerStatus}
-                        onChange={updateCustomerStatus}
-                        freeSolo
-                        id="company-status"
-                        disableClearable
-                        size="small"
+                      <Autocomplete value={customerStatus} onChange={updateCustomerStatus}
+                        freeSolo id="company-status" disableClearable size="small"
                         options={statusSet?.map((option: any) => option)}
                         renderInput={(params) => (
                           <TextField
                             {...params}
                             InputProps={{
                               ...params.InputProps,
-                              type: "search",
-                            }}
-                          />
-                        )}
-                      />
+                              type: "search"}}/>)}/>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -381,15 +303,8 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <TextField
-                        id="address"
-                        placeholder="Address"
-                        variant="outlined"
-                        size="small"
-                        fullWidth
-                        value={customerAddress}
-                        onChange={updateCustomerAddress}
-                      />
+                      <TextField id="address" placeholder="Address" variant="outlined"
+                        size="small" fullWidth value={customerAddress} onChange={updateCustomerAddress} />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -402,15 +317,8 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <TextField
-                        id="zipcode"
-                        placeholder="Zip Code"
-                        variant="outlined"
-                        size="small"
-                        fullWidth
-                        value={customerZipCode}
-                        onChange={updateCustomerZipCode}
-                      />
+                      <TextField id="zipcode" placeholder="Zip Code" variant="outlined" size="small"
+                        fullWidth value={customerZipCode} onChange={updateCustomerZipCode}/>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -424,12 +332,8 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Autocomplete
-                        value={customerCity}
-                        onChange={updateCustomerCity}
-                        freeSolo
-                        id="free-solo-2-demo"
-                        disableClearable
+                      <Autocomplete value={customerCity} onChange={updateCustomerCity} freeSolo
+                        id="free-solo-2-demo" disableClearable
                         options={citySelect.map((option) => option.city)}
                         renderInput={(params) => (
                           <TextField
@@ -437,12 +341,7 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                             size="small"
                             InputProps={{
                               ...params.InputProps,
-                              type: "search",
-                            }}
-                            placeholder="Select City"
-                          />
-                        )}
-                      />
+                              type: "search",}} placeholder="Select City"/>)}/>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -456,25 +355,15 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Autocomplete
-                        value={customerState}
-                        onChange={updateCustomerState}
-                        freeSolo
-                        id="free-solo-2-demo"
-                        disableClearable
-                        options={stateSelect.map((option) => option.state)}
+                      <Autocomplete value={customerState} onChange={updateCustomerState} freeSolo
+                        id="free-solo-2-demo" disableClearable options={stateSelect.map((option) => option.state)}
                         renderInput={(params) => (
                           <TextField
                             {...params}
                             size="small"
                             InputProps={{
                               ...params.InputProps,
-                              type: "search",
-                            }}
-                            placeholder="Select State"
-                          />
-                        )}
-                      />
+                              type: "search",}} placeholder="Select State"/>)}/>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -489,16 +378,10 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Stack spacing={2}>
-                        <Autocomplete
-                          value={customerCountry}
-                          onChange={updateCustomerCountry}
-                          freeSolo
-                          id="country"
-                          disableClearable
-                          size="small"
-                          options={countrySelect?.map(
-                            (option) => option.country
-                          )}
+                        <Autocomplete value={customerCountry} onChange={updateCustomerCountry}
+                          freeSolo id="country" disableClearable
+                          size="small" options={countrySelect?.map(
+                            (option) => option.country )}
                           renderInput={(params) => (
                             <TextField
                               {...params}
@@ -506,10 +389,7 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                                 ...params.InputProps,
                                 type: "search",
                               }}
-                              placeholder="Select Gender"
-                            />
-                          )}
-                        />
+                              placeholder="Select Gender"/>)}/>
                       </Stack>
                     </Grid>
                   </Grid>
