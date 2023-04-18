@@ -30,9 +30,8 @@ const ProjectKanbanView = ({ projects }: ListComponentProps) => {
   });
 
   return (
-    <>
-      <Grid container spacing={2} mt={1}>
-        <Grid item xs={1}></Grid>
+    <Box mt={2}>
+      <Grid container spacing={2}>
         <Grid item xs={4}>
           <CardStyle>
             <Paper variant="outlined">
@@ -50,7 +49,6 @@ const ProjectKanbanView = ({ projects }: ListComponentProps) => {
             </Paper>
           </CardStyle>
         </Grid>
-        <Grid item xs={1}></Grid>
         <Grid item xs={4}>
           <CardStyle>
             <Paper variant="outlined">
@@ -69,7 +67,7 @@ const ProjectKanbanView = ({ projects }: ListComponentProps) => {
           </CardStyle>
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 };
 
@@ -78,7 +76,7 @@ const ActiveCompanyComponent = ({ activeProject }: IActiveProject) => {
     <Box mt={1}>
       <Paper variant="outlined">
         <Typography noWrap variant="h5">
-          Company - {activeProject.firstName} {activeProject.lastName}
+          Company Name - {activeProject.customerName}
         </Typography>
         <Typography noWrap variant="h5">
           Status - {activeProject.status}
@@ -92,11 +90,9 @@ const InActiveProjectComponent = ({ inActiveProject }: IInActiveProject) => {
     <Box mt={1}>
       <Paper variant="outlined">
         <Typography noWrap variant="h5">
-          {" "}
-          Company - {inActiveProject.firstName} {inActiveProject.lastName}
+          Company Name - {inActiveProject.customerName}
         </Typography>
         <Typography noWrap variant="h5">
-          {" "}
           Status - {inActiveProject.status}
         </Typography>
       </Paper>
