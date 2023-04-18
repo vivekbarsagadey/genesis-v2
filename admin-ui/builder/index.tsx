@@ -1,18 +1,15 @@
 "use client";
 import { Grid } from "@material-ui/core";
-import { Chip, Paper, Stack } from "@mui/material";
 import Box from "@mui/material/Box";
-import React, { useState, useEffect, createContext } from "react";
-import { Case, Switch } from "react-if";
-import Logo from "../component/common/Sidebar/logo";
-import SidebarComponent from "./menu/sidebar/sidebar.component";
+import { createContext, useEffect, useState } from "react";
+import Logo from "../component/common/sidebar/logo";
 import { findById } from "../services/api.service";
 import BuilderHeaderComponent from "./header/header";
-import BuilderSidebarComponent from "./menu/sidebar/builder.sidebar.component";
+import SidebarComponent from "./menu/sidebar/sidebar.component";
 import PropertiesComponent from "./screens/properties.component";
 import ScreenComponent from "./screens/screen.component";
 import ScreenSelectComponent from "./screens/screen.select.component";
-import genisys from "../data/genisys.json";
+
 export const ProjectContext = createContext();
 
 const BuilderHome = ({ id }) => {

@@ -10,7 +10,7 @@ import MuiAccordionSummary, {
 } from "@mui/material/AccordionSummary";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import React from "react";
-import Switch, { Case } from "react-switch-case";
+import { Case, Default, Switch } from "react-if";
 import genisys from "../../../data/genisys.json";
 import SideBarInnerList from "./sidebar.inner.list";
 import { styled } from "@mui/material/styles";
@@ -55,7 +55,7 @@ const SidebarComponent = ({ toggleMenu, getComponentId,getGridId }) => {
     <>
       {genisys.categories?.map((menu) => {
         return (
-          <div key={menu.id}>
+          <Grid key={menu.id}>
             <Accordion
               onChange={handleChange("panel1")}
               style={{ marginTop: "-1rem" }}
@@ -121,7 +121,7 @@ const SidebarComponent = ({ toggleMenu, getComponentId,getGridId }) => {
                 </Grid>
               </AccordionDetails>
             </Accordion>
-          </div>
+          </Grid>
         );
       })}
     </>

@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import HeaderComponent from "./header";
-import SidebarLogo from "./Sidebar/logo";
+import SidebarLogo from './sidebar/logo'
 import ProjectSidebar from "./sidebar/project.sidebar/project.sidebar";
 
 const LayoutComponent = ({ children }: { children: React.ReactNode }) => {
@@ -43,7 +43,7 @@ const LayoutComponent = ({ children }: { children: React.ReactNode }) => {
           </Grid>
         </Grid>
       )}
-      {!session && <div>{children}</div>}
+      {!session && <>{children}</>}
     </>
   );
 };

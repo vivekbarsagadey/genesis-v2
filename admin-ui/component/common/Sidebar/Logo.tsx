@@ -9,7 +9,7 @@ interface logoProps {
 }
 const SidebarLogo = ({ handleMenu, toggleMenu }: logoProps) => {
   return (
-    <div
+    <Grid
       style={{ display: "flex", alignItems: "center", paddingBottom: "1rem" }}
     >
       {toggleMenu && (
@@ -25,12 +25,12 @@ const SidebarLogo = ({ handleMenu, toggleMenu }: logoProps) => {
           />
         </Grid>
       )}
-      <div>
+      <>
         <IconButton onClick={handleMenu}>
           {toggleMenu ? <MenuIcon /> : <ListIcon />}
         </IconButton>
-      </div>
-    </div>
+      </>
+    </Grid>
   );
 };
 

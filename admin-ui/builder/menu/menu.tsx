@@ -9,6 +9,7 @@ import {
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import { Item } from "./menu.item";
 import MenuItem from "./menu.item";
+import { Grid } from '@mui/material';
 
 type CategoryProps = {
   id: string;
@@ -26,7 +27,7 @@ function Category(props: CategoryProps) {
   const { id, name, icon, items, handleClick, open, classes } = props;
 
   return (
-    <div key={id}>
+    <Grid key={id}>
       <ListItem button onClick={() => handleClick(id)}>
         {icon && <ListItemIcon>{icon}</ListItemIcon>}
         <ListItemText primary={name} />
@@ -47,7 +48,7 @@ function Category(props: CategoryProps) {
           </List>
         </Collapse>
       )}
-    </div>
+    </Grid>
   );
 }
 

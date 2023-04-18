@@ -12,7 +12,7 @@ import { styled } from "@mui/material/styles";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import { Grid, ListItemIcon, Typography, Paper } from "@mui/material";
 import Collapse from "@mui/material/Collapse";
-import Switch, { Case, Default } from "react-switch-case";
+import { Case, Default, Switch } from "react-if";
 import SideBarInnerText from "./sidebar.inner.text";
 
 const TypographyStyle = styled(Typography)(({ theme }) => ({

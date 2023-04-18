@@ -1,10 +1,7 @@
 "use client";
 import React from "react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import {
-  QueryClient,
-  QueryClientProvider
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SessionProvider } from "next-auth/react";
 import LayoutComponent from "../component/common/layout.component";
 import { theme } from "../themes/com-light";

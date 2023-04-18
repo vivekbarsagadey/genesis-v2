@@ -46,7 +46,7 @@ const LayoutComponent = ({
           </Grid>
         </Grid>
       )}
-      {!session && <div>{children}</div>}
+      {!session && <>{children}</>}
     </>
   );
 };

@@ -2,7 +2,7 @@ import { Box, Grid } from "@material-ui/core";
 import { Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import React, { useEffect, useState } from "react";
-import { Case, Switch } from "react-if";
+import { Case, Default, Switch } from "react-if";
 import { ProjectContext } from "..";
 import ButtonBuilderComponent from "./builder.component/button.builder.component";
 import CheckboxComponent from "./builder.component/checkbox.component";
@@ -52,7 +52,7 @@ const ScreenSelectComponent = ({
                               <Item>
                                 {componentVal?.map((data, indexInner) => {
                                   return (
-                                    <div
+                                    <Grid
                                       key={indexInner}
                                       onClick={() => updateComponentData(data)}
                                     >
@@ -108,7 +108,7 @@ const ScreenSelectComponent = ({
 
                                         return null;
                                       })()}
-                                    </div>
+                                    </Grid>
                                   );
                                 })}
                               </Item>
@@ -119,7 +119,7 @@ const ScreenSelectComponent = ({
                               <Item>
                                 {componentVal?.map((data, indexInner) => {
                                   return (
-                                    <div
+                                    <Grid
                                       key={indexInner}
                                       onClick={() => updateComponentData(data)}
                                     >
@@ -175,7 +175,7 @@ const ScreenSelectComponent = ({
 
                                         return null;
                                       })()}
-                                    </div>
+                                    </Grid>
                                   );
                                 })}
                               </Item>
@@ -186,7 +186,7 @@ const ScreenSelectComponent = ({
                               <Item>
                                 {componentVal?.map((data, indexInner) => {
                                   return (
-                                    <div
+                                    <Grid
                                       key={indexInner}
                                       onClick={() => updateComponentData(data)}
                                     >
@@ -242,7 +242,7 @@ const ScreenSelectComponent = ({
 
                                         return null;
                                       })()}
-                                    </div>
+                                    </Grid>
                                   );
                                 })}
                               </Item>
@@ -253,7 +253,7 @@ const ScreenSelectComponent = ({
                               <Item>
                                 {componentVal?.map((data, indexInner) => {
                                   return (
-                                    <div
+                                    <Grid
                                       key={indexInner}
                                       onClick={() => updateComponentData(data)}
                                     >
@@ -309,7 +309,7 @@ const ScreenSelectComponent = ({
 
                                         return null;
                                       })()}
-                                    </div>
+                                    </Grid>
                                   );
                                 })}
                               </Item>
@@ -320,7 +320,7 @@ const ScreenSelectComponent = ({
                               <Item>
                                 {componentVal?.map((data, indexInner) => {
                                   return (
-                                    <div
+                                    <Grid
                                       key={indexInner}
                                       onClick={() => updateComponentData(data)}
                                     >
@@ -376,7 +376,7 @@ const ScreenSelectComponent = ({
 
                                         return null;
                                       })()}
-                                    </div>
+                                    </Grid>
                                   );
                                 })}
                               </Item>
@@ -387,7 +387,7 @@ const ScreenSelectComponent = ({
                               <Item>
                                 {componentVal?.map((data, indexInner) => {
                                   return (
-                                    <div
+                                    <Grid
                                       key={indexInner}
                                       onClick={() => updateComponentData(data)}
                                     >
@@ -443,7 +443,7 @@ const ScreenSelectComponent = ({
 
                                         return null;
                                       })()}
-                                    </div>
+                                    </Grid>
                                   );
                                 })}
                               </Item>

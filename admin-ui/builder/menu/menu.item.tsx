@@ -1,6 +1,7 @@
 import React from 'react';
 import { List, ListItem, ListItemIcon, ListItemText, Collapse } from '@material-ui/core';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
+import { Grid } from '@mui/material';
 
 
 export type Item = {
@@ -29,7 +30,7 @@ function MenuItem(props: MenuItemProps) {
   };
 
   return (
-    <div key={id}>
+    <Grid key={id}>
       <ListItem button className={classes.nested} onClick={() => handleClickItem(componentId)}>
         {icon && <ListItemIcon>{icon}</ListItemIcon>}
         <ListItemText primary={name} />
@@ -44,7 +45,7 @@ function MenuItem(props: MenuItemProps) {
           </List>
         </Collapse>
       )}
-    </div>
+    </Grid>
   );
 }
 
