@@ -40,6 +40,7 @@ const Transition = React.forwardRef(function Transition(
 
 const BuilderThemeComponent = ({ handleCloseTheme, getScreenDataSet }) => {
   const classes = useStyles();
+  const [checkbox, setCheckbox] = React.useState("checkbox");
   const [builderThemes, setBuilderThemes] = React.useState(false);
   const [blankTheme, setBlankTheme] = React.useState<boolean>(false);
   const [blackTheme, setBlackTheme] = React.useState<boolean>(false);
@@ -90,18 +91,19 @@ const BuilderThemeComponent = ({ handleCloseTheme, getScreenDataSet }) => {
           <Grid container spacing={4} padding={3}>
             <Grid item xs={4}>
               <Grid container display="flex" justifyContent="space-around">
-                <Grid item xs={10}>
+                <Grid item xs={11}>
                   <Typography variant="body2" color={"white"}>
                     Blank
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
                   <input
-                    type="radio"
-                    id="black"
-                    name="radio"
+                    type="checkbox"
+                    checked={checkbox === "blank"}
+                    onChange={() => setCheckbox("blank")}
                     value={blankTheme}
                     onClick={() => updateTheme("blank")}
+                    style={{ cursor: "pointer" }}
                   />
                 </Grid>
               </Grid>
@@ -121,18 +123,19 @@ const BuilderThemeComponent = ({ handleCloseTheme, getScreenDataSet }) => {
             </Grid>
             <Grid item xs={4}>
               <Grid container display="flex" justifyContent="space-around">
-                <Grid item xs={10}>
+                <Grid item xs={11}>
                   <Typography variant="body2" color={"white"}>
                     Black Theme
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
                   <input
-                    type="radio"
-                    id="black"
-                    name="radio"
+                    type="checkbox"
+                    checked={checkbox === "black"}
+                    onChange={() => setCheckbox("black")}
                     value={blackTheme}
                     onClick={() => updateTheme("blackTheme")}
+                    style={{ cursor: "pointer" }}
                   />
                 </Grid>
               </Grid>
@@ -158,18 +161,19 @@ const BuilderThemeComponent = ({ handleCloseTheme, getScreenDataSet }) => {
 
             <Grid item xs={4}>
               <Grid container display="flex" justifyContent="space-around">
-                <Grid item xs={10}>
+                <Grid item xs={11}>
                   <Typography variant="body2" color={"white"}>
                     White Theme
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
                   <input
-                    type="radio"
-                    id="html"
-                    name="radio"
+                    type="checkbox"
+                    checked={checkbox === "white"}
+                    onChange={() => setCheckbox("white")}
                     value={whiteTheme}
                     onClick={() => updateTheme("whiteTheme")}
+                    style={{ cursor: "pointer" }}
                   />
                 </Grid>
               </Grid>
@@ -194,18 +198,19 @@ const BuilderThemeComponent = ({ handleCloseTheme, getScreenDataSet }) => {
             </Grid>
             <Grid item xs={4}>
               <Grid container display="flex" justifyContent="space-around">
-                <Grid item xs={10}>
+                <Grid item xs={11}>
                   <Typography variant="body2" color={"white"}>
                     Glassmorphism Theme
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
                   <input
-                    type="radio"
-                    id="html"
-                    name="radio"
+                    type="checkbox"
+                    checked={checkbox === "glassmorphism"}
+                    onChange={() => setCheckbox("glassmorphism")}
                     value={glassmorphismTheme}
                     onClick={() => updateTheme("glassmorphismTheme")}
+                    style={{ cursor: "pointer" }}
                   />
                 </Grid>
               </Grid>
