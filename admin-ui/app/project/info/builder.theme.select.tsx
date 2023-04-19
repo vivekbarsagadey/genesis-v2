@@ -39,7 +39,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const BuilderThemeComponent = ({ handleCloseTheme }) => {
+const BuilderThemeComponent = ({ handleCloseTheme,getScreenDataSet }) => {
   const classes = useStyles();
   const [builderThemes, setBuilderThemes] = React.useState(false);
   const [blankTheme, setBlankTheme] = React.useState<boolean>(false);
@@ -259,7 +259,7 @@ const BuilderThemeComponent = ({ handleCloseTheme }) => {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <BuilderThemesSelectComponent handleClose={handleClose} />
+        <BuilderThemesSelectComponent handleClose={handleClose}  getScreenDataSet={getScreenDataSet} />
       </Dialog>
     </>
   );

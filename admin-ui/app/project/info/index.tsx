@@ -32,7 +32,7 @@ type InfoCustomerComponentProps = {
 const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
   const router = useRouter();
   const [openTheme, setOpenTheme] = useState(false);
-
+  const [screenData, setScreenData] = useState([]);
   const handleOpenTheme = () => setOpenTheme((s) => !s);
   const handleCloseTheme = () => setOpenTheme((s) => !s);
 
@@ -57,8 +57,12 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
     }
   };
 
+  const getScreenDataSet = (setRecv) => {
+    setScreenData(setRecv);
+  };
+
   return (
-    <React.Fragment>
+    <>
       <Box mt={0.6} mr={2}>
         <Paper variant="outlined">
           <Grid container>
@@ -122,7 +126,10 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
           onClose={handleCloseTheme}
           TransitionComponent={Transition}
         >
-          <BuilderThemeComponent handleCloseTheme={handleCloseTheme} />
+          <BuilderThemeComponent
+            handleCloseTheme={handleCloseTheme}
+            getScreenDataSet={getScreenDataSet}
+          />
         </Dialog>
         {/* Builder full screen  */}
         <Dialog
@@ -131,10 +138,10 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
           onClose={handelCloseBuilder}
           TransitionComponent={Transition}
         >
-          <BuilderHome id={items.id} />
+          <BuilderHome id={items.id} screenData={screenData} />
         </Dialog>
       </Box>
-    </React.Fragment>
+    </>
   );
 };
 export default InfoProjectComponent;

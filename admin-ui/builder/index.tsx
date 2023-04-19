@@ -12,7 +12,7 @@ import ScreenSelectComponent from "./screens/screen.select.component";
 
 export const ProjectContext = createContext();
 
-const BuilderHome = ({ id }) => {
+const BuilderHome = ({ id,screenData }) => {
   const [projectInfo, setProjectInfo] = useState([]);
   const info = findById("projects", id);
   useEffect(() => {
@@ -52,6 +52,8 @@ const BuilderHome = ({ id }) => {
   const updateSectionData = (typeRecv: string) => {
     setSectionalData(typeRecv);
   };
+  console.log("screenData >>>>",screenData);
+  
   return (
     <ProjectContext.Provider value={sectionalData}>
       <Box>
@@ -74,6 +76,7 @@ const BuilderHome = ({ id }) => {
                   <ScreenComponent
                     updateScreen={updateScreen}
                     handleDelete={handleDelete}
+                    screenData={screenData}
                   />
                 </Grid>
                 <Grid

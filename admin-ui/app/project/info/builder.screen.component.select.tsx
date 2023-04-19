@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   },
 });
 
-const BuilderScreenSelectComponent = ({ handleClose }) => {
+const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
   const classes = useStyles();
   const [blankScreen, setBlankScreen] = useState(false);
   const [loginScreen, setLoginScreen] = useState(false);
@@ -75,9 +75,10 @@ const BuilderScreenSelectComponent = ({ handleClose }) => {
   console.log("count >>", count);
 
   const saveScreens = async () => {
-    for (var i = 0; i < count.length; i++) {
-      createScreen(count[i]);
-    }
+    // for (var i = 0; i < count.length; i++) {
+    //   createScreen(count[i]);
+    // }
+    getScreenDataSet(count);
     handleClose();
   };
 
