@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AccordionDetails, Container } from "@material-ui/core";
+import { AccordionDetails, Container } from  "@mui/material";
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import EmailIcon from "@mui/icons-material/Email";

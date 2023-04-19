@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Box, Grid, Typography, Button } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
+import { useState } from "react";
 
 const TextModelComponent = ({ metaData }) => {
   const [width, setWidth] = useState<string>(metaData.width);
@@ -41,7 +41,7 @@ const TextModelComponent = ({ metaData }) => {
         >
           <Grid item xs={4}>
             <Button variant="contained" size="small">
-              Cancel
+              Reset
             </Button>
           </Grid>
           <Grid item xs={3}>

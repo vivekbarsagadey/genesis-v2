@@ -1,6 +1,5 @@
 import { Button, Card, Grid, Typography } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
-import Checkbox from "@mui/material/Checkbox";
 import Dialog from "@mui/material/Dialog";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
@@ -25,7 +24,7 @@ const useStyles = makeStyles({
   genesislogo1: {
     position: "absolute",
     top: "50%",
-    left: "50%",
+    left: "45%",
     margin: "-50px 0 0 -50px",
   },
 });
@@ -39,7 +38,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const BuilderThemeComponent = ({ handleCloseTheme,getScreenDataSet }) => {
+const BuilderThemeComponent = ({ handleCloseTheme, getScreenDataSet }) => {
   const classes = useStyles();
   const [builderThemes, setBuilderThemes] = React.useState(false);
   const [blankTheme, setBlankTheme] = React.useState<boolean>(false);
@@ -73,14 +72,14 @@ const BuilderThemeComponent = ({ handleCloseTheme,getScreenDataSet }) => {
   return (
     <>
       <Grid container>
-        <Grid item xs={4} className={classes.background_genesis1}>
+        <Grid item xs={3} className={classes.background_genesis1}>
           <Grid container className={classes.genesislogo}>
             <Grid item xs={12} className={classes.genesislogo1}>
               <img src="./images/genesislogo.png" alt="image not found" />
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={8} style={{ background: "#0f172a" }}>
+        <Grid item xs={9} style={{ background: "#0f172a" }}>
           <Grid container spacing={2} mt={1}>
             <Grid item xs={12}>
               <Typography color={"white"} fontSize={"1.2rem"} ml={3}>
@@ -97,9 +96,10 @@ const BuilderThemeComponent = ({ handleCloseTheme,getScreenDataSet }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox
-                    style={{ color: "white" }}
-                    size="small"
+                  <input
+                    type="radio"
+                    id="black"
+                    name="radio"
                     value={blankTheme}
                     onClick={() => updateTheme("blank")}
                   />
@@ -119,7 +119,6 @@ const BuilderThemeComponent = ({ handleCloseTheme,getScreenDataSet }) => {
                 </Grid>
               </Grid>
             </Grid>
-
             <Grid item xs={4}>
               <Grid container display="flex" justifyContent="space-around">
                 <Grid item xs={10}>
@@ -128,9 +127,10 @@ const BuilderThemeComponent = ({ handleCloseTheme,getScreenDataSet }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox
-                    style={{ color: "white" }}
-                    size="small"
+                  <input
+                    type="radio"
+                    id="black"
+                    name="radio"
                     value={blackTheme}
                     onClick={() => updateTheme("blackTheme")}
                   />
@@ -164,9 +164,10 @@ const BuilderThemeComponent = ({ handleCloseTheme,getScreenDataSet }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox
-                    style={{ color: "white" }}
-                    size="small"
+                  <input
+                    type="radio"
+                    id="html"
+                    name="radio"
                     value={whiteTheme}
                     onClick={() => updateTheme("whiteTheme")}
                   />
@@ -199,9 +200,10 @@ const BuilderThemeComponent = ({ handleCloseTheme,getScreenDataSet }) => {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Checkbox
-                    style={{ color: "white" }}
-                    size="small"
+                  <input
+                    type="radio"
+                    id="html"
+                    name="radio"
                     value={glassmorphismTheme}
                     onClick={() => updateTheme("glassmorphismTheme")}
                   />
@@ -259,7 +261,10 @@ const BuilderThemeComponent = ({ handleCloseTheme,getScreenDataSet }) => {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <BuilderThemesSelectComponent handleClose={handleClose}  getScreenDataSet={getScreenDataSet} />
+        <BuilderThemesSelectComponent
+          handleClose={handleClose}
+          getScreenDataSet={getScreenDataSet}
+        />
       </Dialog>
     </>
   );

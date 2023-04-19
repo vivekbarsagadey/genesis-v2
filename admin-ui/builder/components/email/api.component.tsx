@@ -49,7 +49,7 @@ const EmailApiComponent = ({ metaData }) => {
           </Grid>
           <Grid item xs={3}>
             <Button variant="contained" size="small">
-              Save
+            Reset
             </Button>
           </Grid>
         </Grid>

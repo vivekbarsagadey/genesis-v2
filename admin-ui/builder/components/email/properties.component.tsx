@@ -143,7 +143,7 @@ const EmailPropertiesComponent = ({ metaData }) => {
         >
           <Grid item xs={4}>
             <Button variant="contained" size="small">
-              Cancel
+              Reset
             </Button>
           </Grid>
           <Grid item xs={3}>

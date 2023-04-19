@@ -3,14 +3,13 @@ import CardMedia from "@mui/material/CardMedia";
 import Checkbox from "@mui/material/Checkbox";
 import { makeStyles } from "@mui/styles";
 import { useState } from "react";
-import { createScreen } from "../../../services/screen.action";
 
 const useStyles = makeStyles({
   background_genesis1: {
     backgroundImage: `url(${"./images/genesis1.png"})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    height: "134vh",
+    height: "120vh",
     backgroundPosition: "center",
     position: "relative",
   },
@@ -22,7 +21,7 @@ const useStyles = makeStyles({
   genesislogo1: {
     position: "absolute",
     top: "50%",
-    left: "50%",
+    left: "45%",
     margin: "-50px 0 0 -50px",
   },
 });
@@ -73,7 +72,6 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
     }
   };
   console.log("count >>", count);
-
   const saveScreens = async () => {
     // for (var i = 0; i < count.length; i++) {
     //   createScreen(count[i]);
@@ -85,14 +83,14 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
   return (
     <>
       <Grid container>
-        <Grid item xs={4} className={classes.background_genesis1}>
+        <Grid item xs={3} className={classes.background_genesis1}>
           <Grid container className={classes.genesislogo}>
             <Grid item xs={12} className={classes.genesislogo1}>
               <img src="./images/genesislogo.png" alt="image not found" />
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={8} style={{ background: "#0f172a", height: "134vh" }}>
+        <Grid item xs={9} style={{ background: "#0f172a", height: "120vh" }}>
           <Grid container spacing={4} padding={3}>
             <Grid item xs={3}>
               <Grid container display="flex" justifyContent="space-around">
@@ -111,15 +109,9 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                 </Grid>
               </Grid>
               <Grid container>
-                <Grid
-                  item
-                  xs={6}
-                  display="flex"
-                  justifyContent={"space-around"}
-                ></Grid>
                 <Grid item xs={12}>
                   <Card>
-                    <CardMedia component="img" height="300" />
+                    <CardMedia component="img" height="260" />
                   </Card>
                 </Grid>
               </Grid>
@@ -141,18 +133,12 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                 </Grid>
               </Grid>
               <Grid container>
-                <Grid
-                  item
-                  xs={6}
-                  display="flex"
-                  justifyContent={"space-around"}
-                ></Grid>
                 <Grid item xs={12}>
                   <Card>
                     <CardMedia
                       component="img"
                       alt="image not found"
-                      height="300"
+                      height="260"
                       image="./images/Loginwithemail.png"
                     />
                   </Card>
@@ -176,18 +162,12 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                 </Grid>
               </Grid>
               <Grid container>
-                <Grid
-                  item
-                  xs={6}
-                  display="flex"
-                  justifyContent={"space-around"}
-                ></Grid>
                 <Grid item xs={12}>
                   <Card>
                     <CardMedia
                       component="img"
                       alt="image not found"
-                      height="300"
+                      height="260"
                       image="./images/Profile.png"
                     />
                   </Card>
@@ -211,18 +191,12 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                 </Grid>
               </Grid>
               <Grid container>
-                <Grid
-                  item
-                  xs={6}
-                  display="flex"
-                  justifyContent={"space-around"}
-                ></Grid>
                 <Grid item xs={12}>
                   <Card>
                     <CardMedia
                       component="img"
                       alt="image not found"
-                      height="300"
+                      height="260"
                       image="./images/Home.png"
                     />
                   </Card>
@@ -246,18 +220,12 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                 </Grid>
               </Grid>
               <Grid container>
-                <Grid
-                  item
-                  xs={6}
-                  display="flex"
-                  justifyContent={"space-around"}
-                ></Grid>
                 <Grid item xs={12}>
                   <Card>
                     <CardMedia
                       component="img"
                       alt="image not found"
-                      height="300"
+                      height="260"
                       image="./images/Editprofile.png"
                     />
                   </Card>
@@ -281,18 +249,12 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                 </Grid>
               </Grid>
               <Grid container>
-                <Grid
-                  item
-                  xs={6}
-                  display="flex"
-                  justifyContent={"space-around"}
-                ></Grid>
                 <Grid item xs={12}>
                   <Card>
                     <CardMedia
                       component="img"
                       alt="image not found"
-                      height="300"
+                      height="260"
                       image="./images/Signin.png"
                     />
                   </Card>
@@ -316,18 +278,12 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                 </Grid>
               </Grid>
               <Grid container>
-                <Grid
-                  item
-                  xs={6}
-                  display="flex"
-                  justifyContent={"space-around"}
-                ></Grid>
                 <Grid item xs={12}>
                   <Card>
                     <CardMedia
                       component="img"
                       alt="image not found"
-                      height="300"
+                      height="260"
                       image="./images/Sidemenu.png"
                     />
                   </Card>
@@ -350,46 +306,31 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                   />
                 </Grid>
               </Grid>
-              <Grid container>
-                <Grid
-                  item
-                  xs={6}
-                  display="flex"
-                  justifyContent={"space-around"}
-                ></Grid>
-                <Grid item xs={12}>
-                  <Card>
-                    <CardMedia
-                      component="img"
-                      alt="image not found"
-                      height="300"
-                      image="./images/Setting.png"
-                    />
-                  </Card>
-                </Grid>
+
+              <Grid item xs={12}>
+                <Card>
+                  <CardMedia
+                    component="img"
+                    alt="image not found"
+                    height="260"
+                    image="./images/Setting.png"
+                  />
+                </Card>
               </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <Grid container display="flex" justifyContent={"flex-end"}>
-                <Grid item xs={2}>
-                  <Button
-                    variant="contained"
-                    size="large"
-                    onClick={handleClose}
-                  >
-                    Cancel
-                  </Button>
-                </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container display="flex" justifyContent={"flex-end"}>
+              <Grid item xs={2}>
+                <Button variant="contained" size="large" onClick={handleClose}>
+                  Cancel
+                </Button>
+              </Grid>
 
-                <Grid item xs={1} mr={1}>
-                  <Button
-                    variant="contained"
-                    size="large"
-                    onClick={saveScreens}
-                  >
-                    Save
-                  </Button>
-                </Grid>
+              <Grid item xs={1} mr={1}>
+                <Button variant="contained" size="large" onClick={saveScreens}>
+                  Save
+                </Button>
               </Grid>
             </Grid>
           </Grid>

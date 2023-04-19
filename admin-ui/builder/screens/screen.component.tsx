@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { Button, Chip, Grid, Paper, Stack } from "@mui/material";
+import { Button, Chip, Grid, Stack } from "@mui/material";
 
 const ScreenComponent = ({ updateScreen, handleDelete, screenData }) => {
   // const [screenInfo, setScreenInfo] = React.useState([]);
@@ -21,13 +20,12 @@ const ScreenComponent = ({ updateScreen, handleDelete, screenData }) => {
   //     });
   // }, []);
 
-  console.log("screenData >>",screenData);
-  
+  console.log("screenData >>", screenData);
 
   return (
     <>
       <Grid container style={{ background: "#1e293b", padding: "0.3rem" }}>
-        <Grid item xs={11}>
+        <Grid item xs={10}>
           <Stack direction="row" spacing={1}>
             {screenData?.map((data, index) => {
               return (
@@ -57,7 +55,16 @@ const ScreenComponent = ({ updateScreen, handleDelete, screenData }) => {
             size="small"
             style={{ height: "4vh", marginTop: "0.2rem" }}
           >
-            New
+            Preview
+          </Button>
+        </Grid>
+        <Grid item xs={1}>
+          <Button
+            variant="contained"
+            size="small"
+            style={{ height: "4vh", marginTop: "0.2rem" }}
+          >
+            Save
           </Button>
         </Grid>
       </Grid>
