@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { Button, Card, Grid, Typography } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Checkbox from "@mui/material/Checkbox";
@@ -26,59 +27,78 @@ const useStyles = makeStyles({
   },
 });
 
-const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
+const BuilderPageSelectComponent = ({ handleClose, getScreenDataSet }) => {
   const classes = useStyles();
-  const [blankScreen, setBlankScreen] = useState(false);
-  const [loginScreen, setLoginScreen] = useState(false);
-  const [profileScreen, setProfileScreen] = useState(false);
-  const [homePageScreen, setHomePageScreen] = useState(false);
-  const [editProfileScreen, setEditProfileScreen] = useState(false);
-  const [signupScreen, setSignupScreen] = useState(false);
-  const [sideMenuScreen, setSideMenuScreen] = useState(false);
-  const [settingScreen, setSettingScreen] = useState(false);
+  const [blankPage, setBlankPage] = useState(false);
+  const [loginPage, setLoginPage] = useState(false);
+  const [profilePage, setProfilePage] = useState(false);
+  const [homePagePage, setHomePagePage] = useState(false);
+  const [editProfilePage, setEditProfilePage] = useState(false);
+  const [signupPage, setSignupPage] = useState(false);
+  const [sideMenuPage, setSideMenuPage] = useState(false);
+  const [settingPage, setSettingPage] = useState(false);
+  const [pages, setPages] = React.useState([]);
+
   const [count, setCount] = useState([]);
-  const updateScreen = (screenRecv: string) => {
-    if (screenRecv === "blank") {
-      setBlankScreen((s) => !s);
-      setCount([...count, screenRecv]);
-    }
-    if (screenRecv === "login") {
-      setLoginScreen((s) => !s);
-      setCount([...count, screenRecv]);
-    }
-    if (screenRecv === "profile") {
-      setProfileScreen((s) => !s);
-      setCount([...count, screenRecv]);
-    }
-    if (screenRecv === "homepage") {
-      setHomePageScreen((s) => !s);
-      setCount([...count, screenRecv]);
-    }
-    if (screenRecv === "editprofile") {
-      setEditProfileScreen((s) => !s);
-      setCount([...count, screenRecv]);
-    }
-    if (screenRecv === "signup") {
-      setSignupScreen((s) => !s);
-      setCount([...count, screenRecv]);
-    }
-    if (screenRecv === "sidemenu") {
-      setSideMenuScreen((s) => !s);
-      setCount([...count, screenRecv]);
-    }
-    if (screenRecv === "setting") {
-      setSettingScreen((s) => !s);
-      setCount([...count, screenRecv]);
+
+  const fetchData = async () => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/pages`);
+    if (!response.ok) {
+      throw new Error("Data coud not be fetched!");
+    } else {
+      return response.json();
     }
   };
-  console.log("count >>", count);
-  const saveScreens = async () => {
-    // for (var i = 0; i < count.length; i++) {
-    //   createScreen(count[i]);
-    // }
-    getScreenDataSet(count);
+  useEffect(() => {
+    fetchData()
+      .then((res) => {
+        setPages(res);
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
+  }, []);
+
+  const updatePage = (pageRecv: string) => {
+    if (pageRecv === "blank") {
+      setBlankPage((s) => !s);
+      setCount([...count, pageRecv]);
+    }
+    if (pageRecv === "login") {
+      setLoginPage((s) => !s);
+      setCount([...count, pageRecv]);
+    }
+    if (pageRecv === "profile") {
+      setProfilePage((s) => !s);
+      setCount([...count, pageRecv]);
+    }
+    if (pageRecv === "homepage") {
+      setHomePagePage((s) => !s);
+      setCount([...count, pageRecv]);
+    }
+    if (pageRecv === "editprofile") {
+      setEditProfilePage((s) => !s);
+      setCount([...count, pageRecv]);
+    }
+    if (pageRecv === "signup") {
+      setSignupPage((s) => !s);
+      setCount([...count, pageRecv]);
+    }
+    if (pageRecv === "sidemenu") {
+      setSideMenuPage((s) => !s);
+      setCount([...count, pageRecv]);
+    }
+    if (pageRecv === "setting") {
+      setSettingPage((s) => !s);
+      setCount([...count, pageRecv]);
+    }
+  };
+  const savePages = async () => {
+    // getPageDataSet(count);
     handleClose();
   };
+
+  console.log("pages>>>", pages);
 
   return (
     <>
@@ -90,33 +110,42 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
             </Grid>
           </Grid>
         </Grid>
+
         <Grid item xs={9} style={{ background: "#0f172a", height: "120vh" }}>
           <Grid container spacing={4} padding={3}>
-            <Grid item xs={3}>
-              <Grid container display="flex" justifyContent="space-around">
-                <Grid item xs={9}>
-                  <Typography variant="body2" color={"white"}>
-                    Blank
-                  </Typography>
+            {pages?.map((page, index) => {
+              return (
+                <Grid item xs={3} key={index}>
+                  <Grid container display="flex" justifyContent="space-around">
+                    <Grid item xs={9}>
+                      <Typography variant="body2" color={"white"}>
+                        {page.name}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={1}>
+                      <Checkbox
+                        onClick={() => updatePage(page.name)}
+                        style={{ color: "white" }}
+                        size="small"
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid container>
+                    <Grid item xs={12}>
+                      <Card>
+                        <CardMedia
+                          component="img"
+                          height="260"
+                          image={page.image}
+                        />
+                      </Card>
+                    </Grid>
+                  </Grid>
                 </Grid>
-                <Grid item xs={1}>
-                  <Checkbox
-                    onClick={() => updateScreen("blank")}
-                    style={{ color: "white" }}
-                    size="small"
-                    value={blankScreen}
-                  />
-                </Grid>
-              </Grid>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Card>
-                    <CardMedia component="img" height="260" />
-                  </Card>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={3}>
+              );
+            })}
+
+            {/* <Grid item xs={3}>
               <Grid container display="flex" justifyContent="space-around">
                 <Grid item xs={9}>
                   <Typography variant="body2" color={"white"}>
@@ -125,7 +154,7 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                 </Grid>
                 <Grid item xs={1}>
                   <Checkbox
-                    onClick={() => updateScreen("login")}
+                    onClick={() => updatePage("login")}
                     style={{ color: "white" }}
                     size="small"
                     value={loginScreen}
@@ -154,7 +183,7 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                 </Grid>
                 <Grid item xs={1}>
                   <Checkbox
-                    onClick={() => updateScreen("profile")}
+                    onClick={() => updatePage("profile")}
                     style={{ color: "white" }}
                     size="small"
                     value={profileScreen}
@@ -183,7 +212,7 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                 </Grid>
                 <Grid item xs={1}>
                   <Checkbox
-                    onClick={() => updateScreen("homepage")}
+                    onClick={() => updatePage("homepage")}
                     style={{ color: "white" }}
                     size="small"
                     value={homePageScreen}
@@ -212,7 +241,7 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                 </Grid>
                 <Grid item xs={1}>
                   <Checkbox
-                    onClick={() => updateScreen("editprofile")}
+                    onClick={() => updatePage("editprofile")}
                     style={{ color: "white" }}
                     size="small"
                     value={editProfileScreen}
@@ -241,7 +270,7 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                 </Grid>
                 <Grid item xs={1}>
                   <Checkbox
-                    onClick={() => updateScreen("signup")}
+                    onClick={() => updatePage("signup")}
                     style={{ color: "white" }}
                     size="small"
                     value={signupScreen}
@@ -270,7 +299,7 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                 </Grid>
                 <Grid item xs={1}>
                   <Checkbox
-                    onClick={() => updateScreen("sidemenu")}
+                    onClick={() => updatePage("sidemenu")}
                     style={{ color: "white" }}
                     size="small"
                     value={sideMenuScreen}
@@ -299,7 +328,7 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                 </Grid>
                 <Grid item xs={1}>
                   <Checkbox
-                    onClick={() => updateScreen("setting")}
+                    onClick={() => updatePage("setting")}
                     style={{ color: "white" }}
                     size="small"
                     value={settingScreen}
@@ -317,18 +346,18 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
                   />
                 </Card>
               </Grid>
-            </Grid>
+            </Grid> */}
           </Grid>
           <Grid item xs={12}>
             <Grid container display="flex" justifyContent={"flex-end"}>
               <Grid item xs={2}>
-                <Button variant="contained" size="medium" onClick={handleClose}>
+                <Button variant="contained" size="large" onClick={handleClose}>
                   Cancel
                 </Button>
               </Grid>
 
-              <Grid item xs={1} mr={0.8}>
-                <Button variant="contained" size="medium" onClick={saveScreens}>
+              <Grid item xs={1} mr={1}>
+                <Button variant="contained" size="large" onClick={savePages}>
                   Save
                 </Button>
               </Grid>
@@ -340,4 +369,4 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
   );
 };
 
-export default BuilderScreenSelectComponent;
+export default BuilderPageSelectComponent;

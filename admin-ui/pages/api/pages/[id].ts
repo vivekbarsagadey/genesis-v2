@@ -2,26 +2,26 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../utils/prisma";
 import { handleApiMiddleware } from "../middleware";
 
-// DELETE /api/screen/:id
+// DELETE /api/page/:id
 const handle = async (req: NextApiRequest, res: NextApiResponse) => {
   await handleApiMiddleware(req, res);
   const id = req.query?.id?.toString();
   if (req.method === "DELETE") {
-    const screen = await prisma.screen.delete({
+    const page = await prisma.page.delete({
       where: { id: id },
     });
-    res.json(screen);
+    res.json(page);
   } else if (req.method === "GET") {
-    const screen = await prisma.screen.findUnique({
+    const page = await prisma.page.findUnique({
       where: { id: id },
     });
-    res.json(screen);
+    res.json(page);
   } else if (req.method === "PUT") {
-    const screen = await prisma.screen.update({
+    const page = await prisma.page.update({
       where: { id: id },
       data: req.body,
     });
-    res.json(screen);
+    res.json(page);
   } else {
     throw new Error(
       `The HTTP ${req.method} method is not supported at this route.`

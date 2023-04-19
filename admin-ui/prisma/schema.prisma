@@ -113,14 +113,29 @@ model Project {
   @@map("tb_project")
 }
 
-model Screen {
+model Page {
   id              String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   name            String?
-  components      Component[]
-  @@map("tb_screen")
+  type            String?
+  image           String?
+
+  @@map("tb_page")
 }
+
+model Theme {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  name            String?
+  type            String?
+  image           String?
+  
+  @@map("tb_theme")
+}
+
+
 model Customer {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt      DateTime @default(now())
@@ -148,8 +163,7 @@ model Component{
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
   name           String   
-  screenId       String?  @map("screen_id") @db.ObjectId
-  screen         Screen? @relation(fields: [screenId], references: [id])
+
 
   @@map("tb_component")
 }
