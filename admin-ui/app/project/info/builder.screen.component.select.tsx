@@ -322,13 +322,13 @@ const BuilderScreenSelectComponent = ({ handleClose, getScreenDataSet }) => {
           <Grid item xs={12}>
             <Grid container display="flex" justifyContent={"flex-end"}>
               <Grid item xs={2}>
-                <Button variant="contained" size="large" onClick={handleClose}>
+                <Button variant="contained" size="medium" onClick={handleClose}>
                   Cancel
                 </Button>
               </Grid>
 
-              <Grid item xs={1} mr={1}>
-                <Button variant="contained" size="large" onClick={saveScreens}>
+              <Grid item xs={1} mr={0.8}>
+                <Button variant="contained" size="medium" onClick={saveScreens}>
                   Save
                 </Button>
               </Grid>

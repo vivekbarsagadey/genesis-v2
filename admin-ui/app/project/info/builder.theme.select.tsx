@@ -40,18 +40,16 @@ const Transition = React.forwardRef(function Transition(
 
 const BuilderThemeComponent = ({ handleCloseTheme, getScreenDataSet }) => {
   const classes = useStyles();
-  const [checkbox, setCheckbox] = React.useState("checkbox");
+  const [checkbox, setCheckbox] = React.useState("");
   const [builderThemes, setBuilderThemes] = React.useState(false);
   const [blankTheme, setBlankTheme] = React.useState<boolean>(false);
   const [blackTheme, setBlackTheme] = React.useState<boolean>(false);
   const [whiteTheme, setWhiteTheme] = React.useState<boolean>(false);
-  const [glassmorphismTheme, setGlassmorphismTheme] =
-    React.useState<boolean>(false);
+  const [glassmorphismTheme, setGlassmorphismTheme] = React.useState<boolean>(false);
 
   const handleClickOpen = () => {
     setBuilderThemes(true);
   };
-
   const handleClose = () => {
     setBuilderThemes(false);
   };
@@ -108,12 +106,7 @@ const BuilderThemeComponent = ({ handleCloseTheme, getScreenDataSet }) => {
                 </Grid>
               </Grid>
               <Grid container>
-                <Grid
-                  item
-                  xs={6}
-                  display="flex"
-                  justifyContent={"space-around"}
-                ></Grid>
+                
                 <Grid item xs={12}>
                   <Card>
                     <CardMedia component="img" height="170" />
@@ -238,18 +231,18 @@ const BuilderThemeComponent = ({ handleCloseTheme, getScreenDataSet }) => {
                 <Grid item xs={2}>
                   <Button
                     variant="contained"
-                    size="large"
+                    size="medium"
                     onClick={handleCloseTheme}
                   >
                     Cancel
                   </Button>
                 </Grid>
 
-                <Grid item xs={1} mr={1}>
+                <Grid item xs={1}>
                   <Button
                     variant="contained"
-                    size="large"
-                    onClick={handleClickOpen}
+                    size="medium"
+                    onClick={handleClickOpen} 
                   >
                     Next
                   </Button>
