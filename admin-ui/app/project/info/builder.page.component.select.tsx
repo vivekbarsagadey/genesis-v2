@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   },
 });
 
-const BuilderPageSelectComponent = ({ handleClose, getScreenDataSet }) => {
+const BuilderPageSelectComponent = ({ handleClose }) => {
   const classes = useStyles();
   const [blankPage, setBlankPage] = useState(false);
   const [loginPage, setLoginPage] = useState(false);
@@ -60,43 +60,44 @@ const BuilderPageSelectComponent = ({ handleClose, getScreenDataSet }) => {
   }, []);
 
   const updatePage = (pageRecv: string) => {
-    if (pageRecv === "blank") {
+    if (pageRecv === "Blank") {
       setBlankPage((s) => !s);
       setCount([...count, pageRecv]);
     }
-    if (pageRecv === "login") {
+    if (pageRecv === "Login In") {
       setLoginPage((s) => !s);
       setCount([...count, pageRecv]);
     }
-    if (pageRecv === "profile") {
+    if (pageRecv === "Profile") {
       setProfilePage((s) => !s);
       setCount([...count, pageRecv]);
     }
-    if (pageRecv === "homepage") {
+    if (pageRecv === "Home Page") {
       setHomePagePage((s) => !s);
       setCount([...count, pageRecv]);
     }
-    if (pageRecv === "editprofile") {
+    if (pageRecv === "Edit Profile") {
       setEditProfilePage((s) => !s);
       setCount([...count, pageRecv]);
     }
-    if (pageRecv === "signup") {
+    if (pageRecv === "Sign Up") {
       setSignupPage((s) => !s);
       setCount([...count, pageRecv]);
     }
-    if (pageRecv === "sidemenu") {
+    if (pageRecv === "Side Menu") {
       setSideMenuPage((s) => !s);
       setCount([...count, pageRecv]);
     }
-    if (pageRecv === "setting") {
+    if (pageRecv === "Setting") {
       setSettingPage((s) => !s);
       setCount([...count, pageRecv]);
     }
   };
   const savePages = async () => {
-    // getPageDataSet(count);
     handleClose();
   };
+
+  console.log("count >>>", count);
 
   console.log("pages>>>", pages);
 
@@ -144,209 +145,6 @@ const BuilderPageSelectComponent = ({ handleClose, getScreenDataSet }) => {
                 </Grid>
               );
             })}
-
-            {/* <Grid item xs={3}>
-              <Grid container display="flex" justifyContent="space-around">
-                <Grid item xs={9}>
-                  <Typography variant="body2" color={"white"}>
-                    Login In
-                  </Typography>
-                </Grid>
-                <Grid item xs={1}>
-                  <Checkbox
-                    onClick={() => updatePage("login")}
-                    style={{ color: "white" }}
-                    size="small"
-                    value={loginScreen}
-                  />
-                </Grid>
-              </Grid>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Card>
-                    <CardMedia
-                      component="img"
-                      alt="image not found"
-                      height="260"
-                      image="./images/Loginwithemail.png"
-                    />
-                  </Card>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={3}>
-              <Grid container display="flex" justifyContent="space-around">
-                <Grid item xs={9}>
-                  <Typography variant="body2" color={"white"}>
-                    Profile
-                  </Typography>
-                </Grid>
-                <Grid item xs={1}>
-                  <Checkbox
-                    onClick={() => updatePage("profile")}
-                    style={{ color: "white" }}
-                    size="small"
-                    value={profileScreen}
-                  />
-                </Grid>
-              </Grid>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Card>
-                    <CardMedia
-                      component="img"
-                      alt="image not found"
-                      height="260"
-                      image="./images/Profile.png"
-                    />
-                  </Card>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={3}>
-              <Grid container display="flex" justifyContent="space-around">
-                <Grid item xs={9}>
-                  <Typography variant="body2" color={"white"}>
-                    Home Page
-                  </Typography>
-                </Grid>
-                <Grid item xs={1}>
-                  <Checkbox
-                    onClick={() => updatePage("homepage")}
-                    style={{ color: "white" }}
-                    size="small"
-                    value={homePageScreen}
-                  />
-                </Grid>
-              </Grid>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Card>
-                    <CardMedia
-                      component="img"
-                      alt="image not found"
-                      height="260"
-                      image="./images/Home.png"
-                    />
-                  </Card>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={3}>
-              <Grid container display="flex" justifyContent="space-around">
-                <Grid item xs={9}>
-                  <Typography variant="body2" color={"white"}>
-                    Edit Profile
-                  </Typography>
-                </Grid>
-                <Grid item xs={1}>
-                  <Checkbox
-                    onClick={() => updatePage("editprofile")}
-                    style={{ color: "white" }}
-                    size="small"
-                    value={editProfileScreen}
-                  />
-                </Grid>
-              </Grid>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Card>
-                    <CardMedia
-                      component="img"
-                      alt="image not found"
-                      height="260"
-                      image="./images/Editprofile.png"
-                    />
-                  </Card>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={3}>
-              <Grid container display="flex" justifyContent="space-around">
-                <Grid item xs={9}>
-                  <Typography variant="body2" color={"white"}>
-                    Sign Up
-                  </Typography>
-                </Grid>
-                <Grid item xs={1}>
-                  <Checkbox
-                    onClick={() => updatePage("signup")}
-                    style={{ color: "white" }}
-                    size="small"
-                    value={signupScreen}
-                  />
-                </Grid>
-              </Grid>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Card>
-                    <CardMedia
-                      component="img"
-                      alt="image not found"
-                      height="260"
-                      image="./images/Signin.png"
-                    />
-                  </Card>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={3}>
-              <Grid container display="flex" justifyContent="space-around">
-                <Grid item xs={9}>
-                  <Typography variant="body2" color={"white"}>
-                    Side Menu
-                  </Typography>
-                </Grid>
-                <Grid item xs={1}>
-                  <Checkbox
-                    onClick={() => updatePage("sidemenu")}
-                    style={{ color: "white" }}
-                    size="small"
-                    value={sideMenuScreen}
-                  />
-                </Grid>
-              </Grid>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Card>
-                    <CardMedia
-                      component="img"
-                      alt="image not found"
-                      height="260"
-                      image="./images/Sidemenu.png"
-                    />
-                  </Card>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={3}>
-              <Grid container display="flex" justifyContent="space-around">
-                <Grid item xs={9}>
-                  <Typography variant="body2" color={"white"}>
-                    Setting
-                  </Typography>
-                </Grid>
-                <Grid item xs={1}>
-                  <Checkbox
-                    onClick={() => updatePage("setting")}
-                    style={{ color: "white" }}
-                    size="small"
-                    value={settingScreen}
-                  />
-                </Grid>
-              </Grid>
-
-              <Grid item xs={12}>
-                <Card>
-                  <CardMedia
-                    component="img"
-                    alt="image not found"
-                    height="260"
-                    image="./images/Setting.png"
-                  />
-                </Card>
-              </Grid>
-            </Grid> */}
           </Grid>
           <Grid item xs={12}>
             <Grid container display="flex" justifyContent={"flex-end"}>

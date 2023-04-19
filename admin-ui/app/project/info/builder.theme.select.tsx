@@ -41,7 +41,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const BuilderThemeComponent = ({ handleCloseTheme, getScreenDataSet }) => {
+const BuilderThemeComponent = ({ handleCloseTheme }) => {
   const classes = useStyles();
   const [themes, setThemes] = React.useState([]);
   const [checkbox, setCheckbox] = React.useState("checkbox");
@@ -201,7 +201,7 @@ const BuilderThemeComponent = ({ handleCloseTheme, getScreenDataSet }) => {
       >
         <BuilderThemesSelectComponent
           handleClose={handleClose}
-          getScreenDataSet={getScreenDataSet}
+          // getScreenDataSet={getScreenDataSet}
         />
       </Dialog>
     </>

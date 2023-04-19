@@ -1,6 +1,6 @@
 import { Button, Chip, Grid, Stack } from "@mui/material";
 
-const ScreenComponent = ({ updateScreen, handleDelete, screenData }) => {
+const ScreenComponent = ({ updateScreen, handleDelete }) => {
   // const [screenInfo, setScreenInfo] = React.useState([]);
   // const fetchData = async () => {
   //   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/screens`);
@@ -20,14 +20,13 @@ const ScreenComponent = ({ updateScreen, handleDelete, screenData }) => {
   //     });
   // }, []);
 
-  console.log("screenData >>", screenData);
-
   return (
     <>
       <Grid container style={{ background: "#1e293b", padding: "0.3rem" }}>
         <Grid item xs={10}>
           <Stack direction="row" spacing={1}>
-            {screenData?.map((data, index) => {
+            <h4>testing....</h4>
+            {/* {screenData?.map((data, index) => {
               return (
                 <Chip
                   key={index}
@@ -38,7 +37,7 @@ const ScreenComponent = ({ updateScreen, handleDelete, screenData }) => {
                   style={{ background: "#e2e8f0" }}
                 />
               );
-            })}
+            })} */}
 
             {/* <Chip
             label="Screen 2"

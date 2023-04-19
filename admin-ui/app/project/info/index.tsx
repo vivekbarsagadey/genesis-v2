@@ -32,7 +32,6 @@ type InfoCustomerComponentProps = {
 const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
   const router = useRouter();
   const [openTheme, setOpenTheme] = useState(false);
-  const [screenData, setScreenData] = useState([]);
   const handleOpenTheme = () => setOpenTheme((s) => !s);
   const handleCloseTheme = () => setOpenTheme((s) => !s);
 
@@ -57,9 +56,9 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
     }
   };
 
-  const getScreenDataSet = (setRecv) => {
-    setScreenData(setRecv);
-  };
+  // const getScreenDataSet = (setRecv) => {
+  //   setScreenData(setRecv);
+  // };
 
   return (
     <>
@@ -128,7 +127,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
         >
           <BuilderThemeComponent
             handleCloseTheme={handleCloseTheme}
-            getScreenDataSet={getScreenDataSet}
+            // getScreenDataSet={getScreenDataSet}
           />
         </Dialog>
         {/* Builder full screen  */}
@@ -138,7 +137,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
           onClose={handelCloseBuilder}
           TransitionComponent={Transition}
         >
-          <BuilderHome id={items.id} screenData={screenData} />
+          <BuilderHome id={items.id}  />
         </Dialog>
       </Box>
     </>
