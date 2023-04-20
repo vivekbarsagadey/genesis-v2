@@ -1,12 +1,21 @@
 "use client";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import Autocomplete from "@mui/material/Autocomplete";
+import Snackbar from "@mui/material/Snackbar";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import React, { useState } from "react";
 import { createCompany } from "../../../services/company.action";
 import { countrySelect, stateSelect } from "../graphdata/graph.data";
 import { Status } from "../models";
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const CompanyCreateComponent = () => {
   const [ownerFirstName, setOwnerFirstName] = useState("");
@@ -20,6 +29,22 @@ const CompanyCreateComponent = () => {
   const [companyState, setCompanyState] = useState("");
   const [companyCountry, setCompanyCountry] = useState("");
   const router = useRouter();
+
+  const [alert, setAlert] = useState(false);
+
+  const handleClick = () => {
+    setAlert(true);
+  };
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setAlert(false);
+  };
 
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   // POST call
@@ -84,6 +109,11 @@ const CompanyCreateComponent = () => {
     value: string
   ) => {
     setCompanyStatus(value);
+  };
+
+  const updateHandler = () => {
+    handleClick();
+    updateMyCompanyData();
   };
   return (
     <>
@@ -346,10 +376,7 @@ const CompanyCreateComponent = () => {
               <Grid container>
                 <Grid item xs={6}>
                   <Link href={"/company"} style={{ textDecoration: "none" }}>
-                    <Button
-                      variant="contained"
-                      style={{ width: "73%" }}
-                    >
+                    <Button variant="contained" style={{ width: "73%" }}>
                       Cancel
                     </Button>
                   </Link>
@@ -357,11 +384,23 @@ const CompanyCreateComponent = () => {
                 <Grid item xs={6}>
                   <Button
                     variant="contained"
-                    onClick={updateMyCompanyData}
+                    onClick={updateHandler}
                     style={{ width: "73%" }}
                   >
                     Save
                   </Button>
+                  <Snackbar
+                    open={alert}
+                    autoHideDuration={8000}
+                    onClose={handleClose}
+                  >
+                    <Alert
+                      onClose={handleClose}
+                      sx={{ width: "100%" }}
+                    >
+                      Customer Created Sucessfully...
+                    </Alert>
+                  </Snackbar>
                 </Grid>
               </Grid>
             </Grid>

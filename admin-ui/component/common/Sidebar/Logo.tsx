@@ -1,7 +1,6 @@
-import React from "react";
-import { Grid, IconButton, Typography } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import ListIcon from "@mui/icons-material/List";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Grid, IconButton } from "@mui/material";
 
 interface logoProps {
   toggleMenu: boolean;
@@ -19,9 +18,9 @@ const SidebarLogo = ({ handleMenu, toggleMenu }: logoProps) => {
           display={{ xs: "none", sm: "none", md: "block" }}
         >
           <img
-            src="./images/genesislogo2.png"
+            src="./images/genesislogo3.png"
             alt="LoginImage"
-            style={{ height: "70%", width: "80%" }}
+            style={{ height: "100%", width: "95%", marginRight: "2rem" }}
           />
         </Grid>
       )}

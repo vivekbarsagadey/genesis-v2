@@ -1,16 +1,40 @@
 "use client";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
-import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
+import {
+  Button,
+  Grid,
+  IconButton,
+  Paper,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
+import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
+import Fade from "@mui/material/Fade";
+import Modal from "@mui/material/Modal";
 import Snackbar from "@mui/material/Snackbar";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { deleteCompany } from "../../../services/company.action";
 import { ICompany } from "../models/company.model";
+
+const style = {
+  position: "absolute" as "absolute",
+  top: "30%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 325,
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  paddingTop: 1,
+  paddingLeft: 2,
+  paddingRight: 1,
+  paddingBottom: 2,
+};
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -24,10 +48,13 @@ type InfoCompanyComponentProps = {
 };
 const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
   const router = useRouter();
+  const [alert, setAlert] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const deletePopupOpen = () => setOpen(true);
 
+  const handleCloseDelete = () => setOpen(false);
   const handleClick = () => {
-    setOpen(true);
+    setAlert(true);
   };
 
   const handleClose = (
@@ -37,17 +64,15 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
     if (reason === "clickaway") {
       return;
     }
-    setOpen(false);
+    setAlert(false);
   };
 
   const deleteCompanyHandler = async () => {
     const response = await deleteCompany(company.id);
-    // route to list screen
-    window.location.reload();
-    router.push("/company");
+    // router.push("/company");
   };
-
   const removeData = (f: any) => {
+    window.location.reload();
     deleteCompanyHandler(f);
     handleClick();
   };
@@ -75,22 +100,12 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
               </Typography>
             </Grid>
             <Grid item xs={2}>
-              <Typography
-                variant="body2"
-                noWrap
-                display={"flex"}
-                // justifyContent={"space-around"}
-              >
+              <Typography variant="body2" noWrap display={"flex"}>
                 {company.mobile}
               </Typography>
             </Grid>
             <Grid item xs={2}>
-              <Typography
-                variant="body2"
-                noWrap
-                display={"flex"}
-                // justifyContent={"space-around"} textAlign={"right"}
-              >
+              <Typography variant="body2" noWrap display={"flex"}>
                 {company.address}
               </Typography>
             </Grid>
@@ -107,13 +122,13 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
                 </Grid>
                 <Grid item xs={2}>
                   <Tooltip title="Delete">
-                    <IconButton onClick={() => removeData(company)}>
+                    <IconButton onClick={deletePopupOpen}>
                       <DeleteOutlineIcon fontSize="small" />
                     </IconButton>
                   </Tooltip>
                   <Snackbar
-                    open={open}
-                    autoHideDuration={6000}
+                    open={alert}
+                    autoHideDuration={8000}
                     onClose={handleClose}
                   >
                     <Alert
@@ -128,6 +143,55 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
               </Grid>
             </Grid>
           </Grid>
+
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            open={open}
+            onClose={handleCloseDelete}
+            closeAfterTransition
+            slots={{ backdrop: Backdrop }}
+            slotProps={{
+              backdrop: {
+                timeout: 500,
+              },
+            }}
+          >
+            <Fade in={open}>
+              <Box sx={style}>
+                <Typography
+                  id="transition-modal-description"
+                  sx={{ mt: 1 }}
+                  fontSize="0.9rem"
+                >
+                  Are you sure you want to delete the selected company?
+                </Typography>
+                <Grid container mt={2}>
+                  <Grid item xs={6}></Grid>
+                  <Grid item xs={3}>
+                    <Button
+                      variant="contained"
+                      size="small"
+                      sx={{ height: "4vh" }}
+                      onClick={() => handleCloseDelete()}
+                    >
+                      Cancel
+                    </Button>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Button
+                      variant="contained"
+                      size="small"
+                      onClick={() => removeData(company)}
+                      sx={{ height: "4vh" }}
+                    >
+                      Ok
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Box>
+            </Fade>
+          </Modal>
         </Paper>
       </Box>
     </>
