@@ -4,6 +4,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Checkbox from "@mui/material/Checkbox";
 import { makeStyles } from "@mui/styles";
 import { useState } from "react";
+import { createPage } from "../../../services/screen.action";
 
 const useStyles = makeStyles({
   background_genesis1: {
@@ -94,12 +95,261 @@ const BuilderPageSelectComponent = ({ handleClose }) => {
     }
   };
   const savePages = async () => {
+    // post call to save json
+    var jsonData = {
+      name: "vijay-enterprise-apps",
+      path: "E:/projects/genesis-v2/code/generated-client-project",
+      version: "0.0.1-B-01",
+      app: {
+        type: "MOBILE",
+        project: "customer",
+        name: "astrocare",
+        theme: "",
+      },
+      credential: {
+        auth: {
+          url: "http://10.0.0.10:5000/v3",
+          application_credential_id: "6d141f23732b498e99db8186136c611b",
+          application_credential_secret: "whiz",
+        },
+        api: {
+          url: "http://10.0.0.10:5000/v3",
+          version: "3",
+        },
+      },
+
+      client: {
+        name: "",
+        email: "",
+        phone: "",
+      },
+      pages: count,
+      //  [
+      //   {
+      //     "name": "splash",
+      //     "label": "Splash Screen",
+      //     "title": "Agro",
+      //     "type": "",
+      //     "img": "",
+      //     "pipeline": [],
+      //     "template": {
+      //       "type": "flat",
+      //       "custome": ""
+      //     },
+      //     "components": [
+      //       {
+      //         "name": "splash",
+      //         "type": "screen",
+      //         "tpPosition": "m1",
+      //         "fieldtype": "",
+      //         "required": "true",
+      //         "label": "Agro Pvt",
+      //         "error": "",
+      //         "ui": {
+      //           "extra_small_devices": "12",
+      //           "small_devices": "12",
+      //           "medium_devices": "6",
+      //           "large_devices": "4",
+      //           "xlarge_devices": "3",
+      //           "css": "",
+      //           "clz": ""
+      //         },
+      //         "componentId": "buttons",
+      //         "property": {
+      //           "background": "",
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "position": "",
+      //           "width": ""
+      //         },
+      //         "css": {
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "width": ""
+      //         },
+      //         "model": {
+      //           "width": ""
+      //         },
+      //         "api": {
+      //           "url": ""
+      //         }
+      //       },
+      //       {
+      //         "componentId": "emails",
+      //         "property": {
+      //           "background": "",
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "position": "",
+      //           "width": ""
+      //         },
+      //         "css": {
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "width": ""
+      //         },
+      //         "model": {
+      //           "width": ""
+      //         },
+      //         "api": {
+      //           "url": ""
+      //         }
+      //       },
+      //       {
+      //         "componentId": "passwords",
+      //         "property": {
+      //           "background": "",
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "position": "",
+      //           "width": ""
+      //         },
+      //         "css": {
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "width": ""
+      //         },
+      //         "model": {
+      //           "width": ""
+      //         },
+      //         "api": {
+      //           "url": ""
+      //         }
+      //       },
+      //       {
+      //         "componentId": "cnfrmpasswords",
+      //         "property": {
+      //           "background": "",
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "position": "",
+      //           "width": ""
+      //         },
+      //         "css": {
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "width": ""
+      //         },
+      //         "model": {
+      //           "width": ""
+      //         },
+      //         "api": {
+      //           "url": ""
+      //         }
+      //       },
+      //       {
+      //         "componentId": "numbers",
+      //         "property": {
+      //           "background": "",
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "position": "",
+      //           "width": ""
+      //         },
+      //         "css": {
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "width": ""
+      //         },
+      //         "model": {
+      //           "width": ""
+      //         },
+      //         "api": {
+      //           "url": ""
+      //         }
+      //       },
+      //       {
+      //         "componentId": "checkboxes",
+      //         "property": {
+      //           "background": "",
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "position": "",
+      //           "width": ""
+      //         },
+      //         "css": {
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "width": ""
+      //         },
+      //         "model": {
+      //           "width": ""
+      //         },
+      //         "api": {
+      //           "url": ""
+      //         }
+      //       },
+      //       {
+      //         "componentId": "dropdowns",
+      //         "property": {
+      //           "background": "",
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "position": "",
+      //           "width": ""
+      //         },
+      //         "css": {
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "width": ""
+      //         },
+      //         "model": {
+      //           "width": ""
+      //         },
+      //         "api": {
+      //           "url": ""
+      //         }
+      //       },
+      //       {
+      //         "componentId": "text",
+      //         "property": {
+      //           "background": "",
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "position": "",
+      //           "width": ""
+      //         },
+      //         "css": {
+      //           "borderRadius": "",
+      //           "height": "",
+      //           "overflowY": "",
+      //           "width": ""
+      //         },
+      //         "model": {
+      //           "width": ""
+      //         },
+      //         "api": {
+      //           "url": ""
+      //         }
+      //       }
+      //     ]
+      //   }
+      // ]
+    };
+
+    createPage(jsonData);
+
     handleClose();
   };
 
-  console.log("count >>>", count);
+  // console.log("count >>>", count);
 
-  console.log("pages>>>", pages);
+  // console.log("pages>>>", pages);
 
   return (
     <>
