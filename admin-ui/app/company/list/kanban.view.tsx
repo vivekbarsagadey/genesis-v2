@@ -43,7 +43,7 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
             <Paper variant="outlined">
               <CardContent>
                 <Typography variant="h6">NEW</Typography>
-                {newCompanies?.map((newCompany, index) => {
+                {newCompanies.reverse()?.map((newCompany, index) => {
                   return (
                     <NewCompanyComponent newCompany={newCompany} key={index} />
                   );

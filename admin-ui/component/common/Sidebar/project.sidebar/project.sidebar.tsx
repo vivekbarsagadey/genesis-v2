@@ -26,7 +26,7 @@ const ProjectSidebar = ({ toggleMenu }:sidebarProps) => {
     setSelectedIndex(index);
   };
   return (
-    <Box>
+    <Box style={{height:'89vh'}}>
       <List component="nav" aria-label="main mailbox folders">
         <Link href="/dashboard" passHref style={{ textDecoration: "none" }}>
           <ListItemButton selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 0)}>

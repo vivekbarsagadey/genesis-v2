@@ -35,8 +35,8 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }} mt={1}>
-        <Grid container spacing={2}>
+      <Box mt={1} ml={1.5}>
+        <Grid container spacing={1}>
           <Grid item xs={3} md={3} lg={3} sm={3}>
             <CompanySearchDetails
               companies={companies}
@@ -45,8 +45,7 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
           </Grid>
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
             <Grid container spacing={1}>
-              <Grid item xs={"auto"}>
-                
+              <Grid item xs={"auto"}>       
                 <FilterComponent companies={companies} onFilterHandler={onSearchHandler}/>
               </Grid>
               <Grid item xs={"auto"}>

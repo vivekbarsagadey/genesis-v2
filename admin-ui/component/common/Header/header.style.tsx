@@ -1,6 +1,6 @@
 const headerstyle = {
   headercontainer: {
-    backgroundColor: "#f8fafc",
+    backgroundColor: "#e2e8f0",
   },
   box: {
     display: "flex" as "flex",

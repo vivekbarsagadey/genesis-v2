@@ -19,7 +19,7 @@ const SidebarLogo = ({ handleMenu, toggleMenu }: logoProps) => {
           display={{ xs: "none", sm: "none", md: "block" }}
         >
           <img
-            src="./images/genesislogo2.png"
+            src="./images/genesislogo.png"
             alt="LoginImage"
             style={{ height: "70%", width: "70%" }}
           />

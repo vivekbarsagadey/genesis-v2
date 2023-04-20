@@ -31,7 +31,6 @@ const CustomerGraphView = ({ companies }: ListComponentProps) => {
     if (
       element === "country" ||
       element === "state" ||
-      element === "city" ||
       element === "status"
     ) {
       return true;

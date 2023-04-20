@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import HeaderComponent from "./header";
-import SidebarLogo from './sidebar/logo'
+import SidebarLogo from "./sidebar/logo";
 import ProjectSidebar from "./sidebar/project.sidebar/project.sidebar";
 
 const LayoutComponent = ({ children }: { children: React.ReactNode }) => {
@@ -26,7 +26,7 @@ const LayoutComponent = ({ children }: { children: React.ReactNode }) => {
             md={toggleMenu ? 2 : 0.5}
             lg={toggleMenu ? 2 : 0.5}
             textAlign={toggleMenu ? "right" : "left"}
-            style={{ backgroundColor: "white" }}
+            style={{ backgroundColor: "#e2e8f0" }}
           >
             <SidebarLogo handleMenu={handleMenu} toggleMenu={toggleMenu} />
             <ProjectSidebar toggleMenu={toggleMenu} />
@@ -37,6 +37,7 @@ const LayoutComponent = ({ children }: { children: React.ReactNode }) => {
             sm={toggleMenu ? 10.5 : 11.5}
             md={toggleMenu ? 10 : 11.5}
             lg={toggleMenu ? 10 : 11.5}
+            pl={0.5}
           >
             <HeaderComponent />
             {children}

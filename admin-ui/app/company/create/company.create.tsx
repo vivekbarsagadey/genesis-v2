@@ -1,12 +1,12 @@
 "use client";
-import { useState } from "react";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Autocomplete from "@mui/material/Autocomplete";
-import { Status } from "../models";
+import { useState } from "react";
 import { createCompany } from "../../../services/company.action";
 import { countrySelect, stateSelect } from "../graphdata/graph.data";
+import { Status } from "../models";
 
 const CompanyCreateComponent = () => {
   const [ownerFirstName, setOwnerFirstName] = useState("");
@@ -341,31 +341,24 @@ const CompanyCreateComponent = () => {
             </Grid>
           </Grid>
           <Grid container mt={5}>
-            <Grid item xs={12}>
+            <Grid item xs={8.6}></Grid>
+            <Grid item xs={3.4}>
               <Grid container>
-                <Grid item xs={9}></Grid>
+                <Grid item xs={7.8}>
+                  <Link href={"/company"} style={{ textDecoration: "none" }}>
+                    <Button variant="contained" size="small">
+                      Cancel
+                    </Button>
+                  </Link>
+                </Grid>
                 <Grid item xs={3}>
-                  <Grid container>
-                    <Grid item xs={7}>
-                      <Link
-                        href={"/company"}
-                        style={{ textDecoration: "none" }}
-                      >
-                        <Button variant="contained" size="small">
-                          Cancel
-                        </Button>
-                      </Link>
-                    </Grid>
-                    <Grid item xs={2} ml={1}>
-                      <Button
-                        variant="contained"
-                        size="small"
-                        onClick={updateMyCompanyData}
-                      >
-                        Save
-                      </Button>
-                    </Grid>
-                  </Grid>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    onClick={updateMyCompanyData}
+                  >
+                    Save
+                  </Button>
                 </Grid>
               </Grid>
             </Grid>
