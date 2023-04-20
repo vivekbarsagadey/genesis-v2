@@ -51,7 +51,7 @@ const HeaderComponent = () => {
             <IconButton
               onClick={handleClick}
               size="small"
-              sx={{ mr: 2 }}
+              sx={{ mr: 0.7 }}
               aria-haspopup="true"
             >
               <Avatar
