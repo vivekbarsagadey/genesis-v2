@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
 import { ICompany } from "../../company/models";

@@ -25,7 +25,7 @@ const CompanyCreateComponent = () => {
   const [companyPhone, setCompanyPhone] = useState("");
   const [companyAddress, setCompanyAddress] = useState("");
   const [companyWebsite, setCompanyWebsite] = useState("");
-  const [companyStatus, setCompanyStatus] = useState("NEW");
+  const [companyStatus, setCompanyStatus] = useState("");
   const [companyState, setCompanyState] = useState("");
   const [companyCountry, setCompanyCountry] = useState("");
   const router = useRouter();
