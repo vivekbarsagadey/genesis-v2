@@ -26,7 +26,7 @@ const LayoutComponent = ({ children }: { children: React.ReactNode }) => {
             md={toggleMenu ? 2 : 0.5}
             lg={toggleMenu ? 2 : 0.5}
             textAlign={toggleMenu ? "right" : "left"}
-            style={{ backgroundColor: "#e2e8f0" }}
+            style={{ backgroundColor: "#f8fafc" }}
           >
             <SidebarLogo handleMenu={handleMenu} toggleMenu={toggleMenu} />
             <ProjectSidebar toggleMenu={toggleMenu} />
@@ -37,7 +37,6 @@ const LayoutComponent = ({ children }: { children: React.ReactNode }) => {
             sm={toggleMenu ? 10.5 : 11.5}
             md={toggleMenu ? 10 : 11.5}
             lg={toggleMenu ? 10 : 11.5}
-            pl={0.5}
           >
             <HeaderComponent />
             {children}

@@ -344,18 +344,21 @@ const CompanyCreateComponent = () => {
             <Grid item xs={8.6}></Grid>
             <Grid item xs={3.4}>
               <Grid container>
-                <Grid item xs={7.8}>
+                <Grid item xs={6}>
                   <Link href={"/company"} style={{ textDecoration: "none" }}>
-                    <Button variant="contained" size="small">
+                    <Button
+                      variant="contained"
+                      style={{ width: "73%" }}
+                    >
                       Cancel
                     </Button>
                   </Link>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={6}>
                   <Button
                     variant="contained"
-                    size="small"
                     onClick={updateMyCompanyData}
+                    style={{ width: "73%" }}
                   >
                     Save
                   </Button>

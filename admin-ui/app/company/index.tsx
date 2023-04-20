@@ -45,10 +45,13 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
           </Grid>
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
             <Grid container spacing={1}>
-              <Grid item xs={"auto"}>       
-                <FilterComponent companies={companies} onFilterHandler={onSearchHandler}/>
+              <Grid item xs={"auto"} mt={0.2}>
+                <FilterComponent
+                  companies={companies}
+                  onFilterHandler={onSearchHandler}
+                />
               </Grid>
-              <Grid item xs={"auto"}>
+              <Grid item xs={"auto"} mt={0.2}>
                 <ExportComponent copyCompanyData={copyCompanies} />
               </Grid>
 
@@ -58,7 +61,11 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
             </Grid>
           </Grid>
           <Grid item xs={1}>
-            <Link href={"/company/create"} passHref style={{textDecoration:'none'}}>
+            <Link
+              href={"/company/create"}
+              passHref
+              style={{ textDecoration: "none" }}
+            >
               <Button variant="contained" size="small">
                 Create
                 <span>+</span>

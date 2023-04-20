@@ -110,7 +110,6 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
                     <IconButton onClick={() => removeData(company)}>
                       <DeleteOutlineIcon fontSize="small" />
                     </IconButton>
-                    
                   </Tooltip>
                   <Snackbar
                     open={open}

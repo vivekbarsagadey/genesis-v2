@@ -18,7 +18,6 @@ const ListViewComponent = ({ companies }: ListComponentProps) => {
     setPage(p);
     paginationHandler.jump(p);
   };
-
   return (
     <>
       <Box mr={2} mt={2}>
@@ -42,39 +41,18 @@ const ListViewComponent = ({ companies }: ListComponentProps) => {
                 Email
               </Typography>
             </Grid>
-
-
             <Grid item xs={2}>
-              <Typography
-                variant="subtitle2"
-                noWrap
-                // display={"flex"}
-                // justifyContent={"space-around"}
-              >
+              <Typography variant="subtitle2" noWrap>
                 Contact
               </Typography>
             </Grid>
-
-
             <Grid item xs={2}>
-              <Typography
-                variant="subtitle2"
-                noWrap
-                // display={"flex"}
-                // justifyContent={"space-around"}
-              >
+              <Typography variant="subtitle2" noWrap>
                 Address
               </Typography>
             </Grid>
-
-
             <Grid item xs={1}>
-              <Typography
-                variant="subtitle2"
-                display={"flex"}
-                justifyContent={"space-around"}
-                noWrap
-              >
+              <Typography variant="subtitle2" display={"flex"} justifyContent={"space-around"} noWrap >
                 Action
               </Typography>
             </Grid>
@@ -93,18 +71,11 @@ const ListViewComponent = ({ companies }: ListComponentProps) => {
             );
           })}
       </Grid>
-
       <Grid container mt={4}>
         <Grid item xs={12} display={"flex"} justifyContent={"flex-end"}>
           <Grid style={{ position: "fixed" }}></Grid>
-          <Pagination
-            count={count}
-            size="small"
-            page={page}
-            variant="outlined"
-            color="primary"
-            onChange={handleChangePage}
-          />
+          <Pagination count={count} size="small" page={page} color="primary"
+            onChange={handleChangePage}/>
         </Grid>
       </Grid>
     </>

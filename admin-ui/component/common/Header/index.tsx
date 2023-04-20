@@ -2,13 +2,13 @@
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsIcon from "@mui/icons-material/Settings";
-import { Box, Grid, IconButton, Typography } from "@mui/material";
+import { Grid, IconButton } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
+import Fade from "@mui/material/Fade";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Stack from "@mui/material/Stack";
 import { signOut, useSession } from "next-auth/react";
-import Link from "next/link";
 import React, { useState } from "react";
 import { headerstyle as style } from "./header.style";
 
@@ -48,34 +48,33 @@ const HeaderComponent = () => {
             <IconButton>
               <NotificationsNoneIcon fontSize="small" />
             </IconButton>
-            <Box style={style.box}>
-              <IconButton
-                onClick={handleClick}
-                size="small"
-                sx={{ mr: 2 }}
-                aria-haspopup="true"
-              >
-                <Avatar
-                  style={style.avtar}
-                  alt="Remy Sharp"
-                  src="./images/avtar.png"
-                />
-              </IconButton>
-            </Box>
+            <IconButton
+              onClick={handleClick}
+              size="small"
+              sx={{ mr: 2 }}
+              aria-haspopup="true"
+            >
+              <Avatar
+                style={style.avtar}
+                alt="Remy Sharp"
+                src="./images/avtar.png"
+              />
+            </IconButton>
             <Menu
+              id="fade-menu"
+              MenuListProps={{
+                "aria-labelledby": "fade-button",
+              }}
               anchorEl={openMenu}
-              id="account-menu"
               open={open}
               onClose={handleClose}
-              onClick={handleClose}
-              transformOrigin={{ horizontal: "right", vertical: "top" }}
-              anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+              TransitionComponent={Fade}
             >
-              <Link href={"/"} style={style.link}>
-                <MenuItem onClick={() => signOut()} style={style.menu}>
-                  <Typography variant="subtitle1">Signout</Typography>
-                </MenuItem>
-              </Link>
+              <MenuItem onClick={handleClose}>Profile</MenuItem>
+              <MenuItem onClick={handleClose}>Account</MenuItem>
+              <MenuItem onClick={handleClose}>Privacy</MenuItem>
+              <MenuItem onClick={handleClose}>Help</MenuItem>
+              <MenuItem onClick={() => signOut()}>Logout</MenuItem>
             </Menu>
           </Stack>
         </Grid>
