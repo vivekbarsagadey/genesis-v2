@@ -74,8 +74,8 @@ const ProjectGridView = ({ projects }: ListComponentProps) => {
                         <Grid item xs={1}>
                           <Typography> :</Typography>
                         </Grid>
-                        <Grid item xs={6} paddingLeft={2}>
-                          <Typography variant="subtitle1" noWrap>
+                        <Grid item xs={6} paddingLeft={2} paddingRight={1}>
+                          <Typography variant="subtitle1">
                             {item?.application}
                           </Typography>
                         </Grid>

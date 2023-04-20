@@ -56,15 +56,13 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
     }
   };
 
-  // const getScreenDataSet = (setRecv) => {
-  //   setScreenData(setRecv);
-  // };
-
   return (
     <>
       <Box mt={0.6} mr={2}>
         <Paper variant="outlined">
           <Grid container>
+
+            
             <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
               <Grid container ml={1}>
                 <Grid item xs={4}>
@@ -77,26 +75,31 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
                 </Grid>
               </Grid>
             </Grid>
+
+
             <Grid item xs={3}>
               <Typography variant="body2" noWrap>
                 {items.name}
               </Typography>
             </Grid>
+
+
             <Grid item xs={3}>
               <Typography variant="body2" noWrap>
                 {items.customerName}
               </Typography>
             </Grid>
+
+
+
             <Grid item xs={3}>
               <Typography
                 variant="body2"
-                noWrap
-                display={"flex"}
-                justifyContent={"space-around"}
-              >
+                noWrap >
                 {items.application}
               </Typography>
             </Grid>
+
 
             <Grid item xs={1}>
               <Grid container>

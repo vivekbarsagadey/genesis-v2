@@ -34,9 +34,9 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
   };
 
   return (
-    <>
-      <Grid sx={{ flexGrow: 1 }} mt={1}>
-        <Grid container spacing={2}>
+    <Box ml={1.5}>
+      <Grid mt={1}>
+        <Grid container spacing={1}>
           <Grid item xs={3} md={3} lg={3} sm={3}>
             <ProjectSearch
               projects={projects}
@@ -45,14 +45,14 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
           </Grid>
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
             <Grid container spacing={1}>
-              <Grid item xs={"auto"}>
+              <Grid item xs={"auto"} mt={0.2}>
                 <ProjectFilterComponent
                   projects={projects}
                   onFilterHandler={onSearchHandler}
                 />
               </Grid>
-              <Grid item xs={"auto"}>
-                <ProjectExportComponent projects={copyProject}/>
+              <Grid item xs={"auto"} mt={0.2}>
+                <ProjectExportComponent projects={copyProject} />
               </Grid>
 
               <Grid item xs={10}>
@@ -61,7 +61,11 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
             </Grid>
           </Grid>
           <Grid item xs={1}>
-            <Link href={"/project/create"} passHref style={{textDecoration:'none'}}>
+            <Link
+              href={"/project/create"}
+              passHref
+              style={{ textDecoration: "none" }}
+            >
               <Button variant="contained" size="small">
                 Create
                 <span>+</span>
@@ -81,7 +85,7 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
               <ProjectKanbanView projects={projects} />
             </Case>
             <Case condition={viewType === ViewTypes.CALENDAR}>
-              <ProjectCalendarView projects={projects}  />
+              <ProjectCalendarView projects={projects} />
             </Case>
             <Default>
               <ProjectListViewComponent projects={copyProject} />
@@ -89,7 +93,7 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
           </Switch>
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 };
 

@@ -93,14 +93,6 @@ model Project {
  createdAt      DateTime @default(now())
  updatedAt      DateTime @updatedAt
  name           String   @unique
- description    String?
- logo           String?
- adminEmail     String? @map("admin_email")  
- supportEmail   String? @map("support_email")
- phoneNumber    String? @map("phone_number")
- supportPhone   String? @map("support_phone")
- webUrl         String? @map("web_url")
- currentVersion String? @map("current_version")
  status         String? @map("status")
  state          String?
  country          String?

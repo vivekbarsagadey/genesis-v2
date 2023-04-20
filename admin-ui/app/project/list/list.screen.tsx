@@ -51,10 +51,7 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
             <Grid item xs={2}>
               <Typography
                 variant="subtitle2"
-                noWrap
-                display={"flex"}
-                justifyContent={"space-around"}
-              >
+                noWrap>
                 Application
               </Typography>
             </Grid>

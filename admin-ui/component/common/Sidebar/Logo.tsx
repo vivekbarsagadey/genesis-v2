@@ -20,7 +20,7 @@ const SidebarLogo = ({ handleMenu, toggleMenu }: logoProps) => {
           <img
             src="./images/genesislogo3.png"
             alt="LoginImage"
-            style={{ height: "100%", width: "95%", marginRight: "2rem" }}
+            style={{ height: "100%", width: "90%", marginRight: "2rem",marginLeft:'0.7rem' }}
           />
         </Grid>
       )}

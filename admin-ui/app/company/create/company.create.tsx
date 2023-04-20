@@ -1,11 +1,11 @@
 "use client";
+import React, { useState } from "react";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import Autocomplete from "@mui/material/Autocomplete";
 import Snackbar from "@mui/material/Snackbar";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
 import { createCompany } from "../../../services/company.action";
 import { countrySelect, stateSelect } from "../graphdata/graph.data";
 import { Status } from "../models";
@@ -28,9 +28,8 @@ const CompanyCreateComponent = () => {
   const [companyStatus, setCompanyStatus] = useState("");
   const [companyState, setCompanyState] = useState("");
   const [companyCountry, setCompanyCountry] = useState("");
-  const router = useRouter();
-
   const [alert, setAlert] = useState(false);
+  const router = useRouter();
 
   const handleClick = () => {
     setAlert(true);
@@ -103,9 +102,7 @@ const CompanyCreateComponent = () => {
   ) => {
     setCompanyCountry(value);
   };
-
-  const getCompanyStatusValue = (
-    e: React.ChangeEvent<HTMLInputElement>,
+  const getCompanyStatusValue = (e: React.ChangeEvent<HTMLInputElement>,
     value: string
   ) => {
     setCompanyStatus(value);

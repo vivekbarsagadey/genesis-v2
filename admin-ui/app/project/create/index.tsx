@@ -1,4 +1,5 @@
 "use client";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import {
   Box,
   Button,
@@ -7,17 +8,26 @@ import {
   Paper,
   TextField,
   Tooltip,
-  Typography,
+  Typography
 } from "@mui/material";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import Autocomplete from "@mui/material/Autocomplete";
 import Checkbox from "@mui/material/Checkbox";
+import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import { Status } from "../models";
+import React, { useEffect, useState } from "react";
 import { countrySelect, stateSelect } from "../graphdata/graph.data";
+import { Status } from "../models";
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 type IApplicationType = {
   id: Number;
   type: String;
@@ -36,9 +46,24 @@ const ProjectCreate = () => {
   const [customerMobile, setCustomerMobile] = useState(false);
   const [businessWeb, setBusinessWeb] = useState(false);
   const [businessMobile, setBusinessMobile] = useState(false);
-
+  const [alert, setAlert] = useState(false);
   const router = useRouter();
   const [companyList, setCompanyList] = useState([]);
+
+  const handleClick = () => {
+    setAlert(true);
+  };
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setAlert(false);
+  };
+
   const fetchData = async () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/companies`
@@ -166,8 +191,12 @@ const ProjectCreate = () => {
         },
       }).then((res) => res.json());
     }
-
     router.push("/project");
+  };
+
+  const updateHandler = () => {
+    handleClick();
+    updateMyProjectData();
   };
 
   return (
@@ -335,7 +364,7 @@ const ProjectCreate = () => {
                 <Grid item xs={3}>
                   <Typography>Application</Typography>
                 </Grid>
-                <Grid item xs={1}>
+                <Grid item xs={0.7}>
                   <Typography>:</Typography>
                 </Grid>
                 <Grid item xs={7}>
@@ -388,7 +417,7 @@ const ProjectCreate = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={12} display="flex" justifyContent="flex-end">
+            {/* <Grid item xs={12} display="flex" justifyContent="flex-end">
               <Grid item xs={2}>
                 <Link
                   href={"/project"}
@@ -409,6 +438,39 @@ const ProjectCreate = () => {
                 >
                   Save
                 </Button>
+              </Grid>
+            </Grid> */}
+
+            <Grid container mt={5}>
+              <Grid item xs={8.6}></Grid>
+              <Grid item xs={3.4}>
+                <Grid container>
+                  <Grid item xs={6}>
+                    <Link href={"/project"} style={{ textDecoration: "none" }}>
+                      <Button variant="contained" style={{ width: "73%" }}>
+                        Cancel
+                      </Button>
+                    </Link>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Button
+                      variant="contained"
+                      onClick={updateHandler}
+                      style={{ width: "73%" }}
+                    >
+                      Save
+                    </Button>
+                    <Snackbar
+                      open={alert}
+                      autoHideDuration={3000}
+                      onClose={handleClose}
+                    >
+                      <Alert onClose={handleClose} sx={{ width: "100%" }}>
+                        Project Created Sucessfully...
+                      </Alert>
+                    </Snackbar>
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
