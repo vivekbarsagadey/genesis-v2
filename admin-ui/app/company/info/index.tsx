@@ -93,12 +93,12 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
                 {company.name}
               </Typography>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2.4}>
               <Typography variant="body2" noWrap>
                 {company.email}
               </Typography>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2.3}>
               <Typography variant="body2" noWrap display={"flex"}>
                 {company.mobile}
               </Typography>
@@ -110,7 +110,7 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
             </Grid>
             <Grid item xs={1}>
               <Grid container>
-                <Grid item xs={5} ml={1}>
+                <Grid item xs={3.3} ml={2}>
                   <Tooltip title="Edit">
                     <Link href={`/company/${company.id}`}>
                       <IconButton>
