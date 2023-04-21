@@ -1,22 +1,12 @@
 "use client";
-import React, { useState } from "react";
-import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import {
-  Avatar,
-  Box,
-  Button,
-  Grid,
-  IconButton,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Grid, Stack, TextField, Typography } from "@mui/material";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import Autocomplete from "@mui/material/Autocomplete";
 import Snackbar from "@mui/material/Snackbar";
 import { makeStyles } from "@mui/styles";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 import { updateCustomer } from "../../../services/customer.action";
 import {
   citySelect,
@@ -64,14 +54,9 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
   const [customerCity, setCustomerCity] = useState(customers.city);
   const [customerState, setCustomerState] = useState(customers.state);
   const [customerCountry, setCustomerCountry] = useState(customers.country);
-  const [customerProfilePic, setCustomerProfilePic] = useState(
-    customers.profilePic
-  );
-  const [hover, setHover] = useState(false);
   const [alert, setAlert] = useState(false);
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   const router = useRouter();
-  const classes = useStyles();
   const updateEditMyCustomerData = async () => {
     try {
       const body = {
@@ -87,7 +72,6 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
         city: customerCity,
         state: customerState,
         country: customerCountry,
-        profilePic: customerProfilePic,
       };
       await updateCustomer(id, body);
       await router.push("/customer");
@@ -129,9 +113,6 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
   ) => {
     setCustomerCity(value);
   };
-  const updateCustomerProfilePic = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCustomerProfilePic(e.target.value);
-  };
   const updateCustomerChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     value: string
@@ -150,13 +131,6 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
   ) => {
     setCustomerStatus(value);
   };
-  const handleMouseIn = () => {
-    setHover(true);
-  };
-  const handleMouseOut = () => {
-    setHover(false);
-  };
-
   const handleClick = () => {
     setAlert(true);
   };
@@ -185,45 +159,7 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
         </Grid>
 
         <Grid container style={{ display: "flex" }}>
-          <Grid item xs={2}>
-            <Grid item xs={4}>
-              <>
-                <input
-                  type="file"
-                  id="upload"
-                  accept="image/*"
-                  style={{ display: "none" }}
-                  value={customerProfilePic}
-                  onChange={updateCustomerProfilePic}
-                />
-                <label htmlFor="upload">
-                  <IconButton
-                    color="primary"
-                    aria-label="upload picture"
-                    component="Image"
-                    type="submit"
-                  >
-                    <Avatar
-                      id="avatar"
-                      onMouseOver={handleMouseIn}
-                      onMouseOut={handleMouseOut}
-                      className={classes.avtar}
-                    >
-                      {hover ? (
-                        <span>
-                          <Typography variant="body2">Upload</Typography>
-                          <CameraAltIcon />
-                        </span>
-                      ) : (
-                        ""
-                      )}
-                    </Avatar>
-                  </IconButton>
-                </label>
-              </>
-            </Grid>
-          </Grid>
-          <Grid item xs={10}>
+          <Grid item xs={12}>
             <Box sx={{ flexGrow: 1 }} padding={2}>
               <Grid container spacing={2}>
                 <Grid item xs={6}>

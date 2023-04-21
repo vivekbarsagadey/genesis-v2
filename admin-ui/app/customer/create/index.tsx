@@ -1,15 +1,5 @@
 "use client";
-import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import {
-  Avatar,
-  Box,
-  Button,
-  Grid,
-  IconButton,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Grid, Stack, TextField, Typography } from "@mui/material";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import Autocomplete from "@mui/material/Autocomplete";
 import Snackbar from "@mui/material/Snackbar";
@@ -187,45 +177,7 @@ const CustomerCreateComponent = () => {
         </Grid>
       </Grid>
       <Grid container>
-        <Grid item xs={2}>
-          <Grid item xs={4}>
-            <>
-              <input
-                type="file"
-                id="upload"
-                accept="image/*"
-                style={{ display: "none" }}
-                value={customerProfilePic}
-                onChange={updateCustomerProfilePic}
-              />
-              <label htmlFor="upload">
-                <IconButton
-                  color="primary"
-                  aria-label="upload picture"
-                  component="Image"
-                  type="submit"
-                >
-                  <Avatar
-                    id="avatar"
-                    onMouseOver={handleMouseIn}
-                    onMouseOut={handleMouseOut}
-                    className={classes.avtar}
-                  >
-                    {hover ? (
-                      <span>
-                        <Typography variant="body2">Upload</Typography>
-                        <CameraAltIcon />
-                      </span>
-                    ) : (
-                      ""
-                    )}
-                  </Avatar>
-                </IconButton>
-              </label>
-            </>
-          </Grid>
-        </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={12}>
           <Box sx={{ flexGrow: 1 }} padding={2}>
             <Grid container spacing={2} mt={2}>
               <Grid item xs={6}>
