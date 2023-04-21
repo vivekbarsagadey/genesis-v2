@@ -89,7 +89,6 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
             count={count}
             size="small"
             page={page}
-            variant="outlined"
             color="primary"
             onChange={handleChangePage}
           />
