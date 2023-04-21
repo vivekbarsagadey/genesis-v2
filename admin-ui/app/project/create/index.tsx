@@ -44,6 +44,14 @@ const useStyles = makeStyles({
   modalCloseIcon: {
     paddingTop: "1px",
   },
+  modalBoxCss:{
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "50px",
+  },
+  buttonStyle:{
+    width: "73%"
+  }
 });
 
 const genderType = [{ title: "Male" }, { title: "Female" }];
@@ -393,13 +401,7 @@ const ProjectCreate = () => {
                   </IconButton>
                 </Tooltip>
                 <Modal open={customerModalOpen}>
-                  <Box
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      marginTop: "50px",
-                    }}
-                  >
+                  <Box className={classes.modalBoxCss}>
                     <Grid item xs={8}>
                       <Card>
                         <Grid
@@ -810,7 +812,7 @@ const ProjectCreate = () => {
                                         >
                                           <Button
                                             variant="contained"
-                                            style={{ width: "73%" }}
+                                            className={classes.buttonStyle}
                                           >
                                             Cancel
                                           </Button>
@@ -820,8 +822,8 @@ const ProjectCreate = () => {
                                         <Button
                                           variant="contained"
                                           onClick={updateMyCustomerData}
-                                          style={{ width: "73%" }}
-                                        >
+                                          className={classes.buttonStyle}
+                                          >
                                           Save
                                         </Button>
                                         <Snackbar
