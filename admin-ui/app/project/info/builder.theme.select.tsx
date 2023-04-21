@@ -30,6 +30,9 @@ const useStyles = makeStyles({
     left: "45%",
     margin: "-50px 0 0 -50px",
   },
+  pagesMainGrid:{
+    background: "#0f172a", 
+  }
 });
 
 const Transition = React.forwardRef(function Transition(
@@ -116,7 +119,7 @@ const BuilderThemeComponent = ({ handleCloseTheme }) => {
           </Grid>
         </Grid>
 
-        <Grid item xs={9} style={{ background: "#0f172a" }}>
+        <Grid item xs={9} className={classes.pagesMainGrid}>
           <Grid container spacing={2} mt={1}>
             <Grid item xs={12}>
               <Typography color={"white"} fontSize={"1.2rem"} ml={3}>

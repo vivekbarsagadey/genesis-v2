@@ -9,6 +9,14 @@ import { useRouter } from "next/navigation";
 import { createCompany } from "../../../services/company.action";
 import { countrySelect, stateSelect } from "../graphdata/graph.data";
 import { Status } from "../models";
+import { makeStyles } from "@mui/styles";
+
+
+const useStyles = makeStyles({
+  buttonStyle:{
+   width:'73%'
+  }
+ });
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -18,6 +26,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 });
 
 const CompanyCreateComponent = () => {
+  const classes = useStyles();
   const [ownerFirstName, setOwnerFirstName] = useState("");
   const [ownerLastName, setOwnerLastName] = useState("");
   const [companyName, setCompanyName] = useState("");

@@ -10,6 +10,7 @@ import { updateCompany } from "../../../services/company.action";
 import { countrySelect, stateSelect } from "../graphdata/graph.data";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
+import { makeStyles } from "@mui/styles";
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -18,11 +19,18 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
+const useStyles = makeStyles({
+ buttonStyle:{
+  width:'73%'
+ }
+});
+
 type CompanyComponentProps = {
   company: any;
   id: string;
 };
 const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
+  const classes = useStyles();
   const router = useRouter();
   const [firstName, setFirstName] = useState(company.firstName);
   const [lastName, setLastName] = useState(company.lastName);
@@ -371,7 +379,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
               <Grid container>
                 <Grid item xs={6}>
                   <Link href={"/company"} style={{ textDecoration: "none" }}>
-                    <Button variant="contained" style={{ width: "73%" }}>
+                    <Button variant="contained" className={classes.buttonStyle}>
                       Cancel
                     </Button>
                   </Link>
@@ -380,8 +388,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
                   <Button
                     variant="contained"
                     onClick={updateHandler}
-                    style={{ width: "73%" }}
-                  >
+                    className={classes.buttonStyle}                  >
                     Save
                   </Button>
                   <Snackbar

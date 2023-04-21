@@ -131,7 +131,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
           </Grid>
         </Grid>
 
-        <Grid container style={{ display: "flex" }}>
+        <Grid container  display= "flex" >
           <Grid item xs={10}>
             <Box sx={{ flexGrow: 1 }} padding={2}>
               <Grid container spacing={2}>

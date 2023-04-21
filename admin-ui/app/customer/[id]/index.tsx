@@ -33,6 +33,9 @@ const useStyles = makeStyles({
     width: "120px",
     height: "125px",
   },
+  buttonStyle:{
+    width:'73%'
+   }
 });
 
 type CustomerComponentProps = {
@@ -40,6 +43,7 @@ type CustomerComponentProps = {
   id: string;
 };
 const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
+  const classes = useStyles();
   const [customerFirstName, setCustomerFirstName] = useState(
     customers.firstName
   );
@@ -482,7 +486,7 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                           href={"/customer"}
                           style={{ textDecoration: "none" }}
                         >
-                          <Button variant="contained" style={{ width: "73%" }}>
+                          <Button variant="contained" className={classes.buttonStyle}>
                             Cancel
                           </Button>
                         </Link>
@@ -491,8 +495,7 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                         <Button
                           variant="contained"
                           onClick={updateHandler}
-                          style={{ width: "73%" }}
-                        >
+                          className={classes.buttonStyle}                        >
                           Save
                         </Button>
                         <Snackbar

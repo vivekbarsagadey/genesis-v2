@@ -26,6 +26,10 @@ const useStyles = makeStyles({
     left: "45%",
     margin: "-50px 0 0 -50px",
   },
+  pagesMainGrid:{
+    background: "#0f172a", 
+    height: "120vh" 
+  }
 });
 
 const BuilderPageSelectComponent = ({ handleClose }) => {
@@ -124,222 +128,7 @@ const BuilderPageSelectComponent = ({ handleClose }) => {
         phone: "",
       },
       pages: count,
-      //  [
-      //   {
-      //     "name": "splash",
-      //     "label": "Splash Screen",
-      //     "title": "Agro",
-      //     "type": "",
-      //     "img": "",
-      //     "pipeline": [],
-      //     "template": {
-      //       "type": "flat",
-      //       "custome": ""
-      //     },
-      //     "components": [
-      //       {
-      //         "name": "splash",
-      //         "type": "screen",
-      //         "tpPosition": "m1",
-      //         "fieldtype": "",
-      //         "required": "true",
-      //         "label": "Agro Pvt",
-      //         "error": "",
-      //         "ui": {
-      //           "extra_small_devices": "12",
-      //           "small_devices": "12",
-      //           "medium_devices": "6",
-      //           "large_devices": "4",
-      //           "xlarge_devices": "3",
-      //           "css": "",
-      //           "clz": ""
-      //         },
-      //         "componentId": "buttons",
-      //         "property": {
-      //           "background": "",
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "position": "",
-      //           "width": ""
-      //         },
-      //         "css": {
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "width": ""
-      //         },
-      //         "model": {
-      //           "width": ""
-      //         },
-      //         "api": {
-      //           "url": ""
-      //         }
-      //       },
-      //       {
-      //         "componentId": "emails",
-      //         "property": {
-      //           "background": "",
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "position": "",
-      //           "width": ""
-      //         },
-      //         "css": {
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "width": ""
-      //         },
-      //         "model": {
-      //           "width": ""
-      //         },
-      //         "api": {
-      //           "url": ""
-      //         }
-      //       },
-      //       {
-      //         "componentId": "passwords",
-      //         "property": {
-      //           "background": "",
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "position": "",
-      //           "width": ""
-      //         },
-      //         "css": {
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "width": ""
-      //         },
-      //         "model": {
-      //           "width": ""
-      //         },
-      //         "api": {
-      //           "url": ""
-      //         }
-      //       },
-      //       {
-      //         "componentId": "cnfrmpasswords",
-      //         "property": {
-      //           "background": "",
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "position": "",
-      //           "width": ""
-      //         },
-      //         "css": {
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "width": ""
-      //         },
-      //         "model": {
-      //           "width": ""
-      //         },
-      //         "api": {
-      //           "url": ""
-      //         }
-      //       },
-      //       {
-      //         "componentId": "numbers",
-      //         "property": {
-      //           "background": "",
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "position": "",
-      //           "width": ""
-      //         },
-      //         "css": {
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "width": ""
-      //         },
-      //         "model": {
-      //           "width": ""
-      //         },
-      //         "api": {
-      //           "url": ""
-      //         }
-      //       },
-      //       {
-      //         "componentId": "checkboxes",
-      //         "property": {
-      //           "background": "",
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "position": "",
-      //           "width": ""
-      //         },
-      //         "css": {
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "width": ""
-      //         },
-      //         "model": {
-      //           "width": ""
-      //         },
-      //         "api": {
-      //           "url": ""
-      //         }
-      //       },
-      //       {
-      //         "componentId": "dropdowns",
-      //         "property": {
-      //           "background": "",
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "position": "",
-      //           "width": ""
-      //         },
-      //         "css": {
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "width": ""
-      //         },
-      //         "model": {
-      //           "width": ""
-      //         },
-      //         "api": {
-      //           "url": ""
-      //         }
-      //       },
-      //       {
-      //         "componentId": "text",
-      //         "property": {
-      //           "background": "",
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "position": "",
-      //           "width": ""
-      //         },
-      //         "css": {
-      //           "borderRadius": "",
-      //           "height": "",
-      //           "overflowY": "",
-      //           "width": ""
-      //         },
-      //         "model": {
-      //           "width": ""
-      //         },
-      //         "api": {
-      //           "url": ""
-      //         }
-      //       }
-      //     ]
-      //   }
-      // ]
+      
     };
 
     createPage(jsonData);
@@ -362,7 +151,7 @@ const BuilderPageSelectComponent = ({ handleClose }) => {
           </Grid>
         </Grid>
 
-        <Grid item xs={9} style={{ background: "#0f172a", height: "120vh" }}>
+        <Grid item xs={9} className={classes.pagesMainGrid}>
           <Grid container spacing={4} padding={3}>
             {pages?.map((page, index) => {
               return (

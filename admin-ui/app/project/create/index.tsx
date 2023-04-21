@@ -394,10 +394,10 @@ const ProjectCreate = () => {
         <Box style={{display:'flex',justifyContent:'center',marginTop:'50px'}} >
           <Grid item xs={8} >
           <Card >
-            <Grid item xs ={12} style={{display:'flex',justifyContent:'space-between'}}>
+            <Grid item xs ={12} display="flex" justifyContent='space-between'>
               <Typography fontWeight='bold' fontSize='20px'pl={3} pt={3}>Add Customer</Typography>
               <IconButton onClick={handleCustomerModalClose} className={classes.modalCloseIcon}><HighlightOffIcon/></IconButton></Grid>
-          <Grid container style={{display:'flex',justifyContent:'center'}}>
+          <Grid container display='flex'justifyContent='center'>
         <Grid item xs={10}>
           <Box sx={{ flexGrow: 1 }} padding={2}>
             <Grid container spacing={2} mt={2}>

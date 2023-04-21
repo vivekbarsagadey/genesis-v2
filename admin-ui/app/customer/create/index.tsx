@@ -32,6 +32,9 @@ const useStyles = makeStyles({
     width: "120px",
     height: "125px",
   },
+  buttonStyle:{
+    width:'73%'
+   }
 });
 
 const genderType = [{ title: "Male" }, { title: "Female" }];
@@ -497,7 +500,7 @@ const CustomerCreateComponent = () => {
                         href={"/customer"}
                         style={{ textDecoration: "none" }}
                       >
-                        <Button variant="contained" style={{ width: "73%" }}>
+                        <Button variant="contained" className={classes.buttonStyle}>
                           Cancel
                         </Button>
                       </Link>
@@ -506,7 +509,7 @@ const CustomerCreateComponent = () => {
                       <Button
                         variant="contained"
                         onClick={updateHandler}
-                        style={{ width: "73%" }}
+                        className={classes.buttonStyle}
                       >
                         Save
                       </Button>
