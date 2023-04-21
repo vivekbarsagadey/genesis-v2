@@ -17,7 +17,7 @@ type Customer = {
   state: string;
   country: string;
 };
-const Page = ({ params }) => {
+const Page = ({ params } : any) => {
   const id = params.id;
 
   const customers = use<Customer>(findById("customer", id));

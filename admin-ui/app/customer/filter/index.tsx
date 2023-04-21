@@ -71,7 +71,7 @@ const FilterComponent = ({
 
   const applyFilter = () => {
     const emailData = fileds.map((ele) => ele.values);
-    const d = customer.filter(() => emailFilter(emailData[0]));
+    // const d = customer.filter(() => emailFilter(emailData[0]));
    
     // onFilterHandler();
   };

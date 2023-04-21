@@ -19,7 +19,7 @@ type User = {
   country: string;
 };
 
-const Page = ({ params }) => {
+const Page = ({ params } : any) => {
   const id = params.id;
 
   const users = use<User>(findById("user", id));

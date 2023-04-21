@@ -14,7 +14,7 @@ type Company = {
   website: string;
   foundationYear: string;
 };
-const Page = ({ params }) => {
+const Page = ({ params } : any) => {
   const id = params.id;
 
   const company = use<Company>(findById("companies", id));
