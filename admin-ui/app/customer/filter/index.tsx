@@ -114,7 +114,7 @@ const FilterComponent = ({
                 // options={Array.from(
                 //   new Set(customer?.map((f) => f[`${key}`]))
                 // )}
-                options={"dummy"}
+                options={["dummy"]}
                 key={index}
               ></Filter>
             );

@@ -102,7 +102,7 @@ const FilterComponent = ({
                 // options={Array.from(
                 //   new Set(user?.map((f) => f[`${key}`]))
                 // )}
-                options={"dummy"}
+                options={["dummy"]}
                 key={index}
               ></Filter>
             );

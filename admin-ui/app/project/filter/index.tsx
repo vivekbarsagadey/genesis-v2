@@ -115,7 +115,7 @@ const ProjectFilterComponent = ({
                 // options={Array.from(
                 //   new Set(projects?.map((f) => f[`${key}`]))
                 // )}
-                options={"dummy"}
+                options={["dummy"]}
                 key={index}
               ></Filter>
             );
