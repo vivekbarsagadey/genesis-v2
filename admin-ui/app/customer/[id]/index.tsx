@@ -484,7 +484,7 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                     <Grid container>
                       <Grid item xs={6}>
                         <Link
-                          href={"/company"}
+                          href={"/customer"}
                           style={{ textDecoration: "none" }}
                         >
                           <Button variant="contained" style={{ width: "73%" }}>
