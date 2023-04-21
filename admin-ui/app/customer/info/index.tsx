@@ -102,7 +102,6 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
                 {customer.mobile}
               </Typography>
             </Grid>
-
             <Grid item xs={2}>
               <Typography variant="body2" noWrap display={"flex"}>
                 {customer.address}

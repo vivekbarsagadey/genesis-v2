@@ -47,7 +47,7 @@ const useStyles = makeStyles({
   modalBoxCss:{
     display: "flex",
     justifyContent: "center",
-    marginTop: "50px",
+    marginTop: "2%",
   },
   buttonStyle:{
     width: "73%"
