@@ -49,7 +49,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
     return false;
   });
   const updateGrpahView = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.SyntheticEvent<Element, Event>,
     value: string
   ) => {
     setGraphView(value);

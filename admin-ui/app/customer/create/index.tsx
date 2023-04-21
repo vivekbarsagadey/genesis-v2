@@ -111,33 +111,28 @@ const CustomerCreateComponent = () => {
     setCustomerProfilePic(e.target.value);
   };
   const updateCustomerChange = (
-    e: any,
-    value: any
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setGender(value);
   };
   const updateCustomerCountry = (
-    e: any,
-    value: any
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setCustomerCountry(value);
   };
   const updateCustomerState = (
-    e: any,
-    value: any
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setCustomerState(value);
   };
   const updateCustomerCity = (
-    e: any,
-    value: any
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setCustomerCity(value);
   };
 
   const updateCustomerStatus = (
-    e: any,
-    value: any
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setCustomerStatus(value);
   };

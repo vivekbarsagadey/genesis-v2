@@ -54,7 +54,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
   });
 
   const updateGrpahView = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.SyntheticEvent<Element, Event>,
     value: string
   ) => {
     setGraphView(value);

@@ -59,14 +59,14 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
     setCompanyWebsite(e.target.value);
   };
 
-  const getCompanyStatusValue = (e: any, value: any) => {
+  const getCompanyStatusValue = (e: React.SyntheticEvent<Element, Event>,value : string) => {
     setCompanyStatus(value);
   };
 
-  const updateCompanyState = (e: any, value: any) => {
+  const updateCompanyState = (e: React.SyntheticEvent<Element, Event>,value : string) => {
     setCompanyState(value);
   };
-  const updateCompanyCountry = (e: any, value: any) => {
+  const updateCompanyCountry = (e: React.SyntheticEvent<Element, Event>,value : string) => {
     setCompanyCountry(value);
   };
 

@@ -17,7 +17,7 @@ const options = {
 const ProjectGraphView = ({ projects }: ListComponentProps) => {
   const [graphView, setGraphView] = useState<string>("");
   const updateGrpahView = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.SyntheticEvent<Element, Event>,
     value: string
   ) => {
     setGraphView(value);
