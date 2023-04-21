@@ -112,9 +112,10 @@ const ProjectFilterComponent = ({
             return (
               <Filter
                 filterField={feild}
-                options={Array.from(
-                  new Set(projects?.map((f) => f[`${key}`]))
-                )}
+                // options={Array.from(
+                //   new Set(projects?.map((f) => f[`${key}`]))
+                // )}
+                options={"dummy"}
                 key={index}
               ></Filter>
             );
