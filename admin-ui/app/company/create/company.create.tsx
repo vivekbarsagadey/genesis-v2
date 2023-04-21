@@ -384,7 +384,7 @@ const CompanyCreateComponent = () => {
                     onClose={handleClose}
                   >
                     <Alert onClose={handleClose} sx={{ width: "100%" }}>
-                      Customer Created Sucessfully...
+                      Company Created Sucessfully...
                     </Alert>
                   </Snackbar>
                 </Grid>

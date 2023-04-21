@@ -51,6 +51,7 @@ const CustomerCreateComponent = () => {
   const [customerCountry, setCustomerCountry] = useState("");
   const [customerProfilePic, setCustomerProfilePic] = useState("");
   const [hover, setHover] = useState(false);
+  const [alert, setAlert] = useState(false);
 
   const router = useRouter();
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
@@ -511,7 +512,7 @@ const CustomerCreateComponent = () => {
                 </Grid>
               </Grid>
 
-              <Grid container mt={5}>
+              {/* <Grid container mt={5}>
                 <Grid item xs={12}>
                   <Grid container>
                     <Grid item xs={9}></Grid>
@@ -540,7 +541,44 @@ const CustomerCreateComponent = () => {
                     </Grid>
                   </Grid>
                 </Grid>
+              </Grid> */}
+
+<Grid container mt={5}>
+            <Grid item xs={8.6}></Grid>
+            <Grid item xs={3.4}>
+              <Grid container>
+                <Grid item xs={6}>
+                  <Link href={"/company"} style={{ textDecoration: "none" }}>
+                    <Button variant="contained" style={{ width: "73%" }}>
+                      Cancel
+                    </Button>
+                  </Link>
+                </Grid>
+                <Grid item xs={6}>
+                  <Button
+                    variant="contained"
+                    onClick={updateMyCustomerData}
+                    style={{ width: "73%" }}
+                  >
+                    Save
+                  </Button>
+                  <Snackbar
+                    open={alert}
+                    autoHideDuration={8000}
+                    onClose={handleClose}
+                  >
+                    <Alert
+                      onClose={handleClose}
+                      sx={{ width: "100%" }}
+                    >
+                      Customer Created Sucessfully...
+                    </Alert>
+                  </Snackbar>
+                </Grid>
               </Grid>
+            </Grid>
+          </Grid>
+
             </Grid>
           </Box>
         </Grid>
