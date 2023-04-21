@@ -95,13 +95,14 @@ const FilterComponent = ({
       >
         {user &&
           fileds?.map((feild, index) => {
-            const key = feild.key
+            const key = feild.key;
             return (
               <Filter
                 filterField={feild}
-                options={Array.from(
-                  new Set(user?.map((f) => f[`${key}`]))
-                )}
+                // options={Array.from(
+                //   new Set(user?.map((f) => f[`${key}`]))
+                // )}
+                options={"dummy"}
                 key={index}
               ></Filter>
             );

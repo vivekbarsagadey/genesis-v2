@@ -111,9 +111,10 @@ const FilterComponent = ({
             return (
               <Filter
                 filterField={feild}
-                options={Array.from(
-                  new Set(customer?.map((f) => f[`${key}`]))
-                )}
+                // options={Array.from(
+                //   new Set(customer?.map((f) => f[`${key}`]))
+                // )}
+                options={"dummy"}
                 key={index}
               ></Filter>
             );
