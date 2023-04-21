@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 "use client";
 import { Box, Button, Grid } from "@mui/material";
 import Link from "next/link";
@@ -88,14 +87,3 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
   );
 };
 export default UserComponentHome;
-=======
-import React from 'react'
-
-const index = () => {
-  return (
-    <div>index</div>
-  )
-}
-
-export default index
->>>>>>> 5ea9868b9c91d9d66c81f7ce7ff5573ea14de14d

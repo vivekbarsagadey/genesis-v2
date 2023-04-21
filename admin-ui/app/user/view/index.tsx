@@ -55,7 +55,6 @@ const UserViewComponent = ({ onViewSelect }: UserViewComponentProps) => {
   };
   return (
     <>
-<<<<<<< HEAD
       <Stack direction="row">
         {viewIconsSet.map((item) => {
           return (
@@ -83,19 +82,6 @@ const UserViewComponent = ({ onViewSelect }: UserViewComponentProps) => {
           );
         })}
       </Stack>
-=======
-      {AllViews?.map((data) => {
-        return (
-          <Grid key={data.id} style={{margin:'0.2rem'}}>
-            <Tooltip title={data?.title}>
-            <IconButton size="small" onClick={() => handleCount(data.view)}>
-              {data.icon}
-            </IconButton>
-            </Tooltip>
-          </Grid>
-        );
-      })}
->>>>>>> 5ea9868b9c91d9d66c81f7ce7ff5573ea14de14d
     </>
   );
 };

@@ -2,7 +2,6 @@
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import { NextPage } from "next";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useState } from "react";
@@ -24,7 +23,7 @@ const FormGrid = styled(Grid)(({ theme }) => ({
   top: "7%",
 }));
 
-const SignIn: NextPage = (props): JSX.Element => {
+const SignIn = (): JSX.Element => {
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const router = useRouter();
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
@@ -36,7 +35,7 @@ const SignIn: NextPage = (props): JSX.Element => {
         password: userInfo.password,
         redirect: false,
       });
-      if (!res.error) {
+      if (!res?.error) {
         router.push("/");
       }
     }

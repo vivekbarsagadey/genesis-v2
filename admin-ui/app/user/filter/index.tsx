@@ -73,7 +73,6 @@ const FilterComponent = ({
   }, []);
   return (
     <>
-<<<<<<< HEAD
       <Tooltip title="Filter">
         <IconButton
           id="basic-button"
@@ -85,8 +84,6 @@ const FilterComponent = ({
           <FilterAltIcon fontSize="small" />
         </IconButton>
       </Tooltip>
-=======
->>>>>>> 5ea9868b9c91d9d66c81f7ce7ff5573ea14de14d
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
@@ -96,10 +93,9 @@ const FilterComponent = ({
           "aria-labelledby": "basic-button",
         }}
       >
-<<<<<<< HEAD
         {user &&
           fileds?.map((feild, index) => {
-            const key = feild.key;
+            const key = feild.key
             return (
               <Filter
                 filterField={feild}
@@ -110,49 +106,6 @@ const FilterComponent = ({
               ></Filter>
             );
           })}
-=======
-        <>
-          <Stack>
-            <Autocomplete
-              size="small"
-              freeSolo
-              disableClearable
-              options={Array.from(new Set(items?.map((f) => f.firstName)))}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Name"
-                  InputProps={{
-                    ...params.InputProps,
-                    type: "search",
-                  }}
-                />
-              )}
-            />
-          </Stack>
-        </>
-
-        <>
-          <Stack>
-            <Autocomplete
-              size="small"
-              freeSolo
-              disableClearable
-              options={Array.from(new Set(items?.map((id) => id.email)))}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Email"
-                  InputProps={{
-                    ...params.InputProps,
-                    type: "search",
-                  }}
-                />
-              )}
-            />
-          </Stack>
-        </>
->>>>>>> 5ea9868b9c91d9d66c81f7ce7ff5573ea14de14d
         <Grid container mb={1} mt={2}>
           <Grid item xs={6}></Grid>
           <Grid item xs={3}>
