@@ -29,7 +29,7 @@ const SignIn = (): JSX.Element => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     // validate your userinfo
     e.preventDefault();
-    if (userInfo?.email === "faisal@gmail.com" && userInfo.password) {
+    if (userInfo?.email === "admin@gmail.com" && userInfo.password) {
       const res = await signIn("credentials", {
         email: userInfo.email,
         password: userInfo.password,
