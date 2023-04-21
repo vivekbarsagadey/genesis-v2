@@ -25,7 +25,7 @@ const CompanyGridView = ({ companies }: ListComponentProps) => {
         <Grid container spacing={1} mt={1}>
           {paginationHandler
           .currentData()
-          .reverse()?.map((item) => {
+          .reverse()?.map((item : any) => {
               return (
                 <Grid item xs={4} md={4} sm={4} lg={4} key={item.id}>
                   <Paper variant="outlined">

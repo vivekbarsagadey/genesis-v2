@@ -3,7 +3,7 @@ import { Chart } from "react-google-charts";
 import { Case, Switch } from "react-if";
 const UserComparisionPieChart = ({
   CompariosnCountryData,comparisionGraphView
-}) => {
+} : any) => {
   return (
     <>
       <Grid item xs={12}>

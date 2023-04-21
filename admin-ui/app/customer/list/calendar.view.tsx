@@ -14,7 +14,7 @@ interface CalendarEventData {
 }
 
 const CustomerCalendarView = ({ customer }: ListComponentProps) => {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState<Array<CalendarEventData>>([]);
 
   const calendarCustomer = customer?.map((customers: ICustomer) => {
     return {

@@ -5,7 +5,6 @@ import HomeComponent from "./index";
 import axios from "axios";
 import Dashboard from "./index";
 
-const users = Array<IUser>();
 
 const Home = () => {
   // const[users,setUsers]=useState([])

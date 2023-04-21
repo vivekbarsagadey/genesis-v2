@@ -3,11 +3,11 @@ import { Chart } from "react-google-charts";
 import { Case, Default, Switch } from "react-if";
 
 type customerChartProps = {
-  graphView: string;
-  statusData: string;
-  countryData: string;
+  graphView: any;
+  statusData: any;
+  countryData: any;
   stateData: any;
-  cityData: string;
+  cityData: any;
 };
 
 const CustomerPieChart = ({
