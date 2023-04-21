@@ -1,25 +1,26 @@
 "use client";
-import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import {
-  Avatar,Box,
-  Button,
-  Grid,
-  IconButton,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Grid, Stack, TextField, Typography } from "@mui/material";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import Autocomplete from "@mui/material/Autocomplete";
-import FormControl from "@mui/material/FormControl";
-import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Snackbar from "@mui/material/Snackbar";
 import { makeStyles } from "@mui/styles";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import React, { useState } from "react";
 import { createCustomer } from "../../../services/customer.action";
-import { countrySelect, stateSelect, citySelect } from "../grpahdata/graph.data";
+import {
+  citySelect,
+  countrySelect,
+  stateSelect,
+} from "../grpahdata/graph.data";
 import { Status } from "../models";
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const useStyles = makeStyles({
   avtar: {
@@ -110,33 +111,28 @@ const CustomerCreateComponent = () => {
     setCustomerProfilePic(e.target.value);
   };
   const updateCustomerChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setGender(value);
   };
   const updateCustomerCountry = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setCustomerCountry(value);
   };
   const updateCustomerState = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setCustomerState(value);
   };
   const updateCustomerCity = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setCustomerCity(value);
   };
 
   const updateCustomerStatus = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setCustomerStatus(value);
   };
@@ -149,6 +145,25 @@ const CustomerCreateComponent = () => {
     setHover(false);
   };
 
+  const handleClick = () => {
+    setAlert(true);
+  };
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setAlert(false);
+  };
+
+  const updateHandler = () => {
+    handleClick();
+    updateMyCustomerData();
+  };
+
   return (
     <Box>
       <Grid container>
@@ -157,45 +172,7 @@ const CustomerCreateComponent = () => {
         </Grid>
       </Grid>
       <Grid container>
-        <Grid item xs={2}>
-          <Grid item xs={4}>
-            <>
-              <input
-                type="file"
-                id="upload"
-                accept="image/*"
-                style={{ display: "none" }}
-                value={customerProfilePic}
-                onChange={updateCustomerProfilePic}
-              />
-              <label htmlFor="upload">
-                <IconButton
-                  color="primary"
-                  aria-label="upload picture"
-                  component="Image"
-                  type="submit"
-                >
-                  <Avatar
-                    id="avatar"
-                    onMouseOver={handleMouseIn}
-                    onMouseOut={handleMouseOut}
-                    className={classes.avtar}
-                  >
-                    {hover ? (
-                      <span>
-                        <Typography variant="body2">Upload</Typography>
-                        <CameraAltIcon />
-                      </span>
-                    ) : (
-                      ""
-                    )}
-                  </Avatar>
-                </IconButton>
-              </label>
-            </>
-          </Grid>
-        </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={12}>
           <Box sx={{ flexGrow: 1 }} padding={2}>
             <Grid container spacing={2} mt={2}>
               <Grid item xs={6}>
@@ -511,74 +488,41 @@ const CustomerCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-
-              {/* <Grid container mt={5}>
-                <Grid item xs={12}>
+              <Grid container mt={5}>
+                <Grid item xs={8.6}></Grid>
+                <Grid item xs={3.4}>
                   <Grid container>
-                    <Grid item xs={9}></Grid>
-                    <Grid item xs={3}>
-                      <Grid container>
-                        <Grid item xs={7}>
-                          <Link
-                            href={"/customer"}
-                            style={{ textDecoration: "none" }}
-                          >
-                            <Button variant="contained" size="small">
-                              Cancel
-                            </Button>
-                          </Link>
-                        </Grid>
-                        <Grid item xs={2}>
-                          <Button
-                            variant="contained"
-                            size="small"
-                            onClick={updateMyCustomerData}
-                          >
-                            Save
-                          </Button>
-                        </Grid>
-                      </Grid>
+                    <Grid item xs={6}>
+                      <Link
+                        href={"/customer"}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <Button variant="contained" style={{ width: "73%" }}>
+                          Cancel
+                        </Button>
+                      </Link>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Button
+                        variant="contained"
+                        onClick={updateHandler}
+                        style={{ width: "73%" }}
+                      >
+                        Save
+                      </Button>
+                      <Snackbar
+                        open={alert}
+                        autoHideDuration={8000}
+                        onClose={handleClose}
+                      >
+                        <Alert onClose={handleClose} sx={{ width: "100%" }}>
+                          Customer Created Sucessfully...
+                        </Alert>
+                      </Snackbar>
                     </Grid>
                   </Grid>
                 </Grid>
-              </Grid> */}
-
-<Grid container mt={5}>
-            <Grid item xs={8.6}></Grid>
-            <Grid item xs={3.4}>
-              <Grid container>
-                <Grid item xs={6}>
-                  <Link href={"/company"} style={{ textDecoration: "none" }}>
-                    <Button variant="contained" style={{ width: "73%" }}>
-                      Cancel
-                    </Button>
-                  </Link>
-                </Grid>
-                <Grid item xs={6}>
-                  <Button
-                    variant="contained"
-                    onClick={updateMyCustomerData}
-                    style={{ width: "73%" }}
-                  >
-                    Save
-                  </Button>
-                  <Snackbar
-                    open={alert}
-                    autoHideDuration={8000}
-                    onClose={handleClose}
-                  >
-                    <Alert
-                      onClose={handleClose}
-                      sx={{ width: "100%" }}
-                    >
-                      Customer Created Sucessfully...
-                    </Alert>
-                  </Snackbar>
-                </Grid>
               </Grid>
-            </Grid>
-          </Grid>
-
             </Grid>
           </Box>
         </Grid>

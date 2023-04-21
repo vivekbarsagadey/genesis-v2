@@ -50,7 +50,6 @@ const ProjectFilterComponent = ({
   };
 
   const emailFilter = (value: string) => (item: IProject) => {
-    console.log("value ??", value);
 
     if (isNotBlank(item.email)) {
       if (!item.email.toLowerCase().includes(value.toLowerCase())) {
@@ -115,7 +114,7 @@ const ProjectFilterComponent = ({
                 // options={Array.from(
                 //   new Set(projects?.map((f) => f[`${key}`]))
                 // )}
-                options={"dummy"}
+                options={["dummy"]}
                 key={index}
               ></Filter>
             );
@@ -145,8 +144,8 @@ const ProjectFilterComponent = ({
 
 const Filter = ({ filterField, options }: FilterProps) => {
   const filterUpdateHandler = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+   
+    value: any
   ) => {
     filterField.values.push(value);
   };

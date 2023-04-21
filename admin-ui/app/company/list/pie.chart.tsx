@@ -4,10 +4,10 @@ import { Chart } from "react-google-charts";
 import { Case, Default, Switch } from "react-if";
 
 type companyChartProps = {
-  graphView: string;
-  statusData: string;
-  countryData: string;
-  stateData: string;
+  graphView: any;
+  statusData: any;
+  countryData: any;
+  stateData: any;
 };
 
 const CompanyPieChart = ({
@@ -16,6 +16,7 @@ const CompanyPieChart = ({
   countryData,
   stateData,
 }: companyChartProps) => {
+
   return (
     <>
       <Grid item xs={12}>

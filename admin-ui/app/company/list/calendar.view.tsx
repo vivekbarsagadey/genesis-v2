@@ -14,7 +14,7 @@ interface CalendarEventData {
 }
 
 const CompanyCalendarView = ({ companies }: ListComponentProps) => {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState<Array<CalendarEventData>>([]);
 
   const calendarCompanies = companies.map((company : ICompany) => {
     return {

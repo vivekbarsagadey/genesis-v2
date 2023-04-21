@@ -20,7 +20,7 @@ const options = {
 const CustomerGraphView = ({ companies }: ListComponentProps) => {
   const [graphView, setGraphView] = useState<string>("");
   const updateGrpahView = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.SyntheticEvent<Element, Event>,
     value: string
   ) => {
     setGraphView(value);

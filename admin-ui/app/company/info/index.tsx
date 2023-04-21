@@ -1,8 +1,15 @@
 "use client";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import { Button, Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import {
+  Button,
+  Grid,
+  IconButton,
+  Paper,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
@@ -15,7 +22,6 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { deleteCompany } from "../../../services/company.action";
 import { ICompany } from "../models/company.model";
-
 
 const style = {
   position: "absolute" as "absolute",
@@ -59,13 +65,10 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
     }
     setAlert(false);
   };
-  const deleteCompanyHandler = async () => {
-    const response = await deleteCompany(company.id);
-    // router.push("/company");
-  };
-  const removeData = (f: any) => {
+
+  const removeData = (f: ICompany) => {
     window.location.reload();
-    deleteCompanyHandler(f);
+    deleteCompany(f.id);
     handleClick();
   };
   return (
@@ -79,9 +82,9 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
                   <Checkbox size="small" />
                 </Grid>
                 <Grid item xs={4}>
-                 <IconButton>
-                 <RemoveRedEyeIcon fontSize="small"/>
-                 </IconButton>
+                  <IconButton>
+                    <RemoveRedEyeIcon fontSize="small" />
+                  </IconButton>
                 </Grid>
               </Grid>
             </Grid>
@@ -122,7 +125,11 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
                       <DeleteOutlineIcon fontSize="small" />
                     </IconButton>
                   </Tooltip>
-                  <Snackbar open={alert} autoHideDuration={8000} onClose={handleClose}>
+                  <Snackbar
+                    open={alert}
+                    autoHideDuration={8000}
+                    onClose={handleClose}
+                  >
                     <Alert
                       onClose={handleClose}
                       severity="error"
@@ -151,9 +158,11 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
           >
             <Fade in={open}>
               <Box sx={style}>
-                <Typography id="transition-modal-description"
+                <Typography
+                  id="transition-modal-description"
                   sx={{ mt: 1 }}
-                  fontSize="0.9rem">
+                  fontSize="0.9rem"
+                >
                   Are you sure you want to delete the selected company?
                 </Typography>
                 <Grid container mt={2}>

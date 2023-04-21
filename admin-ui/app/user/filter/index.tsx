@@ -102,7 +102,7 @@ const FilterComponent = ({
                 // options={Array.from(
                 //   new Set(user?.map((f) => f[`${key}`]))
                 // )}
-                options={"dummy"}
+                options={["dummy"]}
                 key={index}
               ></Filter>
             );
@@ -130,8 +130,8 @@ const FilterComponent = ({
 };
 const Filter = ({ filterField, options }: FilterProps) => {
   const filterUpdateHandler = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    
+    value: any
   ) => {
     filterField.values.push(value);
   };

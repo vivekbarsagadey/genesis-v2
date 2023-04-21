@@ -1,20 +1,12 @@
-import { Typography, ListItemIcon } from "@mui/material";
-import { Case, Default, Switch } from "react-if";
-import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import EmailIcon from "@mui/icons-material/Email";
-import FormatColorTextIcon from "@mui/icons-material/FormatColorText";
-import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
-import FormatSizeIcon from "@mui/icons-material/FormatSize";
-import LabelIcon from "@mui/icons-material/Label";
-import LockClockIcon from "@mui/icons-material/LockClock";
-import LockOpenIcon from "@mui/icons-material/LockOpen";
 import DoneIcon from "@mui/icons-material/Done";
 import EditAttributesIcon from "@mui/icons-material/EditAttributes";
+import FormatColorTextIcon from "@mui/icons-material/FormatColorText";
+import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import Switch, { Case, Default } from 'react-switch-case';
 
 const TypographyStyle = styled(Typography)(({ theme }) => ({
-  marginLeft: theme.spacing(1),
+  marginLeft: theme.spacing(3),
   marginTop: "-1.3rem",
   cursor: "pointer",
 }));
@@ -55,13 +47,7 @@ const SideBarInnerText = ({ ele }) => {
       <TypographyStyle>
         <Typography
           fontSize={"0.75rem"}
-          color={"#334D6E"}
-          // style={{
-          //   cursor: "pointer",
-          //   marginLeft: "1.5rem",
-          //   marginTop: "-1.3rem",
-          // }}
-        >
+          color={"#334D6E"}>
           {ele.label}
         </Typography>
       </TypographyStyle>

@@ -2,14 +2,13 @@ import { Box, Grid } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
+import moment from "moment";
 import React, { useState } from "react";
+import { Chart } from "react-google-charts";
 import ProjectPieChart from "./pie.chart";
 import { ListComponentProps } from "./props";
-import moment from "moment";
-import { Chart } from "react-google-charts";
 
 const options = {
-  vAxis: { title: "Customer Created" },
   hAxis: { title: "Month" },
   seriesType: "bars",
   series: { type: "line" },
@@ -18,7 +17,7 @@ const options = {
 const ProjectGraphView = ({ projects }: ListComponentProps) => {
   const [graphView, setGraphView] = useState<string>("");
   const updateGrpahView = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.SyntheticEvent<Element, Event>,
     value: string
   ) => {
     setGraphView(value);
@@ -186,6 +185,34 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
   return (
     <Box mr={2} mt={2}>
       <Grid container>
+        <Grid item xs={4}></Grid>
+        <Grid item xs={3}>
+          <Stack>
+            <Autocomplete
+              value={graphView}
+              onChange={updateGrpahView}
+              freeSolo
+              id="customer-select-type"
+              disableClearable
+              size="small"
+              options={graphTypeVal?.map((option) => option)}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  InputProps={{
+                    ...params.InputProps,
+                    type: "search",
+                  }}
+                  placeholder="Select Graph View"
+                  fullWidth
+                />
+              )}
+            />
+          </Stack>
+        </Grid>
+      </Grid>
+
+      <Grid container>
         <Grid item xs={6}>
           <Grid container>
             <Grid item xs={9}>
@@ -196,30 +223,6 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
                 countryData={countryData}
                 applicationData={applicationData}
               />
-            </Grid>
-            <Grid item xs={3}>
-              <Stack>
-                <Autocomplete
-                  value={graphView}
-                  onChange={updateGrpahView}
-                  freeSolo
-                  id="customer-select-type"
-                  disableClearable
-                  size="small"
-                  options={graphTypeVal?.map((option) => option)}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      InputProps={{
-                        ...params.InputProps,
-                        type: "search",
-                      }}
-                      placeholder="Select Graph View"
-                      fullWidth
-                    />
-                  )}
-                />
-              </Stack>
             </Grid>
           </Grid>
         </Grid>

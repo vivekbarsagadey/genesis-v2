@@ -6,7 +6,7 @@ type customerChartProps = {
   graphView: string;
   statusData: string;
   countryData: string;
-  stateData: string;
+  stateData: any;
   cityData: string;
 };
 

@@ -91,33 +91,28 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
     setUserZipCode(e.target.value);
   };
   const updateUserState = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setUserState(value);
   };
   const updateUserCity = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setUserCity(value);
   };
   
   const updateUserChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setGender(value);
   };
   const updateUserCountry = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setUserCountry(value);
   };
   const updateUserStatus = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setUserStatus(value);
   };
