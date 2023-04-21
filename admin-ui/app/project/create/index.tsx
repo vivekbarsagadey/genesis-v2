@@ -391,7 +391,7 @@ const ProjectCreate = () => {
                   <Modal
         open={customerModalOpen}
       >
-        <Box style={{display:'flex',justifyContent:'center',marginTop:'70px'}} >
+        <Box style={{display:'flex',justifyContent:'center',marginTop:'50px'}} >
           <Grid item xs={8} >
           <Card >
             <Grid item xs ={12} style={{display:'flex',justifyContent:'space-between'}}>
