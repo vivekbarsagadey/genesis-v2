@@ -130,8 +130,8 @@ const FilterComponent = ({
 };
 const Filter = ({ filterField, options }: FilterProps) => {
   const filterUpdateHandler = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    
+    value: any
   ) => {
     filterField.values.push(value);
   };
