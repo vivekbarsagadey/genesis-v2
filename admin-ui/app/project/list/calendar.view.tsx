@@ -15,7 +15,7 @@ interface CalendarEventData {
 }
 
 const ProjectCalendarView = ({ projects}: ListComponentProps) => {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState<Array<CalendarEventData>>([]);
 
   const calendarProjects = projects?.map((projects : IProject) => {
     return {

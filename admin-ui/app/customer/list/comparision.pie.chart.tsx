@@ -4,7 +4,7 @@ import { Case, Switch } from "react-if";
 
 const CustomerComparisionPieChart = ({
     CompariosnCountryData,comarisionGraphView
-}) => {
+} : any) => {
   return (
     <>
       <Grid item xs={12}>

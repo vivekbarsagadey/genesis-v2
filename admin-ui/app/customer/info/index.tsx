@@ -66,13 +66,10 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
     }
     setAlert(false);
   };
-  const deleteCompanyHandler = async () => {
-    const response = await deleteCustomer(customer.id);
-    // router.push("/company");
-  };
+ 
   const removeData = (customer: any) => {
     window.location.reload();
-    deleteCompanyHandler(customer);
+    deleteCustomer(customer.id);
     handleClick();
   };
   return (

@@ -202,7 +202,6 @@ const UserGraphView = ({ user }: ListComponentProps) => {
   ) => {
     setGraph2(value);
   };
-  console.log("1-2-3", graphBase, graph1, graph2);
   const CompariosnCountryData = [
     ["Country", "ACTIVE", "INACTIVE"],
     [
