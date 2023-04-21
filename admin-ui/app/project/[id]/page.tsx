@@ -1,6 +1,6 @@
 import ProjectEditComponent from '.'
 
-const page = ({ params }) => {
+const page = ({ params } : any) => {
   const id =params.id
   return (
     <>

@@ -72,7 +72,7 @@ const ProjectFilterComponent = ({
 
   const applyFilter = () => {
     const emailData = fileds.map((ele) => ele.values);
-    const d = projects.filter(() => emailFilter(emailData[0]));
+    // const d = projects.filter(() => emailFilter(emailData[0]));
    
     // onFilterHandler();
   };

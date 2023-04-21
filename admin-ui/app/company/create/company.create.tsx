@@ -90,21 +90,13 @@ const CompanyCreateComponent = () => {
   const updateCompanyWebsite = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyWebsite(e.target.value);
   };
-  const updateCompanyState = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
-  ) => {
+  const updateCompanyState = (value : any) => {
     setCompanyState(value);
   };
-  const updateCompanyCountry = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
-  ) => {
+  const updateCompanyCountry = (value : any) => {
     setCompanyCountry(value);
   };
-  const getCompanyStatusValue = (e: React.ChangeEvent<HTMLInputElement>,
-    value: string
-  ) => {
+  const getCompanyStatusValue = (value : any) => {
     setCompanyStatus(value);
   };
 
@@ -391,10 +383,7 @@ const CompanyCreateComponent = () => {
                     autoHideDuration={8000}
                     onClose={handleClose}
                   >
-                    <Alert
-                      onClose={handleClose}
-                      sx={{ width: "100%" }}
-                    >
+                    <Alert onClose={handleClose} sx={{ width: "100%" }}>
                       Customer Created Sucessfully...
                     </Alert>
                   </Snackbar>
