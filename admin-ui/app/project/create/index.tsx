@@ -1,10 +1,14 @@
 "use client";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import {
   Box,
   Button,
+  Card,
   Grid,
   IconButton,
+  Modal,
+  Avatar,
   Paper,
   TextField,
   Tooltip,
@@ -18,8 +22,28 @@ import Stack from "@mui/material/Stack";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { countrySelect, stateSelect } from "../graphdata/graph.data";
 import { Status } from "../models";
+import { makeStyles } from "@mui/styles";
+import { createCustomer } from "../../../services/customer.action";
+import { countrySelect, stateSelect, citySelect } from "../graphdata/graph.data";
+
+const useStyles = makeStyles({
+  avtar: {
+    opacity: "1",
+    "&:hover": {
+      opacity: "0.8",
+      color: "black",
+    },
+    width: "120px",
+    height: "125px",
+  },
+  modalCloseIcon:{
+    paddingTop:'1px'
+  }
+});
+
+const genderType = [{ title: "Male" }, { title: "Female" }];
+
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -34,11 +58,8 @@ type IApplicationType = {
   label: String;
 };
 const ProjectCreate = () => {
-  const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
-
   const [projectName, setProjectName] = useState<String>("");
   const [customerName, setCustomerName] = useState<String>("");
-  const [application, setApplication] = useState([]);
   const [projectStatus, setProjectStatus] = useState("");
   const [projectState, setProjectState] = useState("");
   const [projectCountry, setProjectCountry] = useState("");
@@ -46,9 +67,115 @@ const ProjectCreate = () => {
   const [customerMobile, setCustomerMobile] = useState(false);
   const [businessWeb, setBusinessWeb] = useState(false);
   const [businessMobile, setBusinessMobile] = useState(false);
+  const classes = useStyles();
+  const [customerFirstName, setCustomerFirstName] = useState("");
+  const [customerLastName, setCustomerLastName] = useState("");
+  const [gender, setGender] = useState("");
+  const [customerAge, setCustomerAge] = useState("");
+  const [customerEmail, setCustomerEmail] = useState("");
+  const [customerPhone, setCustomerPhone] = useState("");
+  const [customerAddress, setCustomerAddress] = useState("");
+  const [customerStatus, setCustomerStatus] = useState("");
+  const [customerZipCode, setCustomerZipCode] = useState("");
+  const [customerCity, setCustomerCity] = useState("");
+  const [customerState, setCustomerState] = useState("");
+  const [customerCountry, setCustomerCountry] = useState("");
+  const [customerProfilePic, setCustomerProfilePic] = useState("");
+  const [hover, setHover] = useState(false);
   const [alert, setAlert] = useState(false);
+  const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   const router = useRouter();
   const [companyList, setCompanyList] = useState([]);
+  const [customerModalOpen, setCustomerModalOpen] = React.useState(false);
+  const handleCustomerModalOpen = () => setCustomerModalOpen(true);
+  const handleCustomerModalClose = () => setCustomerModalOpen(false);
+
+
+
+  // POST call
+  const updateMyCustomerData = async () => {
+    try {
+      const body = {
+        firstName: customerFirstName,
+        lastName: customerLastName,
+        gender: gender,
+        email: customerEmail,
+        age: customerAge,
+        mobile: customerPhone,
+        address: customerAddress,
+        status: customerStatus,
+        zipCode: customerZipCode,
+        city: customerCity,
+        state: customerState,
+        country: customerCountry,
+        profilePic: customerProfilePic,
+      };
+      await createCustomer(body);
+      await router.push("/project/create");
+      handleCustomerModalClose()
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const updateCustomerFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerFirstName(e.target.value);
+  };
+  const updateCustomerLastName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerLastName(e.target.value);
+  };
+
+  const updateCustomerAge = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerAge(e.target.value);
+  };
+
+  const updateCustomerEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerEmail(e.target.value);
+  };
+
+  const updateCustomerPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerPhone(e.target.value);
+  };
+  const updateCustomerAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerAddress(e.target.value);
+  };
+  const updateCustomerZipCode = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerZipCode(e.target.value);
+  };
+
+  const updateCustomerChange = (
+    e: React.SyntheticEvent<Element, Event>,value : string
+  ) => {
+    setGender(value);
+  };
+  const updateCustomerCountry = (
+    e: React.SyntheticEvent<Element, Event>,value : string
+  ) => {
+    setCustomerCountry(value);
+  };
+  const updateCustomerState = (
+    e: React.SyntheticEvent<Element, Event>,value : string
+  ) => {
+    setCustomerState(value);
+  };
+  const updateCustomerCity = (
+    e: React.SyntheticEvent<Element, Event>,value : string
+  ) => {
+    setCustomerCity(value);
+  };
+
+  const updateCustomerStatus = (
+    e: React.SyntheticEvent<Element, Event>,value : string
+  ) => {
+    setCustomerStatus(value);
+  };
+
+  const handleMouseIn = () => {
+    setHover(true);
+  };
+
+  const handleMouseOut = () => {
+    setHover(false);
+  };
 
   const handleClick = () => {
     setAlert(true);
@@ -107,21 +234,21 @@ const ProjectCreate = () => {
   };
 
   const getProjectStatusValue = (
-    e: any,
-    value: any
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
   ) => {
     setProjectStatus(value);
   };
 
   const updateProjectState = (
-    e: any,
-    value: any
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
   ) => {
     setProjectState(value);
   };
   const updateProjectCountry = (
-    e:any,
-    value: any
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
   ) => {
     setProjectCountry(value);
   };
@@ -254,13 +381,387 @@ const ProjectCreate = () => {
                     />
                   </Stack>
                 </Grid>
-                <Link href={"/company/create"}>
+                {/* <Link href={"/company/create"}> */}
                   <Tooltip title="Add Customer" arrow>
-                    <IconButton>
+                    <IconButton onClick={handleCustomerModalOpen}>  
                       <PersonAddIcon fontSize="small" />
                     </IconButton>
+                    
                   </Tooltip>
-                </Link>
+                  <Modal
+        open={customerModalOpen}
+      >
+        <Box style={{display:'flex',justifyContent:'center',marginTop:'70px'}} >
+          <Grid item xs={8} >
+          <Card >
+            <Grid item xs ={12} style={{display:'flex',justifyContent:'space-between'}}>
+              <Typography fontWeight='bold' fontSize='20px'pl={3} pt={3}>Add Customer</Typography>
+              <IconButton onClick={handleCustomerModalClose} className={classes.modalCloseIcon}><HighlightOffIcon/></IconButton></Grid>
+          <Grid container style={{display:'flex',justifyContent:'center'}}>
+        <Grid item xs={10}>
+          <Box sx={{ flexGrow: 1 }} padding={2}>
+            <Grid container spacing={2} mt={2}>
+              <Grid item xs={6}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={4}>
+                    <Typography>First Name</Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      id="first-name"
+                      placeholder="First Name"
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      value={customerFirstName}
+                      onChange={updateCustomerFirstName}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <Grid item xs={6}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={4}>
+                    <Typography>Last Name</Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      id="last-name"
+                      placeholder="Last Name"
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      value={customerLastName}
+                      onChange={updateCustomerLastName}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid item xs={6} mt={2}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={4}>
+                    <Typography>Gender</Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Stack spacing={2}>
+                      <Autocomplete
+                        value={gender}
+                        onChange={updateCustomerChange}
+                        freeSolo
+                        id="gender"
+                        disableClearable
+                        size="small"
+                        options={genderType?.map((option) => option.title)}
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            InputProps={{
+                              ...params.InputProps,
+                              type: "search",
+                            }}
+                            placeholder="Select Gender"
+                          />
+                        )}
+                      />
+                    </Stack>
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <Grid item xs={6} mt={2}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={4}>
+                    <Typography>Age</Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      id="age"
+                      placeholder="Age"
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      value={customerAge}
+                      onChange={updateCustomerAge}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid item xs={6} mt={2}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={4}>
+                    <Typography>Email</Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      id="email"
+                      placeholder="Email"
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      value={customerEmail}
+                      onChange={updateCustomerEmail}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid item xs={6} mt={2}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={4}>
+                    <Typography>Phone</Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      id="phone"
+                      placeholder="Phone"
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      value={customerPhone}
+                      onChange={updateCustomerPhone}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <Grid item xs={6} mt={2}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={4}>
+                    <Typography>Status</Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Autocomplete
+                      value={customerStatus}
+                      onChange={updateCustomerStatus}
+                      freeSolo
+                      id="company-status"
+                      disableClearable
+                      size="small"
+                      options={statusSet?.map((option: any) => option)}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          InputProps={{
+                            ...params.InputProps,
+                            type: "search",
+                          }}
+                          placeholder="Select Status"
+                        />
+                      )}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <Grid item xs={6} mt={2}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={4}>
+                    <Typography>Address</Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      id="address"
+                      placeholder="Address"
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      value={customerAddress}
+                      onChange={updateCustomerAddress}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid item xs={6} mt={2}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={4}>
+                    <Typography>Zip Code</Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      id="zipcode"
+                      placeholder="Zip Code"
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      value={customerZipCode}
+                      onChange={updateCustomerZipCode}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <Grid item xs={6} mt={2}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={4}>
+                    <Typography>City</Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Autocomplete
+                      value={customerCity}
+                      onChange={updateCustomerCity}
+                      freeSolo
+                      id="free-solo-2-demo"
+                      disableClearable
+                      options={citySelect.map((option:any) => option.city)}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          InputProps={{
+                            ...params.InputProps,
+                            type: "search",
+                          }}
+                          placeholder="Select City"
+                        />
+                      )}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <Grid item xs={6} mt={2}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={4}>
+                    <Typography>State</Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Autocomplete
+                      value={customerState}
+                      onChange={updateCustomerState}
+                      freeSolo
+                      id="free-solo-2-demo"
+                      disableClearable
+                      options={stateSelect.map((option) => option.state)}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          size="small"
+                          InputProps={{
+                            ...params.InputProps,
+                            type: "search",
+                          }}
+                          placeholder="Select State"
+                        />
+                      )}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <Grid item xs={6} mt={2}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={4}>
+                    <Typography>Country</Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Stack spacing={2}>
+                      <Autocomplete
+                        value={customerCountry}
+                        onChange={updateCustomerCountry}
+                        freeSolo
+                        id="free-solo-2-demo"
+                        disableClearable
+                        options={countrySelect.map((option) => option.country)}
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            size="small"
+                            InputProps={{
+                              ...params.InputProps,
+                              type: "search",
+                            }}
+                            placeholder="Select Country"
+                          />
+                        )}
+                      />
+                    </Stack>
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              
+
+<Grid container mt={5}>
+            <Grid item xs={8.6}></Grid>
+            <Grid item xs={3.4}>
+              <Grid container>
+                <Grid item xs={6}>
+                  <Link href={"/project/create"} style={{ textDecoration: "none" }}>
+                    <Button variant="contained" style={{ width: "73%" }}>
+                      Cancel
+                    </Button>
+                  </Link>
+                </Grid>
+                <Grid item xs={6}>
+                  <Button
+                    variant="contained"
+                    onClick={updateMyCustomerData}
+                    style={{ width: "73%" }}
+                  >
+                    Save
+                  </Button>
+                  <Snackbar
+                    open={alert}
+                    autoHideDuration={8000}
+                    onClose={handleClose}
+                  >
+                    <Alert
+                      onClose={handleClose}
+                      sx={{ width: "100%" }}
+                    >
+                      Customer Created Sucessfully...
+                    </Alert>
+                  </Snackbar>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+
+            </Grid>
+          </Box>
+        </Grid>
+      </Grid>
+          </Card>
+          </Grid>
+        </Box>
+      </Modal>
+                {/* </Link> */}
               </Grid>
             </Grid>
 
@@ -417,30 +918,6 @@ const ProjectCreate = () => {
                 </Grid>
               </Grid>
             </Grid>
-            {/* <Grid item xs={12} display="flex" justifyContent="flex-end">
-              <Grid item xs={2}>
-                <Link
-                  href={"/project"}
-                  passHref
-                  style={{ textDecoration: "none" }}
-                >
-                  <Button variant="contained" size="small">
-                    {" "}
-                    Cancel
-                  </Button>
-                </Link>
-              </Grid>
-              <Grid item xs={1.2}>
-                <Button
-                  variant="contained"
-                  size="small"
-                  onClick={updateMyProjectData}
-                >
-                  Save
-                </Button>
-              </Grid>
-            </Grid> */}
-
             <Grid container mt={5}>
               <Grid item xs={8.6}></Grid>
               <Grid item xs={3.4}>

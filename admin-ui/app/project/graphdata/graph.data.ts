@@ -19,4 +19,15 @@ const countrySelect = [
     { state: "Karnataka" },
     { state: "Jammu & Kashmir" },
   ];
-  export {countrySelect,stateSelect}
+  const citySelect = [
+    { city: "Patna" },
+    { city: "Mumbai" },
+    { city: "Pune" },
+    { city: "Banglore" },
+    { city: "Ahmedabad" },
+    { city: "Kolkata" },
+    { city: "Rajasthan" },
+    { city: "Hyderabad" },
+    { city: "Lucknow" },
+  ]
+  export {countrySelect,stateSelect,citySelect}

@@ -12,6 +12,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Link from "next/link";
 import { useState } from "react";
 import { headerstyle as style } from "./project.style";
+import Person2Icon from '@mui/icons-material/Person2';
+
 
 interface sidebarProps {
   toggleMenu: boolean;
@@ -80,6 +82,19 @@ const ProjectSidebar = ({ toggleMenu }:sidebarProps) => {
             {toggleMenu && (
               <Typography display={{ xs: "none", sm: "none", md: "block" }} style={style.typography}>
                 Customer
+              </Typography>
+            )}
+          </ListItemButton>
+        </Link>
+        <Link href="/user" passHref style={{ textDecoration: "none" }}>
+          <ListItemButton
+            selected={selectedIndex === 5}
+            onClick={(event) => handleListItemClick(event, 5)}
+          >
+            <ListItemIcon><Person2Icon fontSize={"small"} /></ListItemIcon>
+            {toggleMenu && (
+              <Typography display={{ xs: "none", sm: "none", md: "block" }} style={style.typography}>
+                User
               </Typography>
             )}
           </ListItemButton>
