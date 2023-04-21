@@ -21,6 +21,10 @@ const useStyles = makeStyles({
     width: "120px",
     height: "125px",
   },
+  buttonStyle:{
+    width:'73%'
+   }
+  
 });
 
 type UserComponentProps = {
@@ -28,6 +32,7 @@ type UserComponentProps = {
   id: string;
 };
 const UserEditComponent = ({ users, id }: UserComponentProps) => {
+  const classes = useStyles();
   const [userFirstName, setUserFirstName] = useState(users.firstName);
   const [userLastName, setUserLastName] = useState(users.lastName);
   const [gender, setGender] = useState(users.gender);
@@ -43,7 +48,6 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
   const [hover, setHover] = useState(false);
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   const router = useRouter();
-  const classes = useStyles();
   const updateEditMyUserData = async () => {
     try {
       const body = {
@@ -363,7 +367,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                         <Grid container>
                           <Grid item xs={7}>
                             <Link href={"/user"}>
-                              <Button variant="contained" size="small">
+                              <Button variant="contained" className={classes.buttonStyle}>
                                 Cancel
                               </Button>
                             </Link>
@@ -371,7 +375,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                           <Grid item xs={2} ml={1}>
                             <Button
                               variant="contained"
-                              size="small"
+                              className={classes.buttonStyle}
                               onClick={updateEditMyUserData}
                             >
                               Save

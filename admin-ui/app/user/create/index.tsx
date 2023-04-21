@@ -26,6 +26,9 @@ const useStyles = makeStyles({
     width: "120px",
     height: "125px",
   },
+  buttonStyle:{
+    width:'73%'
+   }
 });
 const genderType = [{ title: "Male" }, { title: "Female" }];
 const UserCreateComponent = () => {
@@ -448,7 +451,7 @@ const UserCreateComponent = () => {
                             href={"/user"}
                             style={{ textDecoration: "none" }}
                           >
-                            <Button variant="contained" size="small">
+                            <Button variant="contained" className={classes.buttonStyle}>
                               Cancel
                             </Button>
                           </Link>
@@ -456,7 +459,7 @@ const UserCreateComponent = () => {
                         <Grid item xs={2}>
                           <Button
                             variant="contained"
-                            size="small"
+                            className={classes.buttonStyle}
                             onClick={updateMyUserData}
                           >
                             Save

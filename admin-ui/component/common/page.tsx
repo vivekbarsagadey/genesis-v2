@@ -2,6 +2,17 @@ import { Grid } from "@mui/material";
 import { useSession } from "next-auth/react";
 import React from "react";
 import { HeaderComponent, Logo, SidebarComponent } from "..";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+ headerGridStyle:{
+  backgroundColor: " #EDF2F9",
+   height: "100vh" 
+ },
+ sidebarGridStyle:{
+  ackgroundColor: "white" 
+ }
+});
 const LayoutComponent = ({
   children,
   ...props
@@ -14,6 +25,8 @@ const LayoutComponent = ({
   const handleMenu = () => {
     setShow(!show);
   };
+  const classes = useStyles();
+
   return (
     <>
       {session && (
@@ -28,14 +41,14 @@ const LayoutComponent = ({
             md={show ? 2 : 0.5}
             lg={show ? 2 : 0.5}
             textAlign={show ? "right" : "left"}
-            style={{ backgroundColor: "white" }}
+            className={classes.sidebarGridStyle}
           >
             <Logo handleMenu={handleMenu} show={show} />
             <SidebarComponent show={show} />
           </Grid>
           <Grid
             item
-            style={{ backgroundColor: " #EDF2F9", height: "100vh" }}
+            className={classes.headerGridStyle}
             xs={show ? 10.5 : 10.5}
             sm={show ? 10.5 : 11.5}
             md={show ? 10 : 11.5}
