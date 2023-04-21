@@ -1,66 +1,103 @@
+"use client";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
-import { Box, Grid, IconButton, Typography } from "@mui/material";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
-import Stack from "@mui/material/Stack";
-import Tooltip from "@mui/material/Tooltip";
 import Link from "next/link";
-import IUser from "../user.model";
-import IUserComponentProps from "../user.props";
+import { useRouter } from "next/navigation";
+import { deleteUser } from "../../../services/user.action";
+import { IUser } from "../models";
 
-interface FilterComponentProps extends IUserComponentProps {
-  f: IUser;
-}
+type InfoUserComponentProps = {
+  user: IUser;
+};
 
-const InfoUserComponent = ({ f }: FilterComponentProps) => {
+const InfoUserComponent = ({ user }: InfoUserComponentProps) => {
+  const router = useRouter();
+  const deleteUserHandler = async () => {
+    const response = await deleteUser(user.id);
+    window.location.reload();
+    // router.push("/user");
+  };
+
   return (
     <>
-      <Box>
-        <Grid container className="classes.container">
-          <Grid item xs={0.8}>
-            <Checkbox size="small" />
-          </Grid>
-          <Grid item xs={2.2}>
-            <Typography noWrap>{f.firstName}</Typography>
-          </Grid>
-          <Grid item xs={2.12}>
-            <Typography noWrap>{f.lastName}</Typography>
-          </Grid>
-          <Grid item xs={2.6}>
-            <Typography noWrap>{f.email}</Typography>
-          </Grid>
-          <Grid item xs={2} sm={2}>
-            <Typography noWrap>{f.mobile}</Typography>
-          </Grid>
-          <Grid item xs={2.2} sm={2.2}>
-            <Grid container>
-              <Grid item xs={7.52}>
-                <Typography noWrap>{f.address}</Typography>
+      <Box mt={0.6} mr={2}>
+        <Paper variant="outlined">
+          <Grid container>
+            <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
+              <Grid container ml={1}>
+                <Grid item xs={4}>
+                  <Checkbox size="small" />
+                </Grid>
+                <Grid item xs={6}>
+                  <IconButton>
+                    <RemoveRedEyeIcon fontSize="small" />
+                  </IconButton>
+                </Grid>
               </Grid>
-              <Grid item xs={2}>
-                <Stack spacing={1} sx={{ width: "100%" }}>
-                  <Tooltip title="Delete" arrow>
-                    <IconButton>
-                      <DeleteOutlineIcon />
+            </Grid>
+            <Grid item xs={2}>
+              <Typography variant="body2" noWrap>
+                {user.firstName} {user.lastName}
+              </Typography>
+            </Grid>
+            <Grid item xs={2} mr={1}>
+              <Typography variant="body2" noWrap>
+                {user.email}
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                variant="body2"
+                noWrap
+                display={"flex"}
+                justifyContent={"space-around"}
+              >
+                {user.mobile}
+              </Typography>
+            </Grid>
+            <Grid item xs={2} mr={6}>
+              <Typography
+                variant="body2"
+                noWrap
+                display={"flex"}
+                justifyContent={"space-around"}
+                mr={1}
+              >
+                {user.address}
+              </Typography>
+            </Grid>
+            <Grid item xs={1}>
+              <Grid container>
+                <Grid item xs={4}>
+                  <Tooltip title="Edit">
+                    <Link href={`/user/${user.id}`}>
+                      <IconButton>
+                        <EditIcon fontSize="small" />
+                      </IconButton>
+                    </Link>
+                  </Tooltip>
+                </Grid>
+                <Grid item xs={2}>
+                  <Tooltip title="Delete">
+                    <IconButton
+                      onClick={() => {
+                        deleteUserHandler();
+                      }}
+                    >
+                      <DeleteOutlineIcon fontSize="small" />
                     </IconButton>
                   </Tooltip>
-                </Stack>
-              </Grid>
-              <Grid item xs={1.3}>
-                <Link href={`/user/${f._id}`}>
-                  <Tooltip title="Edit" arrow>
-                    <IconButton size="small">
-                      <EditIcon />
-                    </IconButton>
-                  </Tooltip>
-                </Link>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        </Paper>
       </Box>
     </>
   );
 };
-
 export default InfoUserComponent;
