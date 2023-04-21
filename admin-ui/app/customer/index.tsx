@@ -35,8 +35,8 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }} mt={1}>
-        <Grid container spacing={2}>
+      <Box mt={1} ml={1.5}>
+        <Grid container spacing={1}>
           <Grid item xs={3} md={3} lg={3} sm={3}>
             <CustomerSearchDetails
               customer={customer}
@@ -44,14 +44,14 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
             />
           </Grid>
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
-            <Grid container spacing={1}>
-              <Grid item xs={"auto"}>
+            <Grid container>
+              <Grid item xs={"auto"} mt={0.2}>
                 <FilterComponent
                   customer={customer}
                   onFilterHandler={onSearchHandler}
                 />
               </Grid>
-              <Grid item xs={"auto"}>
+              <Grid item xs={"auto"} mt={0.2}>
                 <ExportComponent customer={copyCustomer} />
               </Grid>
 

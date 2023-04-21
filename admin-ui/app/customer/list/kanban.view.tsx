@@ -37,7 +37,7 @@ const CustomerKanbanView = ({ customer }: ListComponentProps) => {
             <Paper variant="outlined">
               <CardContent>
                 <Typography variant="h6">ACTIVE</Typography>
-                {activeCompanies?.map((activeCustomer, index) => {
+                {activeCompanies.reverse()?.map((activeCustomer, index) => {
                   return (
                     <ActiveCompanyComponent
                       activeCustomer={activeCustomer}
@@ -55,7 +55,7 @@ const CustomerKanbanView = ({ customer }: ListComponentProps) => {
             <Paper variant="outlined">
               <CardContent>
                 <Typography variant="h6">INACTIVE</Typography>
-                {inActiveCustomer?.map((inActiveCustomer, index) => {
+                {inActiveCustomer.reverse()?.map((inActiveCustomer, index) => {
                   return (
                     <InActiveCustomerComponent
                       inActiveCustomer={inActiveCustomer}

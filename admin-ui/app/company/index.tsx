@@ -44,7 +44,7 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
             />
           </Grid>
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
-            <Grid container spacing={1}>
+            <Grid container>
               <Grid item xs={"auto"} mt={0.2}>
                 <FilterComponent
                   companies={companies}

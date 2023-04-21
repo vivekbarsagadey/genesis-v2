@@ -8,6 +8,15 @@ import { Status } from "../models";
 import Autocomplete from "@mui/material/Autocomplete";
 import { updateCompany } from "../../../services/company.action";
 import { countrySelect, stateSelect } from "../graphdata/graph.data";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 type CompanyComponentProps = {
   company: any;
@@ -25,7 +34,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
   const [companyStatus, setCompanyStatus] = useState(company.status);
   const [companyState, setCompanyState] = useState(company.state);
   const [companyCountry, setCompanyCountry] = useState(company.country);
-
+  const [alert, setAlert] = useState(false);
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
   const updateOwnerFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,14 +59,14 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
     setCompanyWebsite(e.target.value);
   };
 
-  const getCompanyStatusValue = (value : any) => {
+  const getCompanyStatusValue = (value: any) => {
     setCompanyStatus(value);
   };
 
-  const updateCompanyState = (value : any) => {
+  const updateCompanyState = (value: any) => {
     setCompanyState(value);
   };
-  const updateCompanyCountry = (value : any) => {
+  const updateCompanyCountry = (value: any) => {
     setCompanyCountry(value);
   };
 
@@ -80,6 +89,25 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const handleClick = () => {
+    setAlert(true);
+  };
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setAlert(false);
+  };
+
+  const updateHandler = () => {
+    handleClick();
+    updateCompanyEditedData();
   };
   return (
     <>
@@ -337,28 +365,34 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={12} mt={2}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={9}></Grid>
-
-              <Grid item xs={3}>
-                <Grid container>
-                  <Grid item xs={6} ml={3}>
-                    <Link href={"/company"} style={{ textDecoration: "none" }}>
-                      <Button variant="contained" size="small">
-                        Cancel
-                      </Button>
-                    </Link>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <Button
-                      variant="contained"
-                      size="small"
-                      onClick={updateCompanyEditedData}
-                    >
-                      Save
+          <Grid container mt={5}>
+            <Grid item xs={8.6}></Grid>
+            <Grid item xs={3.4}>
+              <Grid container>
+                <Grid item xs={6}>
+                  <Link href={"/company"} style={{ textDecoration: "none" }}>
+                    <Button variant="contained" style={{ width: "73%" }}>
+                      Cancel
                     </Button>
-                  </Grid>
+                  </Link>
+                </Grid>
+                <Grid item xs={6}>
+                  <Button
+                    variant="contained"
+                    onClick={updateHandler}
+                    style={{ width: "73%" }}
+                  >
+                    Save
+                  </Button>
+                  <Snackbar
+                    open={alert}
+                    autoHideDuration={8000}
+                    onClose={handleClose}
+                  >
+                    <Alert onClose={handleClose} sx={{ width: "100%" }}>
+                      Company Edit Sucessfully...
+                    </Alert>
+                  </Snackbar>
                 </Grid>
               </Grid>
             </Grid>
