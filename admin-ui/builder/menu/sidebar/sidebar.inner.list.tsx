@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { AccordionDetails, Container } from  "@mui/material";
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import EmailIcon from "@mui/icons-material/Email";
@@ -8,11 +6,18 @@ import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import FormatSizeIcon from "@mui/icons-material/FormatSize";
 import LabelIcon from "@mui/icons-material/Label";
 import LockClockIcon from "@mui/icons-material/LockClock";
-import { styled } from "@mui/material/styles";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
-import { Grid, ListItemIcon, Typography, Paper } from "@mui/material";
+import {
+  AccordionDetails,
+  Container,
+  Grid,
+  ListItemIcon,
+  Typography,
+} from "@mui/material";
 import Collapse from "@mui/material/Collapse";
-import { Case, Default, Switch } from "react-if";
+import { styled } from "@mui/material/styles";
+import { useState } from "react";
+import Switch, { Case, Default } from "react-switch-case";
 import SideBarInnerText from "./sidebar.inner.text";
 
 const TypographyStyle = styled(Typography)(({ theme }) => ({

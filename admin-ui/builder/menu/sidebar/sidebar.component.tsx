@@ -9,13 +9,11 @@ import MuiAccordionSummary, {
   AccordionSummaryProps,
 } from "@mui/material/AccordionSummary";
 import ListItemIcon from "@mui/material/ListItemIcon";
+import { styled } from "@mui/material/styles";
 import React from "react";
-import { Case, Switch } from "react-if";
+import Switch, { Case, Default } from 'react-switch-case';
 import genisys from "../../../data/genisys.json";
 import SideBarInnerList from "./sidebar.inner.list";
-import { styled } from "@mui/material/styles";
-import { Container } from "@material-ui/core";
-
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -44,7 +42,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
-const SidebarComponent = ({ toggleMenu, getComponentId,getGridId }) => {
+const SidebarComponent = ({ toggleMenu, getComponentId, getGridId }) => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
