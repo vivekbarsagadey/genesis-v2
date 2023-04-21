@@ -1,7 +1,8 @@
 "use client";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import {
-  Avatar,Box,
+  Avatar,
+  Box,
   Button,
   Grid,
   IconButton,
@@ -9,17 +10,27 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import Autocomplete from "@mui/material/Autocomplete";
-import FormControl from "@mui/material/FormControl";
-import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Snackbar from "@mui/material/Snackbar";
 import { makeStyles } from "@mui/styles";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import React, { useState } from "react";
 import { createCustomer } from "../../../services/customer.action";
-import { countrySelect, stateSelect, citySelect } from "../grpahdata/graph.data";
+import {
+  citySelect,
+  countrySelect,
+  stateSelect,
+} from "../grpahdata/graph.data";
 import { Status } from "../models";
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const useStyles = makeStyles({
   avtar: {
@@ -147,6 +158,25 @@ const CustomerCreateComponent = () => {
 
   const handleMouseOut = () => {
     setHover(false);
+  };
+
+  const handleClick = () => {
+    setAlert(true);
+  };
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setAlert(false);
+  };
+
+  const updateHandler = () => {
+    handleClick();
+    updateMyCustomerData();
   };
 
   return (
@@ -511,74 +541,41 @@ const CustomerCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-
-              {/* <Grid container mt={5}>
-                <Grid item xs={12}>
+              <Grid container mt={5}>
+                <Grid item xs={8.6}></Grid>
+                <Grid item xs={3.4}>
                   <Grid container>
-                    <Grid item xs={9}></Grid>
-                    <Grid item xs={3}>
-                      <Grid container>
-                        <Grid item xs={7}>
-                          <Link
-                            href={"/customer"}
-                            style={{ textDecoration: "none" }}
-                          >
-                            <Button variant="contained" size="small">
-                              Cancel
-                            </Button>
-                          </Link>
-                        </Grid>
-                        <Grid item xs={2}>
-                          <Button
-                            variant="contained"
-                            size="small"
-                            onClick={updateMyCustomerData}
-                          >
-                            Save
-                          </Button>
-                        </Grid>
-                      </Grid>
+                    <Grid item xs={6}>
+                      <Link
+                        href={"/company"}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <Button variant="contained" style={{ width: "73%" }}>
+                          Cancel
+                        </Button>
+                      </Link>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Button
+                        variant="contained"
+                        onClick={updateHandler}
+                        style={{ width: "73%" }}
+                      >
+                        Save
+                      </Button>
+                      <Snackbar
+                        open={alert}
+                        autoHideDuration={8000}
+                        onClose={handleClose}
+                      >
+                        <Alert onClose={handleClose} sx={{ width: "100%" }}>
+                          Customer Created Sucessfully...
+                        </Alert>
+                      </Snackbar>
                     </Grid>
                   </Grid>
                 </Grid>
-              </Grid> */}
-
-<Grid container mt={5}>
-            <Grid item xs={8.6}></Grid>
-            <Grid item xs={3.4}>
-              <Grid container>
-                <Grid item xs={6}>
-                  <Link href={"/company"} style={{ textDecoration: "none" }}>
-                    <Button variant="contained" style={{ width: "73%" }}>
-                      Cancel
-                    </Button>
-                  </Link>
-                </Grid>
-                <Grid item xs={6}>
-                  <Button
-                    variant="contained"
-                    onClick={updateMyCustomerData}
-                    style={{ width: "73%" }}
-                  >
-                    Save
-                  </Button>
-                  <Snackbar
-                    open={alert}
-                    autoHideDuration={8000}
-                    onClose={handleClose}
-                  >
-                    <Alert
-                      onClose={handleClose}
-                      sx={{ width: "100%" }}
-                    >
-                      Customer Created Sucessfully...
-                    </Alert>
-                  </Snackbar>
-                </Grid>
               </Grid>
-            </Grid>
-          </Grid>
-
             </Grid>
           </Box>
         </Grid>
