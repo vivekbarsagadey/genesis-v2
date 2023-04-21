@@ -9,7 +9,6 @@ import ProjectPieChart from "./pie.chart";
 import { ListComponentProps } from "./props";
 
 const options = {
-  vAxis: { title: "Customer Created" },
   hAxis: { title: "Month" },
   seriesType: "bars",
   series: { type: "line" },
