@@ -55,7 +55,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
     setGraphView(value);
   };
   const statusData = [
-    ["Status", "Users"],
+    ["Status", "user"],
     ["ACTIVE", user.filter((item) => item.status === "ACTIVE").length],
     ["INACTIVE", user.filter((item) => item.status === "INACTIVE").length],
   ];

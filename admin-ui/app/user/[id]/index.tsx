@@ -1,5 +1,4 @@
 "use client";
-import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import {Avatar,Box,Button,Grid,IconButton,Stack,TextField,Typography} from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import { makeStyles } from "@mui/styles";
@@ -10,14 +9,7 @@ import { updateUser } from "../../../services/user.action";
 import {citySelect,countrySelect,stateSelect,} from "../graphdata/graphdata.data";
 import { Status } from "../models";
 
-<<<<<<< HEAD
 const genderType = [{ title: "Male" }, { title: "Female" }];
-=======
-
-interface IUserProp {
-  user: IUser | undefined;
-}
->>>>>>> 5ea9868b9c91d9d66c81f7ce7ff5573ea14de14d
 
 const useStyles = makeStyles({
   avtar: {
@@ -48,7 +40,6 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
   const [userCity, setUserCity] = useState(users.city);
   const [userState, setUserState] = useState(users.state);
   const [userCountry, setUserCountry] = useState(users.country);
-  const [userProfilePic, setUserProfilePic] = useState(users.profilePic);
   const [hover, setHover] = useState(false);
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   const router = useRouter();
@@ -68,7 +59,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
         city: userCity,
         state: userState,
         country: userCountry,
-        profilePic: userProfilePic,
+        
       };
       await updateUser(id, body);
       await router.push("/user");
@@ -111,9 +102,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
   ) => {
     setUserCity(value);
   };
-  const updateUserProfilePic = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserProfilePic(e.target.value);
-  };
+  
   const updateUserChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     value: string
@@ -140,7 +129,6 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
   };
   return (
     <>
-<<<<<<< HEAD
       <Box>
         <Grid container>
           <Grid item xs={12} mt={2} ml={2}>
@@ -149,36 +137,6 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
         </Grid>
 
         <Grid container style={{ display: "flex" }}>
-          <Grid item xs={2}>
-            <Grid item xs={4}>
-              <>
-                <input
-                  type="file"
-                  id="upload"
-                  accept="image/*"
-                  style={{ display: "none" }}
-                  value={userProfilePic}
-                  onChange={updateUserProfilePic}
-                />
-                <label htmlFor="upload">
-                  <IconButton color="primary"
-                    aria-label="upload picture" component="Image" type="submit">
-                    <Avatar id="avatar" onMouseOver={handleMouseIn} onMouseOut={handleMouseOut}
-                     className={classes.avtar}>
-                      {hover ? (
-                        <span>
-                          <Typography variant="body2">Upload</Typography>
-                          <CameraAltIcon />
-                        </span>
-                      ) : (
-                        ""
-                      )}
-                    </Avatar>
-                  </IconButton>
-                </label>
-              </>
-            </Grid>
-          </Grid>
           <Grid item xs={10}>
             <Box sx={{ flexGrow: 1 }} padding={2}>
               <Grid container spacing={2}>
@@ -434,76 +392,6 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
           </Grid>
         </Grid>
       </Box>
-=======
-      <Typography variant="h6" pb={3}>
-        Create Form
-      </Typography>
-
-      <Grid container p={4}>
-        <Grid item xs={12} mb={3} pl={1}></Grid>
-        <Grid item xs={12} sm={6} md={4} lg={4} pl={1} pr={1}>
-          <Typography>First Name</Typography>
-          <TextField fullWidth {...register("firstName")} size="small" />
-          <Typography>{errors.firstName?.message}</Typography>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={4} pl={1} pr={1}>
-          <Typography>Last Name</Typography>
-          <TextField fullWidth {...register("lastName")} size="small" />
-          <Typography>{errors.lastName?.message}</Typography>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={4} pl={1} pr={1}>
-          <Typography>Email</Typography>
-          <TextField
-            type="email"
-            fullWidth
-            {...register("email")}
-            size="small"
-          />
-          <Typography>{errors.email?.message}</Typography>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={4} pl={1} pr={1}>
-          <Typography>Mobile</Typography>
-          <TextField fullWidth {...register("mobile")} size="small" />
-          <Typography>{errors.mobile?.message}</Typography>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={4} pl={1} pr={1}>
-          <Typography>Address</Typography>
-          <TextField fullWidth {...register("address")} size="small" />
-          <Typography>{errors.address?.message}</Typography>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={4} pl={1} pr={1}>
-          <Typography>State</Typography>
-
-          <span>{errors.country?.message}</span>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={4} pl={1} pr={1}>
-          <Typography>Country</Typography>
-          <span>{errors.country?.message}</span>
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={4} pl={1} pr={1}>
-          <Typography>PinCode</Typography>
-          <TextField fullWidth {...register("pinCode")} size="small" />
-          <Typography>{errors.pinCode?.message}</Typography>
-        </Grid>
-
-        <Grid item xs={12} sm={12} md={12} lg={12} mt={2} pl={1} pr={1}>
-          <Grid container>
-            <Grid
-              item
-              xs={12}
-             
-            >
-              <Link href={"/user"}>
-                <Button variant="contained">Close</Button>
-              </Link>
-              <Button type="submit" variant="contained">
-                Submit
-              </Button>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
->>>>>>> 5ea9868b9c91d9d66c81f7ce7ff5573ea14de14d
     </>
   );
 };

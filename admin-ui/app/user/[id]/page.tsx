@@ -2,17 +2,7 @@
 import { use } from "react";
 import UserEditComponent from ".";
 
-<<<<<<< HEAD
 import { findById } from "../../../services/api.service";
-=======
-const page = () => {
-  return (
-    <>
-      <UserComponent/>
-    </>
-  )
-}
->>>>>>> 5ea9868b9c91d9d66c81f7ce7ff5573ea14de14d
 
 type User = {
   firstName: string;
