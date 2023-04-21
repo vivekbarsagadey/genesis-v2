@@ -25,7 +25,7 @@ const ProjectGridView = ({ projects }: ListComponentProps) => {
           {paginationHandler
             .currentData()
             .reverse()
-            ?.map((item) => {
+            ?.map((item : any) => {
               return (
                 <Grid item xs={4} md={4} sm={4} lg={4} key={item.id}>
                   <Paper variant="outlined">

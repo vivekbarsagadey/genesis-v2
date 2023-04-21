@@ -58,7 +58,7 @@ const SignIn = ({}): JSX.Element => {
             label="Email"
             id="email"
             // getData={setErrorState}
-            icon={<MailIcon/>}
+            // icon={<MailIcon/>}
             
           />
           <InputComponent
@@ -67,7 +67,7 @@ const SignIn = ({}): JSX.Element => {
             label="Password"
             id="password"
             // getData={setErrorState}
-            icon={<LockIcon/>} 
+            // icon={<LockIcon/>} 
           />
           <InputComponent
             type="text"
@@ -75,7 +75,7 @@ const SignIn = ({}): JSX.Element => {
             label="Text"
             id="text"
             // getData={setErrorState}
-            icon={<AssignmentIcon/>}
+            // icon={<AssignmentIcon/>}
           />
           <InputComponent
             type="number"
@@ -83,7 +83,7 @@ const SignIn = ({}): JSX.Element => {
             label="Number"
             id="number"
             // getData={setErrorState}
-            icon={<CallIcon/>}
+            // icon={<CallIcon/>}
           />
         </Grid>
       </Grid>

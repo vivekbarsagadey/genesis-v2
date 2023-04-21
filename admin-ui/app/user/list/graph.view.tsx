@@ -67,10 +67,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
       user.filter((item) => item.state === "Madhya Pradesh").length,
     ],
     ["UP", user.filter((item) => item.state === "UP").length],
-    [
-      "Maharastra",
-      user.filter((item) => item.state === "Maharastra").length,
-    ],
+    ["Maharastra", user.filter((item) => item.state === "Maharastra").length],
     ["Punjab", user.filter((item) => item.state === "Punjab").length],
     ["UK", user.filter((item) => item.state === "UK").length],
     ["Gujrat", user.filter((item) => item.state === "Gujrat").length],
@@ -83,10 +80,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
   const countryData = [
     ["user", "Country"],
     ["India", user.filter((item) => item.country === "India").length],
-    [
-      "Australia",
-      user.filter((item) => item.country === "Australia").length,
-    ],
+    ["Australia", user.filter((item) => item.country === "Australia").length],
     ["America", user.filter((item) => item.country === "America").length],
     ["Spain", user.filter((item) => item.country === "Spain").length],
     ["US", user.filter((item) => item.country === "US").length],
@@ -184,21 +178,19 @@ const UserGraphView = ({ user }: ListComponentProps) => {
   ];
   //Base Value
   const updateGraphBase = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.SyntheticEvent<Element, Event>,
     value: string
   ) => {
     setGrpahBase(value);
   };
   // First graph value
   const updateFirstGraph = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setGrpah1(value);
   };
   const updateSecondGraph = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setGraph2(value);
   };
@@ -209,7 +201,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
       user
         .filter((ele) => ele.country === "India")
         .filter((ele) => ele.status === "ACTIVE").length,
-        user
+      user
         .filter((ele) => ele.country === "India")
         .filter((ele) => ele.status === "INACTIVE").length,
     ],
@@ -218,7 +210,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
       user
         .filter((ele) => ele.country === "Australia")
         .filter((ele) => ele.status === "ACTIVE").length,
-        user
+      user
         .filter((ele) => ele.country === "Australia")
         .filter((ele) => ele.status === "INACTIVE").length,
     ],
@@ -227,7 +219,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
       user
         .filter((ele) => ele.country === "America")
         .filter((ele) => ele.status === "ACTIVE").length,
-        user
+      user
         .filter((ele) => ele.country === "America")
         .filter((ele) => ele.status === "INACTIVE").length,
     ],
@@ -236,7 +228,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
       user
         .filter((ele) => ele.country === "Spain")
         .filter((ele) => ele.status === "ACTIVE").length,
-        user
+      user
         .filter((ele) => ele.country === "Spain")
         .filter((ele) => ele.status === "INACTIVE").length,
     ],
@@ -245,7 +237,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
       user
         .filter((ele) => ele.country === "US")
         .filter((ele) => ele.status === "ACTIVE").length,
-        user
+      user
         .filter((ele) => ele.country === "US")
         .filter((ele) => ele.status === "INACTIVE").length,
     ],
@@ -254,7 +246,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
       user
         .filter((ele) => ele.country === "UK")
         .filter((ele) => ele.status === "ACTIVE").length,
-        user
+      user
         .filter((ele) => ele.country === "UK")
         .filter((ele) => ele.status === "INACTIVE").length,
     ],
@@ -263,7 +255,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
       user
         .filter((ele) => ele.country === "Dubai")
         .filter((ele) => ele.status === "ACTIVE").length,
-        user
+      user
         .filter((ele) => ele.country === "Dubai")
         .filter((ele) => ele.status === "INACTIVE").length,
     ],
@@ -272,7 +264,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
       user
         .filter((ele) => ele.country === "Srilanka")
         .filter((ele) => ele.status === "ACTIVE").length,
-        user
+      user
         .filter((ele) => ele.country === "Srilanka")
         .filter((ele) => ele.status === "INACTIVE").length,
     ],
@@ -281,7 +273,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
       user
         .filter((ele) => ele.country === "Thailand")
         .filter((ele) => ele.status === "ACTIVE").length,
-        user
+      user
         .filter((ele) => ele.country === "Thailand")
         .filter((ele) => ele.status === "INACTIVE").length,
     ],

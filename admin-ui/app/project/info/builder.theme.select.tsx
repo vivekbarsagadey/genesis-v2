@@ -35,6 +35,9 @@ const useStyles = makeStyles({
   }
 });
 
+type IBuilderTheme={
+  handleCloseTheme: ()=>void;
+}
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement;
@@ -44,7 +47,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const BuilderThemeComponent = ({ handleCloseTheme }) => {
+const BuilderThemeComponent = ({ handleCloseTheme } :IBuilderTheme ) => {
   const classes = useStyles();
   const [themes, setThemes] = React.useState([]);
   const [checkbox, setCheckbox] = React.useState("checkbox");
@@ -128,7 +131,7 @@ const BuilderThemeComponent = ({ handleCloseTheme }) => {
             </Grid>
           </Grid>
           <Grid container spacing={4} padding={3}>
-            {themes?.map((theme, index) => {
+            {themes?.map(({theme, index}: any) => {
               return (
                 <Grid item xs={4} key={index}>
                   <Grid container display="flex" justifyContent="space-around">

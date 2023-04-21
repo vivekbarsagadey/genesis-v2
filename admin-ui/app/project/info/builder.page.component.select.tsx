@@ -26,13 +26,16 @@ const useStyles = makeStyles({
     left: "45%",
     margin: "-50px 0 0 -50px",
   },
-  pagesMainGrid:{
-    background: "#0f172a", 
-    height: "120vh" 
-  }
+  pagesMainGrid: {
+    background: "#0f172a",
+    height: "120vh",
+  },
 });
+type IbuilderProps = {
+  handleClose: () => void;
+};
 
-const BuilderPageSelectComponent = ({ handleClose }) => {
+const BuilderPageSelectComponent = ({ handleClose }: IbuilderProps) => {
   const classes = useStyles();
   const [blankPage, setBlankPage] = useState(false);
   const [loginPage, setLoginPage] = useState(false);
@@ -44,7 +47,7 @@ const BuilderPageSelectComponent = ({ handleClose }) => {
   const [settingPage, setSettingPage] = useState(false);
   const [pages, setPages] = React.useState([]);
 
-  const [count, setCount] = useState([]);
+  const [count, setCount] = useState<string[]>([]);
 
   const fetchData = async () => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/pages`);
@@ -128,7 +131,6 @@ const BuilderPageSelectComponent = ({ handleClose }) => {
         phone: "",
       },
       pages: count,
-      
     };
 
     createPage(jsonData);
@@ -153,7 +155,7 @@ const BuilderPageSelectComponent = ({ handleClose }) => {
 
         <Grid item xs={9} className={classes.pagesMainGrid}>
           <Grid container spacing={4} padding={3}>
-            {pages?.map((page, index) => {
+            {pages?.map(({ page, index }: any) => {
               return (
                 <Grid item xs={3} key={index}>
                   <Grid container display="flex" justifyContent="space-around">

@@ -200,8 +200,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
 
   // First graph value
   const updateFirstGraph = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setGrpah1(value);
   };

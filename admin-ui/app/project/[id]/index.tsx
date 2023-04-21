@@ -1,7 +1,7 @@
 import React from "react";
 import BuilderHome from "../../../builder";
 
-const ProjectEditComponent = ({ id }) => {
+const ProjectEditComponent = ({ id } : any) => {
   return (
     <>
       {/* <BuilderHome id={id} /> */}

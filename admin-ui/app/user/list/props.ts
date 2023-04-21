@@ -1,4 +1,4 @@
-import { IUser } from "../../user/models";
+import IUser from "../user.model";
 export interface ListComponentProps {
-user: Array<IUser>;
+  user: Array<IUser>;
 }

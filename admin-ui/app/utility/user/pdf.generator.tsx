@@ -8,7 +8,7 @@ type UserProps = {
   copyUserData: Array<IUser>;
 };
 
-const UserPdfGenerator = ({ copyUserData }: UserProps) => {
+const UserPdfGenerator = ({ copyUserData }: any) => {
   const exportPDF = async () => {
     const fileName = `company-list-${new Date().toISOString().slice(0, 10)}`;
     const headers = [["Company Name", "Email", "Contact", "Address"]];

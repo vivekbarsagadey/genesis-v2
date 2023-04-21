@@ -16,7 +16,7 @@ export default function RootLayout({children,...props}: { children: React.ReactN
     <html>
       <head></head>
       <body>
-        <SessionProvider session={props?.session}>
+        <SessionProvider session={(props as any).session}>
           <QueryClientProvider client={queryClient}>
             <ThemeProvider theme={theme}>
               <CssBaseline />

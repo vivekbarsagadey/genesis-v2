@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
-import IUserComponentProps from "../user.props";
+import IUserComponentProps from "./props";
 import useGridPagination from "./grid.pagination";
 interface GridComponentProps extends IUserComponentProps {}
 

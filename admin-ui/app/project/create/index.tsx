@@ -30,6 +30,7 @@ import {
   stateSelect,
   citySelect,
 } from "../graphdata/graph.data";
+import { ICompany } from "../../company/models";
 
 const useStyles = makeStyles({
   avtar: {
@@ -242,26 +243,23 @@ const ProjectCreate = () => {
     setProjectName(e.target.value);
   };
 
-  const updateCustomerName = (e: React.SyntheticEvent, value: string) => {
+  const updateCustomerName = (e: React.SyntheticEvent<Element, Event>,value : string) => {
     setCustomerName(value);
   };
 
   const getProjectStatusValue = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setProjectStatus(value);
   };
 
   const updateProjectState = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setProjectState(value);
   };
   const updateProjectCountry = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: React.SyntheticEvent<Element, Event>,value : string
   ) => {
     setProjectCountry(value);
   };
@@ -383,7 +381,7 @@ const ProjectCreate = () => {
                       freeSolo
                       id="free-solo-2-demo"
                       disableClearable
-                      options={companyList?.map((company) => company.name)}
+                      options={companyList?.map((company : ICompany) => company.name)}
                       renderInput={(params) => (
                         <TextField
                           {...params}

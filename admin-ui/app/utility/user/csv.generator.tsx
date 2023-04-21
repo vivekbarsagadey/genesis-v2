@@ -7,7 +7,7 @@ type UserProps = {
   copyUserData: Array<IUser>;
 };
 
-const UserCsvGenerator = ({ copyUserData }: UserProps) => {
+const UserCsvGenerator = ({ copyUserData }: any) => {
   return (
     <Typography variant="subtitle1">
       <CSVLink

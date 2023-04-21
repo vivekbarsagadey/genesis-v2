@@ -10,6 +10,8 @@ interface IProject{
     status: string;
     length:number;
     projectJson:JSON;
+    email : string;
+    createdAt: string;
     
 }
 
