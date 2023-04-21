@@ -107,21 +107,21 @@ const ProjectCreate = () => {
   };
 
   const getProjectStatusValue = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: any,
+    value: any
   ) => {
     setProjectStatus(value);
   };
 
   const updateProjectState = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: any,
+    value: any
   ) => {
     setProjectState(value);
   };
   const updateProjectCountry = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e:any,
+    value: any
   ) => {
     setProjectCountry(value);
   };

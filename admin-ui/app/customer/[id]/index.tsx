@@ -102,32 +102,32 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
     setCustomerZipCode(e.target.value);
   };
   const updateCustomerState = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: any,
+    value: any
   ) => {
     setCustomerState(value);
   };
   const updateCustomerCity = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: any,
+    value: any
   ) => {
     setCustomerCity(value);
   };
   const updateCustomerChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: any,
+    value: any
   ) => {
     setGender(value);
   };
   const updateCustomerCountry = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: any,
+    value: any
   ) => {
     setCustomerCountry(value);
   };
   const updateCustomerStatus = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: any,
+    value: any
   ) => {
     setCustomerStatus(value);
   };

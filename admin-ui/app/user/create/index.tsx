@@ -91,32 +91,32 @@ const UserCreateComponent = () => {
     setUserZipCode(e.target.value);
   };
   const updateUserChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: any,
+    value: any
   ) => {
     setGender(value);
   };
   const updateUserCountry = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: any,
+    value: any
   ) => {
     setUserCountry(value);
   };
   const updateUserState = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: any,
+    value: any
   ) => {
     setUserState(value);
   };
   const updateUserCity = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: any,
+    value: any
   ) => {
     setUserCity(value);
   };
   const updateUserStatus = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: any,
+    value: any
   ) => {
     setUserStatus(value);
   };

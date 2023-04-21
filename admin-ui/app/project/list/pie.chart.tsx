@@ -5,11 +5,11 @@ import { Case, Default, Switch } from "react-if";
 import { ListComponentProps } from "./props";
 
 type projectChartProps = {
-  graphView: string;
-  statusData: string;
-  countryData: string;
-  stateData: string;
-  applicationData: string;
+  graphView: any;
+  statusData: any;
+  countryData: any;
+  stateData: any;
+  applicationData: any;
 };
 
 const ProjectPieChart = ({

@@ -90,13 +90,13 @@ const CompanyCreateComponent = () => {
   const updateCompanyWebsite = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyWebsite(e.target.value);
   };
-  const updateCompanyState = (value : any) => {
+  const updateCompanyState = (e: any,value : any) => {
     setCompanyState(value);
   };
-  const updateCompanyCountry = (value : any) => {
+  const updateCompanyCountry = (e: any,value : any) => {
     setCompanyCountry(value);
   };
-  const getCompanyStatusValue = (value : any) => {
+  const getCompanyStatusValue = (e: any,value : any) => {
     setCompanyStatus(value);
   };
 

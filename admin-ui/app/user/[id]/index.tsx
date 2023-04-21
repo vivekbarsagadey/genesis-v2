@@ -108,20 +108,20 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
     setUserProfilePic(e.target.value);
   };
   const updateUserChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: any,
+    value: any
   ) => {
     setGender(value);
   };
   const updateUserCountry = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: any,
+    value: any
   ) => {
     setUserCountry(value);
   };
   const updateUserStatus = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
+    e: any,
+    value: any
   ) => {
     setUserStatus(value);
   };

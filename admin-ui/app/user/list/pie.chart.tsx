@@ -2,11 +2,11 @@ import { Grid } from "@mui/material";
 import { Chart } from "react-google-charts";
 import { Case, Default, Switch } from "react-if";
 type userChartProps = {
-  graphView: string;
-  statusData: string;
-  countryData: string;
-  stateData: string;
-  cityData: string;
+  graphView: any;
+  statusData: any;
+  countryData: any;
+  stateData: any;
+  cityData: any;
 };
 const UserPieChart = ({
   cityData,
