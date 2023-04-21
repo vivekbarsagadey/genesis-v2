@@ -36,12 +36,12 @@ const ListViewComponent = ({ companies }: ListComponentProps) => {
                 Company Name
               </Typography>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2.4}>
               <Typography variant="subtitle2" noWrap>
                 Email
               </Typography>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2.3}>
               <Typography variant="subtitle2" noWrap>
                 Contact
               </Typography>

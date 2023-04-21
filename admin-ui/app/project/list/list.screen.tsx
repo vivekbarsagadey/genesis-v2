@@ -32,7 +32,7 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
                 </Grid>
                 <Grid item xs={6}>
                   <IconButton>
-                    <RemoveRedEyeIcon fontSize="small" />
+                    {/* <RemoveRedEyeIcon fontSize="small" /> */}
                   </IconButton>
                 </Grid>
               </Grid>

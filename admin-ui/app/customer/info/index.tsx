@@ -66,7 +66,7 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
     }
     setAlert(false);
   };
- 
+
   const removeData = (customer: any) => {
     window.location.reload();
     deleteCustomer(customer.id);
@@ -82,28 +82,27 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
                 <Grid item xs={5}>
                   <Checkbox size="small" />
                 </Grid>
-                <Grid item xs={4}>
-                  <IconButton>
-                    <RemoveRedEyeIcon fontSize="small" />
-                  </IconButton>
-                </Grid>
               </Grid>
             </Grid>
+
             <Grid item xs={3}>
               <Typography variant="body2" noWrap>
                 {customer.firstName} {customer.lastName}
               </Typography>
             </Grid>
+
             <Grid item xs={3}>
               <Typography variant="body2" noWrap>
                 {customer.email}
               </Typography>
             </Grid>
+
             <Grid item xs={2}>
               <Typography variant="body2" noWrap display={"flex"}>
                 {customer.mobile}
               </Typography>
             </Grid>
+
             <Grid item xs={2}>
               <Typography variant="body2" noWrap display={"flex"}>
                 {customer.address}
