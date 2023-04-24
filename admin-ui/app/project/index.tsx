@@ -46,21 +46,21 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
           </Grid>
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
             <Grid container spacing={1}>
-              <Grid item xs={"auto"}>
+              <Grid item xs={"auto"} mt={0.3}>
                 <ProjectFilterComponent
                   projects={projects}
                   onFilterHandler={onSearchHandler}
                 />
               </Grid>
-              <Grid item xs={"auto"}>
+              <Grid item xs={"auto"} mt={0.2}>
                 <ProjectExportComponent projects={copyProject} />
               </Grid>
 
-              <Grid item xs={"auto"}>
+              <Grid item xs={"auto"} mt={0.2}>
                 <PrintComponent/>
               </Grid>
 
-              <Grid item xs={10}>
+              <Grid item xs={9}>
                 <ProjectViewComponent onViewSelect={onViewSelect} />
               </Grid>
             </Grid>

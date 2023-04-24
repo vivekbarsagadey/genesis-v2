@@ -36,6 +36,15 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
     }
     return false;
   });
+
+
+  const comparisionType = [
+    { title: 'Date' },
+  { title: 'Month' },
+  { title: 'Year' },
+  ]
+
+
   const statusData = [
     ["Status", "Users"],
     ["ACTIVE", projects.filter((item) => item.status === "ACTIVE").length],
@@ -183,9 +192,9 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
   ];
   return (
     <Box mr={2} mt={2}>
-      <Grid container>
-        <Grid item xs={3.3}></Grid>
-        <Grid item xs={3}>
+      <Grid container spacing={2}>
+        <Grid item xs={3}></Grid>
+        <Grid item xs={3.5}>
           <Stack>
             <Autocomplete
               value={graphView}
@@ -209,6 +218,31 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
             />
           </Stack>
         </Grid>
+
+        <Grid item xs={3.5}>
+          <Stack>
+          <Autocomplete
+        freeSolo
+        id="free-solo-2-demo"
+        disableClearable
+        size="small"
+        options={comparisionType.map((option) => option.title)}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            InputProps={{
+              ...params.InputProps,
+              type: 'search',
+            }}
+            placeholder="Select Graph View"
+                  fullWidth
+          />
+        )}
+      />
+          </Stack>
+        </Grid>
+
+
       </Grid>
 
       <Grid container>
