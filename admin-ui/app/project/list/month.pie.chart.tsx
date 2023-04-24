@@ -9,7 +9,7 @@ const options = {
   series: { type: 'line' },
 };
 const graphViewTitle = {
-  hAxis: { title: 'Day' },
+  // hAxis: { title: 'Day' },
   seriesType: 'bars',
   series: { type: 'line' },
 };
@@ -23,7 +23,7 @@ const MonthPieChart = ({
   projects,
   comparisiongraphView,
 }: projectChartProps) => {
-  const createdDataData = [
+  const month = [
     ['Month', 'Count'],
     [
       'JAN',
@@ -98,16 +98,15 @@ const MonthPieChart = ({
         .filter((d) => d === 'Dec').length,
     ],
   ];
-  const createdTodaysData = [
-    ['Month', 'Count'],
-    [
-      '',
-      projects
-        .map((ele) => moment(ele.createdAt).format('DDD'))
-        .filter((d) => d === 'Day').length,
-    ],
-  ];
-  const createdDaysData = [
+  let todayDate = new Date().toISOString().slice(0, 10);
+
+  console.log(
+    'xxxx',
+    projects.map((ele) => ele.createdAt)
+  );
+
+  const today = [['Month', 'Count'], [`${todayDate}`,12]];
+  const sevenDays = [
     ['Month', 'Count'],
     [
       'Sun',
@@ -161,7 +160,7 @@ const MonthPieChart = ({
               chartType="ComboChart"
               width="100%"
               height="400px"
-              data={createdTodaysData}
+              data={today}
               options={graphViewTitle}
             />
           </Case>
@@ -171,7 +170,7 @@ const MonthPieChart = ({
               chartType="ComboChart"
               width="100%"
               height="400px"
-              data={createdDaysData}
+              data={sevenDays}
               options={graphViewTitle}
             />
           </Case>
@@ -180,7 +179,7 @@ const MonthPieChart = ({
               chartType="ComboChart"
               width="100%"
               height="400px"
-              data={createdDataData}
+              data={month}
               options={options}
             />
           </Default>
