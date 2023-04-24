@@ -36,7 +36,6 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
   };
 
   const myRef = useRef(null);
-
   const handlePrint = useReactToPrint({
     content: () => myRef.current,
   });
@@ -103,12 +102,12 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
               <CustomerCalendarView customer={copyCustomer} />
             </Case>
             <Default>
-              <div ref={myRef}>
+              <Grid ref={myRef}>
                 <CustomerListScereen
                   customer={copyCustomer}
                   setCopyCustomer={setCopyCustomer}
                 />
-              </div>
+              </Grid>
             </Default>
           </Switch>
         </Grid>
