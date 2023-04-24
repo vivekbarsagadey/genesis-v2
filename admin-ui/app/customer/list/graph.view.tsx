@@ -299,7 +299,19 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
   const CompariosnData = [[graphBase, graph1, graph2]];
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box>
+      <Grid container>
+        <Grid item xs={4}></Grid>
+        <Grid item xs={3}>
+          <Stack>
+          <Autocomplete value={graphView} onChange={updateGrpahView}
+          freeSolo id="customer-select-type" disableClearable size="small"
+          options={graphTypeVal?.map((option) => option)} renderInput={(params) => (
+           <TextField {...params} InputProps={{ ...params.InputProps, type: "search", }}
+           placeholder="Select Graph View"/> )}/>
+          </Stack>
+        </Grid>
+      </Grid>
         <Grid container spacing={2}>
           <Grid item xs={6}>
             <Grid container spacing={2}>
@@ -311,29 +323,6 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
                   statusData={statusData}
                   countryData={countryData}
                 />
-              </Grid>
-              <Grid item xs={3} mt={2}>
-                <Stack>
-                  <Autocomplete
-                    value={graphView}
-                    onChange={updateGrpahView}
-                    freeSolo
-                    id="customer-select-type"
-                    disableClearable
-                    size="small"
-                    options={graphTypeVal?.map((option) => option)}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        InputProps={{
-                          ...params.InputProps,
-                          type: "search",
-                        }}
-                        placeholder="Select Graph View"
-                      />
-                    )}
-                  />
-                </Stack>
               </Grid>
             </Grid>
           </Grid>

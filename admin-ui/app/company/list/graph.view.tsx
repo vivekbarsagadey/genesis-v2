@@ -2,11 +2,11 @@ import { Box, Grid } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
+import moment from "moment";
 import React, { useState } from "react";
+import { Chart } from "react-google-charts";
 import CompanyPieChart from "./pie.chart";
 import { ListComponentProps } from "./props";
-import moment from "moment";
-import { Chart } from "react-google-charts";
 
 const options = {
   vAxis: { title: "Customer Created" },
@@ -168,6 +168,17 @@ const CustomerGraphView = ({ companies }: ListComponentProps) => {
   return (
     <Box mr={2}>
       <Grid container>
+        <Grid item xs={4}></Grid>
+        <Grid item xs={3}>
+          <Stack>
+          <Autocomplete value={graphView} onChange={updateGrpahView} freeSolo id="customer-select-type"
+          disableClearable size="small" options={graphTypeVal?.map((option) => option)} renderInput={(params) => (
+          <TextField {...params} InputProps={{ ...params.InputProps, type: "search", }}
+          placeholder="Select Graph View"/>)} />
+          </Stack>
+        </Grid>
+      </Grid>
+      <Grid container>
         <Grid item xs={6}>
           <Grid container>
             <Grid item xs={9}>
@@ -178,29 +189,7 @@ const CustomerGraphView = ({ companies }: ListComponentProps) => {
                 countryData={countryData}
               />
             </Grid>
-            <Grid item xs={3}>
-              <Stack>
-                <Autocomplete
-                  value={graphView}
-                  onChange={updateGrpahView}
-                  freeSolo
-                  id="customer-select-type"
-                  disableClearable
-                  size="small"
-                  options={graphTypeVal?.map((option) => option)}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      InputProps={{
-                        ...params.InputProps,
-                        type: "search",
-                      }}
-                      placeholder="Select Graph View"
-                    />
-                  )}
-                />
-              </Stack>
-            </Grid>
+           
           </Grid>
         </Grid>
         <Grid item xs={6}>
