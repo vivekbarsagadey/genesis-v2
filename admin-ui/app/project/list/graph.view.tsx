@@ -181,11 +181,10 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
         .filter((d) => d === "Dec").length,
     ],
   ];
-
   return (
     <Box mr={2} mt={2}>
       <Grid container>
-        <Grid item xs={4}></Grid>
+        <Grid item xs={3.3}></Grid>
         <Grid item xs={3}>
           <Stack>
             <Autocomplete

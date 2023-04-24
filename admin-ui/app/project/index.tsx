@@ -11,6 +11,7 @@ import ProjectGraphView from "./list/graph.view";
 import ProjectGridView from "./list/grid.view";
 import ProjectKanbanView from "./list/kanban.view";
 import ProjectListViewComponent from "./list/list.screen";
+import PrintComponent from "./print";
 import IProject from "./project.model";
 import ProjectSearch from "./search";
 import ProjectViewComponent from "./view";
@@ -45,14 +46,18 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
           </Grid>
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
             <Grid container spacing={1}>
-              <Grid item xs={"auto"} mt={0.2}>
+              <Grid item xs={"auto"}>
                 <ProjectFilterComponent
                   projects={projects}
                   onFilterHandler={onSearchHandler}
                 />
               </Grid>
-              <Grid item xs={"auto"} mt={0.2}>
+              <Grid item xs={"auto"}>
                 <ProjectExportComponent projects={copyProject} />
+              </Grid>
+
+              <Grid item xs={"auto"}>
+                <PrintComponent/>
               </Grid>
 
               <Grid item xs={10}>

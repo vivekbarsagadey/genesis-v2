@@ -18,6 +18,7 @@ const CustomerPieChart = ({
   stateData,
 }: customerChartProps) => {
   return (
+    
     <>
       <Grid item xs={12}>
         <Switch>
@@ -57,7 +58,7 @@ const CustomerPieChart = ({
           <Default>
             <Chart
               chartType="PieChart"
-              data={cityData}
+              data={statusData}
               width={"100%"}
               height={"320px"}
             />

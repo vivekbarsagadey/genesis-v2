@@ -15,7 +15,7 @@ const options = {
   series: { type: "line" },
 };
 const CustomerGraphView = ({ companies }: ListComponentProps) => {
-  const [graphView, setGraphView] = useState<string>("Status");
+  const [graphView, setGraphView] = useState<string>("status");
   const updateGrpahView = (
     e: React.SyntheticEvent<Element, Event>,
     value: string
@@ -162,11 +162,10 @@ const CustomerGraphView = ({ companies }: ListComponentProps) => {
         .filter((d) => d === "Dec").length,
     ],
   ];
-
   return (
     <Box mr={2}>
       <Grid container>
-        <Grid item xs={4}></Grid>
+        <Grid item xs={3.3}></Grid>
         <Grid item xs={3}>
           <Stack>
           <Autocomplete value={graphView} onChange={updateGrpahView} freeSolo id="customer-select-type"

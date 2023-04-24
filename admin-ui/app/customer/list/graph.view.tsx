@@ -21,7 +21,7 @@ const comparisonGraphDataVal = [
   { id: 4, label: "Female" },
 ];
 const CustomerGraphView = ({ customer }: ListComponentProps) => {
-  const [graphView, setGraphView] = useState<string>("");
+  const [graphView, setGraphView] = useState<string>("status");
   const [graphBase, setGrpahBase] = useState<string>("");
   const [graph1, setGrpah1] = useState<string>("");
   const [graph2, setGraph2] = useState<string>("");
@@ -38,6 +38,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
     }
     return false;
   });
+
 
   const graphTypeBaseVal = keys.filter((element) => {
     if (
@@ -296,12 +297,13 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
         .filter((ele) => ele.status === "INACTIVE").length,
     ],
   ];
+  
   const CompariosnData = [[graphBase, graph1, graph2]];
   return (
     <>
       <Box>
       <Grid container>
-        <Grid item xs={4}></Grid>
+        <Grid item xs={3.3}></Grid>
         <Grid item xs={3}>
           <Stack>
           <Autocomplete value={graphView} onChange={updateGrpahView}
