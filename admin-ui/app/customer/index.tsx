@@ -1,20 +1,21 @@
-"use client";
-import { Box, Button, Grid } from "@mui/material";
-import Link from "next/link";
-import { useState } from "react";
-import { Case, Default, Switch } from "react-if";
-import { ViewTypes } from "../utility";
-import FilterComponent from "./filter";
-import CustomerCalendarView from "./list/calendar.view";
-import ExportComponent from "./list/export.component";
-import CustomerGraphView from "./list/graph.view";
-import CustomerGridView from "./list/grid.view";
-import CustomerKanbanView from "./list/kanban.view";
-import CustomerListScereen from "./list/list.screen";
-import { ICustomer } from "./models";
-import PrintComponent from "./print";
-import CustomerSearchDetails from "./search";
-import CustomerViewComponent from "./view";
+'use client';
+import PrintIcon from '@mui/icons-material/Print';
+import { Box, Button, Grid, IconButton, Tooltip } from '@mui/material';
+import Link from 'next/link';
+import { useRef, useState } from 'react';
+import { Case, Default, Switch } from 'react-if';
+import { useReactToPrint } from 'react-to-print';
+import { ViewTypes } from '../utility';
+import FilterComponent from './filter';
+import CustomerCalendarView from './list/calendar.view';
+import ExportComponent from './list/export.component';
+import CustomerGraphView from './list/graph.view';
+import CustomerGridView from './list/grid.view';
+import CustomerKanbanView from './list/kanban.view';
+import CustomerListScereen from './list/list.screen';
+import { ICustomer } from './models';
+import CustomerSearchDetails from './search';
+import CustomerViewComponent from './view';
 
 interface CustomerComponentProps {
   customer: Array<ICustomer>;
@@ -34,6 +35,12 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
     setViewType(view);
   };
 
+  const myRef = useRef(null);
+
+  const handlePrint = useReactToPrint({
+    content: () => myRef.current,
+  });
+
   return (
     <>
       <Box mt={1} ml={1.5}>
@@ -44,19 +51,23 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
               onSearchHandler={onSearchHandler}
             />
           </Grid>
-          <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
+          <Grid item xs={8} md={8} sm={8} lg={8} display={'flex'}>
             <Grid container>
-              <Grid item xs={"auto"} mt={0.3}>
+              <Grid item xs={'auto'} mt={0.3}>
                 <FilterComponent
                   customer={customer}
                   onFilterHandler={onSearchHandler}
                 />
               </Grid>
-              <Grid item xs={"auto"} mt={0.2} >
+              <Grid item xs={'auto'} mt={0.2}>
                 <ExportComponent customer={copyCustomer} />
               </Grid>
-              <Grid item xs={"auto"} mt={0.2}>
-                <PrintComponent/>
+              <Grid item xs={'auto'} mt={0.2}>
+                <Tooltip title="Print">
+                  <IconButton onClick={() => handlePrint()}>
+                    <PrintIcon fontSize="small" />
+                  </IconButton>
+                </Tooltip>
               </Grid>
 
               <Grid item xs={9}>
@@ -65,11 +76,14 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
             </Grid>
           </Grid>
           <Grid item xs={1}>
-            <Link href={"/customer/create"} passHref style={{textDecoration:'none'}}>
+            <Link
+              href={'/customer/create'}
+              passHref
+              style={{ textDecoration: 'none' }}
+            >
               <Button variant="contained" size="small">
                 Create
                 <span>+</span>
-                
               </Button>
             </Link>
           </Grid>
@@ -89,7 +103,12 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
               <CustomerCalendarView customer={copyCustomer} />
             </Case>
             <Default>
-              <CustomerListScereen customer={copyCustomer}   setCopyCustomer={setCopyCustomer} />
+              <div ref={myRef}>
+                <CustomerListScereen
+                  customer={copyCustomer}
+                  setCopyCustomer={setCopyCustomer}
+                />
+              </div>
             </Default>
           </Switch>
         </Grid>

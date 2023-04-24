@@ -21,27 +21,13 @@ const ListViewComponent = ({ customer,setCopyCustomer }: any) => {
     setPage(p);
     paginationHandler.jump(p);
   };
-
-
-
- 
-  console.log("customer 232",
-  
-  
-  )
-  
 const updateInc=()=>{
-  console.log("+++");
-
-
     customer.sort( function(a : any,b : any){
       var nameA = a.email.toLowerCase(), nameB = b.email.toLowerCase();
       if (nameA < nameB) //sort string ascending
       return -1
   
     }   ).map( (data : any)=> data.email  )
-
-  
 }
 
   return (
