@@ -54,6 +54,7 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
               <Grid item xs={"auto"} mt={0.2}>
                 <ExportComponent copyCompanyData={copyCompanies} />
               </Grid>
+             
 
               <Grid item xs={10}>
                 <CompanyViewComponent onViewSelect={onViewSelect} />

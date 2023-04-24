@@ -12,6 +12,7 @@ import UserGridView from "./list/grid.view";
 import UserKanbanView from "./list/kanban.view";
 import ListViewComponent from "./list/list.screen";
 import { IUser } from "./models";
+import PrintComponent from "./print";
 import UserSearchDetails from "./search";
 import UserViewComponent from "./view";
 interface UserComponentProps {
@@ -48,6 +49,9 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
               </Grid>
               <Grid item xs={"auto"}>
                 <ExportComponent user={copyUser} />
+              </Grid>
+              <Grid item xs={"auto"}>
+                <PrintComponent user={copyUser} />
               </Grid>
               <Grid item xs={10}>
                 <UserViewComponent onViewSelect={onViewSelect} />

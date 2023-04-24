@@ -54,6 +54,7 @@
     "react-moment": "^1.1.3",
     "react-pie-graph-chart": "^1.0.3",
     "react-switch-case": "^1.5.1",
+    "react-to-print": "^2.14.12",
     "styled-components": "^5.3.9",
     "typescript": "^5.0.4",
     "yup": "^1.1.1"
