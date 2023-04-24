@@ -22,6 +22,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { deleteCustomer } from "../../../services/customer.action";
 import { ICustomer } from "../models";
+import Moment from "react-moment";
 
 const style = {
   position: "absolute" as "absolute",
@@ -85,13 +86,20 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
               </Grid>
             </Grid>
 
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <Typography variant="body2" noWrap>
                 {customer.firstName} {customer.lastName}
               </Typography>
             </Grid>
 
-            <Grid item xs={3}>
+            <Grid item xs={2}>
+              <Typography variant="body2" noWrap>
+                <Moment format="DD MMM YYYY">
+                  {customer.createdAt}
+                </Moment>
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
               <Typography variant="body2" noWrap>
                 {customer.email}
               </Typography>

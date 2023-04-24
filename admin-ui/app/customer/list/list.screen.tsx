@@ -31,12 +31,17 @@ const ListViewComponent = ({ customer }: any) => {
               </Grid>
             </Grid>
 
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <Typography variant="subtitle2" noWrap>
                 Customer Name
               </Typography>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
+              <Typography variant="subtitle2" noWrap>
+               Date Created
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
               <Typography variant="subtitle2" noWrap>
                 Email
               </Typography>
