@@ -15,7 +15,7 @@ const options = {
 };
 
 const ProjectGraphView = ({ projects }: ListComponentProps) => {
-  const [graphView, setGraphView] = useState<string>("");
+  const [graphView, setGraphView] = useState<string>("Status");
   const updateGrpahView = (
     e: React.SyntheticEvent<Element, Event>,
     value: string
