@@ -17,7 +17,7 @@ const UserCalendarView = ({ user }: ListComponentProps) => {
     return {
       title: users.firstName,
       start: new Date(users.createdAt),
-      end: new Date(users.updatedAt),
+      end: new Date(users.createdAt),
     };
   });
   useEffect(() => {

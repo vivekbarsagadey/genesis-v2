@@ -21,7 +21,7 @@ const ProjectCalendarView = ({ projects}: ListComponentProps) => {
     return {
       title: projects.name,
       start: new Date(projects.createdAt),
-      end: new Date(projects.updatedAt),
+      end: new Date(projects.createdAt),
     }
   });
   useEffect(() => {
