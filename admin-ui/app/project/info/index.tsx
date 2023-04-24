@@ -81,7 +81,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
 
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
-                <Moment format="DD/MMM/YYYY">
+                <Moment format="DD MMM YYYY">
                   {items.createdAt}
                 </Moment>
               </Typography>

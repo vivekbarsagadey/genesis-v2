@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { deleteUser } from "../../../services/user.action";
 import { IUser } from "../models";
+import Moment from "react-moment";
 
 type InfoUserComponentProps = {
   user: IUser;
@@ -27,15 +28,10 @@ const InfoUserComponent = ({ user }: InfoUserComponentProps) => {
       <Box mt={0.6} mr={2}>
         <Paper variant="outlined">
           <Grid container>
-            <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
+            <Grid item xs={1} display={"flex"} justifyContent={"flex-end"}>
               <Grid container ml={1}>
                 <Grid item xs={4}>
                   <Checkbox size="small" />
-                </Grid>
-                <Grid item xs={6}>
-                  <IconButton>
-                    <RemoveRedEyeIcon fontSize="small" />
-                  </IconButton>
                 </Grid>
               </Grid>
             </Grid>
@@ -44,7 +40,14 @@ const InfoUserComponent = ({ user }: InfoUserComponentProps) => {
                 {user.firstName} {user.lastName}
               </Typography>
             </Grid>
-            <Grid item xs={2} mr={1}>
+            <Grid item xs={1} mr={6}>
+              <Typography variant="body2" noWrap>
+                <Moment format="DD MMM YYYY">
+                  {user.createdAt}
+                </Moment>
+              </Typography>
+            </Grid>
+            <Grid item xs={1}>
               <Typography variant="body2" noWrap>
                 {user.email}
               </Typography>

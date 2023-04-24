@@ -7,7 +7,7 @@ import { useState } from "react";
 import { PaginationHandler } from "../../utility";
 import InfoUserComponent from "../info";
 import { IUser } from "../models";
-const ListViewComponent = ({ user }:any) => {
+const ListViewComponent = ({ user }: any) => {
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(user.length / PER_PAGE);
@@ -81,18 +81,13 @@ const ListViewComponent = ({ user }:any) => {
           </Grid>
         </Paper>
       </Box> */}
-<Box mr={2} mt={2}>
+      <Box mr={2} mt={2}>
         <Paper variant="outlined">
           <Grid container>
-            <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
+            <Grid item xs={1} display={"flex"} justifyContent={"flex-end"}>
               <Grid container ml={1}>
-                <Grid item xs={4}>
+                <Grid item xs={2}>
                   <Checkbox size="small" />
-                </Grid>
-                <Grid item xs={6}>
-                  <IconButton>
-                    <RemoveRedEyeIcon fontSize="small" />
-                  </IconButton>
                 </Grid>
               </Grid>
             </Grid>
@@ -101,12 +96,17 @@ const ListViewComponent = ({ user }:any) => {
                 User Name
               </Typography>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={1} mr={6}>
+              <Typography variant="subtitle2" noWrap>
+                Date Created
+              </Typography>
+            </Grid>
+            <Grid item xs={1} mr={4}>
               <Typography variant="subtitle2" noWrap>
                 Email
               </Typography>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={1} mr={5}>
               <Typography
                 variant="subtitle2"
                 noWrap
@@ -116,7 +116,7 @@ const ListViewComponent = ({ user }:any) => {
                 Contact
               </Typography>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={1} mr={12}>
               <Typography
                 variant="subtitle2"
                 noWrap
