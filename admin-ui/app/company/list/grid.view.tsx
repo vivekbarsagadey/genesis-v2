@@ -29,7 +29,7 @@ const CompanyGridView = ({ companies }: ListComponentProps) => {
               return (
                 <Grid item xs={4} md={4} sm={4} lg={4} key={item.id}>
                   <Box>
-                    <Card>
+                    <Card >
                       <Grid container>
                         <Grid item xs={12}>
                           <Grid container>

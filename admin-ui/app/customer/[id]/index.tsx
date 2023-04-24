@@ -468,7 +468,7 @@ const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
                                 ...params.InputProps,
                                 type: "search",
                               }}
-                              placeholder="Select Gender"
+                              placeholder="Select Country"
                             />
                           )}
                         />
