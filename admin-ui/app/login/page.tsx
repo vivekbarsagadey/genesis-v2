@@ -36,7 +36,7 @@ const SignIn = (): JSX.Element => {
         redirect: false,
       });
       if (!res?.error) {
-        router.push("/");
+        router.push("/dashboard");
       }
     }
   };

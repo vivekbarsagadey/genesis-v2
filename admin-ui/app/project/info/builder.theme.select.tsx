@@ -111,6 +111,8 @@ const BuilderThemeComponent = ({ handleCloseTheme } :IBuilderTheme ) => {
       });
   }, []);
 
+  console.log("themes >><<",themes);
+  
   return (
     <>
       <Grid container>
@@ -137,7 +139,7 @@ const BuilderThemeComponent = ({ handleCloseTheme } :IBuilderTheme ) => {
                   <Grid container display="flex" justifyContent="space-around">
                     <Grid item xs={11}>
                       <Typography variant="body2" color={"white"}>
-                        {theme.name}
+                        {theme?.name}
                       </Typography>
                     </Grid>
                     <Grid item xs={1}>
