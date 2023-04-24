@@ -39,11 +39,10 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
 
 
   const comparisionType = [
-    { title: 'Date' },
+  { title: 'Today' },
+  { title: 'Last 7 days'},
   { title: 'Month' },
-  { title: 'Year' },
   ]
-
 
   const statusData = [
     ["Status", "Users"],
@@ -191,9 +190,9 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
     ],
   ];
   return (
-    <Box mr={2} mt={2}>
-      <Grid container spacing={2}>
-        <Grid item xs={3}></Grid>
+    <Box mr={2}>
+      <Grid container spacing={2}  mt={1}>
+        <Grid item xs={1}></Grid>
         <Grid item xs={3.5}>
           <Stack>
             <Autocomplete
@@ -218,7 +217,7 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
             />
           </Stack>
         </Grid>
-
+        <Grid item xs={2.3}></Grid>
         <Grid item xs={3.5}>
           <Stack>
           <Autocomplete
