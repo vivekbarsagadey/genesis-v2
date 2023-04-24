@@ -22,6 +22,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { deleteCompany } from "../../../services/company.action";
 import { ICompany } from "../models/company.model";
+import Moment from "react-moment";
 
 const style = {
   position: "absolute" as "absolute",
@@ -81,24 +82,26 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
                 <Grid item xs={5}>
                   <Checkbox size="small" />
                 </Grid>
-                <Grid item xs={4}>
-                  <IconButton>
-                    <RemoveRedEyeIcon fontSize="small" />
-                  </IconButton>
-                </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <Typography variant="body2" noWrap>
                 {company.name}
               </Typography>
             </Grid>
-            <Grid item xs={2.4}>
+            <Grid item xs={2}>
+              <Typography variant="body2" noWrap>
+                <Moment format="DD MMM YYYY">
+                  {company.createdAt}
+                </Moment>
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
               <Typography variant="body2" noWrap>
                 {company.email}
               </Typography>
             </Grid>
-            <Grid item xs={2.3}>
+            <Grid item xs={2}>
               <Typography variant="body2" noWrap display={"flex"}>
                 {company.mobile}
               </Typography>

@@ -31,17 +31,22 @@ const ListViewComponent = ({ companies }: ListComponentProps) => {
               </Grid>
             </Grid>
 
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <Typography variant="subtitle2" noWrap >
                 Company Name
               </Typography>
             </Grid>
-            <Grid item xs={2.4}>
+            <Grid item xs={2} >
+              <Typography variant="subtitle2" noWrap>
+                Date Created
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
               <Typography variant="subtitle2" noWrap>
                 Email
               </Typography>
             </Grid>
-            <Grid item xs={2.3}>
+            <Grid item xs={2}>
               <Typography variant="subtitle2" noWrap>
                 Contact
               </Typography>
