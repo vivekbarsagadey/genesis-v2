@@ -90,16 +90,24 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
         <Grid item xs={12}>
           <Switch>
             <Case condition={viewType === ViewTypes.GRID}>
-              <CustomerGridView customer={copyCustomer} />
+              <Grid ref={myRef}>
+                <CustomerGridView customer={copyCustomer} />
+              </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.GRAPH}>
-              <CustomerGraphView customer={copyCustomer} />
+              <Grid ref={myRef}>
+                <CustomerGraphView customer={copyCustomer} />
+              </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.KANBAN}>
-              <CustomerKanbanView customer={copyCustomer} />
+              <Grid ref={myRef}>
+                <CustomerKanbanView customer={copyCustomer} />
+              </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.CALENDAR}>
-              <CustomerCalendarView customer={copyCustomer} />
+              <Grid ref={myRef}>
+                <CustomerCalendarView customer={copyCustomer} />
+              </Grid>
             </Case>
             <Default>
               <Grid ref={myRef}>

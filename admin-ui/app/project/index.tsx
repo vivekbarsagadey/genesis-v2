@@ -1,4 +1,5 @@
 'use client';
+import PrintIcon from '@mui/icons-material/Print';
 import { Box, Button, Grid, IconButton, Tooltip } from '@mui/material';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
@@ -15,7 +16,6 @@ import ProjectListViewComponent from './list/list.screen';
 import IProject from './project.model';
 import ProjectSearch from './search';
 import ProjectViewComponent from './view';
-import PrintIcon from '@mui/icons-material/Print';
 interface ProjectComponentProps {
   projects: Array<IProject>;
 }
@@ -85,16 +85,24 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
         <Grid item xs={12}>
           <Switch>
             <Case condition={viewType === ViewTypes.GRID}>
-              <ProjectGridView projects={projects} />
+              <Grid ref={myRef}>
+                <ProjectGridView projects={projects} />
+              </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.GRAPH}>
-              <ProjectGraphView projects={projects} />
+              <Grid ref={myRef}>
+                <ProjectGraphView projects={projects} />
+              </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.KANBAN}>
-              <ProjectKanbanView projects={projects} />
+              <Grid ref={myRef}>
+                <ProjectKanbanView projects={projects} />
+              </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.CALENDAR}>
-              <ProjectCalendarView projects={projects} />
+              <Grid ref={myRef}>
+                <ProjectCalendarView projects={projects} />
+              </Grid>
             </Case>
             <Default>
               <Grid ref={myRef}>

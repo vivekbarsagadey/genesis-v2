@@ -86,16 +86,24 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
         <Grid item xs={12}>
           <Switch>
             <Case condition={viewType === ViewTypes.GRID}>
-              <CompanyGridView companies={copyCompanies} />
+              <Grid ref={myRef}>
+                <CompanyGridView companies={copyCompanies} />
+              </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.GRAPH}>
-              <CompanyGraphView companies={copyCompanies} />
+              <Grid ref={myRef}>
+                <CompanyGraphView companies={copyCompanies} />
+              </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.KANBAN}>
-              <CompanyKanbanView companies={copyCompanies} />
+              <Grid ref={myRef}>
+                <CompanyKanbanView companies={copyCompanies} />
+              </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.CALENDAR}>
-              <CompanyCalendarView companies={copyCompanies} />
+              <Grid ref={myRef}>
+                <CompanyCalendarView companies={copyCompanies} />
+              </Grid>
             </Case>
             <Default>
               <Grid ref={myRef}>
