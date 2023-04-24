@@ -12,6 +12,7 @@ import CompanyGridView from "./list/grid.view";
 import CompanyKanbanView from "./list/kanban.view";
 import ListViewComponent from "./list/list.view.component";
 import { ICompany } from "./models/company.model";
+import PrintComponent from "./print";
 import CompanySearchDetails from "./search";
 import CompanyViewComponent from "./view";
 
@@ -45,16 +46,18 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
           </Grid>
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
             <Grid container>
-              <Grid item xs={"auto"} mt={0.2}>
+              <Grid item xs={"auto"}>
                 <FilterComponent
                   companies={companies}
                   onFilterHandler={onSearchHandler}
                 />
               </Grid>
-              <Grid item xs={"auto"} mt={0.2}>
+              <Grid item xs={"auto"}>
                 <ExportComponent copyCompanyData={copyCompanies} />
               </Grid>
-             
+              <Grid item xs={"auto"}>
+                <PrintComponent/>
+              </Grid>
 
               <Grid item xs={10}>
                 <CompanyViewComponent onViewSelect={onViewSelect} />
