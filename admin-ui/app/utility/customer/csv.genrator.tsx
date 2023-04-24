@@ -12,7 +12,7 @@ const CustomerCsvGenerator = ({ customer }: CustomerProps) => {
       <CSVLink
         data={customer}
         filename={`customer-list-${new Date().toISOString().slice(0, 10)}`}
-      >
+        style={{textDecoration:'none',color:'black'}}>
         CSV
       </CSVLink>
     </Typography>

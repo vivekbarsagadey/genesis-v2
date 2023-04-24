@@ -1,4 +1,3 @@
-import React from "react";
 import Typography from "@mui/material/Typography";
 import { CSVLink } from "react-csv";
 import IProject from "../../project/project.model";
@@ -12,7 +11,7 @@ const ProjectCsvGenerator = ({ projects }:ProjectProps) => {
       <CSVLink
         data={projects}
         filename={`projectData${"-list"}${new Date().toISOString().slice(0, 10)}`}
-      >
+      style={{textDecoration:'none',color:'black'}} >
         CSV
       </CSVLink>
     </Typography>
