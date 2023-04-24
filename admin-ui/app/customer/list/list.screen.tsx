@@ -24,25 +24,26 @@ const ListViewComponent = ({ customer, setCopyCustomer }: any) => {
     paginationHandler.jump(p);
   };
 
-  const emailInc = () => {
-    setIncreaseEmail(!increaseEmail);
-    setData(customer.sort((a, b) => {
-      return a.email > b.email ? 1 : -1;
-    }));
-  };
+  // const emailInc = () => {
+  //   setIncreaseEmail(!increaseEmail);
+  //   setData(customer.sort((a, b) => {
+  //     return a.email > b.email ? 1 : -1;
+  //   }));
+  // };
 
-  const addressInc = () => {
-    setIncreaseAdd(!increaseAdd);
-    setData(customer.sort((a, b) => {
-      return a.address > b.address ? 1 : -1;
-    }));
-  };
-  const userNameInc = () => {
-    setIncreaseUser(!increaseUser);
-    setData(customer.sort((a, b) => {
-      return a.address > b.address ? 1 : -1;
-    }));
-  };
+  // const addressInc = () => {
+  //   setIncreaseAdd(!increaseAdd);
+  //   setData(customer.sort((a, b) => {
+  //     return a.address > b.address ? 1 : -1;
+  //   }));
+  // };
+  // const userNameInc = () => {
+  //   setIncreaseUser(!increaseUser);
+  //   setData(customer.sort((a, b) => {
+  //     return a.address > b.address ? 1 : -1;
+  //   }));
+  // };
+  // console.log("setCopyCustomer >>",setCopyCustomer);
 
   return (
     <>
@@ -57,31 +58,52 @@ const ListViewComponent = ({ customer, setCopyCustomer }: any) => {
               </Grid>
             </Grid>
 
-            <Grid item xs={2} >
-              <Typography variant="subtitle2" noWrap onClick={() => userNameInc()}>
-                Customer Name  {increaseUser ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}
-
+            <Grid item xs={2}>
+              <Typography
+                variant="subtitle2"
+                noWrap
+                // onClick={() => userNameInc()}
+              >
+                Customer Name
+                {/* {increaseUser ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />} */}
               </Typography>
             </Grid>
-            <Grid item xs={2} style={{ display: 'flex', justifyContent: 'space-around' }}>
+            <Grid
+              item
+              xs={2}
+              style={{ display: 'flex', justifyContent: 'space-around' }}
+            >
               <Typography variant="subtitle2" noWrap>
                 Date Created
               </Typography>
             </Grid>
             <Grid item xs={2}>
-              <Typography variant="subtitle2" noWrap onClick={() => emailInc()}>
+              <Typography
+                variant="subtitle2"
+                noWrap
+                //  onClick={() => emailInc()}
+              >
                 Email
-                {increaseEmail ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}
+                {/* {increaseEmail ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />} */}
               </Typography>
             </Grid>
             <Grid item xs={2}>
-              <Typography variant="subtitle2" noWrap style={{ display: 'flex', justifyContent: 'space-around' }}>
+              <Typography
+                variant="subtitle2"
+                noWrap
+                style={{ display: 'flex', justifyContent: 'space-around' }}
+              >
                 Contact
               </Typography>
             </Grid>
             <Grid item xs={2}>
-              <Typography variant="subtitle2" noWrap onClick={() => addressInc()} >
-                Address {increaseAdd ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}
+              <Typography
+                variant="subtitle2"
+                noWrap
+                // onClick={() => addressInc()}
+              >
+                Address
+                {/* {increaseAdd ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />} */}
               </Typography>
             </Grid>
             <Grid item xs={1}>
@@ -101,10 +123,10 @@ const ListViewComponent = ({ customer, setCopyCustomer }: any) => {
       <Grid style={{ height: '62vh' }}>
         {paginationHandler
           .currentData()
-          ?.map((sortData: ICustomer, index: number) => {
+          ?.map((customer: ICustomer, index: number) => {
             return (
               <Typography key={index}>
-                <InfoCustomerComponent customer={sortData} />
+                <InfoCustomerComponent customer={customer} />
               </Typography>
             );
           })}

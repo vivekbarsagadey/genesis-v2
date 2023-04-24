@@ -1,7 +1,7 @@
-"use client";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import EditIcon from "@mui/icons-material/Edit";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+'use client';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import EditIcon from '@mui/icons-material/Edit';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import {
   Button,
   Grid,
@@ -9,28 +9,28 @@ import {
   Paper,
   Tooltip,
   Typography,
-} from "@mui/material";
-import MuiAlert, { AlertProps } from "@mui/material/Alert";
-import Backdrop from "@mui/material/Backdrop";
-import Box from "@mui/material/Box";
-import Checkbox from "@mui/material/Checkbox";
-import Fade from "@mui/material/Fade";
-import Modal from "@mui/material/Modal";
-import Snackbar from "@mui/material/Snackbar";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-import { deleteCustomer } from "../../../services/customer.action";
-import { ICustomer } from "../models";
-import Moment from "react-moment";
+} from '@mui/material';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import Backdrop from '@mui/material/Backdrop';
+import Box from '@mui/material/Box';
+import Checkbox from '@mui/material/Checkbox';
+import Fade from '@mui/material/Fade';
+import Modal from '@mui/material/Modal';
+import Snackbar from '@mui/material/Snackbar';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import { deleteCustomer } from '../../../services/customer.action';
+import { ICustomer } from '../models';
+import Moment from 'react-moment';
 
 const style = {
-  position: "absolute" as "absolute",
-  top: "30%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
+  position: 'absolute' as 'absolute',
+  top: '30%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
   width: 325,
-  bgcolor: "background.paper",
+  bgcolor: 'background.paper',
   boxShadow: 24,
   paddingTop: 1,
   paddingLeft: 2,
@@ -50,7 +50,7 @@ type InfoCustomerComponentProps = {
   increase: boolean;
 };
 const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
-  const [copyData] = useState([customer])
+  const [copyData] = useState([customer]);
   const router = useRouter();
   const [alert, setAlert] = useState(false);
   const [open, setOpen] = useState(false);
@@ -64,7 +64,7 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
     event?: React.SyntheticEvent | Event,
     reason?: string
   ) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setAlert(false);
@@ -76,16 +76,14 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
     handleClick();
   };
 
-
-const customerName = `${customer.firstName} ${customer.lastName}`
+  const customerName = `${customer.firstName} ${customer.lastName}`;
 
   return (
-
     <>
       <Box mt={0.6} mr={2}>
         <Paper variant="outlined">
           <Grid container>
-            <Grid item xs={1} display={"flex"} justifyContent={"flex-end"}>
+            <Grid item xs={1} display={'flex'} justifyContent={'flex-end'}>
               <Grid container ml={1}>
                 <Grid item xs={5}>
                   <Checkbox size="small" />
@@ -95,20 +93,17 @@ const customerName = `${customer.firstName} ${customer.lastName}`
 
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
-
- 
-    {customerName}
-   
-                
-
+                {customerName}
               </Typography>
             </Grid>
 
             <Grid item xs={2}>
-              <Typography variant="body2" noWrap style={{ display: 'flex', justifyContent: 'space-around' }}>
-                <Moment format="DD MMM YYYY">
-                  {customer.createdAt}
-                </Moment>
+              <Typography
+                variant="body2"
+                noWrap
+                style={{ display: 'flex', justifyContent: 'space-around' }}
+              >
+                <Moment format="DD MMM YYYY">{customer.createdAt}</Moment>
               </Typography>
             </Grid>
             <Grid item xs={2}>
@@ -117,13 +112,17 @@ const customerName = `${customer.firstName} ${customer.lastName}`
               </Typography>
             </Grid>
 
-            <Grid item xs={2} style={{ display: 'flex', justifyContent: 'space-around' }}>
-              <Typography variant="body2" noWrap display={"flex"}>
+            <Grid
+              item
+              xs={2}
+              style={{ display: 'flex', justifyContent: 'space-around' }}
+            >
+              <Typography variant="body2" noWrap display={'flex'}>
                 {customer.mobile}
               </Typography>
             </Grid>
             <Grid item xs={2}>
-              <Typography variant="body2" noWrap display={"flex"}>
+              <Typography variant="body2" noWrap display={'flex'}>
                 {customer.address}
               </Typography>
             </Grid>
@@ -152,7 +151,7 @@ const customerName = `${customer.firstName} ${customer.lastName}`
                     <Alert
                       onClose={handleClose}
                       severity="error"
-                      sx={{ width: "100%" }}
+                      sx={{ width: '100%' }}
                     >
                       Items Deleted Sucessfully...
                     </Alert>
@@ -190,7 +189,7 @@ const customerName = `${customer.firstName} ${customer.lastName}`
                     <Button
                       variant="contained"
                       size="small"
-                      sx={{ height: "4vh" }}
+                      sx={{ height: '4vh' }}
                       onClick={() => handleCloseDelete()}
                     >
                       Cancel
@@ -201,7 +200,7 @@ const customerName = `${customer.firstName} ${customer.lastName}`
                       variant="contained"
                       size="small"
                       onClick={() => removeData(customer)}
-                      sx={{ height: "4vh" }}
+                      sx={{ height: '4vh' }}
                     >
                       Ok
                     </Button>
