@@ -16,7 +16,7 @@ const PrintComponent = ({user}:UserExportComponentProps) => {
     <>
         <Tooltip title='Print'>
         <IconButton>
-        <PrintIcon/>
+        <PrintIcon fontSize='small'/>
         </IconButton>
         </Tooltip>
         
