@@ -1,20 +1,18 @@
-import React,{useState} from 'react';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import LocationCityIcon from '@mui/icons-material/LocationCity';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { Card, IconButton, Paper } from "@mui/material";
 import Box from "@mui/material/Box";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid/Grid";
-import { styled } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
-import { ICompany, Status } from "../models";
-import { ListComponentProps } from "./props";
-import { makeStyles } from '@mui/styles';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import LocationCityIcon from '@mui/icons-material/LocationCity';
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import { makeStyles } from '@mui/styles';
+import React from 'react';
+import { ICompany, Status } from "../models";
+import { ListComponentProps } from "./props";
 
 const CardStyle = styled(Grid)(({ theme }) => ({
   height: "80vh",
@@ -53,6 +51,18 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
   const inActiveCompanies = companies.filter((ele: ICompany) => {
     return ele.status == statusSet[2];
   });
+
+
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+
   const classes = useStyles();
   return (
     <>
@@ -68,9 +78,25 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
                   </Grid>
                   <Grid item xs={6}  display='flex' justifyContent='flex-end'>
                   <IconButton className={classes.iconStyle}>
-                    <MoreHorizIcon htmlColor='black'/>
+                    <MoreHorizIcon htmlColor='black' id="basic-button"
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}/>
                     </IconButton>
                   </Grid>
+                  <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={handleClose}>Edit</MenuItem>
+        <MenuItem onClick={handleClose}>Delete</MenuItem>
+      </Menu>
                 </Grid>
                 {newCompanies.reverse()?.map((newCompany, index) => {
                   return (
@@ -93,21 +119,29 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
                   <Grid item xs={6}  display='flex' justifyContent='flex-end'>
                   <IconButton
                   className={classes.iconStyle}>
-                     <MoreHorizIcon htmlColor='black'/>
+                     <MoreHorizIcon htmlColor='black'
+                     id="basic-button"
+                     aria-controls={open ? 'basic-menu' : undefined}
+                     aria-haspopup="true"
+                     aria-expanded={open ? 'true' : undefined}
+                     onClick={handleClick}
+                     />
       </IconButton>
       <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
       >
-        <MenuItem  >
-          <EditIcon fontSize='small'/>
-          <Typography>Edit</Typography>
-          </MenuItem>
-        <MenuItem >
-          <DeleteIcon fontSize='small' htmlColor='red'/>
-          <Typography color='red'>Delete</Typography>
-          </MenuItem>
-      
+        <MenuItem onClick={handleClose}>Edit</MenuItem>
+        <MenuItem onClick={handleClose}>Delete</MenuItem>
       </Menu>
                   </Grid>
+
+
                 </Grid>
                 {activeCompanies.reverse()?.map((activeCompany, index) => {
                   return (
@@ -132,9 +166,26 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
                   </Grid>
                   <Grid item xs={6}  display='flex' justifyContent='flex-end'>
                     <IconButton className={classes.iconStyle}>
-                    <MoreHorizIcon htmlColor='black'/>
+                    <MoreHorizIcon htmlColor='black'
+                    id="basic-button"
+                    aria-controls={open ? 'basic-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                    onClick={handleClick}/>
                     </IconButton>
                   </Grid>
+                  <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={handleClose}>Edit</MenuItem>
+        <MenuItem onClick={handleClose}>Delete</MenuItem>
+      </Menu>
                 </Grid>
                 {inActiveCompanies.reverse()?.map((inActiveCompany, index) => {
                   return (
