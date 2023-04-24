@@ -14,6 +14,11 @@ const options = {
   seriesType: "bars",
   series: { type: "line" },
 };
+const comparisionType = [
+  { title: 'Today' },
+{ title: 'Last 7 days' },
+{ title: 'Month' },
+]
 const CustomerGraphView = ({ companies }: ListComponentProps) => {
   const [graphView, setGraphView] = useState<string>("status");
   const updateGrpahView = (
@@ -164,14 +169,37 @@ const CustomerGraphView = ({ companies }: ListComponentProps) => {
   ];
   return (
     <Box mr={2}>
-      <Grid container>
-        <Grid item xs={3.3}></Grid>
+      <Grid container spacing={2} mt={1}>
+        <Grid item xs={1}></Grid>
         <Grid item xs={3}>
           <Stack>
           <Autocomplete value={graphView} onChange={updateGrpahView} freeSolo id="customer-select-type"
           disableClearable size="small" options={graphTypeVal?.map((option) => option)} renderInput={(params) => (
           <TextField {...params} InputProps={{ ...params.InputProps, type: "search", }}
           placeholder="Select Graph View"/>)} />
+          </Stack>
+        </Grid>
+        <Grid item xs={2.3}></Grid>
+        <Grid item xs={3.5}>
+          <Stack>
+          <Autocomplete
+        freeSolo
+        id="free-solo-2-demo"
+        disableClearable
+        size="small"
+        options={comparisionType.map((option) => option.title)}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            InputProps={{
+              ...params.InputProps,
+              type: 'search',
+            }}
+            placeholder="Select Graph View"
+                  fullWidth
+          />
+        )}
+      />
           </Stack>
         </Grid>
       </Grid>
