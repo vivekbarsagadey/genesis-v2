@@ -48,20 +48,20 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
           </Grid>
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
             <Grid container>
-              <Grid item xs={"auto"}>
+              <Grid item xs={"auto"} mt={0.3}>
                 <FilterComponent
               user={user}
               onFilterHandler={onSearchHandler}
                 />
               </Grid>
-              <Grid item xs={"auto"}>
+              <Grid item xs={"auto"} mt={0.3}>
                 <ExportComponent user={copyUser} />
               </Grid>
-              <Grid item xs={"auto"}>
+              <Grid item xs={"auto"} mt={0.3}>
                 <PrintComponent/>
               </Grid>
 
-              <Grid item xs={10}>
+              <Grid item xs={9}>
                 <UserViewComponent onViewSelect={onViewSelect} />
               </Grid>
             </Grid>

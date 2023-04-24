@@ -46,20 +46,20 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
           </Grid>
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
             <Grid container>
-              <Grid item xs={"auto"}>
+              <Grid item xs={"auto"} mt={0.3}>
                 <FilterComponent
                   customer={customer}
                   onFilterHandler={onSearchHandler}
                 />
               </Grid>
-              <Grid item xs={"auto"}>
+              <Grid item xs={"auto"} mt={0.2} >
                 <ExportComponent customer={copyCustomer} />
               </Grid>
-              <Grid item xs={"auto"}>
+              <Grid item xs={"auto"} mt={0.2}>
                 <PrintComponent/>
               </Grid>
 
-              <Grid item xs={10}>
+              <Grid item xs={9}>
                 <CustomerViewComponent onViewSelect={onViewSelect} />
               </Grid>
             </Grid>
