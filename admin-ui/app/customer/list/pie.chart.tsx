@@ -18,6 +18,7 @@ const CustomerPieChart = ({
   stateData,
 }: customerChartProps) => {
   return (
+    
     <>
       <Grid item xs={12}>
         <Switch>

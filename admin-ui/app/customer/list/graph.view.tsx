@@ -39,6 +39,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
     return false;
   });
 
+  
   const graphTypeBaseVal = keys.filter((element) => {
     if (
       element === "country" ||
