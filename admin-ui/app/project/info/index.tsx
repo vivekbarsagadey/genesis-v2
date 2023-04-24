@@ -1,19 +1,20 @@
-"use client";
-import EditIcon from "@mui/icons-material/Edit";
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
-import Box from "@mui/material/Box";
-import Checkbox from "@mui/material/Checkbox";
-import Dialog from "@mui/material/Dialog";
-import Slide from "@mui/material/Slide";
-import { TransitionProps } from "@mui/material/transitions";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-import BuilderHome from "../../../builder";
-import downloadJsonFile from "../../utility/json.downloder";
-import IProject from "../project.model";
-import BuilderThemeComponent from "./builder.theme.select";
+'use client';
+import EditIcon from '@mui/icons-material/Edit';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import { Grid, IconButton, Paper, Tooltip, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import Checkbox from '@mui/material/Checkbox';
+import Dialog from '@mui/material/Dialog';
+import Slide from '@mui/material/Slide';
+import { TransitionProps } from '@mui/material/transitions';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import BuilderHome from '../../../builder';
+import downloadJsonFile from '../../utility/json.downloder';
+import IProject from '../project.model';
+import BuilderThemeComponent from './builder.theme.select';
+import Moment from 'react-moment';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -62,37 +63,37 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
         <Paper variant="outlined">
           <Grid container>
 
-            
-            <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
+
+            <Grid item xs={1} display={'flex'} justifyContent={'flex-end'}>
               <Grid container ml={1}>
-                <Grid item xs={4}>
+                <Grid item xs={1}>
                   <Checkbox size="small" />
-                </Grid>
-                <Grid item xs={6}>
-                  <IconButton>
-                    <RemoveRedEyeIcon fontSize="small" />
-                  </IconButton>
                 </Grid>
               </Grid>
             </Grid>
 
 
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <Typography variant="body2" noWrap>
                 {items.name}
               </Typography>
             </Grid>
 
+            <Grid item xs={2}>
+              <Typography variant="body2" noWrap>
+                <Moment format="DD/MMM/YYYY">
+                  {items.createdAt}
+                </Moment>
+              </Typography>
+            </Grid>
 
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <Typography variant="body2" noWrap>
                 {items.customerName}
               </Typography>
             </Grid>
 
-
-
-            <Grid item xs={3}>
+            <Grid item xs={2}>
               <Typography
                 variant="body2"
                 noWrap >
@@ -100,10 +101,9 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
               </Typography>
             </Grid>
 
-
-            <Grid item xs={1}>
+            <Grid item xs={2} ml={4}>
               <Grid container>
-                <Grid item xs={4}>
+                <Grid item xs={3}>
                   <Tooltip title="Edit">
                     <IconButton onClick={openBuilderMethod}>
                       <EditIcon fontSize="small" />
@@ -130,7 +130,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
         >
           <BuilderThemeComponent
             handleCloseTheme={handleCloseTheme}
-            // getScreenDataSet={getScreenDataSet}
+          // getScreenDataSet={getScreenDataSet}
           />
         </Dialog>
         {/* Builder full screen  */}
@@ -140,7 +140,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
           onClose={handelCloseBuilder}
           TransitionComponent={Transition}
         >
-          <BuilderHome id={items.id}  />
+          <BuilderHome id={items.id} />
         </Dialog>
       </Box>
     </>

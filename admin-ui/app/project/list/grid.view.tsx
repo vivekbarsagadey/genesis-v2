@@ -26,6 +26,9 @@ const ProjectGridView = ({ projects }: ListComponentProps) => {
             .currentData()
             .reverse()
             ?.map((item : any) => {
+
+              console.log('itemitem',item);
+              
               return (
                 <Grid item xs={4} md={4} sm={4} lg={4} key={item.id}>
                   <Paper variant="outlined">
