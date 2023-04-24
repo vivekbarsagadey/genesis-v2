@@ -18,7 +18,7 @@ const options = {
 
 
 const CustomerGraphView = ({ companies }: ListComponentProps) => {
-  const [graphView, setGraphView] = useState<string>("");
+  const [graphView, setGraphView] = useState<string>("Status");
   const updateGrpahView = (
     e: React.SyntheticEvent<Element, Event>,
     value: string
