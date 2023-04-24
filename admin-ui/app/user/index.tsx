@@ -51,7 +51,7 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
                 <ExportComponent user={copyUser} />
               </Grid>
               <Grid item xs={"auto"}>
-                <PrintComponent user={copyUser} />
+                <PrintComponent/>
               </Grid>
               <Grid item xs={9}>
                 <UserViewComponent onViewSelect={onViewSelect} />
