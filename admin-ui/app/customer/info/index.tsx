@@ -47,8 +47,10 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 type InfoCustomerComponentProps = {
   customer: ICustomer;
+  increase: boolean;
 };
-const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
+const InfoCustomerComponent = ({ customer, increase }: InfoCustomerComponentProps) => {
+  const [copyData] = useState([customer])
   const router = useRouter();
   const [alert, setAlert] = useState(false);
   const [open, setOpen] = useState(false);
@@ -73,6 +75,10 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
     deleteCustomer(customer.id);
     handleClick();
   };
+
+  const data = copyData.map(i => i.firstName + i.lastName).sort()
+  console.log('asdasdasdasd', data);
+
   return (
     <>
       <Box mt={0.6} mr={2}>
@@ -88,7 +94,9 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
 
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
-                {customer.firstName} {customer.lastName}
+
+                {increase ? data.reverse() :data }
+
               </Typography>
             </Grid>
 

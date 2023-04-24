@@ -6,8 +6,11 @@ import { useState } from "react";
 import { PaginationHandler } from "../../utility";
 import InfoCustomerComponent from "../info";
 import { ICustomer } from "../models";
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 const ListViewComponent = ({ customer }: any) => {
+  const [increase, setincrease] = useState(true)
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(customer.length / PER_PAGE);
@@ -19,6 +22,7 @@ const ListViewComponent = ({ customer }: any) => {
   };
 
   return (
+
     <>
       <Box mr={2} mt={2}>
         <Paper variant="outlined">
@@ -31,9 +35,18 @@ const ListViewComponent = ({ customer }: any) => {
               </Grid>
             </Grid>
 
-            <Grid item xs={2}>
+            <Grid item xs={2} >
               <Typography variant="subtitle2" noWrap>
                 Customer Name
+                {/* {increase ?
+                  <Typography variant="subtitle2" noWrap>
+                    <ArrowUpwardIcon onClick={() => setincrease(!increase)} />
+                  </Typography>
+                  :
+                  <Typography variant="subtitle2" noWrap>
+                    <ArrowDownwardIcon onClick={() => setincrease(!increase)} />
+                  </Typography>
+                } */}
               </Typography>
             </Grid>
             <Grid item xs={2} style={{ display: 'flex', justifyContent: 'space-around' }}>
@@ -77,7 +90,7 @@ const ListViewComponent = ({ customer }: any) => {
           ?.map((customer: ICustomer, index: number) => {
             return (
               <Typography key={index}>
-                <InfoCustomerComponent customer={customer} />
+                <InfoCustomerComponent customer={customer} increase={increase} />
               </Typography>
             );
           })}
