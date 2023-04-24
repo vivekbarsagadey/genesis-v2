@@ -1,21 +1,21 @@
 'use client';
 import PrintIcon from '@mui/icons-material/Print';
-import { Box, Button, Grid, IconButton, Tooltip } from "@mui/material";
-import Link from "next/link";
-import { useRef, useState } from "react";
-import { Case, Default, Switch } from "react-if";
-import { useReactToPrint } from "react-to-print";
-import { ViewTypes } from "../utility";
-import FilterComponent from "./filters";
-import CompanyCalendarView from "./list/calendar.view";
-import ExportComponent from "./list/export.component";
-import CompanyGraphView from "./list/graph.view";
-import CompanyGridView from "./list/grid.view";
-import CompanyKanbanView from "./list/kanban.view";
-import ListViewComponent from "./list/list.view.component";
-import { ICompany } from "./models/company.model";
-import CompanySearchDetails from "./search";
-import CompanyViewComponent from "./view";
+import { Box, Button, Grid, IconButton, Tooltip } from '@mui/material';
+import Link from 'next/link';
+import { useRef, useState } from 'react';
+import { Case, Default, Switch } from 'react-if';
+import { useReactToPrint } from 'react-to-print';
+import { ViewTypes } from '../utility';
+import FilterComponent from './filters';
+import CompanyCalendarView from './list/calendar.view';
+import ExportComponent from './list/export.component';
+import CompanyGraphView from './list/graph.view';
+import CompanyGridView from './list/grid.view';
+import CompanyKanbanView from './list/kanban.view';
+import ListViewComponent from './list/list.view.component';
+import { ICompany } from './models/company.model';
+import CompanySearchDetails from './search';
+import CompanyViewComponent from './view';
 
 interface CompanyComponentProps {
   companies: Array<ICompany>;
@@ -31,7 +31,6 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
   const onViewSelect = (view: ViewTypes) => {
     setViewType(view);
   };
-
   const myRef = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => myRef.current,
