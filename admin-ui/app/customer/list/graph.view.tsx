@@ -21,7 +21,7 @@ const comparisonGraphDataVal = [
   { id: 4, label: "Female" },
 ];
 const CustomerGraphView = ({ customer }: ListComponentProps) => {
-  const [graphView, setGraphView] = useState<string>("");
+  const [graphView, setGraphView] = useState<string>("status");
   const [graphBase, setGrpahBase] = useState<string>("");
   const [graph1, setGrpah1] = useState<string>("");
   const [graph2, setGraph2] = useState<string>("");
