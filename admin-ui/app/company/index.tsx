@@ -117,4 +117,8 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
   );
 };
 
+
+
+
+
 export default CompanyComponentHome;
