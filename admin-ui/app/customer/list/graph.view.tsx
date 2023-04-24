@@ -39,7 +39,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
     return false;
   });
 
-  
+
   const graphTypeBaseVal = keys.filter((element) => {
     if (
       element === "country" ||
@@ -302,7 +302,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
     <>
       <Box>
       <Grid container>
-        <Grid item xs={4}></Grid>
+        <Grid item xs={3.3}></Grid>
         <Grid item xs={3}>
           <Stack>
           <Autocomplete value={graphView} onChange={updateGrpahView}
