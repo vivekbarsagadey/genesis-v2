@@ -12,6 +12,7 @@ import CustomerGridView from "./list/grid.view";
 import CustomerKanbanView from "./list/kanban.view";
 import CustomerListScereen from "./list/list.screen";
 import { ICustomer } from "./models";
+import PrintComponent from "./print";
 import CustomerSearchDetails from "./search";
 import CustomerViewComponent from "./view";
 
@@ -45,14 +46,17 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
           </Grid>
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
             <Grid container>
-              <Grid item xs={"auto"} mt={0.2}>
+              <Grid item xs={"auto"}>
                 <FilterComponent
                   customer={customer}
                   onFilterHandler={onSearchHandler}
                 />
               </Grid>
-              <Grid item xs={"auto"} mt={0.2}>
+              <Grid item xs={"auto"}>
                 <ExportComponent customer={copyCustomer} />
+              </Grid>
+              <Grid item xs={"auto"}>
+                <PrintComponent/>
               </Grid>
 
               <Grid item xs={10}>
