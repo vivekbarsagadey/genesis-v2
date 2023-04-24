@@ -70,7 +70,7 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
           </CardStyle>
         </Grid>
         <Grid item xs={4}>
-          <CardStyle>
+          <CardStyle> 
             <Paper variant="outlined">
               <CardContent>
                 <Typography variant="h6">INACTIVE</Typography>

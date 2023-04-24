@@ -49,7 +49,7 @@ type InfoCustomerComponentProps = {
   customer: ICustomer;
   increase: boolean;
 };
-const InfoCustomerComponent = ({ customer, increase }: InfoCustomerComponentProps) => {
+const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
   const [copyData] = useState([customer])
   const router = useRouter();
   const [alert, setAlert] = useState(false);
@@ -76,10 +76,11 @@ const InfoCustomerComponent = ({ customer, increase }: InfoCustomerComponentProp
     handleClick();
   };
 
-  const data = copyData.map(i => i.firstName + i.lastName).sort()
-  console.log('asdasdasdasd', data);
+
+const customerName = `${customer.firstName} ${customer.lastName}`
 
   return (
+
     <>
       <Box mt={0.6} mr={2}>
         <Paper variant="outlined">
@@ -95,7 +96,10 @@ const InfoCustomerComponent = ({ customer, increase }: InfoCustomerComponentProp
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
 
-                {increase ? data.reverse() :data }
+ 
+    {customerName}
+   
+                
 
               </Typography>
             </Grid>

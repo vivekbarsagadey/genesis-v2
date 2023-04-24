@@ -9,17 +9,40 @@ import { ICustomer } from "../models";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
-const ListViewComponent = ({ customer }: any) => {
-  const [increase, setincrease] = useState(true)
+const ListViewComponent = ({ customer,setCopyCustomer }: any) => {
+  const [increase, setincrease] = useState(false)
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(customer.length / PER_PAGE);
   const paginationHandler = PaginationHandler(customer, PER_PAGE);
+  console.log("customer data  >>>",customer);
 
   const handleChangePage = (e: any, p: number) => {
     setPage(p);
     paginationHandler.jump(p);
   };
+
+
+
+ 
+  console.log("customer 232",
+  
+  
+  )
+  
+const updateInc=()=>{
+  console.log("+++");
+
+
+    customer.sort( function(a : any,b : any){
+      var nameA = a.email.toLowerCase(), nameB = b.email.toLowerCase();
+      if (nameA < nameB) //sort string ascending
+      return -1
+  
+    }   ).map( (data : any)=> data.email  )
+
+  
+}
 
   return (
 
@@ -37,7 +60,7 @@ const ListViewComponent = ({ customer }: any) => {
 
             <Grid item xs={2} >
               <Typography variant="subtitle2" noWrap>
-                Customer Name
+                Customer Name   
                 {/* {increase ?
                   <Typography variant="subtitle2" noWrap>
                     <ArrowUpwardIcon onClick={() => setincrease(!increase)} />
@@ -57,6 +80,10 @@ const ListViewComponent = ({ customer }: any) => {
             <Grid item xs={2}>
               <Typography variant="subtitle2" noWrap>
                 Email
+              <button    
+              onClick={updateInc}
+              >Incfrement </button>
+               
               </Typography>
             </Grid>
             <Grid item xs={2}>
@@ -90,7 +117,9 @@ const ListViewComponent = ({ customer }: any) => {
           ?.map((customer: ICustomer, index: number) => {
             return (
               <Typography key={index}>
-                <InfoCustomerComponent customer={customer} increase={increase} />
+                <InfoCustomerComponent customer={customer}  
+              
+                />
               </Typography>
             );
           })}

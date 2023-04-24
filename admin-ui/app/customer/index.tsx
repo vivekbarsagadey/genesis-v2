@@ -89,7 +89,7 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
               <CustomerCalendarView customer={copyCustomer} />
             </Case>
             <Default>
-              <CustomerListScereen customer={copyCustomer} />
+              <CustomerListScereen customer={copyCustomer}   setCopyCustomer={setCopyCustomer} />
             </Default>
           </Switch>
         </Grid>
