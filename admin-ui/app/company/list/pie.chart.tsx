@@ -49,7 +49,7 @@ const CompanyPieChart = ({
           <Default>
             <Chart
               chartType="PieChart"
-              data={countryData}
+              data={statusData}
               width={"100%"}
               height={"320px"}
             />

@@ -14,11 +14,8 @@ const options = {
   seriesType: "bars",
   series: { type: "line" },
 };
-
-
-
 const CustomerGraphView = ({ companies }: ListComponentProps) => {
-  const [graphView, setGraphView] = useState<string>("");
+  const [graphView, setGraphView] = useState<string>("Status");
   const updateGrpahView = (
     e: React.SyntheticEvent<Element, Event>,
     value: string
@@ -39,6 +36,7 @@ const CustomerGraphView = ({ companies }: ListComponentProps) => {
   });
   const statusData = [
     ["Status", "Users"],
+    ["NEW", companies.filter((item) => item.status === "NEW").length],
     ["ACTIVE", companies.filter((item) => item.status === "ACTIVE").length],
     ["INACTIVE", companies.filter((item) => item.status === "INACTIVE").length],
   ];
