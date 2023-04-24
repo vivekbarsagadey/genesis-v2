@@ -34,11 +34,23 @@ const CustomerGridView = ({ customer }: ListComponentProps) => {
                         <Grid item xs={12}>
                           <Grid container>
                             <Grid item xs={4} style={{ padding: '1rem' }}>
-                              <CardMedia
-                                component="img"
-                                image="./images/grid_avtar.png"
-                                alt="Paella dish"
-                              />
+                              {item.gender === 'Male' ? (
+                                <>
+                                  <CardMedia
+                                    component="img"
+                                    image="./images/grid_avtar.png"
+                                    alt="Paella dish"
+                                  />
+                                </>
+                              ) : (
+                                <>
+                                  <CardMedia
+                                    component="img"
+                                    image="./images/grid_avtar_female.jpg"
+                                    alt="Paella dish"
+                                  />
+                                </>
+                              )}
                             </Grid>
                             <Grid item xs={8}>
                               <Grid container>
