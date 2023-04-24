@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import moment from "moment";
 import React, { useState } from "react";
 import { Chart } from "react-google-charts";
+import MonthPieChart from "./month.pie.chart";
 import ProjectPieChart from "./pie.chart";
 import { ListComponentProps } from "./props";
 
@@ -13,14 +14,26 @@ const options = {
   seriesType: "bars",
   series: { type: "line" },
 };
+const graphViewTitle = {
+  seriesType: "bars",
+  series: { type: "line" },
+};
 
 const ProjectGraphView = ({ projects }: ListComponentProps) => {
   const [graphView, setGraphView] = useState<string>("Status");
+  const [comparisiongraphView, setComparisionGraphView] = useState<string>("Month");
+
   const updateGrpahView = (
     e: React.SyntheticEvent<Element, Event>,
     value: string
   ) => {
     setGraphView(value);
+  };
+  const updateComparisionGrpahView = (
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
+  ) => {
+    setComparisionGraphView(value);
   };
 
   let keys = Object.keys(projects[0]);
@@ -189,6 +202,16 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
         .filter((d) => d === "Dec").length,
     ],
   ];
+  const createdTodaysData = [
+    ["Month", "Count"],
+    [
+      "Day",
+      projects
+        .map((ele) => moment(ele.createdAt).format("DDD"))
+        .filter((d) => d === "Day").length,
+    ],
+    
+  ];
   return (
     <Box mr={2}>
       <Grid container spacing={2}  mt={1}>
@@ -221,6 +244,8 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
         <Grid item xs={3.5}>
           <Stack>
           <Autocomplete
+          value={comparisiongraphView}
+          onChange={updateComparisionGrpahView}
         freeSolo
         id="free-solo-2-demo"
         disableClearable
@@ -240,10 +265,7 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
       />
           </Stack>
         </Grid>
-
-
       </Grid>
-
       <Grid container>
         <Grid item xs={6}>
           <Grid container>
@@ -260,12 +282,10 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
         </Grid>
         <Grid item xs={6}>
           <Grid>
-            <Chart
-              chartType="ComboChart"
-              width="100%"
-              height="400px"
-              data={createdDataData}
-              options={options}
+            <MonthPieChart options={options} option={graphViewTitle}
+            createdDataData={createdDataData} 
+            comparisiongraphView={comparisiongraphView}
+            createdTodaysData={createdTodaysData}
             />
           </Grid>
         </Grid>
