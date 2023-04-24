@@ -98,57 +98,49 @@ const MonthPieChart = ({
         .filter((d) => d === 'Dec').length,
     ],
   ];
-  let todayDate = new Date().toISOString().slice(0, 10);
+
+  // let todayDate = new Date().toISOString().slice(0, 10);
+  let todayDate = moment(new Date()).format('Do MMM YY');
 
   console.log(
-    'xxxx',
-    projects.map((ele) => ele.createdAt)
+    'nnn',
+    projects
+      .map((ele) => moment(ele.createdAt).format('Do MMM YY'))
+      .filter((d) => d == todayDate).length
   );
-
-  const today = [['Month', 'Count'], [`${todayDate}`,12]];
-  const sevenDays = [
+  const today = [
     ['Month', 'Count'],
     [
-      'Sun',
+      `${todayDate}`,
+
+      projects
+        .map((ele) => moment(ele.createdAt).format('Do MMM YY'))
+        .filter((d) => d == todayDate).length,
+    ],
+  ];
+
+  var timeFrom = (X) => {
+    var dates = [];
+    for (let I = 0; I < Math.abs(X); I++) {
+      dates.push(
+        new Date(
+          new Date() - (X >= 0 ? I : I - I - I) * 24 * 60 * 60 * 1000
+        ).toLocaleString()
+      );
+    }
+    return dates;
+  };
+  
+  console.log(timeFrom(8));
+
+  const sevenDays = [
+    ['Month', 'Count'],
+
+    [
+      "sssjk",
       projects
         .map((ele) => moment(ele.updatedAt).format('DDD'))
         .filter((d) => d === 'Sun').length,
-    ],
-    [
-      'Mon',
-      projects
-        .map((ele) => moment(ele.updatedAt).format('DDD'))
-        .filter((d) => d === 'Mon').length,
-    ],
-    [
-      'Tue',
-      projects
-        .map((ele) => moment(ele.updatedAt).format('DDD'))
-        .filter((d) => d === 'Tue').length,
-    ],
-    [
-      'Wed',
-      projects
-        .map((ele) => moment(ele.updatedAt).format('DDD'))
-        .filter((d) => d === 'Wed').length,
-    ],
-    [
-      'Thu',
-      projects
-        .map((ele) => moment(ele.updatedAt).format('DDD'))
-        .filter((d) => d === 'Thu').length,
-    ],
-    [
-      'Fri',
-      projects
-        .map((ele) => moment(ele.updatedAt).format('DDD'))
-        .filter((d) => d === 'Fri').length,
-    ],
-    [
-      'Sat',
-      projects
-        .map((ele) => moment(ele.updatedAt).format('DDD'))
-        .filter((d) => d === 'Sat').length,
     ],
   ];
   return (
