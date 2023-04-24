@@ -8,15 +8,18 @@ type projectChartProps = {
     createdDataData: any;
     comparisiongraphView: any;
     createdTodaysData: any;
+    createdDaysData: any;
   };
 
-const MonthPieChart = ({options,graphViewTitle , createdDataData,comparisiongraphView,createdTodaysData}:projectChartProps) => {
-  return (
+const MonthPieChart = ({createdDaysData,options,graphViewTitle , createdDataData,
+    comparisiongraphView,createdTodaysData}:projectChartProps) => {
+        const date = new Date().toLocaleDateString();
+  
+    return (
     <>
-
-<Grid item xs={12}>
+    <Grid item xs={12}>
         <Switch>
-          <Case condition={comparisiongraphView === "today"}>
+          <Case condition={comparisiongraphView === "Today"}>
             <Chart
               chartType="ComboChart"
               width="100%"
@@ -24,32 +27,18 @@ const MonthPieChart = ({options,graphViewTitle , createdDataData,comparisiongrap
               data={createdTodaysData}
               options={graphViewTitle}
             />
+           {`Todays Date is ${date}`}
           </Case>
-          {/* <Case condition={graphView === "country"}>
+          
+          <Case condition={comparisiongraphView === "Last 7 days"}>
             <Chart
-              chartType="PieChart"
-              data={countryData}
-              width={"100%"}
-              height={"320px"}
+              chartType="ComboChart"
+              width="100%"
+              height="400px"
+              data={createdDaysData}
+              options={graphViewTitle}
             />
-          </Case> */}
-          {/* <Case condition={graphView === "status"}>
-            <Chart
-              chartType="PieChart"
-              data={statusData}
-              width={"100%"}
-              height={"320px"}
-            />
-          </Case> */}
-          {/* <Case condition={graphView === "application"}>
-            <Chart
-              chartType="PieChart"
-              data={applicationData}
-              width={"100%"}
-              height={"320px"}
-            />
-          </Case> */}
-
+          </Case>
           <Default>
           <Chart
               chartType="ComboChart"

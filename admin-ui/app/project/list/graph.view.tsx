@@ -205,10 +205,56 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
   const createdTodaysData = [
     ["Month", "Count"],
     [
-      "Day",
+      "",
       projects
         .map((ele) => moment(ele.createdAt).format("DDD"))
         .filter((d) => d === "Day").length,
+    ],
+    
+  ];
+  const createdDaysData = [
+    ["Month", "Count"],
+    [
+      "Sun",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("DDD"))
+        .filter((d) => d === "Sun").length,
+    ],
+    [
+      "Mon",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("DDD"))
+        .filter((d) => d === "Mon").length,
+    ],
+    [
+      "Tue",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("DDD"))
+        .filter((d) => d === "Tue").length,
+    ],
+    [
+      "Wed",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("DDD"))
+        .filter((d) => d === "Wed").length,
+    ],
+    [
+      "Thu",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("DDD"))
+        .filter((d) => d === "Thu").length,
+    ],
+    [
+      "Fri",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("DDD"))
+        .filter((d) => d === "Fri").length,
+    ],
+    [
+      "Sat",
+      projects
+        .map((ele) => moment(ele.updatedAt).format("DDD"))
+        .filter((d) => d === "Sat").length,
     ],
     
   ];
@@ -285,7 +331,7 @@ const ProjectGraphView = ({ projects }: ListComponentProps) => {
             <MonthPieChart options={options} option={graphViewTitle}
             createdDataData={createdDataData} 
             comparisiongraphView={comparisiongraphView}
-            createdTodaysData={createdTodaysData}
+            createdTodaysData={createdTodaysData} createdDaysData={createdDaysData}
             />
           </Grid>
         </Grid>
