@@ -30,16 +30,12 @@ const CustomerSearchDetails = ({
     onSearchHandler(customer.filter(filterByEmail(_searchValue)));
     onSearchHandler(customer.filter(filterByMobile(_searchValue)));
     onSearchHandler(customer.filter(filterByAddress(_searchValue)));
-  };
-
-
-  console.log("customercustomercustomercustomer",customer);
-  
+  };  
   return (
     <>
       <Grid item xs={12}>
         <TextField
-          placeholder="Search by Customer Name"
+          placeholder="Search here.."
           size="small"
           value={searchStr}
           onChange={onSearch}

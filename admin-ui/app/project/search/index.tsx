@@ -14,7 +14,9 @@ const CustomerSearchDetails = ({
 }: CustomerSearchComponentProps) => {
   const [searchStr, setSearchStr] = useState<string>("");
 
-  const filterByName = (name: string) =>  (f: IProject): boolean => f.name.toLowerCase().includes(name.toLowerCase());
+  const filterByProjectName = (name: string) =>  (f: IProject): boolean => f.name.toLowerCase().includes(name.toLowerCase());
+  // const filterByCompanyName = (customerName: string) =>  (f: IProject): boolean => f.customerName.toLowerCase().includes(customerName.toLowerCase());
+  const filterByApplication = (application: string) =>  (f: IProject): boolean => f.application.toLowerCase().includes(application.toLowerCase());
 
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const _searchValue = e.target.value;
@@ -23,19 +25,18 @@ const CustomerSearchDetails = ({
       onSearchHandler(projects);
       return;
     }
-    onSearchHandler(projects.filter(filterByName(_searchValue)));
+    onSearchHandler(projects.filter(filterByProjectName(_searchValue)));
+    // onSearchHandler(projects.filter(filterByCompanyName(_searchValue)));
+    onSearchHandler(projects.filter(filterByApplication(_searchValue)));
   };
+console.log("projectsprojects",projects);
 
   return (
     <>
       <Grid item xs={12}>
-        <TextField
-          placeholder="Search by Project Name"
-          size="small"
-          value={searchStr}
-          onChange={onSearch}
-          fullWidth
-        />
+        <TextField placeholder="Search by Project Name" size="small" value={searchStr}
+          onChange={onSearch} fullWidth
+ />
       </Grid>
     </>
   );
