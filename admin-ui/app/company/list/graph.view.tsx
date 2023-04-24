@@ -162,7 +162,6 @@ const CustomerGraphView = ({ companies }: ListComponentProps) => {
         .filter((d) => d === "Dec").length,
     ],
   ];
-
   return (
     <Box mr={2}>
       <Grid container>

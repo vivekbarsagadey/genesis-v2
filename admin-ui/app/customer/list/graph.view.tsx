@@ -297,6 +297,7 @@ const CustomerGraphView = ({ customer }: ListComponentProps) => {
         .filter((ele) => ele.status === "INACTIVE").length,
     ],
   ];
+  
   const CompariosnData = [[graphBase, graph1, graph2]];
   return (
     <>
