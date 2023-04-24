@@ -20,7 +20,7 @@ const CustomerCalendarView = ({ customer }: ListComponentProps) => {
     return {
       title: customers.firstName,
       start: new Date(customers.createdAt),
-      end: new Date(customers.updatedAt),
+      end: new Date(customers.createdAt),
     };
   });
   useEffect(() => {
