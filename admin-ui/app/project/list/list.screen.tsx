@@ -30,39 +30,55 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
 								<Grid item xs={4}>
 									<Checkbox size="small" />
 								</Grid>
-								
+
 							</Grid>
 						</Grid>
 
-						<Grid item xs={2}>
+						<Grid item xs={2} >
 							<Typography variant="subtitle2" noWrap>
-                Project Name 
+								Project Name
 							</Typography>
 						</Grid>
+
+
+
 						<Grid item xs={2}>
 							<Typography variant="subtitle2" noWrap>
-                Date Created
+								Date Created
 							</Typography>
 						</Grid>
+
+
 						<Grid item xs={2}>
 							<Typography variant="subtitle2" noWrap>
-                Company Name
+								Company Name
 							</Typography>
 						</Grid>
-						<Grid item xs={3}>
+
+
+						<Grid item xs={2}>
 							<Typography
 								variant="subtitle2"
 								noWrap>
-                Application
+								Application
 							</Typography>
 						</Grid>
-						<Grid item xs={2}>
+						<Grid item xs={2} style={{ display: 'flex', justifyContent: 'space-around' }}>
+							<Typography
+								variant="subtitle2"
+								noWrap>
+								Status
+							</Typography>
+						</Grid>
+
+
+						<Grid item xs={1}>
 							<Typography
 								variant="subtitle2"
 								display={'flex'}
-								noWrap
+								noWrap justifyContent={"space-around"}
 							>
-                Action
+								Action
 							</Typography>
 						</Grid>
 					</Grid>

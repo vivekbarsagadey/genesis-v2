@@ -36,9 +36,9 @@ const ListViewComponent = ({ customer }: any) => {
                 Customer Name
               </Typography>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2} style={{ display: 'flex', justifyContent: 'space-around' }}>
               <Typography variant="subtitle2" noWrap>
-               Date Created
+                Date Created
               </Typography>
             </Grid>
             <Grid item xs={2}>
@@ -47,7 +47,7 @@ const ListViewComponent = ({ customer }: any) => {
               </Typography>
             </Grid>
             <Grid item xs={2}>
-              <Typography variant="subtitle2" noWrap>
+              <Typography variant="subtitle2" noWrap style={{ display: 'flex', justifyContent: 'space-around' }}>
                 Contact
               </Typography>
             </Grid>

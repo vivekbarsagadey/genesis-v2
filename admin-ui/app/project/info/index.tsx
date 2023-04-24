@@ -93,24 +93,31 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
               </Typography>
             </Grid>
 
-            <Grid item xs={3}>
+            <Grid item xs={2} >
               <Typography
                 variant="body2"
                 noWrap >
                 {items.application}
               </Typography>
             </Grid>
+            <Grid item xs={2} style={{ display: 'flex', justifyContent: 'space-around' }} >
+              <Typography
+                variant="body2"
+                noWrap >
+                {items.status}
+              </Typography>
+            </Grid>
 
-            <Grid item xs={2}>
+            <Grid item xs={1} >
               <Grid container>
-                <Grid item xs={3}>
+                <Grid item xs={6} >
                   <Tooltip title="Edit">
                     <IconButton onClick={openBuilderMethod}>
                       <EditIcon fontSize="small" />
                     </IconButton>
                   </Tooltip>
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={1}>
                   <Tooltip title="Download JSON">
                     <IconButton onClick={jsonFileDownload}>
                       <FileDownloadIcon fontSize="small" />
