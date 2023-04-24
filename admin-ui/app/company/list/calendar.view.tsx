@@ -20,7 +20,7 @@ const CompanyCalendarView = ({ companies }: ListComponentProps) => {
     return {
       title: company.name,
       start: new Date(company.createdAt),
-      end: new Date(company.updatedAt),
+      end: new Date(company.createdAt),
     }
   });
   useEffect(() => {
