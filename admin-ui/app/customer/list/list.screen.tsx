@@ -1,42 +1,55 @@
-"use client";
-import { Box, Grid, Pagination, Typography } from "@mui/material";
-import Checkbox from "@mui/material/Checkbox";
-import Paper from "@mui/material/Paper";
-import { useState } from "react";
-import { PaginationHandler } from "../../utility";
-import InfoCustomerComponent from "../info";
-import { ICustomer } from "../models";
+'use client';
+import { Box, Grid, Pagination, Typography } from '@mui/material';
+import Checkbox from '@mui/material/Checkbox';
+import Paper from '@mui/material/Paper';
+import { useState } from 'react';
+import { PaginationHandler } from '../../utility';
+import InfoCustomerComponent from '../info';
+import { ICustomer } from '../models';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
-const ListViewComponent = ({ customer,setCopyCustomer }: any) => {
-  const [increase, setincrease] = useState(false)
-  let [page, setPage] = useState(1);
+const ListViewComponent = ({ customer, setCopyCustomer }: any) => {
+  const [increaseAdd, setIncreaseAdd] = useState(false);
+  const [increaseEmail, setIncreaseEmail] = useState(false);
+  const [increaseUser, setIncreaseUser] = useState(false);
+  const [data, setData] = useState();
+  const [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(customer.length / PER_PAGE);
   const paginationHandler = PaginationHandler(customer, PER_PAGE);
-  console.log("customer data  >>>",customer);
 
   const handleChangePage = (e: any, p: number) => {
     setPage(p);
     paginationHandler.jump(p);
   };
-const updateInc=()=>{
-    customer.sort( function(a : any,b : any){
-      var nameA = a.email.toLowerCase(), nameB = b.email.toLowerCase();
-      if (nameA < nameB) //sort string ascending
-      return -1
-  
-    }   ).map( (data : any)=> data.email  )
-}
+
+  const emailInc = () => {
+    setIncreaseEmail(!increaseEmail);
+    setData(customer.sort((a, b) => {
+      return a.email > b.email ? 1 : -1;
+    }));
+  };
+
+  const addressInc = () => {
+    setIncreaseAdd(!increaseAdd);
+    setData(customer.sort((a, b) => {
+      return a.address > b.address ? 1 : -1;
+    }));
+  };
+  const userNameInc = () => {
+    setIncreaseUser(!increaseUser);
+    setData(customer.sort((a, b) => {
+      return a.address > b.address ? 1 : -1;
+    }));
+  };
 
   return (
-
     <>
       <Box mr={2} mt={2}>
         <Paper variant="outlined">
           <Grid container>
-            <Grid item xs={1} display={"flex"} justifyContent={"flex-end"}>
+            <Grid item xs={1} display={'flex'} justifyContent={'flex-end'}>
               <Grid container ml={1}>
                 <Grid item xs={4}>
                   <Checkbox size="small" />
@@ -45,17 +58,9 @@ const updateInc=()=>{
             </Grid>
 
             <Grid item xs={2} >
-              <Typography variant="subtitle2" noWrap>
-                Customer Name   
-                {/* {increase ?
-                  <Typography variant="subtitle2" noWrap>
-                    <ArrowUpwardIcon onClick={() => setincrease(!increase)} />
-                  </Typography>
-                  :
-                  <Typography variant="subtitle2" noWrap>
-                    <ArrowDownwardIcon onClick={() => setincrease(!increase)} />
-                  </Typography>
-                } */}
+              <Typography variant="subtitle2" noWrap onClick={() => userNameInc()}>
+                Customer Name  {increaseUser ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}
+
               </Typography>
             </Grid>
             <Grid item xs={2} style={{ display: 'flex', justifyContent: 'space-around' }}>
@@ -64,12 +69,9 @@ const updateInc=()=>{
               </Typography>
             </Grid>
             <Grid item xs={2}>
-              <Typography variant="subtitle2" noWrap>
+              <Typography variant="subtitle2" noWrap onClick={() => emailInc()}>
                 Email
-              <button    
-              onClick={updateInc}
-              >Incfrement </button>
-               
+                {increaseEmail ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}
               </Typography>
             </Grid>
             <Grid item xs={2}>
@@ -78,15 +80,15 @@ const updateInc=()=>{
               </Typography>
             </Grid>
             <Grid item xs={2}>
-              <Typography variant="subtitle2" noWrap>
-                Address
+              <Typography variant="subtitle2" noWrap onClick={() => addressInc()} >
+                Address {increaseAdd ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}
               </Typography>
             </Grid>
             <Grid item xs={1}>
               <Typography
                 variant="subtitle2"
-                display={"flex"}
-                justifyContent={"space-around"}
+                display={'flex'}
+                justifyContent={'space-around'}
                 noWrap
               >
                 Action
@@ -96,24 +98,21 @@ const updateInc=()=>{
         </Paper>
       </Box>
 
-      <Grid style={{ height: "62vh" }}>
+      <Grid style={{ height: '62vh' }}>
         {paginationHandler
           .currentData()
-          .reverse()
-          ?.map((customer: ICustomer, index: number) => {
+          ?.map((sortData: ICustomer, index: number) => {
             return (
               <Typography key={index}>
-                <InfoCustomerComponent customer={customer}  
-              
-                />
+                <InfoCustomerComponent customer={sortData} />
               </Typography>
             );
           })}
       </Grid>
 
       <Grid container mt={4}>
-        <Grid item xs={12} display={"flex"} justifyContent={"flex-end"}>
-          <Grid style={{ position: "fixed" }}></Grid>
+        <Grid item xs={12} display={'flex'} justifyContent={'flex-end'}>
+          <Grid style={{ position: 'fixed' }}></Grid>
           <Pagination
             count={count}
             size="small"
