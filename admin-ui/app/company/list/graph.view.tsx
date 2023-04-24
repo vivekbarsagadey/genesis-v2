@@ -14,9 +14,6 @@ const options = {
   seriesType: "bars",
   series: { type: "line" },
 };
-
-
-
 const CustomerGraphView = ({ companies }: ListComponentProps) => {
   const [graphView, setGraphView] = useState<string>("Status");
   const updateGrpahView = (
@@ -39,6 +36,7 @@ const CustomerGraphView = ({ companies }: ListComponentProps) => {
   });
   const statusData = [
     ["Status", "Users"],
+    ["NEW", companies.filter((item) => item.status === "NEW").length],
     ["ACTIVE", companies.filter((item) => item.status === "ACTIVE").length],
     ["INACTIVE", companies.filter((item) => item.status === "INACTIVE").length],
   ];
