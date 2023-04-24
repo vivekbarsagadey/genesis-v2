@@ -38,13 +38,13 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
     <Box ml={1.5}>
       <Grid mt={1}>
         <Grid container spacing={1}>
-          <Grid item xs={3} md={3} lg={3} sm={3}>
+          <Grid item xs={2} md={3} lg={3} sm={3}>
             <ProjectSearch
               projects={projects}
               onSearchHandler={onSearchHandler}
             />
           </Grid>
-          <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
+          <Grid item xs={4} md={8} sm={8} lg={8} display={"flex"}>
             <Grid container spacing={1}>
               <Grid item xs={"auto"} mt={0.3}>
                 <ProjectFilterComponent
@@ -60,10 +60,21 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
                 <PrintComponent/>
               </Grid>
 
-              <Grid item xs={9}>
+              <Grid item xs={4}>
                 <ProjectViewComponent onViewSelect={onViewSelect} />
               </Grid>
             </Grid>
+          </Grid>
+          <Grid item xs={1}>
+            <Link
+              href={"/project/report"}
+              passHref
+              style={{ textDecoration: "none" }}
+            >
+              <Button variant="contained" size="small">
+                Report
+              </Button>
+            </Link>
           </Grid>
           <Grid item xs={1}>
             <Link

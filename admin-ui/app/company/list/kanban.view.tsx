@@ -13,6 +13,8 @@ import { makeStyles } from '@mui/styles';
 import React from 'react';
 import { ICompany, Status } from "../models";
 import { ListComponentProps } from "./props";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const CardStyle = styled(Grid)(({ theme }) => ({
   height: "80vh",
@@ -58,7 +60,7 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  const handleDropdownClose = () => {
     setAnchorEl(null);
   };
 
@@ -66,7 +68,7 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
   const classes = useStyles();
   return (
     <>
-      <Grid container spacing={2} mt={1}>
+      <Grid container spacing={2} mt={1} pr={2}>
         <Grid item xs={4}>
           <CardStyle>
             <Paper variant="outlined" className={classes.cardView}>
@@ -89,13 +91,19 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={handleDropdownClose}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Edit</MenuItem>
-        <MenuItem onClick={handleClose}>Delete</MenuItem>
+        <MenuItem onClick={handleDropdownClose} >
+          <EditIcon fontSize='small' />
+          <Typography>Edit</Typography>
+          </MenuItem>
+        <MenuItem onClick={handleDropdownClose} >
+          <DeleteIcon fontSize='small' htmlColor='red'/>
+          <Typography color='red'>Delete</Typography>
+          </MenuItem>
       </Menu>
                 </Grid>
                 {newCompanies.reverse()?.map((newCompany, index) => {
@@ -131,13 +139,19 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={handleDropdownClose}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Edit</MenuItem>
-        <MenuItem onClick={handleClose}>Delete</MenuItem>
+        <MenuItem onClick={handleDropdownClose} >
+          <EditIcon fontSize='small'/>
+          <Typography>Edit</Typography>
+          </MenuItem>
+        <MenuItem onClick={handleDropdownClose} >
+          <DeleteIcon fontSize='small' htmlColor='red'/>
+          <Typography color='red'>Delete</Typography>
+          </MenuItem>
       </Menu>
                   </Grid>
 
@@ -178,13 +192,19 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={handleDropdownClose}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Edit</MenuItem>
-        <MenuItem onClick={handleClose}>Delete</MenuItem>
+       <MenuItem onClick={handleDropdownClose} >
+          <EditIcon fontSize='small'/>
+          <Typography>Edit</Typography>
+          </MenuItem>
+        <MenuItem onClick={handleDropdownClose} >
+          <DeleteIcon fontSize='small' htmlColor='red'/>
+          <Typography color='red'>Delete</Typography>
+          </MenuItem>
       </Menu>
                 </Grid>
                 {inActiveCompanies.reverse()?.map((inActiveCompany, index) => {
