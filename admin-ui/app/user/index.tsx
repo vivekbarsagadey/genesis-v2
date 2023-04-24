@@ -11,28 +11,35 @@ import UserGraphView from "./list/graph.view";
 import UserGridView from "./list/grid.view";
 import UserKanbanView from "./list/kanban.view";
 import ListViewComponent from "./list/list.screen";
-import { IUser } from "./models";
+
 import PrintComponent from "./print";
 import UserSearchDetails from "./search";
+import IUser from "./user.model";
 import UserViewComponent from "./view";
+
+
 interface UserComponentProps {
   user: Array<IUser>;
 }
+
 const UserComponentHome = ({ user }: UserComponentProps) => {
   const [copyUser, setCopyUser] = useState<Array<IUser>>([
     ...user,
   ]);
   const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
+
   const onSearchHandler = (c: Array<IUser>) => {
     setCopyUser(c);
   };
+
   const onViewSelect = (view: ViewTypes) => {
     setViewType(view);
   };
+
   return (
     <>
-      <Box sx={{ flexGrow: 1 }} mt={1}>
-        <Grid container spacing={2}>
+      <Box mt={1} ml={1.5}>
+        <Grid container spacing={1}>
           <Grid item xs={3} md={3} lg={3} sm={3}>
             <UserSearchDetails
               user={user}
@@ -40,11 +47,11 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
             />
           </Grid>
           <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
-            <Grid container spacing={1}>
+            <Grid container>
               <Grid item xs={"auto"}>
                 <FilterComponent
-                  user={user}
-                  onFilterHandler={onSearchHandler}
+              user={user}
+              onFilterHandler={onSearchHandler}
                 />
               </Grid>
               <Grid item xs={"auto"}>
@@ -53,7 +60,8 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
               <Grid item xs={"auto"}>
                 <PrintComponent/>
               </Grid>
-              <Grid item xs={9}>
+
+              <Grid item xs={10}>
                 <UserViewComponent onViewSelect={onViewSelect} />
               </Grid>
             </Grid>
@@ -63,6 +71,7 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
               <Button variant="contained" size="small">
                 Create
                 <span>+</span>
+                
               </Button>
             </Link>
           </Grid>
@@ -90,4 +99,5 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
     </>
   );
 };
+
 export default UserComponentHome;
