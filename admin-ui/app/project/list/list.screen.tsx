@@ -49,7 +49,7 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
                 Company Name
 							</Typography>
 						</Grid>
-						<Grid item xs={2}>
+						<Grid item xs={3}>
 							<Typography
 								variant="subtitle2"
 								noWrap>
@@ -60,7 +60,6 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
 							<Typography
 								variant="subtitle2"
 								display={'flex'}
-								ml={5}
 								noWrap
 							>
                 Action

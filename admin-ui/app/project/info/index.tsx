@@ -87,13 +87,13 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
               </Typography>
             </Grid>
 
-            <Grid item xs={2}>
+            <Grid item xs={2} >
               <Typography variant="body2" noWrap>
                 {items.customerName}
               </Typography>
             </Grid>
 
-            <Grid item xs={2}>
+            <Grid item xs={3}>
               <Typography
                 variant="body2"
                 noWrap >
@@ -101,7 +101,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
               </Typography>
             </Grid>
 
-            <Grid item xs={2} ml={4}>
+            <Grid item xs={2}>
               <Grid container>
                 <Grid item xs={3}>
                   <Tooltip title="Edit">
