@@ -3,7 +3,7 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Box, Grid, IconButton, Pagination, Typography } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import Paper from '@mui/material/Paper';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PaginationHandler } from '../../utility';
 import InfoProjectComponent from '../info';
 import IProject from '../project.model';
@@ -11,35 +11,31 @@ import { ListComponentProps } from './props';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-enum Dirction {
-  ACC,
-  DIS,
-}
-
 const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
   const [page, setPage] = useState(1);
-  const [sortFiled, setSortFiles] = useState('createdAt');
-  const [sortDirection, setDirection] = useState(Dirction.ACC);
+  const [data, setData] = useState()
   const PER_PAGE = 9;
   const count = Math.ceil(projects.length / PER_PAGE);
   const paginationHandler = PaginationHandler(projects, PER_PAGE);
 
+  const handleClick = () => {
+    setData(projects.sort((a, b) => {
+      if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
+      if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
+      return 0;
+    }))
+  }
+  const handleDecClick = () => {
+    setData(projects.sort((a, b) => {
+      if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
+      if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
+      return 0;
+    }).reverse())
+  }
+
   const handleChangePage = (e: any, p: number) => {
     setPage(p);
     paginationHandler.jump(p);
-  };
-
-  const sort = (field: string, dirction: Dirction = Dirction.ACC) => {
-    setDirection(dirction);
-    setSortFiles(field);
-  };
-
-  const compare = (a: IProject, b: IProject) => {
-    if (sortDirection === Dirction.ACC) {
-      return a[sortFiled] - b[sortFiled];
-    } else {
-      return b[sortFiled] - a[sortFiled];
-    }
   };
 
   return (
@@ -59,10 +55,10 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
               <Typography variant="subtitle2" noWrap>
                 Project Name
               </Typography>
-              <IconButton onClick={() => sort('name', Dirction.ACC)}>
+              <IconButton onClick={() => handleClick()}>
                 <ArrowDropUpIcon />
               </IconButton>
-              <IconButton onClick={() => sort('name', Dirction.DIS)}>
+              <IconButton onClick={() => handleDecClick()}>
                 <ArrowDropDownIcon />
               </IconButton>
             </Grid>
@@ -77,24 +73,14 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
               <Typography variant="subtitle2" noWrap>
                 Company Name
               </Typography>
-              <IconButton onClick={() => sort('customerName', Dirction.ACC)}>
-                <ArrowDropUpIcon />
-              </IconButton>
-              <IconButton onClick={() => sort('customerName', Dirction.DIS)}>
-                <ArrowDropDownIcon />
-              </IconButton>
+
             </Grid>
 
             <Grid item xs={2}>
               <Typography variant="subtitle2" noWrap>
                 Application
               </Typography>
-              <IconButton onClick={() => sort('application', Dirction.ACC)}>
-                <ArrowDropUpIcon />
-              </IconButton>
-              <IconButton onClick={() => sort('application', Dirction.DIS)}>
-                <ArrowDropDownIcon />
-              </IconButton>
+
             </Grid>
             <Grid
               item
@@ -120,9 +106,9 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
         </Paper>
       </Box>
       <Grid style={{ height: '62vh' }}>
+
         {paginationHandler
           .currentData()
-          .sort(compare)
           ?.map((items: IProject, index: number) => {
             return (
               <Typography key={index}>
@@ -130,6 +116,7 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
               </Typography>
             );
           })}
+
       </Grid>
 
       <Grid container mt={4}>
