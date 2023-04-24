@@ -54,7 +54,7 @@ const UserPieChart = ({
           <Default>
             <Chart
               chartType="PieChart"
-              data={cityData}
+              data={statusData}
               width={"100%"}
               height={"320px"}
             />
