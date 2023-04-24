@@ -19,6 +19,11 @@ const comparisonGraphDataVal = [
   { id: 3, label: "Male" },
   { id: 4, label: "Female" },
 ];
+const comparisionType = [
+  { title: 'Today' },
+{ title: 'Last 7 days' },
+{ title: 'Month' },
+]
 const UserGraphView = ({ user }: ListComponentProps) => {
   const [graphView, setGraphView] = useState<string>("status");
   const [graphBase, setGrpahBase] = useState<string>("");
@@ -281,8 +286,31 @@ const UserGraphView = ({ user }: ListComponentProps) => {
   const CompariosnData = [[graphBase, graph1, graph2]];
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box>
         <Grid container spacing={2}>
+
+        <Grid container spacing={2} mt={1}>
+        <Grid item xs={1}></Grid>
+        <Grid item xs={3.5}>
+          <Stack>
+          <Autocomplete  value={graphView} onChange={updateGrpahView} freeSolo
+          id="user-select-type" disableClearable size="small"
+          options={graphTypeVal?.map((option) => option)} renderInput={(params) => (
+           <TextField {...params}InputProps={{...params.InputProps,type: "search",}} 
+           placeholder="Select Graph View" />)} />
+          </Stack>
+        </Grid>
+        <Grid item xs={2.3}></Grid>
+        <Grid item xs={3.5}>
+        <Stack>
+        <Autocomplete freeSolo id="free-solo-2-demo" disableClearable
+        size="small" options={comparisionType.map((option) => option.title)}
+        renderInput={(params) => (
+          <TextField {...params} InputProps={{ ...params.InputProps, type: 'search'}}
+          placeholder="Select Graph View"fullWidth/> )}/>
+          </Stack>
+        </Grid>
+      </Grid>
           <Grid item xs={6}>
             <Grid container spacing={2}>
               <Grid item xs={9}>
@@ -293,29 +321,6 @@ const UserGraphView = ({ user }: ListComponentProps) => {
                   statusData={statusData}
                   countryData={countryData}
                 />
-              </Grid>
-              <Grid item xs={3} mt={2}>
-                <Stack>
-                  <Autocomplete
-                    value={graphView}
-                    onChange={updateGrpahView}
-                    freeSolo
-                    id="user-select-type"
-                    disableClearable
-                    size="small"
-                    options={graphTypeVal?.map((option) => option)}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        InputProps={{
-                          ...params.InputProps,
-                          type: "search",
-                        }}
-                        placeholder="Select Graph View"
-                      />
-                    )}
-                  />
-                </Stack>
               </Grid>
             </Grid>
           </Grid>
@@ -330,7 +335,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
               />
             </>
           </Grid>
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <Grid container spacing={2}>
               <Grid item xs={3}>
                 <Stack>
@@ -355,11 +360,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
                   />
                 </Stack>
               </Grid>
-              {/* MAPPED 2 Dropdowns -> ask vivek sir  */}
-              {/* {comparisonGraphDataVal.map((data, index) => {
-                return <ComparisonGraphComponent key={index} index={index}  data={data}  callBackGraph={callBackGraph} />;
-              })} */}
-              {/* second  */}
+            
               <Grid item xs={3}>
                 <Stack>
                   <Autocomplete
@@ -385,7 +386,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
                   />
                 </Stack>
               </Grid>
-              {/* Third  */}
+
               <Grid item xs={3}>
                 <Stack>
                   <Autocomplete
@@ -427,7 +428,7 @@ const UserGraphView = ({ user }: ListComponentProps) => {
                 data={CompariosnData}
               />
             </>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Box>
     </>
