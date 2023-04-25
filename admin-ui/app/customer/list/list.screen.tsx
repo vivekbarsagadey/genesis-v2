@@ -10,8 +10,13 @@ import InfoCustomerComponent from '../info';
 import { ICustomer } from '../models';
 
 const ListViewComponent = ({ customer }: any) => {
+  console.log('customercustomer', customer);
+
   const [nameSort, setNameSort] = useState(true)
   const [dateSort, setDateSort] = useState(true)
+  const [emailSort, setEmailSort] = useState(true)
+  const [contactSort, setContactSort] = useState(true)
+  const [addressSort, setAddressSort] = useState(true)
 
   const handleNameSort = () => {
     if (nameSort) {
@@ -47,6 +52,60 @@ const ListViewComponent = ({ customer }: any) => {
         return 0;
       }).reverse()
       setDateSort(true)
+    }
+  }
+  const handleEmailSort = () => {
+    if (emailSort) {
+      customer.sort((a, b) => {
+        if (a.email.toLowerCase() < b.email.toLowerCase()) { return -1; }
+        if (a.email.toLowerCase() > b.email.toLowerCase()) { return 1; }
+        return 0;
+      })
+      setEmailSort(false)
+    }
+    else {
+      customer.sort((a, b) => {
+        if (a.email.toLowerCase() < b.email.toLowerCase()) { return -1; }
+        if (a.email.toLowerCase() > b.email.toLowerCase()) { return 1; }
+        return 0;
+      }).reverse()
+      setEmailSort(true)
+    }
+  }
+  const handleContactSort = () => {
+    if (contactSort) {
+      customer.sort((a, b) => {
+        if (a.mobile.toLowerCase() < b.mobile.toLowerCase()) { return -1; }
+        if (a.mobile.toLowerCase() > b.mobile.toLowerCase()) { return 1; }
+        return 0;
+      })
+      setContactSort(false)
+    }
+    else {
+      customer.sort((a, b) => {
+        if (a.mobile.toLowerCase() < b.mobile.toLowerCase()) { return -1; }
+        if (a.mobile.toLowerCase() > b.mobile.toLowerCase()) { return 1; }
+        return 0;
+      }).reverse()
+      setContactSort(true)
+    }
+  }
+  const handleAddressSort = () => {
+    if (addressSort) {
+      customer.sort((a, b) => {
+        if (a.address.toLowerCase() < b.address.toLowerCase()) { return -1; }
+        if (a.address.toLowerCase() > b.address.toLowerCase()) { return 1; }
+        return 0;
+      })
+      setAddressSort(false)
+    }
+    else {
+      customer.sort((a, b) => {
+        if (a.address.toLowerCase() < b.address.toLowerCase()) { return -1; }
+        if (a.address.toLowerCase() > b.address.toLowerCase()) { return 1; }
+        return 0;
+      }).reverse()
+      setAddressSort(true)
     }
   }
 
@@ -94,30 +153,44 @@ const ListViewComponent = ({ customer }: any) => {
                 <ArrowDropDownIcon />
               </IconButton>}
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
               <Typography
                 variant="subtitle2"
                 noWrap
               >
                 Email
               </Typography>
+              {emailSort ? <IconButton onClick={() => handleEmailSort()}>
+                <ArrowDropUpIcon />
+              </IconButton> : <IconButton onClick={() => handleEmailSort()}>
+                <ArrowDropDownIcon />
+              </IconButton>}
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center', justifyContent: 'center' }}>
               <Typography
                 variant="subtitle2"
                 noWrap
-                style={{ display: 'flex', justifyContent: 'space-around' }}
               >
                 Contact
               </Typography>
+              {emailSort ? <IconButton onClick={() => handleContactSort()}>
+                <ArrowDropUpIcon />
+              </IconButton> : <IconButton onClick={() => handleContactSort()}>
+                <ArrowDropDownIcon />
+              </IconButton>}
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center'}}>
               <Typography
                 variant="subtitle2"
                 noWrap
               >
                 Address
               </Typography>
+              {addressSort ? <IconButton onClick={() => handleAddressSort()}>
+                <ArrowDropUpIcon />
+              </IconButton> : <IconButton onClick={() => handleAddressSort()}>
+                <ArrowDropDownIcon />
+              </IconButton>}
             </Grid>
             <Grid item xs={1}>
               <Typography
@@ -128,6 +201,7 @@ const ListViewComponent = ({ customer }: any) => {
               >
                 Action
               </Typography>
+
             </Grid>
           </Grid>
         </Paper>

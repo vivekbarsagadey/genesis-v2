@@ -13,12 +13,15 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
   const [page, setPage] = useState(1);
-  const [nameSort, setNameSort] = useState(true)
-  const [companyNameSort, setCompanyNameSort] = useState(true)
-  const [dateSort, setDateSort] = useState(true)
   const PER_PAGE = 9;
   const count = Math.ceil(projects.length / PER_PAGE);
   const paginationHandler = PaginationHandler(projects, PER_PAGE);
+
+  const [nameSort, setNameSort] = useState(true)
+  const [companyNameSort, setCompanyNameSort] = useState(true)
+  const [dateSort, setDateSort] = useState(true)
+  const [applicationSort, setApplicationSort] = useState(true)
+  const [statusSort, setStatusSort] = useState(true)
 
   const handleNameSort = () => {
     if (nameSort) {
@@ -74,6 +77,42 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
       setCompanyNameSort(true)
     }
   }
+  const handleApplicationSort = () => {
+    if (applicationSort) {
+      projects.sort((a, b) => {
+        if (a.application.toLowerCase() < b.application.toLowerCase()) { return -1; }
+        if (a.application.toLowerCase() > b.application.toLowerCase()) { return 1; }
+        return 0;
+      })
+      setApplicationSort(false)
+    }
+    else {
+      projects.sort((a, b) => {
+        if (a.application.toLowerCase() < b.application.toLowerCase()) { return -1; }
+        if (a.application.toLowerCase() > b.application.toLowerCase()) { return 1; }
+        return 0;
+      }).reverse()
+      setApplicationSort(true)
+    }
+  }
+  const handleStatusNameSort = () => {
+    if (statusSort) {
+      projects.sort((a, b) => {
+        if (a.status.toLowerCase() < b.status.toLowerCase()) { return -1; }
+        if (a.status.toLowerCase() > b.status.toLowerCase()) { return 1; }
+        return 0;
+      })
+      setStatusSort(false)
+    }
+    else {
+      projects.sort((a, b) => {
+        if (a.status.toLowerCase() < b.status.toLowerCase()) { return -1; }
+        if (a.status.toLowerCase() > b.status.toLowerCase()) { return 1; }
+        return 0;
+      }).reverse()
+      setStatusSort(true)
+    }
+  }
 
   const handleChangePage = (e: any, p: number) => {
     setPage(p);
@@ -126,15 +165,26 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
               </IconButton>}
             </Grid>
 
-            <Grid item xs={2} >
+            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }} >
               <Typography variant="subtitle2" noWrap>
                 Application
               </Typography>
+              {applicationSort ? <IconButton onClick={() => handleApplicationSort()}>
+                <ArrowDropUpIcon />
+              </IconButton> : <IconButton onClick={() => handleApplicationSort()}>
+                <ArrowDropDownIcon />
+              </IconButton>}
             </Grid>
-            <Grid item xs={2}style={{ display: 'flex', justifyContent: 'center' }}       >
+
+            <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center' }}>
               <Typography variant="subtitle2" noWrap>
                 Status
               </Typography>
+              {statusSort ? <IconButton onClick={() => handleStatusNameSort()}>
+                <ArrowDropUpIcon />
+              </IconButton> : <IconButton onClick={() => handleStatusNameSort()}>
+                <ArrowDropDownIcon />
+              </IconButton>}
             </Grid>
 
             <Grid item xs={1}>
