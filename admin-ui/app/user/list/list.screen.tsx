@@ -7,11 +7,55 @@ import { useState } from "react";
 import { PaginationHandler } from "../../utility";
 import InfoUserComponent from "../info";
 import { IUser } from "../models";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+
+
 const ListViewComponent = ({ user }: any) => {
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(user.length / PER_PAGE);
   const paginationHandler = PaginationHandler(user, PER_PAGE);
+
+  const [nameSort, setNameSort] = useState(true)
+  const [dateSort, setDateSort] = useState(true)
+
+  const handleNameSort = () => {
+    if (nameSort) {
+      user.sort((a, b) => {
+        if (`${a.firstName}${a.lastName}`.toLowerCase() < `${b.firstName}${b.lastName}`.toLowerCase()) { return -1; }
+        if (`${a.firstName}${a.lastName}`.toLowerCase() > `${b.firstName}${b.lastName}`.toLowerCase()) { return 1; }
+        return 0;
+      })
+      setNameSort(false)
+    }
+    else {
+      user.sort((a, b) => {
+        if (`${a.firstName}${a.lastName}`.toLowerCase() < `${b.firstName}${b.lastName}`.toLowerCase()) { return -1; }
+        if (`${a.firstName}${a.lastName}`.toLowerCase() > `${b.firstName}${b.lastName}`.toLowerCase()) { return 1; }
+        return 0;
+      }).reverse()
+      setNameSort(true)
+    }
+  }
+  const handleDateSort = () => {
+    if (dateSort) {
+      user.sort((a, b) => {
+        if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) { return -1; }
+        if (a.createdAt.toLowerCase() > b.createdAt.toLowerCase()) { return 1; }
+        return 0;
+      })
+      setDateSort(false)
+    }
+    else {
+      user.sort((a, b) => {
+        if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) { return -1; }
+        if (a.createdAt.toLowerCase() > b.createdAt.toLowerCase()) { return 1; }
+        return 0;
+      }).reverse()
+      setDateSort(true)
+    }
+  }
   const handleChangePage = (e: any, p: number) => {
     setPage(p);
     paginationHandler.jump(p);
@@ -91,22 +135,36 @@ const ListViewComponent = ({ user }: any) => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={2}>
+
+            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
               <Typography variant="subtitle2" noWrap>
                 User Name
               </Typography>
+              {nameSort ? <IconButton onClick={() => handleNameSort()}>
+                <ArrowDropUpIcon />
+              </IconButton> : <IconButton onClick={() => handleNameSort()}>
+                <ArrowDropDownIcon />
+              </IconButton>}
             </Grid>
-            <Grid item xs={1} mr={6}>
+
+            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
               <Typography variant="subtitle2" noWrap>
-                Date Created
+                Created Date
               </Typography>
+              {dateSort ? <IconButton onClick={() => handleDateSort()}>
+                <ArrowDropUpIcon />
+              </IconButton> : <IconButton onClick={() => handleDateSort()}>
+                <ArrowDropDownIcon />
+              </IconButton>}
             </Grid>
-            <Grid item xs={1} mr={4}>
+
+            <Grid item xs={2}>
               <Typography variant="subtitle2" noWrap>
                 Email
               </Typography>
             </Grid>
-            <Grid item xs={1} mr={5}>
+
+            <Grid item xs={2} >
               <Typography
                 variant="subtitle2"
                 noWrap
@@ -116,7 +174,8 @@ const ListViewComponent = ({ user }: any) => {
                 Contact
               </Typography>
             </Grid>
-            <Grid item xs={1} mr={12}>
+
+            <Grid item xs={2}>
               <Typography
                 variant="subtitle2"
                 noWrap
@@ -126,11 +185,12 @@ const ListViewComponent = ({ user }: any) => {
                 Address
               </Typography>
             </Grid>
-            <Grid item xs={2}>
+
+            <Grid item xs={1}>
               <Typography
                 variant="subtitle2"
                 display={"flex"}
-                justifyContent={"space-around"}
+                justifyContent={"center"}
                 noWrap
               >
                 Action

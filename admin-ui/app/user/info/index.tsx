@@ -40,14 +40,14 @@ const InfoUserComponent = ({ user }: InfoUserComponentProps) => {
                 {user.firstName} {user.lastName}
               </Typography>
             </Grid>
-            <Grid item xs={1} mr={6}>
+            <Grid item xs={2}>
               <Typography variant="body2" noWrap>
                 <Moment format="DD MMM YYYY">
                   {user.createdAt}
                 </Moment>
               </Typography>
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs={2}>
               <Typography variant="body2" noWrap>
                 {user.email}
               </Typography>
@@ -62,19 +62,18 @@ const InfoUserComponent = ({ user }: InfoUserComponentProps) => {
                 {user.mobile}
               </Typography>
             </Grid>
-            <Grid item xs={2} mr={6}>
+            <Grid item xs={2}>
               <Typography
                 variant="body2"
                 noWrap
                 display={"flex"}
                 justifyContent={"space-around"}
-                mr={1}
               >
                 {user.address}
               </Typography>
             </Grid>
             <Grid item xs={1}>
-              <Grid container>
+              <Grid container  style={{display:'flex',justifyContent:'center'}}>
                 <Grid item xs={4}>
                   <Tooltip title="Edit">
                     <Link href={`/user/${user.id}`}>

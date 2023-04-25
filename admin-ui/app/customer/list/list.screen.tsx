@@ -1,19 +1,55 @@
 'use client';
-import { Box, Grid, Pagination, Typography } from '@mui/material';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import { Box, Grid, IconButton, Pagination, Typography } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import Paper from '@mui/material/Paper';
 import { useState } from 'react';
 import { PaginationHandler } from '../../utility';
 import InfoCustomerComponent from '../info';
 import { ICustomer } from '../models';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
-const ListViewComponent = ({ customer, setCopyCustomer }: any) => {
-  const [increaseAdd, setIncreaseAdd] = useState(false);
-  const [increaseEmail, setIncreaseEmail] = useState(false);
-  const [increaseUser, setIncreaseUser] = useState(false);
-  const [data, setData] = useState();
+const ListViewComponent = ({ customer }: any) => {
+  const [nameSort, setNameSort] = useState(true)
+  const [dateSort, setDateSort] = useState(true)
+
+  const handleNameSort = () => {
+    if (nameSort) {
+      customer.sort((a, b) => {
+        if (`${a.firstName}${a.lastName}`.toLowerCase() < `${b.firstName}${b.lastName}`.toLowerCase()) { return -1; }
+        if (`${a.firstName}${a.lastName}`.toLowerCase() > `${b.firstName}${b.lastName}`.toLowerCase()) { return 1; }
+        return 0;
+      })
+      setNameSort(false)
+    }
+    else {
+      customer.sort((a, b) => {
+        if (`${a.firstName}${a.lastName}`.toLowerCase() < `${b.firstName}${b.lastName}`.toLowerCase()) { return -1; }
+        if (`${a.firstName}${a.lastName}`.toLowerCase() > `${b.firstName}${b.lastName}`.toLowerCase()) { return 1; }
+        return 0;
+      }).reverse()
+      setNameSort(true)
+    }
+  }
+  const handleDateSort = () => {
+    if (dateSort) {
+      customer.sort((a, b) => {
+        if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) { return -1; }
+        if (a.createdAt.toLowerCase() > b.createdAt.toLowerCase()) { return 1; }
+        return 0;
+      })
+      setDateSort(false)
+    }
+    else {
+      customer.sort((a, b) => {
+        if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) { return -1; }
+        if (a.createdAt.toLowerCase() > b.createdAt.toLowerCase()) { return 1; }
+        return 0;
+      }).reverse()
+      setDateSort(true)
+    }
+  }
+
   const [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(customer.length / PER_PAGE);
@@ -24,26 +60,6 @@ const ListViewComponent = ({ customer, setCopyCustomer }: any) => {
     paginationHandler.jump(p);
   };
 
-  // const emailInc = () => {
-  //   setIncreaseEmail(!increaseEmail);
-  //   setData(customer.sort((a, b) => {
-  //     return a.email > b.email ? 1 : -1;
-  //   }));
-  // };
-
-  // const addressInc = () => {
-  //   setIncreaseAdd(!increaseAdd);
-  //   setData(customer.sort((a, b) => {
-  //     return a.address > b.address ? 1 : -1;
-  //   }));
-  // };
-  // const userNameInc = () => {
-  //   setIncreaseUser(!increaseUser);
-  //   setData(customer.sort((a, b) => {
-  //     return a.address > b.address ? 1 : -1;
-  //   }));
-  // };
-  // console.log("setCopyCustomer >>",setCopyCustomer);
 
   return (
     <>
@@ -58,33 +74,32 @@ const ListViewComponent = ({ customer, setCopyCustomer }: any) => {
               </Grid>
             </Grid>
 
-            <Grid item xs={2}>
-              <Typography
-                variant="subtitle2"
-                noWrap
-                // onClick={() => userNameInc()}
-              >
-                Customer Name
-                {/* {increaseUser ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />} */}
-              </Typography>
-            </Grid>
-            <Grid
-              item
-              xs={2}
-              style={{ display: 'flex', justifyContent: 'space-around' }}
-            >
+            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
               <Typography variant="subtitle2" noWrap>
-                Date Created
+                Customer Name
               </Typography>
+              {nameSort ? <IconButton onClick={() => handleNameSort()}>
+                <ArrowDropUpIcon />
+              </IconButton> : <IconButton onClick={() => handleNameSort()}>
+                <ArrowDropDownIcon />
+              </IconButton>}
+            </Grid>
+            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
+              <Typography variant="subtitle2" noWrap>
+                Created Date
+              </Typography>
+              {dateSort ? <IconButton onClick={() => handleDateSort()}>
+                <ArrowDropUpIcon />
+              </IconButton> : <IconButton onClick={() => handleDateSort()}>
+                <ArrowDropDownIcon />
+              </IconButton>}
             </Grid>
             <Grid item xs={2}>
               <Typography
                 variant="subtitle2"
                 noWrap
-                //  onClick={() => emailInc()}
               >
                 Email
-                {/* {increaseEmail ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />} */}
               </Typography>
             </Grid>
             <Grid item xs={2}>
@@ -100,10 +115,8 @@ const ListViewComponent = ({ customer, setCopyCustomer }: any) => {
               <Typography
                 variant="subtitle2"
                 noWrap
-                // onClick={() => addressInc()}
               >
                 Address
-                {/* {increaseAdd ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />} */}
               </Typography>
             </Grid>
             <Grid item xs={1}>
