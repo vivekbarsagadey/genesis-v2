@@ -72,6 +72,17 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
           </Grid>
           <Grid item xs={1}>
             <Link
+              href={'/company/report'}
+              passHref
+              style={{ textDecoration: 'none' }}
+            >
+              <Button variant="contained" size="small">
+                Report
+              </Button>
+            </Link>
+          </Grid>
+          <Grid item xs={1}>
+            <Link
               href={'/company/create'}
               passHref
               style={{ textDecoration: 'none' }}
