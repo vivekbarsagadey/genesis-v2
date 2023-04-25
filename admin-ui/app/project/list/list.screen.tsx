@@ -3,7 +3,7 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Box, Grid, IconButton, Pagination, Typography } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import Paper from '@mui/material/Paper';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { PaginationHandler } from '../../utility';
 import InfoProjectComponent from '../info';
 import IProject from '../project.model';
@@ -13,24 +13,85 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
   const [page, setPage] = useState(1);
-  const [data, setData] = useState()
+  const [nameSort, setNameSort] = useState(true)
+  const [applicationSort, setApplicationSort] = useState(true)
+  const [dateSort, setDateSort] = useState(true)
+  const [statusSort, setStatusSort] = useState(true)
   const PER_PAGE = 9;
   const count = Math.ceil(projects.length / PER_PAGE);
   const paginationHandler = PaginationHandler(projects, PER_PAGE);
 
-  const handleClick = () => {
-    setData(projects.sort((a, b) => {
-      if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
-      if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
-      return 0;
-    }))
+  const handleNameSort = () => {
+    if (nameSort) {
+      projects.sort((a, b) => {
+        if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
+        if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
+        return 0;
+      })
+      setNameSort(false)
+    }
+    else {
+      projects.sort((a, b) => {
+        if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
+        if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
+        return 0;
+      }).reverse()
+      setNameSort(true)
+    }
   }
-  const handleDecClick = () => {
-    setData(projects.sort((a, b) => {
-      if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
-      if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
-      return 0;
-    }).reverse())
+  const handleApplicationSort = () => {
+    if (applicationSort) {
+      projects.sort((a, b) => {
+        if (a.application.toLowerCase() < b.application.toLowerCase()) { return -1; }
+        if (a.application.toLowerCase() > b.application.toLowerCase()) { return 1; }
+        return 0;
+      })
+      setApplicationSort(false)
+    }
+    else {
+      projects.sort((a, b) => {
+        if (a.application.toLowerCase() < b.application.toLowerCase()) { return -1; }
+        if (a.application.toLowerCase() > b.application.toLowerCase()) { return 1; }
+        return 0;
+      }).reverse()
+      setApplicationSort(true)
+    }
+  }
+  const handleDateSort = () => {
+    if (dateSort) {
+      projects.sort((a, b) => {
+        if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) { return -1; }
+        if (a.createdAt.toLowerCase() > b.createdAt.toLowerCase()) { return 1; }
+        return 0;
+      })
+      setDateSort(false)
+    }
+    else {
+      projects.sort((a, b) => {
+        if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) { return -1; }
+        if (a.createdAt.toLowerCase() > b.createdAt.toLowerCase()) { return 1; }
+        return 0;
+      }).reverse()
+      setDateSort(true)
+    }
+  }
+  const handleStatusSort = () => {
+    if (statusSort) {
+      projects.sort((a, b) => {
+        if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) { return -1; }
+        if (a.createdAt.toLowerCase() > b.createdAt.toLowerCase()) { return 1; }
+        return 0;
+      })
+      setStatusSort(false)
+    }
+    else {
+      projects.sort((a, b) => {
+        if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) { return -1; }
+        if (a.createdAt.toLowerCase() > b.createdAt.toLowerCase()) { return 1; }
+        return 0;
+      }).reverse()
+      setStatusSort(true)
+    }
   }
 
   const handleChangePage = (e: any, p: number) => {
@@ -51,45 +112,56 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
               </Grid>
             </Grid>
 
-            <Grid item xs={2}>
+            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
               <Typography variant="subtitle2" noWrap>
                 Project Name
               </Typography>
-              <IconButton onClick={() => handleClick()}>
+              {nameSort ? <IconButton onClick={() => handleNameSort()}>
                 <ArrowDropUpIcon />
-              </IconButton>
-              <IconButton onClick={() => handleDecClick()}>
+              </IconButton> : <IconButton onClick={() => handleNameSort()}>
                 <ArrowDropDownIcon />
-              </IconButton>
+              </IconButton>}
             </Grid>
 
-            <Grid item xs={2}>
+            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
               <Typography variant="subtitle2" noWrap>
-                Date Created
+                Created Date
               </Typography>
+              {dateSort ? <IconButton onClick={() => handleDateSort()}>
+                <ArrowDropUpIcon />
+              </IconButton> : <IconButton onClick={() => handleDateSort()}>
+                <ArrowDropDownIcon />
+              </IconButton>}
             </Grid>
 
             <Grid item xs={2}>
               <Typography variant="subtitle2" noWrap>
                 Company Name
               </Typography>
-
             </Grid>
 
-            <Grid item xs={2}>
+            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
               <Typography variant="subtitle2" noWrap>
                 Application
               </Typography>
-
+              {applicationSort ? <IconButton onClick={() => handleStatusSort()}>
+                <ArrowDropUpIcon />
+              </IconButton> : <IconButton onClick={() => handleStatusSort()}>
+                <ArrowDropDownIcon />
+              </IconButton>}
             </Grid>
             <Grid
               item
-              xs={2}
-              style={{ display: 'flex', justifyContent: 'space-around' }}
+              xs={2} style={{ display: 'flex', alignContent: 'center', justifyContent: 'center' }}
             >
               <Typography variant="subtitle2" noWrap>
                 Status
               </Typography>
+              {handleStatusSort ? <IconButton onClick={() => handleApplicationSort()}>
+                <ArrowDropUpIcon />
+              </IconButton> : <IconButton onClick={() => handleApplicationSort()}>
+                <ArrowDropDownIcon />
+              </IconButton>}
             </Grid>
 
             <Grid item xs={1}>
@@ -116,7 +188,6 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
               </Typography>
             );
           })}
-
       </Grid>
 
       <Grid container mt={4}>

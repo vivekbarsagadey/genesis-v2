@@ -98,7 +98,6 @@ const ProjectViewComponent = ({ onViewSelect }: ProjectViewComponentProps) => {
                 style={{
                   border: "none",
                   borderRadius: "50%",
-                  background: "transparent",
                 }}
               >
                 {item.icon}
