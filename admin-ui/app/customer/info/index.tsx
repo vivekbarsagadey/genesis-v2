@@ -97,11 +97,10 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
               </Typography>
             </Grid>
 
-            <Grid item xs={2}>
+            <Grid item xs={2} style={{ display: 'flex', alignSelf:'center' }}>
               <Typography
                 variant="body2"
                 noWrap
-                style={{ display: 'flex', justifyContent: 'space-around' }}
               >
                 <Moment format="DD MMM YYYY">{customer.createdAt}</Moment>
               </Typography>
