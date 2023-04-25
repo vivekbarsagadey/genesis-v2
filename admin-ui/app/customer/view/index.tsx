@@ -98,7 +98,6 @@ const CustomerViewComponent = ({ onViewSelect }: CustomerViewComponentProps) => 
                 style={{
                   border: "none",
                   borderRadius: "50%",
-                  background: "transparent",
                 }}
               >
                 {item.icon}
