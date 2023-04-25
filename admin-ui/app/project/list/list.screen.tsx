@@ -131,7 +131,7 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
                 Application
               </Typography>
             </Grid>
-            <Grid item xs={2}            >
+            <Grid item xs={2}style={{ display: 'flex', justifyContent: 'center' }}       >
               <Typography variant="subtitle2" noWrap>
                 Status
               </Typography>
