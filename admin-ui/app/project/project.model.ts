@@ -1,3 +1,4 @@
+import moment from 'moment';
 
 interface IProject{
     id:string;
@@ -12,7 +13,7 @@ interface IProject{
     projectJson:JSON;
     email : string;
     createdAt: string;
-    
+    moment:any
 }
 
 
