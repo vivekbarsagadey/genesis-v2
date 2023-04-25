@@ -1,7 +1,9 @@
 'use client';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import PrintIcon from '@mui/icons-material/Print';
 import { Box, Button, Grid, IconButton, Tooltip } from '@mui/material';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 import { Case, Default, Switch } from 'react-if';
 import { useReactToPrint } from 'react-to-print';
@@ -26,7 +28,7 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
     ...customer,
   ]);
   const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
-
+  const [show, setShow] = useState(false);
   const onSearchHandler = (c: Array<ICustomer>) => {
     setCopyCustomer(c);
   };
@@ -39,6 +41,29 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
   const handlePrint = useReactToPrint({
     content: () => myRef.current,
   });
+  const router = useRouter();
+  // const removeData = (f: any) => {
+  //   getRemove(f);
+  // };
+  // const getRemove = async (customer: any) => {
+  //   await deleteCustomer(customer);
+  //   window.location.reload();
+  // };
+
+  // const removeData = (customer: any) => {
+  //   window.location.reload();
+  //   deleteCustomer(customer.id);
+  // };
+
+  // const removeData = (f: any) => {
+  //   getRemove(f);
+  // };
+  // const getRemove = async (customer: any) => {
+  //   await deleteCustomer(customer);
+  //   // router.push("/user");
+  //   window.location.reload();
+  // };
+  console.log('customercustomer', customer);
 
   return (
     <>
@@ -50,7 +75,7 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
               onSearchHandler={onSearchHandler}
             />
           </Grid>
-          <Grid item xs={8} md={8} sm={8} lg={8} display={'flex'}>
+          <Grid item xs={7} md={7} sm={7} lg={7} display={'flex'}>
             <Grid container>
               <Grid item xs={'auto'} mt={0.3}>
                 <FilterComponent
@@ -74,7 +99,38 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={1}>
+
+          <Grid
+            item
+            xs={1}
+            sm={1}
+            lg={1}
+            mt={0.5}
+            style={{ display: 'flex', justifyContent: 'flex-end' }}
+          >
+            {show && (
+              <Tooltip title="Delete All" arrow>
+                <IconButton
+                  aria-label="delete"
+                  // onClick={() => removeData(customer)}
+                >
+                  <DeleteOutlineIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
+            )}
+            
+            {show && (
+              <Tooltip title="Delete All" arrow>
+                <IconButton
+                  aria-label="delete"
+                  // onClick={() => removeData(customer)}
+                >
+                  <DeleteOutlineIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
+            )}
+          </Grid>
+          <Grid item xs={1} mt={1}>
             <Link
               href={'/customer/create'}
               passHref
@@ -110,10 +166,15 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
               </Grid>
             </Case>
             <Default>
-              <Grid ref={myRef}>
+              <Grid 
+              // ref={myRef}
+              >
                 <CustomerListScereen
                   customer={copyCustomer}
                   setCopyCustomer={setCopyCustomer}
+                  show={show}
+                  setShow={setShow}
+                  myRef={myRef}
                 />
               </Grid>
             </Default>

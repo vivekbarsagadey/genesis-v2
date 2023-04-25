@@ -13,6 +13,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { headerstyle as style } from "./project.style";
 import Person2Icon from '@mui/icons-material/Person2';
+import MetaDataSidebar from "../metaDataSidebar/meta.data.sidebar";
 
 
 interface sidebarProps {
@@ -100,6 +101,8 @@ const ProjectSidebar = ({ toggleMenu }:sidebarProps) => {
           </ListItemButton>
         </Link>
       </List>
+
+      <MetaDataSidebar/>
     </Box>
   );
 };

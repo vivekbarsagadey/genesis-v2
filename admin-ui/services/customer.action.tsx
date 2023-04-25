@@ -25,4 +25,5 @@ const deleteCustomer = async (id) => {
     });
     return response;
 }
+
 export {createCustomer, updateCustomer ,deleteCustomer}
