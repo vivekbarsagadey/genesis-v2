@@ -1,10 +1,10 @@
 import React from 'react'
-import RoleHomeComponent from '.'
+import ReportComponent from '.'
 
 const page = () => {
   return (
     <div>
-      <RoleHomeComponent />
+        <ReportComponent/>
     </div>
   )
 }
