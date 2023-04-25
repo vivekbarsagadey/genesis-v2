@@ -85,26 +85,11 @@ const MetaDataSidebar = () => {
             <CollapsibleListItem label="Roles">
               <ul style={{ listStyle: 'none', marginLeft: '-1.5rem' }}>
                 <Link
-                  href="/roles/user"
+                  href="/roles/role"
                   passHref
                   style={{ textDecoration: 'none' }}
                 >
-                  <NormalListItem label="User" />
-                </Link>
-
-                <Link
-                  href="/roles/admin"
-                  passHref
-                  style={{ textDecoration: 'none' }}
-                >
-                  <NormalListItem label="Admin" />
-                </Link>
-                <Link
-                  href="/roles/superadmin"
-                  passHref
-                  style={{ textDecoration: 'none' }}
-                >
-                  <NormalListItem label="Super Admin" />
+                  <NormalListItem label="Role" />
                 </Link>
               </ul>
             </CollapsibleListItem>

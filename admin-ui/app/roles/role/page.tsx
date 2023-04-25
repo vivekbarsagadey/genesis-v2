@@ -1,8 +1,11 @@
 import React from 'react'
+import RoleHomeComponent from '.'
 
 const page = () => {
   return (
-    <div>Admin</div>
+    <div>
+      <RoleHomeComponent />
+    </div>
   )
 }
 

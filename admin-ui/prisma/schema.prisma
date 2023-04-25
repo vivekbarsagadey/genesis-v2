@@ -115,6 +115,20 @@ model Project {
   @@map("tb_project")
 }
 
+
+model Roles {
+ id             String   @id @default(auto()) @map("_id") @db.ObjectId
+ createdAt      DateTime @default(now())
+ updatedAt      DateTime @updatedAt
+ name           String   @unique
+ description    String   @unique
+ code           String   @unique
+ 
+  @@map("tb_roles")
+}
+
+
+
 model Page {
   id              String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt       DateTime @default(now())
