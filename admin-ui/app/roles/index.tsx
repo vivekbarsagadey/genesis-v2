@@ -1,36 +1,60 @@
 'use client';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import PrintIcon from '@mui/icons-material/Print';
 import { Box, Button, Grid, IconButton, Tooltip } from '@mui/material';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 import { Case, Default, Switch } from 'react-if';
 import { useReactToPrint } from 'react-to-print';
-import RoleListScreen from './list/list.screen';
+import { ViewTypes } from '../utility';
+import RolesFilterComponent from './filters';
+import RoleCalendarView from './list/calendar.view';
+import ExportComponent from './list/export.component';
+import RoleGraphView from './list/graph.view';
+import RoleGridView from './list/grid.view';
+import RoleKanbanView from './list/kanban.view';
+import ListViewComponent from './list/list.view.component';
+import RolesSearchDetails from './search';
+import RoleViewComponent from './view';
 
-const RoleHomeComponent = () => {
+interface RoleComponentProps {
+  roles: Array<IRoles>;
+}
+const RoleComponentHome = ({ roles }: RoleComponentProps) => {
+  const [copyRoles, setCopyRoles] = useState<Array<IRoleComponentProps>>([
+    ...roles,
+  ]);
+  const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
+  const onSearchHandler = (c: Array<IRoles>) => {
+    setCopyRoles(c);
+  };
+  const onViewSelect = (view: ViewTypes) => {
+    setViewType(view);
+  };
+  const myRef = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => myRef.current,
+  });
+
   return (
     <>
-    
-    <Box mt={1} ml={1.5}>
+      <Box mt={1} ml={1.5}>
         <Grid container spacing={1}>
           <Grid item xs={3} md={3} lg={3} sm={3}>
-            {/* <CustomerSearchDetails
-              customer={customer}
+            <RolesSearchDetails
+              roles={roles}
               onSearchHandler={onSearchHandler}
-            /> */}
+            />
           </Grid>
-          <Grid item xs={7} md={7} sm={7} lg={7} display={'flex'}>
+          <Grid item xs={8} md={8} sm={8} lg={8} display={'flex'}>
             <Grid container>
               <Grid item xs={'auto'} mt={0.3}>
-                {/* <FilterComponent
-                  customer={customer}
+                <RolesFilterComponent
+                  roles={roles}
                   onFilterHandler={onSearchHandler}
-                /> */}
+                />
               </Grid>
               <Grid item xs={'auto'} mt={0.2}>
-                {/* <ExportComponent customer={copyCustomer} /> */}
+                <ExportComponent copyRoles={roles} />
               </Grid>
               <Grid item xs={'auto'} mt={0.2}>
                 <Tooltip title="Print">
@@ -41,14 +65,13 @@ const RoleHomeComponent = () => {
               </Grid>
 
               <Grid item xs={9}>
-                {/* <CustomerViewComponent onViewSelect={onViewSelect} /> */}
+                <RoleViewComponent onViewSelect={onViewSelect} />
               </Grid>
             </Grid>
           </Grid>
-
-          <Grid item xs={1} mt={1}>
+          <Grid item xs={1}>
             <Link
-              href={'/customer/create'}
+              href={'/roles/create'}
               passHref
               style={{ textDecoration: 'none' }}
             >
@@ -61,51 +84,36 @@ const RoleHomeComponent = () => {
         </Grid>
         <Grid item xs={12}>
           <Switch>
-            {/* <Case condition={viewType === ViewTypes.GRID}>
+            <Case condition={viewType === ViewTypes.GRID}>
               <Grid ref={myRef}>
-                <CustomerGridView customer={copyCustomer} />
+                <RoleGridView roles={copyRoles} />
               </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.GRAPH}>
               <Grid ref={myRef}>
-                <CustomerGraphView customer={copyCustomer} />
+                <RoleGraphView roles={copyRoles} />
               </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.KANBAN}>
               <Grid ref={myRef}>
-                <CustomerKanbanView customer={copyCustomer} />
+                <RoleKanbanView roles={copyRoles} />
               </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.CALENDAR}>
               <Grid ref={myRef}>
-                <CustomerCalendarView customer={copyCustomer} />
-              </Grid> */}
-            {/* </Case> */}
+                <RoleCalendarView roles={copyRoles} />
+              </Grid>
+            </Case>
             <Default>
-              <Grid 
-              // ref={myRef}
-              >
-                <RoleListScreen
-                //   customer={copyCustomer}
-                //   setCopyCustomer={setCopyCustomer}
-                //   show={show}
-                //   setShow={setShow}
-                //   myRef={myRef}
-                />
+              <Grid ref={myRef}>
+                <ListViewComponent roles={copyRoles} />
               </Grid>
             </Default>
           </Switch>
         </Grid>
       </Box>
-
-
-
-{/*     
-    RoleHomeComponent
-    <RoleListScreen/> */}
-    
     </>
-  )
-}
+  );
+};
 
-export default RoleHomeComponent
+export default RoleComponentHome;
