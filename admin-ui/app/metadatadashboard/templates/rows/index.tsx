@@ -7,8 +7,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 
 const CreateRowsComponent = ({ index }: any) => {
   const [rowCount, setRowCount] = useState([]);
