@@ -69,7 +69,7 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
     <>
       <Box mt={1} ml={1.5}>
         <Grid container spacing={1}>
-          <Grid item xs={3} md={3} lg={3} sm={3}>
+          <Grid item xs={2} md={2} lg={2} sm={2}>
             <CustomerSearchDetails
               customer={customer}
               onSearchHandler={onSearchHandler}

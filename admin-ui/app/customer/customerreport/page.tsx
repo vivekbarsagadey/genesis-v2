@@ -6,7 +6,7 @@ import { ICustomer } from '../models';
 const URL = 'customer';
 
 const Page = () => {
-  const customer = use<Array<IProject>>(findAll(URL));
+  const customer = use<Array<ICustomer>>(findAll(URL));
 
   return <CustomerReportComponent  customer={customer} />;
 };

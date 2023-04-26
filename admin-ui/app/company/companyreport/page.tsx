@@ -6,7 +6,7 @@ import { ICompany } from '../models';
 const URL = "companies";
 const Page = () => {
     const companies = use<Array<ICompany>>(findAll(URL));
-    return <CompanyReportComponent companies={companies}/>;
+    return <CompanyReportComponent company={companies}/>;
   };
   
   export default Page;

@@ -40,7 +40,7 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
     <>
       <Box mt={1} ml={1.5}>
         <Grid container spacing={1}>
-          <Grid item xs={3} md={3} lg={3} sm={3}>
+          <Grid item xs={3} md={3} lg={2} sm={2}>
             <UserSearchDetails
               user={user}
               onSearchHandler={onSearchHandler}
@@ -60,7 +60,7 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
               <Grid item xs={"auto"} mt={0.3}>
                 <PrintComponent/>
               </Grid>
-
+               
               <Grid item xs={9}>
                 <UserViewComponent onViewSelect={onViewSelect} />
               </Grid>
