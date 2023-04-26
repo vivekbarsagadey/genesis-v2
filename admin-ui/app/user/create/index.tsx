@@ -1,8 +1,13 @@
 'use client';
 import { Box, Button, Grid, Stack, TextField, Typography } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
-import Snackbar from '@mui/material/Snackbar';
 import Autocomplete from '@mui/material/Autocomplete';
+import Backdrop from '@mui/material/Backdrop';
+import Fade from '@mui/material/Fade';
+import Modal from '@mui/material/Modal';
+import Snackbar from '@mui/material/Snackbar';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
 import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -15,6 +20,17 @@ import {
   stateSelect,
 } from '../graphdata/graphdata.data';
 import { Status } from '../models';
+
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 450,
+  bgcolor: 'background.paper',
+  boxShadow: 24,
+  p: 4,
+};
 
 const useStyles = makeStyles({
   avtar: {
@@ -57,7 +73,13 @@ const UserCreateComponent = () => {
   const [alert, setAlert] = useState(false);
   const [roleList, setRoleList] = useState([]);
   const [role, setRole] = useState<String>('');
+  const [value, setValue] = useState();
   const router = useRouter();
+
+  const [securityModalOpen, setSecurityModalOpen] = React.useState(false);
+  const securityModal = () => setSecurityModalOpen(true);
+  const securityhandleClose = () => setSecurityModalOpen(false);
+
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   // POST call
   const updateMyUserData = async () => {
@@ -141,12 +163,8 @@ const UserCreateComponent = () => {
   ) => {
     setRole(value);
   };
-
-  const handleMouseIn = () => {
-    setHover(true);
-  };
-  const handleMouseOut = () => {
-    setHover(false);
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
   };
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -392,16 +410,6 @@ const UserCreateComponent = () => {
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    {/* <TextField
-                      id="zipcode"
-                      placeholder="Zip Code"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={userZipCode}
-                      onChange={updateUserZipCode}
-                    /> */}
-
                     <Stack>
                       <Autocomplete
                         size="small"
@@ -520,6 +528,7 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
+
               <Grid container mt={5}>
                 <Grid item xs={8.6}></Grid>
                 <Grid item xs={3.4}>
@@ -555,6 +564,114 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
+              <Box sx={{ width: '100%' }}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                  <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="basic tabs example"
+                  >
+                    <Tab
+                      label="Security"
+                      {...a11yProps(0)}
+                      onClick={securityModal}
+                    />
+                    <Tab label="Address" {...a11yProps(1)} />
+                    <Tab label="Roles" {...a11yProps(2)} />
+                  </Tabs>
+                </Box>
+                <TabPanel value={value} index={0}>
+                  <Modal
+                    aria-labelledby="transition-modal-title"
+                    aria-describedby="transition-modal-description"
+                    open={securityModalOpen}
+                    onClose={securityhandleClose}
+                    closeAfterTransition
+                    slots={{ backdrop: Backdrop }}
+                    slotProps={{
+                      backdrop: {
+                        timeout: 500,
+                      },
+                    }}
+                  >
+                    <Fade in={securityModalOpen}>
+                      <Box sx={style}>
+                        <Grid container display="flex" alignItems="center">
+                          <Grid item xs={4}>
+                            <Typography>Old Password</Typography>
+                          </Grid>
+                          <Grid item xs={1}>
+                            <Typography>:</Typography>
+                          </Grid>
+                          <Grid item xs={7}>
+                            <TextField
+                              id="old-password"
+                              label="Enter Your Old Password"
+                              variant="outlined"
+                              size="small"
+                              fullWidth
+                            />
+                          </Grid>
+                        </Grid>
+
+                        <Grid
+                          container
+                          display="flex"
+                          alignItems="center"
+                          mt={2}
+                        >
+                          <Grid item xs={4}>
+                            <Typography>New Password</Typography>
+                          </Grid>
+                          <Grid item xs={1}>
+                            <Typography>:</Typography>
+                          </Grid>
+                          <Grid item xs={7}>
+                            <TextField
+                              id="new-password"
+                              label="Enter Your New Password"
+                              variant="outlined"
+                              size="small"
+                              fullWidth
+                            />
+                          </Grid>
+                        </Grid>
+
+                        <Grid
+                          container
+                          display="flex"
+                          alignItems="center"
+                          mt={2}
+                        >
+                          <Grid item xs={5}>
+                            {' '}
+                          </Grid>
+                          <Grid item xs={7}>
+                            <Grid container>
+                              <Grid item xs={8.6}>
+                                <Button variant="contained" size="small">
+                                  Reset
+                                </Button>
+                              </Grid>
+                              <Grid item xs={3}>
+                                <Button variant="contained" size="small">
+                                  Save
+                                </Button>
+                              </Grid>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      </Box>
+                    </Fade>
+                  </Modal>
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                  Address
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                  Roles
+                </TabPanel>
+              </Box>
             </Grid>
           </Box>
         </Grid>
@@ -562,4 +679,35 @@ const UserCreateComponent = () => {
     </Box>
   );
 };
+
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+function a11yProps(index: number) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 export default UserCreateComponent;
