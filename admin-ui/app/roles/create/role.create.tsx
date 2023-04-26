@@ -1,5 +1,13 @@
 'use client';
-import { Box, Button, Grid, TextField, Typography } from '@mui/material';
+import {
+  Autocomplete,
+  Box,
+  Button,
+  Grid,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 import { makeStyles } from '@mui/styles';
@@ -7,6 +15,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { createRoles } from '../../../services/role.action';
+import { Status } from '../models/role.status';
 
 const useStyles = makeStyles({
   buttonStyle: {
@@ -27,6 +36,9 @@ const RoleCreateComponent = () => {
   const [description, setDescription] = useState('');
   const [code, setCode] = useState('');
   const [alert, setAlert] = useState(false);
+  const [roleStatus, setRoleStatus] = useState('');
+
+  const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   const router = useRouter();
 
   const handleClick = () => {
@@ -50,6 +62,7 @@ const RoleCreateComponent = () => {
         name: name,
         description: description,
         code: code,
+        status: roleStatus,
       };
       //  console.log("this is body", body)
       await createRoles(body);
@@ -67,6 +80,13 @@ const RoleCreateComponent = () => {
   };
   const updateCode = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCode(e.target.value);
+  };
+
+  const getRoleStatusValue = (
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
+  ) => {
+    setRoleStatus(value);
   };
 
   const updateHandler = () => {
@@ -144,6 +164,37 @@ const RoleCreateComponent = () => {
                   value={code}
                   onChange={updateCode}
                 />
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={1}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
+                <Typography>Status</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Stack>
+                  <Autocomplete
+                    value={roleStatus}
+                    onChange={getRoleStatusValue}
+                    freeSolo
+                    id="company-status"
+                    disableClearable
+                    size="small"
+                    options={statusSet?.map((option: any) => option)}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        InputProps={{ ...params.InputProps, type: 'search' }}
+                        placeholder="Select Status"
+                      />
+                    )}
+                  />
+                </Stack>
               </Grid>
             </Grid>
           </Grid>
