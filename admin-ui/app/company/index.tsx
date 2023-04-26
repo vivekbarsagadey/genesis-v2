@@ -72,7 +72,7 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
           </Grid>
           <Grid item xs={1}>
             <Link
-              href={'/company/report'}
+              href={'/company/companyreport'}
               passHref
               style={{ textDecoration: 'none' }}
             >
