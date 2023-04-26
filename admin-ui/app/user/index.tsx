@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { Box, Button, Grid } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
@@ -65,6 +65,13 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
                 <UserViewComponent onViewSelect={onViewSelect} />
               </Grid>
             </Grid>
+          </Grid>
+          <Grid item xs={1}>
+            <Link href={"/user/userreport"} passHref style={{textDecoration:'none'}}>
+              <Button variant="contained" size="small">
+                Report
+              </Button>
+            </Link>
           </Grid>
           <Grid item xs={1}>
             <Link href={"/user/create"} passHref style={{textDecoration:'none'}}>

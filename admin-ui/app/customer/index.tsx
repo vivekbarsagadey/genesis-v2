@@ -132,6 +132,17 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
           </Grid>
           <Grid item xs={1} mt={1}>
             <Link
+              href={'/customer/customerreport'}
+              passHref
+              style={{ textDecoration: 'none' }}
+            >
+              <Button variant="contained" size="small">
+                Report
+              </Button>
+            </Link>
+          </Grid>
+          <Grid item xs={1} mt={1}>
+            <Link
               href={'/customer/create'}
               passHref
               style={{ textDecoration: 'none' }}
