@@ -1,11 +1,15 @@
 'use client';
-import { Box, Button, Grid, Stack, TextField, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Grid,
+  Snackbar,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
-import Backdrop from '@mui/material/Backdrop';
-import Fade from '@mui/material/Fade';
-import Modal from '@mui/material/Modal';
-import Snackbar from '@mui/material/Snackbar';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { makeStyles } from '@mui/styles';
@@ -99,20 +103,8 @@ const UserCreateComponent = () => {
         state: userState,
         country: userCountry,
         name: role,
-        // newPassword: newPassword,
-        // oldPassword: oldPassword,
-      };
-      await createUser(body);
-      await router.push('/user');
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const updatePassword = async () => {
-    try {
-      const body = {
-        oldPassword: oldPassword,
         newPassword: newPassword,
+        oldPassword: oldPassword,
       };
       await createUser(body);
       await router.push('/user');
@@ -230,14 +222,14 @@ const UserCreateComponent = () => {
   return (
     <Box>
       <Grid container>
-        <Grid item xs={12} mt={2} ml={2}>
+        <Grid item xs={12} mt={1} ml={2}>
           <Typography fontSize={'1.2rem'}>Create New User</Typography>
         </Grid>
       </Grid>
       <Grid container>
         <Grid item xs={12}>
           <Box sx={{ flexGrow: 1 }} padding={2}>
-            <Grid container spacing={2} mt={2}>
+            <Grid container spacing={2}>
               <Grid item xs={6}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
@@ -280,7 +272,7 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={6} mt={2}>
+              <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
                     <Typography>Gender</Typography>
@@ -313,7 +305,7 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={6} mt={2}>
+              <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
                     <Typography>Age</Typography>
@@ -334,7 +326,7 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={6} mt={2}>
+              <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
                     <Typography>Email</Typography>
@@ -355,7 +347,7 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={6} mt={2}>
+              <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
                     <Typography>Phone</Typography>
@@ -376,7 +368,7 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={6} mt={2}>
+              <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
                     <Typography>Status</Typography>
@@ -407,7 +399,7 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={6} mt={2}>
+              <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
                     <Typography>Address</Typography>
@@ -428,7 +420,7 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={6} mt={2}>
+              <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
                     <Typography>Role</Typography>
@@ -460,7 +452,7 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={6} mt={2}>
+              <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
                     <Typography>City</Typography>
@@ -491,7 +483,7 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={6} mt={2}>
+              <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
                     <Typography>State</Typography>
@@ -522,7 +514,7 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={6} mt={2}>
+              <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
                     <Typography>Country</Typography>
@@ -556,42 +548,7 @@ const UserCreateComponent = () => {
                 </Grid>
               </Grid>
 
-              <Grid container mt={5}>
-                <Grid item xs={8.6}></Grid>
-                <Grid item xs={3.4}>
-                  <Grid container>
-                    <Grid item xs={6}>
-                      <Link href={'/user'} style={{ textDecoration: 'none' }}>
-                        <Button
-                          variant="contained"
-                          className={classes.buttonStyle}
-                        >
-                          Cancel
-                        </Button>
-                      </Link>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Button
-                        variant="contained"
-                        onClick={updateHandler}
-                        className={classes.buttonStyle}
-                      >
-                        Save
-                      </Button>
-                      <Snackbar
-                        open={alert}
-                        autoHideDuration={8000}
-                        onClose={handleClose}
-                      >
-                        <Alert onClose={handleClose} sx={{ width: '100%' }}>
-                          User Created Sucessfully...
-                        </Alert>
-                      </Snackbar>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Box sx={{ width: '100%' }}>
+              <Box sx={{ width: '100%' }} mt={1}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                   <Tabs
                     value={value}
@@ -608,97 +565,54 @@ const UserCreateComponent = () => {
                   </Tabs>
                 </Box>
                 <TabPanel value={value} index={0}>
-                  <Modal
-                    aria-labelledby="transition-modal-title"
-                    aria-describedby="transition-modal-description"
-                    open={securityModalOpen}
-                    onClose={securityhandleClose}
-                    closeAfterTransition
-                    slots={{ backdrop: Backdrop }}
-                    slotProps={{
-                      backdrop: {
-                        timeout: 500,
-                      },
-                    }}
-                  >
-                    <Fade in={securityModalOpen}>
-                      <Box sx={style}>
+                  <Box sx={{ flexGrow: 1 }}>
+                    <Grid container spacing={2} paddingLeft={2}>
+                      <Grid item xs={6} mt={1}>
                         <Grid container display="flex" alignItems="center">
-                          <Grid item xs={4}>
-                            <Typography>Old Password</Typography>
+                          <Grid item xs={3.5}>
+                            <Typography>New Password</Typography>
                           </Grid>
-                          <Grid item xs={1}>
+                          <Grid item xs={1.3}>
                             <Typography>:</Typography>
                           </Grid>
-                          <Grid item xs={7}>
+                          <Grid item xs={6.3}>
                             <TextField
                               value={oldPassword}
                               onChange={updateUserOldPassword}
                               id="old-password"
-                              label="Enter Your Old Password"
                               variant="outlined"
                               size="small"
                               fullWidth
+                              placeholder="Enter New Password"
                             />
                           </Grid>
                         </Grid>
-
-                        <Grid
-                          container
-                          display="flex"
-                          alignItems="center"
-                          mt={2}
-                        >
-                          <Grid item xs={4}>
-                            <Typography>New Password</Typography>
+                      </Grid>
+                      <Grid item xs={6} mt={1}>
+                        <Grid container display="flex" alignItems="center">
+                          <Grid item xs={4.2}>
+                            <Typography>Confirm Password</Typography>
                           </Grid>
                           <Grid item xs={1}>
                             <Typography>:</Typography>
                           </Grid>
-                          <Grid item xs={7}>
-                            <TextField
-                              value={newPassword}
-                              onChange={updateUserNewPassword}
-                              id="new-password"
-                              label="Enter Your New Password"
-                              variant="outlined"
-                              size="small"
-                              fullWidth
-                            />
+                          <Grid item xs={6.3}>
+                            <Stack spacing={2}>
+                              <TextField
+                                value={newPassword}
+                                onChange={updateUserNewPassword}
+                                id="new-password"
+                                variant="outlined"
+                                size="small"
+                                fullWidth
+                                placeholder="Enter Confirm Password"
+                              />
+                            </Stack>
                           </Grid>
                         </Grid>
-
-                        <Grid
-                          container
-                          display="flex"
-                          alignItems="center"
-                          mt={2}
-                        >
-                          <Grid item xs={5}>
-                            {' '}
-                          </Grid>
-                          <Grid item xs={7}>
-                            <Grid container>
-                              <Grid item xs={8.6}>
-                                <Button variant="contained" size="small">
-                                  Reset
-                                </Button>
-                              </Grid>
-                              <Grid item xs={3}>
-                                <Button
-                                  variant="contained"
-                                  size="small"
-                                  onClick={updatePassword}
-                                >
-                                  Save
-                                </Button>
-                              </Grid>
-                            </Grid>
-                          </Grid>
-                        </Grid>
-                      </Box>
-                    </Fade>
-                  </Modal>
+                      </Grid>
+                    </Grid>
+                  </Box>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                   Address
@@ -709,6 +623,39 @@ const UserCreateComponent = () => {
               </Box>
             </Grid>
           </Box>
+        </Grid>
+
+        <Grid container>
+          <Grid item xs={8.6}></Grid>
+          <Grid item xs={3.2}>
+            <Grid container>
+              <Grid item xs={6}>
+                <Link href={'/user'} style={{ textDecoration: 'none' }}>
+                  <Button variant="contained" className={classes.buttonStyle}>
+                    Cancel
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item xs={6}>
+                <Button
+                  variant="contained"
+                  onClick={updateHandler}
+                  className={classes.buttonStyle}
+                >
+                  Save
+                </Button>
+                <Snackbar
+                  open={alert}
+                  autoHideDuration={8000}
+                  onClose={handleClose}
+                >
+                  <Alert onClose={handleClose} sx={{ width: '100%' }}>
+                    User Created Sucessfully...
+                  </Alert>
+                </Snackbar>
+              </Grid>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Box>
