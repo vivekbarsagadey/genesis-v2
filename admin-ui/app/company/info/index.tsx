@@ -47,6 +47,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 type InfoCompanyComponentProps = {
   company: ICompany;
 };
+
 const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
   const router = useRouter();
   const [alert, setAlert] = React.useState(false);

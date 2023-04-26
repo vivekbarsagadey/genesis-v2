@@ -1,49 +1,40 @@
 'use client';
-import { Alert, Box, Button, Grid, Snackbar, TextField, Typography } from '@mui/material';
+import { Button, Grid, TextField, Typography } from '@mui/material';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import Box from '@mui/material/Box/Box';
+import Snackbar from '@mui/material/Snackbar';
+import { makeStyles } from '@mui/styles';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import { createWidgets } from '../../../../services/widgets.action';
-import Link from 'next/link';
+import { updateWidgets } from '../../../../services/widgets.action';
 
-const WidgetsCreateComponent = () => {
-	const [name, setName] = useState('');
-	const [code, setCode] = useState('');
-	const [description, seDescription] = useState('');
-	const [query, seQuery] = useState('');
-	const [image, seImage] = useState('');
-	const [alert, setAlert] = useState(false);
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+	props,
+	ref
+) {
+	return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
+const useStyles = makeStyles({
+	buttonStyle:{
+		width:'73%'
+	}
+});
+
+type WidgetsComponentProps = {
+  widgets: any;
+  id: string;
+};
+const WidgetEditComponent = ({ widgets, id }: WidgetsComponentProps) => {
+	const classes = useStyles();
 	const router = useRouter();
-
-	const handleClick = () => {
-		setAlert(true);
-	};
-
-	const handleClose = (
-		event?: React.SyntheticEvent | Event,
-		reason?: string
-	) => {
-		if (reason === 'clickaway') {
-			return;
-		}
-		setAlert(false);
-	};
-
-	const updateMyCompanyData = async () => {
-		try {
-			const body = {
-				name: name,
-				code: code,
-				description: description,
-				query: query,
-				image: image
-			};
-			await createWidgets(body);
-			await router.push('/metadatadashboard/widgets/');
-		} catch (error) {
-			console.error(error);
-		}
-	};
+	const [alert, setAlert] = useState(false);
+	const [name, setName] = useState(widgets.name);
+	const [code, setCode] = useState(widgets.code);
+	const [description, seDescription] = useState(widgets.description);
+	const [query, seQuery] = useState(widgets.query);
+	const [image, seImage] = useState(widgets.image);
 
 	const updateUserName = (e: any) => {
 		setName(e.target.value);
@@ -61,20 +52,49 @@ const WidgetsCreateComponent = () => {
 		seImage(e.target.value);
 	};
 
-	const updateHandler = () => {
-		handleClick();
-		updateMyCompanyData();
+	const updateWidgetsEditedData = async () => {
+		try {
+			const body = {
+				name: name,
+				code: code,
+				description: description,
+				query: query,
+				image: image
+			};
+			await updateWidgets(id, body);
+			await router.push('/metadatadashboard/widgets');
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
+	const handleClick = () => {
+		setAlert(true);
+	};
+
+	const handleClose = (
+		event?: React.SyntheticEvent | Event,
+		reason?: string
+	) => {
+		if (reason === 'clickaway') {
+			return;
+		}
+		setAlert(false);
+	};
+
+	const updateHandler = () => {
+		handleClick();
+		updateWidgetsEditedData();
+	};
 	return (
 		<>
 			<Box padding={4}>
 				<Grid container>
 					<Grid item xs={12}>
-						<Typography fontSize={'1.1rem'}>Create New Widgets</Typography>
+						<Typography fontSize={'1.1rem'}>Edit Widgets Details</Typography>
 					</Grid>
 				</Grid>
-				<Grid container spacing={2} mt={1}>
+				<Grid container spacing={2} mt={2}>
 					<Grid item xs={6}>
 						<Grid container display="flex" alignItems="center">
 							<Grid item xs={4}>
@@ -190,8 +210,8 @@ const WidgetsCreateComponent = () => {
 						<Grid item xs={3.4}>
 							<Grid container>
 								<Grid item xs={6}>
-									<Link href={'/metadatadashboard/widgets/'} style={{ textDecoration: 'none' }}>
-										<Button variant="contained" style={{ width: '73%' }}>
+									<Link href={'/metadatadashboard/widgets'} style={{ textDecoration: 'none' }}>
+										<Button variant="contained" className={classes.buttonStyle}>
                       Cancel
 										</Button>
 									</Link>
@@ -200,16 +220,16 @@ const WidgetsCreateComponent = () => {
 									<Button
 										variant="contained"
 										onClick={updateHandler}
-										style={{ width: '73%' }}
-									>
+										className={classes.buttonStyle}                  >
                     Save
 									</Button>
 									<Snackbar
+										open={alert}
 										autoHideDuration={8000}
 										onClose={handleClose}
 									>
 										<Alert onClose={handleClose} sx={{ width: '100%' }}>
-                      Company Created Sucessfully...
+                      Company Edit Sucessfully...
 										</Alert>
 									</Snackbar>
 								</Grid>
@@ -222,4 +242,4 @@ const WidgetsCreateComponent = () => {
 	);
 };
 
-export default WidgetsCreateComponent;
+export default WidgetEditComponent;

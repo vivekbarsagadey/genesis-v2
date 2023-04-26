@@ -3,7 +3,6 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import {
-  Alert,
   Button,
   Grid,
   IconButton,
@@ -20,17 +19,66 @@ import Modal from '@mui/material/Modal';
 import Snackbar from '@mui/material/Snackbar';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 import { ICompany } from '../models/company.model';
 import Moment from 'react-moment';
 import { IWidgets } from './widgets.props';
+import { deleteWidgets } from '../../../services/widgets.action';
 
 type InfoWidgetsComponentProps = {
   company: IWidgets;
 };
 
+const style = {
+  position: "absolute" as "absolute",
+  top: "30%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 325,
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  paddingTop: 1,
+  paddingLeft: 2,
+  paddingRight: 1,
+  paddingBottom: 2,
+};
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 const InfoWidgetsComponent = ({ widgets }: InfoWidgetsComponentProps) => {
+
+  const [open, setOpen] = useState(false);
+  const [alert, setAlert] = useState(false);
+
+  const deletePopupOpen = () => setOpen(true);
+
+  const handleCloseDelete = () => setOpen(false);
+
+  const handleClick = () => { setAlert(true); };
+
+  const removeData = (f: ICompany) => {
+    window.location.reload();
+    deleteWidgets(f.id);
+    handleClick();
+  };
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setAlert(false);
+  };
+
   return (
+    
     <>
       <Box mt={0.6} mr={2}>
         <Paper variant="outlined">
@@ -73,8 +121,8 @@ const InfoWidgetsComponent = ({ widgets }: InfoWidgetsComponentProps) => {
               <Grid container style={{ display: 'flex', justifyContent: 'center' }}>
                 <Grid item xs={3.3} ml={2}>
                   <Tooltip title="Edit">
-                    <Link href={`/widgets/${widgets.id}`}>
-                      <IconButton>
+                    <Link href={`/metadatadashboard/widgets/${widgets.id}`}>
+                      <IconButton >
                         <EditIcon fontSize="small" />
                       </IconButton>
                     </Link>
@@ -82,17 +130,17 @@ const InfoWidgetsComponent = ({ widgets }: InfoWidgetsComponentProps) => {
                 </Grid>
                 <Grid item xs={2}>
                   <Tooltip title="Delete">
-                    <IconButton>
+                    <IconButton onClick={deletePopupOpen}>
                       <DeleteOutlineIcon fontSize="small" />
                     </IconButton>
                   </Tooltip>
                   <Snackbar
-                    // open={alert}
+                    open={alert}
                     autoHideDuration={8000}
-                  // onClose={handleClose}
+                    onClose={handleClose}
                   >
                     <Alert
-                      // onClose={handleClose}
+                      onClose={handleClose}
                       severity="error"
                       sx={{ width: '100%' }}
                     >
@@ -107,8 +155,8 @@ const InfoWidgetsComponent = ({ widgets }: InfoWidgetsComponentProps) => {
           <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
-            // open={open}
-            // onClose={handleCloseDelete}
+            open={open}
+            onClose={handleCloseDelete}
             closeAfterTransition
             slots={{ backdrop: Backdrop }}
             slotProps={{
@@ -118,7 +166,7 @@ const InfoWidgetsComponent = ({ widgets }: InfoWidgetsComponentProps) => {
             }}
           >
             <Fade in={open}>
-              <Box>
+              <Box sx={style}>
                 <Typography
                   id="transition-modal-description"
                   sx={{ mt: 1 }}
@@ -133,7 +181,7 @@ const InfoWidgetsComponent = ({ widgets }: InfoWidgetsComponentProps) => {
                       variant="contained"
                       size="small"
                       sx={{ height: '4vh' }}
-                    // onClick={() => handleCloseDelete()}
+                      onClick={() => handleCloseDelete()}
                     >
                       Cancel
                     </Button>
@@ -142,7 +190,7 @@ const InfoWidgetsComponent = ({ widgets }: InfoWidgetsComponentProps) => {
                     <Button
                       variant="contained"
                       size="small"
-                      // onClick={() => removeData(widgets)}
+                      onClick={() => removeData(widgets)}
                       sx={{ height: '4vh' }}
                     >
                       Ok
