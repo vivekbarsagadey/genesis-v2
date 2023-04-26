@@ -1,51 +1,62 @@
-"use client";
+'use client';
+import { Box, Button, Grid, Stack, TextField, Typography } from '@mui/material';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
+import Autocomplete from '@mui/material/Autocomplete';
+import { makeStyles } from '@mui/styles';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { createUser } from '../../../services/user.action';
+import { IRole } from '../../roles/models';
 import {
-  Avatar,Box,
-  Button,
-  Grid,
-  IconButton,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
-import Autocomplete from "@mui/material/Autocomplete";
-import { makeStyles } from "@mui/styles";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { createUser } from "../../../services/user.action";
-import { countrySelect, stateSelect, citySelect } from "../graphdata/graphdata.data";
-import { Status } from "../models";
+  citySelect,
+  countrySelect,
+  stateSelect,
+} from '../graphdata/graphdata.data';
+import { Status } from '../models';
+
 const useStyles = makeStyles({
   avtar: {
-    opacity: "1",
-    "&:hover": {
-      opacity: "0.8",
-      color: "black",
+    opacity: '1',
+    '&:hover': {
+      opacity: '0.8',
+      color: 'black',
     },
-    width: "120px",
-    height: "125px",
+    width: '120px',
+    height: '125px',
   },
-  buttonStyle:{
-    width:'73%'
-   }
+  buttonStyle: {
+    width: '73%',
+  },
 });
-const genderType = [{ title: "Male" }, { title: "Female" }];
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+const genderType = [{ title: 'Male' }, { title: 'Female' }];
 const UserCreateComponent = () => {
   const classes = useStyles();
-  const [userFirstName, setUserFirstName] = useState("");
-  const [userLastName, setUserLastName] = useState("");
-  const [gender, setGender] = useState("");
-  const [userAge, setUserAge] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPhone, setUserPhone] = useState("");
-  const [userAddress, setUserAddress] = useState("");
-  const [userStatus, setUserStatus] = useState("");
-  const [userZipCode, setUserZipCode] = useState("");
-  const [userCity, setUserCity] = useState("");
-  const [userState, setUserState] = useState("");
-  const [userCountry, setUserCountry] = useState("");
+  const [userFirstName, setUserFirstName] = useState('');
+  const [userLastName, setUserLastName] = useState('');
+  const [gender, setGender] = useState('');
+  const [userAge, setUserAge] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [userPhone, setUserPhone] = useState('');
+  const [userAddress, setUserAddress] = useState('');
+  const [userStatus, setUserStatus] = useState('');
+  const [userZipCode, setUserZipCode] = useState('');
+  const [userCity, setUserCity] = useState('');
+  const [userState, setUserState] = useState('');
+  const [userCountry, setUserCountry] = useState('');
   const [hover, setHover] = useState(false);
+  const [alert, setAlert] = useState(false);
+  const [roleList, setRoleList] = useState([]);
+  const [role, setRole] = useState<String>('');
   const router = useRouter();
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   // POST call
@@ -64,9 +75,10 @@ const UserCreateComponent = () => {
         city: userCity,
         state: userState,
         country: userCountry,
+        name: role,
       };
       await createUser(body);
-      await router.push("/user");
+      await router.push('/user');
     } catch (error) {
       console.error(error);
     }
@@ -93,45 +105,92 @@ const UserCreateComponent = () => {
     setUserZipCode(e.target.value);
   };
   const updateUserChange = (
-    e: React.SyntheticEvent<Element, Event>,value : string
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
   ) => {
     setGender(value);
   };
   const updateUserCountry = (
-    e: React.SyntheticEvent<Element, Event>,value : string
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
   ) => {
     setUserCountry(value);
   };
   const updateUserState = (
-    e: React.SyntheticEvent<Element, Event>,value : string
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
   ) => {
     setUserState(value);
   };
   const updateUserCity = (
-    e: React.SyntheticEvent<Element, Event>,value : string
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
   ) => {
     setUserCity(value);
   };
   const updateUserStatus = (
-    e: React.SyntheticEvent<Element, Event>,value : string
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
   ) => {
     setUserStatus(value);
   };
+
+  const updateRole = (
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
+  ) => {
+    setRole(value);
+  };
+
   const handleMouseIn = () => {
     setHover(true);
   };
   const handleMouseOut = () => {
     setHover(false);
   };
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setAlert(false);
+  };
+  const handleClick = () => {
+    setAlert(true);
+  };
+  const updateHandler = () => {
+    handleClick();
+    updateMyUserData();
+  };
+  const fetchData = async () => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/roles`);
+    if (!response.ok) {
+      throw new Error('Data coud not be fetched!');
+    } else {
+      return response.json();
+    }
+  };
+  useEffect(() => {
+    fetchData()
+      .then((res) => {
+        setRoleList(res);
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
+  }, []);
+
   return (
     <Box>
       <Grid container>
         <Grid item xs={12} mt={2} ml={2}>
-          <Typography fontSize={"1.2rem"}>Create New User</Typography>
+          <Typography fontSize={'1.2rem'}>Create New User</Typography>
         </Grid>
       </Grid>
       <Grid container>
-        <Grid item xs={10}>
+        <Grid item xs={12}>
           <Box sx={{ flexGrow: 1 }} padding={2}>
             <Grid container spacing={2} mt={2}>
               <Grid item xs={6}>
@@ -199,7 +258,7 @@ const UserCreateComponent = () => {
                             {...params}
                             InputProps={{
                               ...params.InputProps,
-                              type: "search",
+                              type: 'search',
                             }}
                             placeholder="Select Gender"
                           />
@@ -294,7 +353,7 @@ const UserCreateComponent = () => {
                           {...params}
                           InputProps={{
                             ...params.InputProps,
-                            type: "search",
+                            type: 'search',
                           }}
                           placeholder="Select Status"
                         />
@@ -327,13 +386,13 @@ const UserCreateComponent = () => {
               <Grid item xs={6} mt={2}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
-                    <Typography>Zip Code</Typography>
+                    <Typography>Role</Typography>
                   </Grid>
                   <Grid item xs={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <TextField
+                    {/* <TextField
                       id="zipcode"
                       placeholder="Zip Code"
                       variant="outlined"
@@ -341,7 +400,28 @@ const UserCreateComponent = () => {
                       fullWidth
                       value={userZipCode}
                       onChange={updateUserZipCode}
-                    />
+                    /> */}
+
+                    <Stack>
+                      <Autocomplete
+                        size="small"
+                        onChange={updateRole}
+                        freeSolo
+                        id="free-solo-2-demo"
+                        disableClearable
+                        options={roleList?.map((item: IRole) => item.name)}
+                        renderInput={(params) => (
+                          <TextField
+                            {...params}
+                            InputProps={{
+                              ...params.InputProps,
+                              type: 'search',
+                            }}
+                            placeholder="Role"
+                          />
+                        )}
+                      />
+                    </Stack>
                   </Grid>
                 </Grid>
               </Grid>
@@ -367,7 +447,7 @@ const UserCreateComponent = () => {
                           size="small"
                           InputProps={{
                             ...params.InputProps,
-                            type: "search",
+                            type: 'search',
                           }}
                           placeholder="Select City"
                         />
@@ -398,7 +478,7 @@ const UserCreateComponent = () => {
                           size="small"
                           InputProps={{
                             ...params.InputProps,
-                            type: "search",
+                            type: 'search',
                           }}
                           placeholder="Select State"
                         />
@@ -430,7 +510,7 @@ const UserCreateComponent = () => {
                             size="small"
                             InputProps={{
                               ...params.InputProps,
-                              type: "search",
+                              type: 'search',
                             }}
                             placeholder="Select Country"
                           />
@@ -441,31 +521,36 @@ const UserCreateComponent = () => {
                 </Grid>
               </Grid>
               <Grid container mt={5}>
-                <Grid item xs={12}>
+                <Grid item xs={8.6}></Grid>
+                <Grid item xs={3.4}>
                   <Grid container>
-                    <Grid item xs={9}></Grid>
-                    <Grid item xs={3}>
-                      <Grid container>
-                        <Grid item xs={7}>
-                          <Link
-                            href={"/user"}
-                            style={{ textDecoration: "none" }}
-                          >
-                            <Button variant="contained" className={classes.buttonStyle}>
-                              Cancel
-                            </Button>
-                          </Link>
-                        </Grid>
-                        <Grid item xs={2}>
-                          <Button
-                            variant="contained"
-                            className={classes.buttonStyle}
-                            onClick={updateMyUserData}
-                          >
-                            Save
-                          </Button>
-                        </Grid>
-                      </Grid>
+                    <Grid item xs={6}>
+                      <Link href={'/user'} style={{ textDecoration: 'none' }}>
+                        <Button
+                          variant="contained"
+                          className={classes.buttonStyle}
+                        >
+                          Cancel
+                        </Button>
+                      </Link>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Button
+                        variant="contained"
+                        onClick={updateHandler}
+                        className={classes.buttonStyle}
+                      >
+                        Save
+                      </Button>
+                      <Snackbar
+                        open={alert}
+                        autoHideDuration={8000}
+                        onClose={handleClose}
+                      >
+                        <Alert onClose={handleClose} sx={{ width: '100%' }}>
+                          User Created Sucessfully...
+                        </Alert>
+                      </Snackbar>
                     </Grid>
                   </Grid>
                 </Grid>

@@ -61,6 +61,8 @@ model User {
   status         String?
   gender         String?
   age            String?
+  oldPassword    String?
+  newPassword    String?
   accounts       Account[]
   sessions       Session[]
 
@@ -123,6 +125,7 @@ model Roles {
  name           String   @unique
  description    String   @unique
  code           String   @unique
+ status         String?
 
   @@map("tb_roles")
 }
