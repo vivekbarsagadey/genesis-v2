@@ -119,11 +119,11 @@ const MetaDataSidebar = () => {
                   <NormalListItem label="Template" />
                 </Link>
                 <Link
-                  href="/metadatadashboard/visits"
+                  href="/metadatadashboard/widgets"
                   passHref
                   style={{ textDecoration: 'none' }}
                 >
-                  <NormalListItem label="Visits" />
+                  <NormalListItem label="Widgets" />
                 </Link>
               </ul>
             </CollapsibleListItem>
