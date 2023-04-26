@@ -1,8 +1,11 @@
 'use client';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {
   Box,
   Button,
   Grid,
+  IconButton,
   Snackbar,
   Stack,
   TextField,
@@ -10,6 +13,11 @@ import {
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
+import FormControl from '@mui/material/FormControl';
+import InputAdornment from '@mui/material/InputAdornment';
+import MenuItem from '@mui/material/MenuItem';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { makeStyles } from '@mui/styles';
@@ -80,6 +88,7 @@ const UserCreateComponent = () => {
   const [value, setValue] = useState();
   const [newPassword, setNewPassword] = useState('');
   const [oldPassword, setOldPassword] = useState('');
+  const [showPassword, setShowPassword] = React.useState(false);
   const router = useRouter();
 
   const [securityModalOpen, setSecurityModalOpen] = React.useState(false);
@@ -162,11 +171,8 @@ const UserCreateComponent = () => {
   ) => {
     setUserCity(value);
   };
-  const updateUserStatus = (
-    e: React.SyntheticEvent<Element, Event>,
-    value: string
-  ) => {
-    setUserStatus(value);
+  const updateUserStatus = (event: SelectChangeEvent) => {
+    setUserStatus(event.target.value as string);
   };
 
   const updateRole = (
@@ -193,6 +199,12 @@ const UserCreateComponent = () => {
   const updateHandler = () => {
     handleClick();
     updateMyUserData();
+  };
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
   };
   const fetchData = async () => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/roles`);
@@ -370,7 +382,7 @@ const UserCreateComponent = () => {
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <Autocomplete
+                    {/* <Autocomplete
                       value={userStatus}
                       onChange={updateUserStatus}
                       freeSolo
@@ -388,7 +400,31 @@ const UserCreateComponent = () => {
                           placeholder="Select Status"
                         />
                       )}
-                    />
+                    /> */}
+                    <FormControl fullWidth>
+                      {/* <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={userStatus}
+                        onClick={updateUserStatus}
+                        size="small"
+                      >
+                        {statusSet.map((f) => {
+                          return <MenuItem value={f}>{f}</MenuItem>;
+                        })}
+                      </Select> */}
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={userStatus}
+                        size="small"
+                        onChange={updateUserStatus}
+                      >
+                        <MenuItem value={10}>Ten</MenuItem>
+                        <MenuItem value={20}>Twenty</MenuItem>
+                        <MenuItem value={30}>Thirty</MenuItem>
+                      </Select>
+                    </FormControl>
                   </Grid>
                 </Grid>
               </Grid>
@@ -591,15 +627,32 @@ const UserCreateComponent = () => {
                           </Grid>
                           <Grid item xs={6.3}>
                             <Stack spacing={2}>
-                              <TextField
-                                value={newPassword}
-                                onChange={updateUserNewPassword}
-                                id="new-password"
+                              <FormControl
+                                sx={{ m: 1, width: '33ch' }}
                                 variant="outlined"
-                                size="small"
-                                fullWidth
-                                placeholder="Enter Confirm Password"
-                              />
+                              >
+                                <OutlinedInput
+                                  size="small"
+                                  id="outlined-adornment-password"
+                                  type={showPassword ? 'text' : 'password'}
+                                  endAdornment={
+                                    <InputAdornment position="end">
+                                      <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        edge="end"
+                                      >
+                                        {showPassword ? (
+                                          <VisibilityOff />
+                                        ) : (
+                                          <Visibility />
+                                        )}
+                                      </IconButton>
+                                    </InputAdornment>
+                                  }
+                                />
+                              </FormControl>
                             </Stack>
                           </Grid>
                         </Grid>
