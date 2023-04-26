@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import TemplateComponent from '.';
 
 const page = () => {
   return (
-    <div>Templates</div>
-  )
-}
+    <>
+      <TemplateComponent />
+    </>
+  );
+};
 
-export default page
+export default page;
