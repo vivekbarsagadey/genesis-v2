@@ -138,13 +138,6 @@ const UserCreateComponent = () => {
     setNewPassword(e.target.value);
   };
 
-  // const updateUserOldPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setOldPassword(e.target.value);
-  // };
-  // const updateUserNewPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setNewPassword(e.target.value);
-  // };
-
   const updateUserChange = (
     e: React.SyntheticEvent<Element, Event>,
     value: string

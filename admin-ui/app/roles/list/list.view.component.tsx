@@ -16,9 +16,8 @@ const ListViewComponent = ({ roles }: any) => {
 
   const [nameSort, setNameSort] = useState(true);
   const [dateSort, setDateSort] = useState(true);
-  const [emailSort, setEmailSort] = useState(true);
-  const [contactSort, setContactSort] = useState(true);
-  const [addressSort, setAddressSort] = useState(true);
+  const [descriptionSort, setDescriptionSort] = useState(true);
+  const [codeSort, setCodeSort] = useState(true);
 
   const handleNameSort = () => {
     if (nameSort) {
@@ -74,85 +73,58 @@ const ListViewComponent = ({ roles }: any) => {
       setDateSort(true);
     }
   };
-  const handleEmailSort = () => {
-    if (emailSort) {
+  const handleDescriptionSort = () => {
+    if (descriptionSort) {
       roles.sort((a, b) => {
-        if (a.email.toLowerCase() < b.email.toLowerCase()) {
+        if (a.description.toLowerCase() < b.description.toLowerCase()) {
           return -1;
         }
-        if (a.email.toLowerCase() > b.email.toLowerCase()) {
+        if (a.description.toLowerCase() > b.description.toLowerCase()) {
           return 1;
         }
         return 0;
       });
-      setEmailSort(false);
+      setDescriptionSort(false);
     } else {
       roles
         .sort((a, b) => {
-          if (a.email.toLowerCase() < b.email.toLowerCase()) {
+          if (a.description.toLowerCase() < b.description.toLowerCase()) {
             return -1;
           }
-          if (a.email.toLowerCase() > b.email.toLowerCase()) {
+          if (a.description.toLowerCase() > b.description.toLowerCase()) {
             return 1;
           }
           return 0;
         })
         .reverse();
-      setEmailSort(true);
+      setDescriptionSort(true);
     }
   };
-  const handleContactSort = () => {
-    if (contactSort) {
+  const handleCodeSort = () => {
+    if (codeSort) {
       roles.sort((a, b) => {
-        if (a.mobile.toLowerCase() < b.mobile.toLowerCase()) {
+        if (a.code.toLowerCase() < b.code.toLowerCase()) {
           return -1;
         }
-        if (a.mobile.toLowerCase() > b.mobile.toLowerCase()) {
+        if (a.code.toLowerCase() > b.code.toLowerCase()) {
           return 1;
         }
         return 0;
       });
-      setContactSort(false);
+      setCodeSort(false);
     } else {
       roles
         .sort((a, b) => {
-          if (a.mobile.toLowerCase() < b.mobile.toLowerCase()) {
+          if (a.code.toLowerCase() < b.code.toLowerCase()) {
             return -1;
           }
-          if (a.mobile.toLowerCase() > b.mobile.toLowerCase()) {
+          if (a.code.toLowerCase() > b.code.toLowerCase()) {
             return 1;
           }
           return 0;
         })
         .reverse();
-      setContactSort(true);
-    }
-  };
-  const handleAddressSort = () => {
-    if (addressSort) {
-      roles.sort((a, b) => {
-        if (a.address.toLowerCase() < b.address.toLowerCase()) {
-          return -1;
-        }
-        if (a.address.toLowerCase() > b.address.toLowerCase()) {
-          return 1;
-        }
-        return 0;
-      });
-      setAddressSort(false);
-    } else {
-      roles
-        .sort((a, b) => {
-          if (a.address.toLowerCase() < b.address.toLowerCase()) {
-            return -1;
-          }
-          if (a.address.toLowerCase() > b.address.toLowerCase()) {
-            return 1;
-          }
-          return 0;
-        })
-        .reverse();
-      setAddressSort(true);
+      setCodeSort(true);
     }
   };
 
@@ -211,12 +183,12 @@ const ListViewComponent = ({ roles }: any) => {
               <Typography variant="subtitle2" noWrap>
                 Description
               </Typography>
-              {contactSort ? (
-                <IconButton onClick={() => handleContactSort()}>
+              {descriptionSort ? (
+                <IconButton onClick={() => handleDescriptionSort()}>
                   <ArrowDropUpIcon />
                 </IconButton>
               ) : (
-                <IconButton onClick={() => handleContactSort()}>
+                <IconButton onClick={() => handleDescriptionSort()}>
                   <ArrowDropDownIcon />
                 </IconButton>
               )}
@@ -235,12 +207,12 @@ const ListViewComponent = ({ roles }: any) => {
               >
                 Code
               </Typography>
-              {addressSort ? (
-                <IconButton onClick={() => handleAddressSort()}>
+              {codeSort ? (
+                <IconButton onClick={() => handleCodeSort()}>
                   <ArrowDropUpIcon />
                 </IconButton>
               ) : (
-                <IconButton onClick={() => handleAddressSort()}>
+                <IconButton onClick={() => handleCodeSort()}>
                   <ArrowDropDownIcon />
                 </IconButton>
               )}
