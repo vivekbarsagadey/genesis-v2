@@ -71,6 +71,17 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
           </Grid>
           <Grid item xs={1}>
             <Link
+              href={'/project/projectreport'}
+              passHref
+              style={{ textDecoration: 'none' }}
+            >
+              <Button variant="contained" size="small">
+                Report
+              </Button>
+            </Link>
+          </Grid>
+          <Grid item xs={1}>
+            <Link
               href={'/project/create'}
               passHref
               style={{ textDecoration: 'none' }}

@@ -1,11 +1,10 @@
-import { use } from "react";
+import React,{ use } from "react";
 import ProjectHomeComponent from ".";
-import CustomerComponentHome from ".";
 import { findAll } from "../../services/api.service";
 import IProject from "./project.model";
 
 const URL = "projects";
-
+console.log(URL)
 const Page = () => {
   const projects = use<Array<IProject>>(findAll(URL));
   return <ProjectHomeComponent projects={projects}/>;
