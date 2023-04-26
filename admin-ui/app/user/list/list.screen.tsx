@@ -143,7 +143,7 @@ const ListViewComponent = ({ user }: any) => {
 
             <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
               <Typography variant="subtitle2" noWrap>
-                Created Date
+                Role
               </Typography>
               {dateSort ? <IconButton onClick={() => handleDateSort()}>
                 <ArrowDropUpIcon />

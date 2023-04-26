@@ -30,6 +30,7 @@ const style = {
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 4,
+  borderRadius: '5px',
 };
 
 const useStyles = makeStyles({
@@ -65,7 +66,6 @@ const UserCreateComponent = () => {
   const [userPhone, setUserPhone] = useState('');
   const [userAddress, setUserAddress] = useState('');
   const [userStatus, setUserStatus] = useState('');
-  const [userZipCode, setUserZipCode] = useState('');
   const [userCity, setUserCity] = useState('');
   const [userState, setUserState] = useState('');
   const [userCountry, setUserCountry] = useState('');
@@ -74,6 +74,8 @@ const UserCreateComponent = () => {
   const [roleList, setRoleList] = useState([]);
   const [role, setRole] = useState<String>('');
   const [value, setValue] = useState();
+  const [newPassword, setNewPassword] = useState('');
+  const [oldPassword, setOldPassword] = useState('');
   const router = useRouter();
 
   const [securityModalOpen, setSecurityModalOpen] = React.useState(false);
@@ -93,11 +95,12 @@ const UserCreateComponent = () => {
         mobile: userPhone,
         address: userAddress,
         status: userStatus,
-        zipCode: userZipCode,
         city: userCity,
         state: userState,
         country: userCountry,
         name: role,
+        // newPassword: newPassword,
+        // oldPassword: oldPassword,
       };
       await createUser(body);
       await router.push('/user');
@@ -105,6 +108,19 @@ const UserCreateComponent = () => {
       console.error(error);
     }
   };
+  const updatePassword = async () => {
+    try {
+      const body = {
+        oldPassword: oldPassword,
+        newPassword: newPassword,
+      };
+      await createUser(body);
+      await router.push('/user');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const updateUserFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserFirstName(e.target.value);
   };
@@ -123,9 +139,20 @@ const UserCreateComponent = () => {
   const updateUserAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserAddress(e.target.value);
   };
-  const updateUserZipCode = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserZipCode(e.target.value);
+  const updateUserOldPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setOldPassword(e.target.value);
   };
+  const updateUserNewPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewPassword(e.target.value);
+  };
+
+  // const updateUserOldPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setOldPassword(e.target.value);
+  // };
+  // const updateUserNewPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setNewPassword(e.target.value);
+  // };
+
   const updateUserChange = (
     e: React.SyntheticEvent<Element, Event>,
     value: string
@@ -605,6 +632,8 @@ const UserCreateComponent = () => {
                           </Grid>
                           <Grid item xs={7}>
                             <TextField
+                              value={oldPassword}
+                              onChange={updateUserOldPassword}
                               id="old-password"
                               label="Enter Your Old Password"
                               variant="outlined"
@@ -628,6 +657,8 @@ const UserCreateComponent = () => {
                           </Grid>
                           <Grid item xs={7}>
                             <TextField
+                              value={newPassword}
+                              onChange={updateUserNewPassword}
                               id="new-password"
                               label="Enter Your New Password"
                               variant="outlined"
@@ -654,7 +685,11 @@ const UserCreateComponent = () => {
                                 </Button>
                               </Grid>
                               <Grid item xs={3}>
-                                <Button variant="contained" size="small">
+                                <Button
+                                  variant="contained"
+                                  size="small"
+                                  onClick={updatePassword}
+                                >
                                   Save
                                 </Button>
                               </Grid>

@@ -42,9 +42,7 @@ const InfoUserComponent = ({ user }: InfoUserComponentProps) => {
             </Grid>
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
-                <Moment format="DD MMM YYYY">
-                  {user.createdAt}
-                </Moment>
+              {user.name}
               </Typography>
             </Grid>
             <Grid item xs={2}>
