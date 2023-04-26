@@ -127,6 +127,19 @@ model Roles {
   @@map("tb_roles")
 }
 
+model Widgets {
+ id             String   @id @default(auto()) @map("_id") @db.ObjectId
+ createdAt      DateTime @default(now())
+ updatedAt      DateTime @updatedAt
+ name           String?   
+ code           String?   
+ description    String?   
+ query          String?  
+ image          String?
+ 
+  @@map("tb_widgets")
+}
+
 
 
 model Page {
