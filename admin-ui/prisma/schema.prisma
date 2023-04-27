@@ -61,7 +61,8 @@ model User {
   status         String?
   gender         String?
   age            String?
-  newPassword    String?
+  password       String?
+  role           String?
   accounts       Account[]
   sessions       Session[]
 

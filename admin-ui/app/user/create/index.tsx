@@ -111,7 +111,7 @@ const UserCreateComponent = () => {
         city: userCity,
         state: userState,
         country: userCountry,
-        name: role,
+        role: role,
         newPassword: newPassword,
         oldPassword: oldPassword,
       };
@@ -382,7 +382,7 @@ const UserCreateComponent = () => {
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    {/* <Autocomplete
+                    <Autocomplete
                       value={userStatus}
                       onChange={updateUserStatus}
                       freeSolo
@@ -400,7 +400,7 @@ const UserCreateComponent = () => {
                           placeholder="Select Status"
                         />
                       )}
-                    /> */}
+                    />
                     <FormControl fullWidth>
                       {/* <Select
                         labelId="demo-simple-select-label"
@@ -413,17 +413,18 @@ const UserCreateComponent = () => {
                           return <MenuItem value={f}>{f}</MenuItem>;
                         })}
                       </Select> */}
-                      <Select
+                      {/* <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={userStatus}
                         size="small"
                         onChange={updateUserStatus}
                       >
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
-                      </Select>
+                       
+                        {statusSet.map((f) => {
+                          return <MenuItem value={f}>{f}</MenuItem>;
+                        })}
+                      </Select> */}
                     </FormControl>
                   </Grid>
                 </Grid>
@@ -449,7 +450,7 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={6} mt={1}>
+              <Grid item xs={6}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
                     <Typography>Role</Typography>
@@ -481,7 +482,7 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={6} mt={1}>
+              <Grid item xs={6}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
                     <Typography>City</Typography>

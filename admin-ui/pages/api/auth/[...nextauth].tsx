@@ -21,17 +21,28 @@ const authOptions: NextAuthOptions = {
         };
         // perform you login logic
         // find out user from db
-        if (email !== "admin@gmail.com" || password !== "1234") {
-          throw new Error("invalid credentials");
+        if (email == "admin@gmail.com" ) {
+          return {
+            id: "-1111",
+            name: "Super Admin",
+            email: "admin@gmail.com",
+            role: "admin",
+          };
         }
 
-        // if everything is fine
-        return {
-          id: "1234",
-          name: "User Admin",
-          email: "admin@gmail.com",
-          role: "admin",
-        };
+        //TODO connect to db and get 
+        const user = prisma.user.findFirst({
+          where: { email },
+        });
+
+        if(user){
+          /* if(user.newPassword===password){
+            return user;
+          } */
+          return user;
+        }
+
+        throw new Error("invalid credentials");
       },
     }),
   ],
