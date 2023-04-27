@@ -1,16 +1,13 @@
-"use client";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import EditIcon from "@mui/icons-material/Edit";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
-import Box from "@mui/material/Box";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { deleteUser } from "../../../services/user.action";
-import { IUser } from "../models";
-import Moment from "react-moment";
-import Switch from '@mui/material/Switch';
+'use client';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import EditIcon from '@mui/icons-material/Edit';
+import { Grid, IconButton, Paper, Tooltip, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import Checkbox from '@mui/material/Checkbox';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { deleteUser } from '../../../services/user.action';
+import { IUser } from '../models';
 
 type InfoUserComponentProps = {
   user: IUser;
@@ -29,7 +26,7 @@ const InfoUserComponent = ({ user }: InfoUserComponentProps) => {
       <Box mt={0.6} mr={2}>
         <Paper variant="outlined">
           <Grid container>
-            <Grid item xs={1} display={"flex"} justifyContent={"flex-end"}>
+            <Grid item xs={1} display={'flex'} justifyContent={'flex-end'}>
               <Grid container ml={1}>
                 <Grid item xs={4}>
                   <Checkbox size="small" />
@@ -43,10 +40,10 @@ const InfoUserComponent = ({ user }: InfoUserComponentProps) => {
             </Grid>
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
-              {user.role}
+                {user.role}
               </Typography>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={1.9}>
               <Typography variant="body2" noWrap>
                 {user.email}
               </Typography>
@@ -55,8 +52,8 @@ const InfoUserComponent = ({ user }: InfoUserComponentProps) => {
               <Typography
                 variant="body2"
                 noWrap
-                display={"flex"}
-                justifyContent={"space-around"}
+                display={'flex'}
+                justifyContent={'space-around'}
               >
                 {user.mobile}
               </Typography>
@@ -65,14 +62,17 @@ const InfoUserComponent = ({ user }: InfoUserComponentProps) => {
               <Typography
                 variant="body2"
                 noWrap
-                display={"flex"}
-                justifyContent={"space-around"}
+                display={'flex'}
+                justifyContent={'space-around'}
               >
                 {user.status}
               </Typography>
             </Grid>
             <Grid item xs={1}>
-              <Grid container  style={{display:'flex',justifyContent:'center'}}>
+              <Grid
+                container
+                style={{ display: 'flex', justifyContent: 'center' }}
+              >
                 <Grid item xs={4}>
                   <Tooltip title="Edit">
                     <Link href={`/user/${user.id}`}>

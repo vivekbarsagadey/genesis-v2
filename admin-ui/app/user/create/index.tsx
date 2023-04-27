@@ -19,12 +19,12 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { makeStyles } from '@mui/styles';
+import { encrypt } from 'n-krypta';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { createUser } from '../../../services/user.action';
 import { IRole } from '../../roles/models';
-import {encrypt,decrypt} from "n-krypta"
 import {
   citySelect,
   countrySelect,
@@ -55,7 +55,10 @@ const useStyles = makeStyles({
     height: '125px',
   },
   buttonStyle: {
-    width: '73%',
+    width: '90%',
+  },
+  buttonStyleSave: {
+    width: '80%',
   },
 });
 
@@ -68,7 +71,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 const genderType = [{ title: 'Male' }, { title: 'Female' }];
 const UserCreateComponent = () => {
-  const secretKey="key"
+  const secretKey = 'key';
   const classes = useStyles();
   const [userFirstName, setUserFirstName] = useState('');
   const [userLastName, setUserLastName] = useState('');
@@ -110,7 +113,7 @@ const UserCreateComponent = () => {
         state: userState,
         country: userCountry,
         role: role,
-        password: encryptString,
+        password: password,
       };
       await createUser(body);
       await router.push('/user');
@@ -119,11 +122,9 @@ const UserCreateComponent = () => {
     }
   };
 
-  const encryptString=encrypt(password,secretKey);
+  const encryptString = encrypt(password, secretKey);
 
-
-  console.log("encryptdata",encryptString);
-  
+  console.log('encryptdata', encryptString);
 
   const updateUserFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserFirstName(e.target.value);
@@ -405,16 +406,16 @@ const UserCreateComponent = () => {
                 </Box>
                 <TabPanel value={value} index={0}>
                   <Box>
-                    <Grid container spacing={2} paddingLeft={2}>
+                    <Grid container>
                       <Grid item xs={6}>
                         <Grid container display="flex" alignItems="center">
-                          <Grid item xs={3.5}>
-                            <Typography>New Password</Typography>
+                          <Grid item xs={3}>
+                            <Typography>Password</Typography>
                           </Grid>
-                          <Grid item xs={1.3}>
+                          <Grid item xs={2}>
                             <Typography>:</Typography>
                           </Grid>
-                          <Grid item xs={6.3}>
+                          <Grid item xs={6}>
                             <TextField
                               value={password}
                               onChange={updatePassword}
@@ -427,43 +428,43 @@ const UserCreateComponent = () => {
                           </Grid>
                         </Grid>
                       </Grid>
+
                       <Grid item xs={6}>
                         <Grid container display="flex" alignItems="center">
-                          <Grid item xs={4.2}>
+                          <Grid item xs={3} ml={2.6}>
                             <Typography>Confirm Password</Typography>
                           </Grid>
-                          <Grid item xs={1}>
+                          <Grid item xs={2}>
                             <Typography>:</Typography>
                           </Grid>
-                          <Grid item xs={6.3}>
-                            <Stack spacing={2}>
-                              <FormControl
-                                sx={{ m: 1, width: '33ch' }}
-                                variant="outlined"
-                              >
-                                <OutlinedInput
-                                  size="small"
-                                  id="confirm-password"
-                                  type={showPassword ? 'text' : 'password'}
-                                  endAdornment={
-                                    <InputAdornment position="end">
-                                      <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseDownPassword}
-                                        edge="end"
-                                      >
-                                        {showPassword ? (
-                                          <VisibilityOff />
-                                        ) : (
-                                          <Visibility />
-                                        )}
-                                      </IconButton>
-                                    </InputAdornment>
-                                  }
-                                />
-                              </FormControl>
-                            </Stack>
+                          <Grid item xs={6}>
+                            <FormControl
+                              sx={{ m: 1, width: '33ch' }}
+                              variant="outlined"
+                            >
+                              <OutlinedInput
+                                size="small"
+                                placeholder="Enter Confirm Password"
+                                id="confirm-password"
+                                type={showPassword ? 'text' : 'password'}
+                                endAdornment={
+                                  <InputAdornment position="end">
+                                    <IconButton
+                                      aria-label="toggle password visibility"
+                                      onClick={handleClickShowPassword}
+                                      onMouseDown={handleMouseDownPassword}
+                                      edge="end"
+                                    >
+                                      {showPassword ? (
+                                        <VisibilityOff />
+                                      ) : (
+                                        <Visibility />
+                                      )}
+                                    </IconButton>
+                                  </InputAdornment>
+                                }
+                              />
+                            </FormControl>
                           </Grid>
                         </Grid>
                       </Grid>
@@ -605,9 +606,9 @@ const UserCreateComponent = () => {
 
       <Grid container>
         <Grid item xs={8.6}></Grid>
-        <Grid item xs={3.2}>
+        <Grid item xs={3.3}>
           <Grid container>
-            <Grid item xs={6}>
+            <Grid item xs={5.3}>
               <Link href={'/user'} style={{ textDecoration: 'none' }}>
                 <Button variant="contained" className={classes.buttonStyle}>
                   Cancel
@@ -618,7 +619,7 @@ const UserCreateComponent = () => {
               <Button
                 variant="contained"
                 onClick={updateHandler}
-                className={classes.buttonStyle}
+                className={classes.buttonStyleSave}
               >
                 Save
               </Button>

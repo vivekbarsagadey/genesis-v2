@@ -1,7 +1,7 @@
 'use client';
-import { Box, Button, Grid } from '@mui/material';
+import { Box, Button, Grid, IconButton, Tooltip } from '@mui/material';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRef,useState } from 'react';
 import { Case, Default, Switch } from 'react-if';
 import { ViewTypes } from '../utility';
 import FilterComponent from './filter';
@@ -11,12 +11,11 @@ import UserGraphView from './list/graph.view';
 import UserGridView from './list/grid.view';
 import UserKanbanView from './list/kanban.view';
 import ListViewComponent from './list/list.screen';
-
-import PrintComponent from './print';
+import { useReactToPrint } from 'react-to-print';
 import UserSearchDetails from './search';
 import IUser from './user.model';
 import UserViewComponent from './view';
-
+import PrintIcon from '@mui/icons-material/Print';
 interface UserComponentProps {
   user: Array<IUser>;
 }
@@ -32,6 +31,12 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
   const onViewSelect = (view: ViewTypes) => {
     setViewType(view);
   };
+
+  const myRef = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => myRef.current,
+  });
+
 
   return (
     <>
@@ -53,7 +58,11 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
                 <ExportComponent user={copyUser} />
               </Grid>
               <Grid item xs={'auto'} mt={0.3}>
-                <PrintComponent />
+              <Tooltip title="Print">
+                  <IconButton onClick={() => handlePrint()}>
+                    <PrintIcon fontSize="small" />
+                  </IconButton>
+                </Tooltip>
               </Grid>
 
               <Grid item xs={9}>
@@ -89,7 +98,9 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
         <Grid item xs={12}>
           <Switch>
             <Case condition={viewType === ViewTypes.GRID}>
-              <UserGridView user={copyUser} />
+              <Grid>
+              <UserGridView user={copyUser}  myRef={myRef}/>
+              </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.GRAPH}>
               <UserGraphView user={copyUser} />
@@ -101,7 +112,7 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
               <UserCalendarView user={copyUser} />
             </Case>
             <Default>
-              <ListViewComponent user={copyUser} />
+              <ListViewComponent user={copyUser}  myRef={myRef} />
             </Default>
           </Switch>
         </Grid>
