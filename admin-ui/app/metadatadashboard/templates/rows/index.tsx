@@ -47,7 +47,7 @@ const CreateRowsComponent = ({ index, setColDb, colDb, setRowDb, rowDb }: any) =
 						renderInput={(params) => (
 							<TextField
 								{...params}
-								label="Search input"
+								label="Select column"
 								InputProps={{
 									...params.InputProps,
 									type: 'search',

@@ -3,8 +3,9 @@ type IWidgets = {
   name: string;
   code: string;
   description: string;
-  Query: string;
-  Image: string;
+  query: string;
+  image: string;
+  createdAt?: string;
 };
 
 export type { IWidgets };

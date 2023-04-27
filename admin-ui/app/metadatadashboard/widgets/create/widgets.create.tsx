@@ -85,8 +85,8 @@ const WidgetsCreateComponent = () => {
 							</Grid>
 							<Grid item xs={6}>
 								<TextField
-									id="first-name"
-									placeholder="First Name"
+									id="Name"
+									placeholder="Name"
 									variant="outlined"
 									size="small"
 									fullWidth
@@ -107,8 +107,8 @@ const WidgetsCreateComponent = () => {
 							</Grid>
 							<Grid item xs={6}>
 								<TextField
-									id="last-name"
-									placeholder="Last Name"
+									id="Code"
+									placeholder="Code"
 									variant="outlined"
 									size="small"
 									fullWidth
@@ -129,8 +129,8 @@ const WidgetsCreateComponent = () => {
 							</Grid>
 							<Grid item xs={6}>
 								<TextField
-									id="company-name"
-									placeholder="Company Name"
+									id="Description"
+									placeholder="Description"
 									variant="outlined"
 									size="small"
 									fullWidth
@@ -151,8 +151,8 @@ const WidgetsCreateComponent = () => {
 							</Grid>
 							<Grid item xs={6}>
 								<TextField
-									id="email"
-									placeholder="Email"
+									id="Query"
+									placeholder="Query"
 									variant="outlined"
 									size="small"
 									fullWidth
@@ -173,8 +173,8 @@ const WidgetsCreateComponent = () => {
 							</Grid>
 							<Grid item xs={6}>
 								<TextField
-									id="phone"
-									placeholder="Phone"
+									id="Image"
+									placeholder="Image"
 									variant="outlined"
 									size="small"
 									fullWidth
@@ -192,32 +192,35 @@ const WidgetsCreateComponent = () => {
 								<Grid item xs={6}>
 									<Link href={'/metadatadashboard/widgets/'} style={{ textDecoration: 'none' }}>
 										<Button variant="contained" style={{ width: '73%' }}>
-                      Cancel
+											Cancel
 										</Button>
 									</Link>
 								</Grid>
 								<Grid item xs={6}>
-									<Button
-										variant="contained"
-										onClick={updateHandler}
-										style={{ width: '73%' }}
-									>
-                    Save
-									</Button>
-									<Snackbar
-										autoHideDuration={8000}
-										onClose={handleClose}
-									>
-										<Alert onClose={handleClose} sx={{ width: '100%' }}>
-                      Company Created Sucessfully...
-										</Alert>
-									</Snackbar>
+									<Link href={'/metadatadashboard/widgets'}>
+										<Button
+											variant="contained"
+											onClick={updateHandler}
+											style={{ width: '73%' }}
+										>
+											Save
+										</Button>
+										<Snackbar
+											open={alert}
+											autoHideDuration={8000}
+											onClose={handleClose}
+										>
+											<Alert onClose={handleClose} sx={{ width: '100%' }}>
+												Widgets Created Successfully...
+											</Alert>
+										</Snackbar>
+									</Link>
 								</Grid>
 							</Grid>
 						</Grid>
 					</Grid>
 				</Grid>
-			</Box>
+			</Box >
 		</>
 	);
 };

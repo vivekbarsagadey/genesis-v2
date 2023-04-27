@@ -1,5 +1,4 @@
 'use client';
-import React, { useEffect, useState } from 'react';
 import { use } from 'react';
 import WidgetEditComponent from '.';
 import { findById } from '../../../../services/api.service';
@@ -12,6 +11,7 @@ type Widgets = {
   Query: string;
   Image: string;
 };
+
 const Page = ({ params }: any) => {
 	const id = params.id;
 

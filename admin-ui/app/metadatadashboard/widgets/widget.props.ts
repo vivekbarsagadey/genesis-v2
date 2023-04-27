@@ -1,7 +1,7 @@
 import { IWidgets } from './widgets.props';
 
 interface WidgetsHomeComponentsProps {
-  companies: Array<IWidgets>;
+  widgets: Array<IWidgets>;
 }
 
 export type { WidgetsHomeComponentsProps };

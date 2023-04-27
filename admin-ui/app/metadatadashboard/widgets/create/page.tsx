@@ -1,12 +1,12 @@
-import React from 'react'
-import WidgetsCreateComponent from './widgets.create'
+import React from 'react';
+import WidgetsCreateComponent from './widgets.create';
 
 const page = () => {
-  return (
-    <>
-      <WidgetsCreateComponent />
-    </>
-  )
-}
+	return (
+		<>
+			<WidgetsCreateComponent />
+		</>
+	);
+};
 
-export default page
+export default page;

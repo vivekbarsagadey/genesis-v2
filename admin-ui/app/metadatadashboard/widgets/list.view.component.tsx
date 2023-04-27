@@ -1,10 +1,12 @@
 'use client';
-import { Box, Checkbox, Grid, Pagination, Paper, Typography } from '@mui/material';
+import { Box, Checkbox, Grid, IconButton, Pagination, Paper, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { WidgetsHomeComponentsProps } from './widget.props';
 import { PaginationHandler } from '../../utility';
 import { IWidgets } from './widgets.props';
 import InfoWidgetsComponent from './info.widgets.component';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const ListViewComponent = ({ widgets }: WidgetsHomeComponentsProps) => {
 
@@ -12,6 +14,84 @@ const ListViewComponent = ({ widgets }: WidgetsHomeComponentsProps) => {
 	const PER_PAGE = 9;
 	const count = Math.ceil(widgets.length / PER_PAGE);
 	const paginationHandler = PaginationHandler(widgets, PER_PAGE);
+
+	const [nameSort, setNameSort] = useState(true);
+	const [dateSort, setDateSort] = useState(true);
+	const [codeSort, setCodeSort] = useState(true);
+	const [querySort, setQuerySort] = useState(true);
+
+	const handleNameSort = () => {
+		if (nameSort) {
+			widgets.sort((a, b) => {
+				if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
+				if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
+				return 0;
+			});
+			setNameSort(false);
+		}
+		else {
+			widgets.sort((a, b) => {
+				if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
+				if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
+				return 0;
+			}).reverse();
+			setNameSort(true);
+		}
+	};
+	const handleDateSort = () => {
+		if (dateSort) {
+			widgets.sort((a, b) => {
+				if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) { return -1; }
+				if (a.createdAt.toLowerCase() > b.createdAt.toLowerCase()) { return 1; }
+				return 0;
+			});
+			setDateSort(false);
+		}
+		else {
+			widgets.sort((a, b) => {
+				if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) { return -1; }
+				if (a.createdAt.toLowerCase() > b.createdAt.toLowerCase()) { return 1; }
+				return 0;
+			}).reverse();
+			setDateSort(true);
+		}
+	};
+	const handleCodeSort = () => {
+		if (codeSort) {
+			widgets.sort((a, b) => {
+				if (a.code.toLowerCase() < b.code.toLowerCase()) { return -1; }
+				if (a.code.toLowerCase() > b.code.toLowerCase()) { return 1; }
+				return 0;
+			});
+			setCodeSort(false);
+		}
+		else {
+			widgets.sort((a, b) => {
+				if (a.code.toLowerCase() < b.code.toLowerCase()) { return -1; }
+				if (a.code.toLowerCase() > b.code.toLowerCase()) { return 1; }
+				return 0;
+			}).reverse();
+			setCodeSort(true);
+		}
+	};
+	const handleQuerySort = () => {
+		if (querySort) {
+			widgets.sort((a, b) => {
+				if (a.query.toLowerCase() < b.query.toLowerCase()) { return -1; }
+				if (a.query.toLowerCase() > b.query.toLowerCase()) { return 1; }
+				return 0;
+			});
+			setQuerySort(false);
+		}
+		else {
+			widgets.sort((a, b) => {
+				if (a.query.toLowerCase() < b.query.toLowerCase()) { return -1; }
+				if (a.query.toLowerCase() > b.query.toLowerCase()) { return 1; }
+				return 0;
+			}).reverse();
+			setQuerySort(true);
+		}
+	};
 
 	const handleChangePage = (e: any, p: number) => {
 		setPage(p);
@@ -35,27 +115,46 @@ const ListViewComponent = ({ widgets }: WidgetsHomeComponentsProps) => {
 							<Typography variant="subtitle2" noWrap >
 								Name
 							</Typography>
+							{nameSort ? <IconButton onClick={() => handleNameSort()}>
+								<ArrowDropUpIcon />
+							</IconButton> : <IconButton onClick={() => handleNameSort()}>
+								<ArrowDropDownIcon />
+							</IconButton>}
 						</Grid>
 
 						<Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
 							<Typography variant="subtitle2" noWrap>
 								Created Date
 							</Typography>
-
+							{dateSort ? <IconButton onClick={() => handleDateSort()}>
+								<ArrowDropUpIcon />
+							</IconButton> : <IconButton onClick={() => handleDateSort()}>
+								<ArrowDropDownIcon />
+							</IconButton>}
 						</Grid>
 
 						<Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
 							<Typography variant="subtitle2" noWrap>
 								Code
 							</Typography>
+							{codeSort ? <IconButton onClick={() => handleCodeSort()}>
+								<ArrowDropUpIcon />
+							</IconButton> : <IconButton onClick={() => handleCodeSort()}>
+								<ArrowDropDownIcon />
+							</IconButton>}
 						</Grid>
 
 						<Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
 							<Typography
 								variant="subtitle2"
-								noWrap							>
+								noWrap>
 								Query
 							</Typography>
+							{querySort ? <IconButton onClick={() => handleQuerySort()}>
+								<ArrowDropUpIcon />
+							</IconButton> : <IconButton onClick={() => handleQuerySort()}>
+								<ArrowDropDownIcon />
+							</IconButton>}
 						</Grid>
 
 						<Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
@@ -63,7 +162,7 @@ const ListViewComponent = ({ widgets }: WidgetsHomeComponentsProps) => {
 								variant="subtitle2"
 								noWrap
 								display={'flex'}
-								justifyContent={'space-around'}							>
+								justifyContent={'space-around'}>
 								Image
 							</Typography>
 						</Grid>
@@ -72,7 +171,7 @@ const ListViewComponent = ({ widgets }: WidgetsHomeComponentsProps) => {
 								variant="subtitle2"
 								noWrap
 								display={'flex'}
-								justifyContent={'space-around'}							>
+								justifyContent={'space-around'}>
 								Actions
 							</Typography>
 						</Grid>

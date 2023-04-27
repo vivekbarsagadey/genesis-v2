@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { updateWidgets } from '../../../../services/widgets.action';
+import { IWidgets } from '../widgets.props';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 	props,
@@ -17,14 +18,14 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 });
 
 const useStyles = makeStyles({
-	buttonStyle:{
-		width:'73%'
+	buttonStyle: {
+		width: '73%'
 	}
 });
 
 type WidgetsComponentProps = {
-  widgets: any;
-  id: string;
+	widgets: IWidgets;
+	id: string;
 };
 const WidgetEditComponent = ({ widgets, id }: WidgetsComponentProps) => {
 	const classes = useStyles();
@@ -105,8 +106,8 @@ const WidgetEditComponent = ({ widgets, id }: WidgetsComponentProps) => {
 							</Grid>
 							<Grid item xs={6}>
 								<TextField
-									id="first-name"
-									placeholder="First Name"
+									id="Widgets"
+									placeholder="Widgets Name"
 									variant="outlined"
 									size="small"
 									fullWidth
@@ -127,8 +128,8 @@ const WidgetEditComponent = ({ widgets, id }: WidgetsComponentProps) => {
 							</Grid>
 							<Grid item xs={6}>
 								<TextField
-									id="last-name"
-									placeholder="Last Name"
+									id="Code"
+									placeholder="Code"
 									variant="outlined"
 									size="small"
 									fullWidth
@@ -149,8 +150,8 @@ const WidgetEditComponent = ({ widgets, id }: WidgetsComponentProps) => {
 							</Grid>
 							<Grid item xs={6}>
 								<TextField
-									id="company-name"
-									placeholder="Company Name"
+									id="Description"
+									placeholder="Description"
 									variant="outlined"
 									size="small"
 									fullWidth
@@ -171,8 +172,8 @@ const WidgetEditComponent = ({ widgets, id }: WidgetsComponentProps) => {
 							</Grid>
 							<Grid item xs={6}>
 								<TextField
-									id="email"
-									placeholder="Email"
+									id="Query"
+									placeholder="Query"
 									variant="outlined"
 									size="small"
 									fullWidth
@@ -193,8 +194,8 @@ const WidgetEditComponent = ({ widgets, id }: WidgetsComponentProps) => {
 							</Grid>
 							<Grid item xs={6}>
 								<TextField
-									id="phone"
-									placeholder="Phone"
+									id="Image"
+									placeholder="Image"
 									variant="outlined"
 									size="small"
 									fullWidth
@@ -212,24 +213,26 @@ const WidgetEditComponent = ({ widgets, id }: WidgetsComponentProps) => {
 								<Grid item xs={6}>
 									<Link href={'/metadatadashboard/widgets'} style={{ textDecoration: 'none' }}>
 										<Button variant="contained" className={classes.buttonStyle}>
-                      Cancel
+											Cancel
 										</Button>
 									</Link>
 								</Grid>
 								<Grid item xs={6}>
-									<Button
-										variant="contained"
-										onClick={updateHandler}
-										className={classes.buttonStyle}                  >
-                    Save
-									</Button>
+									<Link href={'/metadatadashboard/widgets'} >
+										<Button
+											variant="contained"
+											onClick={updateHandler}
+											className={classes.buttonStyle}                  >
+											Save
+										</Button>
+									</Link>
 									<Snackbar
 										open={alert}
-										autoHideDuration={8000}
+										autoHideDuration={5000}
 										onClose={handleClose}
 									>
 										<Alert onClose={handleClose} sx={{ width: '100%' }}>
-                      Company Edit Sucessfully...
+											Widgets Edit Successfully...
 										</Alert>
 									</Snackbar>
 								</Grid>
