@@ -42,13 +42,13 @@ const ProjectKanbanView = ({ projects }: ListComponentProps) => {
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
   const newProjects = projects.filter((ele: IProject) => {
-    return ele.status == statusSet[2];
-  });
-  const activeProjects = projects.filter((ele: IProject) => {
     return ele.status == statusSet[0];
   });
-  const inActiveProjects = projects.filter((ele: IProject) => {
+  const activeProjects = projects.filter((ele: IProject) => {
     return ele.status == statusSet[1];
+  });
+  const inActiveProjects = projects.filter((ele: IProject) => {
+    return ele.status == statusSet[2];
   });
   
 

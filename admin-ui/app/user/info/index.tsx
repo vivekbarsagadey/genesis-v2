@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { deleteUser } from "../../../services/user.action";
 import { IUser } from "../models";
 import Moment from "react-moment";
+import Switch from '@mui/material/Switch';
 
 type InfoUserComponentProps = {
   user: IUser;
@@ -67,7 +68,7 @@ const InfoUserComponent = ({ user }: InfoUserComponentProps) => {
                 display={"flex"}
                 justifyContent={"space-around"}
               >
-                {user.address}
+                {user.status}
               </Typography>
             </Grid>
             <Grid item xs={1}>

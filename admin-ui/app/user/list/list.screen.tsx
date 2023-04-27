@@ -180,13 +180,8 @@ const ListViewComponent = ({ user }: any) => {
             </Grid>
 
             <Grid item xs={2} style={{ display: 'flex', alignContent: 'center', justifyContent: 'center' }}>
-              <Typography
-                variant="subtitle2"
-                noWrap
-                display={"flex"}
-                justifyContent={"space-around"}
-              >
-                Address
+              <Typography variant="subtitle2"noWrap>
+                Status
               </Typography>
               {addressSort ? <IconButton onClick={() => handleAddressSort()}>
                 <ArrowDropUpIcon />

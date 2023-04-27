@@ -13,10 +13,15 @@ import MenuItem from "@mui/material/MenuItem";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import { Card, IconButton, Paper } from "@mui/material";
+import { Card, FormControl, IconButton, Modal, Paper ,Button,Tooltip} from "@mui/material";
 import { makeStyles } from '@mui/styles';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-
+import { updateCustomer } from '../../../services/customer.action';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import moment from 'moment';
+import EmailIcon from '@mui/icons-material/Email';
+import CallIcon from '@mui/icons-material/Call';
 
 const CardStyle = styled(Grid)(({ theme }) => ({
   height: "80vh",
@@ -29,9 +34,27 @@ const useStyles = makeStyles({
   },
   iconStyle:{
     padding:'0px'
-  }
+  },
+  modalStyle: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  },
+  buttonStyle: {
+    padding: '0px',
+  },
  
 })
+
+type INewCustomer = {
+  newCustomer: ICustomer;
+};
 
 type IActiveCustomer = {
   activeCustomer: ICustomer;
@@ -42,70 +65,90 @@ type IInActiveCustomer = {
 const CustomerKanbanView = ({ customer }: ListComponentProps) => {
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
-  const activeCustomers = customer.filter((ele: ICustomer) => {
+  const newCustomers = customer.filter((ele: ICustomer) => {
     return ele.status == statusSet[0];
   });
-  const inActiveCustomer = customer.filter((ele: ICustomer) => {
+  const activeCustomers = customer.filter((ele: ICustomer) => {
     return ele.status == statusSet[1];
   });
+  const inActiveCustomers = customer.filter((ele: ICustomer) => {
+    return ele.status == statusSet[2];
+  });
 
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleDropdownClose = () => {
-    setAnchorEl(null);
-  };
+ 
 
 
   const classes = useStyles();
   return (
     <>
-      <Grid container spacing={2} mt={1}>
-        <Grid item xs={1}></Grid>
+      <Grid container spacing={2} mt={1} pr={2}>
         <Grid item xs={4}>
           <CardStyle>
-            <Paper variant="outlined" className={classes.cardView} >
+            <Paper variant="outlined" className={classes.cardView}>
               <CardContent>
-                <Grid container>
-                  <Grid item xs={6} display='flex' alignItems='center'>
-                  <FiberManualRecordIcon fontSize="inherit" htmlColor="green"/>
-                  <Typography variant="h6">ACTIVE</Typography>
+                <Card>
+                  <Grid container p={1}>
+                    <Grid item xs={11} display="flex" alignItems="center">
+                      <FiberManualRecordIcon
+                        fontSize="small"
+                        htmlColor="blue"
+                      />
+                      <Typography variant="h6">NEW</Typography>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={1}
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      border="1px solid gray"
+                      borderRadius="6rem"
+                      backgroundColor="lightgray"
+                    >
+                      <Typography fontSize="12px">
+                        {newCustomers.length}
+                      </Typography>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={6}  display='flex' justifyContent='flex-end'>
-                  <IconButton
-                  className={classes.iconStyle}>
-                     <MoreHorizIcon htmlColor='black'
-                     id="basic-button"
-                     aria-controls={open ? 'basic-menu' : undefined}
-                     aria-haspopup="true"
-                     aria-expanded={open ? 'true' : undefined}
-                     onClick={handleClick}
-                     />
-      </IconButton>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleDropdownClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <MenuItem onClick={handleDropdownClose} >
-          <EditIcon fontSize='small'/>
-          <Typography>Edit</Typography>
-          </MenuItem>
-        <MenuItem onClick={handleDropdownClose} >
-          <DeleteIcon fontSize='small' htmlColor='red'/>
-          <Typography color='red'>Delete</Typography>
-          </MenuItem>
-      </Menu>
+                </Card>
+                {newCustomers.reverse()?.map((newCustomer, index) => {
+                  return (
+                    <NewCustomerComponent newCustomer={newCustomer} key={index} />
+                  );
+                })}
+              </CardContent>
+            </Paper>
+          </CardStyle>
+        </Grid>
+        <Grid item xs={4}>
+          <CardStyle>
+            <Paper variant="outlined" className={classes.cardView}>
+              <CardContent>
+                <Card>
+                  <Grid container p={1}>
+                    <Grid item xs={11} display="flex" alignItems="center">
+                      <FiberManualRecordIcon
+                        fontSize="small"
+                        htmlColor="green"
+                      />
+                      <Typography variant="h6">ACTIVE</Typography>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={1}
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      border="1px solid gray"
+                      borderRadius="5rem"
+                      backgroundColor="lightgray"
+                    >
+                      <Typography fontSize="13px">
+                        {activeCustomers.length}
+                      </Typography>
+                    </Grid>
                   </Grid>
-
-
-                </Grid>
+                </Card>
                 {activeCustomers.reverse()?.map((activeCustomer, index) => {
                   return (
                     <ActiveCustomerComponent
@@ -122,41 +165,29 @@ const CustomerKanbanView = ({ customer }: ListComponentProps) => {
           <CardStyle>
             <Paper variant="outlined" className={classes.cardView}>
               <CardContent>
-              <Grid container >
-                  <Grid item xs={6} display='flex' alignItems='center'>
-                  <FiberManualRecordIcon fontSize="inherit" htmlColor="red"/>
-                  <Typography variant="h6">INACTIVE</Typography>
+                <Card>
+                  <Grid container p={1}>
+                    <Grid item xs={11} display="flex" alignItems="center">
+                      <FiberManualRecordIcon fontSize="small" htmlColor="red" />
+                      <Typography variant="h6">INACTIVE</Typography>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={1}
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      border="1px solid gray"
+                      borderRadius="5rem"
+                      backgroundColor="lightgray"
+                    >
+                      <Typography fontSize="13px">
+                        {inActiveCustomers.length}
+                      </Typography>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={6}  display='flex' justifyContent='flex-end'>
-                    <IconButton className={classes.iconStyle}>
-                    <MoreHorizIcon htmlColor='black'
-                    id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}/>
-                    </IconButton>
-                  </Grid>
-                  <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleDropdownClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-       <MenuItem onClick={handleDropdownClose} >
-          <EditIcon fontSize='small'/>
-          <Typography>Edit</Typography>
-          </MenuItem>
-        <MenuItem onClick={handleDropdownClose} >
-          <DeleteIcon fontSize='small' htmlColor='red'/>
-          <Typography color='red'>Delete</Typography>
-          </MenuItem>
-      </Menu>
-                </Grid>
-                {inActiveCustomer.reverse()?.map((inActiveCustomer, index) => {
+                </Card>
+                {inActiveCustomers.reverse()?.map((inActiveCustomer, index) => {
                   return (
                     <InActiveCustomerComponent
                     inActiveCustomer={inActiveCustomer}
@@ -173,50 +204,446 @@ const CustomerKanbanView = ({ customer }: ListComponentProps) => {
   );
 };
 
-const ActiveCustomerComponent = ({ activeCustomer }: IActiveCustomer) => {
+const NewCustomerComponent = ({ newCustomer }: INewCustomer) => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [openEditModal, setOpenEditModal] = React.useState(false);
+  const handleEditModalOpen = () => setOpenEditModal(true);
+  const handleEditModalClose = () => setOpenEditModal(false);
+  const [newStatus, setNewStatus] = useState(newCustomer.status);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const classes = useStyles();
+
+  const handleupdateStatus = (event: SelectChangeEvent) => {
+    setNewStatus(event.target.value as string);
+  };
+
+  const updateStatusHandler = async () => {
+    try {
+      const body = {
+        status: newStatus,
+      };
+      await updateCustomer(newCustomer.id, body);
+
+      handleEditModalClose();
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
-    <Box mt={1} >
+    <Box mt={1}>
       <Card variant="outlined">
         <Grid container>
-          <Grid item xs={12} display='flex' alignItems='center' p={2}>
-            <SupportAgentIcon/>
-            <Typography noWrap pl={1}>{activeCustomer.firstName}</Typography>
-            <Typography noWrap pl={1}>{activeCustomer.lastName}</Typography>
+          <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
+            <SupportAgentIcon fontSize="inherit" />
+            <Typography noWrap pl={1} variant="h6">
+              {`${newCustomer.firstName} ${newCustomer.lastName} `}
+            </Typography>
           </Grid>
-          <Grid item xs={12} display= 'flex' pl={2} pb={2} >
-          <Typography noWrap>
-          Status -
-        </Typography>
-          <Typography noWrap variant="h6" pl={1}>
-          {activeCustomer.status}
-        </Typography>
+          <Grid
+            item
+            xs={6}
+            display="flex"
+            justifyContent="flex-end"
+            pl={2}
+            pb={1}
+          >
+            <IconButton onClick={handleClick}>
+              <MoreHorizIcon fontSize="small" />
+            </IconButton>
+            <Menu
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+            >
+              <MenuItem>
+                <IconButton
+                  onClick={handleEditModalOpen}
+                  className={classes.buttonStyle}
+                >
+                  <EditIcon fontSize="inherit" />
+                </IconButton>
+                <Modal open={openEditModal} onClose={handleEditModalClose}>
+                  <Box className={classes.modalStyle}>
+                    <Card>
+                      <Grid container spacing={2} p={3}>
+                        <Grid item xs={12}>
+                          <FormControl fullWidth>
+                            <Select
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              value={newStatus}
+                              onChange={handleupdateStatus}
+                            >
+                              <MenuItem value={'NEW'}>NEW</MenuItem>
+                              <MenuItem value={'ACTIVE'}>ACTIVE</MenuItem>
+                              <MenuItem value={'INACTIVE'}>INACTIVE</MenuItem>
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Button
+                            className={classes.buttonStyle}
+                            onClick={updateStatusHandler}
+                          >
+                            Apply
+                          </Button>
+                        </Grid>
+                      </Grid>
+                    </Card>
+                  </Box>
+                </Modal>
+              </MenuItem>
+              <MenuItem>
+                <IconButton
+                  onClick={() => deleteCompany(newCustomer.id)}
+                  className={classes.buttonStyle}
+                >
+                  <DeleteIcon htmlColor="red" />
+                </IconButton>
+              </MenuItem>
+            </Menu>
+          </Grid>
+          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+            <CalendarMonthIcon fontSize="inherit" />
+            <Typography noWrap pl={1}>
+              {moment(newCustomer.createdAt).format('DD/MM/YYYY')}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+            <EmailIcon fontSize="inherit" />
+            <Typography noWrap pl={1}>
+              {newCustomer.email}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+            <CallIcon fontSize="inherit" />
+            <Typography noWrap pl={1}>
+              {newCustomer.mobile}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} display="flex" pl={2} pb={2}>
+            <Tooltip title="Edit Status">
+              <Typography noWrap>Status -</Typography>
+            </Tooltip>
+            <Typography noWrap variant="h6" pl={1}>
+              {newCustomer.status}
+            </Typography>
           </Grid>
         </Grid>
       </Card>
     </Box>
   );
 };
+const ActiveCustomerComponent = ({ activeCustomer }: IActiveCustomer) => {
+  
+  const [anchorEl, setAnchorEl] = React.useState(null);
+    const [openEditModal, setOpenEditModal] = React.useState(false);
+    const handleEditModalOpen = () => setOpenEditModal(true);
+    const handleEditModalClose = () => setOpenEditModal(false);
+    const [newStatus, setNewStatus] = useState(activeCustomer.status);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+    const classes = useStyles();
+  
+    const handleupdateStatus = (event: SelectChangeEvent) => {
+      setNewStatus(event.target.value as string);
+    };
+  
+    const updateStatusHandler = async () => {
+
+      console.log("update")
+      try {
+        const body = {
+          status: newStatus,
+        };
+        await updateCustomer(activeCustomer.id, body);
+  
+        handleEditModalClose();
+        window.location.reload();
+      } catch (error) {
+        console.error(error);
+      }
+      
+    };
+  
+    return (
+      <Box mt={1}>
+        <Card variant="outlined">
+          <Grid container>
+            <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
+              <SupportAgentIcon fontSize="inherit" />
+              <Typography noWrap pl={1} variant="h6">
+              {`${activeCustomer.firstName} ${activeCustomer.lastName} `}              </Typography>
+            </Grid>
+            <Grid
+              item
+              xs={6}
+              display="flex"
+              justifyContent="flex-end"
+              pl={2}
+              pb={1}
+            >
+              <IconButton onClick={handleClick}>
+                <MoreHorizIcon fontSize="small" />
+              </IconButton>
+              <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+              >
+                <MenuItem>
+                  <IconButton
+                    onClick={handleEditModalOpen}
+                    className={classes.buttonStyle}
+                  >
+                    <EditIcon fontSize="inherit" />
+                  </IconButton>
+                  <Modal open={openEditModal} onClose={handleEditModalClose}>
+                    <Box className={classes.modalStyle}>
+                      <Card>
+                        <Grid container spacing={2} p={3}>
+                          <Grid item xs={12}>
+                            <FormControl fullWidth>
+                              <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={newStatus}
+                                onChange={handleupdateStatus}
+                              >
+                                <MenuItem value={'NEW'}>NEW</MenuItem>
+                                <MenuItem value={'ACTIVE'}>ACTIVE</MenuItem>
+                                <MenuItem value={'INACTIVE'}>INACTIVE</MenuItem>
+                              </Select>
+                            </FormControl>
+                          </Grid>
+                          <Grid item xs={12}>
+                            <Button
+                              className={classes.buttonStyle}
+                              onClick={updateStatusHandler}
+                            >
+                              Apply
+                            </Button>
+                          </Grid>
+                        </Grid>
+                      </Card>
+                    </Box>
+                  </Modal>
+                </MenuItem>
+                <MenuItem>
+                  <IconButton
+                    onClick={() => deleteCompany(activeCustomer.id)}
+                    className={classes.buttonStyle}
+                  >
+                    <DeleteIcon htmlColor="red" />
+                  </IconButton>
+                </MenuItem>
+              </Menu>
+            </Grid>
+            <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+              <CalendarMonthIcon fontSize="inherit" />
+              <Typography noWrap pl={1}>
+                {moment(activeCustomer.createdAt).format('DD/MM/YYYY')}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+              <EmailIcon fontSize="inherit" />
+              <Typography noWrap pl={1}>
+                {activeCustomer.email}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+              <CallIcon fontSize="inherit" />
+              <Typography noWrap pl={1}>
+                {activeCustomer.mobile}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} display="flex" pl={2} pb={2}>
+              <Tooltip title="Edit Status">
+                <Typography noWrap>Status -</Typography>
+              </Tooltip>
+              <Typography noWrap variant="h6" pl={1}>
+                {activeCustomer.status}
+              </Typography>
+            </Grid>
+          </Grid>
+        </Card>
+      </Box>
+);
+};
 const InActiveCustomerComponent = ({ inActiveCustomer }: IInActiveCustomer) => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [openEditModal, setOpenEditModal] = React.useState(false);
+  const handleEditModalOpen = () => setOpenEditModal(true);
+  const handleEditModalClose = () => setOpenEditModal(false);
+  const [newStatus, setNewStatus] = useState(inActiveCustomer.status);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const classes = useStyles();
+
+  const handleupdateStatus = (event: SelectChangeEvent) => {
+    setNewStatus(event.target.value as string);
+  };
+
+  const updateStatusHandler = async () => {
+    try {
+      const body = {
+        status: newStatus,
+      };
+      await updateCustomer(inActiveCustomer.id, body);
+
+      handleEditModalClose();
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
-    <Box mt={1} >
-    <Card variant="outlined">
-      <Grid container>
-        <Grid item xs={12} display='flex' alignItems='center' p={2}>
-          <SupportAgentIcon/>
-          <Typography noWrap pl={1}>{inActiveCustomer.firstName}</Typography>
-            <Typography noWrap pl={1}>{inActiveCustomer.lastName}</Typography>        </Grid>
-        <Grid item xs={12} display= 'flex' pl={2} pb={2} >
-        <Typography noWrap>
-        Status -
-      </Typography>
-        <Typography noWrap variant="h6" pl={1}>
-        {inActiveCustomer.status}
-      </Typography>
+    <Box mt={1}>
+      <Card variant="outlined">
+        <Grid container>
+          <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
+            <SupportAgentIcon fontSize="inherit" />
+            <Typography noWrap pl={1} variant="h6">
+            {`${inActiveCustomer.firstName} ${inActiveCustomer.lastName} `}
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            xs={6}
+            display="flex"
+            justifyContent="flex-end"
+            pl={2}
+            pb={1}
+          >
+            <IconButton onClick={handleClick}>
+              <MoreHorizIcon fontSize="small" />
+            </IconButton>
+            <Menu
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+            >
+              <MenuItem>
+                <IconButton
+                  onClick={handleEditModalOpen}
+                  className={classes.buttonStyle}
+                >
+                  <EditIcon fontSize="inherit" />
+                </IconButton>
+                <Modal open={openEditModal} onClose={handleEditModalClose} style={{opacity:1}}>
+                  <Box className={classes.modalStyle}>
+                    <Card>
+                      <Grid container spacing={2} p={3}>
+                        <Grid item xs={12}>
+                          <FormControl fullWidth>
+                            <Select
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              value={newStatus}
+                              onChange={handleupdateStatus}
+                            >
+                              <MenuItem value={'NEW'}>NEW</MenuItem>
+                              <MenuItem value={'ACTIVE'}>ACTIVE</MenuItem>
+                              <MenuItem value={'INACTIVE'}>INACTIVE</MenuItem>
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Button
+                            className={classes.buttonStyle}
+                            onClick={updateStatusHandler}
+                          >
+                            Apply
+                          </Button>
+                        </Grid>
+                      </Grid>
+                    </Card>
+                  </Box>
+                </Modal>
+              </MenuItem>
+              <MenuItem>
+                <IconButton
+                  onClick={() => deleteCompany(inActiveCustomer.id)}
+                  className={classes.buttonStyle}
+                >
+                  <DeleteIcon htmlColor="red" />
+                </IconButton>
+              </MenuItem>
+            </Menu>
+          </Grid>
+          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+            <CalendarMonthIcon fontSize="inherit" />
+            <Typography noWrap pl={1}>
+              {moment(inActiveCustomer.createdAt).format('DD/MM/YYYY')}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+            <EmailIcon fontSize="inherit" />
+            <Typography noWrap pl={1}>
+              {inActiveCustomer.email}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+            <CallIcon fontSize="inherit" />
+            <Typography noWrap pl={1}>
+              {inActiveCustomer.mobile}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} display="flex" pl={2} pb={2}>
+            <Tooltip title="Edit Status">
+              <Typography noWrap>Status -</Typography>
+            </Tooltip>
+            <Typography noWrap variant="h6" pl={1}>
+              {inActiveCustomer.status}
+            </Typography>
+          </Grid>
         </Grid>
-      </Grid>
-    </Card>
-  </Box>
-  );
+      </Card>
+    </Box>
+);
 };
 
 export default CustomerKanbanView;
