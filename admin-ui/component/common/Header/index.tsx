@@ -34,7 +34,7 @@ const HeaderComponent = () => {
           sm={12}
           xs={12}
           py={0.5}
-          px={0.5}
+          px={3}
           display={"flex"}
           justifyContent={"flex-end"}
         >

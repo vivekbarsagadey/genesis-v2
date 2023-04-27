@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { PaginationHandler } from '../../utility';
 import { ListComponentProps } from './props';
 
-const UserGridView = ({ user }: ListComponentProps) => {
+const UserGridView = ({ user,myRef }: any) => {
   //pagination
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
@@ -19,8 +19,8 @@ const UserGridView = ({ user }: ListComponentProps) => {
 
 
   return (
-    <>
-      <Box style={{ height: '70.6vh' }} mr={2}>
+    <Grid>
+      <Box style={{ height: '70.6vh' }} mr={2}  ref={myRef}>
         <Grid container spacing={1} mt={1}>
           {paginationHandler
             .currentData()
@@ -129,7 +129,7 @@ const UserGridView = ({ user }: ListComponentProps) => {
         </Grid>
         <Grid item xs={0.2}></Grid>
       </Grid>
-    </>
+    </Grid>
   );
 };
 export default UserGridView;
