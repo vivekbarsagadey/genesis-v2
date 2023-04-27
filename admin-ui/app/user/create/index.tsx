@@ -24,6 +24,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { createUser } from '../../../services/user.action';
 import { IRole } from '../../roles/models';
+import {encrypt,decrypt} from "n-krypta"
 import {
   citySelect,
   countrySelect,
@@ -67,6 +68,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 const genderType = [{ title: 'Male' }, { title: 'Female' }];
 const UserCreateComponent = () => {
+  const secretKey="key"
   const classes = useStyles();
   const [userFirstName, setUserFirstName] = useState('');
   const [userLastName, setUserLastName] = useState('');
@@ -108,7 +110,7 @@ const UserCreateComponent = () => {
         state: userState,
         country: userCountry,
         role: role,
-        password: password,
+        password: encryptString,
       };
       await createUser(body);
       await router.push('/user');
@@ -116,6 +118,12 @@ const UserCreateComponent = () => {
       console.error(error);
     }
   };
+
+  const encryptString=encrypt(password,secretKey);
+
+
+  console.log("encryptdata",encryptString);
+  
 
   const updateUserFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserFirstName(e.target.value);

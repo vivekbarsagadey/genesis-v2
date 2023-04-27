@@ -68,7 +68,7 @@ const InfoUserComponent = ({ user }: InfoUserComponentProps) => {
                 display={"flex"}
                 justifyContent={"space-around"}
               >
-                {user.status === 'ACTIVE' ?  <Switch disabled defaultChecked /> : <Switch disabled />}
+                {user.status}
               </Typography>
             </Grid>
             <Grid item xs={1}>

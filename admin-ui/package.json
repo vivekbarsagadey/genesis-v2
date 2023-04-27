@@ -36,6 +36,7 @@
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.28",
     "moment": "^2.29.4",
+    "n-krypta": "^1.0.6",
     "next": "^13.3.1",
     "next-auth": "^4.22.1",
     "plotly.js": "^2.21.0",
