@@ -1,7 +1,6 @@
 'use client';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import {
   Button,
   Grid,
@@ -19,10 +18,10 @@ import Modal from '@mui/material/Modal';
 import Snackbar from '@mui/material/Snackbar';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Moment from 'react-moment';
 import { deleteCustomer } from '../../../services/customer.action';
 import { ICustomer } from '../models';
-import Moment from 'react-moment';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -49,8 +48,14 @@ type InfoCustomerComponentProps = {
   customer: ICustomer;
   increase: boolean;
 };
-const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
+const InfoCustomerComponent = ({
+  customer,getMultiSelectedValue,
+  show,
+}: InfoCustomerComponentProps) => {
   const [copyData] = useState([customer]);
+  const [checked, setChecked] = useState(show);
+
+
   const router = useRouter();
   const [alert, setAlert] = useState(false);
   const [open, setOpen] = useState(false);
@@ -76,7 +81,23 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
     handleClick();
   };
 
+  useEffect(() => {
+    setChecked(show);
+  }, [show]);
+
   const customerName = `${customer.firstName} ${customer.lastName}`;
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+    var d =customer.firstName
+    // setMultiSelect([...multiSelect, d])
+
+    getMultiSelectedValue(d)
+
+  };
+  // console.log("handleChangehandleChange",multiSelect);
+
+  
 
   return (
     <>
@@ -86,7 +107,11 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
             <Grid item xs={1} display={'flex'} justifyContent={'flex-end'}>
               <Grid container ml={1}>
                 <Grid item xs={5}>
-                  <Checkbox size="small" />
+                  <Checkbox
+                    checked={checked}
+                    onChange={handleChange}
+                    size="small"
+                  />
                 </Grid>
               </Grid>
             </Grid>
@@ -97,10 +122,11 @@ const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
               </Typography>
             </Grid>
 
-            <Grid item xs={2} style={{ display: 'flex', alignSelf:'center' }}>
+            <Grid item xs={2}>
               <Typography
                 variant="body2"
                 noWrap
+                style={{ display: 'flex', justifyContent: 'space-around' }}
               >
                 <Moment format="DD MMM YYYY">{customer.createdAt}</Moment>
               </Typography>

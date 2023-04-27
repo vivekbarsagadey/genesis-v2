@@ -58,9 +58,8 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
   const [userState, setUserState] = useState(users.state);
   const [userCountry, setUserCountry] = useState(users.country);
   const [roleList, setRoleList] = useState([]);
-  const [role, setRole] = useState<String>('');
+  const [role, setRole] = useState<String>(users.name);
   const [alert, setAlert] = useState(false);
-  const [hover, setHover] = useState(false);
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   const router = useRouter();
   const updateEditMyUserData = async () => {
@@ -140,13 +139,6 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
   ) => {
     setUserStatus(value);
   };
-  const handleMouseIn = () => {
-    setHover(true);
-  };
-  const handleMouseOut = () => {
-    setHover(false);
-  };
-
   const updateRole = (
     e: React.SyntheticEvent<Element, Event>,
     value: string

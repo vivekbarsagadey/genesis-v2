@@ -1,22 +1,22 @@
-'use client'
-import React, { useState } from 'react'
+'use client';
+import React, { useState } from 'react';
 import PivotTableUI from 'react-pivottable/PivotTableUI';
 import 'react-pivottable/pivottable.css';
 import TableRenderers from 'react-pivottable/TableRenderers';
-import createPlotlyRenderers from 'react-pivottable/PlotlyRenderers';
 import Plot from 'react-plotly.js';
+import createPlotlyRenderers from 'react-pivottable/PlotlyRenderers';
 
 const PlotlyRenderers = createPlotlyRenderers(Plot);
-const CompanyReportComponent = ({company}:any) => {
-  const [settings, setSettings] = useState({});
 
+const CustomerReportComponent = ({ customer }: any) => {
+    const [settings, setSettings] = useState({});
   return (
     <div>
-      <PivotTableUI
-        data={company}
+       <PivotTableUI
+        data={customer}
         onChange={(s) => setSettings(s)}
         cols={["createdAt"]}
-        rows={["name", "firstName","lastName","email","mobile","address"]}
+        rows={["firstName", "lastName","address","country",'mobile']}
         vals={["aos_pax_total"]}
         aggregatorName="Integer Sum"
          renderers={Object.assign({}, TableRenderers, PlotlyRenderers)}
@@ -28,9 +28,9 @@ const CompanyReportComponent = ({company}:any) => {
           "pvtAxisContainer"
         ]}
         hiddenFromAggregators={["id", "companyid"]}
-      />
+      /> 
     </div>
-  )
-}
+  );
+};
 
-export default CompanyReportComponent
+export default CustomerReportComponent;

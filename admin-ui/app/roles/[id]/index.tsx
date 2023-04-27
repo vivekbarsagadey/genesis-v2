@@ -1,5 +1,12 @@
 'use client';
-import { Button, Grid, TextField, Typography } from '@mui/material';
+import {
+  Autocomplete,
+  Button,
+  Grid,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Box from '@mui/material/Box/Box';
 import Snackbar from '@mui/material/Snackbar';
@@ -8,7 +15,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { updateRoles } from '../../../services/role.action';
+import { Status } from '../models/role.status';
 
+const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
   ref
@@ -32,6 +41,7 @@ const RoleEditComponent = ({ roles, id }: RoleComponentProps) => {
   const [name, setName] = useState(roles.name);
   const [description, setDescription] = useState(roles.description);
   const [code, setCode] = useState(roles.code);
+  const [roleStatus, setRoleStatus] = useState(roles.status);
   const [alert, setAlert] = useState(false);
 
   const updateName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,6 +60,7 @@ const RoleEditComponent = ({ roles, id }: RoleComponentProps) => {
         name: name,
         description: description,
         code: code,
+        status: roleStatus,
       };
       await updateRoles(id, body);
       await router.push('/roles');
@@ -72,6 +83,12 @@ const RoleEditComponent = ({ roles, id }: RoleComponentProps) => {
     setAlert(false);
   };
 
+  const getRoleStatusValue = (
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
+  ) => {
+    setRoleStatus(value);
+  };
   const updateHandler = () => {
     handleClick();
     updateRolesEditedData();
@@ -151,12 +168,43 @@ const RoleEditComponent = ({ roles, id }: RoleComponentProps) => {
             </Grid>
           </Grid>
 
+          <Grid item xs={6} mt={2}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
+                <Typography>Status</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Stack>
+                  <Autocomplete
+                    value={roleStatus}
+                    onChange={getRoleStatusValue}
+                    freeSolo
+                    id="company-status"
+                    disableClearable
+                    size="small"
+                    options={statusSet?.map((option: any) => option)}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        InputProps={{ ...params.InputProps, type: 'search' }}
+                        placeholder="Select Status"
+                      />
+                    )}
+                  />
+                </Stack>
+              </Grid>
+            </Grid>
+          </Grid>
+
           <Grid container mt={5}>
             <Grid item xs={8.6}></Grid>
             <Grid item xs={3.4}>
               <Grid container>
                 <Grid item xs={6}>
-                  <Link href={'/company'} style={{ textDecoration: 'none' }}>
+                  <Link href={'/roles'} style={{ textDecoration: 'none' }}>
                     <Button variant="contained" className={classes.buttonStyle}>
                       Cancel
                     </Button>

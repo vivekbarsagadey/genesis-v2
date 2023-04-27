@@ -25,24 +25,24 @@ const CompanyPieChart = ({
             <Chart
               chartType="PieChart"
               data={stateData}
-              width={"100%"}
-              height={"320px"}
+              width={"120%"}
+              height={"450px"}
             />
           </Case>
           <Case condition={graphView === "country"}>
             <Chart
               chartType="PieChart"
               data={countryData}
-              width={"100%"}
-              height={"320px"}
+              width={"120%"}
+              height={"450px"}
             />
           </Case>
           <Case condition={graphView === "status"}>
             <Chart
               chartType="PieChart"
               data={statusData}
-              width={"100%"}
-              height={"320px"}
+              width={"120%"}
+              height={"450px"}
             />
           </Case>
 
@@ -50,8 +50,8 @@ const CompanyPieChart = ({
             <Chart
               chartType="PieChart"
               data={statusData}
-              width={"100%"}
-              height={"320px"}
+              width={"120%"}
+              height={"450px"}
             />
           </Default>
         </Switch>

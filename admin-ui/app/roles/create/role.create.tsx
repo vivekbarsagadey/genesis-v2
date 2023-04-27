@@ -204,7 +204,7 @@ const RoleCreateComponent = () => {
             <Grid item xs={3.4}>
               <Grid container>
                 <Grid item xs={6}>
-                  <Link href={'/company'} style={{ textDecoration: 'none' }}>
+                  <Link href={'/roles'} style={{ textDecoration: 'none' }}>
                     <Button variant="contained" style={{ width: '73%' }}>
                       Cancel
                     </Button>
