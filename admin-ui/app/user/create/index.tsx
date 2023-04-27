@@ -599,7 +599,7 @@ const UserCreateComponent = () => {
 
         <Grid container>
           <Grid item xs={8.6}></Grid>
-          <Grid item xs={3.4}>
+          <Grid item xs={3.2}>
             <Grid container>
               <Grid item xs={6}>
                 <Link href={'/user'} style={{ textDecoration: 'none' }}>
