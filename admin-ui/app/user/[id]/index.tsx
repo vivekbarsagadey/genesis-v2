@@ -9,11 +9,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { updateUser } from '../../../services/user.action';
 import { IRole } from '../../roles/models';
-import {
-  citySelect,
-  countrySelect,
-  stateSelect,
-} from '../graphdata/graphdata.data';
+import { citySelect, countrySelect } from '../graphdata/graphdata.data';
 import { Status } from '../models';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
@@ -58,7 +54,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
   const [userState, setUserState] = useState(users.state);
   const [userCountry, setUserCountry] = useState(users.country);
   const [roleList, setRoleList] = useState([]);
-  const [role, setRole] = useState<String>(users.name);
+  const [role, setRole] = useState<String>(users.role);
   const [alert, setAlert] = useState(false);
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   const router = useRouter();
@@ -77,7 +73,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
         city: userCity,
         state: userState,
         country: userCountry,
-        name: role,
+        role: role,
       };
       await updateUser(id, body);
       await router.push('/user');
@@ -247,23 +243,13 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                     <Grid item xs={6}>
                       <Stack spacing={2}>
                         <Autocomplete
+                          disablePortal
                           value={gender}
                           onChange={updateUserChange}
-                          freeSolo
-                          id="gender"
-                          disableClearable
                           size="small"
+                          id="gender"
                           options={genderType?.map((option) => option.title)}
-                          renderInput={(params) => (
-                            <TextField
-                              {...params}
-                              InputProps={{
-                                ...params.InputProps,
-                                type: 'search',
-                              }}
-                              placeholder="Select Gender"
-                            />
-                          )}
+                          renderInput={(params) => <TextField {...params} />}
                         />
                       </Stack>
                     </Grid>
@@ -344,23 +330,37 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Autocomplete
+                        disablePortal
                         value={userStatus}
                         onChange={updateUserStatus}
-                        freeSolo
-                        id="user-status"
-                        disableClearable
                         size="small"
+                        id="status"
                         options={statusSet?.map((option: any) => option)}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            InputProps={{
-                              ...params.InputProps,
-                              type: 'search',
-                            }}
-                          />
-                        )}
+                        renderInput={(params) => <TextField {...params} />}
                       />
+                    </Grid>
+                  </Grid>
+                </Grid>
+
+                <Grid item xs={6} mt={2}>
+                  <Grid container display="flex" alignItems="center">
+                    <Grid item xs={4}>
+                      <Typography>Role</Typography>
+                    </Grid>
+                    <Grid item xs={1}>
+                      <Typography>:</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Stack>
+                        <Autocomplete
+                          disablePortal
+                          onChange={updateRole}
+                          size="small"
+                          id="role"
+                          options={roleList?.map((item: IRole) => item.name)}
+                          renderInput={(params) => <TextField {...params} />}
+                        />
+                      </Stack>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -386,38 +386,6 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                     </Grid>
                   </Grid>
                 </Grid>
-                <Grid item xs={6} mt={2}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={4}>
-                      <Typography>Role</Typography>
-                    </Grid>
-                    <Grid item xs={1}>
-                      <Typography>:</Typography>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Stack>
-                        <Autocomplete
-                          size="small"
-                          onChange={updateRole}
-                          freeSolo
-                          id="free-solo-2-demo"
-                          disableClearable
-                          options={roleList?.map((item: IRole) => item.name)}
-                          renderInput={(params) => (
-                            <TextField
-                              {...params}
-                              InputProps={{
-                                ...params.InputProps,
-                                type: 'search',
-                              }}
-                              placeholder="Role"
-                            />
-                          )}
-                        />
-                      </Stack>
-                    </Grid>
-                  </Grid>
-                </Grid>
 
                 <Grid item xs={6} mt={2}>
                   <Grid container display="flex" alignItems="center">
@@ -429,23 +397,13 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Autocomplete
+                        disablePortal
                         value={userCity}
                         onChange={updateUserCity}
-                        freeSolo
-                        id="free-solo-2-demo"
-                        disableClearable
+                        size="small"
+                        id="city"
                         options={citySelect.map((option) => option.city)}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            size="small"
-                            InputProps={{
-                              ...params.InputProps,
-                              type: 'search',
-                            }}
-                            placeholder="Select City"
-                          />
-                        )}
+                        renderInput={(params) => <TextField {...params} />}
                       />
                     </Grid>
                   </Grid>
@@ -461,23 +419,13 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                     </Grid>
                     <Grid item xs={6}>
                       <Autocomplete
+                        disablePortal
                         value={userState}
                         onChange={updateUserState}
-                        freeSolo
-                        id="free-solo-2-demo"
-                        disableClearable
-                        options={stateSelect.map((option) => option.state)}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            size="small"
-                            InputProps={{
-                              ...params.InputProps,
-                              type: 'search',
-                            }}
-                            placeholder="Select State"
-                          />
-                        )}
+                        size="small"
+                        id="state"
+                        options={countrySelect.map((option) => option.country)}
+                        renderInput={(params) => <TextField {...params} />}
                       />
                     </Grid>
                   </Grid>
@@ -494,62 +442,20 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                     <Grid item xs={6}>
                       <Stack spacing={2}>
                         <Autocomplete
+                          disablePortal
                           value={userCountry}
                           onChange={updateUserCountry}
-                          freeSolo
-                          id="country"
-                          disableClearable
                           size="small"
-                          options={countrySelect?.map(
+                          id="country"
+                          options={countrySelect.map(
                             (option) => option.country
                           )}
-                          renderInput={(params) => (
-                            <TextField
-                              {...params}
-                              InputProps={{
-                                ...params.InputProps,
-                                type: 'search',
-                              }}
-                              placeholder="Select Gender"
-                            />
-                          )}
+                          renderInput={(params) => <TextField {...params} />}
                         />
                       </Stack>
                     </Grid>
                   </Grid>
                 </Grid>
-
-                {/* <Grid container mt={5}>
-                  <Grid item xs={12}>
-                    <Grid container>
-                      <Grid item xs={9}></Grid>
-                      <Grid item xs={3}>
-                        <Grid container>
-                          <Grid item xs={7}>
-                            <Link href={'/user'}>
-                              <Button
-                                variant="contained"
-                                className={classes.buttonStyle}
-                              >
-                                Cancel
-                              </Button>
-                            </Link>
-                          </Grid>
-                          <Grid item xs={2} ml={1}>
-                            <Button
-                              variant="contained"
-                              className={classes.buttonStyle}
-                              onClick={updateEditMyUserData}
-                            >
-                              Save
-                            </Button>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid> */}
-
                 <Grid container mt={5}>
                   <Grid item xs={8.6}></Grid>
                   <Grid item xs={3.4}>

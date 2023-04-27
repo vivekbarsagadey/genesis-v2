@@ -494,7 +494,7 @@ const UserCreateComponent = () => {
                         value={userCountry}
                         onChange={updateUserCountry}
                         size="small"
-                        id="combo-box-demo"
+                        id="country"
                         options={countrySelect.map((option) => option.country)}
                         renderInput={(params) => <TextField {...params} />}
                       />
@@ -534,7 +534,7 @@ const UserCreateComponent = () => {
                             <TextField
                               value={password}
                               onChange={updateUserPassword}
-                              id="old-password"
+                              id="new-password"
                               variant="outlined"
                               size="small"
                               fullWidth
@@ -559,7 +559,7 @@ const UserCreateComponent = () => {
                               >
                                 <OutlinedInput
                                   size="small"
-                                  id="outlined-adornment-password"
+                                  id="confirm-password"
                                   type={showPassword ? 'text' : 'password'}
                                   endAdornment={
                                     <InputAdornment position="end">
