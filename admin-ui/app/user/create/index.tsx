@@ -74,18 +74,16 @@ const UserCreateComponent = () => {
   const [userAge, setUserAge] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userPhone, setUserPhone] = useState('');
-  const [userAddress, setUserAddress] = useState('');
+  const [userZipCode, setZipCode] = useState('');
   const [userStatus, setUserStatus] = useState('');
   const [userCity, setUserCity] = useState('');
   const [userState, setUserState] = useState('');
   const [userCountry, setUserCountry] = useState('');
-  const [hover, setHover] = useState(false);
   const [alert, setAlert] = useState(false);
   const [roleList, setRoleList] = useState([]);
   const [role, setRole] = useState<String>('');
   const [value, setValue] = useState();
   const [password, setPassword] = useState('');
-  const [oldPassword, setOldPassword] = useState('');
   const [showPassword, setShowPassword] = React.useState(false);
   const router = useRouter();
 
@@ -104,7 +102,7 @@ const UserCreateComponent = () => {
         email: userEmail,
         age: userAge,
         mobile: userPhone,
-        address: userAddress,
+        zipCode: userZipCode,
         status: userStatus,
         city: userCity,
         state: userState,
@@ -134,13 +132,10 @@ const UserCreateComponent = () => {
   const updateUserPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserPhone(e.target.value);
   };
-  const updateUserAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserAddress(e.target.value);
+  const updateZipCode = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setZipCode(e.target.value);
   };
-  const updateUserOldPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setOldPassword(e.target.value);
-  };
-  const updateUserPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const updatePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
@@ -231,16 +226,16 @@ const UserCreateComponent = () => {
           <Typography fontSize={'1.2rem'}>Create New User</Typography>
         </Grid>
       </Grid>
-      <Grid container>
+      <Grid container style={{ height: '78vh' }}>
         <Grid item xs={12}>
           <Box sx={{ flexGrow: 1 }} padding={2}>
             <Grid container spacing={2} mt={1}>
               <Grid item xs={6}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <Typography>First Name</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -258,10 +253,10 @@ const UserCreateComponent = () => {
               </Grid>
               <Grid item xs={6}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <Typography>Last Name</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -279,32 +274,22 @@ const UserCreateComponent = () => {
               </Grid>
               <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <Typography>Gender</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
                     <Stack spacing={2}>
                       <Autocomplete
+                        disablePortal
                         value={gender}
                         onChange={updateUserChange}
-                        freeSolo
-                        id="gender"
-                        disableClearable
                         size="small"
+                        id="combo-box-demo"
                         options={genderType?.map((option) => option.title)}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            InputProps={{
-                              ...params.InputProps,
-                              type: 'search',
-                            }}
-                            placeholder="Select Gender"
-                          />
-                        )}
+                        renderInput={(params) => <TextField {...params} />}
                       />
                     </Stack>
                   </Grid>
@@ -312,10 +297,10 @@ const UserCreateComponent = () => {
               </Grid>
               <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <Typography>Age</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -333,10 +318,10 @@ const UserCreateComponent = () => {
               </Grid>
               <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <Typography>Email</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -354,10 +339,10 @@ const UserCreateComponent = () => {
               </Grid>
               <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <Typography>Phone</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -375,10 +360,10 @@ const UserCreateComponent = () => {
               </Grid>
               <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <Typography>Status</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -394,116 +379,7 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={6} mt={1}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
-                    <Typography>Role</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Stack>
-                      <Autocomplete
-                        disablePortal
-                        onChange={updateRole}
-                        size="small"
-                        id="combo-box-demo"
-                        options={roleList?.map((item: IRole) => item.name)}
-                        renderInput={(params) => <TextField {...params} />}
-                      />
-                    </Stack>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={6} mt={1}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
-                    <Typography>Address</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <TextField
-                      id="address"
-                      placeholder="Address"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={userAddress}
-                      onChange={updateUserAddress}
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={6} mt={1}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
-                    <Typography>City</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Autocomplete
-                      disablePortal
-                      value={userCity}
-                      onChange={updateUserCity}
-                      id="combo-box-demo"
-                      size="small"
-                      options={citySelect.map((option) => option.city)}
-                      renderInput={(params) => <TextField {...params} />}
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={6} mt={1}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
-                    <Typography>State</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Autocomplete
-                      disablePortal
-                      value={userState}
-                      onChange={updateUserState}
-                      size="small"
-                      id="combo-box-demo"
-                      options={stateSelect.map((option) => option.state)}
-                      renderInput={(params) => <TextField {...params} />}
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={6} mt={1}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
-                    <Typography>Country</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Stack>
-                      <Autocomplete
-                        disablePortal
-                        value={userCountry}
-                        onChange={updateUserCountry}
-                        size="small"
-                        id="country"
-                        options={countrySelect.map((option) => option.country)}
-                        renderInput={(params) => <TextField {...params} />}
-                      />
-                    </Stack>
-                  </Grid>
-                </Grid>
-              </Grid>
-
-              <Box sx={{ width: '100%' }}>
+              <Box sx={{ width: '100%' }} marginTop={5}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                   <Tabs
                     value={value}
@@ -533,7 +409,7 @@ const UserCreateComponent = () => {
                           <Grid item xs={6.3}>
                             <TextField
                               value={password}
-                              onChange={updateUserPassword}
+                              onChange={updatePassword}
                               id="new-password"
                               variant="outlined"
                               size="small"
@@ -587,45 +463,166 @@ const UserCreateComponent = () => {
                   </Box>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                  Address
+                  <Box>
+                    <Grid container>
+                      <Grid item xs={6}>
+                        <Grid container display="flex" alignItems="center">
+                          <Grid item xs={3}>
+                            <Typography>Zip-Code</Typography>
+                          </Grid>
+                          <Grid item xs={2}>
+                            <Typography>:</Typography>
+                          </Grid>
+                          <Grid item xs={6}>
+                            <TextField
+                              id="zip-code"
+                              placeholder="Zip-Code"
+                              variant="outlined"
+                              size="small"
+                              fullWidth
+                              value={userZipCode}
+                              onChange={updateZipCode}
+                            />
+                          </Grid>
+                        </Grid>
+                      </Grid>
+
+                      <Grid item xs={6}>
+                        <Grid container display="flex" alignItems="center">
+                          <Grid item xs={3} ml={2.6}>
+                            <Typography>City</Typography>
+                          </Grid>
+                          <Grid item xs={2}>
+                            <Typography>:</Typography>
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Autocomplete
+                              disablePortal
+                              value={userCity}
+                              onChange={updateUserCity}
+                              id="combo-box-demo"
+                              size="small"
+                              options={citySelect.map((option) => option.city)}
+                              renderInput={(params) => (
+                                <TextField {...params} />
+                              )}
+                            />
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item xs={6} mt={1}>
+                        <Grid container display="flex" alignItems="center">
+                          <Grid item xs={3}>
+                            <Typography>State</Typography>
+                          </Grid>
+                          <Grid item xs={2}>
+                            <Typography>:</Typography>
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Autocomplete
+                              disablePortal
+                              value={userState}
+                              onChange={updateUserState}
+                              size="small"
+                              id="combo-box-demo"
+                              options={stateSelect.map(
+                                (option) => option.state
+                              )}
+                              renderInput={(params) => (
+                                <TextField {...params} />
+                              )}
+                            />
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item xs={6} mt={1}>
+                        <Grid container display="flex" alignItems="center">
+                          <Grid item xs={3} ml={2.6}>
+                            <Typography>Country</Typography>
+                          </Grid>
+                          <Grid item xs={2}>
+                            <Typography>:</Typography>
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Stack>
+                              <Autocomplete
+                                disablePortal
+                                value={userCountry}
+                                onChange={updateUserCountry}
+                                size="small"
+                                id="country"
+                                options={countrySelect.map(
+                                  (option) => option.country
+                                )}
+                                renderInput={(params) => (
+                                  <TextField {...params} />
+                                )}
+                              />
+                            </Stack>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </Box>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                  Roles
+                  <Grid item xs={6} mt={1}>
+                    <Grid container display="flex" alignItems="center">
+                      <Grid item xs={3}>
+                        <Typography>Role</Typography>
+                      </Grid>
+                      <Grid item xs={2}>
+                        <Typography>:</Typography>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Stack>
+                          <Autocomplete
+                            disablePortal
+                            onChange={updateRole}
+                            size="small"
+                            id="combo-box-demo"
+                            options={roleList?.map((item: IRole) => item.name)}
+                            renderInput={(params) => <TextField {...params} />}
+                          />
+                        </Stack>
+                      </Grid>
+                    </Grid>
+                  </Grid>
                 </TabPanel>
               </Box>
             </Grid>
           </Box>
         </Grid>
+      </Grid>
 
-        <Grid container>
-          <Grid item xs={8.6}></Grid>
-          <Grid item xs={3.2}>
-            <Grid container>
-              <Grid item xs={6}>
-                <Link href={'/user'} style={{ textDecoration: 'none' }}>
-                  <Button variant="contained" className={classes.buttonStyle}>
-                    Cancel
-                  </Button>
-                </Link>
-              </Grid>
-              <Grid item xs={6}>
-                <Button
-                  variant="contained"
-                  onClick={updateHandler}
-                  className={classes.buttonStyle}
-                >
-                  Save
+      <Grid container>
+        <Grid item xs={8.6}></Grid>
+        <Grid item xs={3.2}>
+          <Grid container>
+            <Grid item xs={6}>
+              <Link href={'/user'} style={{ textDecoration: 'none' }}>
+                <Button variant="contained" className={classes.buttonStyle}>
+                  Cancel
                 </Button>
-                <Snackbar
-                  open={alert}
-                  autoHideDuration={8000}
-                  onClose={handleClose}
-                >
-                  <Alert onClose={handleClose} sx={{ width: '100%' }}>
-                    User Created Sucessfully...
-                  </Alert>
-                </Snackbar>
-              </Grid>
+              </Link>
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                variant="contained"
+                onClick={updateHandler}
+                className={classes.buttonStyle}
+              >
+                Save
+              </Button>
+              <Snackbar
+                open={alert}
+                autoHideDuration={8000}
+                onClose={handleClose}
+              >
+                <Alert onClose={handleClose} sx={{ width: '100%' }}>
+                  User Created Sucessfully...
+                </Alert>
+              </Snackbar>
             </Grid>
           </Grid>
         </Grid>

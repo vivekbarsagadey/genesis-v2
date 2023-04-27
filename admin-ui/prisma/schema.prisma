@@ -51,6 +51,7 @@ model User {
   firstName      String?   @map("first_name")
   lastName       String?   @map("last_name")
   address        String?
+  zipCode        String?   @map("zip_code")
   city           String?
   state          String?
   country        String?
