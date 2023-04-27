@@ -42,7 +42,7 @@ const InfoUserComponent = ({ user }: InfoUserComponentProps) => {
             </Grid>
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
-              {user.name}
+              {user.role}
               </Typography>
             </Grid>
             <Grid item xs={2}>
