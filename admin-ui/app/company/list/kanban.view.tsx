@@ -363,111 +363,296 @@ const NewCompanyComponent = ({ newCompany }: INewCompany) => {
   );
 };
 const ActiveCompanyComponent = ({ activeCompany }: IActiveCompany) => {
-  return (
-    <Box mt={1}>
-      <Card variant="outlined">
-        <Grid container>
-          <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
-            <LocationCityIcon fontSize="inherit" />
-            <Typography noWrap pl={1} variant="h6">
-              {activeCompany.name}
-            </Typography>
+  
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [openEditModal, setOpenEditModal] = React.useState(false);
+    const handleEditModalOpen = () => setOpenEditModal(true);
+    const handleEditModalClose = () => setOpenEditModal(false);
+    const [newStatus, setNewStatus] = useState(activeCompany.status);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+    const classes = useStyles();
+  
+    const handleupdateStatus = (event: SelectChangeEvent) => {
+      setNewStatus(event.target.value as string);
+    };
+  
+    const updateStatusHandler = async () => {
+      try {
+        const body = {
+          status: newStatus,
+        };
+        await updateCompany(activeCompany.id, body);
+  
+        handleEditModalClose();
+        window.location.reload();
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    return (
+      <Box mt={1}>
+        <Card variant="outlined">
+          <Grid container>
+            <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
+              <LocationCityIcon fontSize="inherit" />
+              <Typography noWrap pl={1} variant="h6">
+                {activeCompany.name}
+              </Typography>
+            </Grid>
+            <Grid
+              item
+              xs={6}
+              display="flex"
+              justifyContent="flex-end"
+              pl={2}
+              pb={1}
+            >
+              <IconButton onClick={handleClick}>
+                <MoreHorizIcon fontSize="small" />
+              </IconButton>
+              <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+              >
+                <MenuItem>
+                  <IconButton
+                    onClick={handleEditModalOpen}
+                    className={classes.buttonStyle}
+                  >
+                    <EditIcon fontSize="inherit" />
+                  </IconButton>
+                  <Modal open={openEditModal} onClose={handleEditModalClose}>
+                    <Box className={classes.modalStyle}>
+                      <Card>
+                        <Grid container spacing={2} p={3}>
+                          <Grid item xs={12}>
+                            <FormControl fullWidth>
+                              <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={newStatus}
+                                onChange={handleupdateStatus}
+                              >
+                                <MenuItem value={'NEW'}>NEW</MenuItem>
+                                <MenuItem value={'ACTIVE'}>ACTIVE</MenuItem>
+                                <MenuItem value={'INACTIVE'}>INACTIVE</MenuItem>
+                              </Select>
+                            </FormControl>
+                          </Grid>
+                          <Grid item xs={12}>
+                            <Button
+                              className={classes.buttonStyle}
+                              onClick={updateStatusHandler}
+                            >
+                              Apply
+                            </Button>
+                          </Grid>
+                        </Grid>
+                      </Card>
+                    </Box>
+                  </Modal>
+                </MenuItem>
+                <MenuItem>
+                  <IconButton
+                    onClick={() => deleteCompany(activeCompany.id)}
+                    className={classes.buttonStyle}
+                  >
+                    <DeleteIcon htmlColor="red" />
+                  </IconButton>
+                </MenuItem>
+              </Menu>
+            </Grid>
+            <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+              <CalendarMonthIcon fontSize="inherit" />
+              <Typography noWrap pl={1}>
+                {moment(activeCompany.createdAt).format('DD/MM/YYYY')}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+              <EmailIcon fontSize="inherit" />
+              <Typography noWrap pl={1}>
+                {activeCompany.email}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+              <CallIcon fontSize="inherit" />
+              <Typography noWrap pl={1}>
+                {activeCompany.mobile}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} display="flex" pl={2} pb={2}>
+              <Tooltip title="Edit Status">
+                <Typography noWrap>Status -</Typography>
+              </Tooltip>
+              <Typography noWrap variant="h6" pl={1}>
+                {activeCompany.status}
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid
-            item
-            xs={6}
-            display="flex"
-            justifyContent="flex-end"
-            pl={2}
-            pb={1}
-          >
-            <IconButton>
-              <DeleteIcon fontSize="small" />
-            </IconButton>
-          </Grid>
-          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
-            <CalendarMonthIcon fontSize="inherit" />
-            <Typography noWrap pl={1}>
-              {moment(activeCompany.createdAt).format('DD/MM/YYYY')}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
-            <EmailIcon fontSize="inherit" />
-            <Typography noWrap pl={1}>
-              {activeCompany.email}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
-            <CallIcon fontSize="inherit" />
-            <Typography noWrap pl={1}>
-              {activeCompany.mobile}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} display="flex" pl={2} pb={2}>
-            <Tooltip title="Edit Status">
-              <Typography noWrap>Status -</Typography>
-            </Tooltip>
-            <Typography noWrap variant="h6" pl={1}>
-              {activeCompany.status}
-            </Typography>
-          </Grid>
-        </Grid>
-      </Card>
-    </Box>
+        </Card>
+      </Box>
   );
 };
 const InActiveCompanyComponent = ({ inActiveCompany }: IInActiveCompany) => {
-  return (
-    <Box mt={1}>
-      <Card variant="outlined">
-        <Grid container>
-          <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
-            <LocationCityIcon fontSize="inherit" />
-            <Typography noWrap pl={1} variant="h6">
-              {inActiveCompany.name}
-            </Typography>
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [openEditModal, setOpenEditModal] = React.useState(false);
+    const handleEditModalOpen = () => setOpenEditModal(true);
+    const handleEditModalClose = () => setOpenEditModal(false);
+    const [newStatus, setNewStatus] = useState(inActiveCompany.status);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+    const classes = useStyles();
+  
+    const handleupdateStatus = (event: SelectChangeEvent) => {
+      setNewStatus(event.target.value as string);
+    };
+  
+    const updateStatusHandler = async () => {
+      try {
+        const body = {
+          status: newStatus,
+        };
+        await updateCompany(inActiveCompany.id, body);
+  
+        handleEditModalClose();
+        window.location.reload();
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    return (
+      <Box mt={1}>
+        <Card variant="outlined">
+          <Grid container>
+            <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
+              <LocationCityIcon fontSize="inherit" />
+              <Typography noWrap pl={1} variant="h6">
+                {inActiveCompany.name}
+              </Typography>
+            </Grid>
+            <Grid
+              item
+              xs={6}
+              display="flex"
+              justifyContent="flex-end"
+              pl={2}
+              pb={1}
+            >
+              <IconButton onClick={handleClick}>
+                <MoreHorizIcon fontSize="small" />
+              </IconButton>
+              <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+              >
+                <MenuItem>
+                  <IconButton
+                    onClick={handleEditModalOpen}
+                    className={classes.buttonStyle}
+                  >
+                    <EditIcon fontSize="inherit" />
+                  </IconButton>
+                  <Modal open={openEditModal} onClose={handleEditModalClose} style={{opacity:1}}>
+                    <Box className={classes.modalStyle}>
+                      <Card>
+                        <Grid container spacing={2} p={3}>
+                          <Grid item xs={12}>
+                            <FormControl fullWidth>
+                              <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={newStatus}
+                                onChange={handleupdateStatus}
+                              >
+                                <MenuItem value={'NEW'}>NEW</MenuItem>
+                                <MenuItem value={'ACTIVE'}>ACTIVE</MenuItem>
+                                <MenuItem value={'INACTIVE'}>INACTIVE</MenuItem>
+                              </Select>
+                            </FormControl>
+                          </Grid>
+                          <Grid item xs={12}>
+                            <Button
+                              className={classes.buttonStyle}
+                              onClick={updateStatusHandler}
+                            >
+                              Apply
+                            </Button>
+                          </Grid>
+                        </Grid>
+                      </Card>
+                    </Box>
+                  </Modal>
+                </MenuItem>
+                <MenuItem>
+                  <IconButton
+                    onClick={() => deleteCompany(inActiveCompany.id)}
+                    className={classes.buttonStyle}
+                  >
+                    <DeleteIcon htmlColor="red" />
+                  </IconButton>
+                </MenuItem>
+              </Menu>
+            </Grid>
+            <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+              <CalendarMonthIcon fontSize="inherit" />
+              <Typography noWrap pl={1}>
+                {moment(inActiveCompany.createdAt).format('DD/MM/YYYY')}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+              <EmailIcon fontSize="inherit" />
+              <Typography noWrap pl={1}>
+                {inActiveCompany.email}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+              <CallIcon fontSize="inherit" />
+              <Typography noWrap pl={1}>
+                {inActiveCompany.mobile}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} display="flex" pl={2} pb={2}>
+              <Tooltip title="Edit Status">
+                <Typography noWrap>Status -</Typography>
+              </Tooltip>
+              <Typography noWrap variant="h6" pl={1}>
+                {inActiveCompany.status}
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid
-            item
-            xs={6}
-            display="flex"
-            justifyContent="flex-end"
-            pl={2}
-            pb={1}
-          >
-            <IconButton>
-              <DeleteIcon fontSize="small" />
-            </IconButton>
-          </Grid>
-          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
-            <CalendarMonthIcon fontSize="inherit" />
-            <Typography noWrap pl={1}>
-              {moment(inActiveCompany.createdAt).format('DD/MM/YYYY')}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
-            <EmailIcon fontSize="inherit" />
-            <Typography noWrap pl={1}>
-              {inActiveCompany.email}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
-            <CallIcon fontSize="inherit" />
-            <Typography noWrap pl={1}>
-              {inActiveCompany.mobile}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} display="flex" pl={2} pb={2}>
-            <Tooltip title="Edit Status">
-              <Typography noWrap>Status -</Typography>
-            </Tooltip>
-            <Typography noWrap variant="h6" pl={1}>
-              {inActiveCompany.status}
-            </Typography>
-          </Grid>
-        </Grid>
-      </Card>
-    </Box>
+        </Card>
+      </Box>
   );
 };
 
