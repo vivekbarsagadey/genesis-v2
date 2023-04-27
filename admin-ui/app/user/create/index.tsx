@@ -4,8 +4,11 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {
   Box,
   Button,
+  FormControl,
   Grid,
   IconButton,
+  InputAdornment,
+  OutlinedInput,
   Snackbar,
   Stack,
   TextField,
@@ -13,11 +16,6 @@ import {
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
-import FormControl from '@mui/material/FormControl';
-import InputAdornment from '@mui/material/InputAdornment';
-import MenuItem from '@mui/material/MenuItem';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import { makeStyles } from '@mui/styles';
@@ -86,7 +84,7 @@ const UserCreateComponent = () => {
   const [roleList, setRoleList] = useState([]);
   const [role, setRole] = useState<String>('');
   const [value, setValue] = useState();
-  const [newPassword, setNewPassword] = useState('');
+  const [password, setPassword] = useState('');
   const [oldPassword, setOldPassword] = useState('');
   const [showPassword, setShowPassword] = React.useState(false);
   const router = useRouter();
@@ -112,8 +110,7 @@ const UserCreateComponent = () => {
         state: userState,
         country: userCountry,
         role: role,
-        newPassword: newPassword,
-        oldPassword: oldPassword,
+        password: password,
       };
       await createUser(body);
       await router.push('/user');
@@ -143,10 +140,16 @@ const UserCreateComponent = () => {
   const updateUserOldPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOldPassword(e.target.value);
   };
-  const updateUserNewPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewPassword(e.target.value);
+  const updateUserPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
   };
 
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
   const updateUserChange = (
     e: React.SyntheticEvent<Element, Event>,
     value: string
@@ -171,8 +174,11 @@ const UserCreateComponent = () => {
   ) => {
     setUserCity(value);
   };
-  const updateUserStatus = (event: SelectChangeEvent) => {
-    setUserStatus(event.target.value as string);
+  const updateUserStatus = (
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
+  ) => {
+    setUserStatus(value);
   };
 
   const updateRole = (
@@ -199,12 +205,6 @@ const UserCreateComponent = () => {
   const updateHandler = () => {
     handleClick();
     updateMyUserData();
-  };
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
   };
   const fetchData = async () => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/roles`);
@@ -234,7 +234,7 @@ const UserCreateComponent = () => {
       <Grid container>
         <Grid item xs={12}>
           <Box sx={{ flexGrow: 1 }} padding={2}>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} mt={1}>
               <Grid item xs={6}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
@@ -383,49 +383,36 @@ const UserCreateComponent = () => {
                   </Grid>
                   <Grid item xs={6}>
                     <Autocomplete
+                      disablePortal
                       value={userStatus}
                       onChange={updateUserStatus}
-                      freeSolo
-                      id="user-status"
-                      disableClearable
                       size="small"
+                      id="combo-box-demo"
                       options={statusSet?.map((option: any) => option)}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          InputProps={{
-                            ...params.InputProps,
-                            type: 'search',
-                          }}
-                          placeholder="Select Status"
-                        />
-                      )}
+                      renderInput={(params) => <TextField {...params} />}
                     />
-                    <FormControl fullWidth>
-                      {/* <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={userStatus}
-                        onClick={updateUserStatus}
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid item xs={6} mt={1}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={4}>
+                    <Typography>Role</Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Stack>
+                      <Autocomplete
+                        disablePortal
+                        onChange={updateRole}
                         size="small"
-                      >
-                        {statusSet.map((f) => {
-                          return <MenuItem value={f}>{f}</MenuItem>;
-                        })}
-                      </Select> */}
-                      {/* <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={userStatus}
-                        size="small"
-                        onChange={updateUserStatus}
-                      >
-                       
-                        {statusSet.map((f) => {
-                          return <MenuItem value={f}>{f}</MenuItem>;
-                        })}
-                      </Select> */}
-                    </FormControl>
+                        id="combo-box-demo"
+                        options={roleList?.map((item: IRole) => item.name)}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </Stack>
                   </Grid>
                 </Grid>
               </Grid>
@@ -450,39 +437,7 @@ const UserCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item xs={6}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
-                    <Typography>Role</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Stack>
-                      <Autocomplete
-                        size="small"
-                        onChange={updateRole}
-                        freeSolo
-                        id="free-solo-2-demo"
-                        disableClearable
-                        options={roleList?.map((item: IRole) => item.name)}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            InputProps={{
-                              ...params.InputProps,
-                              type: 'search',
-                            }}
-                            placeholder="Role"
-                          />
-                        )}
-                      />
-                    </Stack>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={6} mt={1}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={4}>
                     <Typography>City</Typography>
@@ -492,23 +447,13 @@ const UserCreateComponent = () => {
                   </Grid>
                   <Grid item xs={6}>
                     <Autocomplete
+                      disablePortal
                       value={userCity}
                       onChange={updateUserCity}
-                      freeSolo
-                      id="free-solo-2-demo"
-                      disableClearable
+                      id="combo-box-demo"
+                      size="small"
                       options={citySelect.map((option) => option.city)}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          size="small"
-                          InputProps={{
-                            ...params.InputProps,
-                            type: 'search',
-                          }}
-                          placeholder="Select City"
-                        />
-                      )}
+                      renderInput={(params) => <TextField {...params} />}
                     />
                   </Grid>
                 </Grid>
@@ -523,23 +468,13 @@ const UserCreateComponent = () => {
                   </Grid>
                   <Grid item xs={6}>
                     <Autocomplete
+                      disablePortal
                       value={userState}
                       onChange={updateUserState}
-                      freeSolo
-                      id="free-solo-2-demo"
-                      disableClearable
+                      size="small"
+                      id="combo-box-demo"
                       options={stateSelect.map((option) => option.state)}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          size="small"
-                          InputProps={{
-                            ...params.InputProps,
-                            type: 'search',
-                          }}
-                          placeholder="Select State"
-                        />
-                      )}
+                      renderInput={(params) => <TextField {...params} />}
                     />
                   </Grid>
                 </Grid>
@@ -553,32 +488,22 @@ const UserCreateComponent = () => {
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
-                    <Stack spacing={2}>
+                    <Stack>
                       <Autocomplete
+                        disablePortal
                         value={userCountry}
                         onChange={updateUserCountry}
-                        freeSolo
-                        id="free-solo-2-demo"
-                        disableClearable
+                        size="small"
+                        id="country"
                         options={countrySelect.map((option) => option.country)}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            size="small"
-                            InputProps={{
-                              ...params.InputProps,
-                              type: 'search',
-                            }}
-                            placeholder="Select Country"
-                          />
-                        )}
+                        renderInput={(params) => <TextField {...params} />}
                       />
                     </Stack>
                   </Grid>
                 </Grid>
               </Grid>
 
-              <Box sx={{ width: '100%' }} mt={1}>
+              <Box sx={{ width: '100%' }}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                   <Tabs
                     value={value}
@@ -595,9 +520,9 @@ const UserCreateComponent = () => {
                   </Tabs>
                 </Box>
                 <TabPanel value={value} index={0}>
-                  <Box sx={{ flexGrow: 1 }}>
+                  <Box>
                     <Grid container spacing={2} paddingLeft={2}>
-                      <Grid item xs={6} mt={1}>
+                      <Grid item xs={6}>
                         <Grid container display="flex" alignItems="center">
                           <Grid item xs={3.5}>
                             <Typography>New Password</Typography>
@@ -607,9 +532,9 @@ const UserCreateComponent = () => {
                           </Grid>
                           <Grid item xs={6.3}>
                             <TextField
-                              value={oldPassword}
-                              onChange={updateUserOldPassword}
-                              id="old-password"
+                              value={password}
+                              onChange={updateUserPassword}
+                              id="new-password"
                               variant="outlined"
                               size="small"
                               fullWidth
@@ -618,7 +543,7 @@ const UserCreateComponent = () => {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={6} mt={1}>
+                      <Grid item xs={6}>
                         <Grid container display="flex" alignItems="center">
                           <Grid item xs={4.2}>
                             <Typography>Confirm Password</Typography>
@@ -634,7 +559,7 @@ const UserCreateComponent = () => {
                               >
                                 <OutlinedInput
                                   size="small"
-                                  id="outlined-adornment-password"
+                                  id="confirm-password"
                                   type={showPassword ? 'text' : 'password'}
                                   endAdornment={
                                     <InputAdornment position="end">
