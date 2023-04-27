@@ -145,8 +145,7 @@ model Template {
  id             String   @id @default(auto()) @map("_id") @db.ObjectId
  createdAt      DateTime @default(now())
  updatedAt      DateTime @updatedAt
- row            String?   
- column         String?   
+ cell           String?
  
   @@map("tb_template")
 }
