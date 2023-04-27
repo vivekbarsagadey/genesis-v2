@@ -242,9 +242,9 @@ const NewCustomerComponent = ({ newCustomer }: INewCustomer) => {
       <Card variant="outlined">
         <Grid container>
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
-            <LocationCityIcon fontSize="inherit" />
+            <SupportAgentIcon fontSize="inherit" />
             <Typography noWrap pl={1} variant="h6">
-              {newCustomer.name}
+              {`${newCustomer.firstName} ${newCustomer.lastName} `}
             </Typography>
           </Grid>
           <Grid
@@ -392,10 +392,9 @@ const ActiveCustomerComponent = ({ activeCustomer }: IActiveCustomer) => {
         <Card variant="outlined">
           <Grid container>
             <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
-              <LocationCityIcon fontSize="inherit" />
+              <SupportAgentIcon fontSize="inherit" />
               <Typography noWrap pl={1} variant="h6">
-                {activeCustomer.name}
-              </Typography>
+              {`${activeCustomer.firstName} ${activeCustomer.lastName} `}              </Typography>
             </Grid>
             <Grid
               item
@@ -538,9 +537,9 @@ const InActiveCustomerComponent = ({ inActiveCustomer }: IInActiveCustomer) => {
       <Card variant="outlined">
         <Grid container>
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
-            <LocationCityIcon fontSize="inherit" />
+            <SupportAgentIcon fontSize="inherit" />
             <Typography noWrap pl={1} variant="h6">
-              {inActiveCustomer.name}
+            {`${inActiveCustomer.firstName} ${inActiveCustomer.lastName} `}
             </Typography>
           </Grid>
           <Grid

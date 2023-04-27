@@ -256,7 +256,7 @@ const NewCompanyComponent = ({ newCompany }: INewCompany) => {
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
             <LocationCityIcon fontSize="inherit" />
             <Typography noWrap pl={1} variant="h6">
-              {newCompany.name}
+              {$newCompany.name}
             </Typography>
           </Grid>
           <Grid
