@@ -143,6 +143,15 @@ model Widgets {
   @@map("tb_widgets")
 }
 
+model Template {
+ id             String   @id @default(auto()) @map("_id") @db.ObjectId
+ createdAt      DateTime @default(now())
+ updatedAt      DateTime @updatedAt
+ row            String?   
+ column         String?   
+ 
+  @@map("tb_template")
+}
 
 
 model Page {

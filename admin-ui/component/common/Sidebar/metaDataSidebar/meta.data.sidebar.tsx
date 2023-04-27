@@ -112,7 +112,7 @@ const MetaDataSidebar = () => {
             <CollapsibleListItem label="Dashboard">
               <ul style={{ listStyle: 'none', marginLeft: '-1.5rem' }}>
                 <Link
-                  href="/metadatadashboard/template"
+                  href="/metadatadashboard/templates"
                   passHref
                   style={{ textDecoration: 'none' }}
                 >
