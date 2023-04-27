@@ -1,20 +1,27 @@
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import { Card, IconButton, Paper } from "@mui/material";
+import { Button, Card, IconButton, Paper, Tooltip } from "@mui/material";
 import Box from "@mui/material/Box";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid/Grid";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { makeStyles } from '@mui/styles';
 import React from 'react';
 import { ICompany, Status } from "../models";
 import { ListComponentProps } from "./props";
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import {company, deleteCompany} from '../../../services/company.action'
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import EmailIcon from '@mui/icons-material/Email';
+import CallIcon from '@mui/icons-material/Call';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Modal from '@mui/material/Modal';
+
+import moment from 'moment';
 
 
 const CardStyle = styled(Grid)(({ theme }) => ({
@@ -27,6 +34,20 @@ const useStyles = makeStyles({
     background:'#F1F6F9',
   },
   iconStyle:{
+    padding:'0px'
+  },
+  modalStyle:{
+    position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  },
+  buttonStyle:{
     padding:'0px'
   }
  
@@ -56,57 +77,42 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
   });
 
 
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleDropdownClose = () => {
-    setAnchorEl(null);
-  };
+  
 
 
   const classes = useStyles();
   return (
     <>
-      <Grid container spacing={2} mt={1} pr={2}>
+           <Grid container spacing={2} mt={1} pr={2}>
         <Grid item xs={4}>
           <CardStyle>
             <Paper variant="outlined" className={classes.cardView}>
               <CardContent>
-                <Grid container>
-                  <Grid item xs={6} display='flex' alignItems='center'>
-                  <FiberManualRecordIcon fontSize="inherit" htmlColor="blue"/>
-                  <Typography variant="h6" >NEW</Typography> 
+                <Card>
+                  <Grid container p={1}>
+                    <Grid item xs={11} display="flex" alignItems="center">
+                      <FiberManualRecordIcon
+                        fontSize="small"
+                        htmlColor="blue"
+                      />
+                      <Typography variant="h6">NEW</Typography>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={1}
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      border="1px solid gray"
+                      borderRadius="6rem"
+                      backgroundColor="lightgray"
+                    >
+                      <Typography fontSize="12px">
+                        {newCompanies.length}
+                      </Typography>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={6}  display='flex' justifyContent='flex-end'>
-                  <IconButton className={classes.iconStyle}>
-                    <MoreHorizIcon htmlColor='black' id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}/>
-                    </IconButton>
-                  </Grid>
-                  <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleDropdownClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <MenuItem onClick={handleDropdownClose} >
-          <EditIcon fontSize='small' />
-          <Typography>Edit</Typography>
-          </MenuItem>
-        <MenuItem onClick={handleDropdownClose} >
-          <DeleteIcon fontSize='small' htmlColor='red'/>
-          <Typography color='red'>Delete</Typography>
-          </MenuItem>
-      </Menu>
-                </Grid>
+                </Card>
                 {newCompanies.reverse()?.map((newCompany, index) => {
                   return (
                     <NewCompanyComponent newCompany={newCompany} key={index} />
@@ -118,50 +124,37 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
         </Grid>
         <Grid item xs={4}>
           <CardStyle>
-            <Paper variant="outlined" className={classes.cardView} >
+            <Paper variant="outlined" className={classes.cardView}>
               <CardContent>
-                <Grid container>
-                  <Grid item xs={6} display='flex' alignItems='center'>
-                  <FiberManualRecordIcon fontSize="inherit" htmlColor="green"/>
-                  <Typography variant="h6">ACTIVE</Typography>
+                <Card>
+                  <Grid container p={1}>
+                    <Grid item xs={11} display="flex" alignItems="center">
+                      <FiberManualRecordIcon
+                        fontSize="small"
+                        htmlColor="green"
+                      />
+                      <Typography variant="h6">ACTIVE</Typography>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={1}
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      border="1px solid gray"
+                      borderRadius="5rem"
+                      backgroundColor="lightgray"
+                    >
+                      <Typography fontSize="13px">
+                        {activeCompanies.length}
+                      </Typography>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={6}  display='flex' justifyContent='flex-end'>
-                  <IconButton
-                  className={classes.iconStyle}>
-                     <MoreHorizIcon htmlColor='black'
-                     id="basic-button"
-                     aria-controls={open ? 'basic-menu' : undefined}
-                     aria-haspopup="true"
-                     aria-expanded={open ? 'true' : undefined}
-                     onClick={handleClick}
-                     />
-      </IconButton>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleDropdownClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <MenuItem onClick={handleDropdownClose} >
-          <EditIcon fontSize='small'/>
-          <Typography>Edit</Typography>
-          </MenuItem>
-        <MenuItem onClick={handleDropdownClose} >
-          <DeleteIcon fontSize='small' htmlColor='red'/>
-          <Typography color='red'>Delete</Typography>
-          </MenuItem>
-      </Menu>
-                  </Grid>
-
-
-                </Grid>
+                </Card>
                 {activeCompanies.reverse()?.map((activeCompany, index) => {
                   return (
                     <ActiveCompanyComponent
-                      activeCompany={activeCompany}
+                    activeCompany={activeCompany}
                       key={index}
                     />
                   );
@@ -174,44 +167,32 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
           <CardStyle>
             <Paper variant="outlined" className={classes.cardView}>
               <CardContent>
-              <Grid container >
-                  <Grid item xs={6} display='flex' alignItems='center'>
-                  <FiberManualRecordIcon fontSize="inherit" htmlColor="red"/>
-                  <Typography variant="h6">INACTIVE</Typography>
+                <Card>
+                  <Grid container p={1}>
+                    <Grid item xs={11} display="flex" alignItems="center">
+                      <FiberManualRecordIcon fontSize="small" htmlColor="red" />
+                      <Typography variant="h6">INACTIVE</Typography>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={1}
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      border="1px solid gray"
+                      borderRadius="5rem"
+                      backgroundColor="lightgray"
+                    >
+                      <Typography fontSize="13px">
+                        {inActiveCompanies.length}
+                      </Typography>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={6}  display='flex' justifyContent='flex-end'>
-                    <IconButton className={classes.iconStyle}>
-                    <MoreHorizIcon htmlColor='black'
-                    id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}/>
-                    </IconButton>
-                  </Grid>
-                  <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleDropdownClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-       <MenuItem onClick={handleDropdownClose} >
-          <EditIcon fontSize='small'/>
-          <Typography>Edit</Typography>
-          </MenuItem>
-        <MenuItem onClick={handleDropdownClose} >
-          <DeleteIcon fontSize='small' htmlColor='red'/>
-          <Typography color='red'>Delete</Typography>
-          </MenuItem>
-      </Menu>
-                </Grid>
+                </Card>
                 {inActiveCompanies.reverse()?.map((inActiveCompany, index) => {
                   return (
                     <InActiveCompanyComponent
-                      inActiveCompany={inActiveCompany}
+                    inActiveCompany={inActiveCompany}
                       key={index}
                     />
                   );
@@ -226,21 +207,101 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
 };
 
 const NewCompanyComponent = ({ newCompany }: INewCompany) => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [openEditModal, setOpenEditModal] = React.useState(false);
+  const handleEditModalOpen = () => setOpenEditModal(true);
+  const handleEditModalClose = () => setOpenEditModal(false);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const classes = useStyles();
   return (
     <Box mt={1}>
       <Card variant="outlined">
         <Grid container>
-          <Grid item xs={12} display='flex' alignItems='center' p={2}>
-            <LocationCityIcon/>
-            <Typography noWrap pl={1}>{newCompany.name}</Typography>
+          <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
+            <LocationCityIcon fontSize='inherit'/>
+            <Typography noWrap pl={1} variant="h6">
+              {newCompany.name}
+            </Typography>
           </Grid>
-          <Grid item xs={12} display= 'flex' pl={2} pb={2} >
-          <Typography noWrap>
-          Status -
-        </Typography>
+          <Grid item xs={6} display="flex" justifyContent='flex-end' pl={2} pb={1}>
+            <IconButton onClick={handleClick}>
+            <MoreHorizIcon fontSize='small'/>
+            </IconButton>
+            <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+      >
+        <MenuItem>
+          <IconButton onClick={handleEditModalOpen}>
+          <EditIcon/>
+          </IconButton>
+          <Modal
+        open={openEditModal}
+        onClose={handleEditModalClose}
+       
+      >
+        <Box className={classes.modalStyle}>
+        <Card>
+          <Grid container p={2}>
+            <Grid item xs={12} display='flex' justifyContent='space-between' alignItems='center' >
+          <Typography>ACTIVE</Typography>
+          <Button className={classes.buttonStyle}>Apply</Button>
+          </Grid>
+            <Grid item xs={12} display='flex' justifyContent='space-between' alignItems='center'>
+          <Typography>INACTIVE</Typography>
+          <Button className={classes.buttonStyle}>Apply</Button>
+          </Grid>
+          </Grid>
+        </Card>
+        </Box>
+      </Modal>
+          </MenuItem>
+        <MenuItem>
+         <IconButton onClick={()=>deleteCompany(newCompany.id)}> 
+         <DeleteIcon htmlColor='red'/>
+          </IconButton>
+          </MenuItem>
+        
+      </Menu>
+          </Grid>
+          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+            <CalendarMonthIcon fontSize='inherit'/>
+            <Typography noWrap pl={1}>
+              {moment(newCompany.createdAt).format('DD/MM/YYYY')}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+            <EmailIcon fontSize='inherit'/>
+            <Typography noWrap pl={1}>
+              {newCompany.email}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+            <CallIcon fontSize='inherit'/>
+            <Typography noWrap pl={1}>
+              {newCompany.mobile}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} display="flex" pl={2} pb={2}>
+          <Tooltip title='Edit Status'><Typography noWrap>Status -</Typography></Tooltip>
           <Typography noWrap variant="h6" pl={1}>
-           {newCompany.status}
-        </Typography>
+              {newCompany.status}
+            </Typography>
           </Grid>
         </Grid>
       </Card>
@@ -249,46 +310,92 @@ const NewCompanyComponent = ({ newCompany }: INewCompany) => {
 };
 const ActiveCompanyComponent = ({ activeCompany }: IActiveCompany) => {
   return (
-    <Box mt={1} >
-      <Card variant="outlined">
-        <Grid container>
-          <Grid item xs={12} display='flex' alignItems='center' p={2}>
-            <LocationCityIcon/>
-            <Typography noWrap pl={1}>{activeCompany.name}</Typography>
-          </Grid>
-          <Grid item xs={12} display= 'flex' pl={2} pb={2} >
-          <Typography noWrap>
-          Status -
-        </Typography>
-          <Typography noWrap variant="h6" pl={1}>
-          {activeCompany.status}
-        </Typography>
-          </Grid>
+    <Box mt={1}>
+    <Card variant="outlined">
+      <Grid container>
+        <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
+          <LocationCityIcon fontSize='inherit'/>
+          <Typography noWrap pl={1} variant="h6">
+            {activeCompany.name}
+          </Typography>
         </Grid>
-      </Card>
-    </Box>
+        <Grid item xs={6} display="flex" justifyContent='flex-end' pl={2} pb={1}>
+          <IconButton>
+          <DeleteIcon fontSize='small'/>
+          </IconButton>
+        </Grid>
+        <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+          <CalendarMonthIcon fontSize='inherit'/>
+          <Typography noWrap pl={1}>
+            {moment(activeCompany.createdAt).format('DD/MM/YYYY')}
+          </Typography>
+        </Grid>
+        <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+          <EmailIcon fontSize='inherit'/>
+          <Typography noWrap pl={1}>
+            {activeCompany.email}
+          </Typography>
+        </Grid>
+        <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+          <CallIcon fontSize='inherit'/>
+          <Typography noWrap pl={1}>
+            {activeCompany.mobile}
+          </Typography>
+        </Grid>
+        <Grid item xs={12} display="flex" pl={2} pb={2}>
+        <Tooltip title='Edit Status'><Typography noWrap>Status -</Typography></Tooltip>
+        <Typography noWrap variant="h6" pl={1}>
+            {activeCompany.status}
+          </Typography>
+        </Grid>
+      </Grid>
+    </Card>
+  </Box>
   );
 };
 const InActiveCompanyComponent = ({ inActiveCompany }: IInActiveCompany) => {
   return (
     <Box mt={1}>
-      <Card variant="outlined">
-        <Grid container>
-          <Grid item xs={12} display='flex' alignItems='center' p={2}>
-            <LocationCityIcon/>
-            <Typography noWrap pl={1}>{inActiveCompany.name}</Typography>
-          </Grid>
-          <Grid item xs={12} display= 'flex' pl={2} pb={2} >
-          <Typography noWrap>
-          Status -
-        </Typography>
-          <Typography noWrap variant="h6" pl={1}>
-          {inActiveCompany.status}
-        </Typography>
-          </Grid>
+    <Card variant="outlined">
+      <Grid container>
+        <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
+          <LocationCityIcon fontSize='inherit'/>
+          <Typography noWrap pl={1} variant="h6">
+            {inActiveCompany.name}
+          </Typography>
         </Grid>
-      </Card>
-    </Box>
+        <Grid item xs={6} display="flex" justifyContent='flex-end' pl={2} pb={1}>
+          <IconButton>
+          <DeleteIcon fontSize='small'/>
+          </IconButton>
+        </Grid>
+        <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+          <CalendarMonthIcon fontSize='inherit'/>
+          <Typography noWrap pl={1}>
+            {moment(inActiveCompany.createdAt).format('DD/MM/YYYY')}
+          </Typography>
+        </Grid>
+        <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+          <EmailIcon fontSize='inherit'/>
+          <Typography noWrap pl={1}>
+            {inActiveCompany.email}
+          </Typography>
+        </Grid>
+        <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+          <CallIcon fontSize='inherit'/>
+          <Typography noWrap pl={1}>
+            {inActiveCompany.mobile}
+          </Typography>
+        </Grid>
+        <Grid item xs={12} display="flex" pl={2} pb={2}>
+        <Tooltip title='Edit Status'><Typography noWrap>Status -</Typography></Tooltip>
+        <Typography noWrap variant="h6" pl={1}>
+            {inActiveCompany.status}
+          </Typography>
+        </Grid>
+      </Grid>
+    </Card>
+  </Box>
   );
 };
 
