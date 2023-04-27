@@ -8,13 +8,13 @@ import './CollapsibleList.css';
 import Link from 'next/link';
 const MetaDataSidebar = () => {
   return (
-    <div style={{ display: 'flex' }}>
+    <Grid style={{ display: 'flex' }}>
       <ul className="collapsible-list-root">
         <Box
           style={{
             display: 'flex',
             marginLeft: '0.7rem',
-            paddingRight: '1rem',
+            paddingRight: '1rem',marginTop:'10rem'
           }}
         >
           <Grid item xs={3}>
@@ -23,7 +23,7 @@ const MetaDataSidebar = () => {
             </IconButton>
           </Grid>
           <Grid item xs={9}>
-            <CollapsibleListItem label="Meta Data">
+            <CollapsibleListItem label="Master Data">
               <ul style={{ listStyle: 'none', marginLeft: '-1.5rem' }}>
                 <Link
                   href="/metadata/address"
@@ -130,7 +130,7 @@ const MetaDataSidebar = () => {
           </Grid>
         </Box>
       </ul>
-    </div>
+    </Grid>
   );
 };
 
