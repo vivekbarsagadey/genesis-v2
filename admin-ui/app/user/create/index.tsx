@@ -193,7 +193,7 @@ const UserCreateComponent = () => {
 	) => {
 		setRole(value);
 	};
-	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+	const handleChange = (event: React.SyntheticEvent, newValue: any) => {
 		setValue(newValue);
 	};
 	const handleClose = (
