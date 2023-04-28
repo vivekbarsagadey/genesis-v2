@@ -6,7 +6,7 @@ const headerstyle = {
   typography:{
     color: "#475569",
     fontSize: "0.8rem",
-    fontWeight: "550",
+    fontWeight: 550,
   }
 };
 

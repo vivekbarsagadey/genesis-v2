@@ -7,7 +7,7 @@ import {
 } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
 import LayoutComponent from "../component/common/layout.component";
-import { theme } from "../themes/com-light";
+import { theme } from "../themes/theme";
 const queryClient = new QueryClient();
 export default function RootLayout({children,...props}: { children: React.ReactNode;}) 
 
