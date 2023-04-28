@@ -47,7 +47,7 @@ model User {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
-  email          String?   @unique
+  email          String    @unique
   firstName      String?   @map("first_name")
   lastName       String?   @map("last_name")
   address        String?
@@ -59,7 +59,7 @@ model User {
   status         String?
   gender         String?
   age            String?
-  password       String?
+  password       String
   role           String?
   accounts       Account[]
   sessions       Session[]

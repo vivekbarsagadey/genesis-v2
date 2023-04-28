@@ -35,15 +35,14 @@ const authOptions: NextAuthOptions = {
 				});
 
 				if (user) {
-					// const passwordMatch = compare(password, user.password, 'key');
-					// if(passwordMatch){
-					//   return user;
-					// }
-					/* if(user.newPassword===password){
-            return user;
-          }  */
-					return user;
-          
+					const passwordMatch = compare(
+						password,
+						user?.password,
+						`${process.env.NEXT_PUBLIC_KEY}`
+					);
+					if (passwordMatch) {
+						return user;
+					}
 				}
 
 				throw new Error('invalid credentials');
