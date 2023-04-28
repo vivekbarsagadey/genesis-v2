@@ -1,6 +1,6 @@
-"use client";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+'use client';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import {
   Box,
   Button,
@@ -8,54 +8,57 @@ import {
   Grid,
   IconButton,
   Modal,
-  Avatar,
   Paper,
   TextField,
   Tooltip,
   Typography,
-} from "@mui/material";
-import MuiAlert, { AlertProps } from "@mui/material/Alert";
-import Autocomplete from "@mui/material/Autocomplete";
-import Checkbox from "@mui/material/Checkbox";
-import Snackbar from "@mui/material/Snackbar";
-import Stack from "@mui/material/Stack";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { Status } from "../models";
-import { makeStyles } from "@mui/styles";
-import { createCustomer } from "../../../services/customer.action";
+} from '@mui/material';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import Autocomplete from '@mui/material/Autocomplete';
+import Checkbox from '@mui/material/Checkbox';
+import Snackbar from '@mui/material/Snackbar';
+import Stack from '@mui/material/Stack';
+import { makeStyles } from '@mui/styles';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { createCustomer } from '../../../services/customer.action';
+import { ICompany } from '../../company/models';
 import {
+  citySelect,
   countrySelect,
   stateSelect,
-  citySelect,
-} from "../graphdata/graph.data";
-import { ICompany } from "../../company/models";
+} from '../graphdata/graph.data';
+import { Status } from '../models';
 
 const useStyles = makeStyles({
   avtar: {
-    opacity: "1",
-    "&:hover": {
-      opacity: "0.8",
-      color: "black",
+    opacity: '1',
+    '&:hover': {
+      opacity: '0.8',
+      color: 'black',
     },
-    width: "120px",
-    height: "125px",
+    width: '120px',
+    height: '125px',
   },
   modalCloseIcon: {
-    paddingTop: "1px",
+    paddingTop: '1px',
   },
-  modalBoxCss:{
-    display: "flex",
-    justifyContent: "center",
-    marginTop: "2%",
+  modalBoxCss: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '2%',
   },
-  buttonStyle:{
-    width: "73%"
-  }
+  buttonStyle: {
+    width: '73%',
+  },
 });
 
-const genderType = [{ title: "Male" }, { title: "Female" }];
+const genderType = [
+  { title: 'Male' },
+  { title: 'Female' },
+  { title: 'Others' },
+];
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -63,36 +66,36 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 ) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
-          
+
 type IApplicationType = {
   id: Number;
   type: String;
   label: String;
 };
 const ProjectCreate = () => {
-  const [projectName, setProjectName] = useState<String>("");
-  const [customerName, setCustomerName] = useState<String>("");
-  const [projectStatus, setProjectStatus] = useState("");
-  const [projectState, setProjectState] = useState("");
-  const [projectCountry, setProjectCountry] = useState("");
+  const [projectName, setProjectName] = useState<String>('');
+  const [customerName, setCustomerName] = useState<String>('');
+  const [projectStatus, setProjectStatus] = useState('');
+  const [projectState, setProjectState] = useState('');
+  const [projectCountry, setProjectCountry] = useState('');
   const [customerWeb, setCustomerWeb] = useState(false);
   const [customerMobile, setCustomerMobile] = useState(false);
   const [businessWeb, setBusinessWeb] = useState(false);
   const [businessMobile, setBusinessMobile] = useState(false);
   const classes = useStyles();
-  const [customerFirstName, setCustomerFirstName] = useState("");
-  const [customerLastName, setCustomerLastName] = useState("");
-  const [gender, setGender] = useState("");
-  const [customerAge, setCustomerAge] = useState("");
-  const [customerEmail, setCustomerEmail] = useState("");
-  const [customerPhone, setCustomerPhone] = useState("");
-  const [customerAddress, setCustomerAddress] = useState("");
-  const [customerStatus, setCustomerStatus] = useState("");
-  const [customerZipCode, setCustomerZipCode] = useState("");
-  const [customerCity, setCustomerCity] = useState("");
-  const [customerState, setCustomerState] = useState("");
-  const [customerCountry, setCustomerCountry] = useState("");
-  const [customerProfilePic, setCustomerProfilePic] = useState("");
+  const [customerFirstName, setCustomerFirstName] = useState('');
+  const [customerLastName, setCustomerLastName] = useState('');
+  const [gender, setGender] = useState('');
+  const [customerAge, setCustomerAge] = useState('');
+  const [customerEmail, setCustomerEmail] = useState('');
+  const [customerPhone, setCustomerPhone] = useState('');
+  const [customerAddress, setCustomerAddress] = useState('');
+  const [customerStatus, setCustomerStatus] = useState('');
+  const [customerZipCode, setCustomerZipCode] = useState('');
+  const [customerCity, setCustomerCity] = useState('');
+  const [customerState, setCustomerState] = useState('');
+  const [customerCountry, setCustomerCountry] = useState('');
+  const [customerProfilePic, setCustomerProfilePic] = useState('');
   const [hover, setHover] = useState(false);
   const [alert, setAlert] = useState(false);
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
@@ -120,7 +123,7 @@ const ProjectCreate = () => {
         country: customerCountry,
       };
       await createCustomer(body);
-      await router.push("/project/create");
+      await router.push('/project/create');
       handleCustomerModalClose();
     } catch (error) {
       console.error(error);
@@ -199,7 +202,7 @@ const ProjectCreate = () => {
     event?: React.SyntheticEvent | Event,
     reason?: string
   ) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setAlert(false);
@@ -210,7 +213,7 @@ const ProjectCreate = () => {
       `${process.env.NEXT_PUBLIC_API_URL}/companies`
     );
     if (!response.ok) {
-      throw new Error("Data coud not be fetched!");
+      throw new Error('Data coud not be fetched!');
     } else {
       return response.json();
     }
@@ -225,16 +228,16 @@ const ProjectCreate = () => {
       });
   }, []);
   const getApplicationType = (typeRecv: string) => {
-    if (typeRecv === "Business to Customer - Web") {
+    if (typeRecv === 'Business to Customer - Web') {
       setCustomerWeb((s) => !s);
     }
-    if (typeRecv === "Business to Customer - Mobile") {
+    if (typeRecv === 'Business to Customer - Mobile') {
       setCustomerMobile((s) => !s);
     }
-    if (typeRecv === "Business to Business - Web") {
+    if (typeRecv === 'Business to Business - Web') {
       setBusinessWeb((s) => !s);
     }
-    if (typeRecv === "Business to Business - Mobile") {
+    if (typeRecv === 'Business to Business - Mobile') {
       setBusinessMobile((s) => !s);
     }
   };
@@ -243,23 +246,29 @@ const ProjectCreate = () => {
     setProjectName(e.target.value);
   };
 
-  const updateCustomerName = (e: React.SyntheticEvent<Element, Event>,value : string) => {
+  const updateCustomerName = (
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
+  ) => {
     setCustomerName(value);
   };
 
   const getProjectStatusValue = (
-    e: React.SyntheticEvent<Element, Event>,value : string
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
   ) => {
     setProjectStatus(value);
   };
 
   const updateProjectState = (
-    e: React.SyntheticEvent<Element, Event>,value : string
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
   ) => {
     setProjectState(value);
   };
   const updateProjectCountry = (
-    e: React.SyntheticEvent<Element, Event>,value : string
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
   ) => {
     setProjectCountry(value);
   };
@@ -267,69 +276,69 @@ const ProjectCreate = () => {
   const updateMyProjectData = async () => {
     if (customerWeb) {
       await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify({
           name: projectName,
           customerName,
           status: projectStatus,
           state: projectState,
           country: projectCountry,
-          application: "Business to Customer - Web",
+          application: 'Business to Customer - Web',
         }),
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
+          'Content-type': 'application/json; charset=UTF-8',
         },
       }).then((res) => res.json());
     }
     if (customerMobile) {
       await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify({
           name: projectName,
           status: projectStatus,
           state: projectState,
           country: projectCountry,
-          application: "Business to Customer - Mobile",
+          application: 'Business to Customer - Mobile',
         }),
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
+          'Content-type': 'application/json; charset=UTF-8',
         },
       }).then((res) => res.json());
     }
     if (businessWeb) {
       await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify({
           name: projectName,
           customerName,
           status: projectStatus,
           state: projectState,
           country: projectCountry,
-          application: "Business to Business - Web",
+          application: 'Business to Business - Web',
         }),
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
+          'Content-type': 'application/json; charset=UTF-8',
         },
       }).then((res) => res.json());
     }
     if (businessMobile) {
       await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify({
           name: projectName,
           customerName,
           status: projectStatus,
           state: projectState,
           country: projectCountry,
-          application: "Business to Business - Mobile",
+          application: 'Business to Business - Mobile',
         }),
 
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
+          'Content-type': 'application/json; charset=UTF-8',
         },
       }).then((res) => res.json());
     }
-    router.push("/project");
+    router.push('/project');
   };
 
   const updateHandler = () => {
@@ -341,10 +350,10 @@ const ProjectCreate = () => {
     <>
       <Box>
         <Paper elevation={0}>
-          <Grid item xs={4} mt={5} ml={5}>
-            <Typography fontSize={"1.2rem"}>Create New Project</Typography>
+          <Grid item xs={4} mt={5} ml={3}>
+            <Typography fontSize={'1.2rem'}>Create New Project</Typography>
           </Grid>
-          <Grid container padding={5} spacing={2}>
+          <Grid container paddingLeft={3} mt={2} spacing={2}>
             <Grid item xs={6}>
               <Grid container display="flex" alignItems="center">
                 <Grid item xs={3}>
@@ -357,7 +366,7 @@ const ProjectCreate = () => {
                   <TextField
                     id="outlined-basic"
                     placeholder="Create Project Name"
-                    size={"small"}
+                    size={'small'}
                     fullWidth
                     value={projectName}
                     onChange={updateProjectName}
@@ -376,17 +385,17 @@ const ProjectCreate = () => {
                 <Grid item xs={7}>
                   <Stack>
                     <Autocomplete
-                      size="small"
+                      disablePortal
                       onChange={updateCustomerName}
-                      freeSolo
-                      id="free-solo-2-demo"
-                      disableClearable
-                      options={companyList?.map((company : ICompany) => company.name)}
+                      id="combo-box-demo"
+                      size="small"
+                      options={companyList?.map(
+                        (company: ICompany) => company.name
+                      )}
                       renderInput={(params) => (
                         <TextField
                           {...params}
-                          InputProps={{ ...params.InputProps, type: "search" }}
-                          placeholder="Company Name"
+                          placeholder="Select Company Name"
                         />
                       )}
                     />
@@ -424,8 +433,8 @@ const ProjectCreate = () => {
                           </IconButton>
                         </Grid>
                         <Grid container display="flex" justifyContent="center">
-                          <Grid item xs={10}>
-                            <Box sx={{ flexGrow: 1 }} padding={2}>
+                          <Grid item xs={12}>
+                            <Box padding={2} ml={3}>
                               <Grid container spacing={2} mt={2}>
                                 <Grid item xs={6}>
                                   <Grid
@@ -493,11 +502,10 @@ const ProjectCreate = () => {
                                     <Grid item xs={6}>
                                       <Stack spacing={2}>
                                         <Autocomplete
+                                          disablePortal
                                           value={gender}
                                           onChange={updateCustomerChange}
-                                          freeSolo
-                                          id="gender"
-                                          disableClearable
+                                          id="status"
                                           size="small"
                                           options={genderType?.map(
                                             (option) => option.title
@@ -505,10 +513,6 @@ const ProjectCreate = () => {
                                           renderInput={(params) => (
                                             <TextField
                                               {...params}
-                                              InputProps={{
-                                                ...params.InputProps,
-                                                type: "search",
-                                              }}
                                               placeholder="Select Gender"
                                             />
                                           )}
@@ -608,11 +612,10 @@ const ProjectCreate = () => {
                                     </Grid>
                                     <Grid item xs={6}>
                                       <Autocomplete
+                                        disablePortal
                                         value={customerStatus}
                                         onChange={updateCustomerStatus}
-                                        freeSolo
-                                        id="company-status"
-                                        disableClearable
+                                        id="status"
                                         size="small"
                                         options={statusSet?.map(
                                           (option: any) => option
@@ -620,10 +623,6 @@ const ProjectCreate = () => {
                                         renderInput={(params) => (
                                           <TextField
                                             {...params}
-                                            InputProps={{
-                                              ...params.InputProps,
-                                              type: "search",
-                                            }}
                                             placeholder="Select Status"
                                           />
                                         )}
@@ -697,22 +696,17 @@ const ProjectCreate = () => {
                                     </Grid>
                                     <Grid item xs={6}>
                                       <Autocomplete
+                                        disablePortal
                                         value={customerCity}
                                         onChange={updateCustomerCity}
-                                        freeSolo
-                                        id="free-solo-2-demo"
-                                        disableClearable
+                                        id="city"
+                                        size="small"
                                         options={citySelect.map(
                                           (option: any) => option.city
                                         )}
                                         renderInput={(params) => (
                                           <TextField
                                             {...params}
-                                            size="small"
-                                            InputProps={{
-                                              ...params.InputProps,
-                                              type: "search",
-                                            }}
                                             placeholder="Select City"
                                           />
                                         )}
@@ -735,22 +729,17 @@ const ProjectCreate = () => {
                                     </Grid>
                                     <Grid item xs={6}>
                                       <Autocomplete
+                                        disablePortal
                                         value={customerState}
                                         onChange={updateCustomerState}
-                                        freeSolo
-                                        id="free-solo-2-demo"
-                                        disableClearable
+                                        id="state"
+                                        size="small"
                                         options={stateSelect.map(
                                           (option) => option.state
                                         )}
                                         renderInput={(params) => (
                                           <TextField
                                             {...params}
-                                            size="small"
-                                            InputProps={{
-                                              ...params.InputProps,
-                                              type: "search",
-                                            }}
                                             placeholder="Select State"
                                           />
                                         )}
@@ -774,22 +763,17 @@ const ProjectCreate = () => {
                                     <Grid item xs={6}>
                                       <Stack spacing={2}>
                                         <Autocomplete
+                                          disablePortal
                                           value={customerCountry}
                                           onChange={updateCustomerCountry}
-                                          freeSolo
-                                          id="free-solo-2-demo"
-                                          disableClearable
+                                          id="status"
+                                          size="small"
                                           options={countrySelect.map(
                                             (option) => option.country
                                           )}
                                           renderInput={(params) => (
                                             <TextField
                                               {...params}
-                                              size="small"
-                                              InputProps={{
-                                                ...params.InputProps,
-                                                type: "search",
-                                              }}
                                               placeholder="Select Country"
                                             />
                                           )}
@@ -804,24 +788,20 @@ const ProjectCreate = () => {
                                   <Grid item xs={3.4}>
                                     <Grid container>
                                       <Grid item xs={6}>
-                                        <Link
-                                          href={"/project/create"}
-                                          style={{ textDecoration: "none" }}
+                                        <Button
+                                          variant="contained"
+                                          className={classes.buttonStyle}
+                                          onClick={handleCustomerModalClose}
                                         >
-                                          <Button
-                                            variant="contained"
-                                            className={classes.buttonStyle}
-                                          >
-                                            Cancel
-                                          </Button>
-                                        </Link>
+                                          Cancel
+                                        </Button>
                                       </Grid>
                                       <Grid item xs={6}>
                                         <Button
                                           variant="contained"
                                           onClick={updateMyCustomerData}
                                           className={classes.buttonStyle}
-                                          >
+                                        >
                                           Save
                                         </Button>
                                         <Snackbar
@@ -831,7 +811,7 @@ const ProjectCreate = () => {
                                         >
                                           <Alert
                                             onClose={handleClose}
-                                            sx={{ width: "100%" }}
+                                            sx={{ width: '100%' }}
                                           >
                                             Customer Created Sucessfully...
                                           </Alert>
@@ -863,19 +843,14 @@ const ProjectCreate = () => {
                 <Grid item xs={7}>
                   <Stack>
                     <Autocomplete
+                      disablePortal
                       value={projectCountry}
                       onChange={updateProjectCountry}
-                      freeSolo
-                      id="free-solo-2-demo"
-                      disableClearable
+                      id="country"
+                      size="small"
                       options={countrySelect.map((option) => option.country)}
                       renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          size="small"
-                          InputProps={{ ...params.InputProps, type: "search" }}
-                          placeholder="Select Country"
-                        />
+                        <TextField {...params} placeholder="Select Country" />
                       )}
                     />
                   </Stack>
@@ -894,19 +869,14 @@ const ProjectCreate = () => {
                 <Grid item xs={7}>
                   <Stack>
                     <Autocomplete
+                      disablePortal
                       value={projectState}
                       onChange={updateProjectState}
-                      freeSolo
-                      id="free-solo-2-demo"
-                      disableClearable
+                      id="state"
+                      size="small"
                       options={stateSelect.map((option) => option.state)}
                       renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          size="small"
-                          InputProps={{ ...params.InputProps, type: "search" }}
-                          placeholder="Select State"
-                        />
+                        <TextField {...params} placeholder="Select State" />
                       )}
                     />
                   </Stack>
@@ -925,19 +895,14 @@ const ProjectCreate = () => {
                 <Grid item xs={7}>
                   <Stack>
                     <Autocomplete
+                      disablePortal
                       value={projectStatus}
                       onChange={getProjectStatusValue}
-                      freeSolo
-                      id="company-status"
-                      disableClearable
+                      id="status"
                       size="small"
                       options={statusSet?.map((option: any) => option)}
                       renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          InputProps={{ ...params.InputProps, type: "search" }}
-                          placeholder="Select Status"
-                        />
+                        <TextField {...params} placeholder="Select Status" />
                       )}
                     />
                   </Stack>
@@ -961,7 +926,7 @@ const ProjectCreate = () => {
                       <Checkbox
                         value={customerWeb}
                         onClick={() =>
-                          getApplicationType("Business to Customer - Web")
+                          getApplicationType('Business to Customer - Web')
                         }
                       />
                     </Grid>
@@ -972,7 +937,7 @@ const ProjectCreate = () => {
                       <Checkbox
                         value={customerMobile}
                         onClick={() =>
-                          getApplicationType("Business to Customer - Mobile")
+                          getApplicationType('Business to Customer - Mobile')
                         }
                       />
                     </Grid>
@@ -983,7 +948,7 @@ const ProjectCreate = () => {
                       <Checkbox
                         value={businessWeb}
                         onClick={() =>
-                          getApplicationType("Business to Business - Web")
+                          getApplicationType('Business to Business - Web')
                         }
                       />
                     </Grid>
@@ -994,7 +959,7 @@ const ProjectCreate = () => {
                       <Checkbox
                         value={businessMobile}
                         onClick={() =>
-                          getApplicationType("Business to Business - Mobile")
+                          getApplicationType('Business to Business - Mobile')
                         }
                       />
                     </Grid>
@@ -1010,8 +975,8 @@ const ProjectCreate = () => {
               <Grid item xs={3.4}>
                 <Grid container>
                   <Grid item xs={6}>
-                    <Link href={"/project"} style={{ textDecoration: "none" }}>
-                      <Button variant="contained" style={{ width: "73%" }}>
+                    <Link href={'/project'} style={{ textDecoration: 'none' }}>
+                      <Button variant="contained" style={{ width: '73%' }}>
                         Cancel
                       </Button>
                     </Link>
@@ -1020,7 +985,7 @@ const ProjectCreate = () => {
                     <Button
                       variant="contained"
                       onClick={updateHandler}
-                      style={{ width: "73%" }}
+                      style={{ width: '73%' }}
                     >
                       Save
                     </Button>
@@ -1029,7 +994,7 @@ const ProjectCreate = () => {
                       autoHideDuration={3000}
                       onClose={handleClose}
                     >
-                      <Alert onClose={handleClose} sx={{ width: "100%" }}>
+                      <Alert onClose={handleClose} sx={{ width: '100%' }}>
                         Project Created Sucessfully...
                       </Alert>
                     </Snackbar>

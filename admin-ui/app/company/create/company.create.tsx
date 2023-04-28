@@ -1,22 +1,21 @@
-"use client";
-import React, { useState } from "react";
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
-import MuiAlert, { AlertProps } from "@mui/material/Alert";
-import Autocomplete from "@mui/material/Autocomplete";
-import Snackbar from "@mui/material/Snackbar";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { createCompany } from "../../../services/company.action";
-import { countrySelect, stateSelect } from "../graphdata/graph.data";
-import { Status } from "../models";
-import { makeStyles } from "@mui/styles";
-
+'use client';
+import { Box, Button, Grid, TextField, Typography } from '@mui/material';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import Autocomplete from '@mui/material/Autocomplete';
+import Snackbar from '@mui/material/Snackbar';
+import { makeStyles } from '@mui/styles';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import { createCompany } from '../../../services/company.action';
+import { countrySelect, stateSelect } from '../graphdata/graph.data';
+import { Status } from '../models';
 
 const useStyles = makeStyles({
-  buttonStyle:{
-   width:'73%'
-  }
- });
+  buttonStyle: {
+    width: '73%',
+  },
+});
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -27,16 +26,16 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 const CompanyCreateComponent = () => {
   const classes = useStyles();
-  const [ownerFirstName, setOwnerFirstName] = useState("");
-  const [ownerLastName, setOwnerLastName] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [companyEmail, setCompanyEmail] = useState("");
-  const [companyPhone, setCompanyPhone] = useState("");
-  const [companyAddress, setCompanyAddress] = useState("");
-  const [companyWebsite, setCompanyWebsite] = useState("");
-  const [companyStatus, setCompanyStatus] = useState("");
-  const [companyState, setCompanyState] = useState("");
-  const [companyCountry, setCompanyCountry] = useState("");
+  const [ownerFirstName, setOwnerFirstName] = useState('');
+  const [ownerLastName, setOwnerLastName] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [companyEmail, setCompanyEmail] = useState('');
+  const [companyPhone, setCompanyPhone] = useState('');
+  const [companyAddress, setCompanyAddress] = useState('');
+  const [companyWebsite, setCompanyWebsite] = useState('');
+  const [companyStatus, setCompanyStatus] = useState('');
+  const [companyState, setCompanyState] = useState('');
+  const [companyCountry, setCompanyCountry] = useState('');
   const [alert, setAlert] = useState(false);
   const router = useRouter();
 
@@ -48,7 +47,7 @@ const CompanyCreateComponent = () => {
     event?: React.SyntheticEvent | Event,
     reason?: string
   ) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setAlert(false);
@@ -72,7 +71,7 @@ const CompanyCreateComponent = () => {
       };
       //  console.log("this is body", body)
       await createCompany(body);
-      await router.push("/company");
+      await router.push('/company');
     } catch (error) {
       console.error(error);
     }
@@ -99,13 +98,22 @@ const CompanyCreateComponent = () => {
   const updateCompanyWebsite = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyWebsite(e.target.value);
   };
-  const updateCompanyState = (e: React.SyntheticEvent<Element, Event>,value : string) => {
+  const updateCompanyState = (
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
+  ) => {
     setCompanyState(value);
   };
-  const updateCompanyCountry = (e: React.SyntheticEvent<Element, Event>,value : string) => {
+  const updateCompanyCountry = (
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
+  ) => {
     setCompanyCountry(value);
   };
-  const getCompanyStatusValue = (e: React.SyntheticEvent<Element, Event>,value : string) => {
+  const getCompanyStatusValue = (
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
+  ) => {
     setCompanyStatus(value);
   };
 
@@ -117,17 +125,17 @@ const CompanyCreateComponent = () => {
     <>
       <Box padding={4}>
         <Grid container>
-          <Grid item xs={12}>
-            <Typography fontSize={"1.1rem"}>Create New Company</Typography>
+          <Grid item xs={12} ml={5}>
+            <Typography fontSize={'1.1rem'}>Create New Company</Typography>
           </Grid>
         </Grid>
-        <Grid container spacing={2} mt={1}>
+        <Grid container spacing={2} mt={3} paddingLeft={5}>
           <Grid item xs={6}>
             <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 <Typography>First Name</Typography>
               </Grid>
-              <Grid item xs={1}>
+              <Grid item xs={2}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
@@ -146,10 +154,10 @@ const CompanyCreateComponent = () => {
 
           <Grid item xs={6}>
             <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 <Typography>Last Name</Typography>
               </Grid>
-              <Grid item xs={1}>
+              <Grid item xs={2}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
@@ -168,10 +176,10 @@ const CompanyCreateComponent = () => {
 
           <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 <Typography>Company Name</Typography>
               </Grid>
-              <Grid item xs={1}>
+              <Grid item xs={2}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
@@ -190,10 +198,10 @@ const CompanyCreateComponent = () => {
 
           <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 <Typography>Email</Typography>
               </Grid>
-              <Grid item xs={1}>
+              <Grid item xs={2}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
@@ -211,10 +219,10 @@ const CompanyCreateComponent = () => {
           </Grid>
           <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 <Typography>Phone</Typography>
               </Grid>
-              <Grid item xs={1}>
+              <Grid item xs={2}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
@@ -233,10 +241,10 @@ const CompanyCreateComponent = () => {
 
           <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 <Typography>Address</Typography>
               </Grid>
-              <Grid item xs={1}>
+              <Grid item xs={2}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
@@ -254,30 +262,22 @@ const CompanyCreateComponent = () => {
           </Grid>
           <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 <Typography>State</Typography>
               </Grid>
-              <Grid item xs={1}>
+              <Grid item xs={2}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
                 <Autocomplete
+                  disablePortal
                   value={companyState}
                   onChange={updateCompanyState}
-                  freeSolo
-                  id="free-solo-2-demo"
-                  disableClearable
+                  id="state"
+                  size="small"
                   options={stateSelect.map((option) => option.state)}
                   renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      size="small"
-                      InputProps={{
-                        ...params.InputProps,
-                        type: "search",
-                      }}
-                      placeholder="Select State"
-                    />
+                    <TextField {...params} placeholder="Select State" />
                   )}
                 />
               </Grid>
@@ -286,30 +286,22 @@ const CompanyCreateComponent = () => {
 
           <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 <Typography>Country</Typography>
               </Grid>
-              <Grid item xs={1}>
+              <Grid item xs={2}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
                 <Autocomplete
+                  disablePortal
                   value={companyCountry}
                   onChange={updateCompanyCountry}
-                  freeSolo
-                  id="free-solo-2-demo"
-                  disableClearable
+                  id="country"
+                  size="small"
                   options={countrySelect.map((option) => option.country)}
                   renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      size="small"
-                      InputProps={{
-                        ...params.InputProps,
-                        type: "search",
-                      }}
-                      placeholder="Select Country"
-                    />
+                    <TextField {...params} placeholder="Select Country" />
                   )}
                 />
               </Grid>
@@ -318,10 +310,10 @@ const CompanyCreateComponent = () => {
 
           <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 <Typography>Website</Typography>
               </Grid>
-              <Grid item xs={1}>
+              <Grid item xs={2}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
@@ -340,29 +332,22 @@ const CompanyCreateComponent = () => {
 
           <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
+              <Grid item xs={3}>
                 <Typography>Company Status</Typography>
               </Grid>
-              <Grid item xs={1}>
+              <Grid item xs={2}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
                 <Autocomplete
+                  disablePortal
                   value={companyStatus}
                   onChange={getCompanyStatusValue}
-                  freeSolo
-                  id="company-status"
-                  disableClearable
+                  id="status"
                   size="small"
                   options={statusSet?.map((option: any) => option)}
                   renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      InputProps={{
-                        ...params.InputProps,
-                        type: "search",
-                      }}
-                    />
+                    <TextField {...params} placeholder="Select Status" />
                   )}
                 />
               </Grid>
@@ -373,8 +358,8 @@ const CompanyCreateComponent = () => {
             <Grid item xs={3.4}>
               <Grid container>
                 <Grid item xs={6}>
-                  <Link href={"/company"} style={{ textDecoration: "none" }}>
-                    <Button variant="contained" style={{ width: "73%" }}>
+                  <Link href={'/company'} style={{ textDecoration: 'none' }}>
+                    <Button variant="contained" style={{ width: '73%' }}>
                       Cancel
                     </Button>
                   </Link>
@@ -383,7 +368,7 @@ const CompanyCreateComponent = () => {
                   <Button
                     variant="contained"
                     onClick={updateHandler}
-                    style={{ width: "73%" }}
+                    style={{ width: '73%' }}
                   >
                     Save
                   </Button>
@@ -392,7 +377,7 @@ const CompanyCreateComponent = () => {
                     autoHideDuration={8000}
                     onClose={handleClose}
                   >
-                    <Alert onClose={handleClose} sx={{ width: "100%" }}>
+                    <Alert onClose={handleClose} sx={{ width: '100%' }}>
                       Company Created Sucessfully...
                     </Alert>
                   </Snackbar>

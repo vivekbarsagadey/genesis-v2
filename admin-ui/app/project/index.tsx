@@ -69,7 +69,7 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={1}>
+          <Grid item xs={1} mt={1}>
             <Link
               href={'/project/projectreport'}
               passHref
@@ -80,7 +80,7 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
               </Button>
             </Link>
           </Grid>
-          <Grid item xs={1}>
+          <Grid item xs={1} mt={1}>
             <Link
               href={'/project/create'}
               passHref

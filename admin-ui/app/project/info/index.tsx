@@ -1,7 +1,6 @@
 'use client';
 import EditIcon from '@mui/icons-material/Edit';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { Grid, IconButton, Paper, Tooltip, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
@@ -10,11 +9,11 @@ import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import Moment from 'react-moment';
 import BuilderHome from '../../../builder';
 import downloadJsonFile from '../../utility/json.downloder';
 import IProject from '../project.model';
 import BuilderThemeComponent from './builder.theme.select';
-import Moment from 'react-moment';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -62,9 +61,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
       <Box mt={0.6} mr={2}>
         <Paper variant="outlined">
           <Grid container>
-
-
-            <Grid item xs={1} display={'flex'} justifyContent={'flex-end'}>
+            <Grid item xs={0.6} display={'flex'} justifyContent={'flex-end'}>
               <Grid container ml={1}>
                 <Grid item xs={1}>
                   <Checkbox size="small" />
@@ -72,6 +69,11 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
               </Grid>
             </Grid>
 
+            <Grid item xs={1.7}>
+              <Typography variant="body2" noWrap>
+                <Moment format="DD MMM YYYY">{items.createdAt}</Moment>
+              </Typography>
+            </Grid>
 
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
@@ -79,38 +81,29 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
               </Typography>
             </Grid>
 
-            <Grid item xs={2}>
-              <Typography variant="body2" noWrap>
-                <Moment format="DD MMM YYYY">
-                  {items.createdAt}
-                </Moment>
-              </Typography>
-            </Grid>
-
-            <Grid item xs={2} >
+            <Grid item xs={2.5}>
               <Typography variant="body2" noWrap>
                 {items.customerName}
               </Typography>
             </Grid>
 
-            <Grid item xs={2} >
-              <Typography
-                variant="body2"
-                noWrap >
+            <Grid item xs={2}>
+              <Typography variant="body2" noWrap>
                 {items.application}
               </Typography>
             </Grid>
-            <Grid item xs={2} style={{ display: 'flex', justifyContent: 'space-around' }} >
-              <Typography
-                variant="body2"
-                noWrap >
+            <Grid
+              item
+              xs={2}
+              style={{ display: 'flex', justifyContent: 'space-around' }}
+            >
+              <Typography variant="body2" noWrap>
                 {items.status}
               </Typography>
             </Grid>
-
-            <Grid item xs={1} >
-              <Grid container>
-                <Grid item xs={6} >
+            <Grid item xs={1}>
+              <Grid container display={'flex'} justifyContent={'center'} ml={2}>
+                <Grid item xs={4}>
                   <Tooltip title="Edit">
                     <IconButton onClick={openBuilderMethod}>
                       <EditIcon fontSize="small" />
@@ -137,7 +130,7 @@ const InfoProjectComponent = ({ items }: InfoCustomerComponentProps) => {
         >
           <BuilderThemeComponent
             handleCloseTheme={handleCloseTheme}
-          // getScreenDataSet={getScreenDataSet}
+            // getScreenDataSet={getScreenDataSet}
           />
         </Dialog>
         {/* Builder full screen  */}

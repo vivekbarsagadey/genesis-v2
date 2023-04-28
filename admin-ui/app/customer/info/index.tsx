@@ -49,12 +49,12 @@ type InfoCustomerComponentProps = {
   increase: boolean;
 };
 const InfoCustomerComponent = ({
-  customer,getMultiSelectedValue,
+  customer,
+  getMultiSelectedValue,
   show,
 }: InfoCustomerComponentProps) => {
   const [copyData] = useState([customer]);
   const [checked, setChecked] = useState(show);
-
 
   const router = useRouter();
   const [alert, setAlert] = useState(false);
@@ -89,22 +89,19 @@ const InfoCustomerComponent = ({
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
-    var d =customer.firstName
+    var d = customer.firstName;
     // setMultiSelect([...multiSelect, d])
 
-    getMultiSelectedValue(d)
-
+    getMultiSelectedValue(d);
   };
   // console.log("handleChangehandleChange",multiSelect);
-
-  
 
   return (
     <>
       <Box mt={0.6} mr={2}>
         <Paper variant="outlined">
           <Grid container>
-            <Grid item xs={1} display={'flex'} justifyContent={'flex-end'}>
+            <Grid xs={0.7} display={'flex'} justifyContent={'flex-end'}>
               <Grid container ml={1}>
                 <Grid item xs={5}>
                   <Checkbox
@@ -118,17 +115,13 @@ const InfoCustomerComponent = ({
 
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
-                {customerName}
+                <Moment format="DD MMM YYYY">{customer.createdAt}</Moment>
               </Typography>
             </Grid>
 
-            <Grid item xs={2}>
-              <Typography
-                variant="body2"
-                noWrap
-                style={{ display: 'flex', justifyContent: 'space-around' }}
-              >
-                <Moment format="DD MMM YYYY">{customer.createdAt}</Moment>
+            <Grid item xs={2.5}>
+              <Typography variant="body2" noWrap>
+                {customerName}
               </Typography>
             </Grid>
             <Grid item xs={2}>
@@ -137,23 +130,19 @@ const InfoCustomerComponent = ({
               </Typography>
             </Grid>
 
-            <Grid
-              item
-              xs={2}
-              style={{ display: 'flex', justifyContent: 'space-around' }}
-            >
+            <Grid item xs={2.2}>
               <Typography variant="body2" noWrap display={'flex'}>
                 {customer.mobile}
               </Typography>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={1.1}>
               <Typography variant="body2" noWrap display={'flex'}>
                 {customer.address}
               </Typography>
             </Grid>
             <Grid item xs={1}>
-              <Grid container>
-                <Grid item xs={5} ml={1}>
+              <Grid container display={'flex'} justifyContent={'flex-end'}>
+                <Grid item xs={5}>
                   <Tooltip title="Edit">
                     <Link href={`/customer/${customer.id}`}>
                       <IconButton>
@@ -162,7 +151,7 @@ const InfoCustomerComponent = ({
                     </Link>
                   </Tooltip>
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={1}>
                   <Tooltip title="Delete">
                     <IconButton onClick={deletePopupOpen}>
                       <DeleteOutlineIcon fontSize="small" />

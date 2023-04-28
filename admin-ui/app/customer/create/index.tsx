@@ -1,19 +1,19 @@
-"use client";
-import { Box, Button, Grid, Stack, TextField, Typography } from "@mui/material";
-import MuiAlert, { AlertProps } from "@mui/material/Alert";
-import Autocomplete from "@mui/material/Autocomplete";
-import Snackbar from "@mui/material/Snackbar";
-import { makeStyles } from "@mui/styles";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-import { createCustomer } from "../../../services/customer.action";
+'use client';
+import { Box, Button, Grid, Stack, TextField, Typography } from '@mui/material';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import Autocomplete from '@mui/material/Autocomplete';
+import Snackbar from '@mui/material/Snackbar';
+import { makeStyles } from '@mui/styles';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import { createCustomer } from '../../../services/customer.action';
 import {
   citySelect,
   countrySelect,
   stateSelect,
-} from "../grpahdata/graph.data";
-import { Status } from "../models";
+} from '../grpahdata/graph.data';
+import { Status } from '../models';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -24,37 +24,39 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 const useStyles = makeStyles({
   avtar: {
-    opacity: "1",
-    "&:hover": {
-      opacity: "0.8",
-      color: "black",
+    opacity: '1',
+    '&:hover': {
+      opacity: '0.8',
+      color: 'black',
     },
-    width: "120px",
-    height: "125px",
+    width: '120px',
+    height: '125px',
   },
-  buttonStyle:{
-    width:'73%'
-   }
+  buttonStyle: {
+    width: '73%',
+  },
 });
 
-const genderType = [{ title: "Male" }, { title: "Female" }];
+const genderType = [
+  { title: 'Male' },
+  { title: 'Female' },
+  { title: 'Others' },
+];
 
 const CustomerCreateComponent = () => {
   const classes = useStyles();
-  const [customerFirstName, setCustomerFirstName] = useState("");
-  const [customerLastName, setCustomerLastName] = useState("");
-  const [gender, setGender] = useState("");
-  const [customerAge, setCustomerAge] = useState("");
-  const [customerEmail, setCustomerEmail] = useState("");
-  const [customerPhone, setCustomerPhone] = useState("");
-  const [customerAddress, setCustomerAddress] = useState("");
-  const [customerStatus, setCustomerStatus] = useState("");
-  const [customerZipCode, setCustomerZipCode] = useState("");
-  const [customerCity, setCustomerCity] = useState("");
-  const [customerState, setCustomerState] = useState("");
-  const [customerCountry, setCustomerCountry] = useState("");
-  const [customerProfilePic, setCustomerProfilePic] = useState("");
-  const [hover, setHover] = useState(false);
+  const [customerFirstName, setCustomerFirstName] = useState('');
+  const [customerLastName, setCustomerLastName] = useState('');
+  const [gender, setGender] = useState('');
+  const [customerAge, setCustomerAge] = useState('');
+  const [customerEmail, setCustomerEmail] = useState('');
+  const [customerPhone, setCustomerPhone] = useState('');
+  const [customerAddress, setCustomerAddress] = useState('');
+  const [customerStatus, setCustomerStatus] = useState('');
+  const [customerZipCode, setCustomerZipCode] = useState('');
+  const [customerCity, setCustomerCity] = useState('');
+  const [customerState, setCustomerState] = useState('');
+  const [customerCountry, setCustomerCountry] = useState('');
   const [alert, setAlert] = useState(false);
 
   const router = useRouter();
@@ -76,10 +78,9 @@ const CustomerCreateComponent = () => {
         city: customerCity,
         state: customerState,
         country: customerCountry,
-        profilePic: customerProfilePic,
       };
       await createCustomer(body);
-      await router.push("/customer");
+      await router.push('/customer');
     } catch (error) {
       console.error(error);
     }
@@ -110,44 +111,37 @@ const CustomerCreateComponent = () => {
     setCustomerZipCode(e.target.value);
   };
 
-  const updateCustomerProfilePic = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCustomerProfilePic(e.target.value);
-  };
   const updateCustomerChange = (
-    e: React.SyntheticEvent<Element, Event>,value : string
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
   ) => {
     setGender(value);
   };
   const updateCustomerCountry = (
-    e: React.SyntheticEvent<Element, Event>,value : string
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
   ) => {
     setCustomerCountry(value);
   };
   const updateCustomerState = (
-    e: React.SyntheticEvent<Element, Event>,value : string
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
   ) => {
     setCustomerState(value);
   };
   const updateCustomerCity = (
-    e: React.SyntheticEvent<Element, Event>,value : string
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
   ) => {
     setCustomerCity(value);
   };
 
   const updateCustomerStatus = (
-    e: React.SyntheticEvent<Element, Event>,value : string
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
   ) => {
     setCustomerStatus(value);
   };
-
-  const handleMouseIn = () => {
-    setHover(true);
-  };
-
-  const handleMouseOut = () => {
-    setHover(false);
-  };
-
   const handleClick = () => {
     setAlert(true);
   };
@@ -156,7 +150,7 @@ const CustomerCreateComponent = () => {
     event?: React.SyntheticEvent | Event,
     reason?: string
   ) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setAlert(false);
@@ -170,20 +164,20 @@ const CustomerCreateComponent = () => {
   return (
     <Box>
       <Grid container>
-        <Grid item xs={12} mt={2} ml={2}>
-          <Typography fontSize={"1.2rem"}>Create New Customer</Typography>
+        <Grid item xs={12} mt={2} ml={5}>
+          <Typography fontSize={'1.2rem'}>Create New Customer</Typography>
         </Grid>
       </Grid>
       <Grid container>
         <Grid item xs={12}>
-          <Box sx={{ flexGrow: 1 }} padding={2}>
+          <Box sx={{ flexGrow: 1 }} paddingLeft={5}>
             <Grid container spacing={2} mt={2}>
               <Grid item xs={6}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <Typography>First Name</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -202,10 +196,10 @@ const CustomerCreateComponent = () => {
 
               <Grid item xs={6}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <Typography>Last Name</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -223,31 +217,23 @@ const CustomerCreateComponent = () => {
               </Grid>
               <Grid item xs={6} mt={2}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <Typography>Gender</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
                     <Stack spacing={2}>
                       <Autocomplete
+                        disablePortal
                         value={gender}
                         onChange={updateCustomerChange}
-                        freeSolo
-                        id="gender"
-                        disableClearable
+                        id="combo-box-demo"
                         size="small"
                         options={genderType?.map((option) => option.title)}
                         renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            InputProps={{
-                              ...params.InputProps,
-                              type: "search",
-                            }}
-                            placeholder="Select Gender"
-                          />
+                          <TextField {...params} placeholder="Select Gender" />
                         )}
                       />
                     </Stack>
@@ -257,10 +243,10 @@ const CustomerCreateComponent = () => {
 
               <Grid item xs={6} mt={2}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <Typography>Age</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -278,10 +264,10 @@ const CustomerCreateComponent = () => {
               </Grid>
               <Grid item xs={6} mt={2}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <Typography>Email</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -299,16 +285,16 @@ const CustomerCreateComponent = () => {
               </Grid>
               <Grid item xs={6} mt={2}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
-                    <Typography>Phone</Typography>
+                  <Grid item xs={3}>
+                    <Typography>Mobile</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                      id="phone"
-                      placeholder="Phone"
+                      id="mobile"
+                      placeholder="Mobile"
                       variant="outlined"
                       size="small"
                       fullWidth
@@ -321,30 +307,21 @@ const CustomerCreateComponent = () => {
 
               <Grid item xs={6} mt={2}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <Typography>Status</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
                     <Autocomplete
                       value={customerStatus}
                       onChange={updateCustomerStatus}
-                      freeSolo
-                      id="company-status"
-                      disableClearable
+                      id="status"
                       size="small"
                       options={statusSet?.map((option: any) => option)}
                       renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          InputProps={{
-                            ...params.InputProps,
-                            type: "search",
-                          }}
-                          placeholder="Select Status"
-                        />
+                        <TextField {...params} placeholder="Select Status" />
                       )}
                     />
                   </Grid>
@@ -353,10 +330,10 @@ const CustomerCreateComponent = () => {
 
               <Grid item xs={6} mt={2}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <Typography>Address</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -372,12 +349,87 @@ const CustomerCreateComponent = () => {
                   </Grid>
                 </Grid>
               </Grid>
+
               <Grid item xs={6} mt={2}>
                 <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
+                    <Typography>Country</Typography>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Stack spacing={2}>
+                      <Autocomplete
+                        disablePortal
+                        value={customerCountry}
+                        onChange={updateCustomerCountry}
+                        id="country"
+                        size="small"
+                        options={countrySelect.map((option) => option.country)}
+                        renderInput={(params) => (
+                          <TextField {...params} placeholder="Select Country" />
+                        )}
+                      />
+                    </Stack>
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <Grid item xs={6} mt={2}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={3}>
+                    <Typography>State</Typography>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Autocomplete
+                      disablePortal
+                      value={customerState}
+                      onChange={updateCustomerState}
+                      id="state"
+                      size="small"
+                      options={stateSelect.map((option) => option.state)}
+                      renderInput={(params) => (
+                        <TextField {...params} placeholder="Select State" />
+                      )}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <Grid item xs={6} mt={2}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={3}>
+                    <Typography>City</Typography>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Typography>:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Autocomplete
+                      disablePortal
+                      value={customerCity}
+                      onChange={updateCustomerCity}
+                      id="city"
+                      size="small"
+                      options={citySelect.map((option) => option.city)}
+                      renderInput={(params) => (
+                        <TextField {...params} placeholder="Select City" />
+                      )}
+                    />
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <Grid item xs={6} mt={2}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={3}>
                     <Typography>Zip Code</Typography>
                   </Grid>
-                  <Grid item xs={1}>
+                  <Grid item xs={2}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -394,113 +446,19 @@ const CustomerCreateComponent = () => {
                 </Grid>
               </Grid>
 
-              <Grid item xs={6} mt={2}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
-                    <Typography>City</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Autocomplete
-                      value={customerCity}
-                      onChange={updateCustomerCity}
-                      freeSolo
-                      id="free-solo-2-demo"
-                      disableClearable
-                      options={citySelect.map((option) => option.city)}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          size="small"
-                          InputProps={{
-                            ...params.InputProps,
-                            type: "search",
-                          }}
-                          placeholder="Select City"
-                        />
-                      )}
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-
-              <Grid item xs={6} mt={2}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
-                    <Typography>State</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Autocomplete
-                      value={customerState}
-                      onChange={updateCustomerState}
-                      freeSolo
-                      id="free-solo-2-demo"
-                      disableClearable
-                      options={stateSelect.map((option) => option.state)}
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          size="small"
-                          InputProps={{
-                            ...params.InputProps,
-                            type: "search",
-                          }}
-                          placeholder="Select State"
-                        />
-                      )}
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-
-              <Grid item xs={6} mt={2}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={4}>
-                    <Typography>Country</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Stack spacing={2}>
-                      <Autocomplete
-                        value={customerCountry}
-                        onChange={updateCustomerCountry}
-                        freeSolo
-                        id="free-solo-2-demo"
-                        disableClearable
-                        options={countrySelect.map((option) => option.country)}
-                        renderInput={(params) => (
-                          <TextField
-                            {...params}
-                            size="small"
-                            InputProps={{
-                              ...params.InputProps,
-                              type: "search",
-                            }}
-                            placeholder="Select Country"
-                          />
-                        )}
-                      />
-                    </Stack>
-                  </Grid>
-                </Grid>
-              </Grid>
               <Grid container mt={5}>
                 <Grid item xs={8.6}></Grid>
                 <Grid item xs={3.4}>
                   <Grid container>
                     <Grid item xs={6}>
                       <Link
-                        href={"/customer"}
-                        style={{ textDecoration: "none" }}
+                        href={'/customer'}
+                        style={{ textDecoration: 'none' }}
                       >
-                        <Button variant="contained" className={classes.buttonStyle}>
+                        <Button
+                          variant="contained"
+                          className={classes.buttonStyle}
+                        >
                           Cancel
                         </Button>
                       </Link>
@@ -518,7 +476,7 @@ const CustomerCreateComponent = () => {
                         autoHideDuration={8000}
                         onClose={handleClose}
                       >
-                        <Alert onClose={handleClose} sx={{ width: "100%" }}>
+                        <Alert onClose={handleClose} sx={{ width: '100%' }}>
                           Customer Created Sucessfully...
                         </Alert>
                       </Snackbar>

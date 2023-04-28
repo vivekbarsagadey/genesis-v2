@@ -19,7 +19,7 @@ const comparisionType = [
   { title: 'Last 7 days' },
   { title: 'Month' },
 ];
-const CustomerGraphView = ({ companies }: ListComponentProps) => {
+const CustomerGraphView = ({ companies,myRef }: ListComponentProps) => {
   const [graphView, setGraphView] = useState<string>('status');
   const [comparisiongraphView, setComparisionGraphView] =
     useState<string>('Month');
@@ -222,7 +222,7 @@ const CustomerGraphView = ({ companies }: ListComponentProps) => {
           </Stack>
         </Grid>
       </Grid>
-      <Grid container>
+      <Grid container ref={myRef}>
         <Grid item xs={6}>
           <Grid container>
             <Grid item xs={9}>

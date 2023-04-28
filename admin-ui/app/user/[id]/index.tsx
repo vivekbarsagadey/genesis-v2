@@ -413,17 +413,32 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                             <Typography>:</Typography>
                           </Grid>
                           <Grid item xs={6}>
-                            <TextField
-                              disabled
-                              defaultValue="Disabled"
-                              value={password}
-                              onChange={updatePassword}
-                              id="new-password"
-                              variant="outlined"
-                              size="small"
-                              fullWidth
-                              placeholder="Disabled Password"
-                            />
+                            <FormControl fullWidth variant="outlined">
+                              <OutlinedInput
+                                size="small"
+                                placeholder="Enter Confirm Password"
+                                id="confirm-password"
+                                disabled
+                                defaultValue="Disabled"
+                                type={showPassword ? 'text' : 'password'}
+                                endAdornment={
+                                  <InputAdornment position="end">
+                                    <IconButton
+                                      aria-label="toggle password visibility"
+                                      onClick={handleClickShowPassword}
+                                      onMouseDown={handleMouseDownPassword}
+                                      edge="end"
+                                    >
+                                      {showPassword ? (
+                                        <VisibilityOff />
+                                      ) : (
+                                        <Visibility />
+                                      )}
+                                    </IconButton>
+                                  </InputAdornment>
+                                }
+                              />
+                            </FormControl>
                           </Grid>
                         </Grid>
                       </Grid>
@@ -441,6 +456,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                               <OutlinedInput
                                 size="small"
                                 defaultValue="Disabled"
+                                disabled
                                 placeholder="Enter Confirm Password"
                                 id="confirm-password"
                                 type={showPassword ? 'text' : 'password'}

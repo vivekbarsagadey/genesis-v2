@@ -10,7 +10,7 @@ import { ListComponentProps } from "./props";
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-const ListViewComponent = ({ companies }: ListComponentProps) => {
+const ListViewComponent = ({ companies,myRef }: any) => {
   let [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(companies.length / PER_PAGE);
@@ -119,10 +119,11 @@ const ListViewComponent = ({ companies }: ListComponentProps) => {
   };
   return (
     <>
+    <Grid ref={myRef}>
       <Box mr={2} mt={2}>
         <Paper variant="outlined">
           <Grid container>
-            <Grid item xs={1} display={"flex"} justifyContent={"flex-end"}>
+            <Grid item xs={0.7} display={"flex"} justifyContent={"flex-end"}>
               <Grid container ml={1}>
                 <Grid item xs={4}>
                   <Checkbox size="small" />
@@ -132,7 +133,7 @@ const ListViewComponent = ({ companies }: ListComponentProps) => {
 
             <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
               <Typography variant="subtitle2" noWrap >
-                Company Name
+              Created Date
               </Typography>
               {nameSort ? <IconButton onClick={() => handleNameSort()}>
                 <ArrowDropUpIcon />
@@ -141,9 +142,9 @@ const ListViewComponent = ({ companies }: ListComponentProps) => {
               </IconButton>}
             </Grid>
 
-            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
+            <Grid item xs={2.5} style={{ display: 'flex', alignContent: 'center' }}>
               <Typography variant="subtitle2" noWrap>
-                Created Date
+                Company Name
               </Typography>
               {dateSort ? <IconButton onClick={() => handleDateSort()}>
                 <ArrowDropUpIcon />
@@ -163,7 +164,7 @@ const ListViewComponent = ({ companies }: ListComponentProps) => {
               </IconButton>}
             </Grid>
 
-            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center'}}>
+            <Grid item xs={2.1} style={{ display: 'flex', alignContent: 'center'}}>
               <Typography
                 variant="subtitle2"
                 noWrap
@@ -177,7 +178,7 @@ const ListViewComponent = ({ companies }: ListComponentProps) => {
               </IconButton>}
             </Grid>
 
-            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center'}}>
+            <Grid item xs={1.7} style={{ display: 'flex', alignContent: 'center'}}>
               <Typography
                 variant="subtitle2"
                 noWrap
@@ -212,6 +213,11 @@ const ListViewComponent = ({ companies }: ListComponentProps) => {
               </Typography>
             );
           })}
+      </Grid>
+
+
+      
+
       </Grid>
       <Grid container mt={4}>
         <Grid item xs={12} display={"flex"} justifyContent={"flex-end"}>

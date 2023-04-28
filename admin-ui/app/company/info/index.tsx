@@ -1,7 +1,6 @@
-"use client";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import EditIcon from "@mui/icons-material/Edit";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+'use client';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import EditIcon from '@mui/icons-material/Edit';
 import {
   Button,
   Grid,
@@ -9,28 +8,28 @@ import {
   Paper,
   Tooltip,
   Typography,
-} from "@mui/material";
-import MuiAlert, { AlertProps } from "@mui/material/Alert";
-import Box from "@mui/material/Box";
-import Checkbox from "@mui/material/Checkbox";
-import Fade from "@mui/material/Fade";
-import Backdrop from "@mui/material/Backdrop";
-import Modal from "@mui/material/Modal";
-import Snackbar from "@mui/material/Snackbar";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React from "react";
-import { deleteCompany } from "../../../services/company.action";
-import { ICompany } from "../models/company.model";
-import Moment from "react-moment";
+} from '@mui/material';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import Backdrop from '@mui/material/Backdrop';
+import Box from '@mui/material/Box';
+import Checkbox from '@mui/material/Checkbox';
+import Fade from '@mui/material/Fade';
+import Modal from '@mui/material/Modal';
+import Snackbar from '@mui/material/Snackbar';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React from 'react';
+import Moment from 'react-moment';
+import { deleteCompany } from '../../../services/company.action';
+import { ICompany } from '../models/company.model';
 
 const style = {
-  position: "absolute" as "absolute",
-  top: "30%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
+  position: 'absolute' as 'absolute',
+  top: '30%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
   width: 325,
-  bgcolor: "background.paper",
+  bgcolor: 'background.paper',
   boxShadow: 24,
   paddingTop: 1,
   paddingLeft: 2,
@@ -62,7 +61,7 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
     event?: React.SyntheticEvent | Event,
     reason?: string
   ) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setAlert(false);
@@ -78,7 +77,7 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
       <Box mt={0.6} mr={2}>
         <Paper variant="outlined">
           <Grid container>
-            <Grid item xs={1} display={"flex"} justifyContent={"flex-end"}>
+            <Grid item xs={0.7} display={'flex'} justifyContent={'flex-end'}>
               <Grid container ml={1}>
                 <Grid item xs={5}>
                   <Checkbox size="small" />
@@ -87,28 +86,26 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
             </Grid>
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
+                <Moment format="DD MMM YYYY">{company.createdAt}</Moment>
+              </Typography>
+            </Grid>
+            <Grid item xs={2.5}>
+              <Typography variant="body2" noWrap>
                 {company.name}
               </Typography>
             </Grid>
-            <Grid item xs={2}>
-              <Typography variant="body2" noWrap>
-                <Moment format="DD MMM YYYY">
-                  {company.createdAt}
-                </Moment>
-              </Typography>
-            </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={1.9} mr={0.9}>
               <Typography variant="body2" noWrap>
                 {company.email}
               </Typography>
             </Grid>
-            <Grid item xs={2}>
-              <Typography variant="body2" noWrap display={"flex"}>
+            <Grid item xs={2.1}>
+              <Typography variant="body2" noWrap display={'flex'}>
                 {company.mobile}
               </Typography>
             </Grid>
-            <Grid item xs={2}>
-              <Typography variant="body2" noWrap display={"flex"}>
+            <Grid item xs={1.7}>
+              <Typography variant="body2" noWrap display={'flex'}>
                 {company.address}
               </Typography>
             </Grid>
@@ -137,7 +134,7 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
                     <Alert
                       onClose={handleClose}
                       severity="error"
-                      sx={{ width: "100%" }}
+                      sx={{ width: '100%' }}
                     >
                       Items Deleted Sucessfully...
                     </Alert>
@@ -175,7 +172,7 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
                     <Button
                       variant="contained"
                       size="small"
-                      sx={{ height: "4vh" }}
+                      sx={{ height: '4vh' }}
                       onClick={() => handleCloseDelete()}
                     >
                       Cancel
@@ -186,7 +183,7 @@ const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
                       variant="contained"
                       size="small"
                       onClick={() => removeData(company)}
-                      sx={{ height: "4vh" }}
+                      sx={{ height: '4vh' }}
                     >
                       Ok
                     </Button>

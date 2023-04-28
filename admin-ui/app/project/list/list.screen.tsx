@@ -17,102 +17,147 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
   const count = Math.ceil(projects.length / PER_PAGE);
   const paginationHandler = PaginationHandler(projects, PER_PAGE);
 
-  const [nameSort, setNameSort] = useState(true)
-  const [companyNameSort, setCompanyNameSort] = useState(true)
-  const [dateSort, setDateSort] = useState(true)
-  const [applicationSort, setApplicationSort] = useState(true)
-  const [statusSort, setStatusSort] = useState(true)
+  const [nameSort, setNameSort] = useState(true);
+  const [companyNameSort, setCompanyNameSort] = useState(true);
+  const [dateSort, setDateSort] = useState(true);
+  const [applicationSort, setApplicationSort] = useState(true);
+  const [statusSort, setStatusSort] = useState(true);
 
   const handleNameSort = () => {
     if (nameSort) {
       projects.sort((a, b) => {
-        if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
-        if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
+        if (a.name.toLowerCase() < b.name.toLowerCase()) {
+          return -1;
+        }
+        if (a.name.toLowerCase() > b.name.toLowerCase()) {
+          return 1;
+        }
         return 0;
-      })
-      setNameSort(false)
+      });
+      setNameSort(false);
+    } else {
+      projects
+        .sort((a, b) => {
+          if (a.name.toLowerCase() < b.name.toLowerCase()) {
+            return -1;
+          }
+          if (a.name.toLowerCase() > b.name.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        })
+        .reverse();
+      setNameSort(true);
     }
-    else {
-      projects.sort((a, b) => {
-        if (a.name.toLowerCase() < b.name.toLowerCase()) { return -1; }
-        if (a.name.toLowerCase() > b.name.toLowerCase()) { return 1; }
-        return 0;
-      }).reverse()
-      setNameSort(true)
-    }
-  }
+  };
   const handleDateSort = () => {
     if (dateSort) {
       projects.sort((a, b) => {
-        if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) { return -1; }
-        if (a.createdAt.toLowerCase() > b.createdAt.toLowerCase()) { return 1; }
+        if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) {
+          return -1;
+        }
+        if (a.createdAt.toLowerCase() > b.createdAt.toLowerCase()) {
+          return 1;
+        }
         return 0;
-      })
-      setDateSort(false)
+      });
+      setDateSort(false);
+    } else {
+      projects
+        .sort((a, b) => {
+          if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) {
+            return -1;
+          }
+          if (a.createdAt.toLowerCase() > b.createdAt.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        })
+        .reverse();
+      setDateSort(true);
     }
-    else {
-      projects.sort((a, b) => {
-        if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) { return -1; }
-        if (a.createdAt.toLowerCase() > b.createdAt.toLowerCase()) { return 1; }
-        return 0;
-      }).reverse()
-      setDateSort(true)
-    }
-  }
+  };
   const handleCompanyNameSort = () => {
     if (companyNameSort) {
       projects.sort((a, b) => {
-        if (a.customerName.toLowerCase() < b.customerName.toLowerCase()) { return -1; }
-        if (a.customerName.toLowerCase() > b.customerName.toLowerCase()) { return 1; }
+        if (a.customerName.toLowerCase() < b.customerName.toLowerCase()) {
+          return -1;
+        }
+        if (a.customerName.toLowerCase() > b.customerName.toLowerCase()) {
+          return 1;
+        }
         return 0;
-      })
-      setCompanyNameSort(false)
+      });
+      setCompanyNameSort(false);
+    } else {
+      projects
+        .sort((a, b) => {
+          if (a.customerName.toLowerCase() < b.customerName.toLowerCase()) {
+            return -1;
+          }
+          if (a.customerName.toLowerCase() > b.customerName.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        })
+        .reverse();
+      setCompanyNameSort(true);
     }
-    else {
-      projects.sort((a, b) => {
-        if (a.customerName.toLowerCase() < b.customerName.toLowerCase()) { return -1; }
-        if (a.customerName.toLowerCase() > b.customerName.toLowerCase()) { return 1; }
-        return 0;
-      }).reverse()
-      setCompanyNameSort(true)
-    }
-  }
+  };
   const handleApplicationSort = () => {
     if (applicationSort) {
       projects.sort((a, b) => {
-        if (a.application.toLowerCase() < b.application.toLowerCase()) { return -1; }
-        if (a.application.toLowerCase() > b.application.toLowerCase()) { return 1; }
+        if (a.application.toLowerCase() < b.application.toLowerCase()) {
+          return -1;
+        }
+        if (a.application.toLowerCase() > b.application.toLowerCase()) {
+          return 1;
+        }
         return 0;
-      })
-      setApplicationSort(false)
+      });
+      setApplicationSort(false);
+    } else {
+      projects
+        .sort((a, b) => {
+          if (a.application.toLowerCase() < b.application.toLowerCase()) {
+            return -1;
+          }
+          if (a.application.toLowerCase() > b.application.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        })
+        .reverse();
+      setApplicationSort(true);
     }
-    else {
-      projects.sort((a, b) => {
-        if (a.application.toLowerCase() < b.application.toLowerCase()) { return -1; }
-        if (a.application.toLowerCase() > b.application.toLowerCase()) { return 1; }
-        return 0;
-      }).reverse()
-      setApplicationSort(true)
-    }
-  }
+  };
   const handleStatusNameSort = () => {
     if (statusSort) {
       projects.sort((a, b) => {
-        if (a.status.toLowerCase() < b.status.toLowerCase()) { return -1; }
-        if (a.status.toLowerCase() > b.status.toLowerCase()) { return 1; }
+        if (a.status.toLowerCase() < b.status.toLowerCase()) {
+          return -1;
+        }
+        if (a.status.toLowerCase() > b.status.toLowerCase()) {
+          return 1;
+        }
         return 0;
-      })
-      setStatusSort(false)
+      });
+      setStatusSort(false);
+    } else {
+      projects
+        .sort((a, b) => {
+          if (a.status.toLowerCase() < b.status.toLowerCase()) {
+            return -1;
+          }
+          if (a.status.toLowerCase() > b.status.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        })
+        .reverse();
+      setStatusSort(true);
     }
-    else {
-      projects.sort((a, b) => {
-        if (a.status.toLowerCase() < b.status.toLowerCase()) { return -1; }
-        if (a.status.toLowerCase() > b.status.toLowerCase()) { return 1; }
-        return 0;
-      }).reverse()
-      setStatusSort(true)
-    }
-  }
+  };
 
   const handleChangePage = (e: any, p: number) => {
     setPage(p);
@@ -124,7 +169,7 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
       <Box mr={2} mt={2}>
         <Paper variant="outlined">
           <Grid container>
-            <Grid item xs={1} display={'flex'} justifyContent={'flex-end'}>
+            <Grid item xs={0.6} display={'flex'} justifyContent={'flex-end'}>
               <Grid container ml={1}>
                 <Grid item xs={4}>
                   <Checkbox size="small" />
@@ -132,67 +177,107 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
               </Grid>
             </Grid>
 
-            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
-              <Typography variant="subtitle2" noWrap>
-                Project Name
-              </Typography>
-              {nameSort ? <IconButton onClick={() => handleNameSort()}>
-                <ArrowDropUpIcon />
-              </IconButton> : <IconButton onClick={() => handleNameSort()}>
-                <ArrowDropDownIcon />
-              </IconButton>}
-            </Grid>
-
-            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
+            <Grid
+              item
+              xs={1.7}
+              style={{ display: 'flex', alignContent: 'center' }}
+            >
               <Typography variant="subtitle2" noWrap>
                 Created Date
               </Typography>
-              {dateSort ? <IconButton onClick={() => handleDateSort()}>
-                <ArrowDropUpIcon />
-              </IconButton> : <IconButton onClick={() => handleDateSort()}>
-                <ArrowDropDownIcon />
-              </IconButton>}
+              {nameSort ? (
+                <IconButton onClick={() => handleNameSort()}>
+                  <ArrowDropUpIcon />
+                </IconButton>
+              ) : (
+                <IconButton onClick={() => handleNameSort()}>
+                  <ArrowDropDownIcon />
+                </IconButton>
+              )}
             </Grid>
 
-            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }}>
+            <Grid
+              item
+              xs={2}
+              style={{ display: 'flex', alignContent: 'center' }}
+            >
+              <Typography variant="subtitle2" noWrap>
+                Project Name
+              </Typography>
+              {dateSort ? (
+                <IconButton onClick={() => handleDateSort()}>
+                  <ArrowDropUpIcon />
+                </IconButton>
+              ) : (
+                <IconButton onClick={() => handleDateSort()}>
+                  <ArrowDropDownIcon />
+                </IconButton>
+              )}
+            </Grid>
+
+            <Grid
+              item
+              xs={2.5}
+              style={{ display: 'flex', alignContent: 'center' }}
+            >
               <Typography variant="subtitle2" noWrap>
                 Company Name
               </Typography>
-              {companyNameSort ? <IconButton onClick={() => handleCompanyNameSort()}>
-                <ArrowDropUpIcon />
-              </IconButton> : <IconButton onClick={() => handleCompanyNameSort()}>
-                <ArrowDropDownIcon />
-              </IconButton>}
+              {companyNameSort ? (
+                <IconButton onClick={() => handleCompanyNameSort()}>
+                  <ArrowDropUpIcon />
+                </IconButton>
+              ) : (
+                <IconButton onClick={() => handleCompanyNameSort()}>
+                  <ArrowDropDownIcon />
+                </IconButton>
+              )}
             </Grid>
 
-            <Grid item xs={2} style={{ display: 'flex', alignContent: 'center' }} >
+            <Grid
+              item
+              xs={2.3}
+              style={{ display: 'flex', alignContent: 'center' }}
+            >
               <Typography variant="subtitle2" noWrap>
                 Application
               </Typography>
-              {applicationSort ? <IconButton onClick={() => handleApplicationSort()}>
-                <ArrowDropUpIcon />
-              </IconButton> : <IconButton onClick={() => handleApplicationSort()}>
-                <ArrowDropDownIcon />
-              </IconButton>}
+              {applicationSort ? (
+                <IconButton onClick={() => handleApplicationSort()}>
+                  <ArrowDropUpIcon />
+                </IconButton>
+              ) : (
+                <IconButton onClick={() => handleApplicationSort()}>
+                  <ArrowDropDownIcon />
+                </IconButton>
+              )}
             </Grid>
 
-            <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center' }}>
+            <Grid
+              item
+              xs={1.7}
+              style={{ display: 'flex', justifyContent: 'center' }}
+            >
               <Typography variant="subtitle2" noWrap>
                 Status
               </Typography>
-              {statusSort ? <IconButton onClick={() => handleStatusNameSort()}>
-                <ArrowDropUpIcon />
-              </IconButton> : <IconButton onClick={() => handleStatusNameSort()}>
-                <ArrowDropDownIcon />
-              </IconButton>}
+              {statusSort ? (
+                <IconButton onClick={() => handleStatusNameSort()}>
+                  <ArrowDropUpIcon />
+                </IconButton>
+              ) : (
+                <IconButton onClick={() => handleStatusNameSort()}>
+                  <ArrowDropDownIcon />
+                </IconButton>
+              )}
             </Grid>
 
             <Grid item xs={1}>
               <Typography
                 variant="subtitle2"
-                display={'flex'}
                 noWrap
-                justifyContent={'space-around'}
+                display={'flex'}
+                justifyContent={'flex-end'}
               >
                 Action
               </Typography>
@@ -201,7 +286,6 @@ const ProjectListViewComponent = ({ projects }: ListComponentProps) => {
         </Paper>
       </Box>
       <Grid style={{ height: '62vh' }}>
-
         {paginationHandler
           .currentData()
           ?.map((items: IProject, index: number) => {

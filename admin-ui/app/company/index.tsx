@@ -70,7 +70,7 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={1}>
+          <Grid item xs={1} mt={1}>
             <Link
               href={'/company/companyreport'}
               passHref
@@ -81,7 +81,7 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
               </Button>
             </Link>
           </Grid>
-          <Grid item xs={1}>
+          <Grid item xs={1} mt={1}>
             <Link
               href={'/company/create'}
               passHref
@@ -98,12 +98,12 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
           <Switch>
             <Case condition={viewType === ViewTypes.GRID}>
               <Grid ref={myRef}>
-                <CompanyGridView companies={copyCompanies} />
+                <CompanyGridView companies={copyCompanies} myRef={myRef}/>
               </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.GRAPH}>
-              <Grid ref={myRef}>
-                <CompanyGraphView companies={copyCompanies} />
+              <Grid>
+                <CompanyGraphView companies={copyCompanies} myRef={myRef} />
               </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.KANBAN}>
@@ -117,8 +117,8 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
               </Grid>
             </Case>
             <Default>
-              <Grid ref={myRef}>
-                <ListViewComponent companies={copyCompanies} />
+              <Grid >
+                <ListViewComponent companies={copyCompanies} myRef={myRef} />
               </Grid>
             </Default>
           </Switch>
