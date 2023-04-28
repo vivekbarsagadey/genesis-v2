@@ -34,7 +34,8 @@ const ProjectSidebar = ({ toggleMenu }: sidebarProps) => {
 			<List component="nav" aria-label="main mailbox folders">
 				<Link href="/dashboard" passHref style={{ textDecoration: 'none' }}>
 					<ListItemButton selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 0)}>
-						<ListItemIcon style={{position:'relative', right:-15}}><DashboardIcon fontSize={'small'}  /></ListItemIcon>
+						{/* <ListItemIcon style={{position:'relative', right:-15}}><DashboardIcon fontSize={'small'}  /></ListItemIcon> */}
+						<ListItemIcon ><DashboardIcon fontSize={'small'}  /></ListItemIcon>
 						{toggleMenu && (
 							<Typography display={{ xs: 'none', sm: 'none', md: 'block' }} style={style.typography}>
                 Dashboard

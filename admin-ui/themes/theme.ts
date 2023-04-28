@@ -2,7 +2,6 @@
 import { yellow } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 import { baseStyle } from './fonts';
-import { font } from './font.family';
 import { weight } from './weight';
 import { fontSize } from './size';
 import '@fontsource/work-sans';
