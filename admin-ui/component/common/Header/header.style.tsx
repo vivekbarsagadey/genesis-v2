@@ -1,6 +1,8 @@
+import { colors } from "../../../themes";
+
 const headerstyle = {
   headercontainer: {
-    backgroundColor: "#f8fafc",
+    backgroundColor: colors.baseBackGround,
   },
   box: {
     display: "flex" as "flex",

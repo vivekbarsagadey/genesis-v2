@@ -1,52 +1,78 @@
-const weight = {
-  full: "900",
-  semi: "600",
-  low: "400",
-  bold: "bold",
-  normal: "normal",
+const baseStyle = {
+	display: { display: 'flex' },
+
+	flex: {
+		Col: { display: 'flex', flexDirection: 'column' },
+		Row: { display: 'flex', flexDirection: 'row' },
+	},
+
+	row: {
+		around: { flexDirection: 'row', justifyContent: 'space-around' },
+		between: { flexDirection: 'row', justifyContent: 'space-between' },
+		evenly: { flexDirection: 'row', justifyContent: 'space-evenly' },
+	},
+
+	rowAlignItem: {
+		center: { flexDirection: 'row', alignItems: 'center' },
+		stretch: { flexDirection: 'row', alignItems: 'stretch' },
+	},
+
+	col: {
+		Around: { flexDirection: 'column', justifyContent: 'space-around' },
+		between: { flexDirection: 'column', justifyContent: 'space-between' },
+		evenly: { flexDirection: 'column', justifyContent: 'space-evenly' },
+	},
+
+	colAlignContent: {
+		Center: { flexDirection: 'column', alignContent: 'center' },
+		Around: { flexDirection: 'column', alignContent: 'space-around' },
+		Between: { flexDirection: 'column', alignContent: 'space-between' },
+	},
+
+	textAlign: {
+		center: { textAlign: 'center' },
+		justify: { textAlign: 'justify' },
+		left: { textAlign: 'left' },
+		right: { textAlign: 'right' },
+	},
+
+	Width: {
+		full: { width: '100%' },
+		half: { width: '50%' },
+	},
+
+	Height: {
+		full: { height: '100%' },
+		half: { height: '50%' },
+	},
+
+	position: {
+		abs: { position: 'absolute' },
+		rel: { position: 'relative' },
+	},
+
+	textTransForm: {
+		cap: { textTransform: 'capitalize' },
+		upper: { textTransform: 'uppercase' },
+		low: { textTransform: 'lowercase' },
+	},
+
+	backgroundSize: {
+		Contain: { backgroundSize: 'contain' },
+		Cover: { backgroundSize: 'cover' },
+		Length: { backgroundSize: 'length' },
+	},
+
+	cursorPoint: { cursor: 'pointer' },
+
+	borderRadius: { full: '100', semi: '75', low: '50%', normal: '20px' },
+
+	textDecoration: {
+		none: { textDecoration: 'none' },
+		underline: { textDecoration: 'underline' },
+		overline: { textDecoration: 'overline' },
+		lineThrough: { textDecoration: 'line-through' },
+	},
 };
 
-const fontSize = {
-  extrasSmall: 12,
-  small: 10.5,
-  medium: 13,
-  large: 22,
-  extraLarge: 25,
-};
-const textAlign = {
-  center: "center",
-  alignItems: "center",
-};
-const position = {
-  relative: "relative",
-};
-const absolute = {
-  absolute: "absolute",
-};
-const textTransform = {
-  capitalize: "capitalize",
-};
-const backgroundSize = {
-  cover: "cover",
-};
-const borderRadius={
-  full:'100',
-  semi:'75',
-  low:'50%',
-  normal:'20px'
-};
-const cursor={
-  pointer:'pointer'
-}
-
-export {
-  weight,
-  fontSize,
-  textAlign,
-  position,
-  absolute,
-  textTransform,
-  backgroundSize,
-  borderRadius,
-  cursor
-};
+export { baseStyle };

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import HeaderComponent from "./header";
 import SidebarLogo from "./sidebar/logo";
 import ProjectSidebar from "./sidebar/project.sidebar/project.sidebar";
+import { colors } from "../../themes";
 
 const LayoutComponent = ({ children }: { children: React.ReactNode }) => {
   const { data: session } = useSession();
@@ -18,15 +19,13 @@ const LayoutComponent = ({ children }: { children: React.ReactNode }) => {
       {session && (
         <Grid container>
           <Grid
-            pl={2}
-            pr={1}
             item
             xs={toggleMenu ? 1.5 : 1.5}
             sm={toggleMenu ? 1.5 : 0.5}
             md={toggleMenu ? 2 : 0.5}
             lg={toggleMenu ? 2 : 0.5}
             textAlign={toggleMenu ? "right" : "left"}
-            style={{ backgroundColor: "#f8fafc" }}
+            style={{ backgroundColor: colors.baseBackGround, height:'100vh' }}
           >
             <SidebarLogo handleMenu={handleMenu} toggleMenu={toggleMenu} />
             <ProjectSidebar toggleMenu={toggleMenu} />

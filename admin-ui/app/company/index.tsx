@@ -1,8 +1,8 @@
 'use client';
 import PrintIcon from '@mui/icons-material/Print';
-import { Box, Button, Grid, IconButton, Tooltip } from '@mui/material';
+import { Box, Button, Grid, IconButton, Tooltip, Typography } from '@mui/material';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Case, Default, Switch } from 'react-if';
 import { useReactToPrint } from 'react-to-print';
 import { ViewTypes } from '../utility';
@@ -16,10 +16,20 @@ import ListViewComponent from './list/list.view.component';
 import { ICompany } from './models/company.model';
 import CompanySearchDetails from './search';
 import CompanyViewComponent from './view';
+import { colors } from '../../themes';
+import { makeStyles } from '@mui/styles';
 
 interface CompanyComponentProps {
   companies: Array<ICompany>;
 }
+
+const useStyles = makeStyles({
+	buttonStyle: {
+		background: colors.teal,
+		// width: '73%'
+	}
+});
+
 const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
   const [copyCompanies, setCopyCompanies] = useState<Array<ICompany>>([
     ...companies,
@@ -65,71 +75,66 @@ const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
                 </Tooltip>
               </Grid>
 
-              <Grid item xs={9}>
-                <CompanyViewComponent onViewSelect={onViewSelect} />
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={1}>
-            <Link
-              href={'/company/companyreport'}
-              passHref
-              style={{ textDecoration: 'none' }}
-            >
-              <Button variant="contained" size="small">
+							<Grid item xs={9}>
+								<CompanyViewComponent onViewSelect={onViewSelect} />
+							</Grid>
+						</Grid>
+					</Grid>
+					<Grid item xs={1}>
+						<Link
+							href={'/company/companyreport'}
+							passHref
+						>
+							<Button variant="contained" size="small" className={classes.buttonStyle}>
                 Report
-              </Button>
-            </Link>
-          </Grid>
-          <Grid item xs={1}>
-            <Link
-              href={'/company/create'}
-              passHref
-              style={{ textDecoration: 'none' }}
-            >
-              <Button variant="contained" size="small">
+							</Button>
+						</Link>
+					</Grid>
+					<Grid item xs={1}>
+						<Link
+							href={'/company/create'}
+							passHref
+						>
+							<Button variant="contained" size="small" className={classes.buttonStyle}>
                 Create
-                <span>+</span>
-              </Button>
-            </Link>
-          </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <Switch>
-            <Case condition={viewType === ViewTypes.GRID}>
-              <Grid ref={myRef}>
-                <CompanyGridView companies={copyCompanies} />
-              </Grid>
-            </Case>
-            <Case condition={viewType === ViewTypes.GRAPH}>
-              <Grid ref={myRef}>
-                <CompanyGraphView companies={copyCompanies} />
-              </Grid>
-            </Case>
-            <Case condition={viewType === ViewTypes.KANBAN}>
-              <Grid ref={myRef}>
-                <CompanyKanbanView companies={copyCompanies} />
-              </Grid>
-            </Case>
-            <Case condition={viewType === ViewTypes.CALENDAR}>
-              <Grid ref={myRef}>
-                <CompanyCalendarView companies={copyCompanies} />
-              </Grid>
-            </Case>
-            <Default>
-              <Grid ref={myRef}>
-                <ListViewComponent companies={copyCompanies} />
-              </Grid>
-            </Default>
-          </Switch>
-        </Grid>
-      </Box>
-    </>
-  );
+								<span>+</span>
+							</Button>
+						</Link>
+					</Grid>
+				</Grid>
+				<Grid item xs={12}>
+					<Switch>
+						<Case condition={viewType === ViewTypes.GRID}>
+							<Grid ref={myRef}>
+								<CompanyGridView companies={copyCompanies} />
+							</Grid>
+						</Case>
+						<Case condition={viewType === ViewTypes.GRAPH}>
+							<Grid ref={myRef}>
+								<CompanyGraphView companies={copyCompanies} />
+							</Grid>
+						</Case>
+						<Case condition={viewType === ViewTypes.KANBAN}>
+							<Grid ref={myRef}>
+								<CompanyKanbanView companies={copyCompanies} />
+							</Grid>
+						</Case>
+						<Case condition={viewType === ViewTypes.CALENDAR}>
+							<Grid ref={myRef}>
+								<CompanyCalendarView companies={copyCompanies} />
+							</Grid>
+						</Case>
+						<Default>
+							<Grid ref={myRef}>
+								<ListViewComponent companies={copyCompanies} />
+							</Grid>
+						</Default>
+					</Switch>
+				</Grid>
+			</Box>
+		</>
+	);
 };
-
-
-
 
 
 export default CompanyComponentHome;
