@@ -15,7 +15,7 @@ const MetaDataSidebar = () => {
             display: 'flex',
             marginLeft: '0.7rem',
             paddingRight: '1rem',
-            marginTop: '10rem',
+            marginTop: '9rem',
           }}
         >
           <Grid item xs={3}>
