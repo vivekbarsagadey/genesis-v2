@@ -182,7 +182,7 @@ const InfoUserComponent = ({ user }: InfoUserComponentProps) => {
                   sx={{ mt: 1 }}
                   fontSize="0.9rem"
                 >
-                  Are you sure you want to delete the selected company?
+                  Are you sure you want to delete the selected User?
                 </Typography>
                 <Grid container mt={2}>
                   <Grid item xs={6}></Grid>
