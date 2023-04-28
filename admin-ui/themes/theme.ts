@@ -1,5 +1,5 @@
 'use client';
-import { yellow } from '@mui/material/colors';
+import { orange, teal, yellow } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 import { baseStyle } from './fonts';
 import { weight } from './weight';
@@ -7,6 +7,11 @@ import { fontSize } from './size';
 import '@fontsource/work-sans';
 
 export const theme = createTheme({
+	palette: {
+		primary: {
+			main:teal[300]
+		},
+	  },
 	typography: {
 		subtitle1: {
 			fontSize: fontSize.extraSmall,
