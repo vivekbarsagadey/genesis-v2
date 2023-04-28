@@ -1,6 +1,6 @@
-FROM node:lts as dependencies
+FROM node:lts
 WORKDIR /app
-RUN yarn install -g @nestjs/cli
+RUN yarn add @nestjs/cli
 COPY package.json yarn.lock ./
 RUN yarn install
 

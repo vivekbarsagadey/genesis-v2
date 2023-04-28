@@ -1,4 +1,5 @@
 enum Status {
+    NEW,
     ACTIVE,
     INACTIVE
 }

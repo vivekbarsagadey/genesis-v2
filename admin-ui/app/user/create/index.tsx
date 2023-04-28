@@ -113,7 +113,7 @@ const UserCreateComponent = () => {
         state: userState,
         country: userCountry,
         role: role,
-        password: password,
+        password: encryptString,
       };
       await createUser(body);
       await router.push('/user');
@@ -406,8 +406,8 @@ const UserCreateComponent = () => {
                 </Box>
                 <TabPanel value={value} index={0}>
                   <Box>
-                    <Grid container>
-                      <Grid item xs={6}>
+                    <Grid container >
+                      <Grid item xs={6} mt={0.8}>
                         <Grid container display="flex" alignItems="center">
                           <Grid item xs={3}>
                             <Typography>Password</Typography>

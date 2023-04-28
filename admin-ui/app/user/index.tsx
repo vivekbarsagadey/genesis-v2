@@ -1,7 +1,7 @@
 'use client';
 import { Box, Button, Grid, IconButton, Tooltip } from '@mui/material';
 import Link from 'next/link';
-import { useRef,useState } from 'react';
+import { useRef, useState } from 'react';
 import { Case, Default, Switch } from 'react-if';
 import { ViewTypes } from '../utility';
 import FilterComponent from './filter';
@@ -37,7 +37,6 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
     content: () => myRef.current,
   });
 
-
   return (
     <>
       <Box mt={1} ml={1.5}>
@@ -48,17 +47,17 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
 
           <Grid item xs={4} md={8} sm={8} lg={7} display={'flex'}>
             <Grid container>
-              <Grid item xs={'auto'} mt={0.3}>
+              <Grid item xs={'auto'} mt={0.4}>
                 <FilterComponent
                   user={user}
                   onFilterHandler={onSearchHandler}
                 />
               </Grid>
-              <Grid item xs={'auto'} mt={0.3}>
+              <Grid item xs={'auto'} mt={0.5}>
                 <ExportComponent user={copyUser} />
               </Grid>
-              <Grid item xs={'auto'} mt={0.3}>
-              <Tooltip title="Print">
+              <Grid item xs={'auto'} mt={0.5}>
+                <Tooltip title="Print">
                   <IconButton onClick={() => handlePrint()}>
                     <PrintIcon fontSize="small" />
                   </IconButton>
@@ -71,7 +70,7 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
             </Grid>
           </Grid>
 
-          <Grid item xs={1}>
+          <Grid item xs={1} mt={0.7}>
             <Link
               href={'/user/userreport'}
               passHref
@@ -82,7 +81,7 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
               </Button>
             </Link>
           </Grid>
-          <Grid item xs={1}>
+          <Grid item xs={1} mt={0.7}>
             <Link
               href={'/user/create'}
               passHref
@@ -99,20 +98,22 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
           <Switch>
             <Case condition={viewType === ViewTypes.GRID}>
               <Grid>
-              <UserGridView user={copyUser}  myRef={myRef}/>
+                <UserGridView user={copyUser} myRef={myRef} />
               </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.GRAPH}>
-              <UserGraphView user={copyUser} />
+              <Grid>
+                <UserGraphView user={copyUser} myRef={myRef}/>
+              </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.KANBAN}>
-              <UserKanbanView user={copyUser} />
+              <UserKanbanView user={copyUser} myRef={myRef}/>
             </Case>
             <Case condition={viewType === ViewTypes.CALENDAR}>
-              <UserCalendarView user={copyUser} />
+              <UserCalendarView user={copyUser} myRef={myRef}/>
             </Case>
             <Default>
-              <ListViewComponent user={copyUser}  myRef={myRef} />
+              <ListViewComponent user={copyUser} myRef={myRef} />
             </Default>
           </Switch>
         </Grid>

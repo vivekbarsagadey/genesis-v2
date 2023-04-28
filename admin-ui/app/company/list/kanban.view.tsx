@@ -98,23 +98,23 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
           <CardStyle>
             <Paper variant="outlined" className={classes.cardView}>
               <CardContent>
-                <Card>
-                  <Grid container p={1}>
+                
+                  <Grid container>
                     <Grid item xs={11} display="flex" alignItems="center">
                       <FiberManualRecordIcon
                         fontSize="small"
                         htmlColor="blue"
                       />
-                      <Typography variant="h6">NEW</Typography>
+                      <Typography variant="h6" pl={1}>NEW</Typography>
                     </Grid>
                     <Grid
                       item
-                      xs={1}
+                      xs={0.7}
                       display="flex"
                       alignItems="center"
                       justifyContent="center"
                       border="1px solid gray"
-                      borderRadius="6rem"
+                      borderRadius="40px"
                       backgroundColor="lightgray"
                     >
                       <Typography fontSize="12px">
@@ -122,7 +122,7 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
                       </Typography>
                     </Grid>
                   </Grid>
-                </Card>
+                
                 {newCompanies.reverse()?.map((newCompany, index) => {
                   return (
                     <NewCompanyComponent newCompany={newCompany} key={index} />
@@ -136,37 +136,34 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
           <CardStyle>
             <Paper variant="outlined" className={classes.cardView}>
               <CardContent>
-                <Card>
-                  <Grid container p={1}>
+                
+                  <Grid container>
                     <Grid item xs={11} display="flex" alignItems="center">
                       <FiberManualRecordIcon
                         fontSize="small"
                         htmlColor="green"
                       />
-                      <Typography variant="h6">ACTIVE</Typography>
+                      <Typography variant="h6" pl={1}>ACTIVE</Typography>
                     </Grid>
                     <Grid
                       item
-                      xs={1}
+                      xs={0.7}
                       display="flex"
                       alignItems="center"
                       justifyContent="center"
                       border="1px solid gray"
-                      borderRadius="5rem"
+                      borderRadius="40px"
                       backgroundColor="lightgray"
                     >
-                      <Typography fontSize="13px">
+                      <Typography fontSize="12px">
                         {activeCompanies.length}
                       </Typography>
                     </Grid>
                   </Grid>
-                </Card>
+                
                 {activeCompanies.reverse()?.map((activeCompany, index) => {
                   return (
-                    <ActiveCompanyComponent
-                      activeCompany={activeCompany}
-                      key={index}
-                    />
+                    <ActiveCompanyComponent activeCompany={activeCompany} key={index} />
                   );
                 })}
               </CardContent>
@@ -177,34 +174,34 @@ const CompanyKanbanView = ({ companies }: ListComponentProps) => {
           <CardStyle>
             <Paper variant="outlined" className={classes.cardView}>
               <CardContent>
-                <Card>
-                  <Grid container p={1}>
+                
+                  <Grid container>
                     <Grid item xs={11} display="flex" alignItems="center">
-                      <FiberManualRecordIcon fontSize="small" htmlColor="red" />
-                      <Typography variant="h6">INACTIVE</Typography>
+                      <FiberManualRecordIcon
+                        fontSize="small"
+                        htmlColor="red"
+                      />
+                      <Typography variant="h6" pl={1}>INACTIVE</Typography>
                     </Grid>
                     <Grid
                       item
-                      xs={1}
+                      xs={0.7}
                       display="flex"
                       alignItems="center"
                       justifyContent="center"
                       border="1px solid gray"
-                      borderRadius="5rem"
+                      borderRadius="40px"
                       backgroundColor="lightgray"
                     >
-                      <Typography fontSize="13px">
+                      <Typography fontSize="12px">
                         {inActiveCompanies.length}
                       </Typography>
                     </Grid>
                   </Grid>
-                </Card>
+                
                 {inActiveCompanies.reverse()?.map((inActiveCompany, index) => {
                   return (
-                    <InActiveCompanyComponent
-                      inActiveCompany={inActiveCompany}
-                      key={index}
-                    />
+                    <InActiveCompanyComponent inActiveCompany={inActiveCompany} key={index} />
                   );
                 })}
               </CardContent>
@@ -251,12 +248,12 @@ const NewCompanyComponent = ({ newCompany }: INewCompany) => {
 
   return (
     <Box mt={1}>
-      <Card variant="outlined">
+      <Card variant="outlined" style={{borderRadius:'6px'}}>
         <Grid container>
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
             <LocationCityIcon fontSize="inherit" />
             <Typography noWrap pl={1} variant="h6">
-              {$newCompany.name}
+              {newCompany.name}
             </Typography>
           </Grid>
           <Grid
@@ -331,30 +328,30 @@ const NewCompanyComponent = ({ newCompany }: INewCompany) => {
               </MenuItem>
             </Menu>
           </Grid>
-          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
-            <CalendarMonthIcon fontSize="inherit" />
-            <Typography noWrap pl={1}>
-              {moment(newCompany.createdAt).format('DD/MM/YYYY')}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
+          <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
             <EmailIcon fontSize="inherit" />
             <Typography noWrap pl={1}>
               {newCompany.email}
             </Typography>
           </Grid>
-          <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
-            <CallIcon fontSize="inherit" />
-            <Typography noWrap pl={1}>
-              {newCompany.mobile}
+          <Grid item xs={6} display="flex" alignItems="center" justifyContent='flex-end' pr={2} pb={1}>
+            <CalendarMonthIcon fontSize="inherit" />
+            <Typography noWrap pl={2}>
+              {moment(newCompany.createdAt).format('DD/MM/YYYY')}
             </Typography>
           </Grid>
-          <Grid item xs={12} display="flex" pl={2} pb={2}>
+          <Grid item xs={6} display="flex" alignItems="center"  pl={2} pb={2}>
             <Tooltip title="Edit Status">
               <Typography noWrap>Status -</Typography>
             </Tooltip>
-            <Typography noWrap variant="h6" pl={1}>
+            <Typography noWrap variant="h6" pl={1} color={'blue'}>
               {newCompany.status}
+            </Typography>
+          </Grid>
+          <Grid item xs={6} display="flex" alignItems="center" justifyContent='flex-end' pr={2} pb={1}>
+            <CallIcon fontSize="inherit" />
+            <Typography noWrap pl={1}>
+              {newCompany.mobile}
             </Typography>
           </Grid>
         </Grid>
@@ -478,32 +475,32 @@ const ActiveCompanyComponent = ({ activeCompany }: IActiveCompany) => {
                 </MenuItem>
               </Menu>
             </Grid>
-            <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
-              <CalendarMonthIcon fontSize="inherit" />
-              <Typography noWrap pl={1}>
-                {moment(activeCompany.createdAt).format('DD/MM/YYYY')}
-              </Typography>
-            </Grid>
-            <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
-              <EmailIcon fontSize="inherit" />
-              <Typography noWrap pl={1}>
-                {activeCompany.email}
-              </Typography>
-            </Grid>
-            <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
-              <CallIcon fontSize="inherit" />
-              <Typography noWrap pl={1}>
-                {activeCompany.mobile}
-              </Typography>
-            </Grid>
-            <Grid item xs={12} display="flex" pl={2} pb={2}>
-              <Tooltip title="Edit Status">
-                <Typography noWrap>Status -</Typography>
-              </Tooltip>
-              <Typography noWrap variant="h6" pl={1}>
-                {activeCompany.status}
-              </Typography>
-            </Grid>
+            <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
+            <EmailIcon fontSize="inherit" />
+            <Typography noWrap pl={1}>
+              {activeCompany.email}
+            </Typography>
+          </Grid>
+          <Grid item xs={6} display="flex" alignItems="center" justifyContent='flex-end' pr={2} pb={1}>
+            <CalendarMonthIcon fontSize="inherit" />
+            <Typography noWrap pl={2}>
+              {moment(activeCompany.createdAt).format('DD/MM/YYYY')}
+            </Typography>
+          </Grid>
+          <Grid item xs={6} display="flex" alignItems="center"  pl={2} pb={2}>
+            <Tooltip title="Edit Status">
+              <Typography noWrap>Status -</Typography>
+            </Tooltip>
+            <Typography noWrap variant="h6" pl={1} color={'green'}>
+              {activeCompany.status}
+            </Typography>
+          </Grid>
+          <Grid item xs={6} display="flex" alignItems="center" justifyContent='flex-end' pr={2} pb={1}>
+            <CallIcon fontSize="inherit" />
+            <Typography noWrap pl={1}>
+              {activeCompany.mobile}
+            </Typography>
+          </Grid>
           </Grid>
         </Card>
       </Box>
@@ -624,32 +621,32 @@ const InActiveCompanyComponent = ({ inActiveCompany }: IInActiveCompany) => {
                 </MenuItem>
               </Menu>
             </Grid>
-            <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
-              <CalendarMonthIcon fontSize="inherit" />
-              <Typography noWrap pl={1}>
-                {moment(inActiveCompany.createdAt).format('DD/MM/YYYY')}
-              </Typography>
-            </Grid>
-            <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
-              <EmailIcon fontSize="inherit" />
-              <Typography noWrap pl={1}>
-                {inActiveCompany.email}
-              </Typography>
-            </Grid>
-            <Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
-              <CallIcon fontSize="inherit" />
-              <Typography noWrap pl={1}>
-                {inActiveCompany.mobile}
-              </Typography>
-            </Grid>
-            <Grid item xs={12} display="flex" pl={2} pb={2}>
-              <Tooltip title="Edit Status">
-                <Typography noWrap>Status -</Typography>
-              </Tooltip>
-              <Typography noWrap variant="h6" pl={1}>
-                {inActiveCompany.status}
-              </Typography>
-            </Grid>
+            <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
+            <EmailIcon fontSize="inherit" />
+            <Typography noWrap pl={1}>
+              {inActiveCompany.email}
+            </Typography>
+          </Grid>
+          <Grid item xs={6} display="flex" alignItems="center" justifyContent='flex-end' pr={2} pb={1}>
+            <CalendarMonthIcon fontSize="inherit" />
+            <Typography noWrap pl={2}>
+              {moment(inActiveCompany.createdAt).format('DD/MM/YYYY')}
+            </Typography>
+          </Grid>
+          <Grid item xs={6} display="flex" alignItems="center"  pl={2} pb={2}>
+            <Tooltip title="Edit Status">
+              <Typography noWrap>Status -</Typography>
+            </Tooltip>
+            <Typography noWrap variant="h6" pl={1} color={'red'}>
+              {inActiveCompany.status}
+            </Typography>
+          </Grid>
+          <Grid item xs={6} display="flex" alignItems="center" justifyContent='flex-end' pr={2} pb={1}>
+            <CallIcon fontSize="inherit" />
+            <Typography noWrap pl={1}>
+              {inActiveCompany.mobile}
+            </Typography>
+          </Grid>
           </Grid>
         </Card>
       </Box>

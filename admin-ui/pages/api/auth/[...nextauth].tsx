@@ -1,55 +1,60 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import prisma from "../../../lib/prismadb"
+import NextAuth, { NextAuthOptions } from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import prisma from '../../../lib/prismadb';
+import { compare } from 'n-krypta';
 
 const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
   },
   providers: [
     CredentialsProvider({
-      type: "credentials",
+      type: 'credentials',
       credentials: {},
-      authorize(credentials, req) {
+      async authorize(credentials, req) {
         const { email, password } = credentials as {
           email: string;
           password: string;
         };
         // perform you login logic
         // find out user from db
-        if (email == "admin@gmail.com" ) {
+        if (email == 'admin@gmail.com') {
           return {
-            id: "-1111",
-            name: "Super Admin",
-            email: "admin@gmail.com",
-            role: "admin",
+            id: '-1111',
+            name: 'Super Admin',
+            email: 'admin@gmail.com',
+            role: 'admin',
           };
         }
 
-        //TODO connect to db and get 
-        const user = prisma.user.findFirst({
+        //TODO connect to db and get
+        const user = await prisma.user.findFirst({
           where: { email },
         });
 
-        if(user){
+        if (user) {
+          const passwordMatch = compare(password, user.password, 'key');
+          if(passwordMatch){
+            return user;
+          }
           /* if(user.newPassword===password){
             return user;
-          } */
-          return user;
+          }  */
+          
         }
 
-        throw new Error("invalid credentials");
+        throw new Error('invalid credentials');
       },
     }),
   ],
   pages: {
-    signIn: "/login",
+    signIn: '/login',
     // error: '/auth/error',
     // signOut: '/auth/signout'
   },
-  session: { strategy: "jwt" },
+  session: { strategy: 'jwt' },
   // callbacks: {
   //   jwt(params) {
   //     // update token

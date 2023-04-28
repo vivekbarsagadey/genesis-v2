@@ -1,41 +1,40 @@
-import { Box, Grid } from "@mui/material";
-import Autocomplete from "@mui/material/Autocomplete";
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
-import moment from "moment";
-import React, { useState } from "react";
-import { Chart } from "react-google-charts";
-import UserPieChart from "./pie.chart";
-import { ListComponentProps } from "./props";
+import { Box, Grid } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import moment from 'moment';
+import React, { useState } from 'react';
+import { Chart } from 'react-google-charts';
+import UserPieChart from './pie.chart';
 const options = {
-  vAxis: { title: "User Created" },
-  hAxis: { title: "Month" },
-  seriesType: "bars",
-  series: { type: "line" },
+  vAxis: { title: 'User Created' },
+  hAxis: { title: 'Month' },
+  seriesType: 'bars',
+  series: { type: 'line' },
 };
 const comparisonGraphDataVal = [
-  { id: 1, label: "Active" },
-  { id: 2, label: "Inactive" },
-  { id: 3, label: "Male" },
-  { id: 4, label: "Female" },
+  { id: 1, label: 'Active' },
+  { id: 2, label: 'Inactive' },
+  { id: 3, label: 'Male' },
+  { id: 4, label: 'Female' },
 ];
 const comparisionType = [
   { title: 'Today' },
-{ title: 'Last 7 days' },
-{ title: 'Month' },
-]
-const UserGraphView = ({ user }: ListComponentProps) => {
-  const [graphView, setGraphView] = useState<string>("status");
-  const [graphBase, setGrpahBase] = useState<string>("");
-  const [graph1, setGrpah1] = useState<string>("");
-  const [graph2, setGraph2] = useState<string>("");
+  { title: 'Last 7 days' },
+  { title: 'Month' },
+];
+const UserGraphView = ({ user, myRef }: any) => {
+  const [graphView, setGraphView] = useState<string>('status');
+  const [graphBase, setGrpahBase] = useState<string>('');
+  const [graph1, setGrpah1] = useState<string>('');
+  const [graph2, setGraph2] = useState<string>('');
   let keys = Object.keys(user[0]);
   const graphTypeVal = keys.filter((element) => {
     if (
-      element === "country" ||
-      element === "state" ||
-      element === "city" ||
-      element === "status"
+      element === 'country' ||
+      element === 'state' ||
+      element === 'city' ||
+      element === 'status'
     ) {
       return true;
     }
@@ -43,11 +42,11 @@ const UserGraphView = ({ user }: ListComponentProps) => {
   });
   const graphTypeBaseVal = keys.filter((element) => {
     if (
-      element === "country" ||
-      element === "state" ||
-      element === "city" ||
-      element === "status" ||
-      element === "gender"
+      element === 'country' ||
+      element === 'state' ||
+      element === 'city' ||
+      element === 'status' ||
+      element === 'gender'
     ) {
       return true;
     }
@@ -60,125 +59,125 @@ const UserGraphView = ({ user }: ListComponentProps) => {
     setGraphView(value);
   };
   const statusData = [
-    ["Status", "user"],
-    ["ACTIVE", user.filter((item) => item.status === "ACTIVE").length],
-    ["INACTIVE", user.filter((item) => item.status === "INACTIVE").length],
+    ['Status', 'user'],
+    ['ACTIVE', user.filter((item) => item.status === 'ACTIVE').length],
+    ['INACTIVE', user.filter((item) => item.status === 'INACTIVE').length],
   ];
   const stateData = [
-    ["user", "State"],
-    ["Bihar", user.filter((item) => item.state === "Bihar").length],
+    ['user', 'State'],
+    ['Bihar', user.filter((item) => item.state === 'Bihar').length],
     [
-      "Madhya Pradesh",
-      user.filter((item) => item.state === "Madhya Pradesh").length,
+      'Madhya Pradesh',
+      user.filter((item) => item.state === 'Madhya Pradesh').length,
     ],
-    ["UP", user.filter((item) => item.state === "UP").length],
-    ["Maharastra", user.filter((item) => item.state === "Maharastra").length],
-    ["Punjab", user.filter((item) => item.state === "Punjab").length],
-    ["UK", user.filter((item) => item.state === "UK").length],
-    ["Gujrat", user.filter((item) => item.state === "Gujrat").length],
-    ["Karnataka", user.filter((item) => item.state === "Karnataka").length],
+    ['UP', user.filter((item) => item.state === 'UP').length],
+    ['Maharastra', user.filter((item) => item.state === 'Maharastra').length],
+    ['Punjab', user.filter((item) => item.state === 'Punjab').length],
+    ['UK', user.filter((item) => item.state === 'UK').length],
+    ['Gujrat', user.filter((item) => item.state === 'Gujrat').length],
+    ['Karnataka', user.filter((item) => item.state === 'Karnataka').length],
     [
-      "Jammu & Kashmir",
-      user.filter((item) => item.state === "Jammu & Kashmir").length,
+      'Jammu & Kashmir',
+      user.filter((item) => item.state === 'Jammu & Kashmir').length,
     ],
   ];
   const countryData = [
-    ["user", "Country"],
-    ["India", user.filter((item) => item.country === "India").length],
-    ["Australia", user.filter((item) => item.country === "Australia").length],
-    ["America", user.filter((item) => item.country === "America").length],
-    ["Spain", user.filter((item) => item.country === "Spain").length],
-    ["US", user.filter((item) => item.country === "US").length],
-    ["UK", user.filter((item) => item.country === "UK").length],
-    ["Dubai", user.filter((item) => item.country === "Dubai").length],
-    ["Srilanka", user.filter((item) => item.country === "Srilanka").length],
-    ["Thailand", user.filter((item) => item.country === "Thailand").length],
+    ['user', 'Country'],
+    ['India', user.filter((item) => item.country === 'India').length],
+    ['Australia', user.filter((item) => item.country === 'Australia').length],
+    ['America', user.filter((item) => item.country === 'America').length],
+    ['Spain', user.filter((item) => item.country === 'Spain').length],
+    ['US', user.filter((item) => item.country === 'US').length],
+    ['UK', user.filter((item) => item.country === 'UK').length],
+    ['Dubai', user.filter((item) => item.country === 'Dubai').length],
+    ['Srilanka', user.filter((item) => item.country === 'Srilanka').length],
+    ['Thailand', user.filter((item) => item.country === 'Thailand').length],
   ];
   const cityData = [
-    ["user", "City"],
-    ["Patna", user.filter((item) => item.city === "Patna").length],
-    ["Mumbai", user.filter((item) => item.city === "Mumbai").length],
-    ["Pune", user.filter((item) => item.city === "Pune").length],
-    ["Banglore", user.filter((item) => item.city === "Banglore").length],
-    ["Ahmedabad", user.filter((item) => item.city === "Ahmedabad").length],
-    ["Kolkata", user.filter((item) => item.city === "Kolkata").length],
-    ["Rajasthan", user.filter((item) => item.city === "Rajasthan").length],
-    ["Hyderabad", user.filter((item) => item.city === "Hyderabad").length],
-    ["Lucknow", user.filter((item) => item.city === "Lucknow").length],
+    ['user', 'City'],
+    ['Patna', user.filter((item) => item.city === 'Patna').length],
+    ['Mumbai', user.filter((item) => item.city === 'Mumbai').length],
+    ['Pune', user.filter((item) => item.city === 'Pune').length],
+    ['Banglore', user.filter((item) => item.city === 'Banglore').length],
+    ['Ahmedabad', user.filter((item) => item.city === 'Ahmedabad').length],
+    ['Kolkata', user.filter((item) => item.city === 'Kolkata').length],
+    ['Rajasthan', user.filter((item) => item.city === 'Rajasthan').length],
+    ['Hyderabad', user.filter((item) => item.city === 'Hyderabad').length],
+    ['Lucknow', user.filter((item) => item.city === 'Lucknow').length],
   ];
   const createdDataData = [
-    ["Month", "Count"],
+    ['Month', 'Count'],
     [
-      "JAN",
+      'JAN',
       user
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Jan").length,
+        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .filter((d) => d === 'Jan').length,
     ],
     [
-      "FEB",
+      'FEB',
       user
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Feb").length,
+        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .filter((d) => d === 'Feb').length,
     ],
     [
-      "MAR",
+      'MAR',
       user
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Mar").length,
+        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .filter((d) => d === 'Mar').length,
     ],
     [
-      "APR",
+      'APR',
       user
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Apr").length,
+        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .filter((d) => d === 'Apr').length,
     ],
     [
-      "MAY",
+      'MAY',
       user
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "May").length,
+        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .filter((d) => d === 'May').length,
     ],
     [
-      "JUN",
+      'JUN',
       user
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Jun").length,
+        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .filter((d) => d === 'Jun').length,
     ],
     [
-      "JUL",
+      'JUL',
       user
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Jul").length,
+        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .filter((d) => d === 'Jul').length,
     ],
     [
-      "AUG",
+      'AUG',
       user
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Aug").length,
+        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .filter((d) => d === 'Aug').length,
     ],
     [
-      "SEP",
+      'SEP',
       user
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Sep").length,
+        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .filter((d) => d === 'Sep').length,
     ],
     [
-      "OCT",
+      'OCT',
       user
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Oct").length,
+        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .filter((d) => d === 'Oct').length,
     ],
     [
-      "NOV",
+      'NOV',
       user
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Nov").length,
+        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .filter((d) => d === 'Nov').length,
     ],
     [
-      "DEC",
+      'DEC',
       user
-        .map((ele) => moment(ele.updatedAt).format("MMM"))
-        .filter((d) => d === "Dec").length,
+        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .filter((d) => d === 'Dec').length,
     ],
   ];
   //Base Value
@@ -190,97 +189,99 @@ const UserGraphView = ({ user }: ListComponentProps) => {
   };
   // First graph value
   const updateFirstGraph = (
-    e: React.SyntheticEvent<Element, Event>,value : string
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
   ) => {
     setGrpah1(value);
   };
   const updateSecondGraph = (
-    e: React.SyntheticEvent<Element, Event>,value : string
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
   ) => {
     setGraph2(value);
   };
   const CompariosnCountryData = [
-    ["Country", "ACTIVE", "INACTIVE"],
+    ['Country', 'ACTIVE', 'INACTIVE'],
     [
-      "India",
+      'India',
       user
-        .filter((ele) => ele.country === "India")
-        .filter((ele) => ele.status === "ACTIVE").length,
+        .filter((ele) => ele.country === 'India')
+        .filter((ele) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === "India")
-        .filter((ele) => ele.status === "INACTIVE").length,
+        .filter((ele) => ele.country === 'India')
+        .filter((ele) => ele.status === 'INACTIVE').length,
     ],
     [
-      "Australia",
+      'Australia',
       user
-        .filter((ele) => ele.country === "Australia")
-        .filter((ele) => ele.status === "ACTIVE").length,
+        .filter((ele) => ele.country === 'Australia')
+        .filter((ele) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === "Australia")
-        .filter((ele) => ele.status === "INACTIVE").length,
+        .filter((ele) => ele.country === 'Australia')
+        .filter((ele) => ele.status === 'INACTIVE').length,
     ],
     [
-      "America",
+      'America',
       user
-        .filter((ele) => ele.country === "America")
-        .filter((ele) => ele.status === "ACTIVE").length,
+        .filter((ele) => ele.country === 'America')
+        .filter((ele) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === "America")
-        .filter((ele) => ele.status === "INACTIVE").length,
+        .filter((ele) => ele.country === 'America')
+        .filter((ele) => ele.status === 'INACTIVE').length,
     ],
     [
-      "Spain",
+      'Spain',
       user
-        .filter((ele) => ele.country === "Spain")
-        .filter((ele) => ele.status === "ACTIVE").length,
+        .filter((ele) => ele.country === 'Spain')
+        .filter((ele) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === "Spain")
-        .filter((ele) => ele.status === "INACTIVE").length,
+        .filter((ele) => ele.country === 'Spain')
+        .filter((ele) => ele.status === 'INACTIVE').length,
     ],
     [
-      "US",
+      'US',
       user
-        .filter((ele) => ele.country === "US")
-        .filter((ele) => ele.status === "ACTIVE").length,
+        .filter((ele) => ele.country === 'US')
+        .filter((ele) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === "US")
-        .filter((ele) => ele.status === "INACTIVE").length,
+        .filter((ele) => ele.country === 'US')
+        .filter((ele) => ele.status === 'INACTIVE').length,
     ],
     [
-      "UK",
+      'UK',
       user
-        .filter((ele) => ele.country === "UK")
-        .filter((ele) => ele.status === "ACTIVE").length,
+        .filter((ele) => ele.country === 'UK')
+        .filter((ele) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === "UK")
-        .filter((ele) => ele.status === "INACTIVE").length,
+        .filter((ele) => ele.country === 'UK')
+        .filter((ele) => ele.status === 'INACTIVE').length,
     ],
     [
-      "Dubai",
+      'Dubai',
       user
-        .filter((ele) => ele.country === "Dubai")
-        .filter((ele) => ele.status === "ACTIVE").length,
+        .filter((ele) => ele.country === 'Dubai')
+        .filter((ele) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === "Dubai")
-        .filter((ele) => ele.status === "INACTIVE").length,
+        .filter((ele) => ele.country === 'Dubai')
+        .filter((ele) => ele.status === 'INACTIVE').length,
     ],
     [
-      "Srilanka",
+      'Srilanka',
       user
-        .filter((ele) => ele.country === "Srilanka")
-        .filter((ele) => ele.status === "ACTIVE").length,
+        .filter((ele) => ele.country === 'Srilanka')
+        .filter((ele) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === "Srilanka")
-        .filter((ele) => ele.status === "INACTIVE").length,
+        .filter((ele) => ele.country === 'Srilanka')
+        .filter((ele) => ele.status === 'INACTIVE').length,
     ],
     [
-      "Thailand",
+      'Thailand',
       user
-        .filter((ele) => ele.country === "Thailand")
-        .filter((ele) => ele.status === "ACTIVE").length,
+        .filter((ele) => ele.country === 'Thailand')
+        .filter((ele) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === "Thailand")
-        .filter((ele) => ele.status === "INACTIVE").length,
+        .filter((ele) => ele.country === 'Thailand')
+        .filter((ele) => ele.status === 'INACTIVE').length,
     ],
   ];
   const CompariosnData = [[graphBase, graph1, graph2]];
@@ -288,52 +289,74 @@ const UserGraphView = ({ user }: ListComponentProps) => {
     <>
       <Box>
         <Grid container spacing={2}>
-
-        <Grid container spacing={2} mt={1}>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={3.5}>
-          <Stack>
-          <Autocomplete  value={graphView} onChange={updateGrpahView} freeSolo
-          id="user-select-type" disableClearable size="small"
-          options={graphTypeVal?.map((option) => option)} renderInput={(params) => (
-           <TextField {...params}InputProps={{...params.InputProps,type: "search",}} 
-           placeholder="Select Graph View" />)} />
-          </Stack>
-        </Grid>
-        <Grid item xs={2.3}></Grid>
-        <Grid item xs={3.5}>
-        <Stack>
-        <Autocomplete freeSolo id="free-solo-2-demo" disableClearable
-        size="small" options={comparisionType.map((option) => option.title)}
-        renderInput={(params) => (
-          <TextField {...params} InputProps={{ ...params.InputProps, type: 'search'}}
-          placeholder="Select Graph View"fullWidth/> )}/>
-          </Stack>
-        </Grid>
-      </Grid>
-          <Grid item xs={6}>
-            <Grid container spacing={2}>
-              <Grid item xs={9}>
-                <UserPieChart
-                  stateData={stateData}
-                  cityData={cityData}
-                  graphView={graphView}
-                  statusData={statusData}
-                  countryData={countryData}
+          <Grid container spacing={2} mt={1}>
+            <Grid item xs={1}></Grid>
+            <Grid item xs={3.5}>
+              <Stack>
+                <Autocomplete
+                  value={graphView}
+                  onChange={updateGrpahView}
+                  freeSolo
+                  id="user-select-type"
+                  disableClearable
+                  size="small"
+                  options={graphTypeVal?.map((option) => option)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      InputProps={{ ...params.InputProps, type: 'search' }}
+                      placeholder="Select Graph View"
+                    />
+                  )}
                 />
-              </Grid>
+              </Stack>
+            </Grid>
+            <Grid item xs={2.3}></Grid>
+            <Grid item xs={3.5}>
+              <Stack>
+                <Autocomplete
+                  freeSolo
+                  id="free-solo-2-demo"
+                  disableClearable
+                  size="small"
+                  options={comparisionType.map((option) => option.title)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      InputProps={{ ...params.InputProps, type: 'search' }}
+                      placeholder="Select Graph View"
+                      fullWidth
+                    />
+                  )}
+                />
+              </Stack>
             </Grid>
           </Grid>
-          <Grid item xs={6}>
-            <>
-              <Chart
-                chartType="ComboChart"
-                width="100%"
-                height="400px"
-                data={createdDataData}
-                options={options}
-              />
-            </>
+          <Grid container ref={myRef}>
+            <Grid item xs={6}>
+              <Grid container mt={2}>
+                <Grid item xs={9}>
+                  <UserPieChart
+                    stateData={stateData}
+                    cityData={cityData}
+                    graphView={graphView}
+                    statusData={statusData}
+                    countryData={countryData}
+                  />
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={6}>
+              <>
+                <Chart
+                  chartType="ComboChart"
+                  width="100%"
+                  height="400px"
+                  data={createdDataData}
+                  options={options}
+                />
+              </>
+            </Grid>
           </Grid>
           {/* <Grid item xs={12}>
             <Grid container spacing={2}>
