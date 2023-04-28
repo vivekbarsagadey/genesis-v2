@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import PersonIcon from '@mui/icons-material/Person';
+import { Card, IconButton, Paper } from '@mui/material';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid/Grid';
-import { styled } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import { IUser, Status } from '../models';
-import { ListComponentProps } from './props';
-import { Card, IconButton, Paper } from '@mui/material';
-import { makeStyles } from '@mui/styles';
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import PersonIcon from '@mui/icons-material/Person';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
+import React, { useState } from 'react';
+import { IUser, Status } from '../models';
 
 const CardStyle = styled(Grid)(({ theme }) => ({
   height: '80vh',
@@ -38,7 +37,8 @@ type IActiveUser = {
 type IInActiveUser = {
   inActiveUser: IUser;
 };
-const UserKanbanView = ({ user }: ListComponentProps) => {
+const UserKanbanView = ({ user, myRef }: any) => {
+  const classes = useStyles();
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   const newUsers = user.filter((ele: IUser) => {
     return ele.status == statusSet[0];
@@ -58,10 +58,9 @@ const UserKanbanView = ({ user }: ListComponentProps) => {
   const handleDropdownClose = () => {
     setAnchorEl(null);
   };
-  const classes = useStyles();
-  console.log("user >>>",user)
+
   return (
-    <>
+    <Box ref={myRef}>
       <Grid container spacing={2} mt={1} pr={2}>
         <Grid item xs={4}>
           <CardStyle>
@@ -218,7 +217,7 @@ const UserKanbanView = ({ user }: ListComponentProps) => {
           </CardStyle>
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 };
 

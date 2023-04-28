@@ -1,7 +1,7 @@
 'use client';
 import { Box, Button, Grid, IconButton, Tooltip } from '@mui/material';
 import Link from 'next/link';
-import { useRef,useState } from 'react';
+import { useRef, useState } from 'react';
 import { Case, Default, Switch } from 'react-if';
 import { ViewTypes } from '../utility';
 import FilterComponent from './filter';
@@ -37,7 +37,6 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
     content: () => myRef.current,
   });
 
-
   return (
     <>
       <Box mt={1} ml={1.5}>
@@ -58,7 +57,7 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
                 <ExportComponent user={copyUser} />
               </Grid>
               <Grid item xs={'auto'} mt={0.3}>
-              <Tooltip title="Print">
+                <Tooltip title="Print">
                   <IconButton onClick={() => handlePrint()}>
                     <PrintIcon fontSize="small" />
                   </IconButton>
@@ -99,20 +98,22 @@ const UserComponentHome = ({ user }: UserComponentProps) => {
           <Switch>
             <Case condition={viewType === ViewTypes.GRID}>
               <Grid>
-              <UserGridView user={copyUser}  myRef={myRef}/>
+                <UserGridView user={copyUser} myRef={myRef} />
               </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.GRAPH}>
-              <UserGraphView user={copyUser} />
+              <Grid>
+                <UserGraphView user={copyUser} myRef={myRef}/>
+              </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.KANBAN}>
-              <UserKanbanView user={copyUser} />
+              <UserKanbanView user={copyUser} myRef={myRef}/>
             </Case>
             <Case condition={viewType === ViewTypes.CALENDAR}>
-              <UserCalendarView user={copyUser} />
+              <UserCalendarView user={copyUser} myRef={myRef}/>
             </Case>
             <Default>
-              <ListViewComponent user={copyUser}  myRef={myRef} />
+              <ListViewComponent user={copyUser} myRef={myRef} />
             </Default>
           </Switch>
         </Grid>

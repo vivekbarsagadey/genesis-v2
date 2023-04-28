@@ -113,7 +113,7 @@ const UserCreateComponent = () => {
         state: userState,
         country: userCountry,
         role: role,
-        password: password,
+        password: encryptString,
       };
       await createUser(body);
       await router.push('/user');
