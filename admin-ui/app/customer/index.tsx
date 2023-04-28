@@ -69,13 +69,13 @@ const CustomerComponentHome = ({ customer }: CustomerComponentProps) => {
     <>
       <Box mt={1} ml={1.5}>
         <Grid container spacing={1}>
-          <Grid item xs={2} md={2} lg={2} sm={2}>
+          <Grid item xs={2} md={2} lg={3} sm={2}>
             <CustomerSearchDetails
               customer={customer}
               onSearchHandler={onSearchHandler}
             />
           </Grid>
-          <Grid item xs={7} md={7} sm={7} lg={7} display={'flex'}>
+          <Grid item xs={7} md={7} sm={7} lg={6} display={'flex'}>
             <Grid container>
               <Grid item xs={'auto'} mt={0.3}>
                 <FilterComponent

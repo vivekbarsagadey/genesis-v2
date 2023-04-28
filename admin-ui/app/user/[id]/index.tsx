@@ -16,6 +16,8 @@ import {
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
 import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -28,8 +30,6 @@ import {
   stateSelect,
 } from '../graphdata/graphdata.data';
 import { Status } from '../models';
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -54,10 +54,12 @@ const useStyles = makeStyles({
     height: '125px',
   },
   buttonStyle: {
-    width: '90%',
+    width: '92%',
+    marginTop: '-1rem',
   },
   buttonStyleSave: {
-    width: '80%',
+    width: '82%',
+    marginTop: '-1rem',
   },
 });
 
@@ -77,7 +79,6 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
   const [userAge, setUserAge] = useState(users.age);
   const [userEmail, setUserEmail] = useState(users.email);
   const [userPhone, setUserPhone] = useState(users.mobile);
-  const [userAddress, setUserAddress] = useState(users.address);
   const [userStatus, setUserStatus] = useState(users.status);
   const [userZipCode, setUserZipCode] = useState(users.zipCode);
   const [userCity, setUserCity] = useState(users.city);
@@ -105,7 +106,6 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
         email: userEmail,
         age: userAge,
         mobile: userPhone,
-        address: userAddress,
         status: userStatus,
         zipCode: userZipCode,
         city: userCity,
@@ -136,10 +136,8 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
   const updateUserPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserPhone(e.target.value);
   };
-  const updateUserAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserAddress(e.target.value);
-  };
-  const updateUserZipCode = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+  const updateZipCode = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserZipCode(e.target.value);
   };
   const updateUserState = (
@@ -243,7 +241,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                   <Grid item xs={3}>
                     <Typography>First Name</Typography>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -264,7 +262,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                   <Grid item xs={3}>
                     <Typography>Last Name</Typography>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -285,7 +283,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                   <Grid item xs={3}>
                     <Typography>Gender</Typography>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -308,7 +306,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                   <Grid item xs={3}>
                     <Typography>Age</Typography>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -329,7 +327,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                   <Grid item xs={3}>
                     <Typography>Email</Typography>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -350,7 +348,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                   <Grid item xs={3}>
                     <Typography>Phone</Typography>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -371,7 +369,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                   <Grid item xs={3}>
                     <Typography>Status</Typography>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -411,18 +409,20 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                           <Grid item xs={3}>
                             <Typography>Password</Typography>
                           </Grid>
-                          <Grid item xs={2}>
+                          <Grid item xs={1}>
                             <Typography>:</Typography>
                           </Grid>
                           <Grid item xs={6}>
                             <TextField
+                              disabled
+                              defaultValue="Disabled"
                               value={password}
                               onChange={updatePassword}
                               id="new-password"
                               variant="outlined"
                               size="small"
                               fullWidth
-                              placeholder="Enter New Password"
+                              placeholder="Disabled Password"
                             />
                           </Grid>
                         </Grid>
@@ -433,16 +433,14 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                           <Grid item xs={3} ml={2.6}>
                             <Typography>Confirm Password</Typography>
                           </Grid>
-                          <Grid item xs={2}>
+                          <Grid item xs={1}>
                             <Typography>:</Typography>
                           </Grid>
                           <Grid item xs={6}>
-                            <FormControl
-                              sx={{ m: 1, width: '33ch' }}
-                              variant="outlined"
-                            >
+                            <FormControl fullWidth variant="outlined">
                               <OutlinedInput
                                 size="small"
+                                defaultValue="Disabled"
                                 placeholder="Enter Confirm Password"
                                 id="confirm-password"
                                 type={showPassword ? 'text' : 'password'}
@@ -478,7 +476,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                           <Grid item xs={3}>
                             <Typography>Zip-Code</Typography>
                           </Grid>
-                          <Grid item xs={2}>
+                          <Grid item xs={1}>
                             <Typography>:</Typography>
                           </Grid>
                           <Grid item xs={6}>
@@ -489,7 +487,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                               size="small"
                               fullWidth
                               value={userZipCode}
-                              // onChange={updateZipCode}
+                              onChange={updateZipCode}
                             />
                           </Grid>
                         </Grid>
@@ -500,7 +498,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                           <Grid item xs={3} ml={2.6}>
                             <Typography>City</Typography>
                           </Grid>
-                          <Grid item xs={2}>
+                          <Grid item xs={1}>
                             <Typography>:</Typography>
                           </Grid>
                           <Grid item xs={6}>
@@ -523,7 +521,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                           <Grid item xs={3}>
                             <Typography>State</Typography>
                           </Grid>
-                          <Grid item xs={2}>
+                          <Grid item xs={1}>
                             <Typography>:</Typography>
                           </Grid>
                           <Grid item xs={6}>
@@ -548,7 +546,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                           <Grid item xs={3} ml={2.6}>
                             <Typography>Country</Typography>
                           </Grid>
-                          <Grid item xs={2}>
+                          <Grid item xs={1}>
                             <Typography>:</Typography>
                           </Grid>
                           <Grid item xs={6}>
@@ -579,13 +577,15 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                       <Grid item xs={3}>
                         <Typography>Role</Typography>
                       </Grid>
-                      <Grid item xs={2}>
+                      <Grid item xs={1}>
                         <Typography>:</Typography>
                       </Grid>
                       <Grid item xs={6}>
                         <Stack>
                           <Autocomplete
                             disablePortal
+                            disabled
+                            defaultValue="Disabled"
                             onChange={updateRole}
                             size="small"
                             id="combo-box-demo"
@@ -604,7 +604,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
       </Grid>
 
       <Grid container>
-        <Grid item xs={8.6}></Grid>
+        <Grid item xs={8.05}></Grid>
         <Grid item xs={3.3}>
           <Grid container>
             <Grid item xs={5.3}>
@@ -628,7 +628,7 @@ const UserEditComponent = ({ users, id }: UserComponentProps) => {
                 onClose={handleClose}
               >
                 <Alert onClose={handleClose} sx={{ width: '100%' }}>
-                  User Created Sucessfully...
+                  User Edit Sucessfully...
                 </Alert>
               </Snackbar>
             </Grid>

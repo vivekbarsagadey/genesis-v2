@@ -1,6 +1,4 @@
 'use client';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {
   Box,
   Button,
@@ -12,7 +10,7 @@ import {
   Snackbar,
   Stack,
   TextField,
-  Typography,
+  Typography
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -25,6 +23,8 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { createUser } from '../../../services/user.action';
 import { IRole } from '../../roles/models';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {
   citySelect,
   countrySelect,
@@ -56,9 +56,11 @@ const useStyles = makeStyles({
   },
   buttonStyle: {
     width: '90%',
+    marginTop:'-1rem'
   },
   buttonStyleSave: {
     width: '80%',
+    marginTop:'-1rem'
   },
 });
 
@@ -244,7 +246,7 @@ const UserCreateComponent = () => {
                   <Grid item xs={3}>
                     <Typography>First Name</Typography>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -265,7 +267,7 @@ const UserCreateComponent = () => {
                   <Grid item xs={3}>
                     <Typography>Last Name</Typography>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -286,7 +288,7 @@ const UserCreateComponent = () => {
                   <Grid item xs={3}>
                     <Typography>Gender</Typography>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -309,7 +311,7 @@ const UserCreateComponent = () => {
                   <Grid item xs={3}>
                     <Typography>Age</Typography>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -330,7 +332,7 @@ const UserCreateComponent = () => {
                   <Grid item xs={3}>
                     <Typography>Email</Typography>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -351,7 +353,7 @@ const UserCreateComponent = () => {
                   <Grid item xs={3}>
                     <Typography>Phone</Typography>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -372,7 +374,7 @@ const UserCreateComponent = () => {
                   <Grid item xs={3}>
                     <Typography>Status</Typography>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <Typography>:</Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -406,17 +408,17 @@ const UserCreateComponent = () => {
                 </Box>
                 <TabPanel value={value} index={0}>
                   <Box>
-                    <Grid container >
-                      <Grid item xs={6} mt={0.8}>
+                    <Grid container>
+                      <Grid item xs={6}>
                         <Grid container display="flex" alignItems="center">
                           <Grid item xs={3}>
-                            <Typography>Password</Typography>
+                            <Typography>New Password</Typography>
                           </Grid>
-                          <Grid item xs={2}>
+                          <Grid item xs={1}>
                             <Typography>:</Typography>
                           </Grid>
                           <Grid item xs={6}>
-                            <TextField
+                          <TextField
                               value={password}
                               onChange={updatePassword}
                               id="new-password"
@@ -434,12 +436,12 @@ const UserCreateComponent = () => {
                           <Grid item xs={3} ml={2.6}>
                             <Typography>Confirm Password</Typography>
                           </Grid>
-                          <Grid item xs={2}>
+                          <Grid item xs={1}>
                             <Typography>:</Typography>
                           </Grid>
                           <Grid item xs={6}>
-                            <FormControl
-                              sx={{ m: 1, width: '33ch' }}
+                          <FormControl
+                             fullWidth
                               variant="outlined"
                             >
                               <OutlinedInput
@@ -479,7 +481,7 @@ const UserCreateComponent = () => {
                           <Grid item xs={3}>
                             <Typography>Zip-Code</Typography>
                           </Grid>
-                          <Grid item xs={2}>
+                          <Grid item xs={1}>
                             <Typography>:</Typography>
                           </Grid>
                           <Grid item xs={6}>
@@ -501,7 +503,7 @@ const UserCreateComponent = () => {
                           <Grid item xs={3} ml={2.6}>
                             <Typography>City</Typography>
                           </Grid>
-                          <Grid item xs={2}>
+                          <Grid item xs={1}>
                             <Typography>:</Typography>
                           </Grid>
                           <Grid item xs={6}>
@@ -524,7 +526,7 @@ const UserCreateComponent = () => {
                           <Grid item xs={3}>
                             <Typography>State</Typography>
                           </Grid>
-                          <Grid item xs={2}>
+                          <Grid item xs={1}>
                             <Typography>:</Typography>
                           </Grid>
                           <Grid item xs={6}>
@@ -549,7 +551,7 @@ const UserCreateComponent = () => {
                           <Grid item xs={3} ml={2.6}>
                             <Typography>Country</Typography>
                           </Grid>
-                          <Grid item xs={2}>
+                          <Grid item xs={1}>
                             <Typography>:</Typography>
                           </Grid>
                           <Grid item xs={6}>
@@ -580,7 +582,7 @@ const UserCreateComponent = () => {
                       <Grid item xs={3}>
                         <Typography>Role</Typography>
                       </Grid>
-                      <Grid item xs={2}>
+                      <Grid item xs={1}>
                         <Typography>:</Typography>
                       </Grid>
                       <Grid item xs={6}>
@@ -605,10 +607,10 @@ const UserCreateComponent = () => {
       </Grid>
 
       <Grid container>
-        <Grid item xs={8.6}></Grid>
+        <Grid item xs={8.05}></Grid>
         <Grid item xs={3.3}>
           <Grid container>
-            <Grid item xs={5.3}>
+            <Grid item xs={5.5}>
               <Link href={'/user'} style={{ textDecoration: 'none' }}>
                 <Button variant="contained" className={classes.buttonStyle}>
                   Cancel

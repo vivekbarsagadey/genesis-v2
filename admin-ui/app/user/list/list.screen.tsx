@@ -19,7 +19,7 @@ const ListViewComponent = ({ user, myRef }: any) => {
   const [dateSort, setDateSort] = useState(true);
   const [emailSort, setEmailSort] = useState(true);
   const [contactSort, setContactSort] = useState(true);
-  const [addressSort, setAddressSort] = useState(true);
+  const [statusSort, setStatusSort] = useState(true);
 
   const handleNameSort = () => {
     if (nameSort) {
@@ -114,31 +114,31 @@ const ListViewComponent = ({ user, myRef }: any) => {
       setDateSort(true);
     }
   };
-  const handleAddressSort = () => {
-    if (addressSort) {
+  const handleStatusSort = () => {
+    if (statusSort) {
       user.sort((a, b) => {
-        if (a.address.toLowerCase() < b.address.toLowerCase()) {
+        if (a.status.toLowerCase() < b.status.toLowerCase()) {
           return -1;
         }
-        if (a.address.toLowerCase() > b.address.toLowerCase()) {
+        if (a.status.toLowerCase() > b.status.toLowerCase()) {
           return 1;
         }
         return 0;
       });
-      setAddressSort(false);
+      setStatusSort(false);
     } else {
       user
         .sort((a, b) => {
-          if (a.address.toLowerCase() < b.address.toLowerCase()) {
+          if (a.status.toLowerCase() < b.status.toLowerCase()) {
             return -1;
           }
-          if (a.address.toLowerCase() > b.address.toLowerCase()) {
+          if (a.status.toLowerCase() > b.status.toLowerCase()) {
             return 1;
           }
           return 0;
         })
         .reverse();
-      setAddressSort(true);
+      setStatusSort(true);
     }
   };
   const handleContactSort = () => {
@@ -283,12 +283,12 @@ const ListViewComponent = ({ user, myRef }: any) => {
                 <Typography variant="subtitle2" noWrap>
                   Status
                 </Typography>
-                {addressSort ? (
-                  <IconButton onClick={() => handleAddressSort()}>
+                {statusSort ? (
+                  <IconButton onClick={() => handleStatusSort()}>
                     <ArrowDropUpIcon />
                   </IconButton>
                 ) : (
-                  <IconButton onClick={() => handleAddressSort()}>
+                  <IconButton onClick={() => handleStatusSort()}>
                     <ArrowDropDownIcon />
                   </IconButton>
                 )}

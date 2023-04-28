@@ -125,7 +125,7 @@ const ProjectGridView = ({ projects }: ListComponentProps) => {
                                 </Grid>
                                 <Grid item xs={6} paddingLeft={2}>
                                   <Typography noWrap variant="subtitle1" mt={1}>
-                                    {item?.customerName}
+                                  {item?.customerName}
                                   </Typography>
                                 </Grid>
                               </Grid>

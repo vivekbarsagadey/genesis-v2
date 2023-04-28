@@ -14,7 +14,8 @@ const MetaDataSidebar = () => {
           style={{
             display: 'flex',
             marginLeft: '0.7rem',
-            paddingRight: '1rem',marginTop:'10rem'
+            paddingRight: '1rem',
+            marginTop: '10rem',
           }}
         >
           <Grid item xs={3}>
@@ -25,13 +26,72 @@ const MetaDataSidebar = () => {
           <Grid item xs={9}>
             <CollapsibleListItem label="Master Data">
               <ul style={{ listStyle: 'none', marginLeft: '-1.5rem' }}>
-                <Link
+                {/* <Link
                   href="/metadata/address"
                   passHref
                   style={{ textDecoration: 'none' }}
                 >
                   <NormalListItem label="Address" />
                 </Link>
+
+                <Link
+                  href="/metadata/country"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="Country" />
+                </Link>
+
+                <Link
+                  href="/metadata/state"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="State" />
+                </Link>
+
+                <Link
+                  href="/metadata/city"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="City" />
+                </Link>
+
+                <Link
+                  href="/metadata/pincode"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="Pin Code" />
+                </Link> */}
+              </ul>
+            </CollapsibleListItem>
+          </Grid>
+        </Box>
+
+        <Box
+          style={{
+            display: 'flex',
+            marginLeft: '0.7rem',
+            paddingRight: '1rem',
+          }}
+        >
+          <Grid item xs={3}>
+            <IconButton>
+              <AirplayIcon fontSize="small" />
+            </IconButton>
+          </Grid>
+          <Grid item xs={9}>
+            <CollapsibleListItem label="Address">
+              <ul style={{ listStyle: 'none', marginLeft: '-1.5rem' }}>
+                {/* <Link
+                  href="/metadata/address"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="Address" />
+                </Link> */}
 
                 <Link
                   href="/metadata/country"
@@ -84,11 +144,7 @@ const MetaDataSidebar = () => {
           <Grid item xs={9}>
             <CollapsibleListItem label="Roles">
               <ul style={{ listStyle: 'none', marginLeft: '-1.5rem' }}>
-                <Link
-                  href="/roles"
-                  passHref
-                  style={{ textDecoration: 'none' }}
-                >
+                <Link href="/roles" passHref style={{ textDecoration: 'none' }}>
                   <NormalListItem label="Role" />
                 </Link>
               </ul>

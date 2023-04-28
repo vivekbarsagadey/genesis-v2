@@ -40,13 +40,13 @@ const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
     <Box ml={1.5}>
       <Grid mt={1}>
         <Grid container spacing={1}>
-          <Grid item xs={2} md={2} lg={2} sm={2}>
+          <Grid item xs={2} md={2} lg={3} sm={2}>
             <ProjectSearch
               projects={projects}
               onSearchHandler={onSearchHandler}
             />
           </Grid>
-          <Grid item xs={4} md={8} sm={8} lg={8} display={'flex'}>
+          <Grid item xs={4} md={8} sm={8} lg={7} display={'flex'}>
             <Grid container spacing={1}>
               <Grid item xs={'auto'} mt={0.3}>
                 <ProjectFilterComponent
