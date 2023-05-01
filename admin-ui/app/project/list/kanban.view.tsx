@@ -1,24 +1,27 @@
-'use client'
+'use client';
+
 import React, { useState } from 'react';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import ApiIcon from '@mui/icons-material/Api';
-import { Card, FormControl, IconButton, Menu, MenuItem, Modal, Paper, Select, Tooltip, Button, } from '@mui/material';
+import {
+	Card, FormControl, IconButton, Menu, MenuItem, Modal, Paper, Select, Tooltip, Button,
+} from '@mui/material';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid/Grid';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
-import { IProject, Status } from '../models';
-import { ListComponentProps } from './props';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import moment from 'moment';
-import { deleteProject, updateProject } from '../../../services/project.action';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import EditIcon from '@mui/icons-material/Edit';
 import EmailIcon from '@mui/icons-material/Email';
 import CallIcon from '@mui/icons-material/Call';
+import { deleteProject, updateProject } from '../../../services/project.action';
+import { ListComponentProps } from './props';
+import { IProject, Status } from '../models';
 
 const CardStyle = styled(Grid)(({ theme }) => ({
 	height: '80vh',
@@ -58,145 +61,129 @@ type IInActiveProject = {
   inActiveProject: IProject;
 };
 
-const ProjectKanbanView = ({ projects }: ListComponentProps) => {
+function ProjectKanbanView({ projects }: ListComponentProps) {
 	const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
-	const newProjects = projects.filter((ele: IProject) => {
-		return ele.status == statusSet[0];
-	});
-	const activeProjects = projects.filter((ele: IProject) => {
-		return ele.status == statusSet[1];
-	});
-	const inActiveProjects = projects.filter((ele: IProject) => {
-		return ele.status == statusSet[2];
-	});
-  
+	const newProjects = projects.filter((ele: IProject) => ele.status == statusSet[0]);
+	const activeProjects = projects.filter((ele: IProject) => ele.status == statusSet[1]);
+	const inActiveProjects = projects.filter((ele: IProject) => ele.status == statusSet[2]);
 
 	const classes = useStyles();
 	return (
-		<>
-			<Grid container spacing={2} mt={1} pr={2}>
-				<Grid item xs={4}>
-					<CardStyle>
-						<Paper variant="outlined" className={classes.cardView}>
-							<CardContent>
-                
-								<Grid container>
-									<Grid item xs={11} display="flex" alignItems="center">
-										<FiberManualRecordIcon
-											fontSize="small"
-											htmlColor="blue"
-										/>
-										<Typography variant="h6" pl={1}>NEW</Typography>
-									</Grid>
-									<Grid
-										item
-										xs={0.7}
-										display="flex"
-										alignItems="center"
-										justifyContent="center"
-										border="1px solid gray"
-										borderRadius="40px"
-										backgroundColor="lightgray"
-									>
-										<Typography fontSize="12px">
-											{newProjects.length}
-										</Typography>
-									</Grid>
-								</Grid>
-                
-								{newProjects.reverse()?.map((newProject, index) => {
-									return (
-										<NewProjectComponent newProject={newProject} key={index} />
-									);
-								})}
-							</CardContent>
-						</Paper>
-					</CardStyle>
-				</Grid>
-				<Grid item xs={4}>
-					<CardStyle>
-						<Paper variant="outlined" className={classes.cardView}>
-							<CardContent>
-                
-								<Grid container>
-									<Grid item xs={11} display="flex" alignItems="center">
-										<FiberManualRecordIcon
-											fontSize="small"
-											htmlColor="green"
-										/>
-										<Typography variant="h6" pl={1}>ACTIVE</Typography>
-									</Grid>
-									<Grid
-										item
-										xs={0.7}
-										display="flex"
-										alignItems="center"
-										justifyContent="center"
-										border="1px solid gray"
-										borderRadius="40px"
-										backgroundColor="lightgray"
-									>
-										<Typography fontSize="12px">
-											{activeProjects.length}
-										</Typography>
-									</Grid>
-								</Grid>
-                
-								{activeProjects.reverse()?.map((activeProject, index) => {
-									return (
-										<ActiveProjectComponent activeProject={activeProject} key={index} />
-									);
-								})}
-							</CardContent>
-						</Paper>
-					</CardStyle>
-				</Grid>
-				<Grid item xs={4}>
-					<CardStyle>
-						<Paper variant="outlined" className={classes.cardView}>
-							<CardContent>
-                
-								<Grid container>
-									<Grid item xs={11} display="flex" alignItems="center">
-										<FiberManualRecordIcon
-											fontSize="small"
-											htmlColor="red"
-										/>
-										<Typography variant="h6" pl={1}>INACTIVE</Typography>
-									</Grid>
-									<Grid
-										item
-										xs={0.7}
-										display="flex"
-										alignItems="center"
-										justifyContent="center"
-										border="1px solid gray"
-										borderRadius="40px"
-										backgroundColor="lightgray"
-									>
-										<Typography fontSize="12px">
-											{inActiveProjects.length}
-										</Typography>
-									</Grid>
-								</Grid>
-                
-								{inActiveProjects.reverse()?.map((inActiveProject, index) => {
-									return (
-										<InActiveProjectComponent inActiveProject={inActiveProject} key={index} />
-									);
-								})}
-							</CardContent>
-						</Paper>
-					</CardStyle>
-				</Grid>
-			</Grid>
-		</>
-	);
-};
+		<Grid container spacing={2} mt={1} pr={2}>
+			<Grid item xs={4}>
+				<CardStyle>
+					<Paper variant="outlined" className={classes.cardView}>
+						<CardContent>
 
-const NewProjectComponent = ({ newProject }: INewProject) => {
-  
+							<Grid container>
+								<Grid item xs={11} display="flex" alignItems="center">
+									<FiberManualRecordIcon
+										fontSize="small"
+										htmlColor="blue"
+  />
+									<Typography variant="h6" pl={1}>NEW</Typography>
+  </Grid>
+								<Grid
+									item
+									xs={0.7}
+									display="flex"
+									alignItems="center"
+									justifyContent="center"
+									border="1px solid gray"
+									borderRadius="40px"
+									backgroundColor="lightgray"
+  >
+									<Typography fontSize="12px">
+										{newProjects.length}
+  </Typography>
+  </Grid>
+  </Grid>
+
+							{newProjects.reverse()?.map((newProject, index) => (
+    <NewProjectComponent newProject={newProject} key={index} />
+							))}
+  </CardContent>
+  </Paper>
+  </CardStyle>
+  </Grid>
+			<Grid item xs={4}>
+				<CardStyle>
+					<Paper variant="outlined" className={classes.cardView}>
+						<CardContent>
+
+							<Grid container>
+								<Grid item xs={11} display="flex" alignItems="center">
+									<FiberManualRecordIcon
+										fontSize="small"
+										htmlColor="green"
+  />
+									<Typography variant="h6" pl={1}>ACTIVE</Typography>
+  </Grid>
+								<Grid
+									item
+									xs={0.7}
+									display="flex"
+									alignItems="center"
+									justifyContent="center"
+									border="1px solid gray"
+									borderRadius="40px"
+									backgroundColor="lightgray"
+  >
+									<Typography fontSize="12px">
+										{activeProjects.length}
+  </Typography>
+  </Grid>
+  </Grid>
+
+							{activeProjects.reverse()?.map((activeProject, index) => (
+    <ActiveProjectComponent activeProject={activeProject} key={index} />
+							))}
+  </CardContent>
+  </Paper>
+  </CardStyle>
+  </Grid>
+			<Grid item xs={4}>
+				<CardStyle>
+					<Paper variant="outlined" className={classes.cardView}>
+						<CardContent>
+
+							<Grid container>
+								<Grid item xs={11} display="flex" alignItems="center">
+									<FiberManualRecordIcon
+										fontSize="small"
+										htmlColor="red"
+  />
+									<Typography variant="h6" pl={1}>INACTIVE</Typography>
+  </Grid>
+								<Grid
+									item
+									xs={0.7}
+									display="flex"
+									alignItems="center"
+									justifyContent="center"
+									border="1px solid gray"
+									borderRadius="40px"
+									backgroundColor="lightgray"
+  >
+									<Typography fontSize="12px">
+										{inActiveProjects.length}
+  </Typography>
+  </Grid>
+  </Grid>
+
+							{inActiveProjects.reverse()?.map((inActiveProject, index) => (
+    <InActiveProjectComponent inActiveProject={inActiveProject} key={index} />
+							))}
+  </CardContent>
+  </Paper>
+  </CardStyle>
+  </Grid>
+  </Grid>
+	);
+}
+
+function NewProjectComponent({ newProject }: INewProject) {
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const [openEditModal, setOpenEditModal] = React.useState(false);
 	const handleEditModalOpen = () => setOpenEditModal(true);
@@ -210,35 +197,35 @@ const NewProjectComponent = ({ newProject }: INewProject) => {
 		setAnchorEl(null);
 	};
 	const classes = useStyles();
-  
+
 	const handleupdateStatus = (event: SelectChangeEvent) => {
 		setNewStatus(event.target.value as string);
 	};
-  
+
 	const updateStatusHandler = async () => {
 		try {
 			const body = {
 				status: newStatus,
 			};
 			await updateProject(newProject.id, body);
-  
+
 			handleEditModalClose();
 			window.location.reload();
 		} catch (error) {
 			console.error(error);
 		}
 	};
-  
+
 	return (
 		<Box mt={1}>
-			<Card variant="outlined" style={{borderRadius:'6px'}}>
+			<Card variant="outlined" style={{ borderRadius: '6px' }}>
 				<Grid container>
 					<Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
 						<ApiIcon fontSize="inherit" />
 						<Typography noWrap pl={1} variant="h6">
 							{newProject.name}
-						</Typography>
-					</Grid>
+  </Typography>
+  </Grid>
 					<Grid
 						item
 						xs={6}
@@ -246,10 +233,10 @@ const NewProjectComponent = ({ newProject }: INewProject) => {
 						justifyContent="flex-end"
 						pl={2}
 						pb={1}
-					>
+  >
 						<IconButton onClick={handleClick}>
 							<MoreHorizIcon fontSize="small" />
-						</IconButton>
+  </IconButton>
 						<Menu
 							anchorEl={anchorEl}
 							open={open}
@@ -262,14 +249,14 @@ const NewProjectComponent = ({ newProject }: INewProject) => {
 								vertical: 'top',
 								horizontal: 'left',
 							}}
-						>
+  >
 							<MenuItem>
 								<IconButton
 									onClick={handleEditModalOpen}
 									className={classes.buttonStyle}
-								>
+  >
 									<EditIcon fontSize="inherit" />
-								</IconButton>
+  </IconButton>
 								<Modal open={openEditModal} onClose={handleEditModalClose}>
 									<Box className={classes.modalStyle}>
 										<Card>
@@ -281,57 +268,57 @@ const NewProjectComponent = ({ newProject }: INewProject) => {
 															id="demo-simple-select"
 															value={newStatus}
 															onChange={handleupdateStatus}
-														>
-															<MenuItem value={'NEW'}>NEW</MenuItem>
-															<MenuItem value={'ACTIVE'}>ACTIVE</MenuItem>
-															<MenuItem value={'INACTIVE'}>INACTIVE</MenuItem>
-														</Select>
-													</FormControl>
-												</Grid>
+  >
+															<MenuItem value="NEW">NEW</MenuItem>
+															<MenuItem value="ACTIVE">ACTIVE</MenuItem>
+															<MenuItem value="INACTIVE">INACTIVE</MenuItem>
+  </Select>
+  </FormControl>
+  </Grid>
 												<Grid item xs={12}>
 													<Button
 														className={classes.buttonStyle}
 														onClick={updateStatusHandler}
-													>
-                            Apply
-													</Button>
-												</Grid>
-											</Grid>
-										</Card>
-									</Box>
-								</Modal>
-							</MenuItem>
+  >
+  Apply
+  </Button>
+  </Grid>
+  </Grid>
+  </Card>
+  </Box>
+  </Modal>
+  </MenuItem>
 							<MenuItem>
 								<IconButton
 									onClick={() => deleteProject(newProject.id)}
 									className={classes.buttonStyle}
-								>
+  >
 									<DeleteIcon htmlColor="red" />
-								</IconButton>
-							</MenuItem>
-						</Menu>
-					</Grid>
-         
+  </IconButton>
+  </MenuItem>
+  </Menu>
+  </Grid>
+
 					<Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
 						<CalendarMonthIcon fontSize="inherit" />
 						<Typography noWrap pl={2}>
 							{moment(newProject.createdAt).format('DD/MM/YYYY')}
-						</Typography>
-					</Grid>
-					<Grid item xs={12} display="flex" alignItems="center"  pl={2} pb={2}>
+  </Typography>
+  </Grid>
+					<Grid item xs={12} display="flex" alignItems="center" pl={2} pb={2}>
 						<Tooltip title="Edit Status">
 							<Typography noWrap>Status -</Typography>
-						</Tooltip>
-						<Typography noWrap variant="h6" pl={1} color={'blue'}>
+  </Tooltip>
+						<Typography noWrap variant="h6" pl={1} color="blue">
 							{newProject.status}
-						</Typography>
-					</Grid>
-				</Grid>
-			</Card>
-		</Box>
+  </Typography>
+  </Grid>
+  </Grid>
+  </Card>
+  </Box>
 	);
-};
-const ActiveProjectComponent = ({ activeProject }: IActiveProject) => {
+}
+function ActiveProjectComponent({ activeProject }: IActiveProject) {
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const [openEditModal, setOpenEditModal] = React.useState(false);
 	const handleEditModalOpen = () => setOpenEditModal(true);
@@ -345,18 +332,18 @@ const ActiveProjectComponent = ({ activeProject }: IActiveProject) => {
 		setAnchorEl(null);
 	};
 	const classes = useStyles();
-  
+
 	const handleupdateStatus = (event: SelectChangeEvent) => {
 		setNewStatus(event.target.value as string);
 	};
-  
+
 	const updateStatusHandler = async () => {
 		try {
 			const body = {
 				status: newStatus,
 			};
 			await updateProject(activeProject.id, body);
-  
+
 			handleEditModalClose();
 			window.location.reload();
 		} catch (error) {
@@ -371,8 +358,8 @@ const ActiveProjectComponent = ({ activeProject }: IActiveProject) => {
 						<ApiIcon fontSize="inherit" />
 						<Typography noWrap pl={1} variant="h6">
 							{activeProject.name}
-						</Typography>
-					</Grid>
+  </Typography>
+  </Grid>
 					<Grid
 						item
 						xs={6}
@@ -380,10 +367,10 @@ const ActiveProjectComponent = ({ activeProject }: IActiveProject) => {
 						justifyContent="flex-end"
 						pl={2}
 						pb={1}
-					>
+  >
 						<IconButton onClick={handleClick}>
 							<MoreHorizIcon fontSize="small" />
-						</IconButton>
+  </IconButton>
 						<Menu
 							anchorEl={anchorEl}
 							open={open}
@@ -396,14 +383,14 @@ const ActiveProjectComponent = ({ activeProject }: IActiveProject) => {
 								vertical: 'top',
 								horizontal: 'left',
 							}}
-						>
+  >
 							<MenuItem>
 								<IconButton
 									onClick={handleEditModalOpen}
 									className={classes.buttonStyle}
-								>
+  >
 									<EditIcon fontSize="inherit" />
-								</IconButton>
+  </IconButton>
 								<Modal open={openEditModal} onClose={handleEditModalClose}>
 									<Box className={classes.modalStyle}>
 										<Card>
@@ -415,57 +402,57 @@ const ActiveProjectComponent = ({ activeProject }: IActiveProject) => {
 															id="demo-simple-select"
 															value={newStatus}
 															onChange={handleupdateStatus}
-														>
-															<MenuItem value={'NEW'}>NEW</MenuItem>
-															<MenuItem value={'ACTIVE'}>ACTIVE</MenuItem>
-															<MenuItem value={'INACTIVE'}>INACTIVE</MenuItem>
-														</Select>
-													</FormControl>
-												</Grid>
+  >
+															<MenuItem value="NEW">NEW</MenuItem>
+															<MenuItem value="ACTIVE">ACTIVE</MenuItem>
+															<MenuItem value="INACTIVE">INACTIVE</MenuItem>
+  </Select>
+  </FormControl>
+  </Grid>
 												<Grid item xs={12}>
 													<Button
 														className={classes.buttonStyle}
 														onClick={updateStatusHandler}
-													>
-                          Apply
-													</Button>
-												</Grid>
-											</Grid>
-										</Card>
-									</Box>
-								</Modal>
-							</MenuItem>
+  >
+  Apply
+  </Button>
+  </Grid>
+  </Grid>
+  </Card>
+  </Box>
+  </Modal>
+  </MenuItem>
 							<MenuItem>
 								<IconButton
 									onClick={() => deleteProject(activeProject.id)}
 									className={classes.buttonStyle}
-								>
+  >
 									<DeleteIcon htmlColor="red" />
-								</IconButton>
-							</MenuItem>
-						</Menu>
-					</Grid>
-					<Grid item xs={12} display="flex" alignItems="center"  pl={2} pb={1}>
+  </IconButton>
+  </MenuItem>
+  </Menu>
+  </Grid>
+					<Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
 						<CalendarMonthIcon fontSize="inherit" />
 						<Typography noWrap pl={2}>
 							{moment(activeProject.createdAt).format('DD/MM/YYYY')}
-						</Typography>
-					</Grid>
-					<Grid item xs={12} display="flex" alignItems="center"  pl={2} pb={2}>
+  </Typography>
+  </Grid>
+					<Grid item xs={12} display="flex" alignItems="center" pl={2} pb={2}>
 						<Tooltip title="Edit Status">
 							<Typography noWrap>Status -</Typography>
-						</Tooltip>
-						<Typography noWrap variant="h6" pl={1} color={'green'}>
+  </Tooltip>
+						<Typography noWrap variant="h6" pl={1} color="green">
 							{activeProject.status}
-						</Typography>
-					</Grid>
-   
-				</Grid>
-			</Card>
-		</Box>
+  </Typography>
+  </Grid>
+
+  </Grid>
+  </Card>
+  </Box>
 	);
-};
-const InActiveProjectComponent = ({ inActiveProject }: IInActiveProject) => {
+}
+function InActiveProjectComponent({ inActiveProject }: IInActiveProject) {
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const [openEditModal, setOpenEditModal] = React.useState(false);
 	const handleEditModalOpen = () => setOpenEditModal(true);
@@ -505,8 +492,8 @@ const InActiveProjectComponent = ({ inActiveProject }: IInActiveProject) => {
 						<ApiIcon fontSize="inherit" />
 						<Typography noWrap pl={1} variant="h6">
 							{inActiveProject.name}
-						</Typography>
-					</Grid>
+  </Typography>
+  </Grid>
 					<Grid
 						item
 						xs={6}
@@ -514,10 +501,10 @@ const InActiveProjectComponent = ({ inActiveProject }: IInActiveProject) => {
 						justifyContent="flex-end"
 						pl={2}
 						pb={1}
-					>
+  >
 						<IconButton onClick={handleClick}>
 							<MoreHorizIcon fontSize="small" />
-						</IconButton>
+  </IconButton>
 						<Menu
 							anchorEl={anchorEl}
 							open={open}
@@ -530,15 +517,15 @@ const InActiveProjectComponent = ({ inActiveProject }: IInActiveProject) => {
 								vertical: 'top',
 								horizontal: 'left',
 							}}
-						>
+  >
 							<MenuItem>
 								<IconButton
 									onClick={handleEditModalOpen}
 									className={classes.buttonStyle}
-								>
+  >
 									<EditIcon fontSize="inherit" />
-								</IconButton>
-								<Modal open={openEditModal} onClose={handleEditModalClose} style={{opacity:1}}>
+  </IconButton>
+								<Modal open={openEditModal} onClose={handleEditModalClose} style={{ opacity: 1 }}>
 									<Box className={classes.modalStyle}>
 										<Card>
 											<Grid container spacing={2} p={3}>
@@ -549,56 +536,56 @@ const InActiveProjectComponent = ({ inActiveProject }: IInActiveProject) => {
 															id="demo-simple-select"
 															value={newStatus}
 															onChange={handleupdateStatus}
-														>
-															<MenuItem value={'NEW'}>NEW</MenuItem>
-															<MenuItem value={'ACTIVE'}>ACTIVE</MenuItem>
-															<MenuItem value={'INACTIVE'}>INACTIVE</MenuItem>
-														</Select>
-													</FormControl>
-												</Grid>
+  >
+															<MenuItem value="NEW">NEW</MenuItem>
+															<MenuItem value="ACTIVE">ACTIVE</MenuItem>
+															<MenuItem value="INACTIVE">INACTIVE</MenuItem>
+  </Select>
+  </FormControl>
+  </Grid>
 												<Grid item xs={12}>
 													<Button
 														className={classes.buttonStyle}
 														onClick={updateStatusHandler}
-													>
-                          Apply
-													</Button>
-												</Grid>
-											</Grid>
-										</Card>
-									</Box>
-								</Modal>
-							</MenuItem>
+  >
+  Apply
+  </Button>
+  </Grid>
+  </Grid>
+  </Card>
+  </Box>
+  </Modal>
+  </MenuItem>
 							<MenuItem>
 								<IconButton
 									onClick={() => deleteProject(inActiveProject.id)}
 									className={classes.buttonStyle}
-								>
+  >
 									<DeleteIcon htmlColor="red" />
-								</IconButton>
-							</MenuItem>
-						</Menu>
-					</Grid>
-       
+  </IconButton>
+  </MenuItem>
+  </Menu>
+  </Grid>
+
 					<Grid item xs={12} display="flex" alignItems="center" pl={2} pb={1}>
 						<CalendarMonthIcon fontSize="inherit" />
 						<Typography noWrap pl={2}>
 							{moment(inActiveProject.createdAt).format('DD/MM/YYYY')}
-						</Typography>
-					</Grid>
-					<Grid item xs={12} display="flex" alignItems="center"  pl={2} pb={2}>
+  </Typography>
+  </Grid>
+					<Grid item xs={12} display="flex" alignItems="center" pl={2} pb={2}>
 						<Tooltip title="Edit Status">
 							<Typography noWrap>Status -</Typography>
-						</Tooltip>
-						<Typography noWrap variant="h6" pl={1} color={'red'}>
+  </Tooltip>
+						<Typography noWrap variant="h6" pl={1} color="red">
 							{inActiveProject.status}
-						</Typography>
-					</Grid>
-    
-				</Grid>
-			</Card>
-		</Box>
+  </Typography>
+  </Grid>
+
+  </Grid>
+  </Card>
+  </Box>
 	);
-};
+}
 
 export default ProjectKanbanView;

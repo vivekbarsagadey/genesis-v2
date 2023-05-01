@@ -1,8 +1,7 @@
-import { IRole } from "./role.model";
+import { IRole } from './role.model';
 
 interface IRoleComponentProps {
     items: Array<IRole>;
-    itemsCallBackHandler? : (_items: Array<IRole> ) => void;
+    itemsCallBackHandler? : (_items: Array<IRole>) => void;
 }
-export type { IRoleComponentProps } ;
-
+export type { IRoleComponentProps };

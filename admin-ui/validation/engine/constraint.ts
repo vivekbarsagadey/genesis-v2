@@ -1,9 +1,9 @@
-import { ValidatorType } from './';
+import { ValidatorType } from '.';
 
 const Pattern = {
-  DOMAIN_NAME: new RegExp(
-    /^\s*(?:(?:\w+(?:-+\w+)*\.)+[a-z]+)\s*(?:,\s*(?:(?:\w+(?:-+\w+)*\.)+[a-z]+)\s*)*$/
-  ),
+	DOMAIN_NAME: new RegExp(
+		/^\s*(?:(?:\w+(?:-+\w+)*\.)+[a-z]+)\s*(?:,\s*(?:(?:\w+(?:-+\w+)*\.)+[a-z]+)\s*)*$/,
+	),
 };
 interface Constraint {
   field: string;

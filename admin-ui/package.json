@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"**/*.{js,jsx}\""
+    "eslint": "eslint --ext .js,.ts,.jsx,.tsx . --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
     "@emotion/cache": "^11.10.8",

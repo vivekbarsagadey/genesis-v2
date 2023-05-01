@@ -1,14 +1,15 @@
-"use client";
-import { use } from "react";
-import CustomerComponentHome from ".";
-import { findAll } from "../../services/api.service";
-import { ICustomer } from "./models";
+'use client';
 
-const URL = "customer";
+import { use } from 'react';
+import CustomerComponentHome from '.';
+import { findAll } from '../../services/api.service';
+import { ICustomer } from './models';
 
-const Page = () => {
-  const customer = use<Array<ICustomer>>(findAll(URL));
-  return <CustomerComponentHome customer={customer}/>;
-};
+const URL = 'customer';
+
+function Page() {
+	const customer = use<Array<ICustomer>>(findAll(URL));
+	return <CustomerComponentHome customer={customer} />;
+}
 
 export default Page;

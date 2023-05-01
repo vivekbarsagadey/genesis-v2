@@ -1,13 +1,12 @@
 'use client';
+
 import React from 'react';
 import CreateTemplate from '.';
 
-const Page = () => {
+function Page() {
 	return (
-		<>
-			<CreateTemplate />
-		</>
+		<CreateTemplate />
 	);
-};
+}
 
 export default Page;

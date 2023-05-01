@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const ReportComponent = () => {
-  return (
-    <div>This is report page</div>
-  )
+function ReportComponent() {
+	return <div>This is report page</div>;
 }
 
-export default ReportComponent
+export default ReportComponent;

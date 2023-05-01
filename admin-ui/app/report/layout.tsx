@@ -1,4 +1,5 @@
-"use client";
+'use client';
+
 import { ReactNode } from 'react';
 
 type IReports = {
@@ -6,9 +7,7 @@ type IReports = {
 };
 
 export default function Layout({ children }: IReports) {
-  return (
-    <>
-      <main>{children}</main>
-    </>
-  );
+	return (
+		<main>{children}</main>
+	);
 }

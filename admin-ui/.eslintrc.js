@@ -17,7 +17,18 @@ module.exports = {
 	},
 	plugins: ['react', '@typescript-eslint'],
 	rules: {
-		'max-len': [1, 70, 2, { ignoreComments: true }],
+		'max-len': [
+			'error',
+			{
+				code: 125,
+				tabWidth: 4,
+				ignoreComments: true,
+				ignoreTrailingComments: true,
+				ignoreUrls: true,
+				ignoreStrings: true,
+				ignoreTemplateLiterals: true,
+			},
+		],
 		indent: ['error', 'tab'],
 		'linebreak-style': ['error', 'unix'],
 		quotes: ['error', 'single'],

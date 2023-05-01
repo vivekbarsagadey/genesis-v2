@@ -6,4 +6,4 @@ enum ViewTypes{
     KANBAN
 }
 
-export {ViewTypes};
+export { ViewTypes };

@@ -1,11 +1,12 @@
-"use client"
-import { colors, fontSize, weight } from "../../../../themes";
+'use client';
 
-const ButtonStyles ={
-    button:{
-        item:{},
-        container:{}
-    }
+import { colors, fontSize, weight } from '../../../../themes';
 
-}
-export {ButtonStyles}
+const ButtonStyles = {
+	button: {
+		item: {},
+		container: {},
+	},
+
+};
+export { ButtonStyles };

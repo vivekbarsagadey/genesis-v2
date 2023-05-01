@@ -1,12 +1,10 @@
-import React from 'react'
-import ReportComponent from '.'
+import React from 'react';
+import ReportComponent from '.';
 
-const page = () => {
-  return (
-    <div>
-        <ReportComponent/>
-    </div>
-  )
-}
+const page = () => (
+  <div>
+  <ReportComponent />
+	</div>
+);
 
-export default page
+export default page;

@@ -1,4 +1,5 @@
 'use client';
+
 import React, { use } from 'react';
 import { findAll } from '../../../services/api.service';
 import { IWidgets } from './widgets.props';

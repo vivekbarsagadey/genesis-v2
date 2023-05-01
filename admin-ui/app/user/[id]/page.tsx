@@ -1,8 +1,9 @@
-"use client";
-import { use } from "react";
-import UserEditComponent from ".";
+'use client';
 
-import { findById } from "../../../services/api.service";
+import { use } from 'react';
+import UserEditComponent from '.';
+
+import { findById } from '../../../services/api.service';
 
 type User = {
   firstName: string;
@@ -19,12 +20,11 @@ type User = {
   country: string;
 };
 
-const Page = ({ params } : any) => {
-  const id = params.id;
+function Page({ params } : any) {
+	const { id } = params;
 
-  const users = use<User>(findById("user", id));
-  return <>{users && <UserEditComponent users={users} id={id} />}</>
-  
-};
+	const users = use<User>(findById('user', id));
+	return <>{users && <UserEditComponent users={users} id={id} />}</>;
+}
 
 export default Page;

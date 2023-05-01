@@ -16,4 +16,4 @@ type ICustomer = {
   status: string;
 };
 
-export type { ICustomer } ;
+export type { ICustomer };

@@ -1,4 +1,4 @@
-import { ICompany } from "../models";
+import { ICompany } from '../models';
 
 export interface ListComponentProps {
   companies: Array<ICompany>;

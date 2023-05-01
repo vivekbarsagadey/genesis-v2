@@ -1,4 +1,5 @@
 'use client';
+
 import {
 	Box,
 	Button,
@@ -21,10 +22,10 @@ import { encrypt } from 'n-krypta';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { createUser } from '../../../services/user.action';
-import { IRole } from '../../roles/models';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { createUser } from '../../../services/user.action';
+import { IRole } from '../../roles/models';
 import {
 	citySelect,
 	countrySelect,
@@ -64,15 +65,13 @@ const useStyles = makeStyles({
 	},
 });
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
 	props,
-	ref
-) {
-	return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+	ref,
+) => <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />);
 
 const genderType = [{ title: 'Male' }, { title: 'Female' }];
-const UserCreateComponent = () => {
+function UserCreateComponent() {
 	const classes = useStyles();
 	const [userFirstName, setUserFirstName] = useState('');
 	const [userLastName, setUserLastName] = useState('');
@@ -104,7 +103,7 @@ const UserCreateComponent = () => {
 			const body = {
 				firstName: userFirstName,
 				lastName: userLastName,
-				gender: gender,
+				gender,
 				email: userEmail,
 				age: userAge,
 				mobile: userPhone,
@@ -113,7 +112,7 @@ const UserCreateComponent = () => {
 				city: userCity,
 				state: userState,
 				country: userCountry,
-				role: role,
+				role,
 				password: encrypt(password, `${process.env.NEXT_PUBLIC_KEY}`),
 			};
 			await createUser(body);
@@ -147,44 +146,44 @@ const UserCreateComponent = () => {
 
 	const handleClickShowPassword = () => setShowPassword((show) => !show);
 	const handleMouseDownPassword = (
-		event: React.MouseEvent<HTMLButtonElement>
+		event: React.MouseEvent<HTMLButtonElement>,
 	) => {
 		event.preventDefault();
 	};
 	const updateUserChange = (
 		e: React.SyntheticEvent<Element, Event>,
-		value: string
+		value: string,
 	) => {
 		setGender(value);
 	};
 	const updateUserCountry = (
 		e: React.SyntheticEvent<Element, Event>,
-		value: string
+		value: string,
 	) => {
 		setUserCountry(value);
 	};
 	const updateUserState = (
 		e: React.SyntheticEvent<Element, Event>,
-		value: string
+		value: string,
 	) => {
 		setUserState(value);
 	};
 	const updateUserCity = (
 		e: React.SyntheticEvent<Element, Event>,
-		value: string
+		value: string,
 	) => {
 		setUserCity(value);
 	};
 	const updateUserStatus = (
 		e: React.SyntheticEvent<Element, Event>,
-		value: string
+		value: string,
 	) => {
 		setUserStatus(value);
 	};
 
 	const updateRole = (
 		e: React.SyntheticEvent<Element, Event>,
-		value: string
+		value: string,
 	) => {
 		setRole(value);
 	};
@@ -193,7 +192,7 @@ const UserCreateComponent = () => {
 	};
 	const handleClose = (
 		event?: React.SyntheticEvent | Event,
-		reason?: string
+		reason?: string,
 	) => {
 		if (reason === 'clickaway') {
 			return;
@@ -229,9 +228,9 @@ const UserCreateComponent = () => {
 		<Box>
 			<Grid container>
 				<Grid item xs={12} mt={1} ml={2}>
-					<Typography fontSize={'1.2rem'}>Create New User</Typography>
-				</Grid>
-			</Grid>
+					<Typography fontSize="1.2rem">Create New User</Typography>
+  </Grid>
+  </Grid>
 			<Grid container style={{ height: '78vh' }}>
 				<Grid item xs={12}>
 					<Box sx={{ flexGrow: 1 }} padding={2}>
@@ -240,10 +239,10 @@ const UserCreateComponent = () => {
 								<Grid container display="flex" alignItems="center">
 									<Grid item xs={3}>
 										<Typography>First Name</Typography>
-									</Grid>
+  </Grid>
 									<Grid item xs={1}>
 										<Typography>:</Typography>
-									</Grid>
+  </Grid>
 									<Grid item xs={6}>
 										<TextField
 											id="first-name"
@@ -253,18 +252,18 @@ const UserCreateComponent = () => {
 											fullWidth
 											value={userFirstName}
 											onChange={updateUserFirstName}
-										/>
-									</Grid>
-								</Grid>
-							</Grid>
+  />
+  </Grid>
+  </Grid>
+  </Grid>
 							<Grid item xs={6}>
 								<Grid container display="flex" alignItems="center">
 									<Grid item xs={3}>
 										<Typography>Last Name</Typography>
-									</Grid>
+  </Grid>
 									<Grid item xs={1}>
 										<Typography>:</Typography>
-									</Grid>
+  </Grid>
 									<Grid item xs={6}>
 										<TextField
 											id="last-name"
@@ -274,18 +273,18 @@ const UserCreateComponent = () => {
 											fullWidth
 											value={userLastName}
 											onChange={updateUserLastName}
-										/>
-									</Grid>
-								</Grid>
-							</Grid>
+  />
+  </Grid>
+  </Grid>
+  </Grid>
 							<Grid item xs={6} mt={1}>
 								<Grid container display="flex" alignItems="center">
 									<Grid item xs={3}>
 										<Typography>Gender</Typography>
-									</Grid>
+  </Grid>
 									<Grid item xs={1}>
 										<Typography>:</Typography>
-									</Grid>
+  </Grid>
 									<Grid item xs={6}>
 										<Stack spacing={2}>
 											<Autocomplete
@@ -296,19 +295,19 @@ const UserCreateComponent = () => {
 												id="combo-box-demo"
 												options={genderType?.map((option) => option.title)}
 												renderInput={(params) => <TextField {...params} />}
-											/>
-										</Stack>
-									</Grid>
-								</Grid>
-							</Grid>
+  />
+  </Stack>
+  </Grid>
+  </Grid>
+  </Grid>
 							<Grid item xs={6} mt={1}>
 								<Grid container display="flex" alignItems="center">
 									<Grid item xs={3}>
 										<Typography>Age</Typography>
-									</Grid>
+  </Grid>
 									<Grid item xs={1}>
 										<Typography>:</Typography>
-									</Grid>
+  </Grid>
 									<Grid item xs={6}>
 										<TextField
 											id="age"
@@ -318,18 +317,18 @@ const UserCreateComponent = () => {
 											fullWidth
 											value={userAge}
 											onChange={updateUserAge}
-										/>
-									</Grid>
-								</Grid>
-							</Grid>
+  />
+  </Grid>
+  </Grid>
+  </Grid>
 							<Grid item xs={6} mt={1}>
 								<Grid container display="flex" alignItems="center">
 									<Grid item xs={3}>
 										<Typography>Email</Typography>
-									</Grid>
+  </Grid>
 									<Grid item xs={1}>
 										<Typography>:</Typography>
-									</Grid>
+  </Grid>
 									<Grid item xs={6}>
 										<TextField
 											id="email"
@@ -339,18 +338,18 @@ const UserCreateComponent = () => {
 											fullWidth
 											value={userEmail}
 											onChange={updateUserEmail}
-										/>
-									</Grid>
-								</Grid>
-							</Grid>
+  />
+  </Grid>
+  </Grid>
+  </Grid>
 							<Grid item xs={6} mt={1}>
 								<Grid container display="flex" alignItems="center">
 									<Grid item xs={3}>
 										<Typography>Phone</Typography>
-									</Grid>
+  </Grid>
 									<Grid item xs={1}>
 										<Typography>:</Typography>
-									</Grid>
+  </Grid>
 									<Grid item xs={6}>
 										<TextField
 											id="phone"
@@ -360,18 +359,18 @@ const UserCreateComponent = () => {
 											fullWidth
 											value={userPhone}
 											onChange={updateUserPhone}
-										/>
-									</Grid>
-								</Grid>
-							</Grid>
+  />
+  </Grid>
+  </Grid>
+  </Grid>
 							<Grid item xs={6} mt={1}>
 								<Grid container display="flex" alignItems="center">
 									<Grid item xs={3}>
 										<Typography>Status</Typography>
-									</Grid>
+  </Grid>
 									<Grid item xs={1}>
 										<Typography>:</Typography>
-									</Grid>
+  </Grid>
 									<Grid item xs={6}>
 										<Autocomplete
 											disablePortal
@@ -381,26 +380,26 @@ const UserCreateComponent = () => {
 											id="combo-box-demo"
 											options={statusSet?.map((option: any) => option)}
 											renderInput={(params) => <TextField {...params} />}
-										/>
-									</Grid>
-								</Grid>
-							</Grid>
+  />
+  </Grid>
+  </Grid>
+  </Grid>
 							<Box sx={{ width: '100%' }} marginTop={5}>
 								<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
 									<Tabs
 										value={value}
 										onChange={handleChange}
 										aria-label="basic tabs example"
-									>
+  >
 										<Tab
 											label="Security"
 											{...a11yProps(0)}
 											onClick={securityModal}
-										/>
+  />
 										<Tab label="Address" {...a11yProps(1)} />
 										<Tab label="Roles" {...a11yProps(2)} />
-									</Tabs>
-								</Box>
+  </Tabs>
+  </Box>
 								<TabPanel value={value} index={0}>
 									<Box>
 										<Grid container>
@@ -408,10 +407,10 @@ const UserCreateComponent = () => {
 												<Grid container display="flex" alignItems="center">
 													<Grid item xs={3}>
 														<Typography>New Password</Typography>
-													</Grid>
+  </Grid>
 													<Grid item xs={1}>
 														<Typography>:</Typography>
-													</Grid>
+  </Grid>
 													<Grid item xs={6}>
 														<FormControl fullWidth variant="outlined">
 															<OutlinedInput
@@ -421,36 +420,36 @@ const UserCreateComponent = () => {
 																placeholder="Enter Confirm Password"
 																id="confirm-password"
 																type={showPassword ? 'text' : 'password'}
-																endAdornment={
-																	<InputAdornment position="end">
-																		<IconButton
-																			aria-label="toggle password visibility"
-																			onClick={handleClickShowPassword}
-																			onMouseDown={handleMouseDownPassword}
-																			edge="end"
+																endAdornment={(
+    <InputAdornment position="end">
+  <IconButton
+  aria-label="toggle password visibility"
+  onClick={handleClickShowPassword}
+  onMouseDown={handleMouseDownPassword}
+  edge="end"
 																		>
-																			{showPassword ? (
-																				<VisibilityOff />
+  {showPassword ? (
+  <VisibilityOff />
 																			) : (
-																				<Visibility />
+  <Visibility />
 																			)}
 																		</IconButton>
 																	</InputAdornment>
-																}
-															/>
-														</FormControl>
-													</Grid>
-												</Grid>
-											</Grid>
+																)}
+  />
+  </FormControl>
+  </Grid>
+  </Grid>
+  </Grid>
 
 											<Grid item xs={6}>
 												<Grid container display="flex" alignItems="center">
 													<Grid item xs={3} ml={2.6}>
 														<Typography>Confirm Password</Typography>
-													</Grid>
+  </Grid>
 													<Grid item xs={1}>
 														<Typography>:</Typography>
-													</Grid>
+  </Grid>
 													<Grid item xs={6}>
 														<FormControl fullWidth variant="outlined">
 															<OutlinedInput
@@ -458,30 +457,30 @@ const UserCreateComponent = () => {
 																placeholder="Enter Confirm Password"
 																id="confirm-password"
 																type={showPassword ? 'text' : 'password'}
-																endAdornment={
-																	<InputAdornment position="end">
-																		<IconButton
-																			aria-label="toggle password visibility"
-																			onClick={handleClickShowPassword}
-																			onMouseDown={handleMouseDownPassword}
-																			edge="end"
+																endAdornment={(
+    <InputAdornment position="end">
+  <IconButton
+  aria-label="toggle password visibility"
+  onClick={handleClickShowPassword}
+  onMouseDown={handleMouseDownPassword}
+  edge="end"
 																		>
-																			{showPassword ? (
-																				<VisibilityOff />
+  {showPassword ? (
+  <VisibilityOff />
 																			) : (
-																				<Visibility />
+  <Visibility />
 																			)}
 																		</IconButton>
 																	</InputAdornment>
-																}
-															/>
-														</FormControl>
-													</Grid>
-												</Grid>
-											</Grid>
-										</Grid>
-									</Box>
-								</TabPanel>
+																)}
+  />
+  </FormControl>
+  </Grid>
+  </Grid>
+  </Grid>
+  </Grid>
+  </Box>
+  </TabPanel>
 								<TabPanel value={value} index={1}>
 									<Box>
 										<Grid container>
@@ -489,10 +488,10 @@ const UserCreateComponent = () => {
 												<Grid container display="flex" alignItems="center">
 													<Grid item xs={3}>
 														<Typography>Zip-Code</Typography>
-													</Grid>
+  </Grid>
 													<Grid item xs={1}>
 														<Typography>:</Typography>
-													</Grid>
+  </Grid>
 													<Grid item xs={6}>
 														<TextField
 															id="zip-code"
@@ -502,19 +501,19 @@ const UserCreateComponent = () => {
 															fullWidth
 															value={userZipCode}
 															onChange={updateZipCode}
-														/>
-													</Grid>
-												</Grid>
-											</Grid>
+  />
+  </Grid>
+  </Grid>
+  </Grid>
 
 											<Grid item xs={6}>
 												<Grid container display="flex" alignItems="center">
 													<Grid item xs={3} ml={2.6}>
 														<Typography>City</Typography>
-													</Grid>
+  </Grid>
 													<Grid item xs={1}>
 														<Typography>:</Typography>
-													</Grid>
+  </Grid>
 													<Grid item xs={6}>
 														<Autocomplete
 															disablePortal
@@ -526,18 +525,18 @@ const UserCreateComponent = () => {
 															renderInput={(params) => (
 																<TextField {...params} />
 															)}
-														/>
-													</Grid>
-												</Grid>
-											</Grid>
+  />
+  </Grid>
+  </Grid>
+  </Grid>
 											<Grid item xs={6} mt={1}>
 												<Grid container display="flex" alignItems="center">
 													<Grid item xs={3}>
 														<Typography>State</Typography>
-													</Grid>
+  </Grid>
 													<Grid item xs={1}>
 														<Typography>:</Typography>
-													</Grid>
+  </Grid>
 													<Grid item xs={6}>
 														<Autocomplete
 															disablePortal
@@ -546,23 +545,23 @@ const UserCreateComponent = () => {
 															size="small"
 															id="combo-box-demo"
 															options={stateSelect.map(
-																(option) => option.state
+																(option) => option.state,
 															)}
 															renderInput={(params) => (
 																<TextField {...params} />
 															)}
-														/>
-													</Grid>
-												</Grid>
-											</Grid>
+  />
+  </Grid>
+  </Grid>
+  </Grid>
 											<Grid item xs={6} mt={1}>
 												<Grid container display="flex" alignItems="center">
 													<Grid item xs={3} ml={2.6}>
 														<Typography>Country</Typography>
-													</Grid>
+  </Grid>
 													<Grid item xs={1}>
 														<Typography>:</Typography>
-													</Grid>
+  </Grid>
 													<Grid item xs={6}>
 														<Stack>
 															<Autocomplete
@@ -572,28 +571,28 @@ const UserCreateComponent = () => {
 																size="small"
 																id="country"
 																options={countrySelect.map(
-																	(option) => option.country
+																	(option) => option.country,
 																)}
 																renderInput={(params) => (
 																	<TextField {...params} />
 																)}
-															/>
-														</Stack>
-													</Grid>
-												</Grid>
-											</Grid>
-										</Grid>
-									</Box>
-								</TabPanel>
+  />
+  </Stack>
+  </Grid>
+  </Grid>
+  </Grid>
+  </Grid>
+  </Box>
+  </TabPanel>
 								<TabPanel value={value} index={2}>
 									<Grid item xs={6} mt={1}>
 										<Grid container display="flex" alignItems="center">
 											<Grid item xs={3}>
 												<Typography>Role</Typography>
-											</Grid>
+  </Grid>
 											<Grid item xs={1}>
 												<Typography>:</Typography>
-											</Grid>
+  </Grid>
 											<Grid item xs={6}>
 												<Stack>
 													<Autocomplete
@@ -603,53 +602,53 @@ const UserCreateComponent = () => {
 														id="combo-box-demo"
 														options={roleList?.map((item: IRole) => item.name)}
 														renderInput={(params) => <TextField {...params} />}
-													/>
-												</Stack>
-											</Grid>
-										</Grid>
-									</Grid>
-								</TabPanel>
-							</Box>
-						</Grid>
-					</Box>
-				</Grid>
-			</Grid>
+  />
+  </Stack>
+  </Grid>
+  </Grid>
+  </Grid>
+  </TabPanel>
+  </Box>
+  </Grid>
+  </Box>
+  </Grid>
+  </Grid>
 
 			<Grid container>
-				<Grid item xs={8.05}></Grid>
+				<Grid item xs={8.05} />
 				<Grid item xs={3.3}>
 					<Grid container>
 						<Grid item xs={5.5}>
-							<Link href={'/user'} style={{ textDecoration: 'none' }}>
+							<Link href="/user" style={{ textDecoration: 'none' }}>
 								<Button variant="contained" className={classes.buttonStyle}>
-                  Cancel
+    Cancel
 								</Button>
-							</Link>
-						</Grid>
+  </Link>
+  </Grid>
 						<Grid item xs={6}>
 							<Button
 								variant="contained"
 								onClick={updateHandler}
 								className={classes.buttonStyleSave}
-							>
-                Save
-							</Button>
+  >
+  Save
+  </Button>
 							<Snackbar
 								open={alert}
 								autoHideDuration={8000}
 								onClose={handleClose}
-							>
+  >
 								<Alert onClose={handleClose} sx={{ width: '100%' }}>
-                  User Created Sucessfully...
+    User Created Sucessfully...
 								</Alert>
-							</Snackbar>
-						</Grid>
-					</Grid>
-				</Grid>
-			</Grid>
-		</Box>
+  </Snackbar>
+  </Grid>
+  </Grid>
+  </Grid>
+  </Grid>
+  </Box>
 	);
-};
+}
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -657,20 +656,22 @@ interface TabPanelProps {
   value: number;
 }
 function TabPanel(props: TabPanelProps) {
-	const { children, value, index, ...other } = props;
+	const {
+		children, value, index, ...other
+	} = props;
 
 	return (
-		<div
-			role="tabpanel"
-			hidden={value !== index}
-			id={`simple-tabpanel-${index}`}
-			aria-labelledby={`simple-tab-${index}`}
-			{...other}
+  <div
+  role="tabpanel"
+  hidden={value !== index}
+  id={`simple-tabpanel-${index}`}
+  aria-labelledby={`simple-tab-${index}`}
+  {...other}
 		>
-			{value === index && (
+  {value === index && (
 				<Box sx={{ p: 3 }}>
-					<Typography>{children}</Typography>
-				</Box>
+    <Typography>{children}</Typography>
+  </Box>
 			)}
 		</div>
 	);

@@ -7,4 +7,4 @@ type IRole = {
 
 };
 
-export type { IRole } ;
+export type { IRole };

@@ -8,41 +8,36 @@ interface RoleSearchComponentProps {
   onSearchHandler: (_: Array<IRole>) => void;
 }
 
-const RolesSearchDetails = ({
-  roles,
-  onSearchHandler,
-}: RoleSearchComponentProps) => {
-  const [searchStr, setSearchStr] = useState<string>('');
+function RolesSearchDetails({
+	roles,
+	onSearchHandler,
+}: RoleSearchComponentProps) {
+	const [searchStr, setSearchStr] = useState<string>('');
 
-  const filterByName =
-    (name: string) =>
-    (f: IRole): boolean =>
-      f.name.toLowerCase().includes(name.toLowerCase());
+	const filterByName = (name: string) => (f: IRole): boolean => f.name.toLowerCase().includes(name.toLowerCase());
 
-  const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const _searchValue = e.target.value;
-    setSearchStr(_searchValue);
-    if (_searchValue == '') {
-      onSearchHandler(roles);
-      return;
-    }
-    onSearchHandler(roles.filter(filterByName(_searchValue)));
-  };
+	const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const _searchValue = e.target.value;
+		setSearchStr(_searchValue);
+		if (_searchValue == '') {
+			onSearchHandler(roles);
+			return;
+		}
+		onSearchHandler(roles.filter(filterByName(_searchValue)));
+	};
 
-  console.log('roles', roles);
+	console.log('roles', roles);
 
-  return (
-    <>
-      <Grid item xs={12}>
-        <TextField
-          placeholder="Search by Name"
-          size="small"
-          value={searchStr}
-          onChange={onSearch}
-          fullWidth
-        />
-      </Grid>
-    </>
-  );
-};
+	return (
+  <Grid item xs={12}>
+			<TextField
+				placeholder="Search by Name"
+				size="small"
+				value={searchStr}
+				onChange={onSearch}
+				fullWidth
+    />
+		</Grid>
+	);
+}
 export default RolesSearchDetails;

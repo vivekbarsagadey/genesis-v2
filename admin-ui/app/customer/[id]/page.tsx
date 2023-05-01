@@ -1,7 +1,8 @@
-"use client";
-import { use } from "react";
-import CustomerEditComponent from ".";
-import { findById } from "../../../services/api.service";
+'use client';
+
+import { use } from 'react';
+import CustomerEditComponent from '.';
+import { findById } from '../../../services/api.service';
 
 type Customer = {
   firstName: string;
@@ -17,12 +18,11 @@ type Customer = {
   state: string;
   country: string;
 };
-const Page = ({ params } : any) => {
-  const id = params.id;
+function Page({ params } : any) {
+	const { id } = params;
 
-  const customers = use<Customer>(findById("customer", id));
-  return <>{customers && <CustomerEditComponent customers={customers} id={id} />}</>
-  
-};
+	const customers = use<Customer>(findById('customer', id));
+	return <>{customers && <CustomerEditComponent customers={customers} id={id} />}</>;
+}
 
 export default Page;

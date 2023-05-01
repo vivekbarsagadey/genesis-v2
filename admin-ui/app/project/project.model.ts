@@ -16,5 +16,4 @@ interface IProject{
     moment:any
 }
 
-
-export default IProject
+export default IProject;

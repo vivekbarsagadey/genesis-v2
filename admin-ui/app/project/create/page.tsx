@@ -1,11 +1,7 @@
-import ProjectCreate from '.'
+import ProjectCreate from '.';
 
-const page = () => {
-  return (
-    <>
-        <ProjectCreate/>
-    </>
-  )
-}
+const page = () => (
+  <ProjectCreate />
+);
 
-export default page
+export default page;

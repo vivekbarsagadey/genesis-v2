@@ -1,20 +1,17 @@
-import { ValidationError, ValidatorType } from "../engine";
-import { RuleContext } from "./rule.context";
-import { isBlank } from "./string.utils";
-
+import { ValidationError, ValidatorType } from '../engine';
+import { RuleContext } from './rule.context';
+import { isBlank } from './string.utils';
 
 const RequiredRule = ({ constraint, data }: RuleContext) => {
-  const condition = (): boolean => {
-    return constraint.validatorType === ValidatorType.REQUIRED;
-  };
+	const condition = (): boolean => constraint.validatorType === ValidatorType.REQUIRED;
 
-  const action = () => {
-    if (isBlank(data)) {
-      throw new ValidationError(constraint);
-    }
-  };
+	const action = () => {
+		if (isBlank(data)) {
+			throw new ValidationError(constraint);
+		}
+	};
 
-  return { condition, action };
+	return { condition, action };
 };
 
 export { RequiredRule };

@@ -11,5 +11,5 @@ interface Validator<T> {
   getMessage(): string;
 }
 
-export { ValidatorType};
+export { ValidatorType };
 export type{ Validator };

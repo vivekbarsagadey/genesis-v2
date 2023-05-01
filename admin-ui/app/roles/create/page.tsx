@@ -1,11 +1,7 @@
 import RoleCreateComponent from './role.create';
 
-const page = () => {
-  return (
-    <>
-      <RoleCreateComponent />
-    </>
-  );
-};
+const page = () => (
+  <RoleCreateComponent />
+);
 
 export default page;

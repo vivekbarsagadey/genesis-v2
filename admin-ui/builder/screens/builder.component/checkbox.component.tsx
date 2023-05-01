@@ -1,8 +1,8 @@
-import React from "react";
-import Checkbox from "@mui/material/Checkbox";
+import React from 'react';
+import Checkbox from '@mui/material/Checkbox';
 
-const CheckboxComponent = () => {
-  return <Checkbox />;
-};
+function CheckboxComponent() {
+	return <Checkbox />;
+}
 
 export default CheckboxComponent;

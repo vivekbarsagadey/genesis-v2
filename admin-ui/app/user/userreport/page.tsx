@@ -5,9 +5,9 @@ import { IUser } from '../models';
 
 const URL = 'user';
 
-const Page = () => {
-  const user = use<Array<IUser>>(findAll(URL));
-  console.log(user)
-  return <CustomerReportComponent  user={user} />;
-};
+function Page() {
+	const user = use<Array<IUser>>(findAll(URL));
+	console.log(user);
+	return <CustomerReportComponent user={user} />;
+}
 export default Page;

@@ -1,14 +1,17 @@
-"use client"
+'use client';
+
 import {
 	Autocomplete,
 	Box,
 	Grid,
 	TextField,
-	Typography
+	Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
 
-const CreateRowsComponent = ({ index, setColDb, colDb, setRowDb, rowDb }: any) => {
+function CreateRowsComponent({
+	index, setColDb, colDb, setRowDb, rowDb,
+}: any) {
 	const [colCount, setColCount] = useState();
 	const [ind] = useState(index + 1);
 	const column = [
@@ -37,7 +40,9 @@ const CreateRowsComponent = ({ index, setColDb, colDb, setRowDb, rowDb }: any) =
 		<Box mt={0.6} mr={2}>
 			<Grid container spacing={2}>
 				<Grid item xs={8}>
-					<Typography variant="h5">Row {index + 1} </Typography>
+					<Typography variant="h5">
+    Row{index + 1}
+  </Typography>
 					<Autocomplete
 						value={colCount}
 						onChange={setCol}
@@ -53,13 +58,13 @@ const CreateRowsComponent = ({ index, setColDb, colDb, setRowDb, rowDb }: any) =
 									...params.InputProps,
 									type: 'search',
 								}}
-							/>
+  />
 						)}
-					/>
-				</Grid>
-			</Grid>
-		</Box>
+  />
+  </Grid>
+  </Grid>
+  </Box>
 	);
-};
+}
 
 export default CreateRowsComponent;

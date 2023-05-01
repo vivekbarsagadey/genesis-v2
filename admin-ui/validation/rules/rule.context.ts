@@ -1,4 +1,4 @@
-import { Constraint } from "../engine";
+import { Constraint } from '../engine';
 
 interface RuleContext {
   data: any;

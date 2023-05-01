@@ -1,8 +1,7 @@
-import {ICompany} from "./company.model";
+import { ICompany } from './company.model';
 
 interface ICompanyComponentProps {
     items: Array<ICompany>;
-    itemsCallBackHandler? : (_items: Array<ICompany> ) => void;
+    itemsCallBackHandler? : (_items: Array<ICompany>) => void;
 }
-export type { ICompanyComponentProps } ;
-
+export type { ICompanyComponentProps };

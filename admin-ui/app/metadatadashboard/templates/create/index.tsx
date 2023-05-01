@@ -1,19 +1,20 @@
 'use client';
-import { Box, Button, Grid, Snackbar, Typography } from '@mui/material';
+
+import {
+	Box, Button, Grid, Snackbar, Typography,
+} from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { createTemplates } from '../../../../services/template.action';
 import CreateRowsComponent from '../rows';
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((
 	props,
-	ref
-) {
-	return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+	ref,
+) => <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />);
 
-const CreateTemplate = () => {
+function CreateTemplate() {
 	const [rowCount, setRowCount] = useState([]);
 	const [colDb, setColDb] = useState([]);
 	const [rowDb, setRowDb] = useState([]);
@@ -28,18 +29,17 @@ const CreateTemplate = () => {
 			try {
 				const body = {
 					row: rowDb[i].toString(),
-					column: colDb[i]
+					column: colDb[i],
 				};
 				await createTemplates(body);
-			}
-			catch (error) {
+			} catch (error) {
 				console.error(error);
 			}
 		}
 	};
 	const handleClose = (
 		event?: React.SyntheticEvent | Event,
-		reason?: string
+		reason?: string,
 	) => {
 		if (reason === 'clickaway') {
 			return;
@@ -59,58 +59,64 @@ const CreateTemplate = () => {
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<Grid container spacing={2}>
-				<Grid item xs={12} display={'flex'}>
+				<Grid item xs={12} display="flex">
 					<Typography variant="h5" noWrap>
-						Create Row
+    Create Row
 					</Typography>
 					<Button
 						variant="contained"
 						size="small"
 						onClick={() => createRowHandler('data')}
-					>
-						+
-					</Button>
-				</Grid>
+  >
+  +
+  </Button>
+  </Grid>
 
-				{rowCount?.map((data, index) => {
-					return <Grid item xs={6} key={index} > <CreateRowsComponent index={index}
-						setColDb={setColDb} colDb={colDb} setRowDb={setRowDb} rowDb={rowDb} />
-					</Grid>;
-				})}
+				{rowCount?.map((data, index) => (
+    <Grid item xs={6} key={index}>
+						{' '}
+						<CreateRowsComponent
+        index={index}
+							setColDb={setColDb}
+        colDb={colDb}
+        setRowDb={setRowDb}
+        rowDb={rowDb}
+						/>
+					</Grid>
+				))}
 
-			</Grid>
+  </Grid>
 
-			<Grid container mt={5} style={{ position: 'relative', }}>
-				<Grid item xs={8.6}></Grid>
+			<Grid container mt={5} style={{ position: 'relative' }}>
+				<Grid item xs={8.6} />
 				<Grid item xs={3.4}>
 					<Grid container>
+						<Grid item xs={6} />
 						<Grid item xs={6}>
-						</Grid>
-						<Grid item xs={6}>
-							<Link href={'/metadatadashboard/templates'}>
+							<Link href="/metadatadashboard/templates">
 								<Button
 									variant="contained"
 									onClick={updateHandler}
 									style={{ width: '73%' }}
-								>
-									Save
-								</Button>
+  >
+  Save
+  </Button>
 								<Snackbar
 									open={alert}
 									autoHideDuration={5000}
 									onClose={handleClose}
-								>
+  >
 									<Alert onClose={handleClose} sx={{ width: '100%' }}>
-										Row Created Successfully...
+    Row Created Successfully...
 									</Alert>
-								</Snackbar>
-							</Link>
-						</Grid>
-					</Grid>
-				</Grid>
-			</Grid>
-		</Box>
+  </Snackbar>
+  </Link>
+  </Grid>
+  </Grid>
+  </Grid>
+  </Grid>
+  </Box>
 	);
-};
+}
 
 export default CreateTemplate;

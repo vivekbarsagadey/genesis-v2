@@ -1,8 +1,9 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import CompanyEditComponent from ".";
-import { use } from "react";
-import { findById } from "../../../services/api.service";
+'use client';
+
+import React, { useEffect, useState, use } from 'react';
+import CompanyEditComponent from '.';
+
+import { findById } from '../../../services/api.service';
 
 type Company = {
   name: string;
@@ -14,11 +15,11 @@ type Company = {
   website: string;
   foundationYear: string;
 };
-const Page = ({ params } : any) => {
-  const id = params.id;
+function Page({ params } : any) {
+	const { id } = params;
 
-  const company = use<Company>(findById("companies", id));
-  return <>{company && <CompanyEditComponent company={company} id={id} />}</>;
-};
+	const company = use<Company>(findById('companies', id));
+	return <>{company && <CompanyEditComponent company={company} id={id} />}</>;
+}
 
 export default Page;

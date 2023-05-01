@@ -16,4 +16,4 @@ type IProject = {
   status: string;
 };
 
-export type { IProject } ;
+export type { IProject };

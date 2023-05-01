@@ -1,12 +1,8 @@
-import React from 'react'
-import CustomerCreateComponent from '.'
+import React from 'react';
+import CustomerCreateComponent from '.';
 
-const page = () => {
-  return (
-    <>
-        <CustomerCreateComponent/>
-    </>
-  )
-}
+const page = () => (
+  <CustomerCreateComponent />
+);
 
-export default page
+export default page;

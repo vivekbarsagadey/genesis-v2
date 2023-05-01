@@ -1,11 +1,8 @@
-import React from 'react'
-import CreateRowsComponent from '.'
+import React from 'react';
+import CreateRowsComponent from '.';
 
-const RowsPage = () => {
-  return (
-    <CreateRowsComponent />
-    
-  )
+function RowsPage() {
+	return <CreateRowsComponent />;
 }
 
-export default RowsPage
+export default RowsPage;

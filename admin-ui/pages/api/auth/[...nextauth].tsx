@@ -1,8 +1,8 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import prisma from '../../../lib/prismadb';
 import { compare } from 'n-krypta';
+import prisma from '../../../lib/prismadb';
 
 const authOptions: NextAuthOptions = {
 	adapter: PrismaAdapter(prisma),
@@ -29,7 +29,7 @@ const authOptions: NextAuthOptions = {
 					};
 				}
 
-				//TODO connect to db and get
+				// TODO connect to db and get
 				const user = await prisma.user.findFirst({
 					where: { email },
 				});
@@ -38,7 +38,7 @@ const authOptions: NextAuthOptions = {
 					const passwordMatch = compare(
 						password,
 						user?.password,
-						`${process.env.NEXT_PUBLIC_KEY}`
+						`${process.env.NEXT_PUBLIC_KEY}`,
 					);
 					if (passwordMatch) {
 						return user;

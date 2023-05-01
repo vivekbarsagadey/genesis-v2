@@ -16,4 +16,4 @@ type ICompany = {
   status: string;
 };
 
-export type { ICompany } ;
+export type { ICompany };

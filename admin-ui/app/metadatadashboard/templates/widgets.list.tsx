@@ -1,4 +1,6 @@
-import { Button, Dialog, Grid, ImageList, ImageListItem, List } from '@mui/material';
+import {
+	Button, Dialog, Grid, ImageList, ImageListItem, List,
+} from '@mui/material';
 import React, { useState } from 'react';
 
 const itemData = [
@@ -70,7 +72,7 @@ export interface SimpleDialogProps {
 	onClose: (value: string) => void;
 }
 
-const WidgetsList = ({ d }): string => {
+function WidgetsList({ d }): string {
 	const [open, setOpen] = useState(false);
 	const [selectedValue, setSelectedValue] = useState();
 
@@ -82,7 +84,7 @@ const WidgetsList = ({ d }): string => {
 		setSelectedValue(value);
 	};
 
-	console.log("item ", item);
+	console.log('item ', item);
 
 	return (
 		<Grid item xs={12}>
@@ -99,12 +101,11 @@ const WidgetsList = ({ d }): string => {
 
 			{/* {item.column} */}
 			{d.column}
-		</Grid>
+  </Grid>
 	);
-};
+}
 
 function SimpleDialog(props: SimpleDialogProps) {
-
 	const { onClose, selectedValue, open } = props;
 
 	const handleClose = () => {
@@ -117,11 +118,11 @@ function SimpleDialog(props: SimpleDialogProps) {
 
 	return (
 
-		<Dialog onClose={handleClose} open={open}>
-			<List >
-				<Grid container >
-					<Grid item sx={12} >
-						<Image />
+  <Dialog onClose={handleClose} open={open}>
+  <List>
+  <Grid container>
+  <Grid item sx={12}>
+  <Image />
 					</Grid>
 				</Grid>
 			</List>
@@ -129,28 +130,27 @@ function SimpleDialog(props: SimpleDialogProps) {
 	);
 }
 
-const Image = () => {
+function Image() {
 	const [id, setId] = useState();
 	console.log('idid', id);
 
 	return (
 		<ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
 			{itemData.map((item) => (
-				<ImageListItem key={item.img} >
+				<ImageListItem key={item.img}>
 					<img
 						src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
 						srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
 						alt={item.title}
 						loading="lazy"
-					/>
+  />
 					<Button onClick={() => setId(item.id)}>
-						Apply
+    Apply
 					</Button>
-				</ImageListItem>
-			))
-			}
-		</ImageList >
+  </ImageListItem>
+			))}
+  </ImageList>
 	);
-};
+}
 
 export default WidgetsList;

@@ -1,24 +1,24 @@
-"use client";
-import { Typography } from "@mui/material";
-import { Grid } from "@mui/material";
+'use client';
 
-import { useEffect } from "react";
+import { Typography, Grid } from '@mui/material';
+
+import { useEffect } from 'react';
 
 export default function Error({
-  error,
-  reset,
+	error,
+	reset,
 }: {
   error: Error;
   reset: () => void;
 }) {
-  useEffect(() => {
-    // Log the error to an error reporting service
-    console.error(error);
-  }, [error]);
-  return (
-    <Grid>
-      <Typography>Something went wrong!</Typography>
-      <button onClick={() => reset()}>Reset error boundary</button>
-    </Grid>
-  );
+	useEffect(() => {
+		// Log the error to an error reporting service
+		console.error(error);
+	}, [error]);
+	return (
+		<Grid>
+			<Typography>Something went wrong!</Typography>
+			<button onClick={() => reset()}>Reset error boundary</button>
+  </Grid>
+	);
 }
