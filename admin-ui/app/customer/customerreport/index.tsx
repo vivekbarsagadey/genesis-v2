@@ -10,28 +10,28 @@ import createPlotlyRenderers from 'react-pivottable/PlotlyRenderers';
 const PlotlyRenderers = createPlotlyRenderers(Plot);
 
 function CustomerReportComponent({ customer }: any) {
-	const [settings, setSettings] = useState({});
-	return (
-  <div>
-  <PivotTableUI
-  data={customer}
-  onChange={(s) => setSettings(s)}
-  cols={['createdAt']}
-  rows={['firstName', 'lastName', 'address', 'country', 'mobile']}
-  vals={['aos_pax_total']}
-  aggregatorName="Integer Sum"
-  renderers={({ ...TableRenderers, ...PlotlyRenderers })}
-  {...settings}
-  hiddenAttributes={[
-					'pvtRenderers',
-					'pvtAxisContainer',
-					'pvtVals',
-					'pvtAxisContainer',
-				]}
-  hiddenFromAggregators={['id', 'companyid']}
-			/>
-		</div>
-	);
+  const [settings, setSettings] = useState({});
+  return (
+    <div>
+      <PivotTableUI
+        data={customer}
+        onChange={(s) => setSettings(s)}
+        cols={['createdAt']}
+        rows={['firstName', 'lastName', 'address', 'country', 'mobile']}
+        vals={['aos_pax_total']}
+        aggregatorName="Integer Sum"
+        renderers={{ ...TableRenderers, ...PlotlyRenderers }}
+        {...settings}
+        hiddenAttributes={[
+          'pvtRenderers',
+          'pvtAxisContainer',
+          'pvtVals',
+          'pvtAxisContainer',
+        ]}
+        hiddenFromAggregators={['id', 'companyid']}
+      />
+    </div>
+  );
 }
 
 export default CustomerReportComponent;

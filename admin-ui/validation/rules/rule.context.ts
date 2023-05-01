@@ -6,4 +6,4 @@ interface RuleContext {
   constraint: Constraint;
 }
 
-export type{ RuleContext };
+export type { RuleContext };

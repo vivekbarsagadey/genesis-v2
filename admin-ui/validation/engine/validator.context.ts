@@ -6,4 +6,4 @@ interface ValidationContext {
   constraints: Constraint[];
 }
 
-export type{ ValidationContext };
+export type { ValidationContext };

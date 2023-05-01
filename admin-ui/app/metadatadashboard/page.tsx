@@ -1,7 +1,5 @@
 import React from 'react';
 
-const page = () => (
-  <div>page metadatadashboard</div>
-);
+const page = () => <div>page metadatadashboard</div>;
 
 export default page;

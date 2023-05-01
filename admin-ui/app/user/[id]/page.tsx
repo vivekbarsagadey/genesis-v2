@@ -20,11 +20,11 @@ type User = {
   country: string;
 };
 
-function Page({ params } : any) {
-	const { id } = params;
+function Page({ params }: any) {
+  const { id } = params;
 
-	const users = use<User>(findById('user', id));
-	return <>{users && <UserEditComponent users={users} id={id} />}</>;
+  const users = use<User>(findById('user', id));
+  return <>{users && <UserEditComponent users={users} id={id} />}</>;
 }
 
 export default Page;

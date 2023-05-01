@@ -9,33 +9,30 @@ type roleChartProps = {
   stateData: any;
 };
 
-function RolePieChart({
-	graphView,
-	statusData,
-}: roleChartProps) {
-	return (
-  <Grid item xs={12}>
-			<Switch>
-				<Case condition={graphView === 'status'}>
-					<Chart
-						chartType="PieChart"
-						data={statusData}
-						width="120%"
-						height="450px"
-  />
-  </Case>
+function RolePieChart({ graphView, statusData }: roleChartProps) {
+  return (
+    <Grid item xs={12}>
+      <Switch>
+        <Case condition={graphView === 'status'}>
+          <Chart
+            chartType="PieChart"
+            data={statusData}
+            width="120%"
+            height="450px"
+          />
+        </Case>
 
-				<Default>
-					<Chart
-						chartType="PieChart"
-						data={statusData}
-						width="120%"
-						height="450px"
-  />
-  </Default>
-    </Switch>
-		</Grid>
-	);
+        <Default>
+          <Chart
+            chartType="PieChart"
+            data={statusData}
+            width="120%"
+            height="450px"
+          />
+        </Default>
+      </Switch>
+    </Grid>
+  );
 }
 
 export default RolePieChart;

@@ -1,10 +1,9 @@
 type IRole = {
   id: string;
-  createdAt:string;
+  createdAt: string;
   name: string;
   description: string;
   code: string;
-
 };
 
 export type { IRole };

@@ -5,12 +5,15 @@ import { runMiddleware } from '../../utils/cors-middleware';
 import prisma from '../../utils/prisma';
 
 const cors = Cors({
-	methods: ['GET', 'POST', 'PUT', 'HEAD', 'PATCH', 'DELETE', 'OPTIONS'],
+  methods: ['GET', 'POST', 'PUT', 'HEAD', 'PATCH', 'DELETE', 'OPTIONS'],
 });
 
-const handleApiMiddleware = async (req: NextApiRequest, res: NextApiResponse) => {
-	await runMiddleware(req, res, cors);
-	const session = await getSession({ req });
+const handleApiMiddleware = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
+  await runMiddleware(req, res, cors);
+  const session = await getSession({ req });
 };
 
 export { handleApiMiddleware };

@@ -1,7 +1,7 @@
 enum Status {
-    NEW,
-    ACTIVE,
-    INACTIVE
+  NEW,
+  ACTIVE,
+  INACTIVE,
 }
 
 export { Status };

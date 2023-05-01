@@ -15,11 +15,11 @@ type Company = {
   website: string;
   foundationYear: string;
 };
-function Page({ params } : any) {
-	const { id } = params;
+function Page({ params }: any) {
+  const { id } = params;
 
-	const company = use<Company>(findById('companies', id));
-	return <>{company && <CompanyEditComponent company={company} id={id} />}</>;
+  const company = use<Company>(findById('companies', id));
+  return <>{company && <CompanyEditComponent company={company} id={id} />}</>;
 }
 
 export default Page;

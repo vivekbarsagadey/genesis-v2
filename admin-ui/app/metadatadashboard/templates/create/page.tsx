@@ -4,9 +4,7 @@ import React from 'react';
 import CreateTemplate from '.';
 
 function Page() {
-	return (
-		<CreateTemplate />
-	);
+  return <CreateTemplate />;
 }
 
 export default Page;

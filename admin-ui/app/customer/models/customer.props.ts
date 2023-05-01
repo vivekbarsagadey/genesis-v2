@@ -1,7 +1,7 @@
 import { ICustomer } from './customer.model';
 
 interface ICustomerComponentProps {
-    items: Array<ICustomer>;
-    itemsCallBackHandler? : (_items: Array<ICustomer>) => void;
+  items: Array<ICustomer>;
+  itemsCallBackHandler?: (_items: Array<ICustomer>) => void;
 }
 export type { ICustomerComponentProps };

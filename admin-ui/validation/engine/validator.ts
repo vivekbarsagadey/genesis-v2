@@ -12,4 +12,4 @@ interface Validator<T> {
 }
 
 export { ValidatorType };
-export type{ Validator };
+export type { Validator };

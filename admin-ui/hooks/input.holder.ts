@@ -1,5 +1,5 @@
-type InputHolder ={
-    name:string
-}
+type InputHolder = {
+  name: string;
+};
 
 export type { InputHolder };

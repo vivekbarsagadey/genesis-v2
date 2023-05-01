@@ -8,16 +8,16 @@ type UserProps = {
 };
 
 function UserCsvGenerator({ copyUserData }: any) {
-	return (
-  <Typography variant="subtitle1">
-  <CSVLink
-  data={copyUserData}
-  filename={`user-list-${new Date().toISOString().slice(0, 10)}`}
-			>
-  CSV
-			</CSVLink>
-		</Typography>
-	);
+  return (
+    <Typography variant="subtitle1">
+      <CSVLink
+        data={copyUserData}
+        filename={`user-list-${new Date().toISOString().slice(0, 10)}`}
+      >
+        CSV
+      </CSVLink>
+    </Typography>
+  );
 }
 
 export default UserCsvGenerator;

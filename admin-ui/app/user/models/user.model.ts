@@ -14,6 +14,5 @@ type IUser = {
   createdAt: number;
   updatedAt: number;
   status: string;
-
 };
 export type { IUser };

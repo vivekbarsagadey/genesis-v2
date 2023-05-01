@@ -8,8 +8,8 @@ import WidgetsHomeComponents from '.';
 const URL = 'widgets';
 
 const page = () => {
-	const widgets = use<Array<IWidgets>>(findAll(URL));
-	return <WidgetsHomeComponents widgets={widgets} />;
+  const widgets = use<Array<IWidgets>>(findAll(URL));
+  return <WidgetsHomeComponents widgets={widgets} />;
 };
 
 export default page;

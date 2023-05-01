@@ -14,10 +14,10 @@ type Widgets = {
 };
 
 function Page({ params }: any) {
-	const { id } = params;
+  const { id } = params;
 
-	const widgets = use<Widgets>(findById('widgets', id));
-	return <>{widgets && <WidgetEditComponent widgets={widgets} id={id} />}</>;
+  const widgets = use<Widgets>(findById('widgets', id));
+  return <>{widgets && <WidgetEditComponent widgets={widgets} id={id} />}</>;
 }
 
 export default Page;

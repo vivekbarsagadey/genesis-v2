@@ -1,7 +1,5 @@
 import ProjectCreate from '.';
 
-const page = () => (
-  <ProjectCreate />
-);
+const page = () => <ProjectCreate />;
 
 export default page;
