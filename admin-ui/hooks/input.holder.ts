@@ -2,4 +2,4 @@ type InputHolder ={
     name:string
 }
 
-export type {InputHolder}
+export type { InputHolder };

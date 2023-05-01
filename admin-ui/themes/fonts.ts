@@ -65,7 +65,9 @@ const baseStyle = {
 
 	cursorPoint: { cursor: 'pointer' },
 
-	borderRadius: { full: '100', semi: '75', low: '50%', normal: '20px' },
+	borderRadius: {
+		full: '100', semi: '75', low: '50%', normal: '20px',
+	},
 
 	textDecoration: {
 		none: { textDecoration: 'none' },
