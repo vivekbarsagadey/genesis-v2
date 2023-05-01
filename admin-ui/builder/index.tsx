@@ -1,6 +1,7 @@
 'use client';
-import {Box,Grid} from '@mui/material';
-import React,{ createContext, useEffect, useState } from 'react';
+
+import { Box, Grid } from '@mui/material';
+import React, { createContext, useEffect, useState } from 'react';
 import Logo from '../component/common/sidebar/logo';
 import { findById } from '../services/api.service';
 import BuilderHeaderComponent from './header/header';
@@ -11,7 +12,7 @@ import ScreenSelectComponent from './screens/screen.select.component';
 
 export const ProjectContext = createContext();
 
-const BuilderHome = ({ id }) => {
+function BuilderHome({ id }) {
 	const [projectInfo, setProjectInfo] = useState([]);
 	const info = findById('projects', id);
 	useEffect(() => {
@@ -51,7 +52,7 @@ const BuilderHome = ({ id }) => {
 	const updateSectionData = (typeRecv: string) => {
 		setSectionalData(typeRecv);
 	};
-  
+
 	return (
 		<ProjectContext.Provider value={sectionalData}>
 			<Box>
@@ -62,21 +63,20 @@ const BuilderHome = ({ id }) => {
 							toggleMenu={toggleMenu}
 							getComponentId={getComponentId}
 							getGridId={getGridId}
-						/>
-					</Grid>
+  />
+  </Grid>
 					<Grid item xs={10}>
 						<Grid item xs={12}>
 							<BuilderHeaderComponent projectInfo={projectInfo} />
-						</Grid>
+  </Grid>
 						<Grid item xs={12}>
 							<Grid container spacing={0}>
 								<Grid item xs={12} style={{ display: 'flex' }}>
 									<ScreenComponent
 										updateScreen={updateScreen}
 										handleDelete={handleDelete}
-                  
-									/>
-								</Grid>
+  />
+  </Grid>
 								<Grid
 									item
 									xs={9}
@@ -84,23 +84,23 @@ const BuilderHome = ({ id }) => {
 										background: '#64748b',
 										height: '82vh',
 									}}
-								>
+  >
 									<ScreenSelectComponent
 										screenToggle={screenToggle}
 										gridVal={gridVal}
 										componentVal={componentVal}
 										updateSectionData={updateSectionData}
-									/>
-								</Grid>
+  />
+  </Grid>
 								<Grid item xs={3}>
 									<PropertiesComponent />
-								</Grid>
-							</Grid>
-						</Grid>
-					</Grid>
-				</Grid>
-			</Box>
-		</ProjectContext.Provider>
+  </Grid>
+  </Grid>
+  </Grid>
+  </Grid>
+  </Grid>
+  </Box>
+  </ProjectContext.Provider>
 	);
-};
+}
 export default BuilderHome;

@@ -1,522 +1,522 @@
 {
-  "categories": [
+  categories: [
     {
-      "id": "components",
-      "name": "Components",
-      "label": "Components",
-      "title": "Components",
-      "icon": "ViewSidebarIcon",
+      id: 'components',
+      name: 'Components',
+      label: 'Components',
+      title: 'Components',
+      icon: 'ViewSidebarIcon',
 
-      "items": [
+			"items": [
         {
-          "id": "buttons",
-          "name": "Button",
-          "label": "Button",
-          "title": "Buttons",
-          "icon": "DoneIcon",
-          "componentId": "buttonComponent",
-          "image": "../public/item/Button_Default_Active.png",
-          "type": "component",
-          "items": [
+          id: 'buttons',
+          name: 'Button',
+          label: 'Button',
+          title: 'Buttons',
+          icon: 'DoneIcon',
+          componentId: 'buttonComponent',
+          image: '../public/item/Button_Default_Active.png',
+          type: 'component',
+          items: [
             {
-              "id": "sbmitButtons",
-              "name": "sbuButtons",
-              "label": "SubmitButton",
-              "title": "SubButtons",
-              "icon": "DoneIcon",
-              "componentId": "buttonComponent",
-              "image_disabled_button": "../public/item/Button_Disabled.png"
-            },
+              id: 'sbmitButtons',
+              name: 'sbuButtons',
+              label: 'SubmitButton',
+              title: 'SubButtons',
+              icon: 'DoneIcon',
+              componentId: 'buttonComponent',
+              image_disabled_button: '../public/item/Button_Disabled.png'
+						},
             {
-              "id": "hoverButtons",
-              "name": "hovrButtons",
-              "label": "HoverButton",
-              "title": "HoverButtons",
-              "icon": "EditAttributesIcon",
-              "componentId": "buttonComponent",
-              "image_hover_button": "../public/item/Button_Hover_Color.png"
-            }
-          ]
-        },
+              id: 'hoverButtons',
+              name: 'hovrButtons',
+              label: 'HoverButton',
+              title: 'HoverButtons',
+              icon: 'EditAttributesIcon',
+              componentId: 'buttonComponent',
+              image_hover_button: '../public/item/Button_Hover_Color.png'
+						},
+					],
+				},
         {
-          "id": "emails",
-          "name": "Emails",
-          "label": "Emails",
-          "title": "Emails",
-          "icon": "EmailIcon",
-          "componentId": "emailComponent",
-          "type": "component",
-          "image": "../public/item/Input_Email.png"
-        },
+          id: 'emails',
+          name: 'Emails',
+          label: 'Emails',
+          title: 'Emails',
+          icon: 'EmailIcon',
+          componentId: 'emailComponent',
+          type: 'component',
+          image: '../public/item/Input_Email.png'
+				},
         {
-          "id": "passwords",
-          "name": "Passwords",
-          "label": "Passwords",
-          "title": "Passwords",
-          "icon": "LockOpenIcon",
-          "componentId": "passwordComponent",
-          "type": "component",
-          "image": "../public/item/Input_Password.png"
-        },
+          id: 'passwords',
+          name: 'Passwords',
+          label: 'Passwords',
+          title: 'Passwords',
+          icon: 'LockOpenIcon',
+          componentId: 'passwordComponent',
+          type: 'component',
+          image: '../public/item/Input_Password.png'
+				},
         {
-          "id": "cnfrmpasswords",
-          "name": "confrmPasswords",
-          "label": "ConfirmPassword",
-          "title": "ConfirmPasswords",
-          "icon": "LockClockIcon",
-          "componentId": "confirmpasswordComponent",
-          "type": "component",
-          "image_confirm_password": "../public/item/Input_Confirm_Password.png"
-        },
+          id: 'cnfrmpasswords',
+          name: 'confrmPasswords',
+          label: 'ConfirmPassword',
+          title: 'ConfirmPasswords',
+          icon: 'LockClockIcon',
+          componentId: 'confirmpasswordComponent',
+          type: 'component',
+          image_confirm_password: '../public/item/Input_Confirm_Password.png'
+				},
         {
-          "id": "numbers",
-          "name": "Numbers",
-          "label": "Number",
-          "title": "Numbers",
-          "icon": "FormatListNumberedIcon",
-          "componentId": "numberComponent",
-          "type": "component",
-          "image": "../public/item/Input_Number.png"
-        },
+          id: 'numbers',
+          name: 'Numbers',
+          label: 'Number',
+          title: 'Numbers',
+          icon: 'FormatListNumberedIcon',
+          componentId: 'numberComponent',
+          type: 'component',
+          image: '../public/item/Input_Number.png'
+				},
         {
-          "id": "checkboxes",
-          "name": "Checkboxes",
-          "label": "Checkbox",
-          "title": "Checkboxes",
-          "icon": "CheckBoxIcon",
-          "componentId": "checkboxComponent",
-          "type": "component",
-          "image": "../public/item/Checkbox.png"
-        },
+          id: 'checkboxes',
+          name: 'Checkboxes',
+          label: 'Checkbox',
+          title: 'Checkboxes',
+          icon: 'CheckBoxIcon',
+          componentId: 'checkboxComponent',
+          type: 'component',
+          image: '../public/item/Checkbox.png'
+				},
         {
-          "id": "dropdowns",
-          "name": "Dropdown",
-          "label": "Dropdown",
-          "title": "Dropdown",
-          "icon": "ArrowDropDownCircleIcon",
-          "componentId": "dropdownComponent",
-          "type": "component",
-          "image": "../public/item/Input_Dropdown.png"
-        },
+          id: 'dropdowns',
+          name: 'Dropdown',
+          label: 'Dropdown',
+          title: 'Dropdown',
+          icon: 'ArrowDropDownCircleIcon',
+          componentId: 'dropdownComponent',
+          type: 'component',
+          image: '../public/item/Input_Dropdown.png'
+				},
         {
-          "id": "text",
-          "name": "Text",
-          "label": "Text",
-          "title": "Text",
-          "icon": "FormatSizeIcon",
-          "componentId": "textComponent",
-          "type": "component",
-          "image": "../public/item/text.png"
-        }
-      ]
-    },
+          id: 'text',
+          name: 'Text',
+          label: 'Text',
+          title: 'Text',
+          icon: 'FormatSizeIcon',
+          componentId: 'textComponent',
+          type: 'component',
+          image: '../public/item/text.png'
+				},
+			],
+		},
     {
-      "id": "containers",
-      "name": "Container",
-      "label": "Container",
-      "title": "Container",
-      "icon": "AppsIcon",
-      "items": [
+      id: 'containers',
+      name: 'Container',
+      label: 'Container',
+      title: 'Container',
+      icon: 'AppsIcon',
+      items: [
         {
-          "id": "login",
-          "name": "Login",
-          "label": "Login",
-          "title": "Login",
-          "icon": "LoginIcon",
-          "componentId": "loginComponent",
-          "type": "container",
-          "image": null
-        },
+          id: 'login',
+          name: 'Login',
+          label: 'Login',
+          title: 'Login',
+          icon: 'LoginIcon',
+          componentId: 'loginComponent',
+          type: 'container',
+          image: null,
+				},
         {
-          "id": "emailLogin",
-          "name": "EmailLogin",
-          "label": "EmailLogin",
-          "title": "EmailLogin",
-          "icon": "AlternateEmailIcon",
-          "componentId": "emailLoginComponent",
-          "type": "container",
-          "image": "../public/item/Login with email.png"
-        },
+          id: 'emailLogin',
+          name: 'EmailLogin',
+          label: 'EmailLogin',
+          title: 'EmailLogin',
+          icon: 'AlternateEmailIcon',
+          componentId: 'emailLoginComponent',
+          type: 'container',
+          image: '../public/item/Login with email.png'
+				},
         {
-          "id": "loginwithEmail",
-          "name": "LoginwithEmail",
-          "label": "LoginWithEmail",
-          "title": "LoginwithEmail",
-          "icon": "EmailIcon",
-          "componentId": "loginwithEmail",
-          "type": "container",
-          "image": "../public/item/Login with email.png"
-        },
+          id: 'loginwithEmail',
+          name: 'LoginwithEmail',
+          label: 'LoginWithEmail',
+          title: 'LoginwithEmail',
+          icon: 'EmailIcon',
+          componentId: 'loginwithEmail',
+          type: 'container',
+          image: '../public/item/Login with email.png'
+				},
         {
-          "id": "socialMediaLogin",
-          "name": "SocialMediaLogin",
-          "label": "SocialMediaLogin",
-          "title": "SocialMediaLogin",
-          "icon": "far fa-folder",
-          "componentId": "socialMediaLoginComponent",
-          "type": "container",
-          "image": "../public/item/login with social media.png"
-        },
+          id: 'socialMediaLogin',
+          name: 'SocialMediaLogin',
+          label: 'SocialMediaLogin',
+          title: 'SocialMediaLogin',
+          icon: 'far fa-folder',
+          componentId: 'socialMediaLoginComponent',
+          type: 'container',
+          image: '../public/item/login with social media.png'
+				},
         {
-          "id": "loginwithsocialmedia",
-          "name": "LoginWithSocialMedia",
-          "label": "LoginWithSocialMedia",
-          "title": "LoginWithSocialMedia",
-          "icon": "far fa-folder",
-          "componentId": "loginwithsocialMediaComponent",
-          "type": "container",
-          "image": "../public/item/login with social media.png"
-        },
+          id: 'loginwithsocialmedia',
+          name: 'LoginWithSocialMedia',
+          label: 'LoginWithSocialMedia',
+          title: 'LoginWithSocialMedia',
+          icon: 'far fa-folder',
+          componentId: 'loginwithsocialMediaComponent',
+          type: 'container',
+          image: '../public/item/login with social media.png'
+				},
         {
-          "id": "numberLogin",
-          "name": "NumberLogin",
-          "label": "NumberLogin",
-          "title": "NumberLogin",
-          "icon": "NumbersIcon",
-          "componentId": "numberLoginComponent",
-          "type": "container",
-          "image": "../public/item/Input_Number.png"
-        },
+          id: 'numberLogin',
+          name: 'NumberLogin',
+          label: 'NumberLogin',
+          title: 'NumberLogin',
+          icon: 'NumbersIcon',
+          componentId: 'numberLoginComponent',
+          type: 'container',
+          image: '../public/item/Input_Number.png'
+				},
         {
-          "id": "registration",
-          "name": "Registration",
-          "label": "Registration",
-          "title": "Registration",
-          "icon": "far fa-folder",
-          "componentId": "registrationComponent",
-          "type": "container",
-          "image": "../public/item/Register 1.png"
-        }
-      ]
-    },
+          id: 'registration',
+          name: 'Registration',
+          label: 'Registration',
+          title: 'Registration',
+          icon: 'far fa-folder',
+          componentId: 'registrationComponent',
+          type: 'container',
+          image: '../public/item/Register 1.png'
+				},
+			],
+		},
     {
-      "id": "grid",
-      "name": "Grid",
-      "label": "Grid",
-      "title": "Grid",
-      "icon": "Grid4x4Icon",
-      "items": [
+      id: 'grid',
+      name: 'Grid',
+      label: 'Grid',
+      title: 'Grid',
+      icon: 'Grid4x4Icon',
+      items: [
         {
-          "id": "grid_1x12",
-          "name": "Grid_1x12",
-          "label": "Grid_1x12",
-          "title": "Grid_1x12",
-          "icon": "WidthFullIcon",
-          "type": "grid",
-          "componentId": "Grid_1x12Component"
-        },
+          id: 'grid_1x12',
+          name: 'Grid_1x12',
+          label: 'Grid_1x12',
+          title: 'Grid_1x12',
+          icon: 'WidthFullIcon',
+          type: 'grid',
+          componentId: 'Grid_1x12Component'
+				},
         {
-          "id": "grid_1x6",
-          "name": "Grid_1x6",
-          "label": "Grid_1x6",
-          "title": "Grid_1x6",
-          "icon": "GridGoldenratioIcon",
-          "type": "grid",
-          "componentId": "Grid_1x6Component"
-        },
+          id: 'grid_1x6',
+          name: 'Grid_1x6',
+          label: 'Grid_1x6',
+          title: 'Grid_1x6',
+          icon: 'GridGoldenratioIcon',
+          type: 'grid',
+          componentId: 'Grid_1x6Component'
+				},
         {
-          "id": "grid_1x4",
-          "name": "Grid_1x4",
-          "label": "Grid_1x4",
-          "title": "Grid_1x4",
-          "icon": "Grid3x4Icon",
-          "type": "grid",
-          "componentId": "Grid_1x4Component"
-        },
+          id: 'grid_1x4',
+          name: 'Grid_1x4',
+          label: 'Grid_1x4',
+          title: 'Grid_1x4',
+          icon: 'Grid3x4Icon',
+          type: 'grid',
+          componentId: 'Grid_1x4Component'
+				},
         {
-          "id": "grid_1x3",
-          "name": "Grid_1x3",
-          "label": "Grid_1x3",
-          "title": "Grid_1x3",
-          "icon": "Grid4x3Icon",
-          "type": "grid",
-          "componentId": "Grid_1x3Component"
-        },
+          id: 'grid_1x3',
+          name: 'Grid_1x3',
+          label: 'Grid_1x3',
+          title: 'Grid_1x3',
+          icon: 'Grid4x3Icon',
+          type: 'grid',
+          componentId: 'Grid_1x3Component'
+				},
         {
-          "id": "grid_1x2",
-          "name": "Grid_1x2",
-          "label": "Grid_1x2",
-          "title": "Grid_1x2",
-          "icon": "Grid6x1Icon",
-          "type": "grid",
-          "componentId": "Grid_1x2Component"
-        },
+          id: 'grid_1x2',
+          name: 'Grid_1x2',
+          label: 'Grid_1x2',
+          title: 'Grid_1x2',
+          icon: 'Grid6x1Icon',
+          type: 'grid',
+          componentId: 'Grid_1x2Component'
+				},
         {
-          "id": "grid_1x1",
-          "name": "Grid_1x1",
-          "label": "Grid_1x1",
-          "title": "Grid_1x1",
-          "icon": "Grid4x1Icon",
-          "type": "grid",
-          "componentId": "Grid_1x1Component"
-        }
-      ]
-    }
-  ],
-  "grid": [
+          id: 'grid_1x1',
+          name: 'Grid_1x1',
+          label: 'Grid_1x1',
+          title: 'Grid_1x1',
+          icon: 'Grid4x1Icon',
+          type: 'grid',
+          componentId: 'Grid_1x1Component'
+				},
+			],
+		},
+	],
+  grid: [
     {
-      "id": "grid_1x12",
-      "label": "Grid_1x12",
-      "type": "grid"
-    },
+      id: 'grid_1x12',
+      label: 'Grid_1x12',
+      type: 'grid'
+		},
     {
-      "id": "grid_1x6",
-      "label": "Grid_1x6",
-      "type": "grid"
-    },
+      id: 'grid_1x6',
+      label: 'Grid_1x6',
+      type: 'grid'
+		},
     {
-      "id": "grid_1x4",
-      "label": "Grid_1x4",
-      "type": "grid"
-    },
+      id: 'grid_1x4',
+      label: 'Grid_1x4',
+      type: 'grid'
+		},
     {
-      "id": "grid_1x3",
-      "label": "Grid_1x3",
-      "type": "grid"
-    },
+      id: 'grid_1x3',
+      label: 'Grid_1x3',
+      type: 'grid'
+		},
     {
-      "id": "grid_1x2",
-      "label": "Grid_1x2",
-      "type": "grid"
-    },
+      id: 'grid_1x2',
+      label: 'Grid_1x2',
+      type: 'grid'
+		},
     {
-      "id": "grid_1x1",
-      "label": "Grid_1x1",
-      "type": "grid"
-    }
-  ],
-  "component": [
+      id: 'grid_1x1',
+      label: 'Grid_1x1',
+      type: 'grid'
+		},
+	],
+  component: [
     {
-      "id": "buttons",
-      "label": "Button",
-      "type": "component",
-      "property": {
-        "parentId": "buttons",
-        "background": "red",
-        "borderRadius": "20px",
-        "height": "80vh",
-        "overflowY": "overflowY",
-        "position": "absolute",
-        "width": "85554540%"
-      },
-      "css": {
-        "parentId": "buttons",
-        "borderRadius": "20px",
-        "height": "60vh",
-        "overflowY": "overflowY",
-        "width": "299999990%"
-      },
-      "model": {
-        "parentId": "buttons",
-        "width": "58978970%"
-      },
-      "api": {
-        "parentId": "buttons",
-        "url": "https://api9887897897.com/docs"
-      }
-    },
+      id: 'buttons',
+      label: 'Button',
+      type: 'component',
+      property: {
+        parentId: 'buttons',
+        background: 'red',
+        borderRadius: '20px',
+        height: '80vh',
+        overflowY: 'overflowY',
+        position: 'absolute',
+        width: '85554540%'
+			},
+      css: {
+        parentId: 'buttons',
+        borderRadius: '20px',
+        height: '60vh',
+        overflowY: 'overflowY',
+        width: '299999990%'
+			},
+      model: {
+        parentId: 'buttons',
+        width: '58978970%'
+			},
+      api: {
+        parentId: 'buttons',
+        url: 'https://api9887897897.com/docs'
+			},
+		},
     {
-      "id": "emails",
-      "label": "Email",
-      "type": "component",
-      "property": {
-        "parentId": "emails",
-        "background": "green",
-        "borderRadius": "10px",
-        "height": "11vh",
-        "overflowY": "overflowY",
-        "position": "absolute",
-        "width": "87%"
-      },
-      "css": {
-        "parentId": "emails",
-        "borderRadius": "2px",
-        "height": "6vh",
-        "overflowY": "overflowY",
-        "width": "2%"
-      },
-      "model": {
-        "parentId": "emails",
-        "width": "50%"
-      },
-      "api": {
-        "parentId": "emails",
-        "url": "https://emails.com/docs"
-      }
-    },
+      id: 'emails',
+      label: 'Email',
+      type: 'component',
+      property: {
+        parentId: 'emails',
+        background: 'green',
+        borderRadius: '10px',
+        height: '11vh',
+        overflowY: 'overflowY',
+        position: 'absolute',
+        width: '87%'
+			},
+      css: {
+        parentId: 'emails',
+        borderRadius: '2px',
+        height: '6vh',
+        overflowY: 'overflowY',
+        width: '2%'
+			},
+      model: {
+        parentId: 'emails',
+        width: '50%'
+			},
+      api: {
+        parentId: 'emails',
+        url: 'https://emails.com/docs'
+			},
+		},
     {
-      "id": "passwords",
-      "label": "Password",
-      "type": "component",
-      "property": {
-        "parentId": "passwords",
-        "background": "yellow",
-        "borderRadius": "1px",
-        "height": "21vh",
-        "overflowY": "overflowY",
-        "position": "absolute",
-        "width": "82%"
-      },
-      "css": {
-        "parentId": "passwords",
-        "borderRadius": "22px",
-        "height": "62vh",
-        "overflowY": "overflowY",
-        "width": "22%"
-      },
-      "model": {
-        "parentId": "passwords",
-        "width": "20%"
-      },
-      "api": {
-        "parentId": "passwords",
-        "url": "https://passwords.com/docs"
-      }
-    },
+      id: 'passwords',
+      label: 'Password',
+      type: 'component',
+      property: {
+        parentId: 'passwords',
+        background: 'yellow',
+        borderRadius: '1px',
+        height: '21vh',
+        overflowY: 'overflowY',
+        position: 'absolute',
+        width: '82%'
+			},
+      css: {
+        parentId: 'passwords',
+        borderRadius: '22px',
+        height: '62vh',
+        overflowY: 'overflowY',
+        width: '22%'
+			},
+      model: {
+        parentId: 'passwords',
+        width: '20%'
+			},
+      api: {
+        parentId: 'passwords',
+        url: 'https://passwords.com/docs'
+			},
+		},
     {
-      "id": "cnfrmpasswords",
-      "label": "ConfirmPassword",
-      "type": "component",
-      "property": {
-        "parentId": "cnfrmpasswords",
-        "background": "grey",
-        "borderRadius": "31px",
-        "height": "91vh",
-        "overflowY": "overflowY",
-        "position": "absolute",
-        "width": "32%"
-      },
-      "css": {
-        "parentId": "cnfrmpasswords",
-        "borderRadius": "92px",
-        "height": "87vh",
-        "overflowY": "overflowY",
-        "width": "26%"
-      },
-      "model": {
-        "parentId": "cnfrmpasswords",
-        "width": "90%"
-      },
-      "api": {
-        "parentId": "cnfrmpasswords",
-        "url": "https://cnfrmpasswords.com/docs"
-      }
-    },
+      id: 'cnfrmpasswords',
+      label: 'ConfirmPassword',
+      type: 'component',
+      property: {
+        parentId: 'cnfrmpasswords',
+        background: 'grey',
+        borderRadius: '31px',
+        height: '91vh',
+        overflowY: 'overflowY',
+        position: 'absolute',
+        width: '32%'
+			},
+      css: {
+        parentId: 'cnfrmpasswords',
+        borderRadius: '92px',
+        height: '87vh',
+        overflowY: 'overflowY',
+        width: '26%'
+			},
+      model: {
+        parentId: 'cnfrmpasswords',
+        width: '90%'
+			},
+      api: {
+        parentId: 'cnfrmpasswords',
+        url: 'https://cnfrmpasswords.com/docs'
+			},
+		},
     {
-      "id": "numbers",
-      "label": "Number",
-      "type": "component",
-      "property": {
-        "parentId": "numbers",
-        "background": "blue",
-        "borderRadius": "01px",
-        "height": "1vh",
-        "overflowY": "overflowY",
-        "position": "absolute",
-        "width": "32%"
-      },
-      "css": {
-        "parentId": "numbers",
-        "borderRadius": "92px",
-        "height": "67vh",
-        "overflowY": "overflowY",
-        "width": "26%"
-      },
-      "model": {
-        "parentId": "numbers",
-        "width": "40%"
-      },
-      "api": {
-        "parentId": "numbers",
-        "url": "https://numbers.com/docs"
-      }
-    },
+      id: 'numbers',
+      label: 'Number',
+      type: 'component',
+      property: {
+        parentId: 'numbers',
+        background: 'blue',
+        borderRadius: '01px',
+        height: '1vh',
+        overflowY: 'overflowY',
+        position: 'absolute',
+        width: '32%'
+			},
+      css: {
+        parentId: 'numbers',
+        borderRadius: '92px',
+        height: '67vh',
+        overflowY: 'overflowY',
+        width: '26%'
+			},
+      model: {
+        parentId: 'numbers',
+        width: '40%'
+			},
+      api: {
+        parentId: 'numbers',
+        url: 'https://numbers.com/docs'
+			},
+		},
     {
-      "id": "checkboxes",
-      "label": "Checkbox",
-      "type": "component",
-      "property": {
-        "parentId": "checkboxes",
-        "background": "blue",
-        "borderRadius": "41px",
-        "height": "10vh",
-        "overflowY": "overflowY",
-        "position": "absolute",
-        "width": "52%"
-      },
-      "css": {
-        "parentId": "checkboxes",
-        "borderRadius": "32px",
-        "height": "66vh",
-        "overflowY": "overflowY",
-        "width": "46%"
-      },
-      "model": {
-        "parentId": "checkboxes",
-        "width": "30%"
-      },
-      "api": {
-        "parentId": "checkboxes",
-        "url": "https://checkboxes.com/docs"
-      }
-    },
+      id: 'checkboxes',
+      label: 'Checkbox',
+      type: 'component',
+      property: {
+        parentId: 'checkboxes',
+        background: 'blue',
+        borderRadius: '41px',
+        height: '10vh',
+        overflowY: 'overflowY',
+        position: 'absolute',
+        width: '52%'
+			},
+      css: {
+        parentId: 'checkboxes',
+        borderRadius: '32px',
+        height: '66vh',
+        overflowY: 'overflowY',
+        width: '46%'
+			},
+      model: {
+        parentId: 'checkboxes',
+        width: '30%'
+			},
+      api: {
+        parentId: 'checkboxes',
+        url: 'https://checkboxes.com/docs'
+			},
+		},
     {
-      "id": "dropdowns",
-      "label": "Dropdown",
-      "type": "component",
-      "property": {
-        "parentId": "dropdowns",
-        "background": "orange",
-        "borderRadius": "21px",
-        "height": "70vh",
-        "overflowY": "overflowY",
-        "position": "absolute",
-        "width": "51%"
-      },
-      "css": {
-        "parentId": "dropdowns",
-        "borderRadius": "35px",
-        "height": "69vh",
-        "overflowY": "overflowY",
-        "width": "26%"
-      },
-      "model": {
-        "parentId": "dropdowns",
-        "width": "70%"
-      },
-      "api": {
-        "parentId": "dropdowns",
-        "url": "https://dropdowns.com/docs"
-      }
-    },
+      id: 'dropdowns',
+      label: 'Dropdown',
+      type: 'component',
+      property: {
+        parentId: 'dropdowns',
+        background: 'orange',
+        borderRadius: '21px',
+        height: '70vh',
+        overflowY: 'overflowY',
+        position: 'absolute',
+        width: '51%'
+			},
+      css: {
+        parentId: 'dropdowns',
+        borderRadius: '35px',
+        height: '69vh',
+        overflowY: 'overflowY',
+        width: '26%'
+			},
+      model: {
+        parentId: 'dropdowns',
+        width: '70%'
+			},
+      api: {
+        parentId: 'dropdowns',
+        url: 'https://dropdowns.com/docs'
+			},
+		},
     {
-      "id": "text",
-      "label": "Text",
-      "type": "component",
-      "property": {
-        "parentId": "text",
-        "background": "vilot",
-        "borderRadius": "31px",
-        "height": "30vh",
-        "overflowY": "overflowY",
-        "position": "absolute",
-        "width": "53%"
-      },
-      "css": {
-        "parentId": "text",
-        "borderRadius": "33px",
-        "height": "64vh",
-        "overflowY": "overflowY",
-        "width": "76%"
-      },
-      "model": {
-        "parentId": "text",
-        "width": "10%"
-      },
-      "api": {
-        "parentId": "text",
-        "url": "https://text.com/docs"
-      }
-    }
-  ]
-}
+      id: 'text',
+      label: 'Text',
+      type: 'component',
+      property: {
+        parentId: 'text',
+        background: 'vilot',
+        borderRadius: '31px',
+        height: '30vh',
+        overflowY: 'overflowY',
+        position: 'absolute',
+        width: '53%'
+			},
+      css: {
+        parentId: 'text',
+        borderRadius: '33px',
+        height: '64vh',
+        overflowY: 'overflowY',
+        width: '76%'
+			},
+      model: {
+        parentId: 'text',
+        width: '10%'
+			},
+      api: {
+        parentId: 'text',
+        url: 'https://text.com/docs'
+			},
+		},
+	],
+};
