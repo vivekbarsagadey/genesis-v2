@@ -4,7 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   /* concurrentFeatures: true, */
-  experimental:{appDir: true},
+  experimental: { appDir: true },
   webpack(config) {
     config.resolve.alias = {
       ...config.resolve.alias,
@@ -18,6 +18,6 @@ const nextConfig = {
 
     return config;
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
