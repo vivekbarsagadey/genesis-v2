@@ -18,7 +18,7 @@ interface ErrorComponentProps {
 }
 
 function ErrorComponent({ message }: ErrorComponentProps) {
-  return <p style={InputStyle.error.item}>{message}</p>;
+	return <p style={InputStyle.error.item}>{message}</p>;
 }
 
 export { ErrorComponent };

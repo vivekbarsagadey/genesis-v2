@@ -3,9 +3,9 @@
 import { colors, fontSize, weight } from '../../../../themes';
 
 const ButtonStyles = {
-  button: {
-    item: {},
-    container: {},
-  },
+	button: {
+		item: {},
+		container: {},
+	},
 };
 export { ButtonStyles };

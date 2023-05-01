@@ -10,10 +10,10 @@ type Role = {
   code: string;
 };
 function Page({ params }: any) {
-  const { id } = params;
+	const { id } = params;
 
-  const roles = use<Role>(findById('roles', id));
-  return <>{roles && <RoleEditComponent roles={roles} id={id} />}</>;
+	const roles = use<Role>(findById('roles', id));
+	return <>{roles && <RoleEditComponent roles={roles} id={id} />}</>;
 }
 
 export default Page;

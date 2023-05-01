@@ -1,7 +1,7 @@
 import React from 'react';
 
 function FooterComponent() {
-  return <>FooterComponent</>;
+	return <>FooterComponent</>;
 }
 
 export { FooterComponent };

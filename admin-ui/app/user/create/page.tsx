@@ -3,7 +3,7 @@ import UserCreateComponent from '.';
 
 const page = () => (
   <div>
-    <UserCreateComponent />
-  </div>
+  <UserCreateComponent />
+	</div>
 );
 export default page;

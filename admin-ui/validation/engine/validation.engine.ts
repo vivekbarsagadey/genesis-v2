@@ -1,49 +1,49 @@
 import {
-  ValidationError,
-  ValidationContext,
-  ValidationErrors,
-  Constraint,
+	ValidationError,
+	ValidationContext,
+	ValidationErrors,
+	Constraint,
 } from '.';
 import { validate as _validate } from '../rules';
 
 class ValidatorContextBuilder {
-  private constraints = new Array<Constraint>();
+	private constraints = new Array<Constraint>();
 
-  private label = '';
+	private label = '';
 
-  private _error: ValidationErrors = new ValidationErrors();
+	private _error: ValidationErrors = new ValidationErrors();
 
-  constructor(label: string | undefined) {
-    this.label = label || '';
-    this.constraints = new Array<Constraint>();
-  }
+	constructor(label: string | undefined) {
+		this.label = label || '';
+		this.constraints = new Array<Constraint>();
+	}
 
-  public addValidator(constraint: Constraint) {
-    this.constraints.push(constraint);
-  }
+	public addValidator(constraint: Constraint) {
+		this.constraints.push(constraint);
+	}
 
-  public doValidation = (_v: string) => {
-    this._error = new ValidationErrors();
-    this._error.add({
-      row: _v,
-      _errors: ValidationEngine.validate({
-        data: _v,
-        constraints: this.constraints,
-        name: this.label,
-      }),
-    });
-    if (this._error.isError()) {
-      return this._error.getAllErrors().map((e) => e.getErrorMessage());
-    }
+	public doValidation = (_v: string) => {
+		this._error = new ValidationErrors();
+		this._error.add({
+			row: _v,
+			_errors: ValidationEngine.validate({
+				data: _v,
+				constraints: this.constraints,
+				name: this.label,
+			}),
+		});
+		if (this._error.isError()) {
+			return this._error.getAllErrors().map((e) => e.getErrorMessage());
+		}
 
-    return [];
-  };
+		return [];
+	};
 }
 
 const ValidationEngine = {
-  validate(context: ValidationContext): ValidationError[] {
-    return _validate(context);
-  },
+	validate(context: ValidationContext): ValidationError[] {
+		return _validate(context);
+	},
 };
 
 export { ValidationEngine, ValidatorContextBuilder };

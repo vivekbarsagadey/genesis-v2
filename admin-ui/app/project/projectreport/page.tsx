@@ -6,8 +6,8 @@ import { findAll } from '../../../services/api.service';
 const URL = 'projects';
 
 function Page() {
-  const projects = use<Array<IProject>>(findAll(URL));
-  return <ProjectReportComponent projects={projects} />;
+	const projects = use<Array<IProject>>(findAll(URL));
+	return <ProjectReportComponent projects={projects} />;
 }
 
 export default Page;

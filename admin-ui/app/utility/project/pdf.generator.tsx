@@ -8,27 +8,27 @@ type ProjectProps = {
 };
 
 function ProjectPdfGenerator({ projects }: ProjectProps) {
-  const exportPDF = async () => {
-    const fileName = `Project${'-list'}${new Date()
-      .toISOString()
-      .slice(0, 10)}`;
-    const headers = [['Project Name', 'Customer Name', 'Application']];
-    const pdfSendData = projects?.map((elt) => [
-      elt.name,
-      elt.customerName,
-      elt.application,
-    ]);
-    await download({
-      headers,
-      pdfSendData,
-      fileName,
-    });
-  };
-  return (
-    <Typography variant="subtitle1" onClick={() => exportPDF()}>
-      PDF
-    </Typography>
-  );
+	const exportPDF = async () => {
+		const fileName = `Project${'-list'}${new Date()
+			.toISOString()
+			.slice(0, 10)}`;
+		const headers = [['Project Name', 'Customer Name', 'Application']];
+		const pdfSendData = projects?.map((elt) => [
+			elt.name,
+			elt.customerName,
+			elt.application,
+		]);
+		await download({
+			headers,
+			pdfSendData,
+			fileName,
+		});
+	};
+	return (
+  <Typography variant="subtitle1" onClick={() => exportPDF()}>
+  PDF
+		</Typography>
+	);
 }
 
 export default ProjectPdfGenerator;

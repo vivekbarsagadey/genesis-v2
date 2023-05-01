@@ -8,8 +8,8 @@ import { ICustomer } from './models';
 const URL = 'customer';
 
 function Page() {
-  const customer = use<Array<ICustomer>>(findAll(URL));
-  return <CustomerComponentHome customer={customer} />;
+	const customer = use<Array<ICustomer>>(findAll(URL));
+	return <CustomerComponentHome customer={customer} />;
 }
 
 export default Page;

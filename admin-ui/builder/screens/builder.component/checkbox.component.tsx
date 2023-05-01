@@ -2,7 +2,7 @@ import React from 'react';
 import Checkbox from '@mui/material/Checkbox';
 
 function CheckboxComponent() {
-  return <Checkbox />;
+	return <Checkbox />;
 }
 
 export default CheckboxComponent;

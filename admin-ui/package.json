@@ -76,6 +76,7 @@
     "@types/react-big-calendar": "latest",
     "eslint": "8.2.0",
     "eslint-config-airbnb": "19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-next": "^13.3.1",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "2.25.3",

@@ -19,12 +19,12 @@ type Customer = {
   country: string;
 };
 function Page({ params }: any) {
-  const { id } = params;
+	const { id } = params;
 
-  const customers = use<Customer>(findById('customer', id));
-  return (
-    <>{customers && <CustomerEditComponent customers={customers} id={id} />}</>
-  );
+	const customers = use<Customer>(findById('customer', id));
+	return (
+  <>{customers && <CustomerEditComponent customers={customers} id={id} />}</>
+	);
 }
 
 export default Page;

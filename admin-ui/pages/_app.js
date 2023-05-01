@@ -5,11 +5,11 @@ import '../styles/globals.scss';
 const clientSideEmotionCache = createEmotionCache();
 
 function MyApp({
-  Component,
-  emotionCache = clientSideEmotionCache,
-  pageProps: { session, ...pageProps },
+	Component,
+	emotionCache = clientSideEmotionCache,
+	pageProps: { session, ...pageProps },
 }) {
-  return <Component {...pageProps} />;
+	return <Component {...pageProps} />;
 }
 
 export default MyApp;

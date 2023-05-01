@@ -2,7 +2,7 @@ import React from 'react';
 import CreateRowsComponent from '.';
 
 function RowsPage() {
-  return <CreateRowsComponent />;
+	return <CreateRowsComponent />;
 }
 
 export default RowsPage;
