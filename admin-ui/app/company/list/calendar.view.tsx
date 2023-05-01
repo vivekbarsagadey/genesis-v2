@@ -15,29 +15,29 @@ interface CalendarEventData {
 }
 
 function CompanyCalendarView({ companies }: ListComponentProps) {
-	const [events, setEvents] = useState<Array<CalendarEventData>>([]);
+  const [events, setEvents] = useState<Array<CalendarEventData>>([]);
 
-	const calendarCompanies = companies.map((company: ICompany) => ({
-		title: company.name,
-		start: new Date(company.createdAt),
-		end: new Date(company.createdAt),
-	}));
-	useEffect(() => {
-		setEvents(calendarCompanies);
-	}, []);
-	return (
-  <Grid pt={1} container height="80vh">
-  <Grid item xs={12} px={2.5}>
-  <Calendar
-  events={events}
-  startAccessor="start"
-  endAccessor="end"
-  defaultDate={moment().toDate()}
-  localizer={localizer}
-				/>
-			</Grid>
-		</Grid>
-	);
+  const calendarCompanies = companies.map((company: ICompany) => ({
+    title: company.name,
+    start: new Date(company.createdAt),
+    end: new Date(company.createdAt),
+  }));
+  useEffect(() => {
+    setEvents(calendarCompanies);
+  }, []);
+  return (
+    <Grid pt={1} container height="80vh">
+      <Grid item xs={12} px={2.5}>
+        <Calendar
+          events={events}
+          startAccessor="start"
+          endAccessor="end"
+          defaultDate={moment().toDate()}
+          localizer={localizer}
+        />
+      </Grid>
+    </Grid>
+  );
 }
 
 export default CompanyCalendarView;

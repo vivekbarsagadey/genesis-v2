@@ -3,8 +3,8 @@ import ReportComponent from '.';
 
 const page = () => (
   <div>
-  <ReportComponent />
-	</div>
+    <ReportComponent />
+  </div>
 );
 
 export default page;

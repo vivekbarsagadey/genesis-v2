@@ -8,8 +8,8 @@ import { findAll } from '../../../services/api.service';
 const URL = 'templates';
 
 function Page() {
-	const template = use<Array<ITemplates>>(findAll(URL));
-	return <TemplateComponent template={template} />;
+  const template = use<Array<ITemplates>>(findAll(URL));
+  return <TemplateComponent template={template} />;
 }
 
 export default Page;

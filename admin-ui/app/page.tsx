@@ -5,17 +5,17 @@ import Dashboard from './dashboard';
 import SignIn from './login/page';
 
 const page = () => {
-	const { data: session } = useSession();
-	if (session) {
-		return (
-  <p>
-  {/* Signed in as {session.user.email} <br />
+  const { data: session } = useSession();
+  if (session) {
+    return (
+      <p>
+        {/* Signed in as {session.user.email} <br />
         <button onClick={() => signOut()}>Sign out</button> */}
-  {/* <Dashboard /> */}
-			</p>
-		);
-	}
-	return <SignIn />;
+        {/* <Dashboard /> */}
+      </p>
+    );
+  }
+  return <SignIn />;
 };
 
 export default page;

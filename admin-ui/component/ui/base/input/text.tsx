@@ -12,43 +12,43 @@ import React, { useState } from 'react';
 import { ErrorComponent, InputProps, InputStyle } from '.';
 
 function InputTextComponent({
-	label,
-	placeHolder,
-	value,
-	required,
+  label,
+  placeHolder,
+  value,
+  required,
 }: InputProps) {
-	//  const engine = ValidatationEngine();
-	const [_value, setValue] = useState<string | undefined | null>(value);
-	const [errors, setErrors] = useState<string[]>();
-	const onChangeHandller = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const _v = e.target.value;
-		setValue(_v);
-		//  doValidation(_v);
-	};
+  //  const engine = ValidatationEngine();
+  const [_value, setValue] = useState<string | undefined | null>(value);
+  const [errors, setErrors] = useState<string[]>();
+  const onChangeHandller = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const _v = e.target.value;
+    setValue(_v);
+    //  doValidation(_v);
+  };
 
-	return (
-  <Box component="form" noValidate autoComplete="off">
-  <Typography>{label || 'Field Name'}</Typography>
-  <Input
-  required={required}
-  id="standard-required"
-  placeholder={placeHolder}
-  defaultValue={value}
+  return (
+    <Box component="form" noValidate autoComplete="off">
+      <Typography>{label || 'Field Name'}</Typography>
+      <Input
+        required={required}
+        id="standard-required"
+        placeholder={placeHolder}
+        defaultValue={value}
 				// value={_value}
-  type="text"
-  onChange={onChangeHandller}
-  startAdornment={(
-					<InputAdornment position="start">
-						<TextSnippetIcon />
-    </InputAdornment>
+        type="text"
+        onChange={onChangeHandller}
+        startAdornment={(
+          <InputAdornment position="start">
+            <TextSnippetIcon />
+          </InputAdornment>
 				)}
-			/>
+      />
 
-  {errors?.map(({ e, i }) => (
-  <ErrorComponent key={i} message={e} />
-			))}
-		</Box>
-	);
+      {errors?.map(({ e, i }) => (
+        <ErrorComponent key={i} message={e} />
+      ))}
+    </Box>
+  );
 }
 
 export { InputTextComponent };

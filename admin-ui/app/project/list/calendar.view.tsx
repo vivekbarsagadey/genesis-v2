@@ -15,29 +15,29 @@ interface CalendarEventData {
 }
 
 function ProjectCalendarView({ projects }: ListComponentProps) {
-	const [events, setEvents] = useState<Array<CalendarEventData>>([]);
+  const [events, setEvents] = useState<Array<CalendarEventData>>([]);
 
-	const calendarProjects = projects?.map((projects: IProject) => ({
-		title: projects.name,
-		start: new Date(projects.createdAt),
-		end: new Date(projects.createdAt),
-	}));
-	useEffect(() => {
-		setEvents(calendarProjects);
-	}, []);
-	return (
-  <Grid pt={1} container height="80vh">
-  <Grid item xs={12} px={2.5}>
-  <Calendar
-  events={events}
-  startAccessor="start"
-  endAccessor="end"
-  defaultDate={moment().toDate()}
-  localizer={localizer}
-				/>
-			</Grid>
-		</Grid>
-	);
+  const calendarProjects = projects?.map((projects: IProject) => ({
+    title: projects.name,
+    start: new Date(projects.createdAt),
+    end: new Date(projects.createdAt),
+  }));
+  useEffect(() => {
+    setEvents(calendarProjects);
+  }, []);
+  return (
+    <Grid pt={1} container height="80vh">
+      <Grid item xs={12} px={2.5}>
+        <Calendar
+          events={events}
+          startAccessor="start"
+          endAccessor="end"
+          defaultDate={moment().toDate()}
+          localizer={localizer}
+        />
+      </Grid>
+    </Grid>
+  );
 }
 
 export default ProjectCalendarView;

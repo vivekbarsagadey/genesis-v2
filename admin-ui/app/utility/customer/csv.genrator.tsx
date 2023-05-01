@@ -7,17 +7,17 @@ type CustomerProps = {
 };
 
 function CustomerCsvGenerator({ customer }: CustomerProps) {
-	return (
-  <Typography variant="subtitle1">
-  <CSVLink
-  data={customer}
-  filename={`customer-list-${new Date().toISOString().slice(0, 10)}`}
-  style={{ textDecoration: 'none', color: 'black' }}
-			>
-  CSV
-			</CSVLink>
-		</Typography>
-	);
+  return (
+    <Typography variant="subtitle1">
+      <CSVLink
+        data={customer}
+        filename={`customer-list-${new Date().toISOString().slice(0, 10)}`}
+        style={{ textDecoration: 'none', color: 'black' }}
+      >
+        CSV
+      </CSVLink>
+    </Typography>
+  );
 }
 
 export default CustomerCsvGenerator;

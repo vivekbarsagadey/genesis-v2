@@ -4,8 +4,8 @@ import { findAll } from '../../services/api.service';
 
 const URL = 'user';
 const page = () => {
-	const userInfo = use(findAll(URL));
-	return <SignIn userInfo={userInfo} />;
+  const userInfo = use(findAll(URL));
+  return <SignIn userInfo={userInfo} />;
 };
 
 export default page;

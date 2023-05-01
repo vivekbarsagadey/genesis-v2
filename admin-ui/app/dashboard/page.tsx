@@ -7,11 +7,9 @@ import HomeComponent from './index';
 import Dashboard from './index';
 
 function Home() {
-	return (
-  <>
-  <Dashboard />
-		</>
-	);
+  return (
+    <Dashboard />
+  );
 }
 
 export default Home;

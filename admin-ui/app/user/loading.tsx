@@ -5,11 +5,11 @@ import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 
 export default function Loading() {
-	return (
-  <h1>
-  <Box>
-  <LinearProgress />
-			</Box>
-		</h1>
-	);
+  return (
+    <h1>
+      <Box>
+        <LinearProgress />
+      </Box>
+    </h1>
+  );
 }

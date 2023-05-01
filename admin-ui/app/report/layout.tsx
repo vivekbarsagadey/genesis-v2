@@ -7,5 +7,5 @@ type IReports = {
 };
 
 export default function Layout({ children }: IReports) {
-	return <main>{children}</main>;
+  return <main>{children}</main>;
 }

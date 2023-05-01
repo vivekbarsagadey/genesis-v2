@@ -7,17 +7,17 @@ type CompanyProps = {
 };
 
 function CompanyCsvGenerator({ copyCompanyData }: CompanyProps) {
-	return (
-  <Typography variant="subtitle1">
-  <CSVLink
-  data={copyCompanyData}
-  filename={`company-list-${new Date().toISOString().slice(0, 10)}`}
-  style={{ textDecoration: 'none', color: 'black' }}
-			>
-  CSV
-			</CSVLink>
-		</Typography>
-	);
+  return (
+    <Typography variant="subtitle1">
+      <CSVLink
+        data={copyCompanyData}
+        filename={`company-list-${new Date().toISOString().slice(0, 10)}`}
+        style={{ textDecoration: 'none', color: 'black' }}
+      >
+        CSV
+      </CSVLink>
+    </Typography>
+  );
 }
 
 export default CompanyCsvGenerator;

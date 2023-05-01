@@ -12,66 +12,66 @@ import React, { useState } from 'react';
 import { ErrorComponent, InputProps } from '.';
 
 function InputPasswordComponent({
-	label,
-	placeHolder,
-	value,
-	required,
+  label,
+  placeHolder,
+  value,
+  required,
 }: InputProps) {
-	// const engine = ValidatationEngine();
-	const [_value, setValue] = useState<string | undefined | null>(value);
-	const [errors, setErrors] = useState<string[]>();
-	const [showPassword, setShowPassword] = useState<boolean>(false);
-	const onChangeHandller = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const _v = e.target.value;
-		setValue(_v);
-		// doValidation(_v);
-	};
-	const handleShowPassword = () => {
-		setShowPassword(!showPassword);
-	};
+  // const engine = ValidatationEngine();
+  const [_value, setValue] = useState<string | undefined | null>(value);
+  const [errors, setErrors] = useState<string[]>();
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const onChangeHandller = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const _v = e.target.value;
+    setValue(_v);
+    // doValidation(_v);
+  };
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
-	// const doValidation = (_v: string) => {
-	//   // setErrors(
-	//   //   engine
-	//   //     .execute({
-	//   //       data: _v,
-	//   //       name: label || "",
-	//   //       status: [ValidationStatus.REQUIRED, ValidationStatus.PASSWORD],
-	//   //     })
-	//   //     ?.map((e) => e.message)
-	//   // );
-	// };
+  // const doValidation = (_v: string) => {
+  //   // setErrors(
+  //   //   engine
+  //   //     .execute({
+  //   //       data: _v,
+  //   //       name: label || "",
+  //   //       status: [ValidationStatus.REQUIRED, ValidationStatus.PASSWORD],
+  //   //     })
+  //   //     ?.map((e) => e.message)
+  //   // );
+  // };
 
-	return (
-  <Box component="form" noValidate autoComplete="off">
-  <Typography>{label || 'Field Name'}</Typography>
-  <Input
-  required={required}
-  id="standard-required"
-  placeholder={placeHolder}
-  defaultValue={value}
-  type={showPassword ? 'text' : 'password'}
+  return (
+    <Box component="form" noValidate autoComplete="off">
+      <Typography>{label || 'Field Name'}</Typography>
+      <Input
+        required={required}
+        id="standard-required"
+        placeholder={placeHolder}
+        defaultValue={value}
+        type={showPassword ? 'text' : 'password'}
 				// value={_value}
-  onChange={onChangeHandller}
-  startAdornment={(
-					<InputAdornment position="start">
-						<LockIcon />
-    </InputAdornment>
+        onChange={onChangeHandller}
+        startAdornment={(
+          <InputAdornment position="start">
+            <LockIcon />
+          </InputAdornment>
 				)}
-  endAdornment={(
-					<InputAdornment position="end">
-						<IconButton onClick={handleShowPassword}>
-							{showPassword ? <Visibility /> : <VisibilityOff />}
-  </IconButton>
-    </InputAdornment>
+        endAdornment={(
+          <InputAdornment position="end">
+            <IconButton onClick={handleShowPassword}>
+              {showPassword ? <Visibility /> : <VisibilityOff />}
+            </IconButton>
+          </InputAdornment>
 				)}
-			/>
+      />
 
-  {errors?.map((e, i) => (
-  <ErrorComponent key={i} message={e} />
-			))}
-		</Box>
-	);
+      {errors?.map((e, i) => (
+        <ErrorComponent key={i} message={e} />
+      ))}
+    </Box>
+  );
 }
 
 export { InputPasswordComponent };

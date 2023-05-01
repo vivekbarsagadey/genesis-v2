@@ -7,8 +7,8 @@ import { IUser } from './models';
 
 const URL = 'user';
 function Page() {
-	const user = use<Array<IUser>>(findAll(URL));
-	return <UserComponentHome user={user} />;
+  const user = use<Array<IUser>>(findAll(URL));
+  return <UserComponentHome user={user} />;
 }
 
 export default Page;
