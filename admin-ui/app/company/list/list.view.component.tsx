@@ -193,8 +193,8 @@ function ListViewComponent({ companies, myRef }: any) {
                   </IconButton>
                 ) : (
                   <IconButton onClick={() => handleNameSort()}>
-                  <ArrowDropDownIcon />
-                </IconButton>
+                    <ArrowDropDownIcon />
+                  </IconButton>
                 )}
               </Grid>
 
@@ -212,8 +212,8 @@ function ListViewComponent({ companies, myRef }: any) {
                   </IconButton>
                 ) : (
                   <IconButton onClick={() => handleDateSort()}>
-                  <ArrowDropDownIcon />
-                </IconButton>
+                    <ArrowDropDownIcon />
+                  </IconButton>
                 )}
               </Grid>
 
@@ -231,8 +231,8 @@ function ListViewComponent({ companies, myRef }: any) {
                   </IconButton>
                 ) : (
                   <IconButton onClick={() => handleEmailSort()}>
-                  <ArrowDropDownIcon />
-                </IconButton>
+                    <ArrowDropDownIcon />
+                  </IconButton>
                 )}
               </Grid>
 
@@ -250,8 +250,8 @@ function ListViewComponent({ companies, myRef }: any) {
                   </IconButton>
                 ) : (
                   <IconButton onClick={() => handleContactSort()}>
-                  <ArrowDropDownIcon />
-                </IconButton>
+                    <ArrowDropDownIcon />
+                  </IconButton>
                 )}
               </Grid>
 
@@ -274,8 +274,8 @@ function ListViewComponent({ companies, myRef }: any) {
                   </IconButton>
                 ) : (
                   <IconButton onClick={() => handleAddressSort()}>
-                  <ArrowDropDownIcon />
-                </IconButton>
+                    <ArrowDropDownIcon />
+                  </IconButton>
                 )}
               </Grid>
 

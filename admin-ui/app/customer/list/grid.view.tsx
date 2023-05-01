@@ -30,92 +30,92 @@ function CustomerGridView({ customer }: ListComponentProps) {
                 <Box>
                   <Card>
                     <Grid container>
-                    <Grid item xs={12}>
-                      <Grid container>
-                      <Grid item xs={4} style={{ padding: '1rem' }}>
-                      {item.gender === 'Male' ? (
-                      <CardMedia
-                    component="img"
-                    image="./images/grid_avtar.png"
-                    alt="Paella dish"
-                  />
-                    ) : (
-                  <CardMedia
-                    component="img"
-                    image="./images/grid_avtar_female.jpg"
-                    alt="Paella dish"
-                  />
-                    )}
-                    </Grid>
-                      <Grid item xs={8}>
-                      <Grid container>
-                      <Grid item xs={5}>
-                    <Typography variant="subtitle1" mt={1}>
-                      Company Name
-																</Typography>
-                  </Grid>
-                      <Grid item xs={1}>
-                    <Typography mt={1}>:</Typography>
-                  </Grid>
-                      <Grid item xs={6} paddingLeft={2}>
-                    <Typography noWrap variant="subtitle1" mt={1}>
-                      {item.firstName}
-                      {' '}
-                      {item.lastName}
-                    </Typography>
-                  </Grid>
-                    </Grid>
-                      <Grid container>
-                      <Grid item xs={5}>
-                    <Typography variant="subtitle1" mt={1}>
-                      Email
-																</Typography>
-                  </Grid>
-                      <Grid item xs={1}>
-                    <Typography mt={1}> :</Typography>
-                  </Grid>
-                      <Grid item xs={6} paddingLeft={2}>
-                    <Typography noWrap variant="subtitle1" mt={1}>
-                      {item?.email}
-                    </Typography>
-                  </Grid>
-                    </Grid>
+                      <Grid item xs={12}>
+                        <Grid container>
+                          <Grid item xs={4} style={{ padding: '1rem' }}>
+                            {item.gender === 'Male' ? (
+                              <CardMedia
+                                component="img"
+                                image="./images/grid_avtar.png"
+                                alt="Paella dish"
+                              />
+                            ) : (
+                              <CardMedia
+                                component="img"
+                                image="./images/grid_avtar_female.jpg"
+                                alt="Paella dish"
+                              />
+                            )}
+                          </Grid>
+                          <Grid item xs={8}>
+                            <Grid container>
+                              <Grid item xs={5}>
+                                <Typography variant="subtitle1" mt={1}>
+                                  Company Name
+                                </Typography>
+                              </Grid>
+                              <Grid item xs={1}>
+                                <Typography mt={1}>:</Typography>
+                              </Grid>
+                              <Grid item xs={6} paddingLeft={2}>
+                                <Typography noWrap variant="subtitle1" mt={1}>
+                                  {item.firstName}
+                                  {' '}
+                                  {item.lastName}
+                                </Typography>
+                              </Grid>
+                            </Grid>
+                            <Grid container>
+                              <Grid item xs={5}>
+                                <Typography variant="subtitle1" mt={1}>
+                                  Email
+                                </Typography>
+                              </Grid>
+                              <Grid item xs={1}>
+                                <Typography mt={1}> :</Typography>
+                              </Grid>
+                              <Grid item xs={6} paddingLeft={2}>
+                                <Typography noWrap variant="subtitle1" mt={1}>
+                                  {item?.email}
+                                </Typography>
+                              </Grid>
+                            </Grid>
 
-                      <Grid container>
-                      <Grid item xs={5}>
-                    <Typography variant="subtitle1" mt={1}>
-                      Contact
-																</Typography>
-                  </Grid>
-                      <Grid item xs={1}>
-                    <Typography mt={1}> :</Typography>
-                  </Grid>
-                      <Grid item xs={6} paddingLeft={2}>
-                    <Typography noWrap variant="subtitle1" mt={1}>
-                      {item?.mobile}
-                    </Typography>
-                  </Grid>
-                    </Grid>
+                            <Grid container>
+                              <Grid item xs={5}>
+                                <Typography variant="subtitle1" mt={1}>
+                                  Contact
+                                </Typography>
+                              </Grid>
+                              <Grid item xs={1}>
+                                <Typography mt={1}> :</Typography>
+                              </Grid>
+                              <Grid item xs={6} paddingLeft={2}>
+                                <Typography noWrap variant="subtitle1" mt={1}>
+                                  {item?.mobile}
+                                </Typography>
+                              </Grid>
+                            </Grid>
 
-                      <Grid container>
-                      <Grid item xs={5}>
-                    <Typography variant="subtitle1" mt={1}>
-                      Address
-																</Typography>
-                  </Grid>
-                      <Grid item xs={1}>
-                    <Typography mt={1}>:</Typography>
-                  </Grid>
-                      <Grid item xs={6} paddingLeft={2}>
-                    <Typography noWrap variant="subtitle1" mt={1}>
-                      {item?.address}
-                    </Typography>
-                  </Grid>
+                            <Grid container>
+                              <Grid item xs={5}>
+                                <Typography variant="subtitle1" mt={1}>
+                                  Address
+                                </Typography>
+                              </Grid>
+                              <Grid item xs={1}>
+                                <Typography mt={1}>:</Typography>
+                              </Grid>
+                              <Grid item xs={6} paddingLeft={2}>
+                                <Typography noWrap variant="subtitle1" mt={1}>
+                                  {item?.address}
+                                </Typography>
+                              </Grid>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      </Grid>
                     </Grid>
-                    </Grid>
-                    </Grid>
-                    </Grid>
-                  </Grid>
                   </Card>
                 </Box>
               </Grid>

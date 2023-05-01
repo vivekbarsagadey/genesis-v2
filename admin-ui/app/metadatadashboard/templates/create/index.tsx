@@ -106,7 +106,7 @@ function CreateTemplate() {
                 >
                   <Alert onClose={handleClose} sx={{ width: '100%' }}>
                     Row Created Successfully...
-                </Alert>
+                  </Alert>
                 </Snackbar>
               </Link>
             </Grid>

@@ -216,7 +216,7 @@ function WidgetEditComponent({ widgets, id }: WidgetsComponentProps) {
                 >
                   <Button variant="contained" className={classes.buttonStyle}>
                     Cancel
-                </Button>
+                  </Button>
                 </Link>
               </Grid>
               <Grid item xs={6}>
@@ -226,7 +226,7 @@ function WidgetEditComponent({ widgets, id }: WidgetsComponentProps) {
                     onClick={updateHandler}
                     className={classes.buttonStyle}
                   >
-                  Save
+                    Save
                   </Button>
                 </Link>
                 <Snackbar
@@ -236,7 +236,7 @@ function WidgetEditComponent({ widgets, id }: WidgetsComponentProps) {
                 >
                   <Alert onClose={handleClose} sx={{ width: '100%' }}>
                     Widgets Edit Successfully...
-                </Alert>
+                  </Alert>
                 </Snackbar>
               </Grid>
             </Grid>

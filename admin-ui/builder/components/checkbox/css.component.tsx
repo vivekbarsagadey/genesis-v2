@@ -38,11 +38,11 @@ function CheckboxCssComponent({ metaData }) {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                    id="standard-basic"
-                    variant="standard"
-                    value={borderRadius}
-                    onChange={updateBorderRadius}
-                  />
+                      id="standard-basic"
+                      variant="standard"
+                      value={borderRadius}
+                      onChange={updateBorderRadius}
+                    />
                   </Grid>
                 </Grid>
               </Grid>
@@ -53,11 +53,11 @@ function CheckboxCssComponent({ metaData }) {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                    id="standard-basic"
-                    variant="standard"
-                    value={height}
-                    onChange={updateHeight}
-                  />
+                      id="standard-basic"
+                      variant="standard"
+                      value={height}
+                      onChange={updateHeight}
+                    />
                   </Grid>
                 </Grid>
               </Grid>
@@ -68,11 +68,11 @@ function CheckboxCssComponent({ metaData }) {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                    id="standard-basic"
-                    variant="standard"
-                    value={overflow}
-                    onChange={updateOverflow}
-                  />
+                      id="standard-basic"
+                      variant="standard"
+                      value={overflow}
+                      onChange={updateOverflow}
+                    />
                   </Grid>
                 </Grid>
               </Grid>
@@ -84,11 +84,11 @@ function CheckboxCssComponent({ metaData }) {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                    id="standard-basic"
-                    variant="standard"
-                    value={width}
-                    onChange={updateWidth}
-                  />
+                      id="standard-basic"
+                      variant="standard"
+                      value={width}
+                      onChange={updateWidth}
+                    />
                   </Grid>
                 </Grid>
               </Grid>

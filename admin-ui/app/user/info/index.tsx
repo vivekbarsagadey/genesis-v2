@@ -132,8 +132,8 @@ function InfoUserComponent({ user }: InfoUserComponentProps) {
                 <Tooltip title="Edit">
                   <Link href={`/user/${user.id}`}>
                     <IconButton>
-                    <EditIcon fontSize="small" />
-                  </IconButton>
+                      <EditIcon fontSize="small" />
+                    </IconButton>
                   </Link>
                 </Tooltip>
               </Grid>
@@ -153,7 +153,7 @@ function InfoUserComponent({ user }: InfoUserComponentProps) {
                     severity="error"
                     sx={{ width: '100%' }}
                   >
-                  Items Deleted Sucessfully...
+                    Items Deleted Sucessfully...
                   </Alert>
                 </Snackbar>
               </Grid>
@@ -192,7 +192,7 @@ function InfoUserComponent({ user }: InfoUserComponentProps) {
                     sx={{ height: '4vh' }}
                     onClick={() => handleCloseDelete()}
                   >
-                  Cancel
+                    Cancel
                   </Button>
                 </Grid>
                 <Grid item xs={2}>
@@ -202,7 +202,7 @@ function InfoUserComponent({ user }: InfoUserComponentProps) {
                     onClick={() => removeData(user)}
                     sx={{ height: '4vh' }}
                   >
-                  Ok
+                    Ok
                   </Button>
                 </Grid>
               </Grid>

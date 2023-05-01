@@ -112,8 +112,8 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
                 <Tooltip title="Edit">
                   <Link href={`/company/${company.id}`}>
                     <IconButton>
-                    <EditIcon fontSize="small" />
-                  </IconButton>
+                      <EditIcon fontSize="small" />
+                    </IconButton>
                   </Link>
                 </Tooltip>
               </Grid>
@@ -133,7 +133,7 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
                     severity="error"
                     sx={{ width: '100%' }}
                   >
-                  Items Deleted Sucessfully...
+                    Items Deleted Sucessfully...
                   </Alert>
                 </Snackbar>
               </Grid>
@@ -172,7 +172,7 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
                     sx={{ height: '4vh' }}
                     onClick={() => handleCloseDelete()}
                   >
-                  Cancel
+                    Cancel
                   </Button>
                 </Grid>
                 <Grid item xs={2}>
@@ -182,7 +182,7 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
                     onClick={() => removeData(company)}
                     sx={{ height: '4vh' }}
                   >
-                  Ok
+                    Ok
                   </Button>
                 </Grid>
               </Grid>

@@ -534,282 +534,282 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
                 <Grid item xs={6}>
                   <Grid container display="flex" alignItems="center">
                     <Grid item xs={3}>
-                    <Typography>First Name</Typography>
-                  </Grid>
+                      <Typography>First Name</Typography>
+                    </Grid>
                     <Grid item xs={2}>
-                    <Typography>:</Typography>
-                  </Grid>
+                      <Typography>:</Typography>
+                    </Grid>
                     <Grid item xs={6}>
-                    <TextField
-                      id="first-name"
-                      placeholder="First Name"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerFirstName}
-                      onChange={updateCustomerFirstName}
-                    />
-                  </Grid>
+                      <TextField
+                        id="first-name"
+                        placeholder="First Name"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={customerFirstName}
+                        onChange={updateCustomerFirstName}
+                      />
+                    </Grid>
                   </Grid>
                 </Grid>
 
                 <Grid item xs={6}>
                   <Grid container display="flex" alignItems="center">
                     <Grid item xs={3}>
-                    <Typography>Last Name</Typography>
-                  </Grid>
+                      <Typography>Last Name</Typography>
+                    </Grid>
                     <Grid item xs={2}>
-                    <Typography>:</Typography>
-                  </Grid>
+                      <Typography>:</Typography>
+                    </Grid>
                     <Grid item xs={6}>
-                    <TextField
-                      id="last-name"
-                      placeholder="Last Name"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerLastName}
-                      onChange={updateCustomerLastName}
-                    />
-                  </Grid>
-                  </Grid>
-                </Grid>
-                <Grid item xs={6} mt={2}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={3}>
-                    <Typography>Gender</Typography>
-                  </Grid>
-                    <Grid item xs={2}>
-                    <Typography>:</Typography>
-                  </Grid>
-                    <Grid item xs={6}>
-                    <Stack spacing={2}>
-                      <Autocomplete
-                      disablePortal
-                      value={gender}
-                      onChange={updateCustomerChange}
-                      id="combo-box-demo"
-                      size="small"
-                      options={genderType?.map((option) => option.title)}
-                      renderInput={(params) => (
                       <TextField
-                      {...params}
-                      placeholder="Select Gender"
-                    />
-                    )}
-                    />
-                    </Stack>
+                        id="last-name"
+                        placeholder="Last Name"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={customerLastName}
+                        onChange={updateCustomerLastName}
+                      />
+                    </Grid>
                   </Grid>
+                </Grid>
+                <Grid item xs={6} mt={2}>
+                  <Grid container display="flex" alignItems="center">
+                    <Grid item xs={3}>
+                      <Typography>Gender</Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <Typography>:</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Stack spacing={2}>
+                        <Autocomplete
+                          disablePortal
+                          value={gender}
+                          onChange={updateCustomerChange}
+                          id="combo-box-demo"
+                          size="small"
+                          options={genderType?.map((option) => option.title)}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              placeholder="Select Gender"
+                            />
+                          )}
+                        />
+                      </Stack>
+                    </Grid>
                   </Grid>
                 </Grid>
 
                 <Grid item xs={6} mt={2}>
                   <Grid container display="flex" alignItems="center">
                     <Grid item xs={3}>
-                    <Typography>Age</Typography>
-                  </Grid>
+                      <Typography>Age</Typography>
+                    </Grid>
                     <Grid item xs={2}>
-                    <Typography>:</Typography>
-                  </Grid>
+                      <Typography>:</Typography>
+                    </Grid>
                     <Grid item xs={6}>
-                    <TextField
-                      id="age"
-                      placeholder="Age"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerAge}
-                      onChange={updateCustomerAge}
-                    />
-                  </Grid>
-                  </Grid>
-                </Grid>
-                <Grid item xs={6} mt={2}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={3}>
-                    <Typography>Email</Typography>
-                  </Grid>
-                    <Grid item xs={2}>
-                    <Typography>:</Typography>
-                  </Grid>
-                    <Grid item xs={6}>
-                    <TextField
-                      id="email"
-                      placeholder="Email"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerEmail}
-                      onChange={updateCustomerEmail}
-                    />
-                  </Grid>
-                  </Grid>
-                </Grid>
-                <Grid item xs={6} mt={2}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={3}>
-                    <Typography>Mobile</Typography>
-                  </Grid>
-                    <Grid item xs={2}>
-                    <Typography>:</Typography>
-                  </Grid>
-                    <Grid item xs={6}>
-                    <TextField
-                      id="mobile"
-                      placeholder="Mobile"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerPhone}
-                      onChange={updateCustomerPhone}
-                    />
-                  </Grid>
-                  </Grid>
-                </Grid>
-
-                <Grid item xs={6} mt={2}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={3}>
-                    <Typography>Status</Typography>
-                  </Grid>
-                    <Grid item xs={2}>
-                    <Typography>:</Typography>
-                  </Grid>
-                    <Grid item xs={6}>
-                    <Autocomplete
-                      value={customerStatus}
-                      onChange={updateCustomerStatus}
-                      id="status"
-                      size="small"
-                      options={statusSet?.map((option: any) => option)}
-                      renderInput={(params) => (
-                      <TextField {...params} placeholder="Select Status" />
-                    )}
-                    />
-                  </Grid>
-                  </Grid>
-                </Grid>
-
-                <Grid item xs={6} mt={2}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={3}>
-                    <Typography>Address</Typography>
-                  </Grid>
-                    <Grid item xs={2}>
-                    <Typography>:</Typography>
-                  </Grid>
-                    <Grid item xs={6}>
-                    <TextField
-                      id="address"
-                      placeholder="Address"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerAddress}
-                      onChange={updateCustomerAddress}
-                    />
-                  </Grid>
-                  </Grid>
-                </Grid>
-
-                <Grid item xs={6} mt={2}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={3}>
-                    <Typography>Country</Typography>
-                  </Grid>
-                    <Grid item xs={2}>
-                    <Typography>:</Typography>
-                  </Grid>
-                    <Grid item xs={6}>
-                    <Stack spacing={2}>
-                      <Autocomplete
-                      disablePortal
-                      value={customerCountry}
-                      onChange={updateCustomerCountry}
-                      id="country"
-                      size="small"
-                      options={countrySelect.map(
-                      (option) => option.country,
-                    )}
-                      renderInput={(params) => (
                       <TextField
-                      {...params}
-                      placeholder="Select Country"
-                    />
-                    )}
-                    />
-                    </Stack>
+                        id="age"
+                        placeholder="Age"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={customerAge}
+                        onChange={updateCustomerAge}
+                      />
+                    </Grid>
                   </Grid>
+                </Grid>
+                <Grid item xs={6} mt={2}>
+                  <Grid container display="flex" alignItems="center">
+                    <Grid item xs={3}>
+                      <Typography>Email</Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <Typography>:</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        id="email"
+                        placeholder="Email"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={customerEmail}
+                        onChange={updateCustomerEmail}
+                      />
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <Grid item xs={6} mt={2}>
+                  <Grid container display="flex" alignItems="center">
+                    <Grid item xs={3}>
+                      <Typography>Mobile</Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <Typography>:</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        id="mobile"
+                        placeholder="Mobile"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={customerPhone}
+                        onChange={updateCustomerPhone}
+                      />
+                    </Grid>
                   </Grid>
                 </Grid>
 
                 <Grid item xs={6} mt={2}>
                   <Grid container display="flex" alignItems="center">
                     <Grid item xs={3}>
-                    <Typography>State</Typography>
-                  </Grid>
+                      <Typography>Status</Typography>
+                    </Grid>
                     <Grid item xs={2}>
-                    <Typography>:</Typography>
-                  </Grid>
+                      <Typography>:</Typography>
+                    </Grid>
                     <Grid item xs={6}>
-                    <Autocomplete
-                      disablePortal
-                      value={customerState}
-                      onChange={updateCustomerState}
-                      id="state"
-                      size="small"
-                      options={stateSelect.map((option) => option.state)}
-                      renderInput={(params) => (
-                      <TextField {...params} placeholder="Select State" />
-                    )}
-                    />
-                  </Grid>
+                      <Autocomplete
+                        value={customerStatus}
+                        onChange={updateCustomerStatus}
+                        id="status"
+                        size="small"
+                        options={statusSet?.map((option: any) => option)}
+                        renderInput={(params) => (
+                          <TextField {...params} placeholder="Select Status" />
+                        )}
+                      />
+                    </Grid>
                   </Grid>
                 </Grid>
 
                 <Grid item xs={6} mt={2}>
                   <Grid container display="flex" alignItems="center">
                     <Grid item xs={3}>
-                    <Typography>City</Typography>
-                  </Grid>
+                      <Typography>Address</Typography>
+                    </Grid>
                     <Grid item xs={2}>
-                    <Typography>:</Typography>
-                  </Grid>
+                      <Typography>:</Typography>
+                    </Grid>
                     <Grid item xs={6}>
-                    <Autocomplete
-                      disablePortal
-                      value={customerCity}
-                      onChange={updateCustomerCity}
-                      id="city"
-                      size="small"
-                      options={citySelect.map((option) => option.city)}
-                      renderInput={(params) => (
-                      <TextField {...params} placeholder="Select City" />
-                    )}
-                    />
-                  </Grid>
+                      <TextField
+                        id="address"
+                        placeholder="Address"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={customerAddress}
+                        onChange={updateCustomerAddress}
+                      />
+                    </Grid>
                   </Grid>
                 </Grid>
 
                 <Grid item xs={6} mt={2}>
                   <Grid container display="flex" alignItems="center">
                     <Grid item xs={3}>
-                    <Typography>Zip Code</Typography>
-                  </Grid>
+                      <Typography>Country</Typography>
+                    </Grid>
                     <Grid item xs={2}>
-                    <Typography>:</Typography>
-                  </Grid>
+                      <Typography>:</Typography>
+                    </Grid>
                     <Grid item xs={6}>
-                    <TextField
-                      id="zipcode"
-                      placeholder="Zip Code"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerZipCode}
-                      onChange={updateCustomerZipCode}
-                    />
+                      <Stack spacing={2}>
+                        <Autocomplete
+                          disablePortal
+                          value={customerCountry}
+                          onChange={updateCustomerCountry}
+                          id="country"
+                          size="small"
+                          options={countrySelect.map(
+                            (option) => option.country,
+                          )}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              placeholder="Select Country"
+                            />
+                          )}
+                        />
+                      </Stack>
+                    </Grid>
                   </Grid>
+                </Grid>
+
+                <Grid item xs={6} mt={2}>
+                  <Grid container display="flex" alignItems="center">
+                    <Grid item xs={3}>
+                      <Typography>State</Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <Typography>:</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Autocomplete
+                        disablePortal
+                        value={customerState}
+                        onChange={updateCustomerState}
+                        id="state"
+                        size="small"
+                        options={stateSelect.map((option) => option.state)}
+                        renderInput={(params) => (
+                          <TextField {...params} placeholder="Select State" />
+                        )}
+                      />
+                    </Grid>
+                  </Grid>
+                </Grid>
+
+                <Grid item xs={6} mt={2}>
+                  <Grid container display="flex" alignItems="center">
+                    <Grid item xs={3}>
+                      <Typography>City</Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <Typography>:</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Autocomplete
+                        disablePortal
+                        value={customerCity}
+                        onChange={updateCustomerCity}
+                        id="city"
+                        size="small"
+                        options={citySelect.map((option) => option.city)}
+                        renderInput={(params) => (
+                          <TextField {...params} placeholder="Select City" />
+                        )}
+                      />
+                    </Grid>
+                  </Grid>
+                </Grid>
+
+                <Grid item xs={6} mt={2}>
+                  <Grid container display="flex" alignItems="center">
+                    <Grid item xs={3}>
+                      <Typography>Zip Code</Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <Typography>:</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        id="zipcode"
+                        placeholder="Zip Code"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={customerZipCode}
+                        onChange={updateCustomerZipCode}
+                      />
+                    </Grid>
                   </Grid>
                 </Grid>
 
@@ -817,38 +817,38 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
                   <Grid item xs={8.6} />
                   <Grid item xs={3.4}>
                     <Grid container>
-                    <Grid item xs={6}>
-                      <Link
-                      href="/customer"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      <Button
-                      variant="contained"
-                      className={classes.buttonStyle}
-                    >
-  Cancel
-                    </Button>
-                    </Link>
+                      <Grid item xs={6}>
+                        <Link
+                          href="/customer"
+                          style={{ textDecoration: 'none' }}
+                        >
+                          <Button
+                            variant="contained"
+                            className={classes.buttonStyle}
+                          >
+                            Cancel
+                          </Button>
+                        </Link>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Button
+                          variant="contained"
+                          onClick={updateHandler}
+                          className={classes.buttonStyle}
+                        >
+                          Save
+                        </Button>
+                        <Snackbar
+                          open={alert}
+                          autoHideDuration={8000}
+                          onClose={handleClose}
+                        >
+                          <Alert onClose={handleClose} sx={{ width: '100%' }}>
+                            Customer Edit Sucessfully...
+                          </Alert>
+                        </Snackbar>
+                      </Grid>
                     </Grid>
-                    <Grid item xs={6}>
-                      <Button
-                      variant="contained"
-                      onClick={updateHandler}
-                      className={classes.buttonStyle}
-                    >
-  Save
-                    </Button>
-                      <Snackbar
-                      open={alert}
-                      autoHideDuration={8000}
-                      onClose={handleClose}
-                    >
-                      <Alert onClose={handleClose} sx={{ width: '100%' }}>
-                      Customer Edit Sucessfully...
-													</Alert>
-                    </Snackbar>
-                    </Grid>
-                  </Grid>
                   </Grid>
                 </Grid>
               </Grid>

@@ -183,7 +183,7 @@ function BuilderThemeComponent({ handleCloseTheme }: IBuilderTheme) {
                     size="large"
                     onClick={handleCloseTheme}
                   >
-                  Cancel
+                    Cancel
                   </Button>
                 </Grid>
 
@@ -193,7 +193,7 @@ function BuilderThemeComponent({ handleCloseTheme }: IBuilderTheme) {
                     size="large"
                     onClick={handleClickOpen}
                   >
-                  Next
+                    Next
                   </Button>
                 </Grid>
               </Grid>

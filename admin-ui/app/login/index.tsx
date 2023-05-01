@@ -75,62 +75,62 @@ function SignIn({ userInfo }: any): JSX.Element {
                 <Item>
                   <form onSubmit={handleSubmit}>
                     <Grid item xs={12}>
-                    <Typography pb={1.5} variant="h5" fontWeight="bold">
-                      Login
-											</Typography>
-                  </Grid>
+                      <Typography pb={1.5} variant="h5" fontWeight="bold">
+                        Login
+                      </Typography>
+                    </Grid>
                     <Grid item xs={12}>
-                    <Typography py={1}>
-                      User Name or Email Address*
-											</Typography>
-                    <TextField
-                      size="small"
-                      fullWidth
-                      placeholder="user@genesis.com"
-                      value={userEmail}
-                      onChange={updateEmail}
+                      <Typography py={1}>
+                        User Name or Email Address*
+                      </Typography>
+                      <TextField
+                        size="small"
+                        fullWidth
+                        placeholder="user@genesis.com"
+                        value={userEmail}
+                        onChange={updateEmail}
 												// value={userInfo.email}
 												// onChange={({ target }) =>
 												// 	setUserInfo({ ...userInfo, email: target.value })
 												// }
-                      type="email"
-                    />
-                  </Grid>
+                        type="email"
+                      />
+                    </Grid>
                     <Grid item xs={12} py={2}>
-                    <Typography py={1}> Password</Typography>
-                    <TextField
-                      size="small"
-                      fullWidth
-                      placeholder="Enter Your Password"
-                      value={userPassword}
-                      onChange={updatePassword}
+                      <Typography py={1}> Password</Typography>
+                      <TextField
+                        size="small"
+                        fullWidth
+                        placeholder="Enter Your Password"
+                        value={userPassword}
+                        onChange={updatePassword}
 												// value={userInfo.password}
 												// onChange={({ target }) =>
 												// 	setUserInfo({ ...userInfo, password: target.value })
 												// }
-                      type="password"
-                    />
-                  </Grid>
+                        type="password"
+                      />
+                    </Grid>
                     <Grid item xs={12} my={2}>
-                    <Button
-                      fullWidth
-                      type="submit"
-                      value="Login"
-                      variant="contained"
-                    >
-  Login
-                    </Button>
-                  </Grid>
+                      <Button
+                        fullWidth
+                        type="submit"
+                        value="Login"
+                        variant="contained"
+                      >
+                        Login
+                      </Button>
+                    </Grid>
                     <Grid item xs={12} my={1}>
-                    <Button
-                      fullWidth
-                      type="submit"
-                      value="Login"
-                      variant="contained"
-                    >
-  New User? Register Account
-                    </Button>
-                  </Grid>
+                      <Button
+                        fullWidth
+                        type="submit"
+                        value="Login"
+                        variant="contained"
+                      >
+                        New User? Register Account
+                      </Button>
+                    </Grid>
                   </form>
                 </Item>
               </Grid>

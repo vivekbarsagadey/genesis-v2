@@ -135,68 +135,68 @@ function TemplateComponent({ template }: ITemplates) {
                   </Case>
                   <Case condition={val == 2}>
                     <Grid item xs={6}>
-                    +
-                  </Grid>
+                      +
+                    </Grid>
                     <Grid item xs={6}>
-                    +
-                  </Grid>
+                      +
+                    </Grid>
                   </Case>
                   <Case condition={val == 3}>
                     <Grid item xs={4}>
-                    +
-                  </Grid>
+                      +
+                    </Grid>
                     <Grid item xs={4}>
-                    +
-                  </Grid>
+                      +
+                    </Grid>
                     <Grid item xs={4}>
-                    +
-                  </Grid>
+                      +
+                    </Grid>
                   </Case>
                   <Case condition={val == 4}>
                     <Grid container spacing={1}>
-                    <Grid item xs={3}>
-                      <Button onClick={handleOpen}>+</Button>
-                    </Grid>
+                      <Grid item xs={3}>
+                        <Button onClick={handleOpen}>+</Button>
+                      </Grid>
 
-                    <Modal
-                      open={open}
-                      onClose={handleClose}
-                      aria-labelledby="modal-modal-title"
-                      aria-describedby="modal-modal-description"
-                    >
-                      <Box sx={style}>
-                      <ImageList
-                      sx={{ width: '100%', height: '100%' }}
-                      cols={3}
-                      rowHeight={160}
-                    >
-                      {itemData.map((item) => (
-                      <ImageListItem
-                    key={item.img}
-                    style={{ width: '90%', height: '80%' }}
-                  >
-                    <img
-                      src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                      srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                      alt={item.title}
-                      loading="lazy"
-                      onClick={() => console.log(item.id)}
-                    />
-                  </ImageListItem>
-                    ))}
-                    </ImageList>
-                    </Box>
-                    </Modal>
-                    <Grid item xs={3}>
-                      +
-          </Grid>
-                    <Grid item xs={3}>
-                      +
-          </Grid>
-                    <Grid item xs={3}>
-                      +
-          </Grid>
-                  </Grid>
+                      <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <Box sx={style}>
+                          <ImageList
+                            sx={{ width: '100%', height: '100%' }}
+                            cols={3}
+                            rowHeight={160}
+                          >
+                            {itemData.map((item) => (
+                              <ImageListItem
+                                key={item.img}
+                                style={{ width: '90%', height: '80%' }}
+                              >
+                                <img
+                                  src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                                  srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                                  alt={item.title}
+                                  loading="lazy"
+                                  onClick={() => console.log(item.id)}
+                                />
+                              </ImageListItem>
+                            ))}
+                          </ImageList>
+                        </Box>
+                      </Modal>
+                      <Grid item xs={3}>
+                        +
+                      </Grid>
+                      <Grid item xs={3}>
+                        +
+                      </Grid>
+                      <Grid item xs={3}>
+                        +
+                      </Grid>
+                    </Grid>
                   </Case>
                 </Switch>
               </Grid>

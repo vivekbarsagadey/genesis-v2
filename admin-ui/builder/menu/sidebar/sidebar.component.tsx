@@ -62,33 +62,33 @@ function SidebarComponent({ toggleMenu, getComponentId, getGridId }) {
                 <Grid item xs={2}>
                   <ListItemIcon>
                     <Switch condition={menu.icon}>
-                    <Case value="ViewSidebarIcon">
-                      <ViewSidebarIcon
-                      style={{ fontSize: '1.2rem', color: '#334D6E' }}
-                    />
-                    </Case>
-                    <Case value="AppsIcon">
-                      <AppsIcon
-                      style={{ fontSize: '1.2rem', color: '#334D6E' }}
-                    />
-                    </Case>
-                    <Case value="Grid4x4Icon">
-                      <Grid4x4Icon
-                      style={{ fontSize: '1rem', color: '#334D6E' }}
-                    />
-                    </Case>
-                  </Switch>
+                      <Case value="ViewSidebarIcon">
+                        <ViewSidebarIcon
+                          style={{ fontSize: '1.2rem', color: '#334D6E' }}
+                        />
+                      </Case>
+                      <Case value="AppsIcon">
+                        <AppsIcon
+                          style={{ fontSize: '1.2rem', color: '#334D6E' }}
+                        />
+                      </Case>
+                      <Case value="Grid4x4Icon">
+                        <Grid4x4Icon
+                          style={{ fontSize: '1rem', color: '#334D6E' }}
+                        />
+                      </Case>
+                    </Switch>
                   </ListItemIcon>
                 </Grid>
                 <Grid item xs={2.2}>
                   {toggleMenu && (
                   <Typography
-                  display={{ xs: 'none', sm: 'none', md: 'block' }}
-                  color="#334D6E"
-                  fontSize="0.9rem"
-                >
-                  {menu.name}
-                </Typography>
+                    display={{ xs: 'none', sm: 'none', md: 'block' }}
+                    color="#334D6E"
+                    fontSize="0.9rem"
+                  >
+                    {menu.name}
+                  </Typography>
                   )}
                 </Grid>
               </Grid>
@@ -98,19 +98,19 @@ function SidebarComponent({ toggleMenu, getComponentId, getGridId }) {
                 {toggleMenu && (
                 <Grid item xs={12} ml={1}>
                   <Grid container>
-                  <Grid item xs={2}>
-                    {menu.items?.map((d) => (
-                    <AccordionDetails key={d.id}>
-                    <SideBarInnerList
-                    d={d}
-                    toggleMenu={toggleMenu}
-                    getComponentId={getComponentId}
-                    getGridId={getGridId}
-                  />
-                  </AccordionDetails>
-                  ))}
+                    <Grid item xs={2}>
+                      {menu.items?.map((d) => (
+                        <AccordionDetails key={d.id}>
+                          <SideBarInnerList
+                            d={d}
+                            toggleMenu={toggleMenu}
+                            getComponentId={getComponentId}
+                            getGridId={getGridId}
+                          />
+                        </AccordionDetails>
+                      ))}
+                    </Grid>
                   </Grid>
-                </Grid>
                 </Grid>
                 )}
               </Grid>

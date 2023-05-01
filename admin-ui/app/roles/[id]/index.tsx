@@ -185,10 +185,10 @@ function RoleEditComponent({ roles, id }: RoleComponentProps) {
                   options={statusSet?.map((option: any) => option)}
                   renderInput={(params) => (
                     <TextField
-                    {...params}
-                    InputProps={{ ...params.InputProps, type: 'search' }}
-                    placeholder="Select Status"
-                  />
+                      {...params}
+                      InputProps={{ ...params.InputProps, type: 'search' }}
+                      placeholder="Select Status"
+                    />
                   )}
                 />
               </Stack>
@@ -204,7 +204,7 @@ function RoleEditComponent({ roles, id }: RoleComponentProps) {
                 <Link href="/roles" style={{ textDecoration: 'none' }}>
                   <Button variant="contained" className={classes.buttonStyle}>
                     Cancel
-                </Button>
+                  </Button>
                 </Link>
               </Grid>
               <Grid item xs={6}>
@@ -222,7 +222,7 @@ function RoleEditComponent({ roles, id }: RoleComponentProps) {
                 >
                   <Alert onClose={handleClose} sx={{ width: '100%' }}>
                     Roles Edit Sucessfully...
-                </Alert>
+                  </Alert>
                 </Snackbar>
               </Grid>
             </Grid>

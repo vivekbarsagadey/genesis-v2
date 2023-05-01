@@ -204,7 +204,7 @@ function WidgetsCreateComponent() {
                 >
                   <Button variant="contained" style={{ width: '73%' }}>
                     Cancel
-                </Button>
+                  </Button>
                 </Link>
               </Grid>
               <Grid item xs={6}>
@@ -214,7 +214,7 @@ function WidgetsCreateComponent() {
                     onClick={updateHandler}
                     style={{ width: '73%' }}
                   >
-                  Save
+                    Save
                   </Button>
                   <Snackbar
                     open={alert}
@@ -222,8 +222,8 @@ function WidgetsCreateComponent() {
                     onClose={handleClose}
                   >
                     <Alert onClose={handleClose} sx={{ width: '100%' }}>
-                    Widgets Created Successfully...
-                  </Alert>
+                      Widgets Created Successfully...
+                    </Alert>
                   </Snackbar>
                 </Link>
               </Grid>

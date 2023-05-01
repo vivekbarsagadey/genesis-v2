@@ -360,7 +360,7 @@ function CompanyCreateComponent() {
                 <Link href="/company" style={{ textDecoration: 'none' }}>
                   <Button variant="contained" style={{ width: '73%' }}>
                     Cancel
-                </Button>
+                  </Button>
                 </Link>
               </Grid>
               <Grid item xs={6}>
@@ -378,7 +378,7 @@ function CompanyCreateComponent() {
                 >
                   <Alert onClose={handleClose} sx={{ width: '100%' }}>
                     Company Created Sucessfully...
-                </Alert>
+                  </Alert>
                 </Snackbar>
               </Grid>
             </Grid>

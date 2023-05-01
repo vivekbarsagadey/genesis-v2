@@ -98,8 +98,8 @@ function InfoRoleComponent({ role }: InfoRoleComponentProps) {
                 <Tooltip title="Edit">
                   <Link href={`/roles/${role.id}`}>
                     <IconButton>
-                    <EditIcon fontSize="small" />
-                  </IconButton>
+                      <EditIcon fontSize="small" />
+                    </IconButton>
                   </Link>
                 </Tooltip>
               </Grid>
@@ -119,7 +119,7 @@ function InfoRoleComponent({ role }: InfoRoleComponentProps) {
                     severity="error"
                     sx={{ width: '100%' }}
                   >
-                  Items Deleted Sucessfully...
+                    Items Deleted Sucessfully...
                   </Alert>
                 </Snackbar>
               </Grid>
@@ -158,7 +158,7 @@ function InfoRoleComponent({ role }: InfoRoleComponentProps) {
                     sx={{ height: '4vh' }}
                     onClick={() => handleCloseDelete()}
                   >
-                  Cancel
+                    Cancel
                   </Button>
                 </Grid>
                 <Grid item xs={2}>
@@ -168,7 +168,7 @@ function InfoRoleComponent({ role }: InfoRoleComponentProps) {
                     onClick={() => removeData(role)}
                     sx={{ height: '4vh' }}
                   >
-                  Ok
+                    Ok
                   </Button>
                 </Grid>
               </Grid>

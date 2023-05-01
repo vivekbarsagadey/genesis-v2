@@ -54,83 +54,83 @@ function SideBarInnerList({
               <Case value="LabelIcon ">
                 <LabelIcon
                   style={{
-                  fontSize: '1rem',
-                  color: '#334D6E',
-                  marginTop: '0.6rem',
-                }}
+                    fontSize: '1rem',
+                    color: '#334D6E',
+                    marginTop: '0.6rem',
+                  }}
                 />
               </Case>
               <Case value="EmailIcon ">
                 <EmailIcon
                   style={{
-                  fontSize: '1rem',
-                  color: '#334D6E',
-                  marginTop: '0.6rem',
-                }}
+                    fontSize: '1rem',
+                    color: '#334D6E',
+                    marginTop: '0.6rem',
+                  }}
                 />
               </Case>
               <Case value="LockOpenIcon">
                 <LockOpenIcon
                   style={{
-                  fontSize: '1rem',
-                  color: '#334D6E',
-                  marginTop: '0.6rem',
-                }}
+                    fontSize: '1rem',
+                    color: '#334D6E',
+                    marginTop: '0.6rem',
+                  }}
                 />
               </Case>
               <Case value="LockClockIcon">
                 <LockClockIcon
                   style={{
-                  fontSize: '1rem',
-                  color: '#334D6E',
-                  marginTop: '0.6rem',
-                }}
+                    fontSize: '1rem',
+                    color: '#334D6E',
+                    marginTop: '0.6rem',
+                  }}
                 />
               </Case>
               <Case value="FormatListNumberedIcon ">
                 <FormatListNumberedIcon
                   style={{
-                  fontSize: '1rem',
-                  color: '#334D6E',
-                  marginTop: '0.6rem',
-                }}
+                    fontSize: '1rem',
+                    color: '#334D6E',
+                    marginTop: '0.6rem',
+                  }}
                 />
               </Case>
               <Case value="CheckBoxIcon">
                 <CheckBoxIcon
                   style={{
-                  fontSize: '1rem',
-                  color: '#334D6E',
-                  marginTop: '0.6rem',
-                }}
+                    fontSize: '1rem',
+                    color: '#334D6E',
+                    marginTop: '0.6rem',
+                  }}
                 />
               </Case>
               <Case value="ArrowDropDownCircleIcon">
                 <ArrowDropDownCircleIcon
                   style={{
-                  fontSize: '1rem',
-                  color: '#334D6E',
-                  marginTop: '0.6rem',
-                }}
+                    fontSize: '1rem',
+                    color: '#334D6E',
+                    marginTop: '0.6rem',
+                  }}
                 />
               </Case>
               <Case value="FormatSizeIcon">
                 <FormatSizeIcon
                   style={{
-                  fontSize: '1rem',
-                  color: '#334D6E',
-                  marginTop: '0.6rem',
-                }}
+                    fontSize: '1rem',
+                    color: '#334D6E',
+                    marginTop: '0.6rem',
+                  }}
                 />
               </Case>
               <Default>
                 {' '}
                 <FormatColorTextIcon
                   style={{
-                  fontSize: '1rem',
-                  color: '#334D6E',
-                  marginTop: '0.6rem',
-                }}
+                    fontSize: '1rem',
+                    color: '#334D6E',
+                    marginTop: '0.6rem',
+                  }}
                 />
               </Default>
             </Switch>

@@ -23,11 +23,11 @@ function CheckboxModelComponent({ metaData }) {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                    id="standard-basic"
-                    variant="standard"
-                    value={width}
-                    onChange={updateWidth}
-                  />
+                      id="standard-basic"
+                      variant="standard"
+                      value={width}
+                      onChange={updateWidth}
+                    />
                   </Grid>
                 </Grid>
               </Grid>

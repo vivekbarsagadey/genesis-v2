@@ -182,14 +182,14 @@ function CustomerCreateComponent() {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                    id="first-name"
-                    placeholder="First Name"
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    value={customerFirstName}
-                    onChange={updateCustomerFirstName}
-                  />
+                      id="first-name"
+                      placeholder="First Name"
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      value={customerFirstName}
+                      onChange={updateCustomerFirstName}
+                    />
                   </Grid>
                 </Grid>
               </Grid>
@@ -204,14 +204,14 @@ function CustomerCreateComponent() {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                    id="last-name"
-                    placeholder="Last Name"
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    value={customerLastName}
-                    onChange={updateCustomerLastName}
-                  />
+                      id="last-name"
+                      placeholder="Last Name"
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      value={customerLastName}
+                      onChange={updateCustomerLastName}
+                    />
                   </Grid>
                 </Grid>
               </Grid>
@@ -225,18 +225,18 @@ function CustomerCreateComponent() {
                   </Grid>
                   <Grid item xs={6}>
                     <Stack spacing={2}>
-                    <Autocomplete
-                      disablePortal
-                      value={gender}
-                      onChange={updateCustomerChange}
-                      id="combo-box-demo"
-                      size="small"
-                      options={genderType?.map((option) => option.title)}
-                      renderInput={(params) => (
-                      <TextField {...params} placeholder="Select Gender" />
-                    )}
-                    />
-                  </Stack>
+                      <Autocomplete
+                        disablePortal
+                        value={gender}
+                        onChange={updateCustomerChange}
+                        id="combo-box-demo"
+                        size="small"
+                        options={genderType?.map((option) => option.title)}
+                        renderInput={(params) => (
+                          <TextField {...params} placeholder="Select Gender" />
+                        )}
+                      />
+                    </Stack>
                   </Grid>
                 </Grid>
               </Grid>
@@ -251,14 +251,14 @@ function CustomerCreateComponent() {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                    id="age"
-                    placeholder="Age"
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    value={customerAge}
-                    onChange={updateCustomerAge}
-                  />
+                      id="age"
+                      placeholder="Age"
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      value={customerAge}
+                      onChange={updateCustomerAge}
+                    />
                   </Grid>
                 </Grid>
               </Grid>
@@ -272,14 +272,14 @@ function CustomerCreateComponent() {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                    id="email"
-                    placeholder="Email"
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    value={customerEmail}
-                    onChange={updateCustomerEmail}
-                  />
+                      id="email"
+                      placeholder="Email"
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      value={customerEmail}
+                      onChange={updateCustomerEmail}
+                    />
                   </Grid>
                 </Grid>
               </Grid>
@@ -293,14 +293,14 @@ function CustomerCreateComponent() {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                    id="mobile"
-                    placeholder="Mobile"
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    value={customerPhone}
-                    onChange={updateCustomerPhone}
-                  />
+                      id="mobile"
+                      placeholder="Mobile"
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      value={customerPhone}
+                      onChange={updateCustomerPhone}
+                    />
                   </Grid>
                 </Grid>
               </Grid>
@@ -315,15 +315,15 @@ function CustomerCreateComponent() {
                   </Grid>
                   <Grid item xs={6}>
                     <Autocomplete
-                    value={customerStatus}
-                    onChange={updateCustomerStatus}
-                    id="status"
-                    size="small"
-                    options={statusSet?.map((option: any) => option)}
-                    renderInput={(params) => (
-                      <TextField {...params} placeholder="Select Status" />
-                    )}
-                  />
+                      value={customerStatus}
+                      onChange={updateCustomerStatus}
+                      id="status"
+                      size="small"
+                      options={statusSet?.map((option: any) => option)}
+                      renderInput={(params) => (
+                        <TextField {...params} placeholder="Select Status" />
+                      )}
+                    />
                   </Grid>
                 </Grid>
               </Grid>
@@ -338,14 +338,14 @@ function CustomerCreateComponent() {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                    id="address"
-                    placeholder="Address"
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    value={customerAddress}
-                    onChange={updateCustomerAddress}
-                  />
+                      id="address"
+                      placeholder="Address"
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      value={customerAddress}
+                      onChange={updateCustomerAddress}
+                    />
                   </Grid>
                 </Grid>
               </Grid>
@@ -360,18 +360,18 @@ function CustomerCreateComponent() {
                   </Grid>
                   <Grid item xs={6}>
                     <Stack spacing={2}>
-                    <Autocomplete
-                      disablePortal
-                      value={customerCountry}
-                      onChange={updateCustomerCountry}
-                      id="country"
-                      size="small"
-                      options={countrySelect.map((option) => option.country)}
-                      renderInput={(params) => (
-                      <TextField {...params} placeholder="Select Country" />
-                    )}
-                    />
-                  </Stack>
+                      <Autocomplete
+                        disablePortal
+                        value={customerCountry}
+                        onChange={updateCustomerCountry}
+                        id="country"
+                        size="small"
+                        options={countrySelect.map((option) => option.country)}
+                        renderInput={(params) => (
+                          <TextField {...params} placeholder="Select Country" />
+                        )}
+                      />
+                    </Stack>
                   </Grid>
                 </Grid>
               </Grid>
@@ -386,16 +386,16 @@ function CustomerCreateComponent() {
                   </Grid>
                   <Grid item xs={6}>
                     <Autocomplete
-                    disablePortal
-                    value={customerState}
-                    onChange={updateCustomerState}
-                    id="state"
-                    size="small"
-                    options={stateSelect.map((option) => option.state)}
-                    renderInput={(params) => (
-                      <TextField {...params} placeholder="Select State" />
-                    )}
-                  />
+                      disablePortal
+                      value={customerState}
+                      onChange={updateCustomerState}
+                      id="state"
+                      size="small"
+                      options={stateSelect.map((option) => option.state)}
+                      renderInput={(params) => (
+                        <TextField {...params} placeholder="Select State" />
+                      )}
+                    />
                   </Grid>
                 </Grid>
               </Grid>
@@ -410,16 +410,16 @@ function CustomerCreateComponent() {
                   </Grid>
                   <Grid item xs={6}>
                     <Autocomplete
-                    disablePortal
-                    value={customerCity}
-                    onChange={updateCustomerCity}
-                    id="city"
-                    size="small"
-                    options={citySelect.map((option) => option.city)}
-                    renderInput={(params) => (
-                      <TextField {...params} placeholder="Select City" />
-                    )}
-                  />
+                      disablePortal
+                      value={customerCity}
+                      onChange={updateCustomerCity}
+                      id="city"
+                      size="small"
+                      options={citySelect.map((option) => option.city)}
+                      renderInput={(params) => (
+                        <TextField {...params} placeholder="Select City" />
+                      )}
+                    />
                   </Grid>
                 </Grid>
               </Grid>
@@ -434,14 +434,14 @@ function CustomerCreateComponent() {
                   </Grid>
                   <Grid item xs={6}>
                     <TextField
-                    id="zipcode"
-                    placeholder="Zip Code"
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    value={customerZipCode}
-                    onChange={updateCustomerZipCode}
-                  />
+                      id="zipcode"
+                      placeholder="Zip Code"
+                      variant="outlined"
+                      size="small"
+                      fullWidth
+                      value={customerZipCode}
+                      onChange={updateCustomerZipCode}
+                    />
                   </Grid>
                 </Grid>
               </Grid>
@@ -451,33 +451,33 @@ function CustomerCreateComponent() {
                 <Grid item xs={3.4}>
                   <Grid container>
                     <Grid item xs={6}>
-                    <Link href="/customer" style={{ textDecoration: 'none' }}>
-                      <Button
-                      variant="contained"
-                      className={classes.buttonStyle}
-                    >
-  Cancel
-                    </Button>
-                    </Link>
-                  </Grid>
+                      <Link href="/customer" style={{ textDecoration: 'none' }}>
+                        <Button
+                          variant="contained"
+                          className={classes.buttonStyle}
+                        >
+                          Cancel
+                        </Button>
+                      </Link>
+                    </Grid>
                     <Grid item xs={6}>
-                    <Button
-                      variant="contained"
-                      onClick={updateHandler}
-                      className={classes.buttonStyle}
-                    >
-  Save
-                    </Button>
-                    <Snackbar
-                      open={alert}
-                      autoHideDuration={8000}
-                      onClose={handleClose}
-                    >
-                      <Alert onClose={handleClose} sx={{ width: '100%' }}>
-                      Customer Created Sucessfully...
-												</Alert>
-                    </Snackbar>
-                  </Grid>
+                      <Button
+                        variant="contained"
+                        onClick={updateHandler}
+                        className={classes.buttonStyle}
+                      >
+                        Save
+                      </Button>
+                      <Snackbar
+                        open={alert}
+                        autoHideDuration={8000}
+                        onClose={handleClose}
+                      >
+                        <Alert onClose={handleClose} sx={{ width: '100%' }}>
+                          Customer Created Sucessfully...
+                        </Alert>
+                      </Snackbar>
+                    </Grid>
                   </Grid>
                 </Grid>
               </Grid>

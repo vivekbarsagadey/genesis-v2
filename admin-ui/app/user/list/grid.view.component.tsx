@@ -38,8 +38,8 @@ function GridViewComponent({ items }: GridComponentProps) {
                   {' '}
                   <Link href={`/user/${item._id}`}>
                     <IconButton size="small">
-                    <EditIcon />
-                  </IconButton>
+                      <EditIcon />
+                    </IconButton>
                   </Link>
                   <IconButton size="small">
                     <DeleteOutlineIcon />
@@ -54,9 +54,9 @@ function GridViewComponent({ items }: GridComponentProps) {
                   </Grid>
                   <Grid item xs={6}>
                     <Typography noWrap>
-                    {' '}
-                    {`  ${item?.firstName} ${item.lastName} `}
-                  </Typography>
+                      {' '}
+                      {`  ${item?.firstName} ${item.lastName} `}
+                    </Typography>
                   </Grid>
                 </Grid>
               </Box>
@@ -71,9 +71,9 @@ function GridViewComponent({ items }: GridComponentProps) {
                   </Grid>
                   <Grid item xs={6}>
                     <Typography fontSize="0.9rem" noWrap>
-                    {' '}
-                    {item?.email}
-                  </Typography>
+                      {' '}
+                      {item?.email}
+                    </Typography>
                   </Grid>
                 </Grid>
               </Box>
@@ -88,8 +88,8 @@ function GridViewComponent({ items }: GridComponentProps) {
                   </Grid>
                   <Grid item xs={6}>
                     <Typography fontSize="0.9rem" noWrap>
-                    {item?.mobile}
-                  </Typography>
+                      {item?.mobile}
+                    </Typography>
                   </Grid>
                 </Grid>
               </Box>
@@ -104,9 +104,9 @@ function GridViewComponent({ items }: GridComponentProps) {
                   </Grid>
                   <Grid item xs={7}>
                     <Typography fontSize="0.9rem" noWrap>
-                    {' '}
-                    {item?.address}
-                  </Typography>
+                      {' '}
+                      {item?.address}
+                    </Typography>
                   </Grid>
                 </Grid>
               </Box>

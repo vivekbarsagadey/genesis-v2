@@ -70,13 +70,13 @@ function RoleKanbanView({ roles }: ListComponentProps) {
                 <Grid item xs={6} display="flex" justifyContent="flex-end">
                   <IconButton className={classes.iconStyle}>
                     <MoreHorizIcon
-                    htmlColor="black"
-                    id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}
-                  />
+                      htmlColor="black"
+                      id="basic-button"
+                      aria-controls={open ? 'basic-menu' : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? 'true' : undefined}
+                      onClick={handleClick}
+                    />
                   </IconButton>
                 </Grid>
                 <Menu
@@ -117,13 +117,13 @@ function RoleKanbanView({ roles }: ListComponentProps) {
                 <Grid item xs={6} display="flex" justifyContent="flex-end">
                   <IconButton className={classes.iconStyle}>
                     <MoreHorizIcon
-                    htmlColor="black"
-                    id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}
-                  />
+                      htmlColor="black"
+                      id="basic-button"
+                      aria-controls={open ? 'basic-menu' : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? 'true' : undefined}
+                      onClick={handleClick}
+                    />
                   </IconButton>
                   <Menu
                     id="basic-menu"
@@ -131,17 +131,17 @@ function RoleKanbanView({ roles }: ListComponentProps) {
                     open={open}
                     onClose={handleDropdownClose}
                     MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                  }}
+                      'aria-labelledby': 'basic-button',
+                    }}
                   >
                     <MenuItem onClick={handleDropdownClose}>
-                    <EditIcon fontSize="small" />
-                    <Typography>Edit</Typography>
-                  </MenuItem>
+                      <EditIcon fontSize="small" />
+                      <Typography>Edit</Typography>
+                    </MenuItem>
                     <MenuItem onClick={handleDropdownClose}>
-                    <DeleteIcon fontSize="small" htmlColor="red" />
-                    <Typography color="red">Delete</Typography>
-                  </MenuItem>
+                      <DeleteIcon fontSize="small" htmlColor="red" />
+                      <Typography color="red">Delete</Typography>
+                    </MenuItem>
                   </Menu>
                 </Grid>
               </Grid>
@@ -164,13 +164,13 @@ function RoleKanbanView({ roles }: ListComponentProps) {
                 <Grid item xs={6} display="flex" justifyContent="flex-end">
                   <IconButton className={classes.iconStyle}>
                     <MoreHorizIcon
-                    htmlColor="black"
-                    id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}
-                  />
+                      htmlColor="black"
+                      id="basic-button"
+                      aria-controls={open ? 'basic-menu' : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? 'true' : undefined}
+                      onClick={handleClick}
+                    />
                   </IconButton>
                 </Grid>
                 <Menu

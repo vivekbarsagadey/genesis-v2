@@ -120,8 +120,8 @@ function InfoWidgetsComponent({ widgets }: InfoWidgetsComponentProps) {
                 <Tooltip title="Edit">
                   <Link href={`/metadatadashboard/widgets/${widgets.id}`}>
                     <IconButton>
-                    <EditIcon fontSize="small" />
-                  </IconButton>
+                      <EditIcon fontSize="small" />
+                    </IconButton>
                   </Link>
                 </Tooltip>
               </Grid>
@@ -141,7 +141,7 @@ function InfoWidgetsComponent({ widgets }: InfoWidgetsComponentProps) {
                     severity="error"
                     sx={{ width: '100%' }}
                   >
-                  Items Deleted Sucessfully...
+                    Items Deleted Sucessfully...
                   </Alert>
                 </Snackbar>
               </Grid>
@@ -180,7 +180,7 @@ function InfoWidgetsComponent({ widgets }: InfoWidgetsComponentProps) {
                     sx={{ height: '4vh' }}
                     onClick={() => handleCloseDelete()}
                   >
-                  Cancel
+                    Cancel
                   </Button>
                 </Grid>
                 <Grid item xs={2}>
@@ -190,7 +190,7 @@ function InfoWidgetsComponent({ widgets }: InfoWidgetsComponentProps) {
                     onClick={() => removeData(widgets)}
                     sx={{ height: '4vh' }}
                   >
-                  Ok
+                    Ok
                   </Button>
                 </Grid>
               </Grid>

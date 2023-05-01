@@ -67,10 +67,10 @@ function ListViewComponent({
                 <Grid container ml={1}>
                   <Grid item xs={4}>
                     <Checkbox
-                    checked={show}
-                    onChange={handleChange}
-                    size="small"
-                  />
+                      checked={show}
+                      onChange={handleChange}
+                      size="small"
+                    />
                   </Grid>
                 </Grid>
               </Grid>

@@ -143,8 +143,8 @@ function InfoCustomerComponent({
                 <Tooltip title="Edit">
                   <Link href={`/customer/${customer.id}`}>
                     <IconButton>
-                    <EditIcon fontSize="small" />
-                  </IconButton>
+                      <EditIcon fontSize="small" />
+                    </IconButton>
                   </Link>
                 </Tooltip>
               </Grid>
@@ -164,7 +164,7 @@ function InfoCustomerComponent({
                     severity="error"
                     sx={{ width: '100%' }}
                   >
-                  Items Deleted Sucessfully...
+                    Items Deleted Sucessfully...
                   </Alert>
                 </Snackbar>
               </Grid>
@@ -203,7 +203,7 @@ function InfoCustomerComponent({
                     sx={{ height: '4vh' }}
                     onClick={() => handleCloseDelete()}
                   >
-                  Cancel
+                    Cancel
                   </Button>
                 </Grid>
                 <Grid item xs={2}>
@@ -213,7 +213,7 @@ function InfoCustomerComponent({
                     onClick={() => removeData(customer)}
                     sx={{ height: '4vh' }}
                   >
-                  Ok
+                    Ok
                   </Button>
                 </Grid>
               </Grid>

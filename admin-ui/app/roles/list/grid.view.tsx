@@ -31,83 +31,83 @@ function RoleGridView({ roles }: ListComponentProps) {
                 <Box>
                   <Card>
                     <Grid container>
-                    <Grid item xs={12}>
-                      <Grid container>
-                      <Grid item xs={4} style={{ padding: '1rem' }}>
-                      <CardMedia
-                      component="img"
-                      image="./images/grid_avtar.png"
-                      alt="Paella dish"
-                    />
-                    </Grid>
-                      <Grid item xs={8}>
-                      <Grid container>
-                      <Grid item xs={5}>
-                    <Typography variant="subtitle1" mt={1}>
-                      Created Date
-																</Typography>
-                  </Grid>
-                      <Grid item xs={1}>
-                    <Typography mt={1}>:</Typography>
-                  </Grid>
-                      <Grid item xs={6} paddingLeft={2}>
-                    <Typography noWrap variant="subtitle1" mt={1}>
-                      <Moment format="DD MMM YYYY">
-                      {item?.createdAt}
-                    </Moment>
-                    </Typography>
-                  </Grid>
-                    </Grid>
-                      <Grid container>
-                      <Grid item xs={5}>
-                    <Typography variant="subtitle1" mt={1}>
-                      Name
-																</Typography>
-                  </Grid>
-                      <Grid item xs={1}>
-                    <Typography mt={1}>:</Typography>
-                  </Grid>
-                      <Grid item xs={6} paddingLeft={2}>
-                    <Typography noWrap variant="subtitle1" mt={1}>
-                      {item?.name}
-                    </Typography>
-                  </Grid>
-                    </Grid>
-                      <Grid container>
-                      <Grid item xs={5}>
-                    <Typography variant="subtitle1" mt={1}>
-                      Description
-																</Typography>
-                  </Grid>
-                      <Grid item xs={1}>
-                    <Typography mt={1}> :</Typography>
-                  </Grid>
-                      <Grid item xs={6} paddingLeft={2}>
-                    <Typography noWrap variant="subtitle1" mt={1}>
-                      {item?.description}
-                    </Typography>
-                  </Grid>
-                    </Grid>
+                      <Grid item xs={12}>
+                        <Grid container>
+                          <Grid item xs={4} style={{ padding: '1rem' }}>
+                            <CardMedia
+                              component="img"
+                              image="./images/grid_avtar.png"
+                              alt="Paella dish"
+                            />
+                          </Grid>
+                          <Grid item xs={8}>
+                            <Grid container>
+                              <Grid item xs={5}>
+                                <Typography variant="subtitle1" mt={1}>
+                                  Created Date
+                                </Typography>
+                              </Grid>
+                              <Grid item xs={1}>
+                                <Typography mt={1}>:</Typography>
+                              </Grid>
+                              <Grid item xs={6} paddingLeft={2}>
+                                <Typography noWrap variant="subtitle1" mt={1}>
+                                  <Moment format="DD MMM YYYY">
+                                    {item?.createdAt}
+                                  </Moment>
+                                </Typography>
+                              </Grid>
+                            </Grid>
+                            <Grid container>
+                              <Grid item xs={5}>
+                                <Typography variant="subtitle1" mt={1}>
+                                  Name
+                                </Typography>
+                              </Grid>
+                              <Grid item xs={1}>
+                                <Typography mt={1}>:</Typography>
+                              </Grid>
+                              <Grid item xs={6} paddingLeft={2}>
+                                <Typography noWrap variant="subtitle1" mt={1}>
+                                  {item?.name}
+                                </Typography>
+                              </Grid>
+                            </Grid>
+                            <Grid container>
+                              <Grid item xs={5}>
+                                <Typography variant="subtitle1" mt={1}>
+                                  Description
+                                </Typography>
+                              </Grid>
+                              <Grid item xs={1}>
+                                <Typography mt={1}> :</Typography>
+                              </Grid>
+                              <Grid item xs={6} paddingLeft={2}>
+                                <Typography noWrap variant="subtitle1" mt={1}>
+                                  {item?.description}
+                                </Typography>
+                              </Grid>
+                            </Grid>
 
-                      <Grid container>
-                      <Grid item xs={5}>
-                    <Typography variant="subtitle1" mt={1}>
-                      Code
-																</Typography>
-                  </Grid>
-                      <Grid item xs={1}>
-                    <Typography mt={1}> :</Typography>
-                  </Grid>
-                      <Grid item xs={6} paddingLeft={2}>
-                    <Typography noWrap variant="subtitle1" mt={1}>
-                      {item?.code}
-                    </Typography>
-                  </Grid>
+                            <Grid container>
+                              <Grid item xs={5}>
+                                <Typography variant="subtitle1" mt={1}>
+                                  Code
+                                </Typography>
+                              </Grid>
+                              <Grid item xs={1}>
+                                <Typography mt={1}> :</Typography>
+                              </Grid>
+                              <Grid item xs={6} paddingLeft={2}>
+                                <Typography noWrap variant="subtitle1" mt={1}>
+                                  {item?.code}
+                                </Typography>
+                              </Grid>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      </Grid>
                     </Grid>
-                    </Grid>
-                    </Grid>
-                    </Grid>
-                  </Grid>
                   </Card>
                 </Box>
               </Grid>

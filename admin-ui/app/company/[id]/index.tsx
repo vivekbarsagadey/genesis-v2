@@ -652,8 +652,8 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
                 <Grid item xs={6}>
                   <Link href="/company" style={{ textDecoration: 'none' }}>
                     <Button variant="contained" style={{ width: '73%' }}>
-                    Cancel
-                  </Button>
+                      Cancel
+                    </Button>
                   </Link>
                 </Grid>
                 <Grid item xs={6}>
@@ -662,7 +662,7 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
                     onClick={updateHandler}
                     style={{ width: '73%' }}
                   >
-                  Save
+                    Save
                   </Button>
                   <Snackbar
                     open={alert}
@@ -670,8 +670,8 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
                     onClose={handleClose}
                   >
                     <Alert onClose={handleClose} sx={{ width: '100%' }}>
-                    Company Edit Sucessfully...
-                  </Alert>
+                      Company Edit Sucessfully...
+                    </Alert>
                   </Snackbar>
                 </Grid>
               </Grid>

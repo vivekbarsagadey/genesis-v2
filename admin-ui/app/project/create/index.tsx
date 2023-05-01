@@ -387,14 +387,14 @@ function ProjectCreate() {
                     id="combo-box-demo"
                     size="small"
                     options={companyList?.map(
-                    (company: ICompany) => company.name,
-                  )}
+                      (company: ICompany) => company.name,
+                    )}
                     renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      placeholder="Select Company Name"
-                    />
-                  )}
+                      <TextField
+                        {...params}
+                        placeholder="Select Company Name"
+                      />
+                    )}
                   />
                 </Stack>
               </Grid>
@@ -408,420 +408,420 @@ function ProjectCreate() {
                 <Box className={classes.modalBoxCss}>
                   <Grid item xs={8}>
                     <Card>
-                    <Grid
-                      item
-                      xs={12}
-                      display="flex"
-                      justifyContent="space-between"
-                    >
-                      <Typography
-                      fontWeight="bold"
-                      fontSize="20px"
-                      pl={3}
-                      pt={3}
-                    >
-  Add Company
-                    </Typography>
-                      <IconButton
-                      onClick={handleCustomerModalClose}
-                      className={classes.modalCloseIcon}
-                    >
-                      <HighlightOffIcon />
-                    </IconButton>
-                    </Grid>
-                    <Grid container display="flex" justifyContent="center">
-                      <Grid item xs={12}>
-                      <Box padding={2} ml={3}>
-                      <Grid container spacing={2} mt={2}>
-                      <Grid item xs={6}>
                       <Grid
-                      container
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <Grid item xs={4}>
-                      <Typography>First Name</Typography>
-                    </Grid>
-                      <Grid item xs={1}>
-                      <Typography>:</Typography>
-                    </Grid>
-                      <Grid item xs={6}>
-                      <TextField
-                      id="first-name"
-                      placeholder="First Name"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerFirstName}
-                      onChange={updateCustomerFirstName}
-                    />
-                    </Grid>
-                    </Grid>
-                    </Grid>
+                        item
+                        xs={12}
+                        display="flex"
+                        justifyContent="space-between"
+                      >
+                        <Typography
+                          fontWeight="bold"
+                          fontSize="20px"
+                          pl={3}
+                          pt={3}
+                        >
+                          Add Company
+                        </Typography>
+                        <IconButton
+                          onClick={handleCustomerModalClose}
+                          className={classes.modalCloseIcon}
+                        >
+                          <HighlightOffIcon />
+                        </IconButton>
+                      </Grid>
+                      <Grid container display="flex" justifyContent="center">
+                        <Grid item xs={12}>
+                          <Box padding={2} ml={3}>
+                            <Grid container spacing={2} mt={2}>
+                              <Grid item xs={6}>
+                                <Grid
+                                  container
+                                  display="flex"
+                                  alignItems="center"
+                                >
+                                  <Grid item xs={4}>
+                                    <Typography>First Name</Typography>
+                                  </Grid>
+                                  <Grid item xs={1}>
+                                    <Typography>:</Typography>
+                                  </Grid>
+                                  <Grid item xs={6}>
+                                    <TextField
+                                      id="first-name"
+                                      placeholder="First Name"
+                                      variant="outlined"
+                                      size="small"
+                                      fullWidth
+                                      value={customerFirstName}
+                                      onChange={updateCustomerFirstName}
+                                    />
+                                  </Grid>
+                                </Grid>
+                              </Grid>
 
-                      <Grid item xs={6}>
-                      <Grid
-                      container
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <Grid item xs={4}>
-                      <Typography>Last Name</Typography>
-                    </Grid>
-                      <Grid item xs={1}>
-                      <Typography>:</Typography>
-                    </Grid>
-                      <Grid item xs={6}>
-                      <TextField
-                      id="last-name"
-                      placeholder="Last Name"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerLastName}
-                      onChange={updateCustomerLastName}
-                    />
-                    </Grid>
-                    </Grid>
-                    </Grid>
-                      <Grid item xs={6} mt={2}>
-                      <Grid
-                      container
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <Grid item xs={4}>
-                      <Typography>Gender</Typography>
-                    </Grid>
-                      <Grid item xs={1}>
-                      <Typography>:</Typography>
-                    </Grid>
-                      <Grid item xs={6}>
-                      <Stack spacing={2}>
-                      <Autocomplete
-                      disablePortal
-                      value={gender}
-                      onChange={updateCustomerChange}
-                      id="status"
-                      size="small"
-                      options={genderType?.map(
-                      (option) => option.title,
-                    )}
-                      renderInput={(params) => (
-                      <TextField
-                      {...params}
-                      placeholder="Select Gender"
-                    />
-                    )}
-                    />
-                    </Stack>
-                    </Grid>
-                    </Grid>
-                    </Grid>
+                              <Grid item xs={6}>
+                                <Grid
+                                  container
+                                  display="flex"
+                                  alignItems="center"
+                                >
+                                  <Grid item xs={4}>
+                                    <Typography>Last Name</Typography>
+                                  </Grid>
+                                  <Grid item xs={1}>
+                                    <Typography>:</Typography>
+                                  </Grid>
+                                  <Grid item xs={6}>
+                                    <TextField
+                                      id="last-name"
+                                      placeholder="Last Name"
+                                      variant="outlined"
+                                      size="small"
+                                      fullWidth
+                                      value={customerLastName}
+                                      onChange={updateCustomerLastName}
+                                    />
+                                  </Grid>
+                                </Grid>
+                              </Grid>
+                              <Grid item xs={6} mt={2}>
+                                <Grid
+                                  container
+                                  display="flex"
+                                  alignItems="center"
+                                >
+                                  <Grid item xs={4}>
+                                    <Typography>Gender</Typography>
+                                  </Grid>
+                                  <Grid item xs={1}>
+                                    <Typography>:</Typography>
+                                  </Grid>
+                                  <Grid item xs={6}>
+                                    <Stack spacing={2}>
+                                      <Autocomplete
+                                        disablePortal
+                                        value={gender}
+                                        onChange={updateCustomerChange}
+                                        id="status"
+                                        size="small"
+                                        options={genderType?.map(
+                                          (option) => option.title,
+                                        )}
+                                        renderInput={(params) => (
+                                          <TextField
+                                            {...params}
+                                            placeholder="Select Gender"
+                                          />
+                                        )}
+                                      />
+                                    </Stack>
+                                  </Grid>
+                                </Grid>
+                              </Grid>
 
-                      <Grid item xs={6} mt={2}>
-                      <Grid
-                      container
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <Grid item xs={4}>
-                      <Typography>Age</Typography>
-                    </Grid>
-                      <Grid item xs={1}>
-                      <Typography>:</Typography>
-                    </Grid>
-                      <Grid item xs={6}>
-                      <TextField
-                      id="age"
-                      placeholder="Age"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerAge}
-                      onChange={updateCustomerAge}
-                    />
-                    </Grid>
-                    </Grid>
-                    </Grid>
-                      <Grid item xs={6} mt={2}>
-                      <Grid
-                      container
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <Grid item xs={4}>
-                      <Typography>Email</Typography>
-                    </Grid>
-                      <Grid item xs={1}>
-                      <Typography>:</Typography>
-                    </Grid>
-                      <Grid item xs={6}>
-                      <TextField
-                      id="email"
-                      placeholder="Email"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerEmail}
-                      onChange={updateCustomerEmail}
-                    />
-                    </Grid>
-                    </Grid>
-                    </Grid>
-                      <Grid item xs={6} mt={2}>
-                      <Grid
-                      container
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <Grid item xs={4}>
-                      <Typography>Phone</Typography>
-                    </Grid>
-                      <Grid item xs={1}>
-                      <Typography>:</Typography>
-                    </Grid>
-                      <Grid item xs={6}>
-                      <TextField
-                      id="phone"
-                      placeholder="Phone"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerPhone}
-                      onChange={updateCustomerPhone}
-                    />
-                    </Grid>
-                    </Grid>
-                    </Grid>
+                              <Grid item xs={6} mt={2}>
+                                <Grid
+                                  container
+                                  display="flex"
+                                  alignItems="center"
+                                >
+                                  <Grid item xs={4}>
+                                    <Typography>Age</Typography>
+                                  </Grid>
+                                  <Grid item xs={1}>
+                                    <Typography>:</Typography>
+                                  </Grid>
+                                  <Grid item xs={6}>
+                                    <TextField
+                                      id="age"
+                                      placeholder="Age"
+                                      variant="outlined"
+                                      size="small"
+                                      fullWidth
+                                      value={customerAge}
+                                      onChange={updateCustomerAge}
+                                    />
+                                  </Grid>
+                                </Grid>
+                              </Grid>
+                              <Grid item xs={6} mt={2}>
+                                <Grid
+                                  container
+                                  display="flex"
+                                  alignItems="center"
+                                >
+                                  <Grid item xs={4}>
+                                    <Typography>Email</Typography>
+                                  </Grid>
+                                  <Grid item xs={1}>
+                                    <Typography>:</Typography>
+                                  </Grid>
+                                  <Grid item xs={6}>
+                                    <TextField
+                                      id="email"
+                                      placeholder="Email"
+                                      variant="outlined"
+                                      size="small"
+                                      fullWidth
+                                      value={customerEmail}
+                                      onChange={updateCustomerEmail}
+                                    />
+                                  </Grid>
+                                </Grid>
+                              </Grid>
+                              <Grid item xs={6} mt={2}>
+                                <Grid
+                                  container
+                                  display="flex"
+                                  alignItems="center"
+                                >
+                                  <Grid item xs={4}>
+                                    <Typography>Phone</Typography>
+                                  </Grid>
+                                  <Grid item xs={1}>
+                                    <Typography>:</Typography>
+                                  </Grid>
+                                  <Grid item xs={6}>
+                                    <TextField
+                                      id="phone"
+                                      placeholder="Phone"
+                                      variant="outlined"
+                                      size="small"
+                                      fullWidth
+                                      value={customerPhone}
+                                      onChange={updateCustomerPhone}
+                                    />
+                                  </Grid>
+                                </Grid>
+                              </Grid>
 
-                      <Grid item xs={6} mt={2}>
-                      <Grid
-                      container
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <Grid item xs={4}>
-                      <Typography>Status</Typography>
-                    </Grid>
-                      <Grid item xs={1}>
-                      <Typography>:</Typography>
-                    </Grid>
-                      <Grid item xs={6}>
-                      <Autocomplete
-                      disablePortal
-                      value={customerStatus}
-                      onChange={updateCustomerStatus}
-                      id="status"
-                      size="small"
-                      options={statusSet?.map(
-                      (option: any) => option,
-                    )}
-                      renderInput={(params) => (
-                      <TextField
-                      {...params}
-                      placeholder="Select Status"
-                    />
-                    )}
-                    />
-                    </Grid>
-                    </Grid>
-                    </Grid>
+                              <Grid item xs={6} mt={2}>
+                                <Grid
+                                  container
+                                  display="flex"
+                                  alignItems="center"
+                                >
+                                  <Grid item xs={4}>
+                                    <Typography>Status</Typography>
+                                  </Grid>
+                                  <Grid item xs={1}>
+                                    <Typography>:</Typography>
+                                  </Grid>
+                                  <Grid item xs={6}>
+                                    <Autocomplete
+                                      disablePortal
+                                      value={customerStatus}
+                                      onChange={updateCustomerStatus}
+                                      id="status"
+                                      size="small"
+                                      options={statusSet?.map(
+                                        (option: any) => option,
+                                      )}
+                                      renderInput={(params) => (
+                                        <TextField
+                                          {...params}
+                                          placeholder="Select Status"
+                                        />
+                                      )}
+                                    />
+                                  </Grid>
+                                </Grid>
+                              </Grid>
 
-                      <Grid item xs={6} mt={2}>
-                      <Grid
-                      container
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <Grid item xs={4}>
-                      <Typography>Address</Typography>
-                    </Grid>
-                      <Grid item xs={1}>
-                      <Typography>:</Typography>
-                    </Grid>
-                      <Grid item xs={6}>
-                      <TextField
-                      id="address"
-                      placeholder="Address"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerAddress}
-                      onChange={updateCustomerAddress}
-                    />
-                    </Grid>
-                    </Grid>
-                    </Grid>
-                      <Grid item xs={6} mt={2}>
-                      <Grid
-                      container
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <Grid item xs={4}>
-                      <Typography>Zip Code</Typography>
-                    </Grid>
-                      <Grid item xs={1}>
-                      <Typography>:</Typography>
-                    </Grid>
-                      <Grid item xs={6}>
-                      <TextField
-                      id="zipcode"
-                      placeholder="Zip Code"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={customerZipCode}
-                      onChange={updateCustomerZipCode}
-                    />
-                    </Grid>
-                    </Grid>
-                    </Grid>
+                              <Grid item xs={6} mt={2}>
+                                <Grid
+                                  container
+                                  display="flex"
+                                  alignItems="center"
+                                >
+                                  <Grid item xs={4}>
+                                    <Typography>Address</Typography>
+                                  </Grid>
+                                  <Grid item xs={1}>
+                                    <Typography>:</Typography>
+                                  </Grid>
+                                  <Grid item xs={6}>
+                                    <TextField
+                                      id="address"
+                                      placeholder="Address"
+                                      variant="outlined"
+                                      size="small"
+                                      fullWidth
+                                      value={customerAddress}
+                                      onChange={updateCustomerAddress}
+                                    />
+                                  </Grid>
+                                </Grid>
+                              </Grid>
+                              <Grid item xs={6} mt={2}>
+                                <Grid
+                                  container
+                                  display="flex"
+                                  alignItems="center"
+                                >
+                                  <Grid item xs={4}>
+                                    <Typography>Zip Code</Typography>
+                                  </Grid>
+                                  <Grid item xs={1}>
+                                    <Typography>:</Typography>
+                                  </Grid>
+                                  <Grid item xs={6}>
+                                    <TextField
+                                      id="zipcode"
+                                      placeholder="Zip Code"
+                                      variant="outlined"
+                                      size="small"
+                                      fullWidth
+                                      value={customerZipCode}
+                                      onChange={updateCustomerZipCode}
+                                    />
+                                  </Grid>
+                                </Grid>
+                              </Grid>
 
-                      <Grid item xs={6} mt={2}>
-                      <Grid
-                      container
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <Grid item xs={4}>
-                      <Typography>City</Typography>
-                    </Grid>
-                      <Grid item xs={1}>
-                      <Typography>:</Typography>
-                    </Grid>
-                      <Grid item xs={6}>
-                      <Autocomplete
-                      disablePortal
-                      value={customerCity}
-                      onChange={updateCustomerCity}
-                      id="city"
-                      size="small"
-                      options={citySelect.map(
-                      (option: any) => option.city,
-                    )}
-                      renderInput={(params) => (
-                      <TextField
-                      {...params}
-                      placeholder="Select City"
-                    />
-                    )}
-                    />
-                    </Grid>
-                    </Grid>
-                    </Grid>
+                              <Grid item xs={6} mt={2}>
+                                <Grid
+                                  container
+                                  display="flex"
+                                  alignItems="center"
+                                >
+                                  <Grid item xs={4}>
+                                    <Typography>City</Typography>
+                                  </Grid>
+                                  <Grid item xs={1}>
+                                    <Typography>:</Typography>
+                                  </Grid>
+                                  <Grid item xs={6}>
+                                    <Autocomplete
+                                      disablePortal
+                                      value={customerCity}
+                                      onChange={updateCustomerCity}
+                                      id="city"
+                                      size="small"
+                                      options={citySelect.map(
+                                        (option: any) => option.city,
+                                      )}
+                                      renderInput={(params) => (
+                                        <TextField
+                                          {...params}
+                                          placeholder="Select City"
+                                        />
+                                      )}
+                                    />
+                                  </Grid>
+                                </Grid>
+                              </Grid>
 
-                      <Grid item xs={6} mt={2}>
-                      <Grid
-                      container
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <Grid item xs={4}>
-                      <Typography>State</Typography>
-                    </Grid>
-                      <Grid item xs={1}>
-                      <Typography>:</Typography>
-                    </Grid>
-                      <Grid item xs={6}>
-                      <Autocomplete
-                      disablePortal
-                      value={customerState}
-                      onChange={updateCustomerState}
-                      id="state"
-                      size="small"
-                      options={stateSelect.map(
-                      (option) => option.state,
-                    )}
-                      renderInput={(params) => (
-                      <TextField
-                      {...params}
-                      placeholder="Select State"
-                    />
-                    )}
-                    />
-                    </Grid>
-                    </Grid>
-                    </Grid>
+                              <Grid item xs={6} mt={2}>
+                                <Grid
+                                  container
+                                  display="flex"
+                                  alignItems="center"
+                                >
+                                  <Grid item xs={4}>
+                                    <Typography>State</Typography>
+                                  </Grid>
+                                  <Grid item xs={1}>
+                                    <Typography>:</Typography>
+                                  </Grid>
+                                  <Grid item xs={6}>
+                                    <Autocomplete
+                                      disablePortal
+                                      value={customerState}
+                                      onChange={updateCustomerState}
+                                      id="state"
+                                      size="small"
+                                      options={stateSelect.map(
+                                        (option) => option.state,
+                                      )}
+                                      renderInput={(params) => (
+                                        <TextField
+                                          {...params}
+                                          placeholder="Select State"
+                                        />
+                                      )}
+                                    />
+                                  </Grid>
+                                </Grid>
+                              </Grid>
 
-                      <Grid item xs={6} mt={2}>
-                      <Grid
-                      container
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <Grid item xs={4}>
-                      <Typography>Country</Typography>
-                    </Grid>
-                      <Grid item xs={1}>
-                      <Typography>:</Typography>
-                    </Grid>
-                      <Grid item xs={6}>
-                      <Stack spacing={2}>
-                      <Autocomplete
-                      disablePortal
-                      value={customerCountry}
-                      onChange={updateCustomerCountry}
-                      id="status"
-                      size="small"
-                      options={countrySelect.map(
-                      (option) => option.country,
-                    )}
-                      renderInput={(params) => (
-                      <TextField
-                      {...params}
-                      placeholder="Select Country"
-                    />
-                    )}
-                    />
-                    </Stack>
-                    </Grid>
-                    </Grid>
-                    </Grid>
+                              <Grid item xs={6} mt={2}>
+                                <Grid
+                                  container
+                                  display="flex"
+                                  alignItems="center"
+                                >
+                                  <Grid item xs={4}>
+                                    <Typography>Country</Typography>
+                                  </Grid>
+                                  <Grid item xs={1}>
+                                    <Typography>:</Typography>
+                                  </Grid>
+                                  <Grid item xs={6}>
+                                    <Stack spacing={2}>
+                                      <Autocomplete
+                                        disablePortal
+                                        value={customerCountry}
+                                        onChange={updateCustomerCountry}
+                                        id="status"
+                                        size="small"
+                                        options={countrySelect.map(
+                                          (option) => option.country,
+                                        )}
+                                        renderInput={(params) => (
+                                          <TextField
+                                            {...params}
+                                            placeholder="Select Country"
+                                          />
+                                        )}
+                                      />
+                                    </Stack>
+                                  </Grid>
+                                </Grid>
+                              </Grid>
 
-                      <Grid container mt={5}>
-                      <Grid item xs={8.6} />
-                      <Grid item xs={3.4}>
-                      <Grid container>
-                      <Grid item xs={6}>
-                      <Button
-                      variant="contained"
-                      className={classes.buttonStyle}
-                      onClick={handleCustomerModalClose}
-                    >
-  Cancel
-                    </Button>
-                    </Grid>
-                      <Grid item xs={6}>
-                      <Button
-                      variant="contained"
-                      onClick={updateMyCustomerData}
-                      className={classes.buttonStyle}
-                    >
-  Save
-                    </Button>
-                      <Snackbar
-                      open={alert}
-                      autoHideDuration={8000}
-                      onClose={handleClose}
-                    >
-                      <Alert
-                      onClose={handleClose}
-                      sx={{ width: '100%' }}
-                    >
-  Customer Created Sucessfully...
-                    </Alert>
-                    </Snackbar>
-                    </Grid>
-                    </Grid>
-                    </Grid>
-                    </Grid>
-                    </Grid>
-                    </Box>
-                    </Grid>
-                    </Grid>
-                  </Card>
+                              <Grid container mt={5}>
+                                <Grid item xs={8.6} />
+                                <Grid item xs={3.4}>
+                                  <Grid container>
+                                    <Grid item xs={6}>
+                                      <Button
+                                        variant="contained"
+                                        className={classes.buttonStyle}
+                                        onClick={handleCustomerModalClose}
+                                      >
+                                        Cancel
+                                      </Button>
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                      <Button
+                                        variant="contained"
+                                        onClick={updateMyCustomerData}
+                                        className={classes.buttonStyle}
+                                      >
+                                        Save
+                                      </Button>
+                                      <Snackbar
+                                        open={alert}
+                                        autoHideDuration={8000}
+                                        onClose={handleClose}
+                                      >
+                                        <Alert
+                                          onClose={handleClose}
+                                          sx={{ width: '100%' }}
+                                        >
+                                          Customer Created Sucessfully...
+                                        </Alert>
+                                      </Snackbar>
+                                    </Grid>
+                                  </Grid>
+                                </Grid>
+                              </Grid>
+                            </Grid>
+                          </Box>
+                        </Grid>
+                      </Grid>
+                    </Card>
                   </Grid>
                 </Box>
               </Modal>
@@ -847,8 +847,8 @@ function ProjectCreate() {
                     size="small"
                     options={countrySelect.map((option) => option.country)}
                     renderInput={(params) => (
-                    <TextField {...params} placeholder="Select Country" />
-                  )}
+                      <TextField {...params} placeholder="Select Country" />
+                    )}
                   />
                 </Stack>
               </Grid>
@@ -873,8 +873,8 @@ function ProjectCreate() {
                     size="small"
                     options={stateSelect.map((option) => option.state)}
                     renderInput={(params) => (
-                    <TextField {...params} placeholder="Select State" />
-                  )}
+                      <TextField {...params} placeholder="Select State" />
+                    )}
                   />
                 </Stack>
               </Grid>
@@ -899,8 +899,8 @@ function ProjectCreate() {
                     size="small"
                     options={statusSet?.map((option: any) => option)}
                     renderInput={(params) => (
-                    <TextField {...params} placeholder="Select Status" />
-                  )}
+                      <TextField {...params} placeholder="Select Status" />
+                    )}
                   />
                 </Stack>
               </Grid>
@@ -921,36 +921,36 @@ function ProjectCreate() {
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={2}>
                     <Checkbox
-                    value={customerWeb}
-                    onClick={() => getApplicationType('Business to Customer - Web')}
-                  />
+                      value={customerWeb}
+                      onClick={() => getApplicationType('Business to Customer - Web')}
+                    />
                   </Grid>
                   <Grid item xs={10}>
                     <Typography>Business to Customer - Web</Typography>
                   </Grid>
                   <Grid item xs={2}>
                     <Checkbox
-                    value={customerMobile}
-                    onClick={() => getApplicationType('Business to Customer - Mobile')}
-                  />
+                      value={customerMobile}
+                      onClick={() => getApplicationType('Business to Customer - Mobile')}
+                    />
                   </Grid>
                   <Grid item xs={10}>
                     <Typography>Business to Customer - Mobile</Typography>
                   </Grid>
                   <Grid item xs={2}>
                     <Checkbox
-                    value={businessWeb}
-                    onClick={() => getApplicationType('Business to Business - Web')}
-                  />
+                      value={businessWeb}
+                      onClick={() => getApplicationType('Business to Business - Web')}
+                    />
                   </Grid>
                   <Grid item xs={10}>
                     <Typography>Business to Business - Web</Typography>
                   </Grid>
                   <Grid item xs={2}>
                     <Checkbox
-                    value={businessMobile}
-                    onClick={() => getApplicationType('Business to Business - Mobile')}
-                  />
+                      value={businessMobile}
+                      onClick={() => getApplicationType('Business to Business - Mobile')}
+                    />
                   </Grid>
                   <Grid item xs={10}>
                     <Typography>Business to Business - Mobile</Typography>
@@ -966,8 +966,8 @@ function ProjectCreate() {
                 <Grid item xs={6}>
                   <Link href="/project" style={{ textDecoration: 'none' }}>
                     <Button variant="contained" style={{ width: '73%' }}>
-                    Cancel
-                  </Button>
+                      Cancel
+                    </Button>
                   </Link>
                 </Grid>
                 <Grid item xs={6}>
@@ -976,7 +976,7 @@ function ProjectCreate() {
                     onClick={updateHandler}
                     style={{ width: '73%' }}
                   >
-                  Save
+                    Save
                   </Button>
                   <Snackbar
                     open={alert}
@@ -984,8 +984,8 @@ function ProjectCreate() {
                     onClose={handleClose}
                   >
                     <Alert onClose={handleClose} sx={{ width: '100%' }}>
-                    Project Created Sucessfully...
-                  </Alert>
+                      Project Created Sucessfully...
+                    </Alert>
                   </Snackbar>
                 </Grid>
               </Grid>

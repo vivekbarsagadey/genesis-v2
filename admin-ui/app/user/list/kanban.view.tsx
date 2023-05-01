@@ -83,7 +83,7 @@ function UserKanbanView({ user, myRef }: any) {
                   <FiberManualRecordIcon fontSize="small" htmlColor="blue" />
                   <Typography variant="h6" pl={1}>
                     NEW
-                </Typography>
+                  </Typography>
                 </Grid>
                 <Grid
                   item
@@ -115,7 +115,7 @@ function UserKanbanView({ user, myRef }: any) {
                   <FiberManualRecordIcon fontSize="small" htmlColor="green" />
                   <Typography variant="h6" pl={1}>
                     ACTIVE
-                </Typography>
+                  </Typography>
                 </Grid>
                 <Grid
                   item
@@ -147,7 +147,7 @@ function UserKanbanView({ user, myRef }: any) {
                   <FiberManualRecordIcon fontSize="small" htmlColor="red" />
                   <Typography variant="h6" pl={1}>
                     INACTIVE
-                </Typography>
+                  </Typography>
                 </Grid>
                 <Grid
                   item
@@ -256,31 +256,31 @@ function NewUserComponent({ newUser }: INewUser) {
                 <Modal open={openEditModal} onClose={handleEditModalClose}>
                   <Box className={classes.modalStyle}>
                     <Card>
-                    <Grid container spacing={2} p={3}>
-                      <Grid item xs={12}>
-                      <FormControl fullWidth>
-                      <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      value={newStatus}
-                      onChange={handleupdateStatus}
-                    >
-                      <MenuItem value="NEW">NEW</MenuItem>
-                      <MenuItem value="ACTIVE">ACTIVE</MenuItem>
-                      <MenuItem value="INACTIVE">INACTIVE</MenuItem>
-                    </Select>
-                    </FormControl>
-                    </Grid>
-                      <Grid item xs={12}>
-                      <Button
-                      className={classes.buttonStyle}
-                      onClick={updateStatusHandler}
-                    >
-  Apply
-                    </Button>
-                    </Grid>
-                    </Grid>
-                  </Card>
+                      <Grid container spacing={2} p={3}>
+                        <Grid item xs={12}>
+                          <FormControl fullWidth>
+                            <Select
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              value={newStatus}
+                              onChange={handleupdateStatus}
+                            >
+                              <MenuItem value="NEW">NEW</MenuItem>
+                              <MenuItem value="ACTIVE">ACTIVE</MenuItem>
+                              <MenuItem value="INACTIVE">INACTIVE</MenuItem>
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Button
+                            className={classes.buttonStyle}
+                            onClick={updateStatusHandler}
+                          >
+                            Apply
+                          </Button>
+                        </Grid>
+                      </Grid>
+                    </Card>
                   </Box>
                 </Modal>
               </MenuItem>
@@ -418,31 +418,31 @@ function ActiveUserComponent({ activeUser }: IActiveUser) {
                 <Modal open={openEditModal} onClose={handleEditModalClose}>
                   <Box className={classes.modalStyle}>
                     <Card>
-                    <Grid container spacing={2} p={3}>
-                      <Grid item xs={12}>
-                      <FormControl fullWidth>
-                      <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      value={newStatus}
-                      onChange={handleupdateStatus}
-                    >
-                      <MenuItem value="NEW">NEW</MenuItem>
-                      <MenuItem value="ACTIVE">ACTIVE</MenuItem>
-                      <MenuItem value="INACTIVE">INACTIVE</MenuItem>
-                    </Select>
-                    </FormControl>
-                    </Grid>
-                      <Grid item xs={12}>
-                      <Button
-                      className={classes.buttonStyle}
-                      onClick={updateStatusHandler}
-                    >
-  Apply
-                    </Button>
-                    </Grid>
-                    </Grid>
-                  </Card>
+                      <Grid container spacing={2} p={3}>
+                        <Grid item xs={12}>
+                          <FormControl fullWidth>
+                            <Select
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              value={newStatus}
+                              onChange={handleupdateStatus}
+                            >
+                              <MenuItem value="NEW">NEW</MenuItem>
+                              <MenuItem value="ACTIVE">ACTIVE</MenuItem>
+                              <MenuItem value="INACTIVE">INACTIVE</MenuItem>
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Button
+                            className={classes.buttonStyle}
+                            onClick={updateStatusHandler}
+                          >
+                            Apply
+                          </Button>
+                        </Grid>
+                      </Grid>
+                    </Card>
                   </Box>
                 </Modal>
               </MenuItem>
@@ -585,31 +585,31 @@ function InActiveUserComponent({ inActiveUser }: IInActiveUser) {
                 >
                   <Box className={classes.modalStyle}>
                     <Card>
-                    <Grid container spacing={2} p={3}>
-                      <Grid item xs={12}>
-                      <FormControl fullWidth>
-                      <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      value={newStatus}
-                      onChange={handleupdateStatus}
-                    >
-                      <MenuItem value="NEW">NEW</MenuItem>
-                      <MenuItem value="ACTIVE">ACTIVE</MenuItem>
-                      <MenuItem value="INACTIVE">INACTIVE</MenuItem>
-                    </Select>
-                    </FormControl>
-                    </Grid>
-                      <Grid item xs={12}>
-                      <Button
-                      className={classes.buttonStyle}
-                      onClick={updateStatusHandler}
-                    >
-  Apply
-                    </Button>
-                    </Grid>
-                    </Grid>
-                  </Card>
+                      <Grid container spacing={2} p={3}>
+                        <Grid item xs={12}>
+                          <FormControl fullWidth>
+                            <Select
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              value={newStatus}
+                              onChange={handleupdateStatus}
+                            >
+                              <MenuItem value="NEW">NEW</MenuItem>
+                              <MenuItem value="ACTIVE">ACTIVE</MenuItem>
+                              <MenuItem value="INACTIVE">INACTIVE</MenuItem>
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Button
+                            className={classes.buttonStyle}
+                            onClick={updateStatusHandler}
+                          >
+                            Apply
+                          </Button>
+                        </Grid>
+                      </Grid>
+                    </Card>
                   </Box>
                 </Modal>
               </MenuItem>
