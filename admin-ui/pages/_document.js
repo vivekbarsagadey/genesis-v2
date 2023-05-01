@@ -1,21 +1,24 @@
 import * as React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, {
+	Html, Head, Main, NextScript,
+} from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
 import createEmotionCache from '../utils/createEmotionCache';
+
 export default class MyDocument extends Document {
 	render() {
 		return (
-			<Html lang="en">
-				<Head>
-					<link rel="preconnect" href="https://fonts.googleapis.com" />
-					<link
-						href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap"
-						rel="stylesheet"
+  <Html lang="en">
+  <Head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap"
+  rel="stylesheet"
 					/>
 				</Head>
-				<body>
-					<Main />
-					<NextScript />
+  <body>
+  <Main />
+  <NextScript />
 				</body>
 			</Html>
 		);
@@ -64,11 +67,11 @@ MyDocument.getInitialProps = async (ctx) => {
 	// See https://github.com/mui-org/material-ui/issues/26561#issuecomment-855286153
 	const emotionStyles = extractCriticalToChunks(initialProps.html);
 	const emotionStyleTags = emotionStyles.styles.map((style) => (
-		<style
-			data-emotion={`${style.key} ${style.ids.join(' ')}`}
-			key={style.key}
+  <style
+  data-emotion={`${style.key} ${style.ids.join(' ')}`}
+  key={style.key}
 			// eslint-disable-next-line react/no-danger
-			dangerouslySetInnerHTML={{ __html: style.css }}
+  dangerouslySetInnerHTML={{ __html: style.css }}
 		/>
 	));
 	return {
