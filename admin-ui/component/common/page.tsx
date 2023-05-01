@@ -30,34 +30,34 @@ function LayoutComponent({
   return (
     <>
       {session && (
-      <Grid container>
-        <Grid
-          pl={2}
-          pt={2}
-          pr={1}
-          item
-          xs={show ? 1.3 : 1.5}
-          sm={show ? 1.3 : 0.5}
-          md={show ? 2 : 0.5}
-          lg={show ? 2 : 0.5}
-          textAlign={show ? 'right' : 'left'}
-          className={classes.sidebarGridStyle}
-        >
-          <Logo handleMenu={handleMenu} show={show} />
-          <SidebarComponent show={show} />
+        <Grid container>
+          <Grid
+            pl={2}
+            pt={2}
+            pr={1}
+            item
+            xs={show ? 1.3 : 1.5}
+            sm={show ? 1.3 : 0.5}
+            md={show ? 2 : 0.5}
+            lg={show ? 2 : 0.5}
+            textAlign={show ? 'right' : 'left'}
+            className={classes.sidebarGridStyle}
+          >
+            <Logo handleMenu={handleMenu} show={show} />
+            <SidebarComponent show={show} />
+          </Grid>
+          <Grid
+            item
+            className={classes.headerGridStyle}
+            xs={show ? 10.5 : 10.5}
+            sm={show ? 10.5 : 11.5}
+            md={show ? 10 : 11.5}
+            lg={show ? 10 : 11.5}
+          >
+            <HeaderComponent />
+            {children}
+          </Grid>
         </Grid>
-        <Grid
-          item
-          className={classes.headerGridStyle}
-          xs={show ? 10.5 : 10.5}
-          sm={show ? 10.5 : 11.5}
-          md={show ? 10 : 11.5}
-          lg={show ? 10 : 11.5}
-        >
-          <HeaderComponent />
-          {children}
-        </Grid>
-      </Grid>
       )}
       {!session && <>{children}</>}
     </>

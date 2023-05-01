@@ -60,7 +60,7 @@ function InputEmailComponent({
           <InputAdornment position="start">
             <MailIcon />
           </InputAdornment>
-				)}
+        )}
       />
 
       {errors?.map((e, i) => (

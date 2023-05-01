@@ -105,17 +105,17 @@ function ProjectFilterComponent({
       >
         {projects
           && fileds?.map((feild, index) => {
-          	const { key } = feild;
-          	return (
-            <Filter
-              filterField={feild}
-          			// options={Array.from(
-          			//   new Set(projects?.map((f) => f[`${key}`]))
-          			// )}
-              options={['dummy']}
-              key={index}
-          		/>
-          	);
+            const { key } = feild;
+            return (
+              <Filter
+                filterField={feild}
+                // options={Array.from(
+                //   new Set(projects?.map((f) => f[`${key}`]))
+                // )}
+                options={['dummy']}
+                key={index}
+              />
+            );
           })}
 
         <Grid container mb={1} mt={2}>

@@ -51,20 +51,20 @@ function InputPasswordComponent({
         placeholder={placeHolder}
         defaultValue={value}
         type={showPassword ? 'text' : 'password'}
-				// value={_value}
+        // value={_value}
         onChange={onChangeHandller}
         startAdornment={(
           <InputAdornment position="start">
             <LockIcon />
           </InputAdornment>
-				)}
+        )}
         endAdornment={(
           <InputAdornment position="end">
             <IconButton onClick={handleShowPassword}>
               {showPassword ? <Visibility /> : <VisibilityOff />}
             </IconButton>
           </InputAdornment>
-				)}
+        )}
       />
 
       {errors?.map((e, i) => (

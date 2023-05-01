@@ -3,6 +3,13 @@ module.exports = {
     browser: true,
     es2021: true,
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
@@ -15,7 +22,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'jsx-a11y', 'import'],
+  plugins: ['react', '@typescript-eslint'],
   rules: {
     'max-len': [
       'error',
@@ -32,6 +39,18 @@ module.exports = {
     'no-tabs': 0,
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
+    'no-underscore-dangle': 0,
+    'no-array-constructor': 0,
     semi: ['error', 'always'],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
   },
 };

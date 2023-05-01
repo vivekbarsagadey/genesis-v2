@@ -1,4 +1,4 @@
-const isBlank = (value: string): boolean => !isNotBlank(value);
+const isBlank = (value: string | null | undefined): boolean => !isNotBlank(value);
 
 const isNotBlank = (value: string | null | undefined): boolean => {
   if (value && value.trim() !== '') {

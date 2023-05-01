@@ -1,13 +1,9 @@
 'use client';
 
-import {
-  Autocomplete, Box, Grid, TextField, Typography,
-} from '@mui/material';
+import { Autocomplete, Box, Grid, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 
-function CreateRowsComponent({
-  index, setColDb, colDb, setRowDb, rowDb,
-}: any) {
+function CreateRowsComponent({ index, setColDb, colDb, setRowDb, rowDb }: any) {
   const [colCount, setColCount] = useState();
   const [ind] = useState(index + 1);
   const column = [

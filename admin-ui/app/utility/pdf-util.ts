@@ -25,6 +25,6 @@ const download = async ({ headers, pdfSendData, fileName }: DownloadProps) => {
   doc.save(fileName);
 };
 
-const upload = () => {};
+const upload = () => { };
 
 export { download, upload };

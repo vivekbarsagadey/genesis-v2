@@ -34,14 +34,14 @@ function InputTextComponent({
         id="standard-required"
         placeholder={placeHolder}
         defaultValue={value}
-				// value={_value}
+        // value={_value}
         type="text"
         onChange={onChangeHandller}
         startAdornment={(
           <InputAdornment position="start">
             <TextSnippetIcon />
           </InputAdornment>
-				)}
+        )}
       />
 
       {errors?.map(({ e, i }) => (

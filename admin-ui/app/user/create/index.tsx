@@ -434,7 +434,7 @@ function UserCreateComponent() {
                                       )}
                                     </IconButton>
                                   </InputAdornment>
-																)}
+                                )}
                               />
                             </FormControl>
                           </Grid>
@@ -471,7 +471,7 @@ function UserCreateComponent() {
                                       )}
                                     </IconButton>
                                   </InputAdornment>
-																)}
+                                )}
                               />
                             </FormControl>
                           </Grid>
@@ -668,9 +668,9 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-      <Box sx={{ p: 3 }}>
-        <Typography>{children}</Typography>
-      </Box>
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
       )}
     </div>
   );

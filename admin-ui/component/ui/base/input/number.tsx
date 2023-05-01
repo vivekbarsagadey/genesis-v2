@@ -47,7 +47,7 @@ function InputNumberComponent({
         placeholder={placeHolder}
         defaultValue={value}
         type="number"
-				// value={_value}
+        // value={_value}
         onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
           e.target.value = Math.max(0, parseInt(e.target.value))
             .toString()
@@ -58,7 +58,7 @@ function InputNumberComponent({
           <InputAdornment position="start">
             <CallIcon />
           </InputAdornment>
-				)}
+        )}
       />
 
       {errors?.map((e, i) => (

@@ -2,9 +2,7 @@ import React from 'react';
 import ProjectReport from '.';
 
 function Report() {
-  return (
-    <ProjectReport />
-  );
+  return <ProjectReport />;
 }
 
 export default Report;

@@ -89,10 +89,10 @@ function SignIn({ userInfo }: any): JSX.Element {
                         placeholder="user@genesis.com"
                         value={userEmail}
                         onChange={updateEmail}
-												// value={userInfo.email}
-												// onChange={({ target }) =>
-												// 	setUserInfo({ ...userInfo, email: target.value })
-												// }
+                        // value={userInfo.email}
+                        // onChange={({ target }) =>
+                        // 	setUserInfo({ ...userInfo, email: target.value })
+                        // }
                         type="email"
                       />
                     </Grid>
@@ -104,10 +104,10 @@ function SignIn({ userInfo }: any): JSX.Element {
                         placeholder="Enter Your Password"
                         value={userPassword}
                         onChange={updatePassword}
-												// value={userInfo.password}
-												// onChange={({ target }) =>
-												// 	setUserInfo({ ...userInfo, password: target.value })
-												// }
+                        // value={userInfo.password}
+                        // onChange={({ target }) =>
+                        // 	setUserInfo({ ...userInfo, password: target.value })
+                        // }
                         type="password"
                       />
                     </Grid>

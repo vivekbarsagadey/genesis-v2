@@ -42,12 +42,12 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
               <DashboardIcon fontSize="small" />
             </ListItemIcon>
             {toggleMenu && (
-            <Typography
-              display={{ xs: 'none', sm: 'none', md: 'block' }}
-              style={style.typography}
-            >
-              Dashboard
-            </Typography>
+              <Typography
+                display={{ xs: 'none', sm: 'none', md: 'block' }}
+                style={style.typography}
+              >
+                Dashboard
+              </Typography>
             )}
           </ListItemButton>
         </Link>
@@ -62,12 +62,12 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
             </ListItemIcon>
             {' '}
             {toggleMenu && (
-            <Typography
-              display={{ xs: 'none', sm: 'none', md: 'block' }}
-              style={style.typography}
-            >
-              Report
-            </Typography>
+              <Typography
+                display={{ xs: 'none', sm: 'none', md: 'block' }}
+                style={style.typography}
+              >
+                Report
+              </Typography>
             )}
           </ListItemButton>
         </Link>
@@ -82,12 +82,12 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
               <AppsIcon fontSize="small" />
             </ListItemIcon>
             {toggleMenu && (
-            <Typography
-              display={{ xs: 'none', sm: 'none', md: 'block' }}
-              style={style.typography}
-            >
-              Project
-            </Typography>
+              <Typography
+                display={{ xs: 'none', sm: 'none', md: 'block' }}
+                style={style.typography}
+              >
+                Project
+              </Typography>
             )}
           </ListItemButton>
         </Link>
@@ -101,12 +101,12 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
               <StoreIcon fontSize="small" />
             </ListItemIcon>
             {toggleMenu && (
-            <Typography
-              display={{ xs: 'none', sm: 'none', md: 'block' }}
-              style={style.typography}
-            >
-              Company
-            </Typography>
+              <Typography
+                display={{ xs: 'none', sm: 'none', md: 'block' }}
+                style={style.typography}
+              >
+                Company
+              </Typography>
             )}
           </ListItemButton>
         </Link>
@@ -119,12 +119,12 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
               <SupportAgentIcon fontSize="small" />
             </ListItemIcon>
             {toggleMenu && (
-            <Typography
-              display={{ xs: 'none', sm: 'none', md: 'block' }}
-              style={style.typography}
-            >
-              Customer
-            </Typography>
+              <Typography
+                display={{ xs: 'none', sm: 'none', md: 'block' }}
+                style={style.typography}
+              >
+                Customer
+              </Typography>
             )}
           </ListItemButton>
         </Link>
@@ -137,12 +137,12 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
               <Person2Icon fontSize="small" />
             </ListItemIcon>
             {toggleMenu && (
-            <Typography
-              display={{ xs: 'none', sm: 'none', md: 'block' }}
-              style={style.typography}
-            >
-              User
-            </Typography>
+              <Typography
+                display={{ xs: 'none', sm: 'none', md: 'block' }}
+                style={style.typography}
+              >
+                User
+              </Typography>
             )}
           </ListItemButton>
         </Link>

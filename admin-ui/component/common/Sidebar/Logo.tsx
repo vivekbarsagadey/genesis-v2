@@ -12,22 +12,22 @@ function SidebarLogo({ handleMenu, toggleMenu }: logoProps) {
       style={{ display: 'flex', alignItems: 'center', paddingBottom: '1rem' }}
     >
       {toggleMenu && (
-      <Grid
-        textAlign="left"
-        pt={1}
-        display={{ xs: 'none', sm: 'none', md: 'block' }}
-      >
-        <img
-          src="./images/genesislogo3.png"
-          alt="LoginImage"
-          style={{
-            height: '100%',
-            width: '90%',
-            marginRight: '2rem',
-            marginLeft: '0.7rem',
-          }}
-        />
-      </Grid>
+        <Grid
+          textAlign="left"
+          pt={1}
+          display={{ xs: 'none', sm: 'none', md: 'block' }}
+        >
+          <img
+            src="./images/genesislogo3.png"
+            alt="LoginImage"
+            style={{
+              height: '100%',
+              width: '90%',
+              marginRight: '2rem',
+              marginLeft: '0.7rem',
+            }}
+          />
+        </Grid>
       )}
       <>
         <IconButton onClick={handleMenu}>

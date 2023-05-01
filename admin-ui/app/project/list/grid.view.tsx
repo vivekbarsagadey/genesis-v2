@@ -49,42 +49,42 @@ function ProjectGridView({ projects }: ListComponentProps) {
               //       </Grid>
               //     </Box>
 
-              //     <Box mt={1} paddingLeft={2}>
-              //       <Grid container>
-              //         <Grid item xs={5}>
-              //           <Typography variant="subtitle1">
-              //             Company Name
-              //           </Typography>
-              //         </Grid>
-              //         <Grid item xs={1}>
-              //           <Typography> :</Typography>
-              //         </Grid>
-              //         <Grid item xs={6} paddingLeft={2}>
-              //           <Typography variant="subtitle1" noWrap>
-              //             {item?.customerName}
-              //           </Typography>
-              //         </Grid>
-              //       </Grid>
-              //     </Box>
-              //     <Box mt={1} paddingLeft={2} paddingBottom={2}>
-              //       <Grid container>
-              //         <Grid item xs={5}>
-              //           <Typography variant="subtitle1">
-              //             Application
-              //           </Typography>
-              //         </Grid>
-              //         <Grid item xs={1}>
-              //           <Typography> :</Typography>
-              //         </Grid>
-              //         <Grid item xs={6} paddingLeft={2} paddingRight={1}>
-              //           <Typography variant="subtitle1">
-              //             {item?.application}
-              //           </Typography>
-              //         </Grid>
-              //       </Grid>
-              //     </Box>
-              //   </Paper>
-              // </Grid>
+                //     <Box mt={1} paddingLeft={2}>
+                //       <Grid container>
+                //         <Grid item xs={5}>
+                //           <Typography variant="subtitle1">
+                //             Company Name
+                //           </Typography>
+                //         </Grid>
+                //         <Grid item xs={1}>
+                //           <Typography> :</Typography>
+                //         </Grid>
+                //         <Grid item xs={6} paddingLeft={2}>
+                //           <Typography variant="subtitle1" noWrap>
+                //             {item?.customerName}
+                //           </Typography>
+                //         </Grid>
+                //       </Grid>
+                //     </Box>
+                //     <Box mt={1} paddingLeft={2} paddingBottom={2}>
+                //       <Grid container>
+                //         <Grid item xs={5}>
+                //           <Typography variant="subtitle1">
+                //             Application
+                //           </Typography>
+                //         </Grid>
+                //         <Grid item xs={1}>
+                //           <Typography> :</Typography>
+                //         </Grid>
+                //         <Grid item xs={6} paddingLeft={2} paddingRight={1}>
+                //           <Typography variant="subtitle1">
+                //             {item?.application}
+                //           </Typography>
+                //         </Grid>
+                //       </Grid>
+                //     </Box>
+                //   </Paper>
+                // </Grid>
                 <Grid item xs={4} md={4} sm={4} lg={4} key={item.id}>
                   <Box>
                     <Card>

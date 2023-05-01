@@ -96,17 +96,17 @@ function FilterComponent({
       >
         {user
           && fileds?.map((feild, index) => {
-          	const { key } = feild;
-          	return (
-            <Filter
-              filterField={feild}
-          			// options={Array.from(
-          			//   new Set(user?.map((f) => f[`${key}`]))
-          			// )}
-              options={['dummy']}
-              key={index}
-          		/>
-          	);
+            const { key } = feild;
+            return (
+              <Filter
+                filterField={feild}
+                // options={Array.from(
+                //   new Set(user?.map((f) => f[`${key}`]))
+                // )}
+                options={['dummy']}
+                key={index}
+              />
+            );
           })}
         <Grid container mb={1} mt={2}>
           <Grid item xs={6} />

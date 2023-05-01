@@ -210,7 +210,7 @@ function BuilderThemeComponent({ handleCloseTheme }: IBuilderTheme) {
       >
         <BuilderPageSelectComponent
           handleClose={handleClose}
-					// getScreenDataSet={getScreenDataSet}
+          // getScreenDataSet={getScreenDataSet}
           checkbox={checkbox}
         />
       </Dialog>

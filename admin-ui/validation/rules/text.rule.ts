@@ -5,8 +5,7 @@ const TextRule = ({ constraint, data }: RuleContext) => {
   const condition = (): boolean => constraint.validatorType === ValidatorType.TEXT;
 
   const action = () => {
-    if (data.includes(' ')) {
-    } else {
+    if (!data.includes(' ')) {
       throw new ValidationError(constraint);
     }
   };

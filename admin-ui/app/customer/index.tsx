@@ -111,19 +111,19 @@ function CustomerComponentHome({ customer }: CustomerComponentProps) {
           style={{ display: 'flex', justifyContent: 'flex-end' }}
         >
           {show && (
-          <Tooltip title="Delete All" arrow>
-            <IconButton aria-label="delete">
-              <DeleteOutlineIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
+            <Tooltip title="Delete All" arrow>
+              <IconButton aria-label="delete">
+                <DeleteOutlineIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           )}
 
           {show && (
-          <Tooltip title="Delete All" arrow>
-            <IconButton aria-label="delete">
-              <DeleteOutlineIcon fontSize="small" />
-            </IconButton>
-          </Tooltip>
+            <Tooltip title="Delete All" arrow>
+              <IconButton aria-label="delete">
+                <DeleteOutlineIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           )}
         </Grid>
         <Grid item xs={1} mt={1}>
