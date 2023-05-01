@@ -1,40 +1,42 @@
 module.exports = {
-	'env': {
-		'browser': true,
-		'es2021': true
+	env: {
+		browser: true,
+		es2021: true,
 	},
-	'extends': [
+	extends: [
 		'eslint:recommended',
 		'plugin:react/recommended',
-		'plugin:@typescript-eslint/recommended'
+		'plugin:@typescript-eslint/recommended',
+		'airbnb',
 	],
-	'overrides': [
+	overrides: [
 	],
-	'parser': '@typescript-eslint/parser',
-	'parserOptions': {
-		'ecmaVersion': 'latest',
-		'sourceType': 'module'
+	parser: '@typescript-eslint/parser',
+	parserOptions: {
+		ecmaVersion: 'latest',
+		sourceType: 'module',
 	},
-	'plugins': [
+	plugins: [
 		'react',
-		'@typescript-eslint'
+		'@typescript-eslint',
 	],
-	'rules': {
-		'indent': [
+	rules: {
+		'max-len': [1, 70, 2, { ignoreComments: true }],
+		indent: [
 			'error',
-			'tab'
+			'tab',
 		],
 		'linebreak-style': [
 			'error',
-			'unix'
+			'unix',
 		],
-		'quotes': [
+		quotes: [
 			'error',
-			'single'
+			'single',
 		],
-		'semi': [
+		semi: [
 			'error',
-			'always'
-		]
-	}
+			'always',
+		],
+	},
 };
