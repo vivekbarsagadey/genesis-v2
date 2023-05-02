@@ -4,6 +4,8 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import {
   Button,
+  Card,
+  Divider,
   Grid,
   IconButton,
   Paper,
@@ -72,7 +74,7 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
   };
   return (
     <Box mt={0.6} mr={2}>
-      <Paper variant="outlined">
+      <Card elevation={0}>
         <Grid container>
           <Grid item xs={0.7} display="flex" justifyContent="flex-end">
             <Grid container ml={1}>
@@ -189,7 +191,8 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
             </Box>
           </Fade>
         </Modal>
-      </Paper>
+      </Card>
+      <Divider />
     </Box>
   );
 }

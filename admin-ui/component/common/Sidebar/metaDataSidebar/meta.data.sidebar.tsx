@@ -16,7 +16,7 @@ function MetaDataSidebar() {
             display: 'flex',
             marginLeft: '0.7rem',
             paddingRight: '1rem',
-            marginTop: '9rem',
+            marginTop: '6rem',
           }}
         >
           <Grid item xs={3}>

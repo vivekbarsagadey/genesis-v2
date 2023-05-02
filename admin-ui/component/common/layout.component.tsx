@@ -35,8 +35,8 @@ function LayoutComponent({ children }: { children: React.ReactNode }) {
             xs={toggleMenu ? 10.5 : 10.5}
             sm={toggleMenu ? 10.5 : 11.5}
             md={toggleMenu ? 10 : 11.5}
-            lg={toggleMenu ? 10 : 11.5}
-          >
+            lg={toggleMenu ? 10 : 11.5} 
+            style={{ backgroundColor: colors.baseBackGround}} >
             <HeaderComponent />
             {children}
           </Grid>

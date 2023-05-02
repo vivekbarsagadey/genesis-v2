@@ -4,12 +4,13 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import {
   Button,
+  Card,
+  Divider,
   Grid,
   IconButton,
-  Paper,
   Snackbar,
   Tooltip,
-  Typography,
+  Typography
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Backdrop from '@mui/material/Backdrop';
@@ -61,7 +62,7 @@ function InfoUserComponent({ user }: InfoUserComponentProps) {
   };
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string,
+    reason?: string
   ) => {
     if (reason === 'clickaway') {
       return;
@@ -76,141 +77,142 @@ function InfoUserComponent({ user }: InfoUserComponentProps) {
   };
 
   return (
-    <Box mt={0.6} mr={2}>
-      <Paper variant="outlined">
-        <Grid container>
-          <Grid item xs={1} display="flex" justifyContent="flex-end">
-            <Grid container ml={1}>
-              <Grid item xs={4}>
-                <Checkbox size="small" />
+    <>
+      <Box mt={0.6} mr={2}>
+        <Card elevation={0}>
+          <Grid container>
+            <Grid item xs={1} display="flex" justifyContent="flex-end">
+              <Grid container ml={1}>
+                <Grid item xs={4}>
+                  <Checkbox size="small" />
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-          <Grid item xs={2}>
-            <Typography variant="body2" noWrap>
-              {user.firstName}
-              {' '}
-              {user.lastName}
-            </Typography>
-          </Grid>
-          <Grid item xs={2}>
-            <Typography variant="body2" noWrap>
-              {user.role}
-            </Typography>
-          </Grid>
-          <Grid item xs={1.9}>
-            <Typography variant="body2" noWrap>
-              {user.email}
-            </Typography>
-          </Grid>
-          <Grid item xs={2}>
-            <Typography
-              variant="body2"
-              noWrap
-              display="flex"
-              justifyContent="space-around"
-            >
-              {user.mobile}
-            </Typography>
-          </Grid>
-          <Grid item xs={2}>
-            <Typography
-              variant="body2"
-              noWrap
-              display="flex"
-              justifyContent="space-around"
-            >
-              {user.status}
-            </Typography>
-          </Grid>
-          <Grid item xs={1}>
-            <Grid
-              container
-              style={{ display: 'flex', justifyContent: 'center' }}
-            >
-              <Grid item xs={4}>
-                <Tooltip title="Edit">
-                  <Link href={`/user/${user.id}`}>
-                    <IconButton>
-                      <EditIcon fontSize="small" />
-                    </IconButton>
-                  </Link>
-                </Tooltip>
-              </Grid>
-              <Grid item xs={2}>
-                <Tooltip title="Delete">
-                  <IconButton onClick={deletePopupOpen}>
-                    <DeleteOutlineIcon fontSize="small" />
-                  </IconButton>
-                </Tooltip>
-                <Snackbar
-                  open={alert}
-                  autoHideDuration={8000}
-                  onClose={handleClose}
-                >
-                  <Alert
-                    onClose={handleClose}
-                    severity="error"
-                    sx={{ width: '100%' }}
-                  >
-                    Items Deleted Sucessfully...
-                  </Alert>
-                </Snackbar>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-
-        <Modal
-          aria-labelledby="transition-modal-title"
-          aria-describedby="transition-modal-description"
-          open={open}
-          onClose={handleCloseDelete}
-          closeAfterTransition
-          slots={{ backdrop: Backdrop }}
-          slotProps={{
-            backdrop: {
-              timeout: 500,
-            },
-          }}
-        >
-          <Fade in={open}>
-            <Box sx={style}>
-              <Typography
-                id="transition-modal-description"
-                sx={{ mt: 1 }}
-                fontSize="0.9rem"
-              >
-                Are you sure you want to delete the selected User?
+            <Grid item xs={2}>
+              <Typography variant="body2" noWrap>
+                {user.firstName} {user.lastName}
               </Typography>
-              <Grid container mt={2}>
-                <Grid item xs={6} />
-                <Grid item xs={3}>
-                  <Button
-                    variant="contained"
-                    size="small"
-                    sx={{ height: '4vh' }}
-                    onClick={() => handleCloseDelete()}
-                  >
-                    Cancel
-                  </Button>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography variant="body2" noWrap>
+                {user.role}
+              </Typography>
+            </Grid>
+            <Grid item xs={1.9}>
+              <Typography variant="body2" noWrap>
+                {user.email}
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                variant="body2"
+                noWrap
+                display="flex"
+                justifyContent="space-around"
+              >
+                {user.mobile}
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                variant="body2"
+                noWrap
+                display="flex"
+                justifyContent="space-around"
+              >
+                {user.status}
+              </Typography>
+            </Grid>
+            <Grid item xs={1}>
+              <Grid
+                container
+                style={{ display: 'flex', justifyContent: 'center' }}
+              >
+                <Grid item xs={4}>
+                  <Tooltip title="Edit">
+                    <Link href={`/user/${user.id}`}>
+                      <IconButton>
+                        <EditIcon fontSize="small" />
+                      </IconButton>
+                    </Link>
+                  </Tooltip>
                 </Grid>
                 <Grid item xs={2}>
-                  <Button
-                    variant="contained"
-                    size="small"
-                    onClick={() => removeData(user)}
-                    sx={{ height: '4vh' }}
+                  <Tooltip title="Delete">
+                    <IconButton onClick={deletePopupOpen}>
+                      <DeleteOutlineIcon fontSize="small" />
+                    </IconButton>
+                  </Tooltip>
+                  <Snackbar
+                    open={alert}
+                    autoHideDuration={8000}
+                    onClose={handleClose}
                   >
-                    Ok
-                  </Button>
+                    <Alert
+                      onClose={handleClose}
+                      severity="error"
+                      sx={{ width: '100%' }}
+                    >
+                      Items Deleted Sucessfully...
+                    </Alert>
+                  </Snackbar>
                 </Grid>
               </Grid>
-            </Box>
-          </Fade>
-        </Modal>
-      </Paper>
-    </Box>
+            </Grid>
+          </Grid>
+
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            open={open}
+            onClose={handleCloseDelete}
+            closeAfterTransition
+            slots={{ backdrop: Backdrop }}
+            slotProps={{
+              backdrop: {
+                timeout: 500,
+              },
+            }}
+          >
+            <Fade in={open}>
+              <Box sx={style}>
+                <Typography
+                  id="transition-modal-description"
+                  sx={{ mt: 1 }}
+                  fontSize="0.9rem"
+                >
+                  Are you sure you want to delete the selected User?
+                </Typography>
+                <Grid container mt={2}>
+                  <Grid item xs={6} />
+                  <Grid item xs={3}>
+                    <Button
+                      variant="contained"
+                      size="small"
+                      sx={{ height: '4vh' }}
+                      onClick={() => handleCloseDelete()}
+                    >
+                      Cancel
+                    </Button>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <Button
+                      variant="contained"
+                      size="small"
+                      onClick={() => removeData(user)}
+                      sx={{ height: '4vh' }}
+                    >
+                      Ok
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Box>
+            </Fade>
+          </Modal>
+        </Card>
+      </Box>
+      <Divider style={{ width: '98.5%' }} />
+    </>
   );
 }
 export default InfoUserComponent;

@@ -1,7 +1,12 @@
 'use client';
 
 import {
-  Box, Grid, Pagination, Typography,
+  Box,
+  Card,
+  Divider,
+  Grid,
+  Pagination,
+  Typography,
 } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import Paper from '@mui/material/Paper';
@@ -61,7 +66,7 @@ function ListViewComponent({
     <>
       <Box ref={myRef}>
         <Box mr={2} mt={2}>
-          <Paper variant="outlined">
+          <Card elevation={0}>
             <Grid container>
               <Grid item xs={0.7} display="flex" justifyContent="flex-end">
                 <Grid container ml={1}>
@@ -119,9 +124,9 @@ function ListViewComponent({
                 </Typography>
               </Grid>
             </Grid>
-          </Paper>
+          </Card>
         </Box>
-
+        <Divider style={{width:'98.7%'}}/>
         <Grid style={{ height: '62vh' }}>
           {paginationHandler
             .currentData()

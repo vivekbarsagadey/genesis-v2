@@ -2,7 +2,7 @@
 
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import {
-  Box, Grid, IconButton, Pagination, Typography,
+  Box, Card, Divider, Grid, IconButton, Pagination, Typography,
 } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import Paper from '@mui/material/Paper';
@@ -170,7 +170,7 @@ function ProjectListViewComponent({ projects }: ListComponentProps) {
   return (
     <>
       <Box mr={2} mt={2}>
-        <Paper variant="outlined">
+        <Card elevation={0}>
           <Grid container>
             <Grid item xs={0.6} display="flex" justifyContent="flex-end">
               <Grid container ml={1}>
@@ -286,8 +286,13 @@ function ProjectListViewComponent({ projects }: ListComponentProps) {
               </Typography>
             </Grid>
           </Grid>
-        </Paper>
+        </Card>
+        <Divider/>
       </Box>
+      {/* <Card elevation={0}>
+hhh
+<Divider/>
+      </Card> */}
       <Grid style={{ height: '62vh' }}>
         {paginationHandler
           .currentData()

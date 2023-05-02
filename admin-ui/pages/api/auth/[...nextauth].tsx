@@ -35,6 +35,7 @@ const authOptions: NextAuthOptions = {
             where: { email },
           });
 
+          
           if (user) {
             const passwordMatch = compare(
               password,
