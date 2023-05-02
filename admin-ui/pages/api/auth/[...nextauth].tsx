@@ -4,6 +4,7 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { compare } from 'n-krypta';
 import prisma from '../../../lib/prismadb';
 
+
 const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   session: {
@@ -13,14 +14,16 @@ const authOptions: NextAuthOptions = {
     CredentialsProvider({
       type: 'credentials',
       credentials: {},
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         const { email, password } = credentials as {
           email: string;
           password: string;
         };
+        console.log('email >>>>>>>>> ', email, password);
+
         // perform you login logic
         // find out user from db
-        if (email == 'admin@gmail.com') {
+        if (email === 'admin@gmail.com') {
           return {
             id: '-1111',
             name: 'Super Admin',
@@ -29,23 +32,30 @@ const authOptions: NextAuthOptions = {
           };
         }
 
-        // TODO connect to db and get
-        const user = await prisma.user.findFirst({
-          where: { email },
-        });
+        try {
+          const user = await prisma.user.findFirst({
+            where: { email },
+          });
 
-        if (user) {
-          const passwordMatch = compare(
-            password,
-            user?.password,
-            `${process.env.NEXT_PUBLIC_KEY}`,
-          );
-          if (passwordMatch) {
-            return user;
+          console.log('>>>>>>>>>> ', user);
+
+          if (user) {
+            const passwordMatch = compare(
+              password,
+              user?.password,
+              `${process.env.NEXT_PUBLIC_KEY}`,
+            );
+            if (passwordMatch) {
+              delete user['password']
+              return user;
+            }
           }
-        }
 
-        throw new Error('invalid credentials');
+          throw new Error('invalid credentials');
+        } catch (e) {
+          console.log('Error >>>>>>>>> ', e);
+          throw new Error('invalid credentials');
+        }
       },
     }),
   ],

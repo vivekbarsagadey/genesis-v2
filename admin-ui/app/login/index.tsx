@@ -33,19 +33,18 @@ function SignIn(): JSX.Element {
   const [userPassword, setUserPassword] = useState('');
 
   const router = useRouter();
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+  const handleSubmit = async (e) => {
     // validate your userinfo
     e.preventDefault();
-    // if (userInfo?.email === 'admin@gmail.com' && userInfo.password) {
-    if (userEmail === 'admin@gmail.com' && userPassword) {
-      const res = await signIn('credentials', {
-        email: userEmail,
-        password: userPassword,
-        redirect: false,
-      });
-      if (!res?.error) {
-        router.push('/');
-      }
+
+    const res = await signIn('credentials', {
+      email: userEmail,
+      password: userPassword,
+      redirect: false,
+    });
+    debugger;
+    if (!res?.error) {
+      router.push('/');
     }
   };
 

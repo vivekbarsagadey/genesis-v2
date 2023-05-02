@@ -1,7 +1,5 @@
 import SignIn from '.';
 
-const page = () => {
-  return <SignIn  />;
-};
+const page = () => <SignIn />;
 
 export default page;
