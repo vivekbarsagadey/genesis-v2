@@ -26,9 +26,8 @@ const FormGrid = styled(Grid)(({ theme }) => ({
   top: '7%',
 }));
 
-function SignIn({ userInfo }: any): JSX.Element {
+function SignIn(): JSX.Element {
   // const [userInfo, setUserInfo] = useState({ email: '', password: '' });
-  console.log('userInfo >>>', userInfo);
 
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
