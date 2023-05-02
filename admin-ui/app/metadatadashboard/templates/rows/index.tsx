@@ -1,10 +1,12 @@
 'use client';
 
+import React, { useState, useEffect } from 'react';
 import { Autocomplete, Box, Grid, TextField, Typography } from '@mui/material';
-import React, { useState } from 'react';
 
 function CreateRowsComponent({ index, setCellDb, cellDb, setRowDb, rowDb }: any) {
-  const [colCount, setColCount] = useState();
+  const [colCount, setColCount] = useState('');
+  console.log(colCount);
+
   const [ind] = useState(index + 1);
   const column = [
     { id: 1, count: '1' },
@@ -22,10 +24,11 @@ function CreateRowsComponent({ index, setCellDb, cellDb, setRowDb, rowDb }: any)
   ];
 
   const setCell = (e: React.SyntheticEvent<Element, Event>, value: string) => {
+
     setColCount(value);
 
-    setCellDb([...cellDb, value]);
-    setRowDb([...rowDb, ind]);
+    // setCellDb([...cellDb, value]);
+    // setRowDb([...rowDb, ind]);
   };
 
   return (

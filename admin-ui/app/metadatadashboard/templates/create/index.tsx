@@ -13,27 +13,23 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
 
 function CreateTemplate() {
   const [rowCount, setRowCount] = useState([]);
-  const [cellDb, setCellDb] = useState([]);
+  const [cellDb, setCellDb] = useState(null);
   const [rowDb, setRowDb] = useState([]);
   const [alert, setAlert] = useState(false);
+
+  console.log('cellDbcellDb',cellDb);
+  
 
   const createRowHandler = (recv: string) => {
     setRowCount([...rowCount, recv]);
   };
 
-  const updateRowHandler = async () => {
-    for (let i = 0; i < rowCount.length; i++) {
-      try {
-        const body = {
-          row: rowDb[i].toString(),
-          cell: cellDb[i],
-        };
-        await createTemplates(body);
-      } catch (error) {
-        console.error(error);
-      }
-    }
+  const updateRowHandler = () => {
+    // for (let i = 0; i <= cellDb.length; i++) {
+    //   setCellDb([...cellDb, i])
+    // }
   };
+
   const handleClose = (
     event?: React.SyntheticEvent | Event,
     reason?: string
@@ -78,6 +74,7 @@ function CreateTemplate() {
               cellDb={cellDb}
               setRowDb={setRowDb}
               rowDb={rowDb}
+
             />
           </Grid>
         ))}
