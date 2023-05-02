@@ -146,6 +146,7 @@ model Template {
  createdAt      DateTime @default(now())
  updatedAt      DateTime @updatedAt
  cell           String?
+ row            String?
  
   @@map("tb_template")
 }

@@ -3,7 +3,7 @@
 import { Autocomplete, Box, Grid, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 
-function CreateRowsComponent({ index, setColDb, colDb, setRowDb, rowDb }: any) {
+function CreateRowsComponent({ index, setCellDb, cellDb, setRowDb, rowDb }: any) {
   const [colCount, setColCount] = useState();
   const [ind] = useState(index + 1);
   const column = [
@@ -11,20 +11,20 @@ function CreateRowsComponent({ index, setColDb, colDb, setRowDb, rowDb }: any) {
     { id: 2, count: '2' },
     { id: 3, count: '3' },
     { id: 4, count: '4' },
-    { id: 5, count: '5' },
-    { id: 6, count: '6' },
-    { id: 7, count: '7' },
-    { id: 8, count: '8' },
-    { id: 9, count: '9' },
-    { id: 10, count: '10' },
-    { id: 11, count: '11' },
-    { id: 12, count: '12' },
+    // { id: 5, count: '5' },
+    // { id: 6, count: '6' },
+    // { id: 7, count: '7' },
+    // { id: 8, count: '8' },
+    // { id: 9, count: '9' },
+    // { id: 10, count: '10' },
+    // { id: 11, count: '11' },
+    // { id: 12, count: '12' },
   ];
 
-  const setCol = (e: React.SyntheticEvent<Element, Event>, value: string) => {
+  const setCell = (e: React.SyntheticEvent<Element, Event>, value: string) => {
     setColCount(value);
 
-    setColDb([...colDb, value]);
+    setCellDb([...cellDb, value]);
     setRowDb([...rowDb, ind]);
   };
 
@@ -38,7 +38,7 @@ function CreateRowsComponent({ index, setColDb, colDb, setRowDb, rowDb }: any) {
           </Typography>
           <Autocomplete
             value={colCount}
-            onChange={setCol}
+            onChange={setCell}
             freeSolo
             id="free-solo-2-demo"
             disableClearable

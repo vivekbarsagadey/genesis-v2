@@ -13,7 +13,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
 
 function CreateTemplate() {
   const [rowCount, setRowCount] = useState([]);
-  const [colDb, setColDb] = useState([]);
+  const [cellDb, setCellDb] = useState([]);
   const [rowDb, setRowDb] = useState([]);
   const [alert, setAlert] = useState(false);
 
@@ -26,7 +26,7 @@ function CreateTemplate() {
       try {
         const body = {
           row: rowDb[i].toString(),
-          column: colDb[i],
+          cell: cellDb[i],
         };
         await createTemplates(body);
       } catch (error) {
@@ -74,8 +74,8 @@ function CreateTemplate() {
             {' '}
             <CreateRowsComponent
               index={index}
-              setColDb={setColDb}
-              colDb={colDb}
+              setCellDb={setCellDb}
+              cellDb={cellDb}
               setRowDb={setRowDb}
               rowDb={rowDb}
             />
