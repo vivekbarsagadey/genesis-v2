@@ -4,16 +4,21 @@ import CoPresentIcon from '@mui/icons-material/CoPresent';
 import { Box, Grid, IconButton } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import './CollapsibleList.css';
-
+import Person2Icon from '@mui/icons-material/Person2';
+import HomeIcon from '@mui/icons-material/Home';
+import DataSaverOffIcon from '@mui/icons-material/DataSaverOff';
+import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import Link from 'next/link';
 
-function MetaDataSidebar({ toggleMenu }: any) {
+function MetaDataSidebar({toggleMenu}:any) {
   return (
     <Grid style={{ display: 'flex' }}>
       <ul className="collapsible-list-root">
         <Box
           style={{
             display: 'flex',
+            marginLeft: '0.7rem',
+            paddingRight: '1rem',
             marginTop: '6rem',
           }}
         >
@@ -22,97 +27,178 @@ function MetaDataSidebar({ toggleMenu }: any) {
               <AirplayIcon fontSize="small" />
             </IconButton>
           </Grid> */}
-          <Grid item xs={12}>
-            {toggleMenu && (
-              <CollapsibleListItem label="Master Data">
-                <ul style={{ listStyle: 'none', marginLeft: '-3rem' }}></ul>
-              </CollapsibleListItem>
-            )}
+          <Grid item xs={9}>
+          {toggleMenu && (
+            <CollapsibleListItem label="Master Data">
+              <ul style={{ listStyle: 'none', marginLeft: '-1.5rem' }}>
+                {/* <Link
+                  href="/metadata/address"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="Address" />
+                </Link>
+
+                <Link
+                  href="/metadata/country"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="Country" />
+                </Link>
+
+                <Link
+                  href="/metadata/state"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="State" />
+                </Link>
+
+                <Link
+                  href="/metadata/city"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="City" />
+                </Link>
+
+                <Link
+                  href="/metadata/pincode"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="Pin Code" />
+                </Link> */}
+              </ul>
+            </CollapsibleListItem>
+          )}
           </Grid>
         </Box>
 
-        <Box style={{ display: 'flex' }}>
-          <Grid item xs={9}>
-            {toggleMenu && (
-              <CollapsibleListItem label="Address">
-                <ul style={{ listStyle: 'none', marginLeft: '-3rem' }}>
-                  <Link
-                    href="/metadata/country"
-                    passHref
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <NormalListItem label="Country" />
-                  </Link>
+        <Box
+          style={{
+            display: 'flex',
+            marginLeft: '0.7rem',
+            paddingRight: '1rem',
+            alignItems:'center'
+          }}
+        >
+          <Grid item xs={1}>
+            <IconButton>
+              <HomeIcon fontSize="small" />
+            </IconButton>
+          </Grid>
+          <Grid item xs={11}>
+          {toggleMenu && (
+            <CollapsibleListItem label="Address">
+              <ul style={{ listStyle: 'none', marginLeft: '-1.5rem' }}>
+                {/* <Link
+                  href="/metadata/address"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="Address" />
+                </Link> */}
 
-                  <Link
-                    href="/metadata/state"
-                    passHref
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <NormalListItem label="State" />
-                  </Link>
+                <Link
+                  href="/metadata/country"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="Country" />
+                </Link>
 
-                  <Link
-                    href="/metadata/city"
-                    passHref
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <NormalListItem label="City" />
-                  </Link>
+                <Link
+                  href="/metadata/state"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="State" />
+                </Link>
 
-                  <Link
-                    href="/metadata/pincode"
-                    passHref
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <NormalListItem label="Pin Code" />
-                  </Link>
-                </ul>
-              </CollapsibleListItem>
-            )}
+                <Link
+                  href="/metadata/city"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="City" />
+                </Link>
+
+                <Link
+                  href="/metadata/pincode"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="Pin Code" />
+                </Link>
+              </ul>
+            </CollapsibleListItem>
+          )}
+            
           </Grid>
         </Box>
 
-        <Box style={{ display: 'flex' }}>
-          <Grid item xs={9}>
-            {toggleMenu && (
-              <CollapsibleListItem label="Roles">
-                <ul style={{ listStyle: 'none', marginLeft: '-3rem' }}>
-                  <Link
-                    href="/roles"
-                    passHref
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <NormalListItem label="Role" />
-                  </Link>
-                </ul>
-              </CollapsibleListItem>
-            )}
+        <Box
+          style={{
+            display: 'flex',
+            marginLeft: '0.7rem',
+            paddingRight: '1rem',
+            alignItems:'center'
+          }}
+        >
+          <Grid item xs={1}>
+            <IconButton>
+              <DataSaverOffIcon fontSize="small" />
+            </IconButton>
+          </Grid>
+          <Grid item xs={11}>
+          {toggleMenu && (
+            <CollapsibleListItem label="Roles">
+              <ul style={{ listStyle: 'none', marginLeft: '-1.5rem' }}>
+                <Link href="/roles" passHref style={{ textDecoration: 'none' }}>
+                  <NormalListItem label="Role" />
+                </Link>
+              </ul>
+            </CollapsibleListItem>
+          )}
           </Grid>
         </Box>
 
-        <Box style={{ display: 'flex' }}>
-          <Grid item xs={9}>
-            {toggleMenu && (
-              <CollapsibleListItem label="Dashboard">
-                <ul style={{ listStyle: 'none', marginLeft: '-3rem' }}>
-                  <Link
-                    href="/metadatadashboard/templates"
-                    passHref
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <NormalListItem label="Template" />
-                  </Link>
-                  <Link
-                    href="/metadatadashboard/widgets"
-                    passHref
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <NormalListItem label="Widgets" />
-                  </Link>
-                </ul>
-              </CollapsibleListItem>
-            )}
+        <Box
+          style={{
+            display: 'flex',
+            marginLeft: '0.7rem',
+            paddingRight: '1rem',
+            alignItems:'center'
+          }}
+        >
+          <Grid item xs={1}>
+            <IconButton>
+              <SpaceDashboardIcon fontSize="small" />
+            </IconButton>
+          </Grid>
+          <Grid item xs={11}>
+          {toggleMenu && (
+            <CollapsibleListItem label="Dashboard">
+              <ul style={{ listStyle: 'none', marginLeft: '-1.5rem' }}>
+                <Link
+                  href="/metadatadashboard/templates"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="Template" />
+                </Link>
+                <Link
+                  href="/metadatadashboard/widgets"
+                  passHref
+                  style={{ textDecoration: 'none' }}
+                >
+                  <NormalListItem label="Widgets" />
+                </Link>
+              </ul>
+            </CollapsibleListItem>
+          )}
           </Grid>
         </Box>
       </ul>
