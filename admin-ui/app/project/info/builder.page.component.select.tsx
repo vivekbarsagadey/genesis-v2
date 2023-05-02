@@ -36,9 +36,10 @@ const useStyles = makeStyles({
 type IbuilderProps = {
   handleClose: () => void;
   checkbox: string;
+  handleCloseTheme: () => void;
 };
 
-function BuilderPageSelectComponent({ handleClose, checkbox }: IbuilderProps) {
+function BuilderPageSelectComponent({ handleClose, checkbox,handleCloseTheme }: IbuilderProps) {
   const classes = useStyles();
   const [blankPage, setBlankPage] = useState(false);
   const [loginPage, setLoginPage] = useState(false);
@@ -104,25 +105,34 @@ function BuilderPageSelectComponent({ handleClose, checkbox }: IbuilderProps) {
       setCount([...count, pageRecv]);
     }
   };
+  const projectJsonData= {
+    theme:checkbox,
+    pages:count
+  }
   const savePages = async () => {
-    try {
-      const body = {
-        projectJson: {
-          theme: checkbox,
-          page: count,
-        },
-      };
-      await createPage(body);
-    } catch (error) {
-      console.error(error);
-    }
 
+
+    // try {
+    //   const body = {
+    //     projectJson: {
+    //       theme: checkbox,
+    //       page: count,
+    //     },
+    //   };
+    //   await createPage(body);
+    // } catch (error) {
+    //   console.error(error);
+    // }
+    localStorage.setItem('projectJsonData', JSON.stringify(projectJsonData))
     handleClose();
+    handleCloseTheme();
   };
 
-  // console.log("count >>>", count);
+  console.log("Pages >>>", count);
+  console.log("Theme Value >>",checkbox);
 
   // console.log("pages>>>", pages);
+  
 
   return (
     <Grid container>
