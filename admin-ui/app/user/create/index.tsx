@@ -112,7 +112,7 @@ function UserCreateComponent() {
         state: userState,
         country: userCountry,
         role,
-        password: encrypt(password, `${process.env.NEXT_PUBLIC_KEY}`),
+        userPassword: encrypt(password, `${process.env.NEXT_PUBLIC_KEY}`),
       };
       await createUser(body);
       router.push('/user');

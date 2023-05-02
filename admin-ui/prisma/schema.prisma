@@ -59,12 +59,12 @@ model User {
   status         String?
   gender         String?
   age            String?
-  password       String
+  userPassword   String  @map("user_password")
   role           String?
   accounts       Account[]
   sessions       Session[]
 
-  @@map("users")
+  @@map("tb_user")
 }
 model Company {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId

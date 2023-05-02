@@ -4,7 +4,6 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { compare } from 'n-krypta';
 import prisma from '../../../lib/prismadb';
 
-
 const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   session: {
@@ -19,7 +18,6 @@ const authOptions: NextAuthOptions = {
           email: string;
           password: string;
         };
-        console.log('email >>>>>>>>> ', email, password);
 
         // perform you login logic
         // find out user from db
@@ -37,23 +35,20 @@ const authOptions: NextAuthOptions = {
             where: { email },
           });
 
-          console.log('>>>>>>>>>> ', user);
-
           if (user) {
             const passwordMatch = compare(
               password,
-              user?.password,
-              `${process.env.NEXT_PUBLIC_KEY}`,
+              user?.userPassword,
+              `${process.env.NEXT_PUBLIC_KEY}`
             );
             if (passwordMatch) {
-              delete user['password']
+              delete user['password'];
               return user;
             }
           }
 
           throw new Error('invalid credentials');
         } catch (e) {
-          console.log('Error >>>>>>>>> ', e);
           throw new Error('invalid credentials');
         }
       },
