@@ -154,7 +154,7 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
             </ListItemButton>
           </Link>
         </Grid>
-        <MetaDataSidebar />
+        <MetaDataSidebar toggleMenu={toggleMenu} />
       </List>
     </Box>
   );
