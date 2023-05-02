@@ -9,7 +9,7 @@ import { fontSize } from './size';
 export const theme = createTheme({
   palette: {
     primary: {
-      main: teal[500],
+      main: teal[300],
     },
   },
   typography: {
@@ -50,21 +50,44 @@ export const theme = createTheme({
       fontFamily: 'Work Sans',
     },
   },
-	transitions: {
-		duration: {
-			shortest: 150,
-			shorter: 200,
-			short: 250,
-			standard: 300,
-			complex: 375,
-			enteringScreen: 225,
-			leavingScreen: 195,
-		},
-		easing: {
+  transitions: {
+    duration: {
+      shortest: 150,
+      shorter: 200,
+      short: 250,
+      standard: 300,
+      complex: 375,
+      enteringScreen: 225,
+      leavingScreen: 195,
+    },
+    easing: {
       easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
       easeOut: 'cubic-bezier(0.0, 0, 0.2, 1)',
       easeIn: 'cubic-bezier(0.4, 0, 1, 1)',
       sharp: 'cubic-bezier(0.4, 0, 0.6, 1)',
     },
-	},
+  },
+  components: {
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          '&:hover': {
+            backgroundColor: 'white',
+            color: 'green',
+            borderRadius: 7,
+            '& .MuiListItemIcon-root': {
+              // backgroundColor: 'orange',
+              color:'black',
+            },
+          },
+          '&.Mui-selected': {
+            backgroundColor: 'white',
+            borderRadius: 7,
+            // marginTop:2,
+            '&.Mui-focusVisible': { background: 'orange' },
+          },
+        },
+      },
+    },
+  },
 });
