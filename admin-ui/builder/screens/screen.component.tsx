@@ -1,8 +1,6 @@
-import {
-  Button, Chip, Grid, Stack,
-} from '@mui/material';
+import { Button, Chip, Grid, Stack } from '@mui/material';
 
-function ScreenComponent({ updateScreen, handleDelete,localStoreData }: any) {
+function ScreenComponent({ updateScreen, handleDelete, localStoreData }: any) {
   // const [screenInfo, setScreenInfo] = React.useState([]);
   // const fetchData = async () => {
   //   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/screens`);
@@ -23,24 +21,22 @@ function ScreenComponent({ updateScreen, handleDelete,localStoreData }: any) {
   // }, []);
   // console.log("localStoreData >>",localStoreData);
 
-
   return (
     <Grid container style={{ background: '#1e293b', padding: '0.3rem' }}>
       <Grid item xs={10}>
         <Stack direction="row" spacing={1}>
-         
           {localStoreData.pages?.map((data, index) => {
-              return (
-                <Chip
-                  key={index}
-                  label={`${data}`}
-                  variant="outlined"
-                  onClick={() => updateScreen(data)}
-                  onDelete={handleDelete}
-                  style={{ background: "#e2e8f0" }}
-                />
-              );
-            })}
+            return (
+              <Chip
+                key={index}
+                label={`${data}`}
+                variant="outlined"
+                onClick={() => updateScreen(data)}
+                onDelete={handleDelete}
+                style={{ background: '#e2e8f0' }}
+              />
+            );
+          })}
 
           {/* <Chip
             label="Screen 2"

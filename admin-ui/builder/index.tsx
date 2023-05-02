@@ -47,6 +47,7 @@ function BuilderHome({ id,localStoreData }: any) {
   const handleDelete = () => {
     console.info('You clicked the delete icon.');
   };
+  
   const updateScreen = (typeRec: string) => {
     console.log("typeRec>>",typeRec);
     

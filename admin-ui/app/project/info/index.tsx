@@ -151,6 +151,7 @@ function InfoProjectComponent({ items }: InfoCustomerComponentProps) {
       >
         <BuilderHome id={items.id}   localStoreData={localStoreData} />
       </Dialog>
+      
     </Box>
   );
 }
