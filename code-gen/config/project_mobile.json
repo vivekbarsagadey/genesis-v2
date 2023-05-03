@@ -1,11 +1,11 @@
 
 {
   "name": "vijay-enterprise-apps",
-  "path": "E:/projects/genesis-v2/code/generated-client-project",
+  "path": "D:/projects/genesis-v2/code/generated-client-project",
   "version": "0.0.1-B-01",
   "app": {
-    "type": "WEB",
-    "project": "ADMIN-UI",
+    "type": "MOBILE",
+    "project": "customer",
     "name": "astrocare"
   },
   "credential": {
@@ -26,10 +26,10 @@
   },
   "pages": [
     {
-      "name": "orders",
-      "label": "Orders Screen",
+      "name": "splash",
+      "label": "Splash Screen",
       "duration":3000,
-      "title": "Orders",
+      "title": "Agro",
       "type": "",
       "img": "./assets/Images/human.jpg",
       "pipeline": [],
@@ -39,31 +39,13 @@
       },
       "components": [
         {
-          "name": "firstName",
-          "type": "input",
+          "name": "splash",
+          "type": "screen",
           "tpPosition": "m1",
-          "fieldtype": "string",
+          "fieldtype": "",
           "required": "true",
-          "label": "First Name",
-          "error": "First Name is required",
-          "ui": {
-            "extra_small_devices": "12",
-            "small_devices": "12",
-            "medium_devices": "6",
-            "large_devices": "4",
-            "xlarge_devices": "3",
-            "css": "",
-            "clz": ""
-          }
-        },
-        {
-          "name": "lastName",
-          "type": "input",
-          "tpPosition": "m1",
-          "fieldtype": "string",
-          "required": "true",
-          "label": "Last Name",
-          "error": "Last Name is required",
+          "label": "Agro Pvt",
+          "error": "",
           "ui": {
             "extra_small_devices": "12",
             "small_devices": "12",
