@@ -25,6 +25,7 @@ function CreateRowsComponent({ index, setCellDb, cellDb, setRowDb, rowDb }: any)
 
   const setCell = (e: React.SyntheticEvent<Element, Event>, value: string) => {
     setColCount(value);
+    setCellDb([...colCount, value])
   };
 
   return (

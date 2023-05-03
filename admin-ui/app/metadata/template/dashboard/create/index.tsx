@@ -13,7 +13,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
 
 function DashBoardCreateComponent() {
   const [rowCount, setRowCount] = useState([]);
-  const [cellDb, setCellDb] = useState(null);
+  const [cellDb, setCellDb] = useState([]);
   const [rowDb, setRowDb] = useState([]);
   const [alert, setAlert] = useState(false);
 
