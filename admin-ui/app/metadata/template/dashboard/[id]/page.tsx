@@ -2,7 +2,7 @@
 
 import { use } from 'react';
 import CustomerEditComponent from '.';
-import { findById } from '../../../services/api.service';
+import { findById } from '../../../../../services/api.service';
 
 type Customer = {
   firstName: string;

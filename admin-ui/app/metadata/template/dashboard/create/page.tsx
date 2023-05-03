@@ -1,6 +1,5 @@
-import React from 'react';
-import CustomerCreateComponent from '.';
+import DashBoardCreateComponent from '.';
 
-const page = () => <CustomerCreateComponent />;
+const page = () => <DashBoardCreateComponent />;
 
 export default page;
