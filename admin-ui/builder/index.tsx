@@ -12,7 +12,7 @@ import ScreenSelectComponent from './screens/screen.select.component';
 
 export const ProjectContext = createContext();
 
-function BuilderHome({ id }) {
+function BuilderHome({ id,localStoreData }: any) {
   const [projectInfo, setProjectInfo] = useState([]);
   const info = findById('projects', id);
   useEffect(() => {
@@ -25,6 +25,7 @@ function BuilderHome({ id }) {
       });
   }, []);
 
+  
   const [toggleMenu, setToggleMenu] = useState(true);
   const [screenToggle, setScreenToggle] = useState<string>('');
   const [componentId, setComponentId] = useState(null);
@@ -46,7 +47,10 @@ function BuilderHome({ id }) {
   const handleDelete = () => {
     console.info('You clicked the delete icon.');
   };
+  
   const updateScreen = (typeRec: string) => {
+    console.log("typeRec>>",typeRec);
+    
     setScreenToggle(typeRec);
   };
   const updateSectionData = (typeRecv: string) => {
@@ -75,6 +79,7 @@ function BuilderHome({ id }) {
                   <ScreenComponent
                     updateScreen={updateScreen}
                     handleDelete={handleDelete}
+                    localStoreData={localStoreData}
                   />
                 </Grid>
                 <Grid

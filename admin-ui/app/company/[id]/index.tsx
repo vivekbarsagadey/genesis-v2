@@ -1,7 +1,7 @@
 'use client';
 
 import {
-  Button, Grid, TextField, Typography,
+  Button, Card, Grid, TextField, Typography,
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -127,298 +127,12 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
     updateCompanyEditedData();
   };
   return (
-    <>
-      {/* <Box padding={4}>
+
+      <Box padding={3}>
+      <Card elevation={0}>
         <Grid container>
-          <Grid item xs={12}>
-            <Typography fontSize={"1.1rem"}>Edit Company Details</Typography>
-          </Grid>
-        </Grid>
-        <Grid container spacing={2} mt={2}>
-          <Grid item xs={6}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
-                <Typography>First Name</Typography>
-              </Grid>
-              <Grid item xs={1}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="first-name"
-                  placeholder="First Name"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={firstName}
-                  onChange={updateOwnerFirstName}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
-                <Typography>Last Name</Typography>
-              </Grid>
-              <Grid item xs={1}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="last-name"
-                  placeholder="Last Name"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={lastName}
-                  onChange={updateOwnerLastName}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={2}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
-                <Typography>Company Name</Typography>
-              </Grid>
-              <Grid item xs={1}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="company-name"
-                  placeholder="Company Name"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={companyName}
-                  onChange={updateCompanyName}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={2}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
-                <Typography>Email</Typography>
-              </Grid>
-              <Grid item xs={1}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="email"
-                  placeholder="Email"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={companyEmail}
-                  onChange={updateCompanyEmail}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={6} mt={2}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
-                <Typography>Phone</Typography>
-              </Grid>
-              <Grid item xs={1}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="phone"
-                  placeholder="Phone"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={companyPhone}
-                  onChange={updateCompanyPhone}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={2}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
-                <Typography>Address</Typography>
-              </Grid>
-              <Grid item xs={1}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="address"
-                  placeholder="Address"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={companyAddress}
-                  onChange={updateCompanyAdress}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={2}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
-                <Typography>State</Typography>
-              </Grid>
-              <Grid item xs={1}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Autocomplete
-                  value={companyState}
-                  onChange={updateCompanyState}
-                  freeSolo
-                  id="free-solo-2-demo"
-                  disableClearable
-                  options={stateSelect.map((option) => option.state)}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      size="small"
-                      InputProps={{
-                        ...params.InputProps,
-                        type: "search",
-                      }}
-                      placeholder="Select State"
-                    />
-                  )}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={2}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
-                <Typography>Country</Typography>
-              </Grid>
-              <Grid item xs={1}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Autocomplete
-                  value={companyCountry}
-                  onChange={updateCompanyCountry}
-                  freeSolo
-                  id="free-solo-2-demo"
-                  disableClearable
-                  options={countrySelect.map((option) => option.country)}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      size="small"
-                      InputProps={{
-                        ...params.InputProps,
-                        type: "search",
-                      }}
-                      placeholder="Select Country"
-                    />
-                  )}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={2}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
-                <Typography>Website</Typography>
-              </Grid>
-              <Grid item xs={1}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="website"
-                  placeholder="Website"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={companyWebsite}
-                  onChange={updateCompanyWebsite}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={2}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={4}>
-                <Typography>Company Status</Typography>
-              </Grid>
-              <Grid item xs={1}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Autocomplete
-                  value={companyStatus}
-                  onChange={getCompanyStatusValue}
-                  freeSolo
-                  id="company-status"
-                  disableClearable
-                  size="small"
-                  options={statusSet?.map((option: any) => option)}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      InputProps={{
-                        ...params.InputProps,
-                        type: "search",
-                      }}
-                    />
-                  )}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid container mt={5}>
-            <Grid item xs={8.6}></Grid>
-            <Grid item xs={3.4}>
-              <Grid container>
-                <Grid item xs={6}>
-                  <Link href={"/company"} style={{ textDecoration: "none" }}>
-                    <Button variant="contained" className={classes.buttonStyle}>
-                      Cancel
-                    </Button>
-                  </Link>
-                </Grid>
-                <Grid item xs={6}>
-                  <Button
-                    variant="contained"
-                    onClick={updateHandler}
-                    className={classes.buttonStyle}                  >
-                    Save
-                  </Button>
-                  <Snackbar
-                    open={alert}
-                    autoHideDuration={8000}
-                    onClose={handleClose}
-                  >
-                    <Alert onClose={handleClose} sx={{ width: "100%" }}>
-                      Company Edit Sucessfully...
-                    </Alert>
-                  </Snackbar>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Box> */}
-      <Box padding={4}>
-        <Grid container>
-          <Grid item xs={12} ml={5}>
-            <Typography fontSize="1.1rem">Create New Company</Typography>
+          <Grid item xs={12} ml={5} mt={2}>
+            <Typography fontSize="1.1rem">Edit Company</Typography>
           </Grid>
         </Grid>
         <Grid container spacing={2} mt={3} paddingLeft={5}>
@@ -645,13 +359,13 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
               </Grid>
             </Grid>
           </Grid>
-          <Grid container mt={5}>
+          <Grid container my={5}>
             <Grid item xs={8.6} />
             <Grid item xs={3.4}>
               <Grid container>
-                <Grid item xs={6}>
+                <Grid item xs={5.3}>
                   <Link href="/company" style={{ textDecoration: 'none' }}>
-                    <Button variant="contained" style={{ width: '73%' }}>
+                    <Button variant="contained" style={{ width: '92%' }}>
                       Cancel
                     </Button>
                   </Link>
@@ -660,7 +374,7 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
                   <Button
                     variant="contained"
                     onClick={updateHandler}
-                    style={{ width: '73%' }}
+                    style={{ width: '83%' }}
                   >
                     Save
                   </Button>
@@ -678,8 +392,8 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
             </Grid>
           </Grid>
         </Grid>
+        </Card>
       </Box>
-    </>
   );
 }
 

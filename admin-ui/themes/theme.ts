@@ -9,7 +9,7 @@ import { fontSize } from './size';
 export const theme = createTheme({
   palette: {
     primary: {
-      main: teal[300],
+      main: teal[500],
     },
   },
   typography: {
@@ -41,7 +41,7 @@ export const theme = createTheme({
       fontFamily: 'Work Sans',
     },
     body2: {
-      fontSize: '0.75rem',
+      fontSize: '0.8rem',
       marginTop: '0.7rem',
       fontFamily: 'Work Sans',
     },
@@ -73,11 +73,11 @@ export const theme = createTheme({
         root: {
           '&:hover': {
             backgroundColor: 'white',
-            color: 'green',
             borderRadius: 7,
             '& .MuiListItemIcon-root': {
               // backgroundColor: 'orange',
-              color:'black',
+              color: 'black',
+              // background:'red'
             },
           },
           '&.Mui-selected': {

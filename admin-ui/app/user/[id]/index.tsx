@@ -5,6 +5,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {
   Box,
   Button,
+  Card,
   FormControl,
   Grid,
   IconButton,
@@ -55,11 +56,11 @@ const useStyles = makeStyles({
     height: '125px',
   },
   buttonStyle: {
-    width: '92%',
+    width: '94%',
     marginTop: '-1rem',
   },
   buttonStyleSave: {
-    width: '82%',
+    width: '89%',
     marginTop: '-1rem',
   },
 });
@@ -140,32 +141,32 @@ function UserEditComponent({ users, id }: UserComponentProps) {
   };
   const updateUserState = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string,
+    value: string
   ) => {
     setUserState(value);
   };
   const updateUserCity = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string,
+    value: string
   ) => {
     setUserCity(value);
   };
 
   const updateUserChange = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string,
+    value: string
   ) => {
     setGender(value);
   };
   const updateUserCountry = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string,
+    value: string
   ) => {
     setUserCountry(value);
   };
   const updateUserStatus = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string,
+    value: string
   ) => {
     setUserStatus(value);
   };
@@ -175,13 +176,13 @@ function UserEditComponent({ users, id }: UserComponentProps) {
 
   const updateRole = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string,
+    value: string
   ) => {
     setRole(value);
   };
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string,
+    reason?: string
   ) => {
     if (reason === 'clickaway') {
       return;
@@ -198,7 +199,7 @@ function UserEditComponent({ users, id }: UserComponentProps) {
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>,
+    event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
   };
@@ -224,431 +225,439 @@ function UserEditComponent({ users, id }: UserComponentProps) {
   }, []);
 
   return (
-    <Box>
-      <Grid container>
-        <Grid item xs={12} mt={1} ml={2}>
-          <Typography fontSize="1.2rem">Edit User</Typography>
+    <Box px={3} pt={3}>
+      <Card elevation={0}>
+        <Grid container>
+          <Grid item xs={12} mt={2} ml={9}>
+            <Typography fontSize="1.2rem">Edit User</Typography>
+          </Grid>
         </Grid>
-      </Grid>
-      <Grid container style={{ height: '78vh' }}>
-        <Grid item xs={12}>
-          <Box sx={{ flexGrow: 1 }} padding={2}>
-            <Grid container spacing={2} mt={1}>
-              <Grid item xs={6}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={3}>
-                    <Typography>First Name</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <TextField
-                      id="first-name"
-                      placeholder="First Name"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={userFirstName}
-                      onChange={updateUserFirstName}
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={6}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={3}>
-                    <Typography>Last Name</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <TextField
-                      id="last-name"
-                      placeholder="Last Name"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={userLastName}
-                      onChange={updateUserLastName}
-                    />
+        <Grid container style={{ height: '72vh' }} mt={3} paddingLeft={9}>
+          <Grid item xs={12}>
+            <Box>
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                  <Grid container display="flex" alignItems="center">
+                    <Grid item xs={3}>
+                      <Typography>First Name</Typography>
+                    </Grid>
+                    <Grid item xs={1}>
+                      <Typography>:</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        id="first-name"
+                        placeholder="First Name"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={userFirstName}
+                        onChange={updateUserFirstName}
+                      />
+                    </Grid>
                   </Grid>
                 </Grid>
-              </Grid>
-              <Grid item xs={6} mt={1}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={3}>
-                    <Typography>Gender</Typography>
+                <Grid item xs={6}>
+                  <Grid container display="flex" alignItems="center">
+                    <Grid item xs={3}>
+                      <Typography>Last Name</Typography>
+                    </Grid>
+                    <Grid item xs={1}>
+                      <Typography>:</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        id="last-name"
+                        placeholder="Last Name"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={userLastName}
+                        onChange={updateUserLastName}
+                      />
+                    </Grid>
                   </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
+                </Grid>
+                <Grid item xs={6} mt={1}>
+                  <Grid container display="flex" alignItems="center">
+                    <Grid item xs={3}>
+                      <Typography>Gender</Typography>
+                    </Grid>
+                    <Grid item xs={1}>
+                      <Typography>:</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <Stack spacing={2}>
+                        <Autocomplete
+                          disablePortal
+                          value={gender}
+                          onChange={updateUserChange}
+                          size="small"
+                          id="combo-box-demo"
+                          options={genderType?.map((option) => option.title)}
+                          renderInput={(params) => <TextField {...params} />}
+                        />
+                      </Stack>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={6}>
-                    <Stack spacing={2}>
+                </Grid>
+                <Grid item xs={6} mt={1}>
+                  <Grid container display="flex" alignItems="center">
+                    <Grid item xs={3}>
+                      <Typography>Age</Typography>
+                    </Grid>
+                    <Grid item xs={1}>
+                      <Typography>:</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        id="age"
+                        placeholder="Age"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={userAge}
+                        onChange={updateUserAge}
+                      />
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <Grid item xs={6} mt={1}>
+                  <Grid container display="flex" alignItems="center">
+                    <Grid item xs={3}>
+                      <Typography>Email</Typography>
+                    </Grid>
+                    <Grid item xs={1}>
+                      <Typography>:</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        id="email"
+                        placeholder="Email"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={userEmail}
+                        onChange={updateUserEmail}
+                      />
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <Grid item xs={6} mt={1}>
+                  <Grid container display="flex" alignItems="center">
+                    <Grid item xs={3}>
+                      <Typography>Phone</Typography>
+                    </Grid>
+                    <Grid item xs={1}>
+                      <Typography>:</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        id="phone"
+                        placeholder="Phone"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={userPhone}
+                        onChange={updateUserPhone}
+                      />
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <Grid item xs={6} mt={1}>
+                  <Grid container display="flex" alignItems="center">
+                    <Grid item xs={3}>
+                      <Typography>Status</Typography>
+                    </Grid>
+                    <Grid item xs={1}>
+                      <Typography>:</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
                       <Autocomplete
                         disablePortal
-                        value={gender}
-                        onChange={updateUserChange}
+                        value={userStatus}
+                        onChange={updateUserStatus}
                         size="small"
                         id="combo-box-demo"
-                        options={genderType?.map((option) => option.title)}
+                        options={statusSet?.map((option: any) => option)}
                         renderInput={(params) => <TextField {...params} />}
                       />
-                    </Stack>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={6} mt={1}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={3}>
-                    <Typography>Age</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <TextField
-                      id="age"
-                      placeholder="Age"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={userAge}
-                      onChange={updateUserAge}
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={6} mt={1}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={3}>
-                    <Typography>Email</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <TextField
-                      id="email"
-                      placeholder="Email"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={userEmail}
-                      onChange={updateUserEmail}
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={6} mt={1}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={3}>
-                    <Typography>Phone</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <TextField
-                      id="phone"
-                      placeholder="Phone"
-                      variant="outlined"
-                      size="small"
-                      fullWidth
-                      value={userPhone}
-                      onChange={updateUserPhone}
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={6} mt={1}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={3}>
-                    <Typography>Status</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <Typography>:</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Autocomplete
-                      disablePortal
-                      value={userStatus}
-                      onChange={updateUserStatus}
-                      size="small"
-                      id="combo-box-demo"
-                      options={statusSet?.map((option: any) => option)}
-                      renderInput={(params) => <TextField {...params} />}
-                    />
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Box sx={{ width: '100%' }} marginTop={5}>
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                  <Tabs
-                    value={value1}
-                    onChange={handleChange}
-                    aria-label="basic tabs example"
-                  >
-                    <Tab
-                      label="Security"
-                      {...a11yProps(0)}
-                      onClick={securityModal}
-                    />
-                    <Tab label="Address" {...a11yProps(1)} />
-                    <Tab label="Roles" {...a11yProps(2)} />
-                  </Tabs>
-                </Box>
-                <TabPanel value={value1} index={0}>
-                  <Box>
-                    <Grid container>
-                      <Grid item xs={6} mt={0.8}>
-                        <Grid container display="flex" alignItems="center">
-                          <Grid item xs={3}>
-                            <Typography>Password</Typography>
-                          </Grid>
-                          <Grid item xs={1}>
-                            <Typography>:</Typography>
-                          </Grid>
-                          <Grid item xs={6}>
-                            <FormControl fullWidth variant="outlined">
-                              <OutlinedInput
-                                size="small"
-                                placeholder="Enter Confirm Password"
-                                id="confirm-password"
-                                disabled
-                                defaultValue="Disabled"
-                                type={showPassword ? 'text' : 'password'}
-                                endAdornment={(
-                                  <InputAdornment position="end">
-                                    <IconButton
-                                      aria-label="toggle password visibility"
-                                      onClick={handleClickShowPassword}
-                                      onMouseDown={handleMouseDownPassword}
-                                      edge="end"
-                                    >
-                                      {showPassword ? (
-                                        <VisibilityOff />
-                                      ) : (
-                                        <Visibility />
-                                      )}
-                                    </IconButton>
-                                  </InputAdornment>
-                                )}
-                              />
-                            </FormControl>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-
-                      <Grid item xs={6}>
-                        <Grid container display="flex" alignItems="center">
-                          <Grid item xs={3} ml={2.6}>
-                            <Typography>Confirm Password</Typography>
-                          </Grid>
-                          <Grid item xs={1}>
-                            <Typography>:</Typography>
-                          </Grid>
-                          <Grid item xs={6}>
-                            <FormControl fullWidth variant="outlined">
-                              <OutlinedInput
-                                size="small"
-                                defaultValue="Disabled"
-                                disabled
-                                placeholder="Enter Confirm Password"
-                                id="confirm-password"
-                                type={showPassword ? 'text' : 'password'}
-                                endAdornment={(
-                                  <InputAdornment position="end">
-                                    <IconButton
-                                      aria-label="toggle password visibility"
-                                      onClick={handleClickShowPassword}
-                                      onMouseDown={handleMouseDownPassword}
-                                      edge="end"
-                                    >
-                                      {showPassword ? (
-                                        <VisibilityOff />
-                                      ) : (
-                                        <Visibility />
-                                      )}
-                                    </IconButton>
-                                  </InputAdornment>
-                                )}
-                              />
-                            </FormControl>
-                          </Grid>
-                        </Grid>
-                      </Grid>
                     </Grid>
+                  </Grid>
+                </Grid>
+                <Box sx={{ width: '100%' }} marginTop={5}>
+                  <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                    <Tabs
+                      value={value1}
+                      onChange={handleChange}
+                      aria-label="basic tabs example"
+                    >
+                      <Tab
+                        label="Security"
+                        {...a11yProps(0)}
+                        onClick={securityModal}
+                      />
+                      <Tab label="Address" {...a11yProps(1)} />
+                      <Tab label="Roles" {...a11yProps(2)} />
+                    </Tabs>
                   </Box>
-                </TabPanel>
-                <TabPanel value={value1} index={1}>
-                  <Box>
-                    <Grid container>
-                      <Grid item xs={6}>
-                        <Grid container display="flex" alignItems="center">
-                          <Grid item xs={3}>
-                            <Typography>Zip-Code</Typography>
-                          </Grid>
-                          <Grid item xs={1}>
-                            <Typography>:</Typography>
-                          </Grid>
-                          <Grid item xs={6}>
-                            <TextField
-                              id="zip-code"
-                              placeholder="Zip-Code"
-                              variant="outlined"
-                              size="small"
-                              fullWidth
-                              value={userZipCode}
-                              onChange={updateZipCode}
-                            />
+                  <TabPanel value={value1} index={0}>
+                    <Box>
+                      <Grid container>
+                        <Grid item xs={6} mt={0.8}>
+                          <Grid container display="flex" alignItems="center">
+                            <Grid item xs={3}>
+                              <Typography>Password</Typography>
+                            </Grid>
+                            <Grid item xs={1}>
+                              <Typography>:</Typography>
+                            </Grid>
+                            <Grid item xs={6}>
+                              <FormControl fullWidth variant="outlined">
+                                <OutlinedInput
+                                  size="small"
+                                  placeholder="Enter Confirm Password"
+                                  id="confirm-password"
+                                  disabled
+                                  defaultValue="Disabled"
+                                  type={showPassword ? 'text' : 'password'}
+                                  endAdornment={
+                                    <InputAdornment position="end">
+                                      <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        edge="end"
+                                      >
+                                        {showPassword ? (
+                                          <VisibilityOff />
+                                        ) : (
+                                          <Visibility />
+                                        )}
+                                      </IconButton>
+                                    </InputAdornment>
+                                  }
+                                />
+                              </FormControl>
+                            </Grid>
                           </Grid>
                         </Grid>
-                      </Grid>
 
-                      <Grid item xs={6}>
-                        <Grid container display="flex" alignItems="center">
-                          <Grid item xs={3} ml={2.6}>
-                            <Typography>City</Typography>
-                          </Grid>
-                          <Grid item xs={1}>
-                            <Typography>:</Typography>
-                          </Grid>
-                          <Grid item xs={6}>
-                            <Autocomplete
-                              disablePortal
-                              value={userCity}
-                              onChange={updateUserCity}
-                              id="combo-box-demo"
-                              size="small"
-                              options={citySelect.map((option) => option.city)}
-                              renderInput={(params) => (
-                                <TextField {...params} />
-                              )}
-                            />
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                      <Grid item xs={6} mt={1}>
-                        <Grid container display="flex" alignItems="center">
-                          <Grid item xs={3}>
-                            <Typography>State</Typography>
-                          </Grid>
-                          <Grid item xs={1}>
-                            <Typography>:</Typography>
-                          </Grid>
-                          <Grid item xs={6}>
-                            <Autocomplete
-                              disablePortal
-                              value={userState}
-                              onChange={updateUserState}
-                              size="small"
-                              id="combo-box-demo"
-                              options={stateSelect.map(
-                                (option) => option.state,
-                              )}
-                              renderInput={(params) => (
-                                <TextField {...params} />
-                              )}
-                            />
+                        <Grid item xs={6}>
+                          <Grid container display="flex" alignItems="center">
+                            <Grid item xs={3} ml={2.6}>
+                              <Typography>Confirm Password</Typography>
+                            </Grid>
+                            <Grid item xs={1}>
+                              <Typography>:</Typography>
+                            </Grid>
+                            <Grid item xs={6}>
+                              <FormControl fullWidth variant="outlined">
+                                <OutlinedInput
+                                  size="small"
+                                  defaultValue="Disabled"
+                                  disabled
+                                  placeholder="Enter Confirm Password"
+                                  id="confirm-password"
+                                  type={showPassword ? 'text' : 'password'}
+                                  endAdornment={
+                                    <InputAdornment position="end">
+                                      <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        edge="end"
+                                      >
+                                        {showPassword ? (
+                                          <VisibilityOff />
+                                        ) : (
+                                          <Visibility />
+                                        )}
+                                      </IconButton>
+                                    </InputAdornment>
+                                  }
+                                />
+                              </FormControl>
+                            </Grid>
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid item xs={6} mt={1}>
-                        <Grid container display="flex" alignItems="center">
-                          <Grid item xs={3} ml={2.6}>
-                            <Typography>Country</Typography>
+                    </Box>
+                  </TabPanel>
+                  <TabPanel value={value1} index={1}>
+                    <Box>
+                      <Grid container>
+                        <Grid item xs={6}>
+                          <Grid container display="flex" alignItems="center">
+                            <Grid item xs={3}>
+                              <Typography>Zip-Code</Typography>
+                            </Grid>
+                            <Grid item xs={1}>
+                              <Typography>:</Typography>
+                            </Grid>
+                            <Grid item xs={6}>
+                              <TextField
+                                id="zip-code"
+                                placeholder="Zip-Code"
+                                variant="outlined"
+                                size="small"
+                                fullWidth
+                                value={userZipCode}
+                                onChange={updateZipCode}
+                              />
+                            </Grid>
                           </Grid>
-                          <Grid item xs={1}>
-                            <Typography>:</Typography>
-                          </Grid>
-                          <Grid item xs={6}>
-                            <Stack>
+                        </Grid>
+
+                        <Grid item xs={6}>
+                          <Grid container display="flex" alignItems="center">
+                            <Grid item xs={3} ml={2.6}>
+                              <Typography>City</Typography>
+                            </Grid>
+                            <Grid item xs={1}>
+                              <Typography>:</Typography>
+                            </Grid>
+                            <Grid item xs={6}>
                               <Autocomplete
                                 disablePortal
-                                value={userCountry}
-                                onChange={updateUserCountry}
+                                value={userCity}
+                                onChange={updateUserCity}
+                                id="combo-box-demo"
                                 size="small"
-                                id="country"
-                                options={countrySelect.map(
-                                  (option) => option.country,
+                                options={citySelect.map(
+                                  (option) => option.city
                                 )}
                                 renderInput={(params) => (
                                   <TextField {...params} />
                                 )}
                               />
-                            </Stack>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                        <Grid item xs={6} mt={1}>
+                          <Grid container display="flex" alignItems="center">
+                            <Grid item xs={3}>
+                              <Typography>State</Typography>
+                            </Grid>
+                            <Grid item xs={1}>
+                              <Typography>:</Typography>
+                            </Grid>
+                            <Grid item xs={6}>
+                              <Autocomplete
+                                disablePortal
+                                value={userState}
+                                onChange={updateUserState}
+                                size="small"
+                                id="combo-box-demo"
+                                options={stateSelect.map(
+                                  (option) => option.state
+                                )}
+                                renderInput={(params) => (
+                                  <TextField {...params} />
+                                )}
+                              />
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                        <Grid item xs={6} mt={1}>
+                          <Grid container display="flex" alignItems="center">
+                            <Grid item xs={3} ml={2.6}>
+                              <Typography>Country</Typography>
+                            </Grid>
+                            <Grid item xs={1}>
+                              <Typography>:</Typography>
+                            </Grid>
+                            <Grid item xs={6}>
+                              <Stack>
+                                <Autocomplete
+                                  disablePortal
+                                  value={userCountry}
+                                  onChange={updateUserCountry}
+                                  size="small"
+                                  id="country"
+                                  options={countrySelect.map(
+                                    (option) => option.country
+                                  )}
+                                  renderInput={(params) => (
+                                    <TextField {...params} />
+                                  )}
+                                />
+                              </Stack>
+                            </Grid>
                           </Grid>
                         </Grid>
                       </Grid>
+                    </Box>
+                  </TabPanel>
+                  <TabPanel value={value1} index={2}>
+                    <Grid item xs={6} mt={1}>
+                      <Grid container display="flex" alignItems="center">
+                        <Grid item xs={3}>
+                          <Typography>Role</Typography>
+                        </Grid>
+                        <Grid item xs={1}>
+                          <Typography>:</Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                          <Stack>
+                            <Autocomplete
+                              disablePortal
+                              disabled
+                              defaultValue="Disabled"
+                              onChange={updateRole}
+                              size="small"
+                              id="combo-box-demo"
+                              options={roleList?.map(
+                                (item: IRole) => item.name
+                              )}
+                              renderInput={(params) => (
+                                <TextField {...params} />
+                              )}
+                            />
+                          </Stack>
+                        </Grid>
+                      </Grid>
                     </Grid>
-                  </Box>
-                </TabPanel>
-                <TabPanel value={value1} index={2}>
-                  <Grid item xs={6} mt={1}>
-                    <Grid container display="flex" alignItems="center">
-                      <Grid item xs={3}>
-                        <Typography>Role</Typography>
-                      </Grid>
-                      <Grid item xs={1}>
-                        <Typography>:</Typography>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Stack>
-                          <Autocomplete
-                            disablePortal
-                            disabled
-                            defaultValue="Disabled"
-                            onChange={updateRole}
-                            size="small"
-                            id="combo-box-demo"
-                            options={roleList?.map((item: IRole) => item.name)}
-                            renderInput={(params) => <TextField {...params} />}
-                          />
-                        </Stack>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </TabPanel>
-              </Box>
-            </Grid>
-          </Box>
+                  </TabPanel>
+                </Box>
+              </Grid>
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
 
-      <Grid container>
-        <Grid item xs={8.05} />
-        <Grid item xs={3.3}>
-          <Grid container>
-            <Grid item xs={5.3}>
-              <Link href="/user" style={{ textDecoration: 'none' }}>
-                <Button variant="contained" className={classes.buttonStyle}>
-                  Cancel
+        <Grid container mb={1}>
+          <Grid item xs={8.36} />
+          <Grid item xs={3}>
+            <Grid container>
+              <Grid item xs={5.5}>
+                <Link href="/user" style={{ textDecoration: 'none' }}>
+                  <Button variant="contained" className={classes.buttonStyle}>
+                    Cancel
+                  </Button>
+                </Link>
+              </Grid>
+              <Grid item xs={6}>
+                <Button
+                  variant="contained"
+                  onClick={updateHandler}
+                  className={classes.buttonStyleSave}
+                >
+                  Save
                 </Button>
-              </Link>
-            </Grid>
-            <Grid item xs={6}>
-              <Button
-                variant="contained"
-                onClick={updateHandler}
-                className={classes.buttonStyleSave}
-              >
-                Save
-              </Button>
-              <Snackbar
-                open={alert}
-                autoHideDuration={8000}
-                onClose={handleClose}
-              >
-                <Alert onClose={handleClose} sx={{ width: '100%' }}>
-                  User Edit Sucessfully...
-                </Alert>
-              </Snackbar>
+                <Snackbar
+                  open={alert}
+                  autoHideDuration={8000}
+                  onClose={handleClose}
+                >
+                  <Alert onClose={handleClose} sx={{ width: '100%' }}>
+                    User Edit Sucessfully...
+                  </Alert>
+                </Snackbar>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
+      </Card>
     </Box>
   );
 }
@@ -659,9 +668,7 @@ interface TabPanelProps {
   value: number;
 }
 function TabPanel(props: TabPanelProps) {
-  const {
-    children, value, index, ...other
-  } = props;
+  const { children, value, index, ...other } = props;
 
   return (
     <div

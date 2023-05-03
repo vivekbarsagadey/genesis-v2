@@ -1,9 +1,7 @@
 'use client';
 
 import PrintIcon from '@mui/icons-material/Print';
-import {
-  Box, Button, Grid, IconButton, Tooltip,
-} from '@mui/material';
+import { Box, Button, Grid, IconButton, Tooltip } from '@mui/material';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import { Case, Default, Switch } from 'react-if';
@@ -19,6 +17,7 @@ import ProjectListViewComponent from './list/list.screen';
 import IProject from './project.model';
 import ProjectSearch from './search';
 import ProjectViewComponent from './view';
+import { border_Radius, colors } from '../../themes';
 
 interface ProjectComponentProps {
   projects: Array<IProject>;
@@ -41,7 +40,17 @@ function ProjectHomeComponent({ projects }: ProjectComponentProps) {
   });
 
   return (
-    <Box ml={1.5}>
+    <Box
+      ml={1.5}
+      style={{
+        backgroundColor: colors.white,
+        borderRadius: border_Radius.borderRadius,
+      }}
+      pl={2}
+      pb={1}
+      pt={1}
+      mr={2.5}
+    >
       <Grid mt={1}>
         <Grid container spacing={1}>
           <Grid item xs={2} md={2} lg={3} sm={2}>
@@ -63,7 +72,7 @@ function ProjectHomeComponent({ projects }: ProjectComponentProps) {
               </Grid>
               <Grid item xs="auto" mt={0.2}>
                 <Tooltip title="Print">
-                  <IconButton onClick={() => handlePrint()}>
+                  <IconButton onClick={() => handlePrint()} >
                     <PrintIcon fontSize="small" />
                   </IconButton>
                 </Tooltip>

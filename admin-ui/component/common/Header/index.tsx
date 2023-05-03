@@ -12,6 +12,9 @@ import Stack from '@mui/material/Stack';
 import { signOut, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 import { headerstyle as style } from './header.style';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
 
 function HeaderComponent() {
   const { data: session } = useSession();
@@ -27,7 +30,18 @@ function HeaderComponent() {
 
   return (
     <Grid container style={style.headercontainer}>
-      <Grid item xs={12}>
+      <Grid item xs={3.7} display="flex" alignItems={'center'} ml={2}>
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link underline="hover" color="inherit" href="/">
+            MUI
+          </Link>
+          <Link underline="hover" color="inherit">
+            Core
+          </Link>
+          <Typography color="text.primary">Breadcrumbs</Typography>
+        </Breadcrumbs>
+      </Grid>
+      <Grid item xs={8}>
         <Grid
           item
           lg={12}
@@ -35,7 +49,6 @@ function HeaderComponent() {
           sm={12}
           xs={12}
           py={0.5}
-          px={3}
           display="flex"
           justifyContent="flex-end"
         >

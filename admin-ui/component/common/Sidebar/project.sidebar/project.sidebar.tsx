@@ -25,18 +25,17 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
   const [selectedIndex, setSelectedIndex] = useState();
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    index: number,
+    index: number
   ) => {
     setSelectedIndex(index);
   };
   return (
-    <Box px={2}>
-      <List component="nav" aria-label="main mailbox folders" >
-        <Link href="/dashboard" passHref style={{ textDecoration: 'none' }} >
+    <Box px={2} style={{ overflowY: 'auto', height: '88vh' }}>
+      <List component="nav" aria-label="main mailbox folders">
+        <Link href="/dashboard" passHref style={{ textDecoration: 'none' }}>
           <ListItemButton
             selected={selectedIndex === 0}
             onClick={(event) => handleListItemClick(event, 0)}
-
           >
             {/* <ListItemIcon style={{position:'relative', right:-15}}><DashboardIcon fontSize={'small'}  /></ListItemIcon> */}
             <ListItemIcon>
@@ -59,10 +58,9 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
               selected={selectedIndex === 1}
               onClick={(event) => handleListItemClick(event, 1)}
             >
-              <ListItemIcon>
+              <ListItemIcon >
                 <ReportIcon fontSize="small" />
-              </ListItemIcon>
-              {' '}
+              </ListItemIcon>{' '}
               {toggleMenu && (
                 <Typography
                   display={{ xs: 'none', sm: 'none', md: 'block' }}
@@ -75,7 +73,6 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
           </Link>
         </Grid>
         <Grid mt={0.5}>
-
           <Link href="/project" passHref style={{ textDecoration: 'none' }}>
             <ListItemButton
               selected={selectedIndex === 2}
@@ -157,7 +154,7 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
             </ListItemButton>
           </Link>
         </Grid>
-        <MetaDataSidebar />
+        <MetaDataSidebar toggleMenu={toggleMenu} />
       </List>
     </Box>
   );

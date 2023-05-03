@@ -212,6 +212,7 @@ function BuilderThemeComponent({ handleCloseTheme }: IBuilderTheme) {
           handleClose={handleClose}
           // getScreenDataSet={getScreenDataSet}
           checkbox={checkbox}
+          handleCloseTheme={handleCloseTheme}
         />
       </Dialog>
     </>

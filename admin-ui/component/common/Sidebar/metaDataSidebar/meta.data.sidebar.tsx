@@ -4,10 +4,13 @@ import CoPresentIcon from '@mui/icons-material/CoPresent';
 import { Box, Grid, IconButton } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import './CollapsibleList.css';
-
+import Person2Icon from '@mui/icons-material/Person2';
+import HomeIcon from '@mui/icons-material/Home';
+import DataSaverOffIcon from '@mui/icons-material/DataSaverOff';
+import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
 import Link from 'next/link';
 
-function MetaDataSidebar() {
+function MetaDataSidebar({toggleMenu}:any) {
   return (
     <Grid style={{ display: 'flex' }}>
       <ul className="collapsible-list-root">
@@ -16,15 +19,16 @@ function MetaDataSidebar() {
             display: 'flex',
             marginLeft: '0.7rem',
             paddingRight: '1rem',
-            marginTop: '9rem',
+            marginTop: '6rem',
           }}
         >
-          <Grid item xs={3}>
+          {/* <Grid item xs={3}>
             <IconButton>
               <AirplayIcon fontSize="small" />
             </IconButton>
-          </Grid>
+          </Grid> */}
           <Grid item xs={9}>
+          {toggleMenu && (
             <CollapsibleListItem label="Master Data">
               <ul style={{ listStyle: 'none', marginLeft: '-1.5rem' }}>
                 {/* <Link
@@ -68,6 +72,7 @@ function MetaDataSidebar() {
                 </Link> */}
               </ul>
             </CollapsibleListItem>
+          )}
           </Grid>
         </Box>
 
@@ -76,14 +81,16 @@ function MetaDataSidebar() {
             display: 'flex',
             marginLeft: '0.7rem',
             paddingRight: '1rem',
+            alignItems:'center'
           }}
         >
-          <Grid item xs={3}>
+          <Grid item xs={1}>
             <IconButton>
-              <AirplayIcon fontSize="small" />
+              <HomeIcon fontSize="small" />
             </IconButton>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={11}>
+          {toggleMenu && (
             <CollapsibleListItem label="Address">
               <ul style={{ listStyle: 'none', marginLeft: '-1.5rem' }}>
                 {/* <Link
@@ -127,6 +134,8 @@ function MetaDataSidebar() {
                 </Link>
               </ul>
             </CollapsibleListItem>
+          )}
+            
           </Grid>
         </Box>
 
@@ -135,14 +144,16 @@ function MetaDataSidebar() {
             display: 'flex',
             marginLeft: '0.7rem',
             paddingRight: '1rem',
+            alignItems:'center'
           }}
         >
-          <Grid item xs={3}>
+          <Grid item xs={1}>
             <IconButton>
-              <CoPresentIcon fontSize="small" />
+              <DataSaverOffIcon fontSize="small" />
             </IconButton>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={11}>
+          {toggleMenu && (
             <CollapsibleListItem label="Roles">
               <ul style={{ listStyle: 'none', marginLeft: '-1.5rem' }}>
                 <Link href="/roles" passHref style={{ textDecoration: 'none' }}>
@@ -150,6 +161,7 @@ function MetaDataSidebar() {
                 </Link>
               </ul>
             </CollapsibleListItem>
+          )}
           </Grid>
         </Box>
 
@@ -158,14 +170,16 @@ function MetaDataSidebar() {
             display: 'flex',
             marginLeft: '0.7rem',
             paddingRight: '1rem',
+            alignItems:'center'
           }}
         >
-          <Grid item xs={3}>
+          <Grid item xs={1}>
             <IconButton>
-              <CallToActionIcon fontSize="small" />
+              <SpaceDashboardIcon fontSize="small" />
             </IconButton>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={11}>
+          {toggleMenu && (
             <CollapsibleListItem label="Dashboard">
               <ul style={{ listStyle: 'none', marginLeft: '-1.5rem' }}>
                 <Link
@@ -184,6 +198,7 @@ function MetaDataSidebar() {
                 </Link>
               </ul>
             </CollapsibleListItem>
+          )}
           </Grid>
         </Box>
       </ul>
