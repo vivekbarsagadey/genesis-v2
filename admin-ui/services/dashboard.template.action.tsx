@@ -1,6 +1,6 @@
 
 const createDashboardTemplate = async (templates) => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/templates/dashboard`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/template/dashboard`, {
     credentials: 'include',
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -10,7 +10,7 @@ const createDashboardTemplate = async (templates) => {
 };
 const updateDashboardTemplate = async (id:string, templates) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/templates/dashboard/${id}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/template/dashboard/${id}`,
     {
       credentials: 'include',
       method: 'PUT',
@@ -23,7 +23,7 @@ const updateDashboardTemplate = async (id:string, templates) => {
 
 const deleteDashboardTemplate = async (id) => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/templates/dashboard/${id}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/template/dashboard/${id}`,
     {
       credentials: 'include',
       method: 'DELETE',

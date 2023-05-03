@@ -5,7 +5,7 @@ import { IDashboardTemplate } from './models';
 import { findAll } from '../../../../services/api.service';
 import DashBoardComponentHome from '.';
 
-const URL = 'template/dashboard';
+const URL = 'template/dashbaord';
 
 function Page() {
   const dashboardTemplate = use<Array<IDashboardTemplate>>(findAll(URL));
