@@ -183,14 +183,14 @@ function MetaDataSidebar({toggleMenu}:any) {
             <CollapsibleListItem label="Dashboard">
               <ul style={{ listStyle: 'none', marginLeft: '-1.5rem' }}>
                 <Link
-                  href="/metadatadashboard/templates"
+                  href="/metadata/template/dashboard"
                   passHref
                   style={{ textDecoration: 'none' }}
                 >
                   <NormalListItem label="Template" />
                 </Link>
                 <Link
-                  href="/metadatadashboard/widgets"
+                  href="/metadata/template/widgets"
                   passHref
                   style={{ textDecoration: 'none' }}
                 >

@@ -20,9 +20,9 @@ import Snackbar from '@mui/material/Snackbar';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import Moment from 'react-moment';
-import { deleteWidgets } from '../../../services/widgets.action';
 import { ICompany } from '../models/company.model';
 import { IWidgets } from './widgets.props';
+import { deleteWidgets } from '../../../../services/widgets.action';
 
 type InfoWidgetsComponentProps = {
   widgets: IWidgets;

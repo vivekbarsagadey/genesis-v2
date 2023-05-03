@@ -3,15 +3,15 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 import { useState } from 'react';
-import { PaginationHandler } from '../../utility';
-import { ListComponentProps } from './props';
+import { PaginationHandler } from '../../../../utility';
+import { DashbaordTemplateListComponentProps } from './props';
 
-function CustomerGridView({ customer }: ListComponentProps) {
+function DashbaordTemplateGridView({ dashboard }: DashbaordTemplateListComponentProps) {
   // pagination
   const [page, setPage] = useState(1);
   const PER_PAGE = 9;
-  const count = Math.ceil(customer.length / PER_PAGE);
-  const paginationHandler = PaginationHandler(customer, PER_PAGE);
+  const count = Math.ceil(dashboard.length / PER_PAGE);
+  const paginationHandler = PaginationHandler(dashboard, PER_PAGE);
 
   const handleChangePage = (e: any, p: number) => {
     setPage(p);
@@ -141,4 +141,4 @@ function CustomerGridView({ customer }: ListComponentProps) {
   );
 }
 
-export default CustomerGridView;
+export default DashbaordTemplateGridView;

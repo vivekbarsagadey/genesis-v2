@@ -16,7 +16,7 @@ import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import { updateCustomer } from '../../../services/customer.action';
+import { updateCustomer } from '../../../../../services/customer.action';
 import {
   citySelect,
   countrySelect,

@@ -9,28 +9,19 @@ import {
   Typography,
 } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
-import Paper from '@mui/material/Paper';
 import { useState } from 'react';
-import { PaginationHandler } from '../../utility';
-import InfoCustomerComponent from '../info';
-import { ICustomer } from '../models';
+import { PaginationHandler } from '../../../../utility';
+import InfoDashBoardTemplateComponent from '../info';
+import { IDashboardTemplateComponentProps } from '../models';
 
-function ListViewComponent({
-  customer,
-  setCopyCustomer,
-  setShow,
-  show,
-  myRef,
-}: any) {
-  const [increaseAdd, setIncreaseAdd] = useState(false);
-  const [increaseEmail, setIncreaseEmail] = useState(false);
-  const [increaseUser, setIncreaseUser] = useState(false);
-  const [data, setData] = useState();
+function ListViewComponent({ dashboard, setCopyDashbaord, show, setShow, myRef }: any) {
+
   const [page, setPage] = useState(1);
   const [multiSelect, setMultiSelect] = useState([]);
+
   const PER_PAGE = 9;
-  const count = Math.ceil(customer.length / PER_PAGE);
-  const paginationHandler = PaginationHandler(customer, PER_PAGE);
+  const count = Math.ceil(dashboard.length / PER_PAGE);
+  const paginationHandler = PaginationHandler(dashboard, PER_PAGE);
 
   const handleChangePage = (e: any, p: number) => {
     setPage(p);
@@ -41,26 +32,9 @@ function ListViewComponent({
     setShow(event.target.checked);
   };
 
-  const emailInc = () => {
-    setIncreaseEmail(!increaseEmail);
-    setData(customer.sort((a, b) => (a.email > b.email ? 1 : -1)));
-  };
-
-  const addressInc = () => {
-    setIncreaseAdd(!increaseAdd);
-    setData(customer.sort((a, b) => (a.address > b.address ? 1 : -1)));
-  };
-  const userNameInc = () => {
-    setIncreaseUser(!increaseUser);
-    setData(customer.sort((a, b) => (a.address > b.address ? 1 : -1)));
-  };
-  // console.log("setCopyCustomer >>",setCopyCustomer);
-
   const getMultiSelectedValue = (valRec) => {
     setMultiSelect([...multiSelect, valRec]);
-    // console.log("valRec",valRec);
   };
-  console.log('multiSelect', multiSelect);
 
   return (
     <>
@@ -89,14 +63,12 @@ function ListViewComponent({
               <Grid item xs={2.5}>
                 <Typography variant="subtitle2" noWrap>
                   Customer Name
-                  {/* {increaseUser ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />} */}
                 </Typography>
               </Grid>
 
               <Grid item xs={2}>
                 <Typography variant="subtitle2" noWrap>
                   Email
-                  {/* {increaseEmail ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />} */}
                 </Typography>
               </Grid>
 
@@ -126,15 +98,15 @@ function ListViewComponent({
             </Grid>
           </Card>
         </Box>
-        <Divider style={{width:'98.7%'}}/>
+        <Divider style={{ width: '98.7%' }} />
         <Grid style={{ height: '62vh' }}>
           {paginationHandler
             .currentData()
             .reverse()
-            ?.map((customer: ICustomer, index: number) => (
+            ?.map((dashboard: IDashboardTemplateComponentProps, index: number) => (
               <Typography key={index}>
-                <InfoCustomerComponent
-                  customer={customer}
+                <InfoDashBoardTemplateComponent
+                  dashboard={dashboard}
                   show={show}
                   getMultiSelectedValue={getMultiSelectedValue}
                 />

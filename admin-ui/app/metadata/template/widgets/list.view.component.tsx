@@ -13,7 +13,7 @@ import React, { useState } from 'react';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { WidgetsHomeComponentsProps } from './widget.props';
-import { PaginationHandler } from '../../utility';
+import { PaginationHandler } from '../../../utility';
 import { IWidgets } from './widgets.props';
 import InfoWidgetsComponent from './info.widgets.component';
 

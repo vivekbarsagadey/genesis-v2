@@ -1,5 +1,5 @@
-import { ICompany } from '../../company/models';
+import { IDashboardTemplate } from "../models";
 
-export interface ListComponentProps {
-  customer: Array<ICompany>;
+export interface DashbaordTemplateListComponentProps {
+  dashboard: Array<IDashboardTemplate>;
 }

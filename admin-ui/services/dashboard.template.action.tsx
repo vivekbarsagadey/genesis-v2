@@ -1,6 +1,6 @@
 
 const createDashboardTemplate = async (templates) => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/template/dashboard`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/templates/dashboard`, {
     credentials: 'include',
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

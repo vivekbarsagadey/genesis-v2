@@ -6,7 +6,7 @@ import moment from 'moment';
 import React, { useState } from 'react';
 import MonthPieChart from './month.pie.chart';
 import CustomerPieChart from './pie.chart';
-import { ListComponentProps } from './props';
+import { DashbaordTemplateListComponentProps } from './props';
 
 const options = {
   hAxis: { title: 'Month' },
@@ -20,14 +20,14 @@ const comparisonGraphDataVal = [
   { id: 3, label: 'Male' },
   { id: 4, label: 'Female' },
 ];
-function CustomerGraphView({ customer }: ListComponentProps) {
+function DashBoardTemplateGraphView({ dashboard }: DashbaordTemplateListComponentProps) {
   const [graphView, setGraphView] = useState<string>('status');
   const [graphBase, setGrpahBase] = useState<string>('');
   const [graph1, setGrpah1] = useState<string>('');
   const [graph2, setGraph2] = useState<string>('');
   const [comparisiongraphView, setComparisionGraphView] = useState<string>('Month');
 
-  const keys = Object.keys(customer[0]);
+  const keys = Object.keys(dashboard[0]);
   const graphTypeVal = keys.filter((element) => {
     if (
       element === 'country'
@@ -62,140 +62,10 @@ function CustomerGraphView({ customer }: ListComponentProps) {
 
   const statusData = [
     ['Status', 'Users'],
-    ['ACTIVE', customer.filter((item) => item.status === 'ACTIVE').length],
-    ['INACTIVE', customer.filter((item) => item.status === 'INACTIVE').length],
+    ['ACTIVE', dashboard.filter((item) => item.status === 'ACTIVE').length],
+    ['INACTIVE', dashboard.filter((item) => item.status === 'INACTIVE').length],
   ];
 
-  const stateData = [
-    ['Customer', 'State'],
-    ['Bihar', customer.filter((item) => item.state === 'Bihar').length],
-    [
-      'Madhya Pradesh',
-      customer.filter((item) => item.state === 'Madhya Pradesh').length,
-    ],
-    ['UP', customer.filter((item) => item.state === 'UP').length],
-    [
-      'Maharastra',
-      customer.filter((item) => item.state === 'Maharastra').length,
-    ],
-    ['Punjab', customer.filter((item) => item.state === 'Punjab').length],
-    ['UK', customer.filter((item) => item.state === 'UK').length],
-    ['Gujrat', customer.filter((item) => item.state === 'Gujrat').length],
-    ['Karnataka', customer.filter((item) => item.state === 'Karnataka').length],
-    [
-      'Jammu & Kashmir',
-      customer.filter((item) => item.state === 'Jammu & Kashmir').length,
-    ],
-  ];
-  const countryData = [
-    ['Customer', 'Country'],
-    ['India', customer.filter((item) => item.country === 'India').length],
-    [
-      'Australia',
-      customer.filter((item) => item.country === 'Australia').length,
-    ],
-    ['America', customer.filter((item) => item.country === 'America').length],
-    ['Spain', customer.filter((item) => item.country === 'Spain').length],
-    ['US', customer.filter((item) => item.country === 'US').length],
-    ['UK', customer.filter((item) => item.country === 'UK').length],
-    ['Dubai', customer.filter((item) => item.country === 'Dubai').length],
-    ['Srilanka', customer.filter((item) => item.country === 'Srilanka').length],
-    ['Thailand', customer.filter((item) => item.country === 'Thailand').length],
-  ];
-  const cityData = [
-    ['Customer', 'City'],
-    ['Patna', customer.filter((item) => item.city === 'Patna').length],
-    ['Mumbai', customer.filter((item) => item.city === 'Mumbai').length],
-    ['Pune', customer.filter((item) => item.city === 'Pune').length],
-    ['Banglore', customer.filter((item) => item.city === 'Banglore').length],
-    ['Ahmedabad', customer.filter((item) => item.city === 'Ahmedabad').length],
-    ['Kolkata', customer.filter((item) => item.city === 'Kolkata').length],
-    ['Rajasthan', customer.filter((item) => item.city === 'Rajasthan').length],
-    ['Hyderabad', customer.filter((item) => item.city === 'Hyderabad').length],
-    ['Lucknow', customer.filter((item) => item.city === 'Lucknow').length],
-  ];
-
-  const comparisionType = [
-    { title: 'Today' },
-    { title: 'Last 7 days' },
-    { title: 'Month' },
-  ];
-
-  const createdDataData = [
-    ['Month', 'Count'],
-    [
-      'JAN',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Jan').length,
-    ],
-    [
-      'FEB',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Feb').length,
-    ],
-    [
-      'MAR',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Mar').length,
-    ],
-    [
-      'APR',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Apr').length,
-    ],
-    [
-      'MAY',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'May').length,
-    ],
-    [
-      'JUN',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Jun').length,
-    ],
-    [
-      'JUL',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Jul').length,
-    ],
-    [
-      'AUG',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Aug').length,
-    ],
-    [
-      'SEP',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Sep').length,
-    ],
-    [
-      'OCT',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Oct').length,
-    ],
-    [
-      'NOV',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Nov').length,
-    ],
-    [
-      'DEC',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Dec').length,
-    ],
-  ];
 
   // Base Value
   const updateGraphBase = (
@@ -218,91 +88,6 @@ function CustomerGraphView({ customer }: ListComponentProps) {
   ) => {
     setGraph2(value);
   };
-
-  const CompariosnCountryData = [
-    ['Country', 'ACTIVE', 'INACTIVE'],
-    [
-      'India',
-      customer
-        .filter((ele) => ele.country === 'India')
-        .filter((ele) => ele.status === 'ACTIVE').length,
-      customer
-        .filter((ele) => ele.country === 'India')
-        .filter((ele) => ele.status === 'INACTIVE').length,
-    ],
-    [
-      'Australia',
-      customer
-        .filter((ele) => ele.country === 'Australia')
-        .filter((ele) => ele.status === 'ACTIVE').length,
-      customer
-        .filter((ele) => ele.country === 'Australia')
-        .filter((ele) => ele.status === 'INACTIVE').length,
-    ],
-    [
-      'America',
-      customer
-        .filter((ele) => ele.country === 'America')
-        .filter((ele) => ele.status === 'ACTIVE').length,
-      customer
-        .filter((ele) => ele.country === 'America')
-        .filter((ele) => ele.status === 'INACTIVE').length,
-    ],
-    [
-      'Spain',
-      customer
-        .filter((ele) => ele.country === 'Spain')
-        .filter((ele) => ele.status === 'ACTIVE').length,
-      customer
-        .filter((ele) => ele.country === 'Spain')
-        .filter((ele) => ele.status === 'INACTIVE').length,
-    ],
-    [
-      'US',
-      customer
-        .filter((ele) => ele.country === 'US')
-        .filter((ele) => ele.status === 'ACTIVE').length,
-      customer
-        .filter((ele) => ele.country === 'US')
-        .filter((ele) => ele.status === 'INACTIVE').length,
-    ],
-    [
-      'UK',
-      customer
-        .filter((ele) => ele.country === 'UK')
-        .filter((ele) => ele.status === 'ACTIVE').length,
-      customer
-        .filter((ele) => ele.country === 'UK')
-        .filter((ele) => ele.status === 'INACTIVE').length,
-    ],
-    [
-      'Dubai',
-      customer
-        .filter((ele) => ele.country === 'Dubai')
-        .filter((ele) => ele.status === 'ACTIVE').length,
-      customer
-        .filter((ele) => ele.country === 'Dubai')
-        .filter((ele) => ele.status === 'INACTIVE').length,
-    ],
-    [
-      'Srilanka',
-      customer
-        .filter((ele) => ele.country === 'Srilanka')
-        .filter((ele) => ele.status === 'ACTIVE').length,
-      customer
-        .filter((ele) => ele.country === 'Srilanka')
-        .filter((ele) => ele.status === 'INACTIVE').length,
-    ],
-    [
-      'Thailand',
-      customer
-        .filter((ele) => ele.country === 'Thailand')
-        .filter((ele) => ele.status === 'ACTIVE').length,
-      customer
-        .filter((ele) => ele.country === 'Thailand')
-        .filter((ele) => ele.status === 'INACTIVE').length,
-    ],
-  ];
 
   const updateComparisionGrpahView = (
     e: React.SyntheticEvent<Element, Event>,
@@ -399,4 +184,4 @@ function CustomerGraphView({ customer }: ListComponentProps) {
 //   return <PieChart data={cityData} />;
 // };
 
-export default CustomerGraphView;
+export default DashBoardTemplateGraphView;

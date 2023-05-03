@@ -8,9 +8,8 @@ import {
   Divider,
   Grid,
   IconButton,
-  Paper,
   Tooltip,
-  Typography,
+  Typography
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Backdrop from '@mui/material/Backdrop';
@@ -23,8 +22,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
-import { deleteCustomer } from '../../../services/customer.action';
-import { ICustomer } from '../models';
+import { deleteCustomer } from '../../../../../services/customer.action';
+import { IDashboardTemplateComponentProps } from '../models';
 
 const style = {
   position: 'absolute' as const,
@@ -45,15 +44,15 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
 ));
 
 type InfoCustomerComponentProps = {
-  customer: ICustomer;
+  dashboard: IDashboardTemplateComponentProps;
   increase: boolean;
 };
-function InfoCustomerComponent({
-  customer,
-  getMultiSelectedValue,
+function InfoDashBoardTemplateComponent({
+  dashboard,
+  // getMultiSelectedValue,
   show,
 }: InfoCustomerComponentProps) {
-  const [copyData] = useState([customer]);
+  const [copyData] = useState([dashboard]);
   const [checked, setChecked] = useState(show);
 
   const router = useRouter();
@@ -85,13 +84,13 @@ function InfoCustomerComponent({
     setChecked(show);
   }, [show]);
 
-  const customerName = `${customer.firstName} ${customer.lastName}`;
+  // const customerName = `${customer.firstName} ${customer.lastName}`;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
-    const d = customer.firstName;
+    // const d = customer.firstName;
 
-    getMultiSelectedValue(d);
+    // getMultiSelectedValue(d);
   };
 
   return (
@@ -113,34 +112,34 @@ function InfoCustomerComponent({
 
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
-                <Moment format="DD MMM YYYY">{customer.createdAt}</Moment>
+                {/* <Moment format="DD MMM YYYY">{customer.createdAt}</Moment> */}
               </Typography>
             </Grid>
 
             <Grid item xs={2.5}>
               <Typography variant="body2" noWrap>
-                {customerName}
+                {/* {customerName} */}
               </Typography>
             </Grid>
             <Grid item xs={2}>
               <Typography variant="body2" noWrap>
-                {customer.email}
+                {/* {customer.email} */}
               </Typography>
             </Grid>
 
             <Grid item xs={2.2}>
               <Typography variant="body2" noWrap display="flex">
-                {customer.mobile}
+                {/* {customer.mobile} */}
               </Typography>
             </Grid>
             <Grid item xs={1.1}>
               <Typography variant="body2" noWrap display="flex">
-                {customer.address}
+                {/* {customer.address} */}
               </Typography>
             </Grid>
             <Grid item xs={1}>
               <Grid container display="flex" justifyContent="flex-end">
-                <Grid item xs={5}>
+                {/* <Grid item xs={5}>
                   <Tooltip title="Edit">
                     <Link href={`/customer/${customer.id}`}>
                       <IconButton>
@@ -148,7 +147,7 @@ function InfoCustomerComponent({
                       </IconButton>
                     </Link>
                   </Tooltip>
-                </Grid>
+                </Grid> */}
                 <Grid item xs={1}>
                   <Tooltip title="Delete">
                     <IconButton onClick={deletePopupOpen}>
@@ -211,7 +210,7 @@ function InfoCustomerComponent({
                     <Button
                       variant="contained"
                       size="small"
-                      onClick={() => removeData(customer)}
+                      onClick={() => removeData(dashboard)}
                       sx={{ height: '4vh' }}
                     >
                       Ok
@@ -227,4 +226,4 @@ function InfoCustomerComponent({
     </>
   );
 }
-export default InfoCustomerComponent;
+export default InfoDashBoardTemplateComponent;

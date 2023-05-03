@@ -1,38 +1,30 @@
 'use client';
 
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import PrintIcon from '@mui/icons-material/Print';
 import { Box, Button, Grid, IconButton, Tooltip } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
-import { Case, Default, Switch } from 'react-if';
+import { Default, Switch } from 'react-if';
 import { useReactToPrint } from 'react-to-print';
-import { ViewTypes } from '../utility';
-import FilterComponent from './filter';
-import CustomerCalendarView from './list/calendar.view';
-import ExportComponent from './list/export.component';
-import CustomerGraphView from './list/graph.view';
-import CustomerGridView from './list/grid.view';
-import CustomerKanbanView from './list/kanban.view';
-import CustomerListScereen from './list/list.screen';
-import { ICustomer } from './models';
-import CustomerSearchDetails from './search';
+import { border_Radius, colors } from '../../../../themes';
+import { ViewTypes } from '../../../utility';
+import DashBoardTemplateListScreen from './list/list.screen';
+import { IDashboardTemplate } from './models';
 import CustomerViewComponent from './view';
-import { border_Radius, colors } from '../../themes';
 
-interface CustomerComponentProps {
-  customer: Array<ICustomer>;
+interface DashBoardTemplateComponentProps {
+  dashboard: Array<IDashboardTemplate>;
 }
 
-function CustomerComponentHome({ customer }: CustomerComponentProps) {
-  const [copyCustomer, setCopyCustomer] = useState<Array<ICustomer>>([
-    ...customer,
+function DashBoardComponentHome({ dashboard }: DashBoardTemplateComponentProps) {
+  const [copyDashbaord, setCopyDashbaord] = useState<Array<IDashboardTemplate>>([
+    ...dashboard,
   ]);
   const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
   const [show, setShow] = useState(false);
-  const onSearchHandler = (c: Array<ICustomer>) => {
-    setCopyCustomer(c);
+  const onSearchHandler = (c: Array<IDashboardTemplate>) => {
+    setCopyDashbaord(c);
   };
 
   const onViewSelect = (view: ViewTypes) => {
@@ -60,28 +52,28 @@ function CustomerComponentHome({ customer }: CustomerComponentProps) {
       <Grid mt={1}>
         <Grid container spacing={1}>
           <Grid item xs={2} md={2} lg={3} sm={2}>
-            <CustomerSearchDetails
-              customer={customer}
+            {/* <CustomerSearchDetails
+              dashboard={dashboard}
               onSearchHandler={onSearchHandler}
-            />
+            /> */}
           </Grid>
           <Grid item xs={7} md={7} sm={7} lg={6} display="flex">
             <Grid container>
               <Grid item xs="auto" mt={0.3}>
-                <FilterComponent
-                  customer={customer}
+                {/* <FilterComponent
+                  dashboard={dashboard}
                   onFilterHandler={onSearchHandler}
-                />
+                /> */}
               </Grid>
               <Grid item xs="auto" mt={0.2}>
-                <ExportComponent customer={copyCustomer} />
+                {/* <ExportComponent dashboard={dashboard} /> */}
               </Grid>
               <Grid item xs="auto" mt={0.2}>
-                <Tooltip title="Print">
+                {/* <Tooltip title="Print">
                   <IconButton onClick={() => handlePrint()}>
                     <PrintIcon fontSize="small" />
                   </IconButton>
-                </Tooltip>
+                </Tooltip> */}
               </Grid>
 
               <Grid item xs={9}>
@@ -116,7 +108,7 @@ function CustomerComponentHome({ customer }: CustomerComponentProps) {
           </Grid>
           <Grid item xs={1} mt={1}>
             <Link
-              href="/customer/customerreport"
+              href="/metadata/dashbaord/dashbaord.report"
               passHref
               style={{ textDecoration: 'none' }}
             >
@@ -127,7 +119,7 @@ function CustomerComponentHome({ customer }: CustomerComponentProps) {
           </Grid>
           <Grid item xs={1} mt={1}>
             <Link
-              href="/customer/create"
+              href="/metadata/template/dashbaord/create"
               passHref
               style={{ textDecoration: 'none' }}
             >
@@ -140,31 +132,31 @@ function CustomerComponentHome({ customer }: CustomerComponentProps) {
         </Grid>
         <Grid item xs={12}>
           <Switch>
-            <Case condition={viewType === ViewTypes.GRID}>
+            {/* <Case condition={viewType === ViewTypes.GRID}>
               <Grid ref={myRef}>
-                <CustomerGridView customer={copyCustomer} />
+                <DashbaordTemplateGridView dashboard={copyDashbaord} />
               </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.GRAPH}>
               <Grid ref={myRef}>
-                <CustomerGraphView customer={copyCustomer} />
+                <CustomerGraphView dashboard={copyDashbaord} />
               </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.KANBAN}>
               <Grid ref={myRef}>
-                <CustomerKanbanView customer={copyCustomer} />
+                <CustomerKanbanView dashboard={copyDashbaord} />
               </Grid>
             </Case>
             <Case condition={viewType === ViewTypes.CALENDAR}>
               <Grid ref={myRef}>
-                <CustomerCalendarView customer={copyCustomer} />
+                <CustomerCalendarView dashboard={copyDashbaord} />
               </Grid>
-            </Case>
+            </Case> */}
             <Default>
               <Grid>
-                <CustomerListScereen
-                  customer={copyCustomer}
-                  setCopyCustomer={setCopyCustomer}
+                <DashBoardTemplateListScreen
+                  dashboard={copyDashbaord}
+                  setCopyDashbaord={copyDashbaord}
                   show={show}
                   setShow={setShow}
                   myRef={myRef}
@@ -178,4 +170,4 @@ function CustomerComponentHome({ customer }: CustomerComponentProps) {
   );
 }
 
-export default CustomerComponentHome;
+export default DashBoardComponentHome;
