@@ -2,12 +2,8 @@
 
 import { Box, Button, Grid } from '@mui/material';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useRef, useState } from 'react';
-import { useReactToPrint } from 'react-to-print';
+import React, { useRef, useState } from 'react';
 import { border_Radius, colors } from '../../../../themes';
-import { ViewTypes } from '../../../utility';
-import DashBoardTemplateListScreen from './list/list.screen';
 import { IDashboardTemplate } from './models';
 
 interface DashBoardTemplateComponentProps {
@@ -18,21 +14,8 @@ function DashBoardComponentHome({ dashboard }: DashBoardTemplateComponentProps) 
   const [copyDashbaord, setCopyDashbaord] = useState<Array<IDashboardTemplate>>([
     ...dashboard,
   ]);
-  const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
-  const [show, setShow] = useState(false);
-  const onSearchHandler = (c: Array<IDashboardTemplate>) => {
-    setCopyDashbaord(c);
-  };
-
-  const onViewSelect = (view: ViewTypes) => {
-    setViewType(view);
-  };
 
   const myRef = useRef(null);
-  const handlePrint = useReactToPrint({
-    content: () => myRef.current,
-  });
-  const router = useRouter();
 
   return (
     <Box

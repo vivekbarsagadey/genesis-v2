@@ -4,8 +4,7 @@ import { Box, Button, Grid, Snackbar, Typography } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { createTemplates } from '../../../../services/template.action';
-import CreateRowsComponent from '../rows';
+import CreateRowsComponent from './';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
