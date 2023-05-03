@@ -59,17 +59,6 @@ function DashBoardComponentHome({ dashboard }: DashBoardTemplateComponentProps) 
             </Button>
           </Link>
         </Grid>
-        <Grid item xs={12}>
-          <Grid>
-            <DashBoardTemplateListScreen
-              dashboard={copyDashbaord}
-              setCopyDashbaord={copyDashbaord}
-              show={show}
-              setShow={setShow}
-              myRef={myRef}
-            />
-          </Grid>
-        </Grid>
       </Grid>
     </Box>
   );
