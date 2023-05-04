@@ -1,4 +1,6 @@
 'use client';
+{% set Info_Cap = app_info['name'].capitalize() -%}
+{% set Info_Sm = app_info['name'] -%}
 
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditIcon from '@mui/icons-material/Edit';
@@ -23,8 +25,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import Moment from 'react-moment';
-import { deleteCompany } from '../../../services/company.action';
-import { ICompany } from '../models/company.model';
+import { delete{{Info_Cap}} } from '../../../services/{{Info_Sm}}.action';
+import { I{{Info_Cap}} } from '../models/{{Info_Sm}}.model';
 
 const style = {
   position: 'absolute' as const,
@@ -43,11 +45,11 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 ));
 
-type InfoCompanyComponentProps = {
-  company: ICompany;
+type Info{{Info_Cap}}ComponentProps = {
+  {{Info_Sm}}: I{{Info_Cap}};
 };
 
-function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
+function Info{{Info_Cap}}Component({ {{Info_Sm}} }: Info{{Info_Cap}}ComponentProps) {
   const router = useRouter();
   const [alert, setAlert] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -67,9 +69,9 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
     setAlert(false);
   };
 
-  const removeData = (f: ICompany) => {
+  const removeData = (f: I{{Info_Cap}}) => {
     window.location.reload();
-    deleteCompany(f.id);
+    delete{{Info_Cap}}(f.id);
     handleClick();
   };
   return (
@@ -85,34 +87,34 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
           </Grid>
           <Grid item xs={2}>
             <Typography variant="body2" noWrap>
-              <Moment format="DD MMM YYYY">{company.createdAt}</Moment>
+              <Moment format="DD MMM YYYY">{ {{Info_Sm}}.createdAt}</Moment>
             </Typography>
           </Grid>
           <Grid item xs={2.5}>
             <Typography variant="body2" noWrap>
-              {company.name}
+              { {{Info_Sm}}.name}
             </Typography>
           </Grid>
           <Grid item xs={1.9} mr={0.9}>
             <Typography variant="body2" noWrap>
-              {company.email}
+              { {{Info_Sm}}.email}
             </Typography>
           </Grid>
           <Grid item xs={2.1}>
             <Typography variant="body2" noWrap display="flex">
-              {company.mobile}
+              { {{Info_Sm}}.mobile}
             </Typography>
           </Grid>
           <Grid item xs={1.7}>
             <Typography variant="body2" noWrap display="flex">
-              {company.address}
+              { {{Info_Sm}}.address}
             </Typography>
           </Grid>
           <Grid item xs={1}>
             <Grid container>
               <Grid item xs={3.3} ml={2}>
                 <Tooltip title="Edit">
-                  <Link href={`/company/${company.id}`}>
+                  <Link href={`/{{Info_Sm}}/${ {{Info_Sm}}.id}`}>
                     <IconButton>
                       <EditIcon fontSize="small" />
                     </IconButton>
@@ -149,21 +151,18 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
           open={open}
           onClose={handleCloseDelete}
           closeAfterTransition
-          slots={{ backdrop: Backdrop }}
-          slotProps={{
-            backdrop: {
-              timeout: 500,
-            },
-          }}
+         
+         
+          
         >
           <Fade in={open}>
             <Box sx={style}>
               <Typography
                 id="transition-modal-description"
-                sx={{ mt: 1 }}
+                
                 fontSize="0.9rem"
               >
-                Are you sure you want to delete the selected company?
+                Are you sure you want to delete the selected {{Info_Sm}}?
               </Typography>
               <Grid container mt={2}>
                 <Grid item xs={6} />
@@ -171,7 +170,7 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
                   <Button
                     variant="contained"
                     size="small"
-                    sx={{ height: '4vh' }}
+                   
                     onClick={() => handleCloseDelete()}
                   >
                     Cancel
@@ -181,8 +180,8 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
                   <Button
                     variant="contained"
                     size="small"
-                    onClick={() => removeData(company)}
-                    sx={{ height: '4vh' }}
+                    onClick={() => removeData({{Info_Sm}})}
+                    
                   >
                     Ok
                   </Button>
@@ -196,4 +195,4 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
     </Box>
   );
 }
-export default InfoCompanyComponent;
+export default Info{{Info_Cap}}Component;

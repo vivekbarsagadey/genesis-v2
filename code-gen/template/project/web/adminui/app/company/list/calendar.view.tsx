@@ -1,9 +1,12 @@
+{% set Info_Cap = app_list['name'].capitalize() -%}
+{% set Info_Sm = app_list['name'] -%}
+
 import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import moment from 'moment';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { ICompany } from '../models/company.model';
+import { I{{Info_Cap}} } from '../models/{{Info_Sm}}.model';
 import { ListComponentProps } from './props';
 
 const localizer = momentLocalizer(moment);
@@ -14,16 +17,16 @@ interface CalendarEventData {
   end: Date;
 }
 
-function CompanyCalendarView({ companies }: ListComponentProps) {
+function {{Info_Cap}}CalendarView({ {{Info_Sm}} }: ListComponentProps) {
   const [events, setEvents] = useState<Array<CalendarEventData>>([]);
 
-  const calendarCompanies = companies.map((company: ICompany) => ({
-    title: company.name,
-    start: new Date(company.createdAt),
-    end: new Date(company.createdAt),
+  const calendar{{Info_Cap}} = {{Info_Sm}}.map(({{Info_Sm}}: I{{Info_Cap}}) => ({
+    title: {{Info_Sm}}.name,
+    start: new Date({{Info_Sm}}.createdAt),
+    end: new Date({{Info_Sm}}.createdAt),
   }));
   useEffect(() => {
-    setEvents(calendarCompanies);
+    setEvents(calendar{{Info_Cap}});
   }, []);
   return (
     <Grid pt={1} container height="80vh">
@@ -40,4 +43,4 @@ function CompanyCalendarView({ companies }: ListComponentProps) {
   );
 }
 
-export default CompanyCalendarView;
+export default {{Info_Cap}}CalendarView;

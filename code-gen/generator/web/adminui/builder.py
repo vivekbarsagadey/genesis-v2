@@ -12,7 +12,9 @@ def build(project_config):
     services(project_config)
     app(project_config)
     appSearch(project_config)
-    # appInfo(project_config)
+    appInfo(project_config)
+    app_report(project_config)
+    app_list(project_config)
     
 def build_schema(project_config):
     print("build Schema")
@@ -70,10 +72,9 @@ def appSearch(project_config):
     file_loader = FileSystemLoader('template/project/web/adminui/app/company/search')
     env = Environment(loader=file_loader)
     template = env.get_template('index.tsx')
-    print(template)
-    for appinfo in project_config['pages']:
-        output = template.render(appinfo=appinfo, StringUtil=StringUtil)
-        location = os.path.join(project_config['path'], project_config['name'], 'admin-ui','app',appinfo['name'],'search')
+    for app_search in project_config['pages']:
+        output = template.render(app_search=app_search, StringUtil=StringUtil)
+        location = os.path.join(project_config['path'], project_config['name'], 'admin-ui','app',app_search['name'],'search')
         FileUtil.create_folder(location)
         with open(os.path.join(location,'index.tsx'), "w") as fh:
             fh.write(output) 
@@ -82,10 +83,35 @@ def appInfo(project_config):
     file_loader = FileSystemLoader('template/project/web/adminui/app/company/info')
     env = Environment(loader=file_loader)
     template = env.get_template('index.tsx')
-    print(template)
-    for appinfo in project_config['pages']:
-        output = template.render(appinfo=appinfo, StringUtil=StringUtil)
-        location = os.path.join(project_config['path'], project_config['name'], 'admin-ui','app',appinfo['name'],'info')
+    #print(template)
+    for app_info in project_config['pages']:
+        output = template.render(app_info=app_info, StringUtil=StringUtil)
+        location = os.path.join(project_config['path'], project_config['name'], 'admin-ui','app',app_info['name'],'info')
         FileUtil.create_folder(location)
         with open(os.path.join(location,'index.tsx'), "w") as fh:
             fh.write(output) 
+
+def app_report(project_config):  
+    file_loader = FileSystemLoader('template/project/web/adminui/app/company/report')
+    env = Environment(loader=file_loader)
+    #template =env.get_template('index.tsx','page.tsx')
+    for report in project_config['pages']:
+        for report_file in ['index.tsx','page.tsx']:
+            template = env.get_template(report_file)
+            output = template.render(report=report, StringUtil=StringUtil)
+            location = os.path.join(project_config['path'], project_config['name'], 'admin-ui','app',report['name'],'report')
+            FileUtil.create_folder(location)
+            with open(os.path.join(location,report_file), "w") as fh:
+                fh.write(output)
+
+def app_list(project_config):  
+    file_loader = FileSystemLoader('template/project/web/adminui/app/company/list')
+    env = Environment(loader=file_loader)
+    for app_list in project_config['pages']:
+        for list_file in ['calendar.view.tsx','export.component.tsx']:
+            template = env.get_template(list_file)
+            output = template.render(app_list=app_list, StringUtil=StringUtil)
+            location = os.path.join(project_config['path'], project_config['name'], 'admin-ui','app',app_list['name'],'list')
+            FileUtil.create_folder(location)
+            with open(os.path.join(location,list_file), "w") as fh:
+                fh.write(output)

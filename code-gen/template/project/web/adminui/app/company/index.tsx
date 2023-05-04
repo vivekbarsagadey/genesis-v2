@@ -41,10 +41,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
   return (
     <Box
       ml={1.5}
-      style={{
-        backgroundColor: colors.white,
-        borderRadius: border_Radius.borderRadius,
-      }}
+     
       pl={2}
       pb={1}
       pt={1}
@@ -86,7 +83,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
             <Link
               href="/company/companyreport"
               passHref
-              style={{ textDecoration: 'none' }}
+             
             >
               <Button variant="contained" size="small">
                 Report
@@ -97,7 +94,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
             <Link
               href="/company/create"
               passHref
-              style={{ textDecoration: 'none' }}
+      
             >
               <Button variant="contained" size="small">
                 Create

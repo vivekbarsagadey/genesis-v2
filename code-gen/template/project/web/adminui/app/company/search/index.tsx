@@ -1,5 +1,5 @@
-{% set app_Info_cap = appinfo['name'].capitalize() -%}
-{% set app_Info_Sm = appinfo['name'] -%}
+{% set app_Info_cap = app_search['name'].capitalize() -%}
+{% set app_Info_Sm = app_search['name'] -%}
 
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
