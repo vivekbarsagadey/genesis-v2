@@ -31,7 +31,7 @@ function HeaderComponent() {
   return (
     <Grid container style={style.headercontainer}>
       <Grid item xs={3.7} display="flex" alignItems={'center'} ml={2}>
-        <Breadcrumbs aria-label="breadcrumb">
+        {/* <Breadcrumbs aria-label="breadcrumb">
           <Link underline="hover" color="inherit" href="/">
             MUI
           </Link>
@@ -39,7 +39,7 @@ function HeaderComponent() {
             Core
           </Link>
           <Typography color="text.primary">Breadcrumbs</Typography>
-        </Breadcrumbs>
+        </Breadcrumbs> */}
       </Grid>
       <Grid item xs={8}>
         <Grid

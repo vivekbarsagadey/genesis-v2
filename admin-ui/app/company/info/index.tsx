@@ -8,12 +8,10 @@ import {
   Divider,
   Grid,
   IconButton,
-  Paper,
   Tooltip,
-  Typography,
+  Typography
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
-import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import Fade from '@mui/material/Fade';
@@ -72,11 +70,12 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
     deleteCompany(f.id);
     handleClick();
   };
+
   return (
     <Box mt={0.6} mr={2}>
       <Card elevation={0}>
         <Grid container>
-          <Grid item xs={0.7} display="flex" justifyContent="flex-end">
+          <Grid item xs={0.7}>
             <Grid container ml={1}>
               <Grid item xs={5}>
                 <Checkbox size="small" />
@@ -99,12 +98,12 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
             </Typography>
           </Grid>
           <Grid item xs={2.1}>
-            <Typography variant="body2" noWrap display="flex">
+            <Typography variant="body2" noWrap >
               {company.mobile}
             </Typography>
           </Grid>
           <Grid item xs={1.7}>
-            <Typography variant="body2" noWrap display="flex">
+            <Typography variant="body2" noWrap >
               {company.address}
             </Typography>
           </Grid>
@@ -127,15 +126,14 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
                 </Tooltip>
                 <Snackbar
                   open={alert}
-                  autoHideDuration={8000}
+                  autoHideDuration={5000}
                   onClose={handleClose}
                 >
                   <Alert
                     onClose={handleClose}
-                    severity="error"
-                    sx={{ width: '100%' }}
+                    severity="success"
                   >
-                    Items Deleted Sucessfully...
+                    Items Deleted Successfully...
                   </Alert>
                 </Snackbar>
               </Grid>
@@ -149,29 +147,21 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
           open={open}
           onClose={handleCloseDelete}
           closeAfterTransition
-          slots={{ backdrop: Backdrop }}
-          slotProps={{
-            backdrop: {
-              timeout: 500,
-            },
-          }}
         >
           <Fade in={open}>
             <Box sx={style}>
               <Typography
                 id="transition-modal-description"
-                sx={{ mt: 1 }}
                 fontSize="0.9rem"
               >
                 Are you sure you want to delete the selected company?
               </Typography>
-              <Grid container mt={2}>
+              <Grid container mt={4}>
                 <Grid item xs={6} />
                 <Grid item xs={3}>
                   <Button
                     variant="contained"
                     size="small"
-                    sx={{ height: '4vh' }}
                     onClick={() => handleCloseDelete()}
                   >
                     Cancel
@@ -182,7 +172,6 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
                     variant="contained"
                     size="small"
                     onClick={() => removeData(company)}
-                    sx={{ height: '4vh' }}
                   >
                     Ok
                   </Button>

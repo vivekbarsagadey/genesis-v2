@@ -3,7 +3,7 @@
 import '@fontsource/work-sans';
 import { teal } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
-import { baseStyle } from './fonts';
+import { baseStyle } from './style';
 import { fontSize } from './size';
 
 export const theme = createTheme({

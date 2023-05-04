@@ -1,19 +1,32 @@
 'use client';
 
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import {
-  Box, Grid, Pagination, Typography, IconButton, Card, Divider,
+  Box,
+  Card, Divider,
+  Grid,
+  IconButton,
+  Pagination, Typography,
 } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
-import Paper from '@mui/material/Paper';
 import { useState } from 'react';
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { PaginationHandler } from '../../utility';
 import InfoCompanyComponent from '../info';
 import { ICompany } from '../models/company.model';
-import { ListComponentProps } from './props';
+import { makeStyles } from '@mui/styles';
+import { baseStyle } from '../../../themes';
+
+const useStyles = makeStyles({
+  headerContent: { display: 'flex', alignContent: `center` },
+  footer: { display: "flex", justifyContent: "flex-end" },
+  pagination: { position: 'fixed' },
+  divider: { width: '98.5%' },
+  infoCom: { height: '62vh' }
+});
 
 function ListViewComponent({ companies, myRef }: any) {
+  const classes = useStyles()
   const [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(companies.length / PER_PAGE);
@@ -165,13 +178,14 @@ function ListViewComponent({ companies, myRef }: any) {
     setPage(p);
     paginationHandler.jump(p);
   };
+
   return (
     <>
       <Grid ref={myRef}>
         <Box mr={2} mt={2}>
           <Card elevation={0}>
             <Grid container>
-              <Grid item xs={0.7} display="flex" justifyContent="flex-end">
+              <Grid item xs={0.7}>
                 <Grid container ml={1}>
                   <Grid item xs={4}>
                     <Checkbox size="small" />
@@ -182,7 +196,7 @@ function ListViewComponent({ companies, myRef }: any) {
               <Grid
                 item
                 xs={2}
-                style={{ display: 'flex', alignContent: 'center' }}
+                className={classes.headerContent}
               >
                 <Typography variant="subtitle2" noWrap>
                   Created Date
@@ -201,7 +215,7 @@ function ListViewComponent({ companies, myRef }: any) {
               <Grid
                 item
                 xs={2.5}
-                style={{ display: 'flex', alignContent: 'center' }}
+                className={classes.headerContent}
               >
                 <Typography variant="subtitle2" noWrap>
                   Company Name
@@ -220,7 +234,7 @@ function ListViewComponent({ companies, myRef }: any) {
               <Grid
                 item
                 xs={2}
-                style={{ display: 'flex', alignContent: 'center' }}
+                className={classes.headerContent}
               >
                 <Typography variant="subtitle2" noWrap>
                   Email
@@ -239,7 +253,7 @@ function ListViewComponent({ companies, myRef }: any) {
               <Grid
                 item
                 xs={2.1}
-                style={{ display: 'flex', alignContent: 'center' }}
+                className={classes.headerContent}
               >
                 <Typography variant="subtitle2" noWrap>
                   Contact
@@ -258,13 +272,11 @@ function ListViewComponent({ companies, myRef }: any) {
               <Grid
                 item
                 xs={1.7}
-                style={{ display: 'flex', alignContent: 'center' }}
+                className={classes.headerContent}
               >
                 <Typography
                   variant="subtitle2"
                   noWrap
-                  display="flex"
-                  justifyContent="space-around"
                 >
                   Address
                 </Typography>
@@ -292,8 +304,8 @@ function ListViewComponent({ companies, myRef }: any) {
             </Grid>
           </Card>
         </Box>
-        <Divider style={{width:'98.5%'}}/>
-        <Grid style={{ height: '62vh' }}>
+        <Divider className={classes.divider} />
+        <Grid className={classes.infoCom}>
           {paginationHandler
             .currentData()
             .reverse()
@@ -304,9 +316,10 @@ function ListViewComponent({ companies, myRef }: any) {
             ))}
         </Grid>
       </Grid>
-      <Grid container mt={4}>
-        <Grid item xs={12} display="flex" justifyContent="flex-end">
-          <Grid style={{ position: 'fixed' }} />
+
+      <Grid container mt={4} >
+        <Grid item xs={12} className={classes.footer}>
+          <Grid className={classes.pagination} />
           <Pagination
             count={count}
             size="small"
