@@ -28,6 +28,12 @@ const baseStyle = {
     Around: { flexDirection: 'column', alignContent: 'space-around' },
     Between: { flexDirection: 'column', alignContent: 'space-between' },
   },
+  
+  alignContent: {
+    Center: { alignContent: 'center' },
+    Around: { alignContent: 'space-around' },
+    Between: { alignContent: 'space-between' },
+  },
 
   textAlign: {
     center: { textAlign: 'center' },
@@ -70,6 +76,7 @@ const baseStyle = {
     semi: '75',
     low: '50%',
     normal: '20px',
+    small:'15px'
   },
 
   textDecoration: {

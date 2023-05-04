@@ -2,11 +2,12 @@
 
 import PrintIcon from '@mui/icons-material/Print';
 import { Box, Button, Grid, IconButton, Tooltip } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import { Case, Default, Switch } from 'react-if';
 import { useReactToPrint } from 'react-to-print';
-import { border_Radius, colors } from '../../themes';
+import { baseStyle, colors } from '../../themes';
 import { ViewTypes } from '../utility';
 import FilterComponent from './filters';
 import CompanyCalendarView from './list/calendar.view';
@@ -22,6 +23,15 @@ import CompanyViewComponent from './view';
 interface CompanyComponentProps {
   companies: Array<ICompany>;
 }
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: colors.white,
+    borderRadius: baseStyle.borderRadius.small,
+  },
+  textDecor: { textDecoration: baseStyle.textDecoration.none },
+  display: { display: baseStyle.display }
+});
+
 function CompanyComponentHome({ companies }: CompanyComponentProps) {
   const [copyCompanies, setCopyCompanies] = useState<Array<ICompany>>([
     ...companies,
@@ -38,17 +48,16 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
     content: () => myRef.current,
   });
 
+  const classes = useStyles();
+
   return (
     <Box
       ml={1.5}
-      style={{
-        backgroundColor: colors.white,
-        borderRadius: border_Radius.borderRadius,
-      }}
       pl={2}
       pb={1}
       pt={1}
       mr={2.5}
+      className={classes.root}
     >
       <Grid mt={1}>
         <Grid container spacing={1}>
@@ -58,7 +67,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
               onSearchHandler={onSearchHandler}
             />
           </Grid>
-          <Grid item xs={8} md={8} sm={8} lg={7} display="flex">
+          <Grid item xs={8} md={8} sm={8} lg={7} className={classes.display}>
             <Grid container>
               <Grid item xs="auto" mt={0.3}>
                 <FilterComponent
@@ -86,7 +95,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
             <Link
               href="/company/companyreport"
               passHref
-              style={{ textDecoration: 'none' }}
+              className={classes.textDecor}
             >
               <Button variant="contained" size="small">
                 Report
@@ -97,7 +106,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
             <Link
               href="/company/create"
               passHref
-              style={{ textDecoration: 'none' }}
+              className={classes.textDecor}
             >
               <Button variant="contained" size="small">
                 Create
