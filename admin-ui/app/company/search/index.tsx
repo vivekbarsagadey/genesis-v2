@@ -32,7 +32,6 @@ function CompanySearchDetails({
     onSearchHandler(companies.filter(filterByAddress(_searchValue)));
   };
 
-  console.log('companies', companies);
 
   return (
     <Grid item xs={12}>

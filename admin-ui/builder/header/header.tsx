@@ -22,7 +22,7 @@ function BuilderHeaderComponent({ projectInfo }) {
           <Button variant="contained" size="small" style={{ height: '4vh' }}>
             New
           </Button>
-          <Typography>{projectInfo.name}</Typography>
+          <Typography>{projectInfo?.name}</Typography>
         </Grid>
         <Grid item xs={8} />
         <Grid

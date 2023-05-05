@@ -49,7 +49,6 @@ function FilterComponent({
   };
 
   const emailFilter = (value: string) => (item: ICompany) => {
-    console.log('value ??', value);
 
     if (isNotBlank(item.email)) {
       if (!item.email.toLowerCase().includes(value.toLowerCase())) {
