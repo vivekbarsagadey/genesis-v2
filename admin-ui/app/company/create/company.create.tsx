@@ -13,9 +13,10 @@ import { countrySelect, stateSelect } from '../graphdata/graph.data';
 import { Status } from '../models';
 
 const useStyles = makeStyles({
-  buttonStyle: {
-    width: '73%',
-  },
+  buttonStyle: { width: '73%', },
+  gridContainer: { display: "flex", alignItems: "center" },
+  mainHeader: { display: 'flex', flexDirection: 'row' },
+  headerChild: { color: 'red' }
 });
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
@@ -28,7 +29,7 @@ function CompanyCreateComponent() {
   const [ownerLastName, setOwnerLastName] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [companyEmail, setCompanyEmail] = useState('');
-  const [companyPhone, setCompanyPhone] = useState('');
+  const [companyMobile, setCompanyMobile] = useState('');
   const [companyAddress, setCompanyAddress] = useState('');
   const [companyWebsite, setCompanyWebsite] = useState('');
   const [companyStatus, setCompanyStatus] = useState('');
@@ -60,18 +61,16 @@ function CompanyCreateComponent() {
         lastName: ownerLastName,
         name: companyName,
         email: companyEmail,
-        mobile: companyPhone,
+        mobile: companyMobile,
         address: companyAddress,
         website: companyWebsite,
         status: companyStatus,
         state: companyState,
         country: companyCountry,
       };
-      //  console.log("this is body", body)
       await createCompany(body);
       await router.push('/company');
     } catch (error) {
-      console.error(error);
     }
   };
 
@@ -87,8 +86,8 @@ function CompanyCreateComponent() {
   const updateCompanyEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyEmail(e.target.value);
   };
-  const updateCompanyPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCompanyPhone(e.target.value);
+  const updateCompanyMobile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyMobile(e.target.value);
   };
   const updateCompanyAdress = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyAddress(e.target.value);
@@ -129,9 +128,10 @@ function CompanyCreateComponent() {
         </Grid>
         <Grid container spacing={2} mt={3} paddingLeft={5}>
           <Grid item xs={6}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={3}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3} className={classes.mainHeader}>
                 <Typography>First Name</Typography>
+                <span className={classes.headerChild}>*</span>
               </Grid>
               <Grid item xs={2}>
                 <Typography>:</Typography>
@@ -151,8 +151,8 @@ function CompanyCreateComponent() {
           </Grid>
 
           <Grid item xs={6}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={3}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3} >
                 <Typography>Last Name</Typography>
               </Grid>
               <Grid item xs={2}>
@@ -173,9 +173,10 @@ function CompanyCreateComponent() {
           </Grid>
 
           <Grid item xs={6} mt={1}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={3}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3} className={classes.mainHeader}>
                 <Typography>Company Name</Typography>
+                <span className={classes.headerChild}>*</span>
               </Grid>
               <Grid item xs={2}>
                 <Typography>:</Typography>
@@ -195,9 +196,10 @@ function CompanyCreateComponent() {
           </Grid>
 
           <Grid item xs={6} mt={1}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={3}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3} className={classes.mainHeader}>
                 <Typography>Email</Typography>
+                <span className={classes.headerChild}>*</span>
               </Grid>
               <Grid item xs={2}>
                 <Typography>:</Typography>
@@ -215,32 +217,35 @@ function CompanyCreateComponent() {
               </Grid>
             </Grid>
           </Grid>
+
           <Grid item xs={6} mt={1}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={3}>
-                <Typography>Phone</Typography>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3} className={classes.mainHeader}>
+                <Typography>Mobile</Typography>
+                <span className={classes.headerChild}>*</span>
               </Grid>
               <Grid item xs={2}>
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
                 <TextField
-                  id="phone"
-                  placeholder="Phone"
+                  id="Mobile"
+                  placeholder="Mobile"
                   variant="outlined"
                   size="small"
                   fullWidth
-                  value={companyPhone}
-                  onChange={updateCompanyPhone}
+                  value={companyMobile}
+                  onChange={updateCompanyMobile}
                 />
               </Grid>
             </Grid>
           </Grid>
 
           <Grid item xs={6} mt={1}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={3}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3} className={classes.mainHeader}>
                 <Typography>Address</Typography>
+                <span className={classes.headerChild}>*</span>
               </Grid>
               <Grid item xs={2}>
                 <Typography>:</Typography>
@@ -258,10 +263,37 @@ function CompanyCreateComponent() {
               </Grid>
             </Grid>
           </Grid>
+
           <Grid item xs={6} mt={1}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={3}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3} className={classes.mainHeader}>
+                <Typography>Country</Typography>
+                <span className={classes.headerChild}>*</span>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Autocomplete
+                  disablePortal
+                  value={companyCountry}
+                  onChange={updateCompanyCountry}
+                  id="country"
+                  size="small"
+                  options={countrySelect.map((option) => option.country)}
+                  renderInput={(params) => (
+                    <TextField {...params} placeholder="Select Country" />
+                  )}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={1}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3} className={classes.mainHeader}>
                 <Typography>State</Typography>
+                <span className={classes.headerChild}>*</span>
               </Grid>
               <Grid item xs={2}>
                 <Typography>:</Typography>
@@ -283,9 +315,10 @@ function CompanyCreateComponent() {
           </Grid>
 
           <Grid item xs={6} mt={1}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={3}>
-                <Typography>Country</Typography>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3} className={classes.mainHeader}>
+                <Typography>PinCode</Typography>
+                <span className={classes.headerChild}>*</span>
               </Grid>
               <Grid item xs={2}>
                 <Typography>:</Typography>
@@ -299,12 +332,14 @@ function CompanyCreateComponent() {
                   size="small"
                   options={countrySelect.map((option) => option.country)}
                   renderInput={(params) => (
-                    <TextField {...params} placeholder="Select Country" />
+                    <TextField {...params} placeholder="Select PinCode" />
                   )}
                 />
               </Grid>
             </Grid>
           </Grid>
+
+          
 
           <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
@@ -329,9 +364,10 @@ function CompanyCreateComponent() {
           </Grid>
 
           <Grid item xs={6} mt={1}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={3}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3} className={classes.mainHeader}>
                 <Typography>Company Status</Typography>
+                <span className={classes.headerChild}>*</span>
               </Grid>
               <Grid item xs={2}>
                 <Typography>:</Typography>

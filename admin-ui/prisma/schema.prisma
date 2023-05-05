@@ -73,6 +73,7 @@ model Company {
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   name           String?
+  ownerName      String?
   pic            String?
   country_code   String?
   description    String?
@@ -82,10 +83,10 @@ model Company {
   state          String?
   zipCode        String?   @map("zip_code")
   country        String?
-  firstName      String?   @map("first_name")
-  lastName       String?   @map("last_name")
   email          String?   @unique
   mobile         String?
+  pincode        String?
+  gender         String?
   accountType    String?   @map("account_type")
   locLatitude    Float?    @map("loc_lat")
   locLongitude   Float?    @map("loc_lon")
