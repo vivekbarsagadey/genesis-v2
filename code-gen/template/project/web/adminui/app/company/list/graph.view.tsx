@@ -1,3 +1,7 @@
+{% set Info_Cap = app_list['name'].capitalize() -%}
+{% set Info_Sm = app_list['name'] -%}
+
+
 import { Box, Grid } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import Stack from '@mui/material/Stack';
@@ -5,7 +9,7 @@ import TextField from '@mui/material/TextField';
 import moment from 'moment';
 import React, { useState } from 'react';
 import { Chart } from 'react-google-charts';
-import CompanyPieChart from './pie.chart';
+import {{Info_Cap}}PieChart from './pie.chart';
 import { ListComponentProps } from './props';
 
 const options = {
@@ -19,7 +23,7 @@ const comparisionType = [
   { title: 'Last 7 days' },
   { title: 'Month' },
 ];
-function CustomerGraphView({ companies, myRef }: ListComponentProps) {
+function CustomerGraphView({ {{Info_Sm}}, myRef }: ListComponentProps) {
   const [graphView, setGraphView] = useState<string>('status');
   const [comparisiongraphView, setComparisionGraphView] = useState<string>('Month');
   const updateGrpahView = (
@@ -29,7 +33,7 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
     setGraphView(value);
   };
 
-  const keys = Object.keys(companies[0]);
+  const keys = Object.keys({{Info_Sm}}[0]);
   const graphTypeVal = keys.filter((element) => {
     if (element === 'country' || element === 'state' || element === 'status') {
       return true;
@@ -38,54 +42,54 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
   });
   const statusData = [
     ['Status', 'Users'],
-    ['NEW', companies.filter((item) => item.status === 'NEW').length],
-    ['ACTIVE', companies.filter((item) => item.status === 'ACTIVE').length],
-    ['INACTIVE', companies.filter((item) => item.status === 'INACTIVE').length],
+    ['NEW', {{Info_Sm}}.filter((item) => item.status === 'NEW').length],
+    ['ACTIVE', {{Info_Sm}}.filter((item) => item.status === 'ACTIVE').length],
+    ['INACTIVE', {{Info_Sm}}.filter((item) => item.status === 'INACTIVE').length],
   ];
 
   const stateData = [
-    ['companies', 'State'],
-    ['Bihar', companies.filter((item) => item.state === 'Bihar').length],
+    ['{{Info_Sm}}', 'State'],
+    ['Bihar', {{Info_Sm}}.filter((item) => item.state === 'Bihar').length],
     [
       'Madhya Pradesh',
-      companies.filter((item) => item.state === 'Madhya Pradesh').length,
+      {{Info_Sm}}.filter((item) => item.state === 'Madhya Pradesh').length,
     ],
-    ['UP', companies.filter((item) => item.state === 'UP').length],
+    ['UP', {{Info_Sm}}.filter((item) => item.state === 'UP').length],
     [
       'Maharastra',
-      companies.filter((item) => item.state === 'Maharastra').length,
+      {{Info_Sm}}.filter((item) => item.state === 'Maharastra').length,
     ],
-    ['Punjab', companies.filter((item) => item.state === 'Punjab').length],
-    ['UK', companies.filter((item) => item.state === 'UK').length],
-    ['Gujrat', companies.filter((item) => item.state === 'Gujrat').length],
+    ['Punjab', {{Info_Sm}}.filter((item) => item.state === 'Punjab').length],
+    ['UK', {{Info_Sm}}.filter((item) => item.state === 'UK').length],
+    ['Gujrat', {{Info_Sm}}.filter((item) => item.state === 'Gujrat').length],
     [
       'Karnataka',
-      companies.filter((item) => item.state === 'Karnataka').length,
+      {{Info_Sm}}.filter((item) => item.state === 'Karnataka').length,
     ],
     [
       'Jammu & Kashmir',
-      companies.filter((item) => item.state === 'Jammu & Kashmir').length,
+      {{Info_Sm}}.filter((item) => item.state === 'Jammu & Kashmir').length,
     ],
   ];
   const countryData = [
-    ['companies', 'Country'],
-    ['India', companies.filter((item) => item.country === 'India').length],
+    ['{{Info_Sm}}', 'Country'],
+    ['India', {{Info_Sm}}.filter((item) => item.country === 'India').length],
     [
       'Australia',
-      companies.filter((item) => item.country === 'Australia').length,
+      {{Info_Sm}}.filter((item) => item.country === 'Australia').length,
     ],
-    ['America', companies.filter((item) => item.country === 'America').length],
-    ['Spain', companies.filter((item) => item.country === 'Spain').length],
-    ['US', companies.filter((item) => item.country === 'US').length],
-    ['UK', companies.filter((item) => item.country === 'UK').length],
-    ['Dubai', companies.filter((item) => item.country === 'Dubai').length],
+    ['America', {{Info_Sm}}.filter((item) => item.country === 'America').length],
+    ['Spain', {{Info_Sm}}.filter((item) => item.country === 'Spain').length],
+    ['US', {{Info_Sm}}.filter((item) => item.country === 'US').length],
+    ['UK', {{Info_Sm}}.filter((item) => item.country === 'UK').length],
+    ['Dubai', {{Info_Sm}}.filter((item) => item.country === 'Dubai').length],
     [
       'Srilanka',
-      companies.filter((item) => item.country === 'Srilanka').length,
+      {{Info_Sm}}.filter((item) => item.country === 'Srilanka').length,
     ],
     [
       'Thailand',
-      companies.filter((item) => item.country === 'Thailand').length,
+      {{Info_Sm}}.filter((item) => item.country === 'Thailand').length,
     ],
   ];
 
@@ -93,73 +97,74 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
     ['Month', 'Count'],
     [
       'JAN',
-      companies
+      {{Info_Sm}}
         .map((ele) => moment(ele.updatedAt).format('MMM'))
         .filter((d) => d === 'Jan').length,
     ],
     [
       'FEB',
-      companies
+      {{Info_Sm}}
         .map((ele) => moment(ele.updatedAt).format('MMM'))
         .filter((d) => d === 'Feb').length,
     ],
     [
       'MAR',
-      companies
+      {{Info_Sm}}
         .map((ele) => moment(ele.updatedAt).format('MMM'))
         .filter((d) => d === 'Mar').length,
     ],
     [
       'APR',
-      companies
+      {{Info_Sm}}
         .map((ele) => moment(ele.updatedAt).format('MMM'))
         .filter((d) => d === 'Apr').length,
     ],
     [
       'MAY',
-      companies
+      {{Info_Sm}}
         .map((ele) => moment(ele.updatedAt).format('MMM'))
         .filter((d) => d === 'May').length,
     ],
     [
       'JUN',
-      companies
+      {{Info_Sm}}
         .map((ele) => moment(ele.updatedAt).format('MMM'))
         .filter((d) => d === 'Jun').length,
     ],
     [
       'JUL',
-      companies
+      {{Info_Sm}}
         .map((ele) => moment(ele.updatedAt).format('MMM'))
         .filter((d) => d === 'Jul').length,
     ],
     [
       'AUG',
-      companies
+      {{Info_Sm}}
         .map((ele) => moment(ele.updatedAt).format('MMM'))
         .filter((d) => d === 'Aug').length,
     ],
     [
       'SEP',
-      companies
+      {{Info_Sm}}
         .map((ele) => moment(ele.updatedAt).format('MMM'))
         .filter((d) => d === 'Sep').length,
     ],
     [
       'OCT',
-      companies
+      {{Info_Sm}}
         .map((ele) => moment(ele.updatedAt).format('MMM'))
         .filter((d) => d === 'Oct').length,
     ],
     [
       'NOV',
-      companies
+      {{Info_Sm}}
         .map((ele) => moment(ele.updatedAt).format('MMM'))
         .filter((d) => d === 'Nov').length,
     ],
     [
       'DEC',
-      companies
+      {{Info_Sm}}
+
         .map((ele) => moment(ele.updatedAt).format('MMM'))
         .filter((d) => d === 'Dec').length,
     ],
@@ -188,9 +193,10 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  InputProps={{ ...params.InputProps, type: 'search' }}
+                  {# InputProps={{ ...params.InputProps, type: 'search' }}#}
                   placeholder="Select Graph View"
                 />
+                {# endcomment #}
               )}
             />
           </Stack>
@@ -209,10 +215,10 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  InputProps={{
+                  InputProps={# {{
                     ...params.InputProps,
                     type: 'search',
-                  }}
+                  }} #}
                   placeholder="Select Graph View"
                   fullWidth
                 />
