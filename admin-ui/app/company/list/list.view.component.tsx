@@ -39,6 +39,7 @@ function ListViewComponent({ companies, myRef }: any) {
   const [emailSort, setEmailSort] = useState(true);
   const [contactSort, setContactSort] = useState(true);
   const [addressSort, setAddressSort] = useState(true);
+  const [statusSort, setStatusSort] = useState(true);
 
   const handleNameSort = () => {
     if (nameSort) {
@@ -148,6 +149,33 @@ function ListViewComponent({ companies, myRef }: any) {
       setContactSort(true);
     }
   };
+  const handleStatusSort = () => {
+    if (statusSort) {
+      companies.sort((a, b) => {
+        if (a.status.toLowerCase() < b.status.toLowerCase()) {
+          return -1;
+        }
+        if (a.status.toLowerCase() > b.status.toLowerCase()) {
+          return 1;
+        }
+        return 0;
+      });
+      setStatusSort(false);
+    } else {
+      companies
+        .sort((a, b) => {
+          if (a.status.toLowerCase() < b.status.toLowerCase()) {
+            return -1;
+          }
+          if (a.status.toLowerCase() > b.status.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        })
+        .reverse();
+        setStatusSort(true);
+    }
+  };
   const handleAddressSort = () => {
     if (addressSort) {
       companies.sort((a, b) => {
@@ -187,7 +215,7 @@ function ListViewComponent({ companies, myRef }: any) {
         <Box mr={2} mt={2}>
           <Card elevation={0}>
             <Grid container>
-              <Grid item xs={0.7}>
+              <Grid item xs={1}>
                 <Grid container ml={1}>
                   <Grid item xs={4}>
                     <Checkbox size="small" />
@@ -292,6 +320,7 @@ function ListViewComponent({ companies, myRef }: any) {
                   </IconButton>
                 )}
               </Grid>
+              
               <Grid
                 item
                 xs={1}
@@ -303,12 +332,12 @@ function ListViewComponent({ companies, myRef }: any) {
                 >
                   Status
                 </Typography>
-                {addressSort ? (
-                  <IconButton onClick={() => handleAddressSort()}>
+                {statusSort ? (
+                  <IconButton onClick={() => handleStatusSort()}>
                     <ArrowDropUpIcon />
                   </IconButton>
                 ) : (
-                  <IconButton onClick={() => handleAddressSort()}>
+                  <IconButton onClick={() => handleStatusSort()}>
                     <ArrowDropDownIcon />
                   </IconButton>
                 )}

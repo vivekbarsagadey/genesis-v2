@@ -83,32 +83,42 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
             </Grid>
           </Grid>
 
-          <Grid item xs={2}>
+          <Grid item xs={2} >
             <Typography variant="body2" noWrap>
               <Moment format="DD MMM YYYY">{company.createdAt}</Moment>
             </Typography>
           </Grid>
-          
+
           <Grid item xs={2}>
-            <Typography variant="body2" noWrap>
+            <Typography variant="body2" noWrap style={{ display:'flex',justifyContent:'left'}}>
               {company.name}
             </Typography>
           </Grid>
-          <Grid item xs={1} mr={0.9}>
+
+          <Grid item xs={2} >
             <Typography variant="body2" noWrap>
               {company.email}
             </Typography>
           </Grid>
+
           <Grid item xs={2}>
             <Typography variant="body2" noWrap >
               {company.mobile}
             </Typography>
           </Grid>
+
           <Grid item xs={1}>
             <Typography variant="body2" noWrap >
               {company.address}
             </Typography>
           </Grid>
+
+          <Grid item xs={1}>
+            <Typography variant="body2" noWrap >
+              {company.status}
+            </Typography>
+          </Grid>
+
           <Grid item xs={1}>
             <Grid container>
               <Grid item xs={3.3} ml={2}>
