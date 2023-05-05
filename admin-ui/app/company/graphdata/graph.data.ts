@@ -19,4 +19,9 @@ const stateSelect = [
   { state: 'Karnataka' },
   { state: 'Jammu & Kashmir' },
 ];
-export { countrySelect, stateSelect };
+const genderSelect = [
+  { gender: 'Male' },
+  { gender: 'Female' },
+  { gender: 'Other' },
+];
+export { countrySelect, stateSelect, genderSelect };

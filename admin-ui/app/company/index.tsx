@@ -110,7 +110,6 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
             >
               <Button variant="contained" size="small">
                 Create
-                <span>+</span>
               </Button>
             </Link>
           </Grid>
@@ -118,7 +117,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
         <Grid item xs={12}>
           <Switch>
             <Case condition={viewType === ViewTypes.GRID}>
-              <Grid ref={myRef}>
+              <Grid ref={myRef} >
                 <CompanyGridView companies={copyCompanies} myRef={myRef} />
               </Grid>
             </Case>

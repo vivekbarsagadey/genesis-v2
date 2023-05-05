@@ -22,10 +22,15 @@ const useStyles = makeStyles({
   footer: { display: "flex", justifyContent: "flex-end" },
   pagination: { position: 'fixed' },
   divider: { width: '98.5%' },
-  infoCom: { height: '62vh' }
+  infoCom: { height: '62vh' },
+  contactCenter:{
+    display:'flex',
+    justifyContent:'center',
+  }
 });
 
 function ListViewComponent({ companies, myRef }: any) {
+  
   const classes = useStyles()
   const [page, setPage] = useState(1);
   const PER_PAGE = 9;
@@ -37,6 +42,7 @@ function ListViewComponent({ companies, myRef }: any) {
   const [emailSort, setEmailSort] = useState(true);
   const [contactSort, setContactSort] = useState(true);
   const [addressSort, setAddressSort] = useState(true);
+  const [statusSort, setStatusSort] = useState(true);
 
   const handleNameSort = () => {
     if (nameSort) {
@@ -146,6 +152,33 @@ function ListViewComponent({ companies, myRef }: any) {
       setContactSort(true);
     }
   };
+  const handleStatusSort = () => {
+    if (statusSort) {
+      companies.sort((a, b) => {
+        if (a.status.toLowerCase() < b.status.toLowerCase()) {
+          return -1;
+        }
+        if (a.status.toLowerCase() > b.status.toLowerCase()) {
+          return 1;
+        }
+        return 0;
+      });
+      setStatusSort(false);
+    } else {
+      companies
+        .sort((a, b) => {
+          if (a.status.toLowerCase() < b.status.toLowerCase()) {
+            return -1;
+          }
+          if (a.status.toLowerCase() > b.status.toLowerCase()) {
+            return 1;
+          }
+          return 0;
+        })
+        .reverse();
+        setStatusSort(true);
+    }
+  };
   const handleAddressSort = () => {
     if (addressSort) {
       companies.sort((a, b) => {
@@ -185,7 +218,7 @@ function ListViewComponent({ companies, myRef }: any) {
         <Box mr={2} mt={2}>
           <Card elevation={0}>
             <Grid container>
-              <Grid item xs={0.7}>
+              <Grid item xs={1}>
                 <Grid container ml={1}>
                   <Grid item xs={4}>
                     <Checkbox size="small" />
@@ -214,7 +247,7 @@ function ListViewComponent({ companies, myRef }: any) {
 
               <Grid
                 item
-                xs={2.5}
+                xs={2}
                 className={classes.headerContent}
               >
                 <Typography variant="subtitle2" noWrap>
@@ -252,10 +285,10 @@ function ListViewComponent({ companies, myRef }: any) {
 
               <Grid
                 item
-                xs={2.1}
-                className={classes.headerContent}
+                xs={2}
+                className={classes.contactCenter}
               >
-                <Typography variant="subtitle2" noWrap>
+                <Typography variant="subtitle2" noWrap >
                   Contact
                 </Typography>
                 {contactSort ? (
@@ -271,7 +304,7 @@ function ListViewComponent({ companies, myRef }: any) {
 
               <Grid
                 item
-                xs={1.7}
+                xs={1}
                 className={classes.headerContent}
               >
                 <Typography
@@ -286,6 +319,28 @@ function ListViewComponent({ companies, myRef }: any) {
                   </IconButton>
                 ) : (
                   <IconButton onClick={() => handleAddressSort()}>
+                    <ArrowDropDownIcon />
+                  </IconButton>
+                )}
+              </Grid>
+              
+              <Grid
+                item
+                xs={1}
+                className={classes.headerContent}
+              >
+                <Typography
+                  variant="subtitle2"
+                  noWrap
+                >
+                  Status
+                </Typography>
+                {statusSort ? (
+                  <IconButton onClick={() => handleStatusSort()}>
+                    <ArrowDropUpIcon />
+                  </IconButton>
+                ) : (
+                  <IconButton onClick={() => handleStatusSort()}>
                     <ArrowDropDownIcon />
                   </IconButton>
                 )}

@@ -23,6 +23,7 @@ import React from 'react';
 import Moment from 'react-moment';
 import { deleteCompany } from '../../../services/company.action';
 import { ICompany } from '../models/company.model';
+import { makeStyles } from '@mui/styles';
 
 const style = {
   position: 'absolute' as const,
@@ -37,6 +38,14 @@ const style = {
   paddingRight: 1,
   paddingBottom: 2,
 };
+
+const useStyles = makeStyles({
+
+  contactCenter: {
+    display: 'flex',
+    justifyContent: 'center'
+  }
+});
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 ));
@@ -71,42 +80,56 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
     handleClick();
   };
 
+  const classes = useStyles()
+
   return (
     <Box mt={0.6} mr={2}>
       <Card elevation={0}>
         <Grid container>
-          <Grid item xs={0.7}>
+          <Grid item xs={1}>
             <Grid container ml={1}>
               <Grid item xs={5}>
                 <Checkbox size="small" />
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={2}>
+
+          <Grid item xs={2} >
             <Typography variant="body2" noWrap>
               <Moment format="DD MMM YYYY">{company.createdAt}</Moment>
             </Typography>
           </Grid>
-          <Grid item xs={2.5}>
-            <Typography variant="body2" noWrap>
+
+          <Grid item xs={2}>
+            <Typography variant="body2" noWrap style={{ display: 'flex', justifyContent: 'left' }}>
               {company.name}
             </Typography>
           </Grid>
-          <Grid item xs={1.9} mr={0.9}>
+
+          <Grid item xs={2} >
             <Typography variant="body2" noWrap>
               {company.email}
             </Typography>
           </Grid>
-          <Grid item xs={2.1}>
+
+          <Grid item xs={2} className={classes.contactCenter}>
             <Typography variant="body2" noWrap >
               {company.mobile}
             </Typography>
           </Grid>
-          <Grid item xs={1.7}>
+
+          <Grid item xs={1}>
             <Typography variant="body2" noWrap >
               {company.address}
             </Typography>
           </Grid>
+
+          <Grid item xs={1}>
+            <Typography variant="body2" noWrap >
+              {company.status}
+            </Typography>
+          </Grid>
+
           <Grid item xs={1}>
             <Grid container>
               <Grid item xs={3.3} ml={2}>
