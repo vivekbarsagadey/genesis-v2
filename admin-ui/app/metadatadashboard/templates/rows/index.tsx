@@ -3,9 +3,18 @@
 import React, { useState, useEffect } from 'react';
 import { Autocomplete, Box, Grid, TextField, Typography } from '@mui/material';
 
-function CreateRowsComponent({ index, setCellDb, cellDb, setRowDb, rowDb }: any) {
+function CreateRowsComponent({
+  index,
+  setCellDb,
+  cellDb,
+  setRowDb,
+  rowDb,
+  val,
+  setVal,
+}: any) {
   const [colCount, setColCount] = useState('');
-  console.log(colCount);
+  const loopCount = Number(colCount);
+  console.log('colCount >>', loopCount);
 
   const [ind] = useState(index + 1);
   const column = [
@@ -24,12 +33,12 @@ function CreateRowsComponent({ index, setCellDb, cellDb, setRowDb, rowDb }: any)
   ];
 
   const setCell = (e: React.SyntheticEvent<Element, Event>, value: string) => {
-
     setColCount(value);
 
     // setCellDb([...cellDb, value]);
     // setRowDb([...rowDb, ind]);
   };
+ 
 
   return (
     <Box mt={0.6} mr={2}>

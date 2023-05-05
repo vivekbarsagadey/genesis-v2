@@ -98,12 +98,7 @@ function MonthPieChart({ customer, comparisiongraphView }: projectChartProps) {
   // let todayDate = new Date().toISOString().slice(0, 10);
   const todayDate = moment(new Date()).format('Do MMM YY');
 
-  console.log(
-    'nnn',
-    customer
-      .map((ele) => moment(ele.createdAt).format('Do MMM YY'))
-      .filter((d) => d == todayDate).length,
-  );
+  
   const today = [
     ['Month', 'Count'],
     [
@@ -127,7 +122,6 @@ function MonthPieChart({ customer, comparisiongraphView }: projectChartProps) {
     return dates;
   };
 
-  console.log(timeFrom(8));
 
   const sevenDays = [
     ['Month', 'Count'],
