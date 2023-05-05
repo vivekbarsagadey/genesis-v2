@@ -25,8 +25,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
 
 function CompanyCreateComponent() {
   const classes = useStyles();
-  const [ownerFirstName, setOwnerFirstName] = useState('');
-  const [ownerLastName, setOwnerLastName] = useState('');
+  const [ownerName, setOwnerName] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [companyEmail, setCompanyEmail] = useState('');
   const [companyMobile, setCompanyMobile] = useState('');
@@ -35,6 +34,7 @@ function CompanyCreateComponent() {
   const [companyStatus, setCompanyStatus] = useState('');
   const [companyState, setCompanyState] = useState('');
   const [companyCountry, setCompanyCountry] = useState('');
+  const [companyPinCode, setCompanyPinCode] = useState('');
   const [alert, setAlert] = useState(false);
   const router = useRouter();
 
@@ -57,8 +57,7 @@ function CompanyCreateComponent() {
   const updateMyCompanyData = async () => {
     try {
       const body = {
-        firstName: ownerFirstName,
-        lastName: ownerLastName,
+        ownerName: ownerName,
         name: companyName,
         email: companyEmail,
         mobile: companyMobile,
@@ -67,18 +66,16 @@ function CompanyCreateComponent() {
         status: companyStatus,
         state: companyState,
         country: companyCountry,
+        pincode:companyPinCode
       };
-      await createCompany(body);
+      await createCompany(body);      
       await router.push('/company');
     } catch (error) {
     }
   };
 
-  const updateOwnerFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setOwnerFirstName(e.target.value);
-  };
-  const updateOwnerLastName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setOwnerLastName(e.target.value);
+  const updateOwnerName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setOwnerName(e.target.value);
   };
   const updateCompanyName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyName(e.target.value);
@@ -94,6 +91,9 @@ function CompanyCreateComponent() {
   };
   const updateCompanyWebsite = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyWebsite(e.target.value);
+  };
+  const updateCompanyPinCode = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyPinCode(e.target.value);
   };
   const updateCompanyState = (
     e: React.SyntheticEvent<Element, Event>,
@@ -130,7 +130,7 @@ function CompanyCreateComponent() {
           <Grid item xs={6}>
             <Grid container className={classes.gridContainer}>
               <Grid item xs={3} className={classes.mainHeader}>
-                <Typography>First Name</Typography>
+                <Typography>Name</Typography>
                 <span className={classes.headerChild}>*</span>
               </Grid>
               <Grid item xs={2}>
@@ -138,35 +138,13 @@ function CompanyCreateComponent() {
               </Grid>
               <Grid item xs={6}>
                 <TextField
-                  id="first-name"
-                  placeholder="First Name"
+                  id="owner-name"
+                  placeholder="Owner Name"
                   variant="outlined"
                   size="small"
                   fullWidth
-                  value={ownerFirstName}
-                  onChange={updateOwnerFirstName}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} >
-                <Typography>Last Name</Typography>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="last-name"
-                  placeholder="Last Name"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={ownerLastName}
-                  onChange={updateOwnerLastName}
+                  value={ownerName}
+                  onChange={updateOwnerName}
                 />
               </Grid>
             </Grid>
@@ -324,16 +302,14 @@ function CompanyCreateComponent() {
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
-                <Autocomplete
-                  disablePortal
-                  value={companyCountry}
-                  onChange={updateCompanyCountry}
-                  id="country"
+              <TextField
+                  id="pincode"
+                  placeholder="Pin Code"
+                  variant="outlined"
                   size="small"
-                  options={countrySelect.map((option) => option.country)}
-                  renderInput={(params) => (
-                    <TextField {...params} placeholder="Select PinCode" />
-                  )}
+                  fullWidth
+                  value={companyPinCode}
+                  onChange={updateCompanyPinCode}
                 />
               </Grid>
             </Grid>

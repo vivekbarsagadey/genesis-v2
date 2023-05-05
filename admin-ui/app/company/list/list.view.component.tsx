@@ -26,6 +26,8 @@ const useStyles = makeStyles({
 });
 
 function ListViewComponent({ companies, myRef }: any) {
+  console.log('companies',companies);
+  
   const classes = useStyles()
   const [page, setPage] = useState(1);
   const PER_PAGE = 9;
@@ -214,7 +216,7 @@ function ListViewComponent({ companies, myRef }: any) {
 
               <Grid
                 item
-                xs={2.5}
+                xs={2}
                 className={classes.headerContent}
               >
                 <Typography variant="subtitle2" noWrap>
@@ -252,7 +254,7 @@ function ListViewComponent({ companies, myRef }: any) {
 
               <Grid
                 item
-                xs={2.1}
+                xs={2}
                 className={classes.headerContent}
               >
                 <Typography variant="subtitle2" noWrap>
@@ -271,7 +273,7 @@ function ListViewComponent({ companies, myRef }: any) {
 
               <Grid
                 item
-                xs={1.7}
+                xs={1}
                 className={classes.headerContent}
               >
                 <Typography
@@ -279,6 +281,27 @@ function ListViewComponent({ companies, myRef }: any) {
                   noWrap
                 >
                   Address
+                </Typography>
+                {addressSort ? (
+                  <IconButton onClick={() => handleAddressSort()}>
+                    <ArrowDropUpIcon />
+                  </IconButton>
+                ) : (
+                  <IconButton onClick={() => handleAddressSort()}>
+                    <ArrowDropDownIcon />
+                  </IconButton>
+                )}
+              </Grid>
+              <Grid
+                item
+                xs={1}
+                className={classes.headerContent}
+              >
+                <Typography
+                  variant="subtitle2"
+                  noWrap
+                >
+                  Status
                 </Typography>
                 {addressSort ? (
                   <IconButton onClick={() => handleAddressSort()}>
