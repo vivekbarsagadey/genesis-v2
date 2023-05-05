@@ -11,6 +11,7 @@ import React, { useState } from 'react';
 import { createCompany } from '../../../services/company.action';
 import { countrySelect, genderSelect, stateSelect } from '../graphdata/graph.data';
 import { Status } from '../models';
+import { FormInput } from '../../../component/ui/form';
 
 const useStyles = makeStyles({
   buttonStyle: { width: '73%', },
@@ -37,6 +38,8 @@ function CompanyCreateComponent() {
   const [companyCountry, setCompanyCountry] = useState('');
   const [companyPinCode, setCompanyPinCode] = useState('');
   const [alert, setAlert] = useState(false);
+  // const [data, setData] = useState('');
+  
   const router = useRouter();
 
   const handleClick = () => {
@@ -67,10 +70,10 @@ function CompanyCreateComponent() {
         status: companyStatus,
         state: companyState,
         country: companyCountry,
-        pincode:companyPinCode,
-        gender:companyGender
+        pincode: companyPinCode,
+        gender: companyGender
       };
-      await createCompany(body);      
+      await createCompany(body);
       await router.push('/company');
     } catch (error) {
     }
@@ -134,7 +137,7 @@ function CompanyCreateComponent() {
             <Typography fontSize="1.1rem">Create New Company</Typography>
           </Grid>
         </Grid>
-        
+
         <Grid container spacing={2} mt={3} paddingLeft={5}>
           <Grid item xs={6}>
             <Grid container className={classes.gridContainer}>
@@ -158,6 +161,10 @@ function CompanyCreateComponent() {
               </Grid>
             </Grid>
           </Grid>
+
+            {/* <Grid item xs={6}>
+              <FormInput value={data} header='Name' size='small' onChange={setData} />
+            </Grid> */}
 
           <Grid item xs={6} mt={1}>
             <Grid container className={classes.gridContainer}>
@@ -336,7 +343,7 @@ function CompanyCreateComponent() {
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
-              <TextField
+                <TextField
                   id="pincode"
                   placeholder="Pin Code"
                   variant="outlined"
