@@ -1,4 +1,4 @@
-import { Card, CardMedia, Pagination } from '@mui/material';
+import { Card, CardMedia, Pagination, Tooltip } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
@@ -40,11 +40,26 @@ function CompanyGridView({ companies, myRef }: any) {
                     <Grid item xs={12}>
                       <Grid container>
                         <Grid item xs={4} className={classes.imageView}>
-                          <CardMedia
-                            component="img"
-                            image="./images/grid_avtar.png"
-                            alt="Paella dish"
-                          />
+                          {item.gender === 'Male' ? <Tooltip title={item.ownerName} arrow>
+                            <CardMedia
+                              component="img"
+                              image="./images/male.png"
+                              alt="male"
+                            />
+                          </Tooltip>
+                            : item.gender === 'Female' ? <Tooltip title={item.ownerName} arrow>
+                              <CardMedia
+                                component="img"
+                                image="./images/female.png"
+                                alt="Female"
+                              />
+                            </Tooltip>
+                              : <Tooltip title={item.ownerName} arrow>
+                                <CardMedia
+                                  component="img"
+                                  image="./images/others.png"
+                                  alt="others"
+                                /></Tooltip>}
                         </Grid>
                         <Grid item xs={8}>
                           <Grid container>
@@ -121,7 +136,7 @@ function CompanyGridView({ companies, myRef }: any) {
                             </Grid>
                             <Grid item xs={6} paddingLeft={2}>
                               <Typography noWrap variant="subtitle1" my={1}>
-                                {/* {item?.gender} */}
+                                {item?.gender}
                               </Typography>
                             </Grid>
                           </Grid>

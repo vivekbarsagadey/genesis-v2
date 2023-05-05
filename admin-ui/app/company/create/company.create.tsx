@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { createCompany } from '../../../services/company.action';
-import { countrySelect, stateSelect } from '../graphdata/graph.data';
+import { countrySelect, genderSelect, stateSelect } from '../graphdata/graph.data';
 import { Status } from '../models';
 
 const useStyles = makeStyles({
@@ -33,6 +33,7 @@ function CompanyCreateComponent() {
   const [companyWebsite, setCompanyWebsite] = useState('');
   const [companyStatus, setCompanyStatus] = useState('');
   const [companyState, setCompanyState] = useState('');
+  const [companyGender, setCompanyGender] = useState('');
   const [companyCountry, setCompanyCountry] = useState('');
   const [companyPinCode, setCompanyPinCode] = useState('');
   const [alert, setAlert] = useState(false);
@@ -66,7 +67,8 @@ function CompanyCreateComponent() {
         status: companyStatus,
         state: companyState,
         country: companyCountry,
-        pincode:companyPinCode
+        pincode:companyPinCode,
+        gender:companyGender
       };
       await createCompany(body);      
       await router.push('/company');
@@ -101,6 +103,12 @@ function CompanyCreateComponent() {
   ) => {
     setCompanyState(value);
   };
+  const updateCompanyGender = (
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
+  ) => {
+    setCompanyGender(value);
+  };
   const updateCompanyCountry = (
     e: React.SyntheticEvent<Element, Event>,
     value: string
@@ -126,6 +134,7 @@ function CompanyCreateComponent() {
             <Typography fontSize="1.1rem">Create New Company</Typography>
           </Grid>
         </Grid>
+        
         <Grid container spacing={2} mt={3} paddingLeft={5}>
           <Grid item xs={6}>
             <Grid container className={classes.gridContainer}>
@@ -295,6 +304,31 @@ function CompanyCreateComponent() {
           <Grid item xs={6} mt={1}>
             <Grid container className={classes.gridContainer}>
               <Grid item xs={3} className={classes.mainHeader}>
+                <Typography>Gender</Typography>
+                <span className={classes.headerChild}>*</span>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Autocomplete
+                  disablePortal
+                  value={companyGender}
+                  onChange={updateCompanyGender}
+                  id="gender"
+                  size="small"
+                  options={genderSelect.map((option) => option.gender)}
+                  renderInput={(params) => (
+                    <TextField {...params} placeholder="Select gender" />
+                  )}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={1}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3} className={classes.mainHeader}>
                 <Typography>PinCode</Typography>
                 <span className={classes.headerChild}>*</span>
               </Grid>
@@ -314,8 +348,6 @@ function CompanyCreateComponent() {
               </Grid>
             </Grid>
           </Grid>
-
-          
 
           <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">

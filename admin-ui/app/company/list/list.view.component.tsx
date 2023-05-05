@@ -22,11 +22,14 @@ const useStyles = makeStyles({
   footer: { display: "flex", justifyContent: "flex-end" },
   pagination: { position: 'fixed' },
   divider: { width: '98.5%' },
-  infoCom: { height: '62vh' }
+  infoCom: { height: '62vh' },
+  contactCenter:{
+    display:'flex',
+    justifyContent:'center',
+  }
 });
 
 function ListViewComponent({ companies, myRef }: any) {
-  console.log('companies',companies);
   
   const classes = useStyles()
   const [page, setPage] = useState(1);
@@ -283,9 +286,9 @@ function ListViewComponent({ companies, myRef }: any) {
               <Grid
                 item
                 xs={2}
-                className={classes.headerContent}
+                className={classes.contactCenter}
               >
-                <Typography variant="subtitle2" noWrap>
+                <Typography variant="subtitle2" noWrap >
                   Contact
                 </Typography>
                 {contactSort ? (

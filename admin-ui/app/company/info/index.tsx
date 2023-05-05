@@ -23,6 +23,7 @@ import React from 'react';
 import Moment from 'react-moment';
 import { deleteCompany } from '../../../services/company.action';
 import { ICompany } from '../models/company.model';
+import { makeStyles } from '@mui/styles';
 
 const style = {
   position: 'absolute' as const,
@@ -37,6 +38,14 @@ const style = {
   paddingRight: 1,
   paddingBottom: 2,
 };
+
+const useStyles = makeStyles({
+
+  contactCenter: {
+    display: 'flex',
+    justifyContent: 'center'
+  }
+});
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 ));
@@ -71,6 +80,8 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
     handleClick();
   };
 
+  const classes = useStyles()
+
   return (
     <Box mt={0.6} mr={2}>
       <Card elevation={0}>
@@ -90,7 +101,7 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
           </Grid>
 
           <Grid item xs={2}>
-            <Typography variant="body2" noWrap style={{ display:'flex',justifyContent:'left'}}>
+            <Typography variant="body2" noWrap style={{ display: 'flex', justifyContent: 'left' }}>
               {company.name}
             </Typography>
           </Grid>
@@ -101,7 +112,7 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
             </Typography>
           </Grid>
 
-          <Grid item xs={2}>
+          <Grid item xs={2} className={classes.contactCenter}>
             <Typography variant="body2" noWrap >
               {company.mobile}
             </Typography>
