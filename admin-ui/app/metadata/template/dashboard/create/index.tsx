@@ -4,7 +4,7 @@ import { Box, Button, Grid, Snackbar } from "@mui/material";
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Link from "next/link";
 import React, { useState } from "react";
-import { border_Radius, colors } from "../../../../../themes";
+import { colors } from "../../../../../themes";
 import CreateRowsComponent from "./row.component";
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
@@ -44,7 +44,7 @@ function DashBoardCreateComponent() {
     <Box padding={3} ml={1.5}
       style={{
         backgroundColor: colors.white,
-        borderRadius: border_Radius.borderRadius,
+        // borderRadius: border_Radius.borderRadius,
       }}
       pl={2}
       pb={1}

@@ -19,7 +19,7 @@ import CustomerListScereen from './list/list.screen';
 import { ICustomer } from './models';
 import CustomerSearchDetails from './search';
 import CustomerViewComponent from './view';
-import { border_Radius, colors } from '../../themes';
+import {colors } from '../../themes';
 
 interface CustomerComponentProps {
   customer: Array<ICustomer>;
@@ -50,7 +50,7 @@ function CustomerComponentHome({ customer }: CustomerComponentProps) {
       ml={1.5}
       style={{
         backgroundColor: colors.white,
-        borderRadius: border_Radius.borderRadius,
+        // borderRadius: border_Radius.borderRadius,
       }}
       pl={2}
       pb={1}

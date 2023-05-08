@@ -3,7 +3,7 @@
 import { Box, Button, Grid } from '@mui/material';
 import Link from 'next/link';
 import React, { useRef, useState } from 'react';
-import { border_Radius, colors } from '../../../../themes';
+import { colors } from '../../../../themes';
 import { IDashboardTemplate } from './models';
 
 interface DashBoardTemplateComponentProps {
@@ -22,7 +22,7 @@ function DashBoardComponentHome({ dashboard }: DashBoardTemplateComponentProps) 
       ml={1.5}
       style={{
         backgroundColor: colors.white,
-        borderRadius: border_Radius.borderRadius,
+        // borderRadius: border_Radius.borderRadius,
       }}
       pl={2}
       pb={1}

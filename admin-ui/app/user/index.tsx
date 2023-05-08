@@ -17,7 +17,7 @@ import ListViewComponent from './list/list.screen';
 import UserSearchDetails from './search';
 import IUser from './user.model';
 import UserViewComponent from './view';
-import { border_Radius, colors } from '../../themes';
+import { colors } from '../../themes';
 
 interface UserComponentProps {
   user: Array<IUser>;
@@ -45,7 +45,7 @@ function UserComponentHome({ user }: UserComponentProps) {
       ml={1.5}
       style={{
         backgroundColor: colors.white,
-        borderRadius: border_Radius.borderRadius,
+        // borderRadius: border_Radius.borderRadius,
       }}
       pl={2}
       pb={1}

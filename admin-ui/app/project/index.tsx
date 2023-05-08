@@ -17,7 +17,7 @@ import ProjectListViewComponent from './list/list.screen';
 import IProject from './project.model';
 import ProjectSearch from './search';
 import ProjectViewComponent from './view';
-import { border_Radius, colors } from '../../themes';
+import {  colors } from '../../themes';
 
 interface ProjectComponentProps {
   projects: Array<IProject>;
@@ -44,7 +44,7 @@ function ProjectHomeComponent({ projects }: ProjectComponentProps) {
       ml={1.5}
       style={{
         backgroundColor: colors.white,
-        borderRadius: border_Radius.borderRadius,
+        // borderRadius: border_Radius.borderRadius,
       }}
       pl={2}
       pb={1}
