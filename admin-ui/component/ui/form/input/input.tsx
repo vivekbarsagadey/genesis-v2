@@ -1,9 +1,9 @@
 import { Grid, TextField, Typography } from '@mui/material'
 import { InputFieldInterface } from "./input.interface"
 
-const FormInput = ({ header, subContent, id, placeholder, variant, size, value,onChange }: InputFieldInterface) => {
+const FormInput = ({ header, subContent, id, placeholder, variant, size, value, onChange }: InputFieldInterface) => {
   return (
-    <Grid container >
+    <Grid container display="flex" alignItems="center">
       <Grid item xs={3} >
         <Typography>{header}</Typography>
         <span >{subContent}</span>
@@ -19,7 +19,7 @@ const FormInput = ({ header, subContent, id, placeholder, variant, size, value,o
           size={size}
           fullWidth
           value={value}
-          onChange={(e)=>onChange(e.target.value)}
+          onChange={(e) => onChange(e.target.value)}
         />
       </Grid>
     </Grid>

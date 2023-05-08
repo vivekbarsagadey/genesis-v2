@@ -9,7 +9,7 @@ import {
   Grid,
   IconButton,
   Tooltip,
-  Typography
+  Typography,
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Box from '@mui/material/Box';
@@ -21,9 +21,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import Moment from 'react-moment';
+import { makeStyles } from '@mui/styles';
+import Switch, { Case } from 'react-switch-case';
 import { deleteCompany } from '../../../services/company.action';
 import { ICompany } from '../models/company.model';
-import { makeStyles } from '@mui/styles';
 
 const style = {
   position: 'absolute' as const,
@@ -41,10 +42,11 @@ const style = {
 
 const useStyles = makeStyles({
 
-  contactCenter: {
-    display: 'flex',
-    justifyContent: 'center'
-  }
+  contactCenter: { display: 'flex', justifyContent: 'center' },
+  activeStatus: {
+    color: 'white', padding: 2, background: 'red', borderRadius: 10, display: 'flex', alignSelf: 'center',
+  },
+  activeData: { textAlign: 'center' },
 });
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
@@ -80,7 +82,7 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
     handleClick();
   };
 
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Box mt={0.6} mr={2}>
@@ -94,7 +96,7 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
             </Grid>
           </Grid>
 
-          <Grid item xs={2} >
+          <Grid item xs={2}>
             <Typography variant="body2" noWrap>
               <Moment format="DD MMM YYYY">{company.createdAt}</Moment>
             </Typography>
@@ -106,28 +108,49 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
             </Typography>
           </Grid>
 
-          <Grid item xs={2} >
+          <Grid item xs={2}>
             <Typography variant="body2" noWrap>
               {company.email}
             </Typography>
           </Grid>
 
           <Grid item xs={2} className={classes.contactCenter}>
-            <Typography variant="body2" noWrap >
+            <Typography variant="body2" noWrap>
               {company.mobile}
             </Typography>
           </Grid>
 
           <Grid item xs={1}>
-            <Typography variant="body2" noWrap >
+            <Typography variant="body2" noWrap>
               {company.address}
             </Typography>
           </Grid>
 
           <Grid item xs={1}>
-            <Typography variant="body2" noWrap >
-              {company.status}
-            </Typography>
+            <Switch condition={company.status}>
+              <Case value="NEW">
+                <Grid>
+                  <Typography variant="body2" noWrap style={{ color: 'red' }}>
+                    {company.status}
+                    {' '}
+                  </Typography>
+                </Grid>
+              </Case>
+              <Case value="ACTIVE">
+                <Grid>
+                  <Typography style={{ color: 'green' }} variant="body2" noWrap>
+                    {company.status}
+                  </Typography>
+                </Grid>
+              </Case>
+              <Case value="INACTIVE">
+                <Grid>
+                  <Typography style={{ color: 'blue' }} variant="body2" noWrap>
+                    {company.status}
+                  </Typography>
+                </Grid>
+              </Case>
+            </Switch>
           </Grid>
 
           <Grid item xs={1}>

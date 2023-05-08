@@ -11,7 +11,7 @@ import React, { useState } from 'react';
 import { createCompany } from '../../../services/company.action';
 import { countrySelect, genderSelect, stateSelect } from '../graphdata/graph.data';
 import { Status } from '../models';
-import { FormInput } from '../../../component/ui/form';
+import { FormInput, FormSelectComponent } from '../../../component/ui/form';
 
 const useStyles = makeStyles({
   buttonStyle: { width: '73%', },
@@ -38,8 +38,8 @@ function CompanyCreateComponent() {
   const [companyCountry, setCompanyCountry] = useState('');
   const [companyPinCode, setCompanyPinCode] = useState('');
   const [alert, setAlert] = useState(false);
-  // const [data, setData] = useState('');
-  
+  const [data, setData] = useState('');
+
   const router = useRouter();
 
   const handleClick = () => {
@@ -124,7 +124,6 @@ function CompanyCreateComponent() {
   ) => {
     setCompanyStatus(value);
   };
-
   const updateHandler = () => {
     handleClick();
     updateMyCompanyData();
@@ -139,7 +138,17 @@ function CompanyCreateComponent() {
         </Grid>
 
         <Grid container spacing={2} mt={3} paddingLeft={5}>
-          <Grid item xs={6}>
+
+          {/* <Grid item xs={6}>
+            <FormInput value={data} header='Name' size='small' onChange={setData} placeholder='Select Name' />
+          </Grid> */}
+          
+          {/* <Grid item xs={6} mt={1}>
+            <FormSelectComponent mainData={statusSet} onChange={setData} value={data} header='Quantity' size='small' placeholder='Select Quantity' disablePortal={true} />
+          </Grid> */}
+
+
+          <Grid item xs={6} mt={1}>
             <Grid container className={classes.gridContainer}>
               <Grid item xs={3} className={classes.mainHeader}>
                 <Typography>Name</Typography>
@@ -161,10 +170,6 @@ function CompanyCreateComponent() {
               </Grid>
             </Grid>
           </Grid>
-
-            {/* <Grid item xs={6}>
-              <FormInput value={data} header='Name' size='small' onChange={setData} />
-            </Grid> */}
 
           <Grid item xs={6} mt={1}>
             <Grid container className={classes.gridContainer}>
