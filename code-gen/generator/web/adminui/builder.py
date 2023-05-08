@@ -108,7 +108,7 @@ def app_list(project_config):
     file_loader = FileSystemLoader('template/project/web/adminui/app/company/list')
     env = Environment(loader=file_loader)
     for app_list in project_config['pages']:
-        for list_file in ['calendar.view.tsx','export.component.tsx']:
+        for list_file in ['calendar.view.tsx','export.component.tsx','graph.view.tsx']:
             template = env.get_template(list_file)
             output = template.render(app_list=app_list, StringUtil=StringUtil)
             location = os.path.join(project_config['path'], project_config['name'], 'admin-ui','app',app_list['name'],'list')
