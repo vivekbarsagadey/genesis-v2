@@ -41,18 +41,12 @@ function MetaDataSidebar() {
       </Grid>
 
       <ListItemButton onClick={handleClickAddress}>
-        {/* <Link
-                  href="/metadata/address"
-                  passHref
-                  style={{ textDecoration: 'none' }}
-                > */}
         <Grid container>
           <Grid item xs={2}>
             <RoomIcon fontSize="small" />
           </Grid>
           <Typography>Address</Typography>
         </Grid>
-        {/* {/ </Link> /} */}
       </ListItemButton>
       <Collapse in={address} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>

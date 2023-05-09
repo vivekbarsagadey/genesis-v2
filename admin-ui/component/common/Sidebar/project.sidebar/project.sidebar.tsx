@@ -1,5 +1,4 @@
 'use client';
-
 import AdjustIcon from '@mui/icons-material/Adjust';
 import AppsIcon from '@mui/icons-material/Apps';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -15,6 +14,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import React from 'react';
 import MetaDataSidebar from '../metaDataSidebar/meta.data.sidebar';
+import { Grid, Typography } from '@mui/material';
 
 interface sidebarProps {
   toggleMenu: boolean;
@@ -45,143 +45,174 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
   };
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    index: number,
+    index: number
   ) => {
     setSelectedIndex(index);
   };
   return (
     <div style={{ overflowY: 'auto', height: '87vh' }}>
-      <Box px={2} style={{ height: '58vh' }}>
-        <List
-          sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-          component="nav"
-          aria-labelledby="nested-list-subheader"
-        >
+      <Box style={{ height: '58vh' }}>
+        <List>
           <ListItemButton onClick={handleOpenDashboard}>
-            <ListItemIcon>
-              <DashboardIcon />
-            </ListItemIcon>
-            <ListItemText primary="Dashboard" />
+            <Grid container>
+              <Grid item xs={2}>
+                <DashboardIcon fontSize="small" />
+              </Grid>
+              <Typography>Dashboard</Typography>
+            </Grid>
           </ListItemButton>
 
           <Collapse in={openDashboard} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
-                <ListItemIcon>
-                  <AdjustIcon />
-                </ListItemIcon>
-                <ListItemText primary="Overview" />
+                <Grid container>
+                  <Grid item xs={2}>
+                    <AdjustIcon fontSize="small" />
+                  </Grid>
+                  <Typography>Overview</Typography>
+                </Grid>
               </ListItemButton>
             </List>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
-                <ListItemIcon>
-                  <ReportIcon />
-                </ListItemIcon>
-                <ListItemText primary="Report" />
+                <Grid container>
+                  <Grid item xs={2}>
+                    <ReportIcon fontSize="small" />
+                  </Grid>
+                  <Typography>Report</Typography>
+                </Grid>
               </ListItemButton>
             </List>
           </Collapse>
           <ListItemButton>
-            <ListItemIcon>
-              <ReportIcon />
-            </ListItemIcon>
-            <ListItemText primary="Report" />
+            <Grid container>
+              <Grid item xs={2}>
+                <ReportIcon fontSize="small" />
+              </Grid>
+              <Typography>Report</Typography>
+            </Grid>
           </ListItemButton>
 
           <ListItemButton onClick={handleOpenProject}>
-            <ListItemIcon>
-              <AppsIcon />
-            </ListItemIcon>
-            <ListItemText primary="Project" />
+            <Grid container>
+              <Grid item xs={2}>
+                <AppsIcon fontSize="small" />
+              </Grid>
+              <Typography>Project</Typography>
+            </Grid>
           </ListItemButton>
           <Collapse in={openProject} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
-                <ListItemIcon>
-                  <AdjustIcon />
-                </ListItemIcon>
-                <ListItemText primary="Overview" />
+                <Grid container>
+                  <Grid item xs={2}>
+                    <AdjustIcon fontSize="small" />
+                  </Grid>
+                  <Typography variant="h1">Overview</Typography>
+                </Grid>
               </ListItemButton>
             </List>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
-                <ListItemIcon>
-                  <ReportIcon />
-                </ListItemIcon>
-                <ListItemText primary="Report" />
+
+                <Grid container>
+                  <Grid item xs={2}>
+                    <ReportIcon fontSize="small" />
+                  </Grid>
+                  <Typography variant="h1">Report</Typography>
+                </Grid>
               </ListItemButton>
             </List>
           </Collapse>
           <ListItemButton onClick={handleOpenCompany}>
-            <ListItemIcon>
-              <StoreIcon />
-            </ListItemIcon>
-            <ListItemText primary="Company" />
+
+            <Grid container>
+              <Grid item xs={2}>
+                <StoreIcon fontSize="small" />
+              </Grid>
+              <Typography>Company</Typography>
+            </Grid>
           </ListItemButton>
           <Collapse in={openCompany} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
-                <ListItemIcon>
-                  <AdjustIcon />
-                </ListItemIcon>
-                <ListItemText primary="Overview" />
+                <Grid container>
+                  <Grid item xs={2}>
+                    <AdjustIcon fontSize="small" />
+                  </Grid>
+                  <Typography variant="h1">Overview</Typography>
+                </Grid>
               </ListItemButton>
             </List>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
-                <ListItemIcon>
-                  <ReportIcon />
-                </ListItemIcon>
-                <ListItemText primary="Report" />
+                <Grid container>
+                  <Grid item xs={2}>
+                    <ReportIcon fontSize="small" />
+                  </Grid>
+                  <Typography variant="h1">Report</Typography>
+                </Grid>
               </ListItemButton>
             </List>
           </Collapse>
           <ListItemButton onClick={handleOpenCustomer}>
-            <ListItemIcon>
-              <SupportAgentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Customer" />
+            <Grid container>
+              <Grid item xs={2}>
+                <SupportAgentIcon fontSize="small" />
+              </Grid>
+              <Typography>Customer</Typography>
+            </Grid>
           </ListItemButton>
           <Collapse in={openCustomer} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
-                <ListItemIcon>
-                  <AdjustIcon />
-                </ListItemIcon>
-                <ListItemText primary="Overview" />
+                <Grid container>
+                  <Grid item xs={2}>
+                    <AdjustIcon fontSize="small" />
+                  </Grid>
+                  <Typography variant="h1">Overview</Typography>
+                </Grid>
               </ListItemButton>
             </List>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
-                <ListItemIcon>
-                  <ReportIcon />
-                </ListItemIcon>
-                <ListItemText primary="Report" />
+                <Grid container>
+                  <Grid item xs={2}>
+                    <ReportIcon fontSize="small" />
+                  </Grid>
+                  <Typography variant="h1">Report</Typography>
+                </Grid>
               </ListItemButton>
             </List>
           </Collapse>
           <ListItemButton onClick={handleOpenUser}>
-            <ListItemIcon>
-              <Person2Icon />
-            </ListItemIcon>
-            <ListItemText primary="User" />
+            <Grid container>
+              <Grid item xs={2}>
+                <Person2Icon fontSize="small" />
+              </Grid>
+              <Typography>User</Typography>
+            </Grid>
           </ListItemButton>
           <Collapse in={openUser} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
-                <ListItemIcon>
-                  <AdjustIcon />
-                </ListItemIcon>
-                <ListItemText primary="Overview" />
+
+                <Grid container>
+                  <Grid item xs={2}>
+                    <AdjustIcon fontSize="small" />
+                  </Grid>
+                  <Typography variant="h1">Overview</Typography>
+                </Grid>
               </ListItemButton>
             </List>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
-                <ListItemIcon>
-                  <ReportIcon />
-                </ListItemIcon>
-                <ListItemText primary="Report" />
+                <Grid container>
+                  <Grid item xs={2}>
+                    <ReportIcon fontSize="small" />
+                  </Grid>
+                  <Typography variant="h1">Report</Typography>
+                </Grid>
               </ListItemButton>
             </List>
           </Collapse>
