@@ -57,7 +57,7 @@ function CompanyGridView({ companies, myRef }: any) {
                               : <Tooltip title={item.ownerName} arrow>
                                 <CardMedia
                                   component="img"
-                                  image="./images/others.png"
+                                  image="./images/other.jpg"
                                   alt="others"
                                 /></Tooltip>}
                         </Grid>

@@ -130,7 +130,7 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
             <Switch condition={company.status}>
               <Case value="NEW">
                 <Grid>
-                  <Typography variant="body2" noWrap style={{ color: 'red' }}>
+                  <Typography variant="body2" noWrap style={{ color: 'red' }} fontWeight='bold'>
                     {company.status}
                     {' '}
                   </Typography>
@@ -138,14 +138,14 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
               </Case>
               <Case value="ACTIVE">
                 <Grid>
-                  <Typography style={{ color: 'green' }} variant="body2" noWrap>
+                  <Typography style={{ color: 'green' }} variant="body2" noWrap fontWeight='bold'>
                     {company.status}
                   </Typography>
                 </Grid>
               </Case>
               <Case value="INACTIVE">
                 <Grid>
-                  <Typography style={{ color: 'blue' }} variant="body2" noWrap>
+                  <Typography style={{ color: 'blue' }} variant="body2" noWrap fontWeight='bold'>
                     {company.status}
                   </Typography>
                 </Grid>

@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 });
 
 function ListViewComponent({ companies, myRef }: any) {
-  
+ 
   const classes = useStyles()
   const [page, setPage] = useState(1);
   const PER_PAGE = 9;
@@ -100,7 +100,7 @@ function ListViewComponent({ companies, myRef }: any) {
   };
   const handleEmailSort = () => {
     if (emailSort) {
-      companies.sort((a, b) => {
+      companies.sort((a:any, b:any) => {
         if (a.email.toLowerCase() < b.email.toLowerCase()) {
           return -1;
         }
@@ -235,11 +235,11 @@ function ListViewComponent({ companies, myRef }: any) {
                   Created Date
                 </Typography>
                 {nameSort ? (
-                  <IconButton onClick={() => handleNameSort()}>
+                  <IconButton onClick={() => handleDateSort()}>
                     <ArrowDropUpIcon />
                   </IconButton>
                 ) : (
-                  <IconButton onClick={() => handleNameSort()}>
+                  <IconButton onClick={() => handleDateSort()}>
                     <ArrowDropDownIcon />
                   </IconButton>
                 )}
@@ -254,11 +254,11 @@ function ListViewComponent({ companies, myRef }: any) {
                   Company Name
                 </Typography>
                 {dateSort ? (
-                  <IconButton onClick={() => handleDateSort()}>
+                  <IconButton onClick={() =>  handleNameSort()}>
                     <ArrowDropUpIcon />
                   </IconButton>
                 ) : (
-                  <IconButton onClick={() => handleDateSort()}>
+                  <IconButton onClick={() => handleNameSort()}>
                     <ArrowDropDownIcon />
                   </IconButton>
                 )}
