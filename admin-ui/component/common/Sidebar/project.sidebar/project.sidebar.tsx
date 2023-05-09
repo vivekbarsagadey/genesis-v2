@@ -30,133 +30,134 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
     setSelectedIndex(index);
   };
   return (
-    <Box px={2} style={{ overflowY: 'auto', height: '88vh' }}>
-      <List component="nav" aria-label="main mailbox folders">
-        <Link href="/dashboard" passHref style={{ textDecoration: 'none' }}>
-          <ListItemButton
-            selected={selectedIndex === 0}
-            onClick={(event) => handleListItemClick(event, 0)}
-          >
-            {/* <ListItemIcon style={{position:'relative', right:-15}}><DashboardIcon fontSize={'small'}  /></ListItemIcon> */}
-            <ListItemIcon>
-              <DashboardIcon fontSize="small" />
-            </ListItemIcon>
-            {toggleMenu && (
-              <Typography
-                display={{ xs: 'none', sm: 'none', md: 'block' }}
-                style={style.typography}
+    <div style={{ overflowY: 'auto', height: '87vh' }}>
+      <Box px={2} style={{ height: '58vh' }}>
+        <List component="nav" aria-label="main mailbox folders">
+          <Link href="/dashboard" passHref style={{ textDecoration: 'none' }}>
+            <ListItemButton
+              selected={selectedIndex === 0}
+              onClick={(event) => handleListItemClick(event, 0)}
+            >
+              <ListItemIcon>
+                <DashboardIcon fontSize="small" />
+              </ListItemIcon>
+              {toggleMenu && (
+                <Typography
+                  display={{ xs: 'none', sm: 'none', md: 'block' }}
+                  style={style.typography}
+                >
+                  Dashboard
+                </Typography>
+              )}
+            </ListItemButton>
+          </Link>
+
+          <Grid mt={0.5}>
+            <Link href="/report" passHref style={{ textDecoration: 'none' }}>
+              <ListItemButton
+                selected={selectedIndex === 1}
+                onClick={(event) => handleListItemClick(event, 1)}
               >
-                Dashboard
-              </Typography>
-            )}
-          </ListItemButton>
-        </Link>
+                <ListItemIcon>
+                  <ReportIcon fontSize="small" />
+                </ListItemIcon>{' '}
+                {toggleMenu && (
+                  <Typography
+                    display={{ xs: 'none', sm: 'none', md: 'block' }}
+                    style={style.typography}
+                  >
+                    Report
+                  </Typography>
+                )}
+              </ListItemButton>
+            </Link>
+          </Grid>
+          <Grid mt={0.5}>
+            <Link href="/project" passHref style={{ textDecoration: 'none' }}>
+              <ListItemButton
+                selected={selectedIndex === 2}
+                onClick={(event) => handleListItemClick(event, 2)}
+              >
+                <ListItemIcon>
+                  {' '}
+                  <AppsIcon fontSize="small" />
+                </ListItemIcon>
+                {toggleMenu && (
+                  <Typography
+                    display={{ xs: 'none', sm: 'none', md: 'block' }}
+                    style={style.typography}
+                  >
+                    Project
+                  </Typography>
+                )}
+              </ListItemButton>
+            </Link>
+          </Grid>
 
-        <Grid mt={0.5}>
-          <Link href="/report" passHref style={{ textDecoration: 'none' }}>
-            <ListItemButton
-              selected={selectedIndex === 1}
-              onClick={(event) => handleListItemClick(event, 1)}
-            >
-              <ListItemIcon >
-                <ReportIcon fontSize="small" />
-              </ListItemIcon>{' '}
-              {toggleMenu && (
-                <Typography
-                  display={{ xs: 'none', sm: 'none', md: 'block' }}
-                  style={style.typography}
-                >
-                  Report
-                </Typography>
-              )}
-            </ListItemButton>
-          </Link>
-        </Grid>
-        <Grid mt={0.5}>
-          <Link href="/project" passHref style={{ textDecoration: 'none' }}>
-            <ListItemButton
-              selected={selectedIndex === 2}
-              onClick={(event) => handleListItemClick(event, 2)}
-            >
-              <ListItemIcon>
-                {' '}
-                <AppsIcon fontSize="small" />
-              </ListItemIcon>
-              {toggleMenu && (
-                <Typography
-                  display={{ xs: 'none', sm: 'none', md: 'block' }}
-                  style={style.typography}
-                >
-                  Project
-                </Typography>
-              )}
-            </ListItemButton>
-          </Link>
-        </Grid>
-
-        <Grid mt={0.5}>
-          <Link href="/company" passHref style={{ textDecoration: 'none' }}>
-            <ListItemButton
-              selected={selectedIndex === 3}
-              onClick={(event) => handleListItemClick(event, 3)}
-            >
-              <ListItemIcon>
-                <StoreIcon fontSize="small" />
-              </ListItemIcon>
-              {toggleMenu && (
-                <Typography
-                  display={{ xs: 'none', sm: 'none', md: 'block' }}
-                  style={style.typography}
-                >
-                  Company
-                </Typography>
-              )}
-            </ListItemButton>
-          </Link>
-        </Grid>
-        <Grid mt={0.5}>
-          <Link href="/customer" passHref style={{ textDecoration: 'none' }}>
-            <ListItemButton
-              selected={selectedIndex === 4}
-              onClick={(event) => handleListItemClick(event, 4)}
-            >
-              <ListItemIcon>
-                <SupportAgentIcon fontSize="small" />
-              </ListItemIcon>
-              {toggleMenu && (
-                <Typography
-                  display={{ xs: 'none', sm: 'none', md: 'block' }}
-                  style={style.typography}
-                >
-                  Customer
-                </Typography>
-              )}
-            </ListItemButton>
-          </Link>
-        </Grid>
-        <Grid mt={0.5}>
-          <Link href="/user" passHref style={{ textDecoration: 'none' }}>
-            <ListItemButton
-              selected={selectedIndex === 5}
-              onClick={(event) => handleListItemClick(event, 5)}
-            >
-              <ListItemIcon>
-                <Person2Icon fontSize="small" />
-              </ListItemIcon>
-              {toggleMenu && (
-                <Typography
-                  display={{ xs: 'none', sm: 'none', md: 'block' }}
-                  style={style.typography}
-                >
-                  User
-                </Typography>
-              )}
-            </ListItemButton>
-          </Link>
-        </Grid>
-        <MetaDataSidebar toggleMenu={toggleMenu} />
-      </List>
-    </Box>
+          <Grid mt={0.5}>
+            <Link href="/company" passHref style={{ textDecoration: 'none' }}>
+              <ListItemButton
+                selected={selectedIndex === 3}
+                onClick={(event) => handleListItemClick(event, 3)}
+              >
+                <ListItemIcon>
+                  <StoreIcon fontSize="small" />
+                </ListItemIcon>
+                {toggleMenu && (
+                  <Typography
+                    display={{ xs: 'none', sm: 'none', md: 'block' }}
+                    style={style.typography}
+                  >
+                    Company
+                  </Typography>
+                )}
+              </ListItemButton>
+            </Link>
+          </Grid>
+          <Grid mt={0.5}>
+            <Link href="/customer" passHref style={{ textDecoration: 'none' }}>
+              <ListItemButton
+                selected={selectedIndex === 4}
+                onClick={(event) => handleListItemClick(event, 4)}
+              >
+                <ListItemIcon>
+                  <SupportAgentIcon fontSize="small" />
+                </ListItemIcon>
+                {toggleMenu && (
+                  <Typography
+                    display={{ xs: 'none', sm: 'none', md: 'block' }}
+                    style={style.typography}
+                  >
+                    Customer
+                  </Typography>
+                )}
+              </ListItemButton>
+            </Link>
+          </Grid>
+          <Grid mt={0.5}>
+            <Link href="/user" passHref style={{ textDecoration: 'none' }}>
+              <ListItemButton
+                selected={selectedIndex === 5}
+                onClick={(event) => handleListItemClick(event, 5)}
+              >
+                <ListItemIcon>
+                  <Person2Icon fontSize="small" />
+                </ListItemIcon>
+                {toggleMenu && (
+                  <Typography
+                    display={{ xs: 'none', sm: 'none', md: 'block' }}
+                    style={style.typography}
+                  >
+                    User
+                  </Typography>
+                )}
+              </ListItemButton>
+            </Link>
+          </Grid>
+        </List>
+      </Box>
+      <MetaDataSidebar toggleMenu={toggleMenu} />
+    </div>
   );
 }
 export default ProjectSidebar;

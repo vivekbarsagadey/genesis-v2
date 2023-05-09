@@ -35,6 +35,10 @@ export const theme = createTheme({
       fontSize: '0.8rem',
       fontFamily: 'Work Sans',
     },
+    h1: {
+      fontSize: '0.8rem',
+      fontFamily: 'Work Sans',
+    },
     body1: {
       fontWeight: 500,
       fontSize: '0.9rem',
