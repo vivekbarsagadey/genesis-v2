@@ -18,7 +18,7 @@ import { Grid, Typography } from '@mui/material';
 import MetaDataSidebar from '../metaDataSidebar/meta.data.sidebar';
 import Link from 'next/link';
 
-interface sidebarProps {
+type sidebarProps= {
   toggleMenu: boolean;
 }
 

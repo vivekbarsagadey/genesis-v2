@@ -3,170 +3,77 @@ import moment from 'moment';
 import { Chart } from 'react-google-charts';
 import { Case, Default, Switch } from 'react-if';
 
-const options = {
-  hAxis: { title: 'Month' },
-  seriesType: 'bars',
-  series: { type: 'line' },
-};
-const graphViewTitle = {
-  seriesType: 'bars',
-  series: { type: 'line' },
-};
-
 type projectChartProps = {
-  customer: any;
   comparisiongraphView: any;
+  createdTodayData: any;
+  createdDataData: any;
 };
 
-function MonthPieChart({ customer, comparisiongraphView }: projectChartProps) {
-  const month = [
-    ['Month', 'Count'],
-    [
-      'JAN',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Jan').length,
-    ],
-    [
-      'FEB',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Feb').length,
-    ],
-    [
-      'MAR',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Mar').length,
-    ],
-    [
-      'APR',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Apr').length,
-    ],
-    [
-      'MAY',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'May').length,
-    ],
-    [
-      'JUN',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Jun').length,
-    ],
-    [
-      'JUL',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Jul').length,
-    ],
-    [
-      'AUG',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Aug').length,
-    ],
-    [
-      'SEP',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Sep').length,
-    ],
-    [
-      'OCT',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Oct').length,
-    ],
-    [
-      'NOV',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Nov').length,
-    ],
-    [
-      'DEC',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Dec').length,
-    ],
-  ];
+export const options = {
+  hAxis: {
+    title: 'Today Date',
+  },
+  series: {
+    1: { curveType: 'function' },
+  },
+};
 
-  // let todayDate = new Date().toISOString().slice(0, 10);
-  const todayDate = moment(new Date()).format('Do MMM YY');
+export const graphViewTitle = {
+  seriesType: 'bars',
+  series: { type: 'line' },
+};
 
-  
-  const today = [
-    ['Month', 'Count'],
-    [
-      `${todayDate}`,
-
-      customer
-        .map((ele) => moment(ele.createdAt).format('Do MMM YY'))
-        .filter((d) => d == todayDate).length,
-    ],
-  ];
-
-  const timeFrom = (X: any) => {
-    const dates = [];
-    for (let I = 0; I < Math.abs(X); I++) {
-      dates.push(
-        new Date(
-          new Date() - (X >= 0 ? I : I - I - I) * 24 * 60 * 60 * 1000,
-        ).toLocaleString(),
-      );
-    }
-    return dates;
-  };
-
-
-  const sevenDays = [
-    ['Month', 'Count'],
-
-    [
-      'sssjk',
-      customer
-        .map((ele) => moment(ele.updatedAt).format('DDD'))
-        .filter((d) => d === 'Sun').length,
-    ],
-  ];
+const MonthPieChart = ({
+  comparisiongraphView,
+  createdTodayData,
+  createdDataData,
+}: projectChartProps) => {
   return (
-    <Grid item xs={12}>
-      <Switch>
-        <Case condition={comparisiongraphView === 'Today'}>
-          <Chart
-            chartType="ComboChart"
-            width="100%"
-            height="400px"
-            data={today}
-            options={graphViewTitle}
-          />
-        </Case>
+    <div>
+      <Grid item xs={12}>
+        <Switch>
+          <Case condition={comparisiongraphView === 'Today'}>
+            <Chart
+              chartType="LineChart"
+              width="100%"
+              height="400px"
+              data={createdTodayData}
+              options={options}
+            />
+          </Case>
 
-        <Case condition={comparisiongraphView === 'Last 7 days'}>
-          <Chart
+          <Case condition={comparisiongraphView === 'Last 7 days'}>
+            {/* <Chart
             chartType="ComboChart"
             width="100%"
             height="400px"
             data={sevenDays}
             options={graphViewTitle}
-          />
-        </Case>
-        <Default>
-          <Chart
-            chartType="ComboChart"
-            width="100%"
-            height="400px"
-            data={month}
-            options={options}
-          />
-        </Default>
-      </Switch>
-    </Grid>
+          /> */}
+            Last 7 days
+          </Case>
+          <Case condition={comparisiongraphView === 'Month'}>
+            <Chart
+              chartType="ComboChart"
+              width="100%"
+              height="400px"
+              data={createdDataData}
+              options={graphViewTitle}
+            />
+          </Case>
+          <Default>
+            <Chart
+              chartType="ComboChart"
+              width="100%"
+              height="400px"
+              data={createdDataData}
+              options={graphViewTitle}
+            />
+          </Default>
+        </Switch>
+      </Grid>
+    </div>
   );
-}
+};
 
 export default MonthPieChart;
