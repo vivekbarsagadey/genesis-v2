@@ -41,11 +41,7 @@ const style = {
 };
 
 const useStyles = makeStyles({
-
   contactCenter: { display: 'flex', justifyContent: 'center' },
-  activeStatus: {
-    color: 'white', padding: 2, background: 'red', borderRadius: 10, display: 'flex', alignSelf: 'center',
-  },
   activeData: { textAlign: 'center' },
 });
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
@@ -129,26 +125,19 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
           <Grid item xs={1}>
             <Switch condition={company.status}>
               <Case value="NEW">
-                <Grid>
-                  <Typography variant="body2" noWrap style={{ color: 'red' }} fontWeight='bold'>
-                    {company.status}
-                    {' '}
-                  </Typography>
-                </Grid>
+                <Typography color='#ff3333' variant="body2" noWrap fontWeight='bold'>
+                  {company.status}
+                </Typography>
               </Case>
               <Case value="ACTIVE">
-                <Grid>
-                  <Typography style={{ color: 'green' }} variant="body2" noWrap fontWeight='bold'>
-                    {company.status}
-                  </Typography>
-                </Grid>
+                <Typography color='#85e085' variant="body2" noWrap fontWeight='bold'>
+                  {company.status}
+                </Typography>
               </Case>
               <Case value="INACTIVE">
-                <Grid>
-                  <Typography style={{ color: 'blue' }} variant="body2" noWrap fontWeight='bold'>
-                    {company.status}
-                  </Typography>
-                </Grid>
+                <Typography color='#4d4dff' variant="body2" noWrap fontWeight='bold'>
+                  {company.status}
+                </Typography>
               </Case>
             </Switch>
           </Grid>
