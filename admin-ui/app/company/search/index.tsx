@@ -12,13 +12,18 @@ function CompanySearchDetails({
   companies,
   onSearchHandler,
 }: CompanySearchComponentProps) {
+  console.log('this is company',companies);
+  
+  
   const [searchStr, setSearchStr] = useState<string>('');
 
-  const filterByName = (name: string) => (f: ICompany): boolean => f.name.toLowerCase().includes(name.toLowerCase());
-  // const filterByEmail = (email: string) => (f: ICompany): boolean => f.email.toLowerCase().includes(email.toLowerCase());
-  // const filterByContact = (mobile: number) =>  (f: ICompany): boolean => f.mobile.toLowerCase().includes(mobile.toLowerCase());
-  // const filterByAddress = (address: string) => (f: ICompany): boolean => f.address.toLowerCase().includes(address.toLowerCase());
-
+  const filterByName = (value:string) => (f: ICompany): boolean => 
+  f.name?.toLowerCase().includes(value.toLowerCase()) || 
+  f.email.toLowerCase().includes(value.toLowerCase()) ||
+  f.mobile.toLowerCase().includes(value.toLowerCase()) ||
+  f.status.toLowerCase().includes(value.toLowerCase()) ||
+  f?.address.toLowerCase().includes(value.toLowerCase()) ;
+  
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const _searchValue = e.target.value;
     setSearchStr(_searchValue);
@@ -27,9 +32,6 @@ function CompanySearchDetails({
       return;
     }
     onSearchHandler(companies.filter(filterByName(_searchValue)));
-    // onSearchHandler(companies.filter(filterByEmail(_searchValue)));
-    // onSearchHandler(companies.filter(filterByContact(_searchValue)));
-    // onSearchHandler(companies.filter(filterByAddress(_searchValue)));
   };
 
 

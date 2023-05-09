@@ -45,6 +45,8 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
     setViewType(view);
   };
   const myRef = useRef(null);
+  console.log('myRef',myRef);
+  
   const handlePrint = useReactToPrint({
     content: () => myRef.current,
   });
