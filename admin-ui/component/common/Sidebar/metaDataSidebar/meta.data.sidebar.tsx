@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import HomeIcon from '@mui/icons-material/Home';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import DirectionsWalkIcon from '@mui/icons-material/DirectionsWalk';
-import { Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import AssistantPhotoIcon from '@mui/icons-material/AssistantPhoto';
 import CabinIcon from '@mui/icons-material/Cabin';
 import FmdBadIcon from '@mui/icons-material/FmdBad';
@@ -17,7 +17,7 @@ import RoomIcon from '@mui/icons-material/Room';
 import SportsHandballIcon from '@mui/icons-material/SportsHandball';
 import Link from 'next/link';
 
-function MetaDataSidebar() {
+function MetaDataSidebar({ toggleMenu }) {
   const [address, setAddress] = React.useState(false);
   const [roles, setRoles] = React.useState(false);
   const [dashboard, setDashboard] = React.useState(false);
@@ -33,129 +33,133 @@ function MetaDataSidebar() {
   };
 
   return (
-    <List>
-      <Grid container>
-        <Typography fontSize="1.2rem" ml={2}>
-          Master Data
-        </Typography>
-      </Grid>
-
-      <ListItemButton onClick={handleClickAddress}>
+    <Box>
+      <List>
         <Grid container>
-          <Grid item xs={2}>
-            <RoomIcon fontSize="small" />
-          </Grid>
-          <Typography>Address</Typography>
+          {toggleMenu && (
+            <Typography fontSize="1.2rem" ml={2}>
+              Master Data
+            </Typography>
+          )}
         </Grid>
-      </ListItemButton>
-      <Collapse in={address} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 3 }}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={2}>
-                <AssistantPhotoIcon fontSize="small" />
-              </Grid>
-              <Typography variant="h1">Country</Typography>
-            </Grid>
-          </ListItemButton>
-          <ListItemButton sx={{ pl: 3 }}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={2}>
-                <CabinIcon fontSize="small" />
-              </Grid>
-              <Typography variant="h1">State</Typography>
-            </Grid>
-          </ListItemButton>
-          <ListItemButton sx={{ pl: 3 }}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={2}>
-                <FmdBadIcon fontSize="small" />
-              </Grid>
-              <Typography variant="h1">City</Typography>
-            </Grid>
-          </ListItemButton>
-          <ListItemButton sx={{ pl: 3 }}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={2}>
-                <HomeIcon fontSize="small" />
-              </Grid>
-              <Typography variant="h1">Pin Code</Typography>
-            </Grid>
-          </ListItemButton>
-        </List>
-      </Collapse>
 
-      <ListItemButton onClick={handleClickRoles}>
-        <Grid container>
-          <Grid item xs={2}>
-            <DirectionsWalkIcon fontSize="small" />
+        <ListItemButton onClick={handleClickAddress}>
+          <Grid container>
+            <Grid item xs={2}>
+              <RoomIcon fontSize="small" />
+            </Grid>
+            {toggleMenu && <Typography>Address</Typography>}
           </Grid>
-
-          <Typography>Roles</Typography>
-        </Grid>
-      </ListItemButton>
-      <Collapse in={roles} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <Link
-            href="/roles"
-            passHref
-            style={{ textDecoration: 'none', color: 'black' }}
-          >
+        </ListItemButton>
+        <Collapse in={address} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
             <ListItemButton sx={{ pl: 3 }}>
               <Grid container display="flex" alignItems="center">
                 <Grid item xs={2}>
-                  <SportsHandballIcon fontSize="small" />
+                  <AssistantPhotoIcon fontSize="small" />
                 </Grid>
-
-                <Typography variant="h1">Role</Typography>
+                {toggleMenu && <Typography variant="h1">Country</Typography>}
               </Grid>
             </ListItemButton>
-          </Link>
-        </List>
-      </Collapse>
-
-      <ListItemButton onClick={handleClickDashboard}>
-        <Grid container>
-          <Grid item xs={2}>
-            <DashboardIcon fontSize="small" />
-          </Grid>
-          <Typography>Dashboard</Typography>
-        </Grid>
-      </ListItemButton>
-      <Collapse in={dashboard} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <Link
-            href="/metadatadashboard/templates"
-            passHref
-            style={{ textDecoration: 'none', color: 'black' }}
-          >
+            <ListItemButton sx={{ pl: 3 }}>
+              <Grid container display="flex" alignItems="center">
+                <Grid item xs={2}>
+                  <CabinIcon fontSize="small" />
+                </Grid>
+                {toggleMenu && <Typography variant="h1">State</Typography>}
+              </Grid>
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 3 }}>
+              <Grid container display="flex" alignItems="center">
+                <Grid item xs={2}>
+                  <FmdBadIcon fontSize="small" />
+                </Grid>
+                {toggleMenu && <Typography variant="h1">City</Typography>}
+              </Grid>
+            </ListItemButton>
             <ListItemButton sx={{ pl: 3 }}>
               <Grid container display="flex" alignItems="center">
                 <Grid item xs={2}>
                   <HomeIcon fontSize="small" />
                 </Grid>
-                <Typography variant="h1">Templates</Typography>
+                {toggleMenu && <Typography variant="h1">Pin Code</Typography>}
               </Grid>
             </ListItemButton>
-          </Link>
+          </List>
+        </Collapse>
 
-          <Link
-            href="/metadatadashboard/widgets"
-            passHref
-            style={{ textDecoration: 'none', color: 'black' }}
-          >
-            <ListItemButton sx={{ pl: 3 }}>
-              <Grid container display="flex" alignItems="center">
-                <Grid item xs={2}>
-                  <HomeIcon fontSize="small" />
+        <ListItemButton onClick={handleClickRoles}>
+          <Grid container>
+            <Grid item xs={2}>
+              <DirectionsWalkIcon fontSize="small" />
+            </Grid>
+            {toggleMenu && <Typography>Roles</Typography>}
+          </Grid>
+        </ListItemButton>
+        <Collapse in={roles} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <Link
+              href="/roles"
+              passHref
+              style={{ textDecoration: 'none', color: 'black' }}
+            >
+              <ListItemButton sx={{ pl: 3 }}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={2}>
+                    <SportsHandballIcon fontSize="small" />
+                  </Grid>
+                  {toggleMenu && <Typography variant="h1">Role</Typography>}
                 </Grid>
-                <Typography variant="h1">Widgets</Typography>
-              </Grid>
-            </ListItemButton>
-          </Link>
-        </List>
-      </Collapse>
-    </List>
+              </ListItemButton>
+            </Link>
+          </List>
+        </Collapse>
+
+        <ListItemButton onClick={handleClickDashboard}>
+          <Grid container>
+            <Grid item xs={2}>
+              <DashboardIcon fontSize="small" />
+            </Grid>
+            {toggleMenu && <Typography>Dashboard</Typography>}
+          </Grid>
+        </ListItemButton>
+        <Collapse in={dashboard} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <Link
+              href="/metadatadashboard/templates"
+              passHref
+              style={{ textDecoration: 'none', color: 'black' }}
+            >
+              <ListItemButton sx={{ pl: 3 }}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={2}>
+                    <HomeIcon fontSize="small" />
+                  </Grid>
+                  {toggleMenu && (
+                    <Typography variant="h1">Templates</Typography>
+                  )}
+                </Grid>
+              </ListItemButton>
+            </Link>
+
+            <Link
+              href="/metadatadashboard/widgets"
+              passHref
+              style={{ textDecoration: 'none', color: 'black' }}
+            >
+              <ListItemButton sx={{ pl: 3 }}>
+                <Grid container display="flex" alignItems="center">
+                  <Grid item xs={2}>
+                    <HomeIcon fontSize="small" />
+                  </Grid>
+                  {toggleMenu && <Typography variant="h1">Widgets</Typography>}
+                </Grid>
+              </ListItemButton>
+            </Link>
+          </List>
+        </Collapse>
+      </List>
+    </Box>
   );
 }
 

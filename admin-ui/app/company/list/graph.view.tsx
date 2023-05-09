@@ -233,7 +233,7 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
               />
             </Grid>
           </Grid>
-        </Grid>
+        </Grid> 
         <Grid item xs={6}>
           <Chart
             chartType="ComboChart"

@@ -1,15 +1,21 @@
 'use client';
-
 import '@fontsource/work-sans';
-import { teal } from '@mui/material/colors';
+import { blue, red, teal } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 import { baseStyle } from './style';
 import { fontSize } from './size';
+
 
 export const theme = createTheme({
   palette: {
     primary: {
       main: teal[500],
+    },
+    warning: {
+      main: red[400],
+    },
+    info: {
+      main: blue[800],
     },
   },
   typography: {
