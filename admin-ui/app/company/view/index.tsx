@@ -96,6 +96,7 @@ function CompanyViewComponent({ onViewSelect }: CompanyViewComponentProps) {
             style={{
               border: 'none',
               borderRadius: '50%',
+              background:'transparent'
             }}
           >
             {item.icon}

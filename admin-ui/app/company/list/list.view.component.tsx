@@ -23,14 +23,14 @@ const useStyles = makeStyles({
   pagination: { position: 'fixed' },
   divider: { width: '98.5%' },
   infoCom: { height: '62vh' },
-  contactCenter:{
-    display:'flex',
-    justifyContent:'center',
+  contactCenter: {
+    display: 'flex',
+    justifyContent: 'center',
   }
 });
 
 function ListViewComponent({ companies, myRef }: any) {
-  
+
   const classes = useStyles()
   const [page, setPage] = useState(1);
   const PER_PAGE = 9;
@@ -100,7 +100,7 @@ function ListViewComponent({ companies, myRef }: any) {
   };
   const handleEmailSort = () => {
     if (emailSort) {
-      companies.sort((a, b) => {
+      companies.sort((a: any, b: any) => {
         if (a.email.toLowerCase() < b.email.toLowerCase()) {
           return -1;
         }
@@ -176,7 +176,7 @@ function ListViewComponent({ companies, myRef }: any) {
           return 0;
         })
         .reverse();
-        setStatusSort(true);
+      setStatusSort(true);
     }
   };
   const handleAddressSort = () => {
@@ -234,12 +234,12 @@ function ListViewComponent({ companies, myRef }: any) {
                 <Typography variant="subtitle2" noWrap>
                   Created Date
                 </Typography>
-                {nameSort ? (
-                  <IconButton onClick={() => handleNameSort()}>
+                {dateSort ? (
+                  <IconButton onClick={() => handleDateSort()}>
                     <ArrowDropUpIcon />
                   </IconButton>
                 ) : (
-                  <IconButton onClick={() => handleNameSort()}>
+                  <IconButton onClick={() => handleDateSort()}>
                     <ArrowDropDownIcon />
                   </IconButton>
                 )}
@@ -253,12 +253,12 @@ function ListViewComponent({ companies, myRef }: any) {
                 <Typography variant="subtitle2" noWrap>
                   Company Name
                 </Typography>
-                {dateSort ? (
-                  <IconButton onClick={() => handleDateSort()}>
+                {nameSort ? (
+                  <IconButton onClick={() => handleNameSort()}>
                     <ArrowDropUpIcon />
                   </IconButton>
                 ) : (
-                  <IconButton onClick={() => handleDateSort()}>
+                  <IconButton onClick={() => handleNameSort()}>
                     <ArrowDropDownIcon />
                   </IconButton>
                 )}
@@ -323,7 +323,7 @@ function ListViewComponent({ companies, myRef }: any) {
                   </IconButton>
                 )}
               </Grid>
-              
+
               <Grid
                 item
                 xs={1}

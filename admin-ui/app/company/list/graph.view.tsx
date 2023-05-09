@@ -20,11 +20,12 @@ const comparisionType = [
   { title: 'Month' },
 ];
 function CustomerGraphView({ companies, myRef }: ListComponentProps) {
-  const [graphView, setGraphView] = useState<string>('');
-  const [comparisiongraphView, setComparisionGraphView] = useState<string>('Month');
+  const [graphView, setGraphView] = useState<string>('Status');
+  const [comparisiongraphView, setComparisionGraphView] =
+    useState<string>('Month');
   const updateGrpahView = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string,
+    value: string
   ) => {
     setGraphView(value);
   };
@@ -167,15 +168,14 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
 
   const updateComparisionGrpahView = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string,
+    value: string
   ) => {
     setComparisionGraphView(value);
   };
   return (
     <Box mr={2}>
       <Grid container spacing={2} mt={1}>
-        <Grid item xs={1} />
-        <Grid item xs={3}>
+        <Grid item xs={3.1}>
           <Stack>
             <Autocomplete
               value={graphView}
@@ -195,8 +195,8 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
             />
           </Stack>
         </Grid>
-        <Grid item xs={2.3} />
-        <Grid item xs={3.5}>
+        <Grid item xs={3.6} />
+        <Grid item xs={3.1}>
           <Stack>
             <Autocomplete
               freeSolo
@@ -233,7 +233,7 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
               />
             </Grid>
           </Grid>
-        </Grid>
+        </Grid> 
         <Grid item xs={6}>
           <Chart
             chartType="ComboChart"
@@ -243,7 +243,7 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
             options={options}
           />
         </Grid>
-        <Grid item xs={12} />
+        <Grid />
       </Grid>
     </Box>
   );

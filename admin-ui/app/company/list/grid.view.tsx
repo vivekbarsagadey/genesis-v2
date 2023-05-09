@@ -10,6 +10,7 @@ const useStyles = makeStyles({
   root: { height: '74vh' },
   imageView: { padding: '.5rem' },
   paginationView: { display: "flex", justifyContent: "flex-end" },
+  logoSize: { width: '90%', height: '100%' }
 });
 
 function CompanyGridView({ companies, myRef }: any) {
@@ -45,6 +46,7 @@ function CompanyGridView({ companies, myRef }: any) {
                               component="img"
                               image="./images/male.png"
                               alt="male"
+                              className={classes.logoSize}
                             />
                           </Tooltip>
                             : item.gender === 'Female' ? <Tooltip title={item.ownerName} arrow>
@@ -52,13 +54,15 @@ function CompanyGridView({ companies, myRef }: any) {
                                 component="img"
                                 image="./images/female.png"
                                 alt="Female"
+                                className={classes.logoSize}
                               />
                             </Tooltip>
                               : <Tooltip title={item.ownerName} arrow>
                                 <CardMedia
                                   component="img"
-                                  image="./images/others.png"
+                                  image="./images/other.jpg"
                                   alt="others"
+                                  className={classes.logoSize}
                                 /></Tooltip>}
                         </Grid>
                         <Grid item xs={8}>
@@ -121,22 +125,6 @@ function CompanyGridView({ companies, myRef }: any) {
                             <Grid item xs={6} paddingLeft={2}>
                               <Typography noWrap variant="subtitle1" mt={1}>
                                 {item?.address}
-                              </Typography>
-                            </Grid>
-                          </Grid>
-
-                          <Grid container>
-                            <Grid item xs={5}>
-                              <Typography variant="subtitle1" my={1}>
-                                Gender
-                              </Typography>
-                            </Grid>
-                            <Grid item xs={1}>
-                              <Typography mt={1}> :</Typography>
-                            </Grid>
-                            <Grid item xs={6} paddingLeft={2}>
-                              <Typography noWrap variant="subtitle1" my={1}>
-                                {item?.gender}
                               </Typography>
                             </Grid>
                           </Grid>

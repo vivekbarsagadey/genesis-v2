@@ -65,11 +65,12 @@ function InfoProjectComponent({ items }: InfoCustomerComponentProps) {
     }
   }, []);
 
-  // console.log('localStoreData ', localStoreData);
-  // console.log('lenght ', Object.keys(localStoreData).length);
+
 
   const openBuilderMethod = () => {
-    if (items.projectJson !== null || Object.keys(localStoreData).length > 0) {
+    if (items.projectJson !== null 
+      // || Object.keys(localStoreData).length > 0
+      ) {
       handelOpenBuilder();
     } else {
       handleOpenTheme();

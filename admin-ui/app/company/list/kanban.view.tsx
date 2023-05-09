@@ -3,13 +3,13 @@ import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import {
+  Badge,
   Button,
   Card,
   FormControl,
   IconButton,
-  InputLabel,
   Paper,
-  Tooltip,
+
 } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Box from '@mui/material/Box';
@@ -26,7 +26,7 @@ import CallIcon from '@mui/icons-material/Call';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Modal from '@mui/material/Modal';
-
+import Tooltip from '@mui/material/Tooltip';
 import moment from 'moment';
 import {
   company,
@@ -106,15 +106,8 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
                 </Grid>
                 <Grid
                   item
-                  xs={0.7}
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  border="1px solid gray"
-                  borderRadius="40px"
-                  backgroundColor="lightgray"
-                >
-                  <Typography fontSize="12px">{newCompanies.length}</Typography>
+                  xs={1}>
+                  <Badge badgeContent={newCompanies.length} color="info" overlap="circular"></Badge>
                 </Grid>
               </Grid>
 
@@ -138,17 +131,10 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
                 </Grid>
                 <Grid
                   item
-                  xs={0.7}
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  border="1px solid gray"
-                  borderRadius="40px"
-                  backgroundColor="lightgray"
+                  xs={1}
+                  
                 >
-                  <Typography fontSize="12px">
-                    {activeCompanies.length}
-                  </Typography>
+                 <Badge badgeContent={activeCompanies.length} color="success" overlap="circular"></Badge>
                 </Grid>
               </Grid>
 
@@ -175,17 +161,8 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
                 </Grid>
                 <Grid
                   item
-                  xs={0.7}
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  border="1px solid gray"
-                  borderRadius="40px"
-                  backgroundColor="lightgray"
-                >
-                  <Typography fontSize="12px">
-                    {inActiveCompanies.length}
-                  </Typography>
+                  xs={1} >
+                   <Badge badgeContent={inActiveCompanies.length} color='warning' overlap="circular"></Badge>
                 </Grid>
               </Grid>
 
@@ -271,18 +248,23 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
               }}
             >
               <MenuItem>
+              <Tooltip title='Edit'>
                 <IconButton
                   onClick={handleEditModalOpen}
                   className={classes.buttonStyle}
                 >
                   <EditIcon fontSize="inherit" />
                 </IconButton>
+                </Tooltip>
                 <Modal open={openEditModal} onClose={handleEditModalClose}>
                   <Box className={classes.modalStyle}>
                     <Card>
                       <Grid container spacing={2} p={3}>
                         <Grid item xs={12}>
-                          <FormControl fullWidth>
+                          <Typography fontWeight='bold'>Current Selected Status</Typography>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <FormControl fullWidth size='small'>
                             <Select
                               labelId="demo-simple-select-label"
                               id="demo-simple-select"
@@ -295,8 +277,9 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
                             </Select>
                           </FormControl>
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} display='flex' justifyContent='flex-end'>
                           <Button
+                            variant='contained'
                             className={classes.buttonStyle}
                             onClick={updateStatusHandler}
                           >
@@ -309,12 +292,13 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
                 </Modal>
               </MenuItem>
               <MenuItem>
+              <Tooltip title='Delete'>
                 <IconButton
                   onClick={() => deleteCompany(newCompany.id)}
-                  className={classes.buttonStyle}
-                >
+                  className={classes.buttonStyle}>
                   <DeleteIcon htmlColor="red" />
                 </IconButton>
+                </Tooltip>
               </MenuItem>
             </Menu>
           </Grid>
@@ -339,9 +323,7 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
             </Typography>
           </Grid>
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={2}>
-            <Tooltip title="Edit Status">
               <Typography noWrap>Status -</Typography>
-            </Tooltip>
             <Typography noWrap variant="h6" pl={1} color="blue">
               {newCompany.status}
             </Typography>
@@ -433,18 +415,24 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
               }}
             >
               <MenuItem>
+              <Tooltip title='Edit'>
                 <IconButton
                   onClick={handleEditModalOpen}
                   className={classes.buttonStyle}
                 >
                   <EditIcon fontSize="inherit" />
                 </IconButton>
+                </Tooltip>
+
                 <Modal open={openEditModal} onClose={handleEditModalClose}>
                   <Box className={classes.modalStyle}>
                     <Card>
                       <Grid container spacing={2} p={3}>
+                      <Grid item xs={12}>
+                          <Typography fontWeight='bold'>Current Selected Status</Typography>
+                        </Grid>
                         <Grid item xs={12}>
-                          <FormControl fullWidth>
+                          <FormControl fullWidth size='small'>
                             <Select
                               labelId="demo-simple-select-label"
                               id="demo-simple-select"
@@ -457,8 +445,9 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
                             </Select>
                           </FormControl>
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} display='flex' justifyContent='flex-end'>
                           <Button
+                            variant='contained'
                             className={classes.buttonStyle}
                             onClick={updateStatusHandler}
                           >
@@ -471,12 +460,14 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
                 </Modal>
               </MenuItem>
               <MenuItem>
+              <Tooltip title='Delete'>
                 <IconButton
                   onClick={() => deleteCompany(activeCompany.id)}
                   className={classes.buttonStyle}
                 >
                   <DeleteIcon htmlColor="red" />
                 </IconButton>
+                </Tooltip>
               </MenuItem>
             </Menu>
           </Grid>
@@ -501,9 +492,7 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
             </Typography>
           </Grid>
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={2}>
-            <Tooltip title="Edit Status">
               <Typography noWrap>Status -</Typography>
-            </Tooltip>
             <Typography noWrap variant="h6" pl={1} color="green">
               {activeCompany.status}
             </Typography>
@@ -595,12 +584,14 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
               }}
             >
               <MenuItem>
+              <Tooltip title='Edit'>
                 <IconButton
                   onClick={handleEditModalOpen}
                   className={classes.buttonStyle}
                 >
                   <EditIcon fontSize="inherit" />
                 </IconButton>
+                </Tooltip>
                 <Modal
                   open={openEditModal}
                   onClose={handleEditModalClose}
@@ -609,8 +600,11 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
                   <Box className={classes.modalStyle}>
                     <Card>
                       <Grid container spacing={2} p={3}>
+                      <Grid item xs={12}>
+                          <Typography fontWeight='bold'>Current Selected Status</Typography>
+                        </Grid>
                         <Grid item xs={12}>
-                          <FormControl fullWidth>
+                          <FormControl fullWidth size='small'>
                             <Select
                               labelId="demo-simple-select-label"
                               id="demo-simple-select"
@@ -623,8 +617,9 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
                             </Select>
                           </FormControl>
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} display='flex' justifyContent='flex-end'>
                           <Button
+                            variant='contained'
                             className={classes.buttonStyle}
                             onClick={updateStatusHandler}
                           >
@@ -637,12 +632,14 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
                 </Modal>
               </MenuItem>
               <MenuItem>
+              <Tooltip title='Delete'>
                 <IconButton
                   onClick={() => deleteCompany(inActiveCompany.id)}
                   className={classes.buttonStyle}
                 >
                   <DeleteIcon htmlColor="red" />
                 </IconButton>
+                </Tooltip>
               </MenuItem>
             </Menu>
           </Grid>
@@ -667,9 +664,7 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
             </Typography>
           </Grid>
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={2}>
-            <Tooltip title="Edit Status">
               <Typography noWrap>Status -</Typography>
-            </Tooltip>
             <Typography noWrap variant="h6" pl={1} color="red">
               {inActiveCompany.status}
             </Typography>
