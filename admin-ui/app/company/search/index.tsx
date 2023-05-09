@@ -12,9 +12,7 @@ function CompanySearchDetails({
   companies,
   onSearchHandler,
 }: CompanySearchComponentProps) {
-  console.log('this is company',companies);
-  
-  
+ 
   const [searchStr, setSearchStr] = useState<string>('');
 
   const filterByName = (value:string) => (f: ICompany): boolean => 
