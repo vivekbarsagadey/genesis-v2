@@ -1,159 +1,190 @@
 'use client';
 
+import AdjustIcon from '@mui/icons-material/Adjust';
 import AppsIcon from '@mui/icons-material/Apps';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import Person2Icon from '@mui/icons-material/Person2';
 import ReportIcon from '@mui/icons-material/Report';
 import StoreIcon from '@mui/icons-material/Store';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-import { Grid, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
+import Collapse from '@mui/material/Collapse';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Link from 'next/link';
-import { useState } from 'react';
-import Person2Icon from '@mui/icons-material/Person2';
-import { headerstyle as style } from './project.style';
+import ListItemText from '@mui/material/ListItemText';
+import React from 'react';
 import MetaDataSidebar from '../metaDataSidebar/meta.data.sidebar';
-import { colors } from '../../../../themes';
 
 interface sidebarProps {
   toggleMenu: boolean;
 }
 
 function ProjectSidebar({ toggleMenu }: sidebarProps) {
-  const [selectedIndex, setSelectedIndex] = useState();
+  const [selectedIndex, setSelectedIndex] = React.useState();
+  const [openDashboard, setOpenDashboard] = React.useState(false);
+  const [openProject, setOpenProject] = React.useState(false);
+  const [openCompany, setOpenCompany] = React.useState(false);
+  const [openCustomer, setOpenCustomer] = React.useState(false);
+  const [openUser, setOpenUser] = React.useState(false);
+
+  const handleOpenDashboard = () => {
+    setOpenDashboard((s) => !s);
+  };
+  const handleOpenProject = () => {
+    setOpenProject((s) => !s);
+  };
+  const handleOpenCompany = () => {
+    setOpenCompany((s) => !s);
+  };
+  const handleOpenCustomer = () => {
+    setOpenCustomer((s) => !s);
+  };
+  const handleOpenUser = () => {
+    setOpenUser((s) => !s);
+  };
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    index: number
+    index: number,
   ) => {
     setSelectedIndex(index);
   };
   return (
     <div style={{ overflowY: 'auto', height: '87vh' }}>
       <Box px={2} style={{ height: '58vh' }}>
-        <List component="nav" aria-label="main mailbox folders">
-          <Link href="/dashboard" passHref style={{ textDecoration: 'none' }}>
-            <ListItemButton
-              selected={selectedIndex === 0}
-              onClick={(event) => handleListItemClick(event, 0)}
-            >
-              <ListItemIcon>
-                <DashboardIcon fontSize="small" />
-              </ListItemIcon>
-              {toggleMenu && (
-                <Typography
-                  display={{ xs: 'none', sm: 'none', md: 'block' }}
-                  style={style.typography}
-                >
-                  Dashboard
-                </Typography>
-              )}
-            </ListItemButton>
-          </Link>
+        <List
+          sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+          component="nav"
+          aria-labelledby="nested-list-subheader"
+        >
+          <ListItemButton onClick={handleOpenDashboard}>
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" />
+          </ListItemButton>
 
-          <Grid mt={0.5}>
-            <Link href="/report" passHref style={{ textDecoration: 'none' }}>
-              <ListItemButton
-                selected={selectedIndex === 1}
-                onClick={(event) => handleListItemClick(event, 1)}
-              >
+          <Collapse in={openDashboard} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
-                  <ReportIcon fontSize="small" />
-                </ListItemIcon>{' '}
-                {toggleMenu && (
-                  <Typography
-                    display={{ xs: 'none', sm: 'none', md: 'block' }}
-                    style={style.typography}
-                  >
-                    Report
-                  </Typography>
-                )}
-              </ListItemButton>
-            </Link>
-          </Grid>
-          <Grid mt={0.5}>
-            <Link href="/project" passHref style={{ textDecoration: 'none' }}>
-              <ListItemButton
-                selected={selectedIndex === 2}
-                onClick={(event) => handleListItemClick(event, 2)}
-              >
-                <ListItemIcon>
-                  {' '}
-                  <AppsIcon fontSize="small" />
+                  <AdjustIcon />
                 </ListItemIcon>
-                {toggleMenu && (
-                  <Typography
-                    display={{ xs: 'none', sm: 'none', md: 'block' }}
-                    style={style.typography}
-                  >
-                    Project
-                  </Typography>
-                )}
+                <ListItemText primary="Overview" />
               </ListItemButton>
-            </Link>
-          </Grid>
+            </List>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemIcon>
+                  <ReportIcon />
+                </ListItemIcon>
+                <ListItemText primary="Report" />
+              </ListItemButton>
+            </List>
+          </Collapse>
+          <ListItemButton>
+            <ListItemIcon>
+              <ReportIcon />
+            </ListItemIcon>
+            <ListItemText primary="Report" />
+          </ListItemButton>
 
-          <Grid mt={0.5}>
-            <Link href="/company" passHref style={{ textDecoration: 'none' }}>
-              <ListItemButton
-                selected={selectedIndex === 3}
-                onClick={(event) => handleListItemClick(event, 3)}
-              >
+          <ListItemButton onClick={handleOpenProject}>
+            <ListItemIcon>
+              <AppsIcon />
+            </ListItemIcon>
+            <ListItemText primary="Project" />
+          </ListItemButton>
+          <Collapse in={openProject} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
-                  <StoreIcon fontSize="small" />
+                  <AdjustIcon />
                 </ListItemIcon>
-                {toggleMenu && (
-                  <Typography
-                    display={{ xs: 'none', sm: 'none', md: 'block' }}
-                    style={style.typography}
-                  >
-                    Company
-                  </Typography>
-                )}
+                <ListItemText primary="Overview" />
               </ListItemButton>
-            </Link>
-          </Grid>
-          <Grid mt={0.5}>
-            <Link href="/customer" passHref style={{ textDecoration: 'none' }}>
-              <ListItemButton
-                selected={selectedIndex === 4}
-                onClick={(event) => handleListItemClick(event, 4)}
-              >
+            </List>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
-                  <SupportAgentIcon fontSize="small" />
+                  <ReportIcon />
                 </ListItemIcon>
-                {toggleMenu && (
-                  <Typography
-                    display={{ xs: 'none', sm: 'none', md: 'block' }}
-                    style={style.typography}
-                  >
-                    Customer
-                  </Typography>
-                )}
+                <ListItemText primary="Report" />
               </ListItemButton>
-            </Link>
-          </Grid>
-          <Grid mt={0.5}>
-            <Link href="/user" passHref style={{ textDecoration: 'none' }}>
-              <ListItemButton
-                selected={selectedIndex === 5}
-                onClick={(event) => handleListItemClick(event, 5)}
-              >
+            </List>
+          </Collapse>
+          <ListItemButton onClick={handleOpenCompany}>
+            <ListItemIcon>
+              <StoreIcon />
+            </ListItemIcon>
+            <ListItemText primary="Company" />
+          </ListItemButton>
+          <Collapse in={openCompany} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
-                  <Person2Icon fontSize="small" />
+                  <AdjustIcon />
                 </ListItemIcon>
-                {toggleMenu && (
-                  <Typography
-                    display={{ xs: 'none', sm: 'none', md: 'block' }}
-                    style={style.typography}
-                  >
-                    User
-                  </Typography>
-                )}
+                <ListItemText primary="Overview" />
               </ListItemButton>
-            </Link>
-          </Grid>
+            </List>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemIcon>
+                  <ReportIcon />
+                </ListItemIcon>
+                <ListItemText primary="Report" />
+              </ListItemButton>
+            </List>
+          </Collapse>
+          <ListItemButton onClick={handleOpenCustomer}>
+            <ListItemIcon>
+              <SupportAgentIcon />
+            </ListItemIcon>
+            <ListItemText primary="Customer" />
+          </ListItemButton>
+          <Collapse in={openCustomer} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemIcon>
+                  <AdjustIcon />
+                </ListItemIcon>
+                <ListItemText primary="Overview" />
+              </ListItemButton>
+            </List>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemIcon>
+                  <ReportIcon />
+                </ListItemIcon>
+                <ListItemText primary="Report" />
+              </ListItemButton>
+            </List>
+          </Collapse>
+          <ListItemButton onClick={handleOpenUser}>
+            <ListItemIcon>
+              <Person2Icon />
+            </ListItemIcon>
+            <ListItemText primary="User" />
+          </ListItemButton>
+          <Collapse in={openUser} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemIcon>
+                  <AdjustIcon />
+                </ListItemIcon>
+                <ListItemText primary="Overview" />
+              </ListItemButton>
+            </List>
+            <List component="div" disablePadding>
+              <ListItemButton sx={{ pl: 4 }}>
+                <ListItemIcon>
+                  <ReportIcon />
+                </ListItemIcon>
+                <ListItemText primary="Report" />
+              </ListItemButton>
+            </List>
+          </Collapse>
         </List>
       </Box>
       <MetaDataSidebar toggleMenu={toggleMenu} />

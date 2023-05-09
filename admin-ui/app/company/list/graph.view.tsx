@@ -20,7 +20,7 @@ const comparisionType = [
   { title: 'Month' },
 ];
 function CustomerGraphView({ companies, myRef }: ListComponentProps) {
-  const [graphView, setGraphView] = useState<string>('');
+  const [graphView, setGraphView] = useState<string>('Status');
   const [comparisiongraphView, setComparisionGraphView] = useState<string>('Month');
   const updateGrpahView = (
     e: React.SyntheticEvent<Element, Event>,

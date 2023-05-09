@@ -15,9 +15,9 @@ function CompanySearchDetails({
   const [searchStr, setSearchStr] = useState<string>('');
 
   const filterByName = (name: string) => (f: ICompany): boolean => f.name.toLowerCase().includes(name.toLowerCase());
-  const filterByEmail = (email: string) => (f: ICompany): boolean => f.email.toLowerCase().includes(email.toLowerCase());
+  // const filterByEmail = (email: string) => (f: ICompany): boolean => f.email.toLowerCase().includes(email.toLowerCase());
   // const filterByContact = (mobile: number) =>  (f: ICompany): boolean => f.mobile.toLowerCase().includes(mobile.toLowerCase());
-  const filterByAddress = (address: string) => (f: ICompany): boolean => f.address.toLowerCase().includes(address.toLowerCase());
+  // const filterByAddress = (address: string) => (f: ICompany): boolean => f.address.toLowerCase().includes(address.toLowerCase());
 
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const _searchValue = e.target.value;
@@ -27,9 +27,9 @@ function CompanySearchDetails({
       return;
     }
     onSearchHandler(companies.filter(filterByName(_searchValue)));
-    onSearchHandler(companies.filter(filterByEmail(_searchValue)));
+    // onSearchHandler(companies.filter(filterByEmail(_searchValue)));
     // onSearchHandler(companies.filter(filterByContact(_searchValue)));
-    onSearchHandler(companies.filter(filterByAddress(_searchValue)));
+    // onSearchHandler(companies.filter(filterByAddress(_searchValue)));
   };
 
 
