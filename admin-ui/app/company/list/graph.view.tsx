@@ -21,10 +21,11 @@ const comparisionType = [
 ];
 function CustomerGraphView({ companies, myRef }: ListComponentProps) {
   const [graphView, setGraphView] = useState<string>('Status');
-  const [comparisiongraphView, setComparisionGraphView] = useState<string>('Month');
+  const [comparisiongraphView, setComparisionGraphView] =
+    useState<string>('Month');
   const updateGrpahView = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string,
+    value: string
   ) => {
     setGraphView(value);
   };
@@ -167,7 +168,7 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
 
   const updateComparisionGrpahView = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string,
+    value: string
   ) => {
     setComparisionGraphView(value);
   };
@@ -242,7 +243,7 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
             options={options}
           />
         </Grid>
-        <Grid item xs={12} />
+        <Grid />
       </Grid>
     </Box>
   );

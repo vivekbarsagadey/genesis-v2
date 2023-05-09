@@ -1,4 +1,5 @@
 'use client';
+
 import AdjustIcon from '@mui/icons-material/Adjust';
 import AppsIcon from '@mui/icons-material/Apps';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -13,8 +14,8 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import React from 'react';
-import MetaDataSidebar from '../metaDataSidebar/meta.data.sidebar';
 import { Grid, Typography } from '@mui/material';
+import MetaDataSidebar from '../metaDataSidebar/meta.data.sidebar';
 
 interface sidebarProps {
   toggleMenu: boolean;
@@ -50,8 +51,17 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
     setSelectedIndex(index);
   };
   return (
-    <div style={{ overflowY: 'auto', height: '87vh' }}>
-      <Box style={{ height: '58vh' }}>
+ 
+    <div
+      style={{
+        display: 'flex',
+        height: '88vh',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        overflowY: 'auto',
+      }}
+    >
+      <Box>
         <List>
           <ListItemButton onClick={handleOpenDashboard}>
             <Grid container>
@@ -114,7 +124,6 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
             </List>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
-
                 <Grid container>
                   <Grid item xs={2}>
                     <ReportIcon fontSize="small" />
@@ -125,7 +134,6 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
             </List>
           </Collapse>
           <ListItemButton onClick={handleOpenCompany}>
-
             <Grid container>
               <Grid item xs={2}>
                 <StoreIcon fontSize="small" />
@@ -196,7 +204,6 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
           <Collapse in={openUser} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
-
                 <Grid container>
                   <Grid item xs={2}>
                     <AdjustIcon fontSize="small" />
