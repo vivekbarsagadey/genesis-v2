@@ -174,8 +174,7 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
   return (
     <Box mr={2}>
       <Grid container spacing={2} mt={1}>
-        <Grid item xs={1} />
-        <Grid item xs={3}>
+        <Grid item xs={3.1}>
           <Stack>
             <Autocomplete
               value={graphView}
@@ -195,8 +194,8 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
             />
           </Stack>
         </Grid>
-        <Grid item xs={2.3} />
-        <Grid item xs={3.5}>
+        <Grid item xs={3.6} />
+        <Grid item xs={3.1}>
           <Stack>
             <Autocomplete
               freeSolo
