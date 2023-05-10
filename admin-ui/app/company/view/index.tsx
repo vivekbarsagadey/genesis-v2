@@ -72,7 +72,7 @@ function CompanyViewComponent({ onViewSelect }: CompanyViewComponentProps) {
 
   const handleAlignment = (
     event: React.MouseEvent<HTMLElement>,
-    newAlignment: string | null,
+    newAlignment: string | null
   ) => {
     if (newAlignment !== null) {
       setAlignment(newAlignment);
@@ -96,7 +96,7 @@ function CompanyViewComponent({ onViewSelect }: CompanyViewComponentProps) {
             style={{
               border: 'none',
               borderRadius: '50%',
-              background:'transparent'
+              background: 'transparent',
             }}
           >
             {item.icon}

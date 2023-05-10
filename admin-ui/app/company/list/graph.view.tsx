@@ -9,10 +9,10 @@ import CompanyPieChart from './pie.chart';
 import { ICompany } from '../models';
 import MonthPieChart from './month.pie.chart';
 
-type ListComponentProps={
-  companies : Array<ICompany>;
-  myRef : any
-}
+type ListComponentProps = {
+  companies: Array<ICompany>;
+  myRef: any;
+};
 
 export const options = {
   hAxis: {
@@ -34,7 +34,7 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
   const [comparisiongraphView, setComparisionGraphView] =
     useState<string>('Month');
 
-  const keys =Object.keys(companies[0]);
+  const keys = Object.keys(companies[0]);
   const graphTypeVal = keys.filter((element) => {
     if (element === 'country' || element === 'state' || element === 'status') {
       return true;
@@ -193,6 +193,61 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
         .filter((d) => d === todayDate).length,
     ],
   ];
+
+  const first = moment().subtract(1, 'day').toDate();
+
+  const second = moment().subtract(2, 'day').toDate();
+  const third = moment().subtract(3, 'day').toDate();
+  const fourth = moment().subtract(4, 'day').toDate();
+  const fifth = moment().subtract(5, 'day').toDate();
+  const sixth = moment().subtract(6, 'day').toDate();
+  const seventh = moment().subtract(7, 'day').toDate();
+  const pastDays = [
+    ['Date', 'Count'],
+    [
+      moment(first).format('DD MMM YY'),
+      companies
+        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
+        .filter((d) => d === first).length,
+    ],
+    [
+      moment(second).format('DD MMM YY'),
+      companies
+        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
+        .filter((d) => d === second).length,
+    ],
+    [
+      moment(third).format('DD MMM YY'),
+      companies
+        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
+        .filter((d) => d === third).length,
+    ],
+    [
+      moment(fourth).format('DD MMM YY'),
+      companies
+        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
+        .filter((d) => d === fourth).length,
+    ],
+    [
+      moment(fifth).format('DD MMM YY'),
+      companies
+        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
+        .filter((d) => d === fifth).length,
+    ],
+    [
+      moment(sixth).format('DD MMM YY'),
+      companies
+        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
+        .filter((d) => d === sixth).length,
+    ],
+    [
+      moment(seventh).format('DD MMM YY'),
+      companies
+        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
+        .filter((d) => d === seventh).length,
+    ],
+  ];
+
   return (
     <Box mr={2}>
       <Grid container spacing={2} mt={1}>
@@ -256,25 +311,11 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
           </Grid>
         </Grid>
         <Grid item xs={6}>
-          {/* <Chart
-            chartType="ComboChart"
-            width="100%"
-            height="400px"
-            data={createdDataData}
-            options={options}
-          /> */}
-
-          {/* <Chart
-            chartType="LineChart"
-            width="100%"
-            height="400px"
-            data={createdTodayData}
-            options={options}
-          /> */}
           <MonthPieChart
             createdTodayData={createdTodayData}
             comparisiongraphView={comparisiongraphView}
             createdDataData={createdDataData}
+            pastDays={pastDays}
           />
         </Grid>
         <Grid />

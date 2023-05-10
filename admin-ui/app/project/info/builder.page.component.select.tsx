@@ -6,8 +6,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Checkbox from '@mui/material/Checkbox';
 import { makeStyles } from '@mui/styles';
 
-import { createPage } from '../../../services/screen.action';
-
 const useStyles = makeStyles({
   background_genesis1: {
     backgroundImage: `url(${'./images/genesis1.png'})`,
@@ -17,12 +15,12 @@ const useStyles = makeStyles({
     backgroundPosition: 'center',
     position: 'relative',
   },
-  genesislogo: {
+  genesisLogo: {
     height: '300px',
     width: '290px',
     position: 'relative',
   },
-  genesislogo1: {
+  genesisLogo1: {
     position: 'absolute',
     top: '50%',
     left: '45%',
@@ -33,23 +31,25 @@ const useStyles = makeStyles({
     height: '120vh',
   },
 });
-type IbuilderProps = {
+type iBuilderProps = {
   handleClose: () => void;
   checkbox: string;
   handleCloseTheme: () => void;
   id:string
 };
 
-function BuilderPageSelectComponent({ handleClose, checkbox,handleCloseTheme, id }: IbuilderProps) {
+function BuilderPageSelectComponent({
+  handleClose, checkbox, handleCloseTheme, id,
+}: iBuilderProps) {
   const classes = useStyles();
-  const [blankPage, setBlankPage] = useState(false);
-  const [loginPage, setLoginPage] = useState(false);
-  const [profilePage, setProfilePage] = useState(false);
-  const [homePagePage, setHomePagePage] = useState(false);
-  const [editProfilePage, setEditProfilePage] = useState(false);
-  const [signupPage, setSignupPage] = useState(false);
-  const [sideMenuPage, setSideMenuPage] = useState(false);
-  const [settingPage, setSettingPage] = useState(false);
+  const [, setBlankPage] = useState(false);
+  const [, setLoginPage] = useState(false);
+  const [, setProfilePage] = useState(false);
+  const [, setHomePagePage] = useState(false);
+  const [, setEditProfilePage] = useState(false);
+  const [, setSignUpPage] = useState(false);
+  const [, setSideMenuPage] = useState(false);
+  const [, setSettingPage] = useState(false);
   const [pages, setPages] = React.useState([]);
 
   const [count, setCount] = useState<string[]>([]);
@@ -57,7 +57,7 @@ function BuilderPageSelectComponent({ handleClose, checkbox,handleCloseTheme, id
   const fetchData = async () => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/pages`);
     if (!response.ok) {
-      throw new Error('Data coud not be fetched!');
+      throw new Error('Data cloud not be fetched!');
     } else {
       return response.json();
     }
@@ -94,7 +94,7 @@ function BuilderPageSelectComponent({ handleClose, checkbox,handleCloseTheme, id
       setCount([...count, pageRecv]);
     }
     if (pageRecv === 'Sign Up') {
-      setSignupPage((s) => !s);
+      setSignUpPage((s) => !s);
       setCount([...count, pageRecv]);
     }
     if (pageRecv === 'Side Menu') {
@@ -106,16 +106,13 @@ function BuilderPageSelectComponent({ handleClose, checkbox,handleCloseTheme, id
       setCount([...count, pageRecv]);
     }
   };
-  const projectJsonData= {
-    theme:checkbox,
-    pages:count,
-    projectId:id
-
-  }
+  const projectJsonData = {
+    theme: checkbox,
+    pages: count,
+    projectId: id,
+  };
 
   const savePages = async () => {
-
-
     // try {
     //   const body = {
     //     projectJson: {
@@ -127,23 +124,22 @@ function BuilderPageSelectComponent({ handleClose, checkbox,handleCloseTheme, id
     // } catch (error) {
     //   console.error(error);
     // }
-    localStorage.setItem('projectJsonData', JSON.stringify(projectJsonData))
+    localStorage.setItem('projectJsonData', JSON.stringify(projectJsonData));
     handleClose();
     handleCloseTheme();
   };
 
-  console.log("Pages >>>", count);
-  console.log("Theme Value >>",checkbox);
-  console.log("Project ID >>>",id)
+  // console.log('Pages >>>', count);
+  // console.log('Theme Value >>', checkbox);
+  // console.log('Project ID >>>', id);
   // console.log("pages>>>", pages);
-  
 
   return (
     <Grid container>
       <Grid item xs={3} className={classes.background_genesis1}>
-        <Grid container className={classes.genesislogo}>
-          <Grid item xs={12} className={classes.genesislogo1}>
-            <img src="./images/genesislogo.png" alt="image not found" />
+        <Grid container className={classes.genesisLogo}>
+          <Grid item xs={12} className={classes.genesisLogo1}>
+            <img src="./images/genesisLogo.png" alt=" " />
           </Grid>
         </Grid>
       </Grid>
@@ -151,8 +147,8 @@ function BuilderPageSelectComponent({ handleClose, checkbox,handleCloseTheme, id
       <Grid item xs={9} className={classes.pagesMainGrid}>
         <Grid container spacing={4} padding={3}>
           {pages
-            && pages.map((page, index) => (
-              <Grid item xs={3} key={index}>
+            && pages.map((page:any) => (
+              <Grid item xs={3}>
                 <Grid container display="flex" justifyContent="space-around">
                   <Grid item xs={9}>
                     <Typography variant="body2" color="white">
