@@ -1,5 +1,5 @@
+import React from 'react';
 import { Grid } from '@mui/material';
-import moment from 'moment';
 import { Chart } from 'react-google-charts';
 import { Case, Default, Switch } from 'react-if';
 
@@ -7,6 +7,7 @@ type projectChartProps = {
   comparisiongraphView: any;
   createdTodayData: any;
   createdDataData: any;
+  pastDays: any;
 };
 
 export const options = {
@@ -23,11 +24,12 @@ export const graphViewTitle = {
   series: { type: 'line' },
 };
 
-const MonthPieChart = ({
+function MonthPieChart({
   comparisiongraphView,
   createdTodayData,
   createdDataData,
-}: projectChartProps) => {
+  pastDays,
+}: projectChartProps) {
   return (
     <div>
       <Grid item xs={12}>
@@ -43,14 +45,13 @@ const MonthPieChart = ({
           </Case>
 
           <Case condition={comparisiongraphView === 'Last 7 days'}>
-            {/* <Chart
-            chartType="ComboChart"
-            width="100%"
-            height="400px"
-            data={sevenDays}
-            options={graphViewTitle}
-          /> */}
-            Last 7 days
+            <Chart
+              chartType="ComboChart"
+              width="100%"
+              height="400px"
+              data={pastDays}
+              options={graphViewTitle}
+            />
           </Case>
           <Case condition={comparisiongraphView === 'Month'}>
             <Chart
@@ -74,6 +75,6 @@ const MonthPieChart = ({
       </Grid>
     </div>
   );
-};
+}
 
 export default MonthPieChart;
