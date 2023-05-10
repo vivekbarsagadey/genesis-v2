@@ -2,11 +2,14 @@
 
 import React, { useRef, useState } from 'react';
 import PrintIcon from '@mui/icons-material/Print';
-import { Box, Button, Divider, Grid, IconButton, Tooltip } from '@mui/material';
+import {
+  Box, Button, Divider, Grid, IconButton, Tooltip,
+} from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
 import { Case, Default, Switch } from 'react-if';
 import { useReactToPrint } from 'react-to-print';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { baseStyle, colors } from '../../themes';
 import { ViewTypes } from '../utility';
 import FilterComponent from './filters';
@@ -19,7 +22,6 @@ import ListViewComponent from './list/list.view.component';
 import { ICompany } from './models/company.model';
 import CompanySearchDetails from './search';
 import CompanyViewComponent from './view';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 interface CompanyComponentProps {
   companies: Array<ICompany>;
