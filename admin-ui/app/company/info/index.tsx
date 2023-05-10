@@ -18,7 +18,6 @@ import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import Snackbar from '@mui/material/Snackbar';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
 import { makeStyles } from '@mui/styles';
@@ -45,16 +44,17 @@ const useStyles = makeStyles({
   activeData: { textAlign: 'center' },
 });
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 ));
 
 type InfoCompanyComponentProps = {
   company: ICompany;
- 
+  getMultiSelectedValue: any;
+  show: any;
 };
 
-function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompanyComponentProps) {
-  const router = useRouter();
+function InfoCompanyComponent({ company, getMultiSelectedValue, show }: InfoCompanyComponentProps) {
   const [alert, setAlert] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const deletePopupOpen = () => setOpen(true);
@@ -68,7 +68,7 @@ function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompa
     event?: React.SyntheticEvent | Event,
     reason?: string,
   ) => {
-    if (reason === 'clickaway') {
+    if (reason === 'clickAway') {
       return;
     }
     setAlert(false);
@@ -90,7 +90,6 @@ function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompa
     getMultiSelectedValue(d);
   };
 
-
   const classes = useStyles();
 
   return (
@@ -100,8 +99,10 @@ function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompa
           <Grid item xs={1}>
             <Grid container ml={1}>
               <Grid item xs={5}>
-                <Checkbox size="small"  checked={checked}
-                    onChange={handleChange}
+                <Checkbox
+                  size="small"
+                  checked={checked}
+                  onChange={handleChange}
                 />
               </Grid>
             </Grid>
