@@ -57,8 +57,6 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
   const itemsCallBackHandler = (_items: Array<ICompany>) => {
     setCopyCompanies(_items);
   };
-
-
   return (
     <Box
       ml={1.5}
