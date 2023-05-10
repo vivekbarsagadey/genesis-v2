@@ -54,6 +54,11 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
 
   const classes = useStyles();
 
+  const itemsCallBackHandler = (_items: Array<ICompany>) => {
+    setCopyCompanies(_items);
+  };
+
+
   return (
     <Box
       ml={1.5}
@@ -76,6 +81,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                 <FilterComponent
                   companies={companies}
                   onFilterHandler={onSearchHandler}
+                  itemsCallBackHandler={itemsCallBackHandler}
                 />
               </Grid>
               <Grid item xs="auto" mt={0.2}>
@@ -93,6 +99,17 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                 <CompanyViewComponent onViewSelect={onViewSelect} />
               </Grid>
             </Grid>
+          </Grid>
+          <Grid item xs={1} mt={1}>
+            <Link
+              href="/company/companyreport"
+              passHref
+              className={classes.textDecor}
+            >
+              <Button variant="contained" size="small">
+                Report
+              </Button>
+            </Link>
           </Grid>
           <Grid item xs={1} mt={1}>
             <Link
