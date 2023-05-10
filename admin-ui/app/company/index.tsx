@@ -1,15 +1,11 @@
 'use client';
-
 import React, { useRef, useState } from 'react';
 import PrintIcon from '@mui/icons-material/Print';
-import {
-  Box, Button, Divider, Grid, IconButton, Tooltip,
-} from '@mui/material';
+import { Box, Button, Divider, Grid, IconButton, Tooltip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
 import { Case, Default, Switch } from 'react-if';
 import { useReactToPrint } from 'react-to-print';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { baseStyle, colors } from '../../themes';
 import { ViewTypes } from '../utility';
 import FilterComponent from './filters';
@@ -22,6 +18,7 @@ import ListViewComponent from './list/list.view.component';
 import { ICompany } from './models/company.model';
 import CompanySearchDetails from './search';
 import CompanyViewComponent from './view';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 interface CompanyComponentProps {
   companies: Array<ICompany>;
@@ -80,7 +77,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
               onSearchHandler={onSearchHandler}
             />
           </Grid>
-          <Grid item xs={8} md={8} sm={8} lg={7} className={classes.display}>
+          <Grid item xs={5} md={6} sm={5} lg={7} className={classes.display}>
             <Grid container>
               <Grid item xs="auto" mt={0.3}>
                 <FilterComponent
@@ -100,12 +97,12 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                 </Tooltip>
               </Grid>
 
-              <Grid item xs={9}>
-                <CompanyViewComponent onViewSelect={onViewSelect} />
+              <Grid item xs={3} md={6} sm={3}>
+                <CompanyViewComponent onViewSelect={onViewSelect}/>
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={1} sm={1} lg={1} mt={0.7} className={classes.checkbox}>
+          <Grid item xs={2} sm={2.3} lg={1} md={1.6} mt={0.7} className={classes.checkbox}>
             {show && (
               <Tooltip title="Delete All" arrow>
                 <IconButton aria-label="delete">
