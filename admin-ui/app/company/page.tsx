@@ -6,7 +6,6 @@ import { findAll } from '../../services/api.service';
 import { ICompany } from './models/company.model';
 
 const URL = 'companies';
-
 function Page() {
   const companies = use<Array<ICompany>>(findAll(URL));
   return (
