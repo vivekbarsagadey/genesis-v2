@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import {
   Button, Card, Grid, Typography,
 } from '@mui/material';
@@ -7,10 +6,7 @@ import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import { makeStyles } from '@mui/styles';
-import Checkbox from '@mui/material/Checkbox';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import { Box } from '@material-ui/core';
-import BuilderThemesSelectComponent from './builder.page.component.select';
+import React, { useEffect } from 'react';
 import BuilderPageSelectComponent from './builder.page.component.select';
 
 const useStyles = makeStyles({
@@ -22,12 +18,12 @@ const useStyles = makeStyles({
     backgroundPosition: 'center',
     position: 'relative',
   },
-  genesislogo: {
+  genesisLogo: {
     height: '300px',
     width: '290px',
     position: 'relative',
   },
-  genesislogo1: {
+  genesisLogo1: {
     position: 'absolute',
     top: '50%',
     left: '45%',
@@ -40,6 +36,7 @@ const useStyles = makeStyles({
 
 type IBuilderTheme = {
   handleCloseTheme: () => void;
+  id:string
 };
 const Transition = React.forwardRef(
   (
@@ -47,10 +44,11 @@ const Transition = React.forwardRef(
       children: React.ReactElement;
     },
     ref: React.Ref<unknown>,
+  // eslint-disable-next-line react/jsx-props-no-spreading
   ) => <Slide direction="up" ref={ref} {...props} />,
 );
 
-function BuilderThemeComponent({ handleCloseTheme }: IBuilderTheme) {
+function BuilderThemeComponent({ handleCloseTheme, id }: IBuilderTheme) {
   const classes = useStyles();
   const [themes, setThemes] = React.useState([]);
   const [checkbox, setCheckbox] = React.useState('checkbox');
@@ -58,8 +56,8 @@ function BuilderThemeComponent({ handleCloseTheme }: IBuilderTheme) {
   const [blankTheme, setBlankTheme] = React.useState<boolean>(false);
   const [blackTheme, setBlackTheme] = React.useState<boolean>(false);
   const [whiteTheme, setWhiteTheme] = React.useState<boolean>(false);
-  const [glassmorphismTheme, setGlassmorphismTheme] = React.useState<boolean>(false);
-  const [themeSelected, setThemeSelected] = React.useState('');
+  const [glassTheme, setGlassTheme] = React.useState<boolean>(false);
+  const [, setThemeSelected] = React.useState('');
 
   const handleClickOpen = () => {
     setBuilderThemes(true);
@@ -72,8 +70,8 @@ function BuilderThemeComponent({ handleCloseTheme }: IBuilderTheme) {
     if (whiteTheme) {
       setThemeSelected('whiteTheme');
     }
-    if (glassmorphismTheme) {
-      setThemeSelected('glassmorphismTheme');
+    if (glassTheme) {
+      setThemeSelected('glassTheme');
     }
   };
 
@@ -90,15 +88,15 @@ function BuilderThemeComponent({ handleCloseTheme }: IBuilderTheme) {
     if (themeRecv === 'White Theme') {
       setWhiteTheme((s) => !s);
     }
-    if (themeRecv === 'Glassmorphism Theme') {
-      setGlassmorphismTheme((s) => !s);
+    if (themeRecv === 'glassTheme') {
+      setGlassTheme((s) => !s);
     }
   };
 
   const fetchData = async () => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/theme`);
     if (!response.ok) {
-      throw new Error('Data coud not be fetched!');
+      throw new Error('Data could not be fetched!');
     } else {
       return response.json();
     }
@@ -113,17 +111,17 @@ function BuilderThemeComponent({ handleCloseTheme }: IBuilderTheme) {
       });
   }, []);
 
-  const updateThemeSelect = (themeSelected: string) => {
-    setCheckbox(themeSelected);
+  const updateThemeSelect = (themeSelect: string) => {
+    setCheckbox(themeSelect);
   };
 
   return (
     <>
       <Grid container>
         <Grid item xs={3} className={classes.background_genesis1}>
-          <Grid container className={classes.genesislogo}>
-            <Grid item xs={12} className={classes.genesislogo1}>
-              <img src="./images/genesislogo.png" alt="image not found" />
+          <Grid container className={classes.genesisLogo}>
+            <Grid item xs={12} className={classes.genesisLogo1}>
+              <img src="./images/genesisLogo.png" alt="" />
             </Grid>
           </Grid>
         </Grid>
@@ -138,8 +136,8 @@ function BuilderThemeComponent({ handleCloseTheme }: IBuilderTheme) {
           </Grid>
           <Grid container spacing={4} padding={3}>
             {themes
-              && themes.map((theme, index) => (
-                <Grid item xs={4} key={index}>
+              && themes.map((theme:any) => (
+                <Grid item xs={4}>
                   <Grid
                     container
                     display="flex"
@@ -154,7 +152,7 @@ function BuilderThemeComponent({ handleCloseTheme }: IBuilderTheme) {
                     <Grid item xs={1}>
                       <input
                         type="checkbox"
-                        checked={checkbox == theme.name}
+                        checked={checkbox === theme.name}
                         onClick={() => updateTheme(theme.name)}
                         style={{ cursor: 'pointer' }}
                         onChange={() => updateThemeSelect(theme.name)}
@@ -213,6 +211,7 @@ function BuilderThemeComponent({ handleCloseTheme }: IBuilderTheme) {
           // getScreenDataSet={getScreenDataSet}
           checkbox={checkbox}
           handleCloseTheme={handleCloseTheme}
+          id={id}
         />
       </Dialog>
     </>

@@ -37,9 +37,10 @@ type IbuilderProps = {
   handleClose: () => void;
   checkbox: string;
   handleCloseTheme: () => void;
+  id:string
 };
 
-function BuilderPageSelectComponent({ handleClose, checkbox,handleCloseTheme }: IbuilderProps) {
+function BuilderPageSelectComponent({ handleClose, checkbox,handleCloseTheme, id }: IbuilderProps) {
   const classes = useStyles();
   const [blankPage, setBlankPage] = useState(false);
   const [loginPage, setLoginPage] = useState(false);
@@ -107,8 +108,11 @@ function BuilderPageSelectComponent({ handleClose, checkbox,handleCloseTheme }: 
   };
   const projectJsonData= {
     theme:checkbox,
-    pages:count
+    pages:count,
+    projectId:id
+
   }
+
   const savePages = async () => {
 
 
@@ -130,7 +134,7 @@ function BuilderPageSelectComponent({ handleClose, checkbox,handleCloseTheme }: 
 
   console.log("Pages >>>", count);
   console.log("Theme Value >>",checkbox);
-
+  console.log("Project ID >>>",id)
   // console.log("pages>>>", pages);
   
 
