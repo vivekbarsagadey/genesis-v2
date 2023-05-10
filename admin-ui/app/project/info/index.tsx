@@ -18,7 +18,7 @@ import { TransitionProps } from '@mui/material/transitions';
 import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
 import BuilderHome from '../../../builder';
-import downloadJsonFile from '../../utility/json.downloder';
+import downloadJsonFile from '../../utility/json.downloader';
 import IProject from '../project.model';
 import BuilderThemeComponent from './builder.theme.select';
 
@@ -28,6 +28,7 @@ const Transition = React.forwardRef(
       children: React.ReactElement;
     },
     ref: React.Ref<unknown>,
+  // eslint-disable-next-line react/jsx-props-no-spreading
   ) => <Slide direction="up" ref={ref} {...props} />,
 );
 type InfoCustomerComponentProps = {
@@ -42,13 +43,13 @@ function InfoProjectComponent({ items }: InfoCustomerComponentProps) {
   const handleOpenTheme = () => setOpenTheme((s) => !s);
   const handleCloseTheme = () => setOpenTheme((s) => !s);
 
-  const [openBuilder, setOpneBuilder] = useState(false);
+  const [openBuilder, setOpenBuilder] = useState(false);
 
   const handelCloseBuilder = () => {
-    setOpneBuilder((s) => !s);
+    setOpenBuilder((s) => !s);
   };
   const handelOpenBuilder = () => {
-    setOpneBuilder((s) => !s);
+    setOpenBuilder((s) => !s);
   };
 
   const jsonFileDownload = () => {
@@ -56,7 +57,7 @@ function InfoProjectComponent({ items }: InfoCustomerComponentProps) {
   };
 
   useEffect(() => {
-    const projectJsonData = JSON.parse(localStorage.getItem('projectJsonData'));
+    const projectJsonData = JSON.parse(localStorage.getItem('projectJsonData') || '{}');
     if (projectJsonData) {
       setLocalStoreData(projectJsonData);
     }
@@ -108,11 +109,7 @@ function InfoProjectComponent({ items }: InfoCustomerComponentProps) {
                 {items.application}
               </Typography>
             </Grid>
-            <Grid
-              item
-              xs={2}
-              style={{ display: 'flex', justifyContent: 'space-around' }}
-            >
+            <Grid item xs={2} display="flex" justifyContent="space-around">
               <Typography variant="body2" noWrap>
                 {items.status}
               </Typography>

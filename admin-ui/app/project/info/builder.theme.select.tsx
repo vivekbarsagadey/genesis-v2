@@ -36,6 +36,7 @@ const useStyles = makeStyles({
 
 type IBuilderTheme = {
   handleCloseTheme: () => void;
+  id:string
 };
 const Transition = React.forwardRef(
   (
