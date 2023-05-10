@@ -102,17 +102,6 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
           </Grid>
           <Grid item xs={1} mt={1}>
             <Link
-              href="/company/companyreport"
-              passHref
-              className={classes.textDecor}
-            >
-              <Button variant="contained" size="small">
-                Report
-              </Button>
-            </Link>
-          </Grid>
-          <Grid item xs={1} mt={1}>
-            <Link
               href="/company/create"
               passHref
               className={classes.textDecor}
