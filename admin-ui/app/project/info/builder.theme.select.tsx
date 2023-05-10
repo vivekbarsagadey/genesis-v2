@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import {
   Button, Card, Grid, Typography,
 } from '@mui/material';
@@ -7,10 +6,7 @@ import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import { makeStyles } from '@mui/styles';
-import Checkbox from '@mui/material/Checkbox';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import { Box } from '@material-ui/core';
-import BuilderThemesSelectComponent from './builder.page.component.select';
+import React, { useEffect } from 'react';
 import BuilderPageSelectComponent from './builder.page.component.select';
 
 const useStyles = makeStyles({
@@ -50,7 +46,7 @@ const Transition = React.forwardRef(
   ) => <Slide direction="up" ref={ref} {...props} />,
 );
 
-function BuilderThemeComponent({ handleCloseTheme }: IBuilderTheme) {
+function BuilderThemeComponent({ handleCloseTheme,id }: IBuilderTheme) {
   const classes = useStyles();
   const [themes, setThemes] = React.useState([]);
   const [checkbox, setCheckbox] = React.useState('checkbox');
@@ -213,6 +209,7 @@ function BuilderThemeComponent({ handleCloseTheme }: IBuilderTheme) {
           // getScreenDataSet={getScreenDataSet}
           checkbox={checkbox}
           handleCloseTheme={handleCloseTheme}
+          id ={id}
         />
       </Dialog>
     </>

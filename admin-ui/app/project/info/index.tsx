@@ -1,6 +1,5 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import {
@@ -8,7 +7,6 @@ import {
   Divider,
   Grid,
   IconButton,
-  Paper,
   Tooltip,
   Typography,
 } from '@mui/material';
@@ -17,7 +15,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Dialog from '@mui/material/Dialog';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
-import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
 import BuilderHome from '../../../builder';
 import downloadJsonFile from '../../utility/json.downloder';
@@ -29,8 +27,8 @@ const Transition = React.forwardRef(
     props: TransitionProps & {
       children: React.ReactElement;
     },
-    ref: React.Ref<unknown>
-  ) => <Slide direction="up" ref={ref} {...props} />
+    ref: React.Ref<unknown>,
+  ) => <Slide direction="up" ref={ref} {...props} />,
 );
 type InfoCustomerComponentProps = {
   items: IProject;
@@ -39,7 +37,6 @@ type InfoCustomerComponentProps = {
 // export const ProjectContext = React.createContext();
 
 function InfoProjectComponent({ items }: InfoCustomerComponentProps) {
-  const router = useRouter();
   const [openTheme, setOpenTheme] = useState(false);
   const [localStoreData, setLocalStoreData] = useState({});
   const handleOpenTheme = () => setOpenTheme((s) => !s);
@@ -65,12 +62,10 @@ function InfoProjectComponent({ items }: InfoCustomerComponentProps) {
     }
   }, []);
 
-
-
   const openBuilderMethod = () => {
-    if (items.projectJson !== null 
-      // || Object.keys(localStoreData).length > 0
-      ) {
+    if (items.projectJson !== null
+    // || Object.keys(localStoreData).length > 0
+    ) {
       handelOpenBuilder();
     } else {
       handleOpenTheme();
@@ -149,7 +144,7 @@ function InfoProjectComponent({ items }: InfoCustomerComponentProps) {
           onClose={handleCloseTheme}
           TransitionComponent={Transition}
         >
-          <BuilderThemeComponent handleCloseTheme={handleCloseTheme} />
+          <BuilderThemeComponent handleCloseTheme={handleCloseTheme} id={items.id} />
         </Dialog>
         {/* Builder full screen  */}
         <Dialog
