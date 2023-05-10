@@ -1,4 +1,8 @@
-import React, { useState } from 'react';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import CallIcon from '@mui/icons-material/Call';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import EmailIcon from '@mui/icons-material/Email';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
@@ -9,38 +13,36 @@ import {
   FormControl,
   IconButton,
   Paper,
-
 } from '@mui/material';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
+import Fade from '@mui/material/Fade';
 import Grid from '@mui/material/Grid/Grid';
-import { styled } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import { makeStyles } from '@mui/styles';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import EmailIcon from '@mui/icons-material/Email';
-import CallIcon from '@mui/icons-material/Call';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Modal from '@mui/material/Modal';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Snackbar from '@mui/material/Snackbar';
 import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 import moment from 'moment';
-import {
-  company,
-  createCompany,
-  deleteCompany,
-  updateCompany,
-} from '../../../services/company.action';
-import { ListComponentProps } from './props';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import { deleteCompany, updateCompany } from '../../../services/company.action';
 import { ICompany, Status } from '../models';
+import { ListComponentProps } from './props';
 
 const CardStyle = styled(Grid)(({ theme }) => ({
   height: '80vh',
   overflowY: 'auto',
 }));
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
+  <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
+));
 
 const useStyles = makeStyles({
   cardView: {
@@ -50,21 +52,32 @@ const useStyles = makeStyles({
     padding: '0px',
   },
   modalStyle: {
-    position: 'absolute',
+    position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
     boxShadow: 24,
-    p: 4,
+    p: 3,
+    borderRadius: '7px',
   },
   buttonStyle: {
     padding: '0px',
   },
 });
 
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  boxShadow: 24,
+  p: 3,
+  borderRadius: '7px',
+};
 type IActiveCompany = {
   activeCompany: ICompany;
 };
@@ -78,15 +91,15 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
   const newCompanies = companies.filter(
-    (ele: ICompany) => ele.status == statusSet[0],
+    (ele: ICompany) => ele.status == statusSet[0]
     //  NEW,
   );
   const activeCompanies = companies.filter(
-    (ele: ICompany) => ele.status == statusSet[1],
+    (ele: ICompany) => ele.status == statusSet[1]
     // ACTIVE,
   );
   const inActiveCompanies = companies.filter(
-    (ele: ICompany) => ele.status == statusSet[2],
+    (ele: ICompany) => ele.status == statusSet[2]
     // INACTIVE
   );
 
@@ -104,10 +117,12 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
                     NEW
                   </Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={1}>
-                  <Badge badgeContent={newCompanies.length} color="info" overlap="circular"></Badge>
+                <Grid item xs={1}>
+                  <Badge
+                    badgeContent={newCompanies.length}
+                    color="info"
+                    overlap="circular"
+                  ></Badge>
                 </Grid>
               </Grid>
 
@@ -129,12 +144,12 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
                     ACTIVE
                   </Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={1}
-                  
-                >
-                 <Badge badgeContent={activeCompanies.length} color="success" overlap="circular"></Badge>
+                <Grid item xs={1}>
+                  <Badge
+                    badgeContent={activeCompanies.length}
+                    color="success"
+                    overlap="circular"
+                  ></Badge>
                 </Grid>
               </Grid>
 
@@ -159,10 +174,12 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
                     INACTIVE
                   </Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={1} >
-                   <Badge badgeContent={inActiveCompanies.length} color='warning' overlap="circular"></Badge>
+                <Grid item xs={1}>
+                  <Badge
+                    badgeContent={inActiveCompanies.length}
+                    color="warning"
+                    overlap="circular"
+                  ></Badge>
                 </Grid>
               </Grid>
 
@@ -186,6 +203,33 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
   const handleEditModalOpen = () => setOpenEditModal(true);
   const handleEditModalClose = () => setOpenEditModal(false);
   const [newStatus, setNewStatus] = useState(newCompany.status);
+  const [newDeleteModal, setNewDeleteModal] = React.useState(false);
+  const handleOpen = () => setNewDeleteModal(true);
+  const handleDeleteModalClose = () => setNewDeleteModal(false);
+  const [alert, setAlert] = React.useState(false);
+  const router = useRouter();
+
+  const handleClickSnackbar = () => {
+    setAlert(true);
+  };
+
+  const handleCloseSnackbar = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setAlert(false);
+  };
+
+  const removeData = (f: ICompany) => {
+    deleteCompany(f.id);
+    handleClickSnackbar();
+    window.location.reload();
+    // router.push('/company/kanban');
+  };
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -248,23 +292,25 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
               }}
             >
               <MenuItem>
-              <Tooltip title='Edit'>
-                <IconButton
-                  onClick={handleEditModalOpen}
-                  className={classes.buttonStyle}
-                >
-                  <EditIcon fontSize="inherit" />
-                </IconButton>
+                <Tooltip title="Edit">
+                  <IconButton
+                    onClick={handleEditModalOpen}
+                    className={classes.buttonStyle}
+                  >
+                    <EditIcon fontSize="inherit" />
+                  </IconButton>
                 </Tooltip>
                 <Modal open={openEditModal} onClose={handleEditModalClose}>
                   <Box className={classes.modalStyle}>
                     <Card>
                       <Grid container spacing={2} p={3}>
                         <Grid item xs={12}>
-                          <Typography fontWeight='bold'>Current Selected Status</Typography>
+                          <Typography fontWeight="bold">
+                            Current Selected Status
+                          </Typography>
                         </Grid>
                         <Grid item xs={12}>
-                          <FormControl fullWidth size='small'>
+                          <FormControl fullWidth size="small">
                             <Select
                               labelId="demo-simple-select-label"
                               id="demo-simple-select"
@@ -277,9 +323,14 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
                             </Select>
                           </FormControl>
                         </Grid>
-                        <Grid item xs={12} display='flex' justifyContent='flex-end'>
+                        <Grid
+                          item
+                          xs={12}
+                          display="flex"
+                          justifyContent="flex-end"
+                        >
                           <Button
-                            variant='contained'
+                            variant="contained"
                             className={classes.buttonStyle}
                             onClick={updateStatusHandler}
                           >
@@ -292,15 +343,61 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
                 </Modal>
               </MenuItem>
               <MenuItem>
-              <Tooltip title='Delete'>
-                <IconButton
-                  onClick={() => deleteCompany(newCompany.id)}
-                  className={classes.buttonStyle}>
-                  <DeleteIcon htmlColor="red" />
-                </IconButton>
+                <Tooltip title="Delete">
+                  <IconButton className={classes.buttonStyle}>
+                    <DeleteIcon htmlColor="red" onClick={handleOpen} />
+                  </IconButton>
                 </Tooltip>
               </MenuItem>
             </Menu>
+            <Snackbar
+              open={alert}
+              autoHideDuration={5000}
+              onClose={handleCloseSnackbar}
+            >
+              <Alert onClose={handleCloseSnackbar} severity="error">
+                Items Deleted Successfully...
+              </Alert>
+            </Snackbar>
+            <Modal
+              aria-labelledby="transition-modal-title"
+              aria-describedby="transition-modal-description"
+              open={newDeleteModal}
+              onClose={handleDeleteModalClose}
+              closeAfterTransition
+            >
+              <Fade in={newDeleteModal}>
+                <Box sx={style}>
+                  <Typography
+                    id="transition-modal-description"
+                    fontSize="0.9rem"
+                  >
+                    Are you sure you want to delete the selected company?
+                  </Typography>
+                  <Grid container mt={4}>
+                    <Grid item xs={6} />
+                    <Grid item xs={3}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={() => handleDeleteModalClose()}
+                      >
+                        Cancel
+                      </Button>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={() => removeData(newCompany)}
+                      >
+                        Ok
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Fade>
+            </Modal>
           </Grid>
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
             <EmailIcon fontSize="inherit" />
@@ -323,7 +420,7 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
             </Typography>
           </Grid>
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={2}>
-              <Typography noWrap>Status -</Typography>
+            <Typography noWrap>Status -</Typography>
             <Typography noWrap variant="h6" pl={1} color="blue">
               {newCompany.status}
             </Typography>
@@ -347,12 +444,41 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
     </Box>
   );
 }
+
 function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [openEditModal, setOpenEditModal] = React.useState(false);
   const handleEditModalOpen = () => setOpenEditModal(true);
   const handleEditModalClose = () => setOpenEditModal(false);
   const [newStatus, setNewStatus] = useState(activeCompany.status);
+
+  const [activeDeleteModal, setActiveDeleteModal] = React.useState(false);
+  const handleOpen = () => setActiveDeleteModal(true);
+  const handleDeleteModalClose = () => setActiveDeleteModal(false);
+  const [alert, setAlert] = React.useState(false);
+  const router = useRouter();
+
+  const handleClickSnackbar = () => {
+    setAlert(true);
+  };
+
+  const handleCloseSnackbar = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setAlert(false);
+  };
+
+  const removeData = (f: ICompany) => {
+    deleteCompany(f.id);
+    handleClickSnackbar();
+    window.location.reload();
+    // router.push('/company/kanban');
+  };
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -415,24 +541,26 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
               }}
             >
               <MenuItem>
-              <Tooltip title='Edit'>
-                <IconButton
-                  onClick={handleEditModalOpen}
-                  className={classes.buttonStyle}
-                >
-                  <EditIcon fontSize="inherit" />
-                </IconButton>
+                <Tooltip title="Edit">
+                  <IconButton
+                    onClick={handleEditModalOpen}
+                    className={classes.buttonStyle}
+                  >
+                    <EditIcon fontSize="inherit" />
+                  </IconButton>
                 </Tooltip>
 
                 <Modal open={openEditModal} onClose={handleEditModalClose}>
                   <Box className={classes.modalStyle}>
                     <Card>
                       <Grid container spacing={2} p={3}>
-                      <Grid item xs={12}>
-                          <Typography fontWeight='bold'>Current Selected Status</Typography>
+                        <Grid item xs={12}>
+                          <Typography fontWeight="bold">
+                            Current Selected Status
+                          </Typography>
                         </Grid>
                         <Grid item xs={12}>
-                          <FormControl fullWidth size='small'>
+                          <FormControl fullWidth size="small">
                             <Select
                               labelId="demo-simple-select-label"
                               id="demo-simple-select"
@@ -445,9 +573,14 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
                             </Select>
                           </FormControl>
                         </Grid>
-                        <Grid item xs={12} display='flex' justifyContent='flex-end'>
+                        <Grid
+                          item
+                          xs={12}
+                          display="flex"
+                          justifyContent="flex-end"
+                        >
                           <Button
-                            variant='contained'
+                            variant="contained"
                             className={classes.buttonStyle}
                             onClick={updateStatusHandler}
                           >
@@ -460,16 +593,65 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
                 </Modal>
               </MenuItem>
               <MenuItem>
-              <Tooltip title='Delete'>
-                <IconButton
-                  onClick={() => deleteCompany(activeCompany.id)}
-                  className={classes.buttonStyle}
-                >
-                  <DeleteIcon htmlColor="red" />
-                </IconButton>
+                <Tooltip title="Delete">
+                  <IconButton
+                    // onClick={() => deleteCompany(activeCompany.id)}
+                    className={classes.buttonStyle}
+                  >
+                    <DeleteIcon htmlColor="red" onClick={handleOpen} />
+                  </IconButton>
                 </Tooltip>
               </MenuItem>
             </Menu>
+
+            <Snackbar
+              open={alert}
+              autoHideDuration={5000}
+              onClose={handleCloseSnackbar}
+            >
+              <Alert onClose={handleCloseSnackbar} severity="error">
+                Items Deleted Successfully...
+              </Alert>
+            </Snackbar>
+            <Modal
+              aria-labelledby="transition-modal-title"
+              aria-describedby="transition-modal-description"
+              open={activeDeleteModal}
+              onClose={handleDeleteModalClose}
+              closeAfterTransition
+            >
+              <Fade in={activeDeleteModal}>
+                <Box sx={style}>
+                  <Typography
+                    id="transition-modal-description"
+                    fontSize="0.9rem"
+                  >
+                    Are you sure you want to delete the selected company?
+                  </Typography>
+                  <Grid container mt={4}>
+                    <Grid item xs={6} />
+                    <Grid item xs={3}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={() => handleDeleteModalClose()}
+                      >
+                        Cancel
+                      </Button>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={() => removeData(activeCompany)}
+                      >
+                        Ok
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Fade>
+            </Modal>
           </Grid>
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
             <EmailIcon fontSize="inherit" />
@@ -492,7 +674,7 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
             </Typography>
           </Grid>
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={2}>
-              <Typography noWrap>Status -</Typography>
+            <Typography noWrap>Status -</Typography>
             <Typography noWrap variant="h6" pl={1} color="green">
               {activeCompany.status}
             </Typography>
@@ -522,6 +704,34 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
   const handleEditModalOpen = () => setOpenEditModal(true);
   const handleEditModalClose = () => setOpenEditModal(false);
   const [newStatus, setNewStatus] = useState(inActiveCompany.status);
+
+  const [inActiveDeleteModal, setInActiveDeleteModal] = React.useState(false);
+  const handleOpen = () => setInActiveDeleteModal(true);
+  const handleDeleteModalClose = () => setInActiveDeleteModal(false);
+  const [alert, setAlert] = React.useState(false);
+  const router = useRouter();
+
+  const handleClickSnackbar = () => {
+    setAlert(true);
+  };
+
+  const handleCloseSnackbar = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setAlert(false);
+  };
+
+  const removeData = (f: ICompany) => {
+    deleteCompany(f.id);
+    handleClickSnackbar();
+    window.location.reload();
+    // router.push('/company/kanban');
+  };
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -584,13 +794,13 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
               }}
             >
               <MenuItem>
-              <Tooltip title='Edit'>
-                <IconButton
-                  onClick={handleEditModalOpen}
-                  className={classes.buttonStyle}
-                >
-                  <EditIcon fontSize="inherit" />
-                </IconButton>
+                <Tooltip title="Edit">
+                  <IconButton
+                    onClick={handleEditModalOpen}
+                    className={classes.buttonStyle}
+                  >
+                    <EditIcon fontSize="inherit" />
+                  </IconButton>
                 </Tooltip>
                 <Modal
                   open={openEditModal}
@@ -600,11 +810,13 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
                   <Box className={classes.modalStyle}>
                     <Card>
                       <Grid container spacing={2} p={3}>
-                      <Grid item xs={12}>
-                          <Typography fontWeight='bold'>Current Selected Status</Typography>
+                        <Grid item xs={12}>
+                          <Typography fontWeight="bold">
+                            Current Selected Status
+                          </Typography>
                         </Grid>
                         <Grid item xs={12}>
-                          <FormControl fullWidth size='small'>
+                          <FormControl fullWidth size="small">
                             <Select
                               labelId="demo-simple-select-label"
                               id="demo-simple-select"
@@ -617,9 +829,14 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
                             </Select>
                           </FormControl>
                         </Grid>
-                        <Grid item xs={12} display='flex' justifyContent='flex-end'>
+                        <Grid
+                          item
+                          xs={12}
+                          display="flex"
+                          justifyContent="flex-end"
+                        >
                           <Button
-                            variant='contained'
+                            variant="contained"
                             className={classes.buttonStyle}
                             onClick={updateStatusHandler}
                           >
@@ -632,16 +849,64 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
                 </Modal>
               </MenuItem>
               <MenuItem>
-              <Tooltip title='Delete'>
-                <IconButton
-                  onClick={() => deleteCompany(inActiveCompany.id)}
-                  className={classes.buttonStyle}
-                >
-                  <DeleteIcon htmlColor="red" />
-                </IconButton>
+                <Tooltip title="Delete">
+                  <IconButton
+                    // onClick={() => deleteCompany(inActiveCompany.id)}
+                    className={classes.buttonStyle}
+                  >
+                    <DeleteIcon htmlColor="red" onClick={handleOpen} />
+                  </IconButton>
                 </Tooltip>
               </MenuItem>
             </Menu>
+            <Snackbar
+              open={alert}
+              autoHideDuration={5000}
+              onClose={handleCloseSnackbar}
+            >
+              <Alert onClose={handleCloseSnackbar} severity="error">
+                Items Deleted Successfully...
+              </Alert>
+            </Snackbar>
+            <Modal
+              aria-labelledby="transition-modal-title"
+              aria-describedby="transition-modal-description"
+              open={inActiveDeleteModal}
+              onClose={handleDeleteModalClose}
+              closeAfterTransition
+            >
+              <Fade in={inActiveDeleteModal}>
+                <Box sx={style}>
+                  <Typography
+                    id="transition-modal-description"
+                    fontSize="0.9rem"
+                  >
+                    Are you sure you want to delete the selected company?
+                  </Typography>
+                  <Grid container mt={4}>
+                    <Grid item xs={6} />
+                    <Grid item xs={3}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={() => handleDeleteModalClose()}
+                      >
+                        Cancel
+                      </Button>
+                    </Grid>
+                    <Grid item xs={2}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={() => removeData(inActiveCompany)}
+                      >
+                        Ok
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Fade>
+            </Modal>
           </Grid>
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
             <EmailIcon fontSize="inherit" />
@@ -664,7 +929,7 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
             </Typography>
           </Grid>
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={2}>
-              <Typography noWrap>Status -</Typography>
+            <Typography noWrap>Status -</Typography>
             <Typography noWrap variant="h6" pl={1} color="red">
               {inActiveCompany.status}
             </Typography>
