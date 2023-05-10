@@ -84,17 +84,13 @@ export const theme = createTheme({
           '&:hover': {
             backgroundColor: 'white',
             borderRadius: 7,
-            '& .MuiListItemIcon-root': {
-              // backgroundColor: 'orange',
+            '&.MuiListItemIcon-root': {
               color: 'black',
-              // background:'red'
             },
           },
           '&.Mui-selected': {
             backgroundColor: 'white',
             borderRadius: 7,
-            // marginTop:2,
-            '&.Mui-focusVisible': { background: 'orange' },
           },
         },
       },
