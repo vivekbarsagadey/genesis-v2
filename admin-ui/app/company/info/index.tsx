@@ -135,17 +135,17 @@ function InfoCompanyComponent({ company, setIsCheck, isCheck }: InfoCompanyCompo
           <Grid item xs={1}>
             <Switch condition={company.status}>
               <Case value="NEW">
-                <Typography color='#ff3333' variant="body2" noWrap fontWeight='bold'>
+                <Typography variant="body2" noWrap>
                   {company.status}
                 </Typography>
               </Case>
               <Case value="ACTIVE">
-                <Typography color='#85e085' variant="body2" noWrap fontWeight='bold'>
+                <Typography variant="body2" noWrap>
                   {company.status}
                 </Typography>
               </Case>
               <Case value="INACTIVE">
-                <Typography color='#4d4dff' variant="body2" noWrap fontWeight='bold'>
+                <Typography variant="body2" noWrap>
                   {company.status}
                 </Typography>
               </Case>

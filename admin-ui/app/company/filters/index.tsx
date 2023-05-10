@@ -35,13 +35,13 @@ function FilterComponent({
   const open = Boolean(anchorEl);
 
   const doFilter = () => {
-    const newUsers = companies?.filter(
+    const newCompanies = companies?.filter(
       (u) =>
         u.name.toLowerCase().includes(filterDataCompanyName.toLowerCase()) ||
-        u.name.toLowerCase().includes(filterDataOwnerName.toLowerCase()) ||
+        u.ownerName.toLowerCase().includes(filterDataOwnerName.toLowerCase()) ||
         u.email.toLowerCase().includes(filterDataEmail.toLowerCase())
     );
-    itemsCallBackHandler(newUsers);
+    itemsCallBackHandler(newCompanies);
     handleClose();
   };
 

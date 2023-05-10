@@ -14,6 +14,7 @@ type ICompany = {
   createdAt: number;
   updatedAt: number;
   status: string;
+  ownerName: string;
 };
 
 export type { ICompany };
