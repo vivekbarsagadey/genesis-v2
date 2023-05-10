@@ -110,7 +110,7 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
         <CardStyle>
           <Paper variant="outlined" className={classes.cardView}>
             <CardContent>
-              <Grid container>
+              <Grid container spacing={2}>
                 <Grid item xs={11} display="flex" alignItems="center">
                   <FiberManualRecordIcon fontSize="small" htmlColor="blue" />
                   <Typography variant="h6" pl={1}>
@@ -137,7 +137,7 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
         <CardStyle>
           <Paper variant="outlined" className={classes.cardView}>
             <CardContent>
-              <Grid container>
+              <Grid container spacing={2}>
                 <Grid item xs={11} display="flex" alignItems="center">
                   <FiberManualRecordIcon fontSize="small" htmlColor="green" />
                   <Typography variant="h6" pl={1}>
@@ -167,7 +167,7 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
         <CardStyle>
           <Paper variant="outlined" className={classes.cardView}>
             <CardContent>
-              <Grid container>
+              <Grid container spacing={2}>
                 <Grid item xs={11} display="flex" alignItems="center">
                   <FiberManualRecordIcon fontSize="small" htmlColor="red" />
                   <Typography variant="h6" pl={1}>
@@ -419,7 +419,7 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
               {moment(newCompany.createdAt).format('DD/MM/YYYY')}
             </Typography>
           </Grid>
-          <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={2}>
+          <Grid item xs={6} display="flex" alignItems="center" justifyContent='space-around'>
             <Typography noWrap>Status -</Typography>
             <Typography noWrap variant="h6" pl={1} color="blue">
               {newCompany.status}
@@ -431,8 +431,6 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
             display="flex"
             alignItems="center"
             justifyContent="flex-end"
-            pr={2}
-            pb={1}
           >
             <CallIcon fontSize="inherit" />
             <Typography noWrap pl={1}>
