@@ -1,6 +1,8 @@
 'use client';
 
-import { Box, Button, Card, Grid, TextField, Typography } from '@mui/material';
+import {
+  Box, Button, Card, Grid, TextField, Typography,
+} from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
 import Snackbar from '@mui/material/Snackbar';
@@ -11,16 +13,16 @@ import React, { useState } from 'react';
 import { createCompany } from '../../../services/company.action';
 import { countrySelect, genderSelect, stateSelect } from '../graphdata/graph.data';
 import { Status } from '../models';
-import { FormInput, FormSelectComponent } from '../../../component/ui/form';
 
 const useStyles = makeStyles({
-  buttonStyle: { width: '73%', },
-  gridContainer: { display: "flex", alignItems: "center" },
+  buttonStyle: { width: '73%' },
+  gridContainer: { display: 'flex', alignItems: 'center' },
   mainHeader: { display: 'flex', flexDirection: 'row' },
-  headerChild: { color: 'red' }
+  headerChild: { color: 'red' },
 });
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 ));
 
@@ -38,7 +40,6 @@ function CompanyCreateComponent() {
   const [companyCountry, setCompanyCountry] = useState('');
   const [companyPinCode, setCompanyPinCode] = useState('');
   const [alert, setAlert] = useState(false);
-  const [data, setData] = useState('');
 
   const router = useRouter();
 
@@ -48,20 +49,21 @@ function CompanyCreateComponent() {
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string
+    reason?: string,
   ) => {
-    if (reason === 'clickaway') {
+    if (reason === 'clickAway') {
       return;
     }
     setAlert(false);
   };
 
+  // eslint-disable-next-line no-restricted-globals
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   // POST call
   const updateMyCompanyData = async () => {
     try {
       const body = {
-        ownerName: ownerName,
+        ownername: ownerName,
         name: companyName,
         email: companyEmail,
         mobile: companyMobile,
@@ -71,11 +73,12 @@ function CompanyCreateComponent() {
         state: companyState,
         country: companyCountry,
         pincode: companyPinCode,
-        gender: companyGender
+        gender: companyGender,
       };
       await createCompany(body);
       await router.push('/company');
     } catch (error) {
+      console.log(error);
     }
   };
 
@@ -102,25 +105,25 @@ function CompanyCreateComponent() {
   };
   const updateCompanyState = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setCompanyState(value);
   };
   const updateCompanyGender = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setCompanyGender(value);
   };
   const updateCompanyCountry = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setCompanyCountry(value);
   };
   const getCompanyStatusValue = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setCompanyStatus(value);
   };
@@ -142,12 +145,9 @@ function CompanyCreateComponent() {
           {/* <Grid item xs={6}>
             <FormInput value={data} header='Name' size='small' onChange={setData} placeholder='Select Name' />
           </Grid> */}
-          
           {/* <Grid item xs={6} mt={1}>
             <FormSelectComponent mainData={statusSet} onChange={setData} value={data} header='Quantity' size='small' placeholder='Select Quantity' disablePortal={true} />
           </Grid> */}
-
-
           <Grid item xs={6} mt={1}>
             <Grid container className={classes.gridContainer}>
               <Grid item xs={3} className={classes.mainHeader}>
@@ -281,6 +281,7 @@ function CompanyCreateComponent() {
                   size="small"
                   options={countrySelect.map((option) => option.country)}
                   renderInput={(params) => (
+                    // eslint-disable-next-line react/jsx-props-no-spreading
                     <TextField {...params} placeholder="Select Country" />
                   )}
                 />
@@ -306,6 +307,7 @@ function CompanyCreateComponent() {
                   size="small"
                   options={stateSelect.map((option) => option.state)}
                   renderInput={(params) => (
+                    // eslint-disable-next-line react/jsx-props-no-spreading
                     <TextField {...params} placeholder="Select State" />
                   )}
                 />
@@ -331,6 +333,7 @@ function CompanyCreateComponent() {
                   size="small"
                   options={genderSelect.map((option) => option.gender)}
                   renderInput={(params) => (
+                    // eslint-disable-next-line react/jsx-props-no-spreading
                     <TextField {...params} placeholder="Select gender" />
                   )}
                 />
@@ -401,6 +404,7 @@ function CompanyCreateComponent() {
                   size="small"
                   options={statusSet?.map((option: any) => option)}
                   renderInput={(params) => (
+                    // eslint-disable-next-line react/jsx-props-no-spreading
                     <TextField {...params} placeholder="Select Status" />
                   )}
                 />
