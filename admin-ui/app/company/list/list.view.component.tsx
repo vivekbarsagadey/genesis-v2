@@ -4,32 +4,38 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import {
   Box,
-  Card, Divider,
+  Card,
+  Divider,
   Grid,
   IconButton,
-  Pagination, Typography,
+  Pagination,
+  Typography,
 } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import { useState } from 'react';
+import { makeStyles } from '@mui/styles';
 import { PaginationHandler } from '../../utility';
 import InfoCompanyComponent from '../info';
 import { ICompany } from '../models/company.model';
-import { makeStyles } from '@mui/styles';
 import { baseStyle } from '../../../themes';
 
 const useStyles = makeStyles({
-  headerContent: { display: 'flex', alignContent: `center` },
-  footer: { display: "flex", justifyContent: "flex-end" },
+  headerContent: { display: 'flex', alignContent: 'center' },
+  footer: { display: 'flex', justifyContent: 'flex-end' },
   pagination: { position: 'fixed' },
   divider: { width: '98.5%' },
   infoCom: { height: '62vh' },
-  contactCenter: { display: 'flex', justifyContent: 'center', },
-  unknownContent: { display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }
+  contactCenter: { display: 'flex', justifyContent: 'center' },
+  unknownContent: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+  },
 });
 
 function ListViewComponent({ companies, myRef }: any) {
-
-  const classes = useStyles()
+  const classes = useStyles();
   const [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(companies.length / PER_PAGE);
@@ -214,14 +220,6 @@ function ListViewComponent({ companies, myRef }: any) {
     paginationHandler.jump(p);
   };
 
-  const handleSelectAll = () => {
-    setIsCheckAll(!isCheckAll);
-    setIsCheck(list.map((li) => li.id));
-    if (isCheckAll) {
-      setIsCheck([]);
-    }
-  };
-  
   return (
     <>
       <Grid ref={myRef}>
@@ -231,16 +229,12 @@ function ListViewComponent({ companies, myRef }: any) {
               <Grid item xs={1}>
                 <Grid container ml={1}>
                   <Grid item xs={4}>
-                    <Checkbox size="small" onChange={handleSelectAll} checked={isCheckAll} />
+                    <Checkbox size="small" />
                   </Grid>
                 </Grid>
               </Grid>
 
-              <Grid
-                item
-                xs={2}
-                className={classes.headerContent}
-              >
+              <Grid item xs={2} className={classes.headerContent}>
                 <Typography variant="subtitle2" noWrap>
                   Created Date
                 </Typography>
@@ -255,11 +249,7 @@ function ListViewComponent({ companies, myRef }: any) {
                 )}
               </Grid>
 
-              <Grid
-                item
-                xs={2}
-                className={classes.headerContent}
-              >
+              <Grid item xs={2} className={classes.headerContent}>
                 <Typography variant="subtitle2" noWrap>
                   Company Name
                 </Typography>
@@ -274,11 +264,7 @@ function ListViewComponent({ companies, myRef }: any) {
                 )}
               </Grid>
 
-              <Grid
-                item
-                xs={2}
-                className={classes.headerContent}
-              >
+              <Grid item xs={2} className={classes.headerContent}>
                 <Typography variant="subtitle2" noWrap>
                   Email
                 </Typography>
@@ -293,12 +279,8 @@ function ListViewComponent({ companies, myRef }: any) {
                 )}
               </Grid>
 
-              <Grid
-                item
-                xs={2}
-                className={classes.contactCenter}
-              >
-                <Typography variant="subtitle2" noWrap >
+              <Grid item xs={2} className={classes.contactCenter}>
+                <Typography variant="subtitle2" noWrap>
                   Contact
                 </Typography>
                 {contactSort ? (
@@ -312,15 +294,8 @@ function ListViewComponent({ companies, myRef }: any) {
                 )}
               </Grid>
 
-              <Grid
-                item
-                xs={1}
-                className={classes.headerContent}
-              >
-                <Typography
-                  variant="subtitle2"
-                  noWrap
-                >
+              <Grid item xs={1} className={classes.headerContent}>
+                <Typography variant="subtitle2" noWrap>
                   Address
                 </Typography>
                 {addressSort ? (
@@ -334,15 +309,8 @@ function ListViewComponent({ companies, myRef }: any) {
                 )}
               </Grid>
 
-              <Grid
-                item
-                xs={1}
-                className={classes.headerContent}
-              >
-                <Typography
-                  variant="subtitle2"
-                  noWrap
-                >
+              <Grid item xs={1} className={classes.headerContent}>
+                <Typography variant="subtitle2" noWrap>
                   Status
                 </Typography>
                 {statusSort ? (
@@ -371,23 +339,24 @@ function ListViewComponent({ companies, myRef }: any) {
         </Box>
         <Divider className={classes.divider} />
         <Grid className={classes.infoCom}>
-          {companies.length === 0 ?
+          {companies.length === 0 ? (
             <Box className={classes.unknownContent}>
-              <Typography fontWeight={'bold'}>data not found</Typography>
+              <Typography fontWeight="bold">data not found</Typography>
             </Box>
-            : paginationHandler.currentData()
+          ) : (
+            paginationHandler
+              .currentData()
               .reverse()
               ?.map((company: ICompany, index: number) => (
                 <Typography key={index}>
-                  <InfoCompanyComponent company={company} setIsCheck={setIsCheck} isCheck={isCheck}  />
+                  <InfoCompanyComponent company={company} />
                 </Typography>
               ))
-          }
+          )}
         </Grid>
       </Grid>
 
-
-      <Grid container mt={4} >
+      <Grid container mt={4}>
         <Grid item xs={12} className={classes.footer}>
           <Grid className={classes.pagination} />
           <Pagination

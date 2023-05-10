@@ -50,11 +50,10 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
 
 type InfoCompanyComponentProps = {
   company: ICompany;
-  setIsCheck: any;
-  isCheck: any;
+ 
 };
 
-function InfoCompanyComponent({ company, setIsCheck, isCheck }: InfoCompanyComponentProps) {
+function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
   const router = useRouter();
   const [alert, setAlert] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -80,13 +79,7 @@ function InfoCompanyComponent({ company, setIsCheck, isCheck }: InfoCompanyCompo
     handleClick();
   };
 
-  const handleCheckBoxClick = (e) => {
-    const { id, checked } = e.target;
-    setIsCheck([...isCheck, id]);
-    if (!checked) {
-      setIsCheck(isCheck.filter((item) => item !== id));
-    }
-  };
+
 
   const classes = useStyles();
 
@@ -97,7 +90,7 @@ function InfoCompanyComponent({ company, setIsCheck, isCheck }: InfoCompanyCompo
           <Grid item xs={1}>
             <Grid container ml={1}>
               <Grid item xs={5}>
-                <Checkbox size="small" onChange={handleCheckBoxClick} checked={isCheck.includes(company.id)} />
+                <Checkbox size="small"  />
               </Grid>
             </Grid>
           </Grid>
