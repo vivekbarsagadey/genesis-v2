@@ -29,7 +29,6 @@ import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import { makeStyles } from '@mui/styles';
 import moment from 'moment';
-import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { deleteCompany, updateCompany } from '../../../services/company.action';
 import { ICompany, Status } from '../models';
@@ -53,13 +52,13 @@ const useStyles = makeStyles({
     padding: '0px',
   },
   modalStyle: {
-    position: 'absolute' as 'absolute',
+    position: 'absolute' as const,
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
-    boxShadow: 24,
+    boxShadow: '24px',
     p: 3,
     borderRadius: '7px',
   },
@@ -69,7 +68,7 @@ const useStyles = makeStyles({
 });
 
 const style = {
-  position: 'absolute' as 'absolute',
+  position: 'absolute' as const,
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
@@ -89,18 +88,19 @@ type IInActiveCompany = {
   inActiveCompany: ICompany;
 };
 function CompanyKanbanView({ companies }: ListComponentProps) {
+  // eslint-disable-next-line no-restricted-globals
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
   const newCompanies = companies.filter(
-    (ele: ICompany) => ele.status === statusSet[0]
+    (ele: ICompany) => ele.status === statusSet[0],
     //  NEW,
   );
   const activeCompanies = companies.filter(
-    (ele: ICompany) => ele.status === statusSet[1]
+    (ele: ICompany) => ele.status === statusSet[1],
     // ACTIVE,
   );
   const inActiveCompanies = companies.filter(
-    (ele: ICompany) => ele.status === statusSet[2]
+    (ele: ICompany) => ele.status === statusSet[2],
     // INACTIVE
   );
 
@@ -119,16 +119,13 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Badge
-                    badgeContent={newCompanies.length}
-                    color="info"
-                    overlap="circular"
-                  ></Badge>
+                  <Badge badgeContent={newCompanies.length} color="info" overlap="circular" />
                 </Grid>
               </Grid>
 
-              {newCompanies.reverse()?.map((newCompany, index) => (
-                <NewCompanyComponent newCompany={newCompany} key={index} />
+              {newCompanies.reverse()?.map((newCompany) => (
+                // eslint-disable-next-line no-use-before-define
+                <NewCompanyComponent newCompany={newCompany} />
               ))}
             </CardContent>
           </Paper>
@@ -150,14 +147,14 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
                     badgeContent={activeCompanies.length}
                     color="success"
                     overlap="circular"
-                  ></Badge>
+                  />
                 </Grid>
               </Grid>
 
-              {activeCompanies.reverse()?.map((activeCompany, index) => (
+              {activeCompanies.reverse()?.map((activeCompany) => (
+                // eslint-disable-next-line no-use-before-define
                 <ActiveCompanyComponent
                   activeCompany={activeCompany}
-                  key={index}
                 />
               ))}
             </CardContent>
@@ -176,18 +173,14 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
                   </Typography>
                 </Grid>
                 <Grid item xs={1}>
-                  <Badge
-                    badgeContent={inActiveCompanies.length}
-                    color="warning"
-                    overlap="circular"
-                  ></Badge>
+                  <Badge badgeContent={inActiveCompanies.length} color="warning" />
                 </Grid>
               </Grid>
 
-              {inActiveCompanies.reverse()?.map((inActiveCompany, index) => (
+              {inActiveCompanies.reverse()?.map((inActiveCompany) => (
+                // eslint-disable-next-line no-use-before-define
                 <InActiveCompanyComponent
                   inActiveCompany={inActiveCompany}
-                  key={index}
                 />
               ))}
             </CardContent>
@@ -208,7 +201,6 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
   const handleOpen = () => setNewDeleteModal(true);
   const handleDeleteModalClose = () => setNewDeleteModal(false);
   const [alert, setAlert] = React.useState(false);
-  const router = useRouter();
 
   const handleClickSnackbar = () => {
     setAlert(true);
@@ -216,9 +208,9 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
 
   const handleCloseSnackbar = (
     event?: React.SyntheticEvent | Event,
-    reason?: string
+    reason?: string,
   ) => {
-    if (reason === 'clickaway') {
+    if (reason === 'clickAway') {
       return;
     }
     setAlert(false);
@@ -232,7 +224,7 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
   };
 
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event:any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -240,7 +232,7 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
   };
   const classes = useStyles();
 
-  const handleupdateStatus = (event: SelectChangeEvent) => {
+  const handleUpdateStatus = (event: SelectChangeEvent) => {
     setNewStatus(event.target.value as string);
   };
 
@@ -316,7 +308,7 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
                               labelId="demo-simple-select-label"
                               id="demo-simple-select"
                               value={newStatus}
-                              onChange={handleupdateStatus}
+                              onChange={handleUpdateStatus}
                             >
                               <MenuItem value="NEW">NEW</MenuItem>
                               <MenuItem value="ACTIVE">ACTIVE</MenuItem>
@@ -421,7 +413,7 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
             </Typography>
           </Grid>
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
-          <Typography noWrap>Status -</Typography>
+            <Typography noWrap>Status - </Typography>
             <Typography noWrap variant="h6" color="blue">
               {newCompany.status}
             </Typography>
@@ -457,7 +449,6 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
   const handleOpen = () => setActiveDeleteModal(true);
   const handleDeleteModalClose = () => setActiveDeleteModal(false);
   const [alert, setAlert] = React.useState(false);
-  const router = useRouter();
 
   const handleClickSnackbar = () => {
     setAlert(true);
@@ -465,9 +456,9 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
 
   const handleCloseSnackbar = (
     event?: React.SyntheticEvent | Event,
-    reason?: string
+    reason?: string,
   ) => {
-    if (reason === 'clickaway') {
+    if (reason === 'clickAway') {
       return;
     }
     setAlert(false);
@@ -481,7 +472,7 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
   };
 
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event:any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -489,7 +480,7 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
   };
   const classes = useStyles();
 
-  const handleupdateStatus = (event: SelectChangeEvent) => {
+  const handleUpdateStatus = (event: SelectChangeEvent) => {
     setNewStatus(event.target.value as string);
   };
 
@@ -566,7 +557,7 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
                               labelId="demo-simple-select-label"
                               id="demo-simple-select"
                               value={newStatus}
-                              onChange={handleupdateStatus}
+                              onChange={handleUpdateStatus}
                             >
                               <MenuItem value="NEW">NEW</MenuItem>
                               <MenuItem value="ACTIVE">ACTIVE</MenuItem>
@@ -675,7 +666,7 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
             </Typography>
           </Grid>
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
-          <Typography noWrap>Status -</Typography>
+            <Typography noWrap>Status -</Typography>
             <Typography noWrap variant="h6" color="green">
               {activeCompany.status}
             </Typography>
@@ -710,7 +701,6 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
   const handleOpen = () => setInActiveDeleteModal(true);
   const handleDeleteModalClose = () => setInActiveDeleteModal(false);
   const [alert, setAlert] = React.useState(false);
-  const router = useRouter();
 
   const handleClickSnackbar = () => {
     setAlert(true);
@@ -718,9 +708,9 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
 
   const handleCloseSnackbar = (
     event?: React.SyntheticEvent | Event,
-    reason?: string
+    reason?: string,
   ) => {
-    if (reason === 'clickaway') {
+    if (reason === 'clickAway') {
       return;
     }
     setAlert(false);
@@ -734,7 +724,7 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
   };
 
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event:any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -742,7 +732,7 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
   };
   const classes = useStyles();
 
-  const handleupdateStatus = (event: SelectChangeEvent) => {
+  const handleUpdateStatus = (event: SelectChangeEvent) => {
     setNewStatus(event.target.value as string);
   };
 
@@ -822,7 +812,7 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
                               labelId="demo-simple-select-label"
                               id="demo-simple-select"
                               value={newStatus}
-                              onChange={handleupdateStatus}
+                              onChange={handleUpdateStatus}
                             >
                               <MenuItem value="NEW">NEW</MenuItem>
                               <MenuItem value="ACTIVE">ACTIVE</MenuItem>
@@ -930,7 +920,7 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
             </Typography>
           </Grid>
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
-          <Typography noWrap>Status -</Typography>
+            <Typography noWrap>Status - </Typography>
             <Typography noWrap variant="h6" color="blue">
               {inActiveCompany.status}
             </Typography>
