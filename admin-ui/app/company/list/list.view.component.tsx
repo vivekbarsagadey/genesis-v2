@@ -34,23 +34,23 @@ const useStyles = makeStyles({
   },
 });
 
-function ListViewComponent({ companies, myRef }: any) {
+function ListViewComponent({ companies, myRef,setShow,show, }: any) {
   const classes = useStyles();
   const [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(companies.length / PER_PAGE);
   const paginationHandler = PaginationHandler(companies, PER_PAGE);
-
   const [nameSort, setNameSort] = useState(true);
   const [dateSort, setDateSort] = useState(true);
   const [emailSort, setEmailSort] = useState(true);
   const [contactSort, setContactSort] = useState(true);
   const [addressSort, setAddressSort] = useState(true);
   const [statusSort, setStatusSort] = useState(true);
-
   const [isCheckAll, setIsCheckAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
   const [list] = useState(companies);
+  const [multiSelect, setMultiSelect] = useState([]);
+
 
   const handleNameSort = () => {
     if (nameSort) {
@@ -220,6 +220,14 @@ function ListViewComponent({ companies, myRef }: any) {
     paginationHandler.jump(p);
   };
 
+  const getMultiSelectedValue = (valRec) => {
+    setMultiSelect([...multiSelect, valRec]);
+    // console.log("valRec",valRec);
+  };
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setShow(event.target.checked);
+  };
+
   return (
     <>
       <Grid ref={myRef}>
@@ -229,7 +237,9 @@ function ListViewComponent({ companies, myRef }: any) {
               <Grid item xs={1}>
                 <Grid container ml={1}>
                   <Grid item xs={4}>
-                    <Checkbox size="small" />
+                    <Checkbox checked={show}
+                      onChange={handleChange}
+                      size="small"/>
                   </Grid>
                 </Grid>
               </Grid>
@@ -349,7 +359,8 @@ function ListViewComponent({ companies, myRef }: any) {
               .reverse()
               ?.map((company: ICompany, index: number) => (
                 <Typography key={index}>
-                  <InfoCompanyComponent company={company} />
+                  <InfoCompanyComponent company={company}  show={show}
+                  getMultiSelectedValue={getMultiSelectedValue} />
                 </Typography>
               ))
           )}

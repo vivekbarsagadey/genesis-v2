@@ -2,9 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import PrintIcon from '@mui/icons-material/Print';
-import {
-  Box, Button, Divider, Grid, IconButton, Tooltip,
-} from '@mui/material';
+import { Box, Button, Divider, Grid, IconButton, Tooltip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
 import { Case, Default, Switch } from 'react-if';
@@ -21,6 +19,7 @@ import ListViewComponent from './list/list.view.component';
 import { ICompany } from './models/company.model';
 import CompanySearchDetails from './search';
 import CompanyViewComponent from './view';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 interface CompanyComponentProps {
   companies: Array<ICompany>;
@@ -33,12 +32,17 @@ const useStyles = makeStyles({
   textDecor: { textDecoration: baseStyle.textDecoration.none },
   display: { display: baseStyle.display },
   divider: { width: '100%', marginTop: '0.5rem' },
+  checkbox: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
 });
 
 function CompanyComponentHome({ companies }: CompanyComponentProps) {
   const [copyCompanies, setCopyCompanies] = useState<Array<ICompany>>([
     ...companies,
   ]);
+  const [show, setShow] = useState(false);
   const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
   const onSearchHandler = (c: Array<ICompany>) => {
     setCopyCompanies(c);
@@ -57,6 +61,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
   const itemsCallBackHandler = (_items: Array<ICompany>) => {
     setCopyCompanies(_items);
   };
+
   return (
     <Box
       ml={1.5}
@@ -73,7 +78,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
               onSearchHandler={onSearchHandler}
             />
           </Grid>
-          <Grid item xs={8} md={8} sm={8} lg={8} className={classes.display}>
+          <Grid item xs={8} md={8} sm={8} lg={7} className={classes.display}>
             <Grid container>
               <Grid item xs="auto" mt={0.3}>
                 <FilterComponent
@@ -93,17 +98,22 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                 </Tooltip>
               </Grid>
 
-              <Grid item xs={10}>
+              <Grid item xs={9}>
                 <CompanyViewComponent onViewSelect={onViewSelect} />
               </Grid>
             </Grid>
           </Grid>
+          <Grid item xs={1} sm={1} lg={1} mt={0.7} className={classes.checkbox}>
+            {show && (
+              <Tooltip title="Delete All" arrow>
+                <IconButton aria-label="delete">
+                  <DeleteOutlineIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
+            )}
+          </Grid>
           <Grid item xs={1} mt={1}>
-            <Link
-              href="/company/create"
-              passHref
-              className={classes.textDecor}
-            >
+            <Link href="/company/create" passHref className={classes.textDecor}>
               <Button variant="contained" size="small">
                 Create
               </Button>
@@ -135,7 +145,12 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
             </Case>
             <Default>
               <Grid>
-                <ListViewComponent companies={copyCompanies} myRef={myRef} />
+                <ListViewComponent
+                  companies={copyCompanies}
+                  myRef={myRef}
+                  show={show}
+                  setShow={setShow}
+                />
               </Grid>
             </Default>
           </Switch>
