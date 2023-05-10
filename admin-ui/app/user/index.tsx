@@ -82,19 +82,7 @@ function UserComponentHome({ user }: UserComponentProps) {
               </Grid>
             </Grid>
           </Grid>
-
-          <Grid item xs={1} mt={0.7}>
-            <Link
-              href="/user/userreport"
-              passHref
-              style={{ textDecoration: 'none' }}
-            >
-              <Button variant="contained" size="small">
-                Report
-              </Button>
-            </Link>
-          </Grid>
-          <Grid item xs={1} mt={0.7}>
+          <Grid item xs={1} mt={1}>
             <Link
               href="/user/create"
               passHref
