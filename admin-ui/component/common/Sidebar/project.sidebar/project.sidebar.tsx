@@ -7,23 +7,20 @@ import Person2Icon from '@mui/icons-material/Person2';
 import ReportIcon from '@mui/icons-material/Report';
 import StoreIcon from '@mui/icons-material/Store';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import { Grid, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import React from 'react';
-import { Grid, Typography } from '@mui/material';
-import MetaDataSidebar from '../metaDataSidebar/meta.data.sidebar';
 import Link from 'next/link';
+import React from 'react';
+import MetaDataSidebar from '../metaDataSidebar/meta.data.sidebar';
 
-type sidebarProps= {
+type sidebarProps = {
   toggleMenu: boolean;
 }
 
 function ProjectSidebar({ toggleMenu }: sidebarProps) {
-  const [selectedIndex, setSelectedIndex] = React.useState();
   const [openDashboard, setOpenDashboard] = React.useState(false);
   const [openProject, setOpenProject] = React.useState(false);
   const [openCompany, setOpenCompany] = React.useState(false);
@@ -31,26 +28,41 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
   const [openUser, setOpenUser] = React.useState(false);
 
   const handleOpenDashboard = () => {
-    setOpenDashboard((s) => !s);
+    setOpenDashboard(true);
+    setOpenProject(false);
+    setOpenCompany(false);
+    setOpenCustomer(false);
+    setOpenUser(false);
   };
   const handleOpenProject = () => {
-    setOpenProject((s) => !s);
+    setOpenDashboard(false);
+    setOpenProject(true);
+    setOpenCompany(false);
+    setOpenCustomer(false);
+    setOpenUser(false);
   };
   const handleOpenCompany = () => {
-    setOpenCompany((s) => !s);
+    setOpenDashboard(false);
+    setOpenProject(false);
+    setOpenCompany(true);
+    setOpenCustomer(false);
+    setOpenUser(false);
   };
   const handleOpenCustomer = () => {
-    setOpenCustomer((s) => !s);
+    setOpenDashboard(false);
+    setOpenProject(false);
+    setOpenCompany(false);
+    setOpenCustomer(true);
+    setOpenUser(false);
   };
   const handleOpenUser = () => {
-    setOpenUser((s) => !s);
+    setOpenDashboard(false);
+    setOpenProject(false);
+    setOpenCompany(false);
+    setOpenCustomer(false);
+    setOpenUser(true);
   };
-  const handleListItemClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    index: number
-  ) => {
-    setSelectedIndex(index);
-  };
+
   return (
     <div
       style={{
@@ -63,12 +75,7 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
     >
       <Box>
         <List>
-          {/* <Link
-            href="/dashboard"
-            passHref
-            style={{ textDecoration: 'none', color: 'black' }}
-          > */}
-          <ListItemButton onClick={handleOpenDashboard}>
+          <ListItemButton onClick={handleOpenDashboard} selected={openDashboard ? true : false} >
             <Grid container>
               <Grid item xs={2}>
                 <DashboardIcon fontSize="small" />
@@ -76,7 +83,6 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
               {toggleMenu && <Typography>Dashboard</Typography>}
             </Grid>
           </ListItemButton>
-          {/* </Link> */}
           <Collapse in={openDashboard} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <Link
@@ -107,6 +113,7 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
               </ListItemButton>
             </List>
           </Collapse>
+
           <Link
             href="/report"
             passHref
@@ -121,51 +128,51 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
               </Grid>
             </ListItemButton>
           </Link>
-         
-            <ListItemButton onClick={handleOpenProject}>
-              <Grid container>
-                <Grid item xs={2}>
-                  <AppsIcon fontSize="small" />
-                </Grid>
-                {toggleMenu && <Typography>Project</Typography>}
+
+          <ListItemButton onClick={handleOpenProject} selected={openProject ? true : false}>
+            <Grid container>
+              <Grid item xs={2}>
+                <AppsIcon fontSize="small" />
               </Grid>
-            </ListItemButton>
-         
+              {toggleMenu && <Typography>Project</Typography>}
+            </Grid>
+          </ListItemButton>
           <Collapse in={openProject} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-            <Link
-            href="/project"
-            passHref
-            style={{ textDecoration: 'none', color: 'black' }}
-          >
-              <ListItemButton sx={{ pl: 4 }}>
-                <Grid container>
-                  <Grid item xs={2}>
-                    <AdjustIcon fontSize="small" />
+              <Link
+                href="/project"
+                passHref
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
+                <ListItemButton sx={{ pl: 4 }}>
+                  <Grid container>
+                    <Grid item xs={2}>
+                      <AdjustIcon fontSize="small" />
+                    </Grid>
+                    {toggleMenu && <Typography variant="h1">Overview</Typography>}
                   </Grid>
-                  {toggleMenu && <Typography variant="h1">Overview</Typography>}
-                </Grid>
-              </ListItemButton>
+                </ListItemButton>
               </Link>
             </List>
             <List component="div" disablePadding>
-            <Link
-              href="/project/projectreport"
-              passHref
-              style={{ textDecoration: 'none',color: 'black'  }}
-            >
-              <ListItemButton sx={{ pl: 4 }}>
-                <Grid container>
-                  <Grid item xs={2}>
-                    <ReportIcon fontSize="small" />
+              <Link
+                href="/project/projectreport"
+                passHref
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
+                <ListItemButton sx={{ pl: 4 }}>
+                  <Grid container>
+                    <Grid item xs={2}>
+                      <ReportIcon fontSize="small" />
+                    </Grid>
+                    {toggleMenu && <Typography variant="h1">Report</Typography>}
                   </Grid>
-                  {toggleMenu && <Typography variant="h1">Report</Typography>}
-                </Grid>
-              </ListItemButton>
+                </ListItemButton>
               </Link>
             </List>
           </Collapse>
-          <ListItemButton onClick={handleOpenCompany}>
+
+          <ListItemButton onClick={handleOpenCompany} selected={openCompany ? true : false}>
             <Grid container>
               <Grid item xs={2}>
                 <StoreIcon fontSize="small" />
@@ -193,23 +200,24 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
               </Link>
             </List>
             <List component="div" disablePadding>
-               <Link
-              href="/company/companyreport"
-              passHref
-              style={{ textDecoration: 'none', color: 'black' }}
-            >
-              <ListItemButton sx={{ pl: 4 }}>
-                <Grid container>
-                  <Grid item xs={2}>
-                    <ReportIcon fontSize="small" />
+              <Link
+                href="/company/companyreport"
+                passHref
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
+                <ListItemButton sx={{ pl: 4 }}>
+                  <Grid container>
+                    <Grid item xs={2}>
+                      <ReportIcon fontSize="small" />
+                    </Grid>
+                    {toggleMenu && <Typography variant="h1">Report</Typography>}
                   </Grid>
-                  {toggleMenu && <Typography variant="h1">Report</Typography>}
-                </Grid>
-              </ListItemButton>
+                </ListItemButton>
               </Link>
             </List>
           </Collapse>
-          <ListItemButton onClick={handleOpenCustomer}>
+
+          <ListItemButton onClick={handleOpenCustomer} selected={openCustomer ? true : false}>
             <Grid container>
               <Grid item xs={2}>
                 <SupportAgentIcon fontSize="small" />
@@ -237,25 +245,24 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
               </Link>
             </List>
             <List component="div" disablePadding>
-            <Link
-              href="/customer/customerreport"
-              passHref
-              style={{ textDecoration: 'none',color: 'black' }}
-            >
-              <ListItemButton sx={{ pl: 4 }}>
-                <Grid container>
-                  <Grid item xs={2}>
-                    <ReportIcon fontSize="small" />
+              <Link
+                href="/customer/customerreport"
+                passHref
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
+                <ListItemButton sx={{ pl: 4 }}>
+                  <Grid container>
+                    <Grid item xs={2}>
+                      <ReportIcon fontSize="small" />
+                    </Grid>
+                    {toggleMenu && <Typography variant="h1">Report</Typography>}
                   </Grid>
-                  {toggleMenu && <Typography variant="h1">Report</Typography>}
-                </Grid>
-              </ListItemButton>
+                </ListItemButton>
               </Link>
             </List>
           </Collapse>
 
-         
-          <ListItemButton onClick={handleOpenUser}>
+          <ListItemButton onClick={handleOpenUser} selected={openUser ? true : false}>
             <Grid container>
               <Grid item xs={2}>
                 <Person2Icon fontSize="small" />
@@ -283,12 +290,12 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
               </Link>
             </List>
             <List component="div" disablePadding>
-            <Link
-              href="/user/userreport"
-              passHref
-              style={{ textDecoration: 'none', color: 'black' }}
-            >
-                <ListItemButton sx={{pl:4}}>
+              <Link
+                href="/user/userreport"
+                passHref
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
+                <ListItemButton sx={{ pl: 4 }}>
                   <Grid container>
                     <Grid item xs={2}>
                       <ReportIcon fontSize="small" />
@@ -299,6 +306,7 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
               </Link>
             </List>
           </Collapse>
+
         </List>
       </Box>
       <MetaDataSidebar toggleMenu={toggleMenu} />

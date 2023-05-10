@@ -5,7 +5,6 @@ import { createTheme } from '@mui/material/styles';
 import { baseStyle } from './style';
 import { fontSize } from './size';
 
-
 export const theme = createTheme({
   palette: {
     primary: {
@@ -89,7 +88,12 @@ export const theme = createTheme({
             },
           },
           '&.Mui-selected': {
-            backgroundColor: 'white',
+            backgroundColor: teal[500],
+            borderRadius: 7,
+            color: '#fff',
+          },
+          '&.Mui-selected:hover': {
+            backgroundColor: teal[900],
             borderRadius: 7,
           },
         },
