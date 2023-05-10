@@ -219,7 +219,7 @@ function ListViewComponent({ companies, myRef }: any) {
               <Grid item xs={1}>
                 <Grid container ml={1}>
                   <Grid item xs={4}>
-                    <Checkbox size="small" />
+                    <Checkbox size="small" onChange={handleSelectAll} checked={show} />
                   </Grid>
                 </Grid>
               </Grid>

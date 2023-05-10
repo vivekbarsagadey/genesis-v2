@@ -94,7 +94,7 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
 
           <Grid item xs={2}>
             <Typography variant="body2" noWrap>
-              <Moment format="DD MMM YYYY">{company.createdAt}</Moment>
+              <Moment format="MMMM Do YYYY">{company.createdAt}</Moment>
             </Typography>
           </Grid>
 

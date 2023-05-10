@@ -47,7 +47,6 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
     setViewType(view);
   };
   const myRef = useRef(null);
-  console.log('myRef', myRef);
 
   const handlePrint = useReactToPrint({
     content: () => myRef.current,
@@ -58,7 +57,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
   return (
     <Box
       ml={1.5}
-        // pl={2}
+      // pl={2}
       pb={1}
       mr={2.5}
       className={classes.root}
