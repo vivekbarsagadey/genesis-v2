@@ -28,7 +28,7 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
   const [openUser, setOpenUser] = React.useState(false);
 
   const handleOpenDashboard = () => {
-    setOpenDashboard(true);
+    setOpenDashboard(s=>!s);
     setOpenProject(false);
     setOpenCompany(false);
     setOpenCustomer(false);
@@ -36,7 +36,7 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
   };
   const handleOpenProject = () => {
     setOpenDashboard(false);
-    setOpenProject(true);
+    setOpenProject(s=>!s);
     setOpenCompany(false);
     setOpenCustomer(false);
     setOpenUser(false);
@@ -44,7 +44,7 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
   const handleOpenCompany = () => {
     setOpenDashboard(false);
     setOpenProject(false);
-    setOpenCompany(true);
+    setOpenCompany(s=>!s);
     setOpenCustomer(false);
     setOpenUser(false);
   };
@@ -52,7 +52,7 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
     setOpenDashboard(false);
     setOpenProject(false);
     setOpenCompany(false);
-    setOpenCustomer(true);
+    setOpenCustomer(s=>!s);
     setOpenUser(false);
   };
   const handleOpenUser = () => {
@@ -60,7 +60,7 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
     setOpenProject(false);
     setOpenCompany(false);
     setOpenCustomer(false);
-    setOpenUser(true);
+    setOpenUser(s=>!s);
   };
 
   return (
