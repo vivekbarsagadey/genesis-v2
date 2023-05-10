@@ -19,7 +19,7 @@ import Modal from '@mui/material/Modal';
 import Snackbar from '@mui/material/Snackbar';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
 import { makeStyles } from '@mui/styles';
 import Switch, { Case } from 'react-switch-case';
@@ -53,11 +53,12 @@ type InfoCompanyComponentProps = {
  
 };
 
-function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
+function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompanyComponentProps) {
   const router = useRouter();
   const [alert, setAlert] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const deletePopupOpen = () => setOpen(true);
+  const [checked, setChecked] = useState(show);
 
   const handleCloseDelete = () => setOpen(false);
   const handleClick = () => {
@@ -78,7 +79,16 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
     deleteCompany(f.id);
     handleClick();
   };
+  useEffect(() => {
+    setChecked(show);
+  }, [show]);
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+    const d = company.firstName;
+
+    getMultiSelectedValue(d);
+  };
 
 
   const classes = useStyles();
@@ -90,7 +100,9 @@ function InfoCompanyComponent({ company }: InfoCompanyComponentProps) {
           <Grid item xs={1}>
             <Grid container ml={1}>
               <Grid item xs={5}>
-                <Checkbox size="small"  />
+                <Checkbox size="small"  checked={checked}
+                    onChange={handleChange}
+                />
               </Grid>
             </Grid>
           </Grid>
