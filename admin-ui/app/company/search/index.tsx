@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { ICompany } from '../models/company.model';
 import Moment from 'react-moment';
+import moment from 'moment';
 
 interface CompanySearchComponentProps {
   companies: Array<ICompany>;
@@ -22,7 +23,10 @@ function CompanySearchDetails({
     f.email.toLowerCase().includes(value.toLowerCase()) ||
     f.mobile.toLowerCase().includes(value.toLowerCase()) ||
     f.status.toLowerCase().includes(value.toLowerCase()) ||
-    f.createdAt.toLowerCase().includes(value.toLowerCase()) ||
+    moment(f.createdAt)
+      .format("MMMM Do YYYY")
+      .toLowerCase()
+      .includes(value.toLowerCase()) ||
     f?.address.toLowerCase().includes(value.toLowerCase());
 
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
