@@ -15,6 +15,7 @@ import { headerstyle as style } from './header.style';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 function HeaderComponent() {
   const { data: session } = useSession();
@@ -28,18 +29,44 @@ function HeaderComponent() {
     setOpenMenu(null);
   };
 
+
+  
+
+  const breadcrumbs = [
+    <Link
+      underline="hover"
+      key="1"
+      color="inherit"
+      href="/"
+      onClick={handleClick}
+    >
+      Companies
+    </Link>,
+    <Link
+      underline="hover"
+      key="2"
+      color="inherit"
+      href="/material-ui/getting-started/installation/"
+      onClick={handleClick}
+    >
+      Create Company
+    </Link>,
+    <Typography key="3" color="text.primary">
+      Company
+    </Typography>,
+  ];
+
   return (
     <Grid container style={style.headercontainer}>
       <Grid item xs={3.7} display="flex" alignItems={'center'} ml={2}>
-        {/* <Breadcrumbs aria-label="breadcrumb">
-          <Link underline="hover" color="inherit" href="/">
-            MUI
-          </Link>
-          <Link underline="hover" color="inherit">
-            Core
-          </Link>
-          <Typography color="text.primary">Breadcrumbs</Typography>
-        </Breadcrumbs> */}
+        <Stack spacing={2}>
+          <Breadcrumbs
+            separator={<NavigateNextIcon fontSize="small" />}
+            aria-label="breadcrumb"
+          >
+            {breadcrumbs}
+          </Breadcrumbs>
+        </Stack>
       </Grid>
       <Grid item xs={8}>
         <Grid

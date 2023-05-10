@@ -35,12 +35,13 @@ import { deleteCompany, updateCompany } from '../../../services/company.action';
 import { ICompany, Status } from '../models';
 import { ListComponentProps } from './props';
 
-const CardStyle = styled(Grid)(({ theme }) => ({
+const CardStyle = styled(Grid)(() => ({
   height: '80vh',
   overflowY: 'auto',
 }));
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 ));
 
@@ -91,15 +92,15 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
   const newCompanies = companies.filter(
-    (ele: ICompany) => ele.status == statusSet[0]
+    (ele: ICompany) => ele.status === statusSet[0]
     //  NEW,
   );
   const activeCompanies = companies.filter(
-    (ele: ICompany) => ele.status == statusSet[1]
+    (ele: ICompany) => ele.status === statusSet[1]
     // ACTIVE,
   );
   const inActiveCompanies = companies.filter(
-    (ele: ICompany) => ele.status == statusSet[2]
+    (ele: ICompany) => ele.status === statusSet[2]
     // INACTIVE
   );
 
@@ -110,7 +111,7 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
         <CardStyle>
           <Paper variant="outlined" className={classes.cardView}>
             <CardContent>
-              <Grid container>
+              <Grid container spacing={2}>
                 <Grid item xs={11} display="flex" alignItems="center">
                   <FiberManualRecordIcon fontSize="small" htmlColor="blue" />
                   <Typography variant="h6" pl={1}>
@@ -137,7 +138,7 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
         <CardStyle>
           <Paper variant="outlined" className={classes.cardView}>
             <CardContent>
-              <Grid container>
+              <Grid container spacing={2}>
                 <Grid item xs={11} display="flex" alignItems="center">
                   <FiberManualRecordIcon fontSize="small" htmlColor="green" />
                   <Typography variant="h6" pl={1}>
@@ -167,7 +168,7 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
         <CardStyle>
           <Paper variant="outlined" className={classes.cardView}>
             <CardContent>
-              <Grid container>
+              <Grid container spacing={2}>
                 <Grid item xs={11} display="flex" alignItems="center">
                   <FiberManualRecordIcon fontSize="small" htmlColor="red" />
                   <Typography variant="h6" pl={1}>
@@ -419,9 +420,9 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
               {moment(newCompany.createdAt).format('DD/MM/YYYY')}
             </Typography>
           </Grid>
-          <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={2}>
-            <Typography noWrap>Status -</Typography>
-            <Typography noWrap variant="h6" pl={1} color="blue">
+          <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
+          <Typography noWrap>Status -</Typography>
+            <Typography noWrap variant="h6" color="blue">
               {newCompany.status}
             </Typography>
           </Grid>
@@ -435,7 +436,7 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
             pb={1}
           >
             <CallIcon fontSize="inherit" />
-            <Typography noWrap pl={1}>
+            <Typography noWrap pl={1.5}>
               {newCompany.mobile}
             </Typography>
           </Grid>
@@ -673,9 +674,9 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
               {moment(activeCompany.createdAt).format('DD/MM/YYYY')}
             </Typography>
           </Grid>
-          <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={2}>
-            <Typography noWrap>Status -</Typography>
-            <Typography noWrap variant="h6" pl={1} color="green">
+          <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
+          <Typography noWrap>Status -</Typography>
+            <Typography noWrap variant="h6" color="green">
               {activeCompany.status}
             </Typography>
           </Grid>
@@ -689,7 +690,7 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
             pb={1}
           >
             <CallIcon fontSize="inherit" />
-            <Typography noWrap pl={1}>
+            <Typography noWrap pl={1.5}>
               {activeCompany.mobile}
             </Typography>
           </Grid>
@@ -928,9 +929,9 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
               {moment(inActiveCompany.createdAt).format('DD/MM/YYYY')}
             </Typography>
           </Grid>
-          <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={2}>
-            <Typography noWrap>Status -</Typography>
-            <Typography noWrap variant="h6" pl={1} color="red">
+          <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
+          <Typography noWrap>Status -</Typography>
+            <Typography noWrap variant="h6" color="blue">
               {inActiveCompany.status}
             </Typography>
           </Grid>
@@ -944,7 +945,7 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
             pb={1}
           >
             <CallIcon fontSize="inherit" />
-            <Typography noWrap pl={1}>
+            <Typography noWrap pl={1.5}>
               {inActiveCompany.mobile}
             </Typography>
           </Grid>

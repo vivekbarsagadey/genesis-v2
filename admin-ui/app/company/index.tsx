@@ -57,8 +57,6 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
   const itemsCallBackHandler = (_items: Array<ICompany>) => {
     setCopyCompanies(_items);
   };
-
-
   return (
     <Box
       ml={1.5}
@@ -69,13 +67,13 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
     >
       <Grid mt={1}>
         <Grid container spacing={1} pl={2}>
-          <Grid item xs={2} md={2} lg={3} sm={2}>
+          <Grid item xs={3} md={3} lg={3} sm={3}>
             <CompanySearchDetails
               companies={companies}
               onSearchHandler={onSearchHandler}
             />
           </Grid>
-          <Grid item xs={8} md={8} sm={8} lg={7} className={classes.display}>
+          <Grid item xs={8} md={8} sm={8} lg={8} className={classes.display}>
             <Grid container>
               <Grid item xs="auto" mt={0.3}>
                 <FilterComponent
@@ -95,7 +93,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                 </Tooltip>
               </Grid>
 
-              <Grid item xs={9}>
+              <Grid item xs={10}>
                 <CompanyViewComponent onViewSelect={onViewSelect} />
               </Grid>
             </Grid>
