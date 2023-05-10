@@ -21,6 +21,7 @@ function CompanyReportComponent({ company }: any) {
         vals={['aos_pax_total']}
         aggregatorName="Integer Sum"
         renderers={{ ...TableRenderers, ...PlotlyRenderers }}
+        // eslint-disable-next-line react/jsx-props-no-spreading
         {...settings}
         hiddenAttributes={[
           'pvtRenderers',

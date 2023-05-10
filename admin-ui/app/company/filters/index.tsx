@@ -11,7 +11,7 @@ import { styled } from '@mui/material/styles';
 import React, { useState } from 'react';
 import { ICompany } from '../models';
 
-const FilterStyle = styled(Grid)(({ theme }) => ({
+const FilterStyle = styled(Grid)(() => ({
   width: 300,
   paddingTop: '1rem',
   paddingLeft: '1rem',
@@ -20,7 +20,7 @@ const FilterStyle = styled(Grid)(({ theme }) => ({
 
 type CompanyFilterComponentProps = {
   companies: Array<ICompany>;
-  onFilterHandler: (_: Array<ICompany>) => void;
+  onFilterHandler: any;
   itemsCallBackHandler: any;
 };
 
@@ -36,12 +36,12 @@ function FilterComponent({
 
   const doFilter = () => {
     const newCompanies = companies?.filter(
-      (u) =>
-        u.name.toLowerCase().includes(filterDataCompanyName.toLowerCase()) ||
-        u.ownerName.toLowerCase().includes(filterDataOwnerName.toLowerCase()) ||
-        u.email.toLowerCase().includes(filterDataEmail.toLowerCase())
+      (u) => u.name.toLowerCase().includes(filterDataCompanyName.toLowerCase())
+      || u.ownerName.toLowerCase().includes(filterDataOwnerName.toLowerCase())
+      || u.email.toLowerCase().includes(filterDataEmail.toLowerCase()),
     );
     itemsCallBackHandler(newCompanies);
+    // eslint-disable-next-line no-use-before-define
     handleClose();
   };
 
@@ -52,7 +52,7 @@ function FilterComponent({
     setAnchorEl(null);
   };
 
-  console.log('companiescompanies', companies);
+  console.log('companiesCompanies', companies);
 
   return (
     <>
@@ -84,10 +84,11 @@ function FilterComponent({
               id="free-solo-2-demo"
               disableClearable
               options={Array.from(
-                new Set(companies.map((data) => data.ownerName))
+                new Set(companies.map((data) => data.ownerName)),
               )}
               renderInput={(params) => (
                 <TextField
+                  // eslint-disable-next-line react/jsx-props-no-spreading
                   {...params}
                   placeholder="Owner Name"
                   InputProps={{
@@ -111,6 +112,7 @@ function FilterComponent({
               options={Array.from(new Set(companies.map((data) => data.name)))}
               renderInput={(params) => (
                 <TextField
+                  // eslint-disable-next-line react/jsx-props-no-spreading
                   {...params}
                   placeholder="Company Name"
                   InputProps={{
@@ -134,6 +136,7 @@ function FilterComponent({
               options={Array.from(new Set(companies.map((data) => data.email)))}
               renderInput={(params) => (
                 <TextField
+                  // eslint-disable-next-line react/jsx-props-no-spreading
                   {...params}
                   placeholder="Email"
                   InputProps={{

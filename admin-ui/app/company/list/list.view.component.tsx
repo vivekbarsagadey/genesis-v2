@@ -222,7 +222,6 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
 
   const getMultiSelectedValue = (valRec) => {
     setMultiSelect([...multiSelect, valRec]);
-    // console.log("valRec",valRec);
   };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setShow(event.target.checked);

@@ -79,7 +79,7 @@ function CompanyViewComponent({ onViewSelect }: CompanyViewComponentProps) {
     }
   };
   return (
-    <Stack direction="row">
+    <Stack direction="row" >
       {viewIconsSet.map((item) => (
         <ToggleButtonGroup
           value={alignment}

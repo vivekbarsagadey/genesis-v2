@@ -19,7 +19,7 @@ import Link from 'next/link';
 type sidebarProps = {
   toggleMenu: boolean;
 }
-function MetaDataSidebar({ toggleMenu }: sidebarProps) {
+function MetaDataSidebar({ toggleMenu }:sidebarProps ) {
   const [address, setAddress] = React.useState(false);
   const [roles, setRoles] = React.useState(false);
   const [dashboard, setDashboard] = React.useState(false);
@@ -45,7 +45,11 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
       <List>
         <Grid container>
           {toggleMenu && (
-            <Typography fontSize="1.2rem" ml={2}>
+            <Typography
+              fontSize="1.2rem"
+              ml={2}
+              display={{ xs: 'none', sm: 'none', md: 'block' }}
+            >
               Master Data
             </Typography>
           )}
@@ -56,7 +60,11 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
             <Grid item xs={2}>
               <RoomIcon fontSize="small" />
             </Grid>
-            {toggleMenu && <Typography>Address</Typography>}
+            {toggleMenu && (
+              <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                Address
+              </Typography>
+            )}
           </Grid>
         </ListItemButton>
         <Collapse in={address} timeout="auto" unmountOnExit>
@@ -66,7 +74,14 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
                 <Grid item xs={2}>
                   <AssistantPhotoIcon fontSize="small" />
                 </Grid>
-                {toggleMenu && <Typography variant="h1">Country</Typography>}
+                {toggleMenu && (
+                  <Typography
+                    variant="h1"
+                    display={{ xs: 'none', sm: 'none', md: 'block' }}
+                  >
+                    Country
+                  </Typography>
+                )}
               </Grid>
             </ListItemButton>
             <ListItemButton sx={{ pl: 3 }}>
@@ -74,7 +89,14 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
                 <Grid item xs={2}>
                   <CabinIcon fontSize="small" />
                 </Grid>
-                {toggleMenu && <Typography variant="h1">State</Typography>}
+                {toggleMenu && (
+                  <Typography
+                    variant="h1"
+                    display={{ xs: 'none', sm: 'none', md: 'block' }}
+                  >
+                    State
+                  </Typography>
+                )}
               </Grid>
             </ListItemButton>
             <ListItemButton sx={{ pl: 3 }}>
@@ -82,7 +104,14 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
                 <Grid item xs={2}>
                   <FmdBadIcon fontSize="small" />
                 </Grid>
-                {toggleMenu && <Typography variant="h1">City</Typography>}
+                {toggleMenu && (
+                  <Typography
+                    variant="h1"
+                    display={{ xs: 'none', sm: 'none', md: 'block' }}
+                  >
+                    City
+                  </Typography>
+                )}
               </Grid>
             </ListItemButton>
             <ListItemButton sx={{ pl: 3 }}>
@@ -90,7 +119,14 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
                 <Grid item xs={2}>
                   <HomeIcon fontSize="small" />
                 </Grid>
-                {toggleMenu && <Typography variant="h1">Pin Code</Typography>}
+                {toggleMenu && (
+                  <Typography
+                    variant="h1"
+                    display={{ xs: 'none', sm: 'none', md: 'block' }}
+                  >
+                    Pin Code
+                  </Typography>
+                )}
               </Grid>
             </ListItemButton>
           </List>
@@ -101,7 +137,11 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
             <Grid item xs={2}>
               <DirectionsWalkIcon fontSize="small" />
             </Grid>
-            {toggleMenu && <Typography>Roles</Typography>}
+            {toggleMenu && (
+              <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                Roles
+              </Typography>
+            )}
           </Grid>
         </ListItemButton>
         <Collapse in={roles} timeout="auto" unmountOnExit>
@@ -116,7 +156,14 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
                   <Grid item xs={2}>
                     <SportsHandballIcon fontSize="small" />
                   </Grid>
-                  {toggleMenu && <Typography variant="h1">Role</Typography>}
+                  {toggleMenu && (
+                    <Typography
+                      variant="h1"
+                      display={{ xs: 'none', sm: 'none', md: 'block' }}
+                    >
+                      Role
+                    </Typography>
+                  )}
                 </Grid>
               </ListItemButton>
             </Link>
@@ -128,7 +175,11 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
             <Grid item xs={2}>
               <DashboardIcon fontSize="small" />
             </Grid>
-            {toggleMenu && <Typography>Dashboard</Typography>}
+            {toggleMenu && (
+              <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                Dashboard
+              </Typography>
+            )}
           </Grid>
         </ListItemButton>
         <Collapse in={dashboard} timeout="auto" unmountOnExit>
@@ -144,7 +195,12 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
                     <HomeIcon fontSize="small" />
                   </Grid>
                   {toggleMenu && (
-                    <Typography variant="h1">Templates</Typography>
+                    <Typography
+                      variant="h1"
+                      display={{ xs: 'none', sm: 'none', md: 'block' }}
+                    >
+                      Templates
+                    </Typography>
                   )}
                 </Grid>
               </ListItemButton>
@@ -159,7 +215,14 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
                   <Grid item xs={2}>
                     <HomeIcon fontSize="small" />
                   </Grid>
-                  {toggleMenu && <Typography variant="h1">Widgets</Typography>}
+                  {toggleMenu && (
+                    <Typography
+                      variant="h1"
+                      display={{ xs: 'none', sm: 'none', md: 'block' }}
+                    >
+                      Widgets
+                    </Typography>
+                  )}
                 </Grid>
               </ListItemButton>
             </Link>
