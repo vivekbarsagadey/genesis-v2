@@ -11,7 +11,7 @@ function Page() {
   const companies = use<Array<ICompany>>(findAll(URL));
   return (
     <Suspense>
-      <CompanyComponentHome companies={companies} />;
+      <CompanyComponentHome companies={companies} />
     </Suspense>
   )
 }

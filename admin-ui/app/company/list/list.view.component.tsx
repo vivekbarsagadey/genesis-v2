@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   divider: { width: '98.5%' },
   infoCom: { height: '62vh' },
   contactCenter: { display: 'flex', justifyContent: 'center', },
-  unknownContent: { display: 'flex', justifyContent: 'center', alignItems:'center',height:'100%' }
+  unknownContent: { display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }
 });
 
 function ListViewComponent({ companies, myRef }: any) {
@@ -41,6 +41,10 @@ function ListViewComponent({ companies, myRef }: any) {
   const [contactSort, setContactSort] = useState(true);
   const [addressSort, setAddressSort] = useState(true);
   const [statusSort, setStatusSort] = useState(true);
+
+  const [isCheckAll, setIsCheckAll] = useState(false);
+  const [isCheck, setIsCheck] = useState([]);
+  const [list] = useState(companies);
 
   const handleNameSort = () => {
     if (nameSort) {
@@ -210,6 +214,14 @@ function ListViewComponent({ companies, myRef }: any) {
     paginationHandler.jump(p);
   };
 
+  const handleSelectAll = () => {
+    setIsCheckAll(!isCheckAll);
+    setIsCheck(list.map((li) => li.id));
+    if (isCheckAll) {
+      setIsCheck([]);
+    }
+  };
+  
   return (
     <>
       <Grid ref={myRef}>
@@ -219,7 +231,7 @@ function ListViewComponent({ companies, myRef }: any) {
               <Grid item xs={1}>
                 <Grid container ml={1}>
                   <Grid item xs={4}>
-                    <Checkbox size="small"  />
+                    <Checkbox size="small" onChange={handleSelectAll} checked={isCheckAll} />
                   </Grid>
                 </Grid>
               </Grid>
@@ -367,7 +379,7 @@ function ListViewComponent({ companies, myRef }: any) {
               .reverse()
               ?.map((company: ICompany, index: number) => (
                 <Typography key={index}>
-                  <InfoCompanyComponent company={company} />
+                  <InfoCompanyComponent company={company} setIsCheck={setIsCheck} isCheck={isCheck}  />
                 </Typography>
               ))
           }
