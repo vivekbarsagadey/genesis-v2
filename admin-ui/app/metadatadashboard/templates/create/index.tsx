@@ -4,7 +4,7 @@ import { Box, Button, Grid, Snackbar, Typography } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import CreateRowsComponent from './';
+import CreateRowsComponent from '../rows';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
@@ -15,9 +15,6 @@ function CreateTemplate() {
   const [cellDb, setCellDb] = useState(null);
   const [rowDb, setRowDb] = useState([]);
   const [alert, setAlert] = useState(false);
-
-  console.log('cellDbcellDb',cellDb);
-  
 
   const createRowHandler = (recv: string) => {
     setRowCount([...rowCount, recv]);
@@ -66,14 +63,12 @@ function CreateTemplate() {
 
         {rowCount?.map((data, index) => (
           <Grid item xs={6} key={index}>
-            {' '}
             <CreateRowsComponent
               index={index}
               setCellDb={setCellDb}
               cellDb={cellDb}
               setRowDb={setRowDb}
               rowDb={rowDb}
-
             />
           </Grid>
         ))}

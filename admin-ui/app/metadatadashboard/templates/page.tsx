@@ -1,15 +1,19 @@
 'use client';
 
-import React, { use } from 'react';
+import React, { Suspense, use } from 'react';
 import TemplateComponent from '.';
-import { ITemplates } from './templates.props';
+import { ITemplates } from '../models/templates.props';
 import { findAll } from '../../../services/api.service';
 
 const URL = 'templates';
 
 function Page() {
   const template = use<Array<ITemplates>>(findAll(URL));
-  return <TemplateComponent template={template} />;
+  return (
+    <Suspense>
+      <TemplateComponent template={template} />
+    </Suspense>
+  )
 }
 
 export default Page;

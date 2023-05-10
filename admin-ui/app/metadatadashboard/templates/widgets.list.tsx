@@ -89,8 +89,6 @@ function WidgetsList({ d }): string {
     setSelectedValue(value);
   };
 
-  console.log('item ', item);
-
   return (
     <Grid item xs={12}>
       {/* {item.map((i)=>{
@@ -136,8 +134,6 @@ function SimpleDialog(props: SimpleDialogProps) {
 
 function Image() {
   const [id, setId] = useState();
-  console.log('idid', id);
-
   return (
     <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
       {itemData.map((item) => (

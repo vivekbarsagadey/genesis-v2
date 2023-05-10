@@ -28,16 +28,14 @@ import { ICompany } from '../models/company.model';
 
 const style = {
   position: 'absolute' as const,
-  top: '30%',
+  top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 325,
+  width: 400,
   bgcolor: 'background.paper',
   boxShadow: 24,
-  paddingTop: 1,
-  paddingLeft: 2,
-  paddingRight: 1,
-  paddingBottom: 2,
+  p: 3,
+  borderRadius: '7px',
 };
 
 const useStyles = makeStyles({
@@ -50,10 +48,10 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
 
 type InfoCompanyComponentProps = {
   company: ICompany;
- 
+
 };
 
-function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompanyComponentProps) {
+function InfoCompanyComponent({ company, getMultiSelectedValue, show }: InfoCompanyComponentProps) {
   const router = useRouter();
   const [alert, setAlert] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -100,8 +98,8 @@ function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompa
           <Grid item xs={1}>
             <Grid container ml={1}>
               <Grid item xs={5}>
-                <Checkbox size="small"  checked={checked}
-                    onChange={handleChange}
+                <Checkbox size="small" checked={checked}
+                  onChange={handleChange}
                 />
               </Grid>
             </Grid>

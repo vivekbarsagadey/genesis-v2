@@ -13,6 +13,7 @@ import ScreenSelectComponent from './screens/screen.select.component';
 export const ProjectContext = createContext();
 
 function BuilderHome({ id,localStoreData }: any) {
+  console.log("localStoreData >>",localStoreData);
   const [projectInfo, setProjectInfo] = useState([]);
   const info = findById('projects', id);
   useEffect(() => {

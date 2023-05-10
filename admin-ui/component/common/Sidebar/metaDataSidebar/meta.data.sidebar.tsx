@@ -16,22 +16,30 @@ import FmdBadIcon from '@mui/icons-material/FmdBad';
 import RoomIcon from '@mui/icons-material/Room';
 import SportsHandballIcon from '@mui/icons-material/SportsHandball';
 import Link from 'next/link';
-type sidebarProps= {
+type sidebarProps = {
   toggleMenu: boolean;
 }
-function MetaDataSidebar({ toggleMenu }:sidebarProps ) {
+function MetaDataSidebar({ toggleMenu }: sidebarProps) {
   const [address, setAddress] = React.useState(false);
   const [roles, setRoles] = React.useState(false);
   const [dashboard, setDashboard] = React.useState(false);
+
   const handleClickAddress = () => {
     setAddress(!address);
+    setRoles(false);
+    setDashboard(false);
   };
   const handleClickRoles = () => {
+    setAddress(false);
     setRoles(!roles);
+    setDashboard(false);
   };
   const handleClickDashboard = () => {
+    setAddress(false);
+    setRoles(false);
     setDashboard(!dashboard);
   };
+
   return (
     <Box>
       <List>
@@ -42,7 +50,8 @@ function MetaDataSidebar({ toggleMenu }:sidebarProps ) {
             </Typography>
           )}
         </Grid>
-        <ListItemButton onClick={handleClickAddress}>
+
+        <ListItemButton onClick={handleClickAddress} selected={address ? true : false}>
           <Grid container>
             <Grid item xs={2}>
               <RoomIcon fontSize="small" />
@@ -86,7 +95,8 @@ function MetaDataSidebar({ toggleMenu }:sidebarProps ) {
             </ListItemButton>
           </List>
         </Collapse>
-        <ListItemButton onClick={handleClickRoles}>
+
+        <ListItemButton onClick={handleClickRoles} selected={roles ? true : false}>
           <Grid container>
             <Grid item xs={2}>
               <DirectionsWalkIcon fontSize="small" />
@@ -112,7 +122,8 @@ function MetaDataSidebar({ toggleMenu }:sidebarProps ) {
             </Link>
           </List>
         </Collapse>
-        <ListItemButton onClick={handleClickDashboard}>
+
+        <ListItemButton onClick={handleClickDashboard} selected={dashboard ? true : false}>
           <Grid container>
             <Grid item xs={2}>
               <DashboardIcon fontSize="small" />
@@ -154,6 +165,7 @@ function MetaDataSidebar({ toggleMenu }:sidebarProps ) {
             </Link>
           </List>
         </Collapse>
+
       </List>
     </Box>
   );

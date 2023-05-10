@@ -12,7 +12,9 @@ import {
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { Case, Switch } from 'react-if';
-import { ITemplates } from './templates.props';
+import { ITemplates } from '../models/templates.props';
+import { makeStyles } from '@mui/styles';
+import { baseStyle, colors } from '../../../themes';
 
 const itemData = [
   {
@@ -77,6 +79,13 @@ const itemData = [
   },
 ];
 
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: colors.white,
+    borderRadius: baseStyle.borderRadius.small,
+  },
+});
+
 const style = {
   position: 'absolute' as const,
   top: '50%',
@@ -99,8 +108,15 @@ function TemplateComponent({ template }: ITemplates) {
     ...template,
   ]);
 
+  const classes = useStyles()
+
   return (
-    <Box mt={1} ml={1.5}>
+    <Box
+      ml={1.5}
+      pb={1}
+      mr={2.5}
+      className={classes.root}
+    >
       <Grid container spacing={1}>
         <Grid item xs={12}>
           <Link
@@ -110,7 +126,6 @@ function TemplateComponent({ template }: ITemplates) {
           >
             <Button variant="contained" size="small">
               Create
-              <span>+</span>
             </Button>
           </Link>
         </Grid>
@@ -130,28 +145,6 @@ function TemplateComponent({ template }: ITemplates) {
                 style={{ border: '1px solid black' }}
               >
                 <Switch>
-                  <Case condition={val == 1}>
-                    <Grid item xs={12} />
-                  </Case>
-                  <Case condition={val == 2}>
-                    <Grid item xs={6}>
-                      +
-                    </Grid>
-                    <Grid item xs={6}>
-                      +
-                    </Grid>
-                  </Case>
-                  <Case condition={val == 3}>
-                    <Grid item xs={4}>
-                      +
-                    </Grid>
-                    <Grid item xs={4}>
-                      +
-                    </Grid>
-                    <Grid item xs={4}>
-                      +
-                    </Grid>
-                  </Case>
                   <Case condition={val == 4}>
                     <Grid container spacing={1}>
                       <Grid item xs={3}>
@@ -180,22 +173,13 @@ function TemplateComponent({ template }: ITemplates) {
                                   srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
                                   alt={item.title}
                                   loading="lazy"
-                                  onClick={() => console.log(item.id)}
+                                // onClick={() => console.log(item.id)}
                                 />
                               </ImageListItem>
                             ))}
                           </ImageList>
                         </Box>
                       </Modal>
-                      <Grid item xs={3}>
-                        +
-                      </Grid>
-                      <Grid item xs={3}>
-                        +
-                      </Grid>
-                      <Grid item xs={3}>
-                        +
-                      </Grid>
                     </Grid>
                   </Case>
                 </Switch>

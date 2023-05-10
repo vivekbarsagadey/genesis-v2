@@ -4,7 +4,7 @@ import { findAll } from '../../services/api.service';
 import IProject from './project.model';
 
 const URL = 'projects';
-console.log(URL);
+// console.log('URLURL',URL);
 function Page() {
   const projects = use<Array<IProject>>(findAll(URL));
   return <ProjectHomeComponent projects={projects} />;
