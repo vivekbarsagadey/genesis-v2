@@ -37,9 +37,10 @@ type IbuilderProps = {
   handleClose: () => void;
   checkbox: string;
   handleCloseTheme: () => void;
+  id:string
 };
 
-function BuilderPageSelectComponent({ handleClose, checkbox,handleCloseTheme,id }: IbuilderProps) {
+function BuilderPageSelectComponent({ handleClose, checkbox,handleCloseTheme, id }: IbuilderProps) {
   const classes = useStyles();
   const [blankPage, setBlankPage] = useState(false);
   const [loginPage, setLoginPage] = useState(false);
