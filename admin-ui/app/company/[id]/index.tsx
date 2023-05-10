@@ -16,12 +16,13 @@ import { countrySelect, genderSelect, stateSelect } from '../graphdata/graph.dat
 import { Status } from '../models';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 ));
 
 const useStyles = makeStyles({
-  buttonStyle: { width: '73%', },
-  gridContainer: { display: "flex", alignItems: "center" },
+  buttonStyle: { width: '73%' },
+  gridContainer: { display: 'flex', alignItems: 'center' },
 });
 
 type CompanyComponentProps = {
@@ -29,7 +30,7 @@ type CompanyComponentProps = {
   id: string;
 };
 
-const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
+function CompanyEditComponent({ company, id }: CompanyComponentProps) {
   const classes = useStyles();
   const router = useRouter();
   const [ownerName, setOwnerName] = useState(company.ownerName);
@@ -44,6 +45,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
   const [companyCountry, setCompanyCountry] = useState(company.country);
   const [companyPinCode, setCompanyPinCode] = useState(company.pincode);
   const [alert, setAlert] = useState(false);
+  // eslint-disable-next-line no-restricted-globals
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
   const updateOwnerName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,7 +78,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
   };
   const updateCompanyGender = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: string,
   ) => {
     setCompanyGender(value);
   };
@@ -96,7 +98,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
   const updateCompanyEditedData = async () => {
     try {
       const body = {
-        ownerName: ownerName,
+        ownername: ownerName,
         name: companyName,
         email: companyEmail,
         mobile: companyMobile,
@@ -109,6 +111,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
       await updateCompany(id, body);
       await router.push('/company');
     } catch (error) {
+      console.log(error);
     }
   };
 
@@ -267,6 +270,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
                   size="small"
                   options={countrySelect.map((option) => option.country)}
                   renderInput={(params) => (
+                    // eslint-disable-next-line react/jsx-props-no-spreading
                     <TextField {...params} placeholder="Select Country" />
                   )}
                 />
@@ -291,6 +295,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
                   size="small"
                   options={stateSelect.map((option) => option.state)}
                   renderInput={(params) => (
+                    // eslint-disable-next-line react/jsx-props-no-spreading
                     <TextField {...params} placeholder="Select State" />
                   )}
                 />
@@ -300,7 +305,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
 
           <Grid item xs={6} mt={1}>
             <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} >
+              <Grid item xs={3}>
                 <Typography>Gender</Typography>
               </Grid>
               <Grid item xs={2}>
@@ -315,6 +320,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
                   size="small"
                   options={genderSelect.map((option) => option.gender)}
                   renderInput={(params) => (
+                    // eslint-disable-next-line react/jsx-props-no-spreading
                     <TextField {...params} placeholder="Select gender" />
                   )}
                 />
@@ -324,7 +330,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
 
           <Grid item xs={6} mt={1}>
             <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} >
+              <Grid item xs={3}>
                 <Typography>PinCode</Typography>
               </Grid>
               <Grid item xs={2}>
@@ -383,6 +389,7 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
                   size="small"
                   options={statusSet?.map((option: any) => option)}
                   renderInput={(params) => (
+                    // eslint-disable-next-line react/jsx-props-no-spreading
                     <TextField {...params} placeholder="Select Status" />
                   )}
                 />
@@ -427,5 +434,4 @@ const CompanyEditComponent = ({ company, id }: CompanyComponentProps) => {
     </Box>
   );
 }
-
 export default CompanyEditComponent;
