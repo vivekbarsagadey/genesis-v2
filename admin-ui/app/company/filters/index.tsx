@@ -10,7 +10,6 @@ import Tooltip from '@mui/material/Tooltip';
 import { styled } from '@mui/material/styles';
 import React, { useState } from 'react';
 import { ICompany } from '../models';
-import { any } from 'prop-types';
 
 const FilterStyle = styled(Grid)(() => ({
   width: 300,
@@ -21,7 +20,7 @@ const FilterStyle = styled(Grid)(() => ({
 
 type CompanyFilterComponentProps = {
   companies: Array<ICompany>;
-  onFilterHandler: (Array<ICompany>) => void: any;
+  onFilterHandler: any;
   itemsCallBackHandler: any;
 };
 
