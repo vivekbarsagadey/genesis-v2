@@ -18,7 +18,7 @@ import MetaDataSidebar from '../metaDataSidebar/meta.data.sidebar';
 
 type sidebarProps = {
   toggleMenu: boolean;
-}
+};
 
 function ProjectSidebar({ toggleMenu }: sidebarProps) {
   const [openDashboard, setOpenDashboard] = React.useState(false);
@@ -64,7 +64,7 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
   };
 
   return (
-    <div
+    <Grid
       style={{
         display: 'flex',
         height: '88vh',
@@ -75,12 +75,19 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
     >
       <Box>
         <List>
-          <ListItemButton onClick={handleOpenDashboard} selected={openDashboard ? true : false} >
+          <ListItemButton
+            onClick={handleOpenDashboard}
+            selected={openDashboard ? true : false}
+          >
             <Grid container>
               <Grid item xs={2}>
                 <DashboardIcon fontSize="small" />
               </Grid>
-              {toggleMenu && <Typography>Dashboard</Typography>}
+              {toggleMenu && (
+                <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                  Dashboard
+                </Typography>
+              )}
             </Grid>
           </ListItemButton>
           <Collapse in={openDashboard} timeout="auto" unmountOnExit>
@@ -96,7 +103,12 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                       <AdjustIcon fontSize="small" />
                     </Grid>
                     {toggleMenu && (
-                      <Typography variant="h1">Overview</Typography>
+                      <Typography
+                        variant="h1"
+                        display={{ xs: 'none', sm: 'none', md: 'block' }}
+                      >
+                        Overview
+                      </Typography>
                     )}
                   </Grid>
                 </ListItemButton>
@@ -108,7 +120,14 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                   <Grid item xs={2}>
                     <ReportIcon fontSize="small" />
                   </Grid>
-                  {toggleMenu && <Typography variant="h1">Report</Typography>}
+                  {toggleMenu && (
+                    <Typography
+                      variant="h1"
+                      display={{ xs: 'none', sm: 'none', md: 'block' }}
+                    >
+                      Report
+                    </Typography>
+                  )}
                 </Grid>
               </ListItemButton>
             </List>
@@ -124,17 +143,28 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                 <Grid item xs={2}>
                   <ReportIcon fontSize="small" />
                 </Grid>
-                {toggleMenu && <Typography>Report</Typography>}
+                {toggleMenu && (
+                  <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                    Report
+                  </Typography>
+                )}
               </Grid>
             </ListItemButton>
           </Link>
 
-          <ListItemButton onClick={handleOpenProject} selected={openProject ? true : false}>
+          <ListItemButton
+            onClick={handleOpenProject}
+            selected={openProject ? true : false}
+          >
             <Grid container>
               <Grid item xs={2}>
                 <AppsIcon fontSize="small" />
               </Grid>
-              {toggleMenu && <Typography>Project</Typography>}
+              {toggleMenu && (
+                <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                  Project
+                </Typography>
+              )}
             </Grid>
           </ListItemButton>
           <Collapse in={openProject} timeout="auto" unmountOnExit>
@@ -149,7 +179,14 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                     <Grid item xs={2}>
                       <AdjustIcon fontSize="small" />
                     </Grid>
-                    {toggleMenu && <Typography variant="h1">Overview</Typography>}
+                    {toggleMenu && (
+                      <Typography
+                        variant="h1"
+                        display={{ xs: 'none', sm: 'none', md: 'block' }}
+                      >
+                        Overview
+                      </Typography>
+                    )}
                   </Grid>
                 </ListItemButton>
               </Link>
@@ -165,19 +202,33 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                     <Grid item xs={2}>
                       <ReportIcon fontSize="small" />
                     </Grid>
-                    {toggleMenu && <Typography variant="h1">Report</Typography>}
+                    {toggleMenu && (
+                      <Typography
+                        variant="h1"
+                        display={{ xs: 'none', sm: 'none', md: 'block' }}
+                      >
+                        Report
+                      </Typography>
+                    )}
                   </Grid>
                 </ListItemButton>
               </Link>
             </List>
           </Collapse>
 
-          <ListItemButton onClick={handleOpenCompany} selected={openCompany ? true : false}>
+          <ListItemButton
+            onClick={handleOpenCompany}
+            selected={openCompany ? true : false}
+          >
             <Grid container>
               <Grid item xs={2}>
                 <StoreIcon fontSize="small" />
               </Grid>
-              {toggleMenu && <Typography>Company</Typography>}
+              {toggleMenu && (
+                <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                  Company
+                </Typography>
+              )}
             </Grid>
           </ListItemButton>
           <Collapse in={openCompany} timeout="auto" unmountOnExit>
@@ -193,7 +244,12 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                       <AdjustIcon fontSize="small" />
                     </Grid>
                     {toggleMenu && (
-                      <Typography variant="h1">Overview</Typography>
+                      <Typography
+                        variant="h1"
+                        display={{ xs: 'none', sm: 'none', md: 'block' }}
+                      >
+                        Overview
+                      </Typography>
                     )}
                   </Grid>
                 </ListItemButton>
@@ -210,19 +266,33 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                     <Grid item xs={2}>
                       <ReportIcon fontSize="small" />
                     </Grid>
-                    {toggleMenu && <Typography variant="h1">Report</Typography>}
+                    {toggleMenu && (
+                      <Typography
+                        variant="h1"
+                        display={{ xs: 'none', sm: 'none', md: 'block' }}
+                      >
+                        Report
+                      </Typography>
+                    )}
                   </Grid>
                 </ListItemButton>
               </Link>
             </List>
           </Collapse>
 
-          <ListItemButton onClick={handleOpenCustomer} selected={openCustomer ? true : false}>
+          <ListItemButton
+            onClick={handleOpenCustomer}
+            selected={openCustomer ? true : false}
+          >
             <Grid container>
               <Grid item xs={2}>
                 <SupportAgentIcon fontSize="small" />
               </Grid>
-              {toggleMenu && <Typography>Customer</Typography>}
+              {toggleMenu && (
+                <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                  Customer
+                </Typography>
+              )}
             </Grid>
           </ListItemButton>
           <Collapse in={openCustomer} timeout="auto" unmountOnExit>
@@ -238,7 +308,12 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                       <AdjustIcon fontSize="small" />
                     </Grid>
                     {toggleMenu && (
-                      <Typography variant="h1">Overview</Typography>
+                      <Typography
+                        variant="h1"
+                        display={{ xs: 'none', sm: 'none', md: 'block' }}
+                      >
+                        Overview
+                      </Typography>
                     )}
                   </Grid>
                 </ListItemButton>
@@ -255,19 +330,33 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                     <Grid item xs={2}>
                       <ReportIcon fontSize="small" />
                     </Grid>
-                    {toggleMenu && <Typography variant="h1">Report</Typography>}
+                    {toggleMenu && (
+                      <Typography
+                        variant="h1"
+                        display={{ xs: 'none', sm: 'none', md: 'block' }}
+                      >
+                        Report
+                      </Typography>
+                    )}
                   </Grid>
                 </ListItemButton>
               </Link>
             </List>
           </Collapse>
 
-          <ListItemButton onClick={handleOpenUser} selected={openUser ? true : false}>
+          <ListItemButton
+            onClick={handleOpenUser}
+            selected={openUser ? true : false}
+          >
             <Grid container>
               <Grid item xs={2}>
                 <Person2Icon fontSize="small" />
               </Grid>
-              {toggleMenu && <Typography>User</Typography>}
+              {toggleMenu && (
+                <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                  User
+                </Typography>
+              )}
             </Grid>
           </ListItemButton>
           <Collapse in={openUser} timeout="auto" unmountOnExit>
@@ -283,7 +372,12 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                       <AdjustIcon fontSize="small" />
                     </Grid>
                     {toggleMenu && (
-                      <Typography variant="h1">Overview</Typography>
+                      <Typography
+                        variant="h1"
+                        display={{ xs: 'none', sm: 'none', md: 'block' }}
+                      >
+                        Overview
+                      </Typography>
                     )}
                   </Grid>
                 </ListItemButton>
@@ -300,17 +394,23 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                     <Grid item xs={2}>
                       <ReportIcon fontSize="small" />
                     </Grid>
-                    {toggleMenu && <Typography variant="h1">Report</Typography>}
+                    {toggleMenu && (
+                      <Typography
+                        variant="h1"
+                        display={{ xs: 'none', sm: 'none', md: 'block' }}
+                      >
+                        Report
+                      </Typography>
+                    )}
                   </Grid>
                 </ListItemButton>
               </Link>
             </List>
           </Collapse>
-
         </List>
       </Box>
       <MetaDataSidebar toggleMenu={toggleMenu} />
-    </div>
+    </Grid>
   );
 }
 export default ProjectSidebar;
