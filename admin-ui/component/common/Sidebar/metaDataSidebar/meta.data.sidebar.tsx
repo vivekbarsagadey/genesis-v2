@@ -16,12 +16,13 @@ import FmdBadIcon from '@mui/icons-material/FmdBad';
 import RoomIcon from '@mui/icons-material/Room';
 import SportsHandballIcon from '@mui/icons-material/SportsHandball';
 import Link from 'next/link';
-
-function MetaDataSidebar({ toggleMenu }) {
+type sidebarProps= {
+  toggleMenu: boolean;
+}
+function MetaDataSidebar({ toggleMenu }:sidebarProps ) {
   const [address, setAddress] = React.useState(false);
   const [roles, setRoles] = React.useState(false);
   const [dashboard, setDashboard] = React.useState(false);
-
   const handleClickAddress = () => {
     setAddress(!address);
   };
@@ -31,7 +32,6 @@ function MetaDataSidebar({ toggleMenu }) {
   const handleClickDashboard = () => {
     setDashboard(!dashboard);
   };
-
   return (
     <Box>
       <List>
@@ -42,7 +42,6 @@ function MetaDataSidebar({ toggleMenu }) {
             </Typography>
           )}
         </Grid>
-
         <ListItemButton onClick={handleClickAddress}>
           <Grid container>
             <Grid item xs={2}>
@@ -87,7 +86,6 @@ function MetaDataSidebar({ toggleMenu }) {
             </ListItemButton>
           </List>
         </Collapse>
-
         <ListItemButton onClick={handleClickRoles}>
           <Grid container>
             <Grid item xs={2}>
@@ -114,7 +112,6 @@ function MetaDataSidebar({ toggleMenu }) {
             </Link>
           </List>
         </Collapse>
-
         <ListItemButton onClick={handleClickDashboard}>
           <Grid container>
             <Grid item xs={2}>
@@ -141,7 +138,6 @@ function MetaDataSidebar({ toggleMenu }) {
                 </Grid>
               </ListItemButton>
             </Link>
-
             <Link
               href="/metadatadashboard/widgets"
               passHref
@@ -162,5 +158,4 @@ function MetaDataSidebar({ toggleMenu }) {
     </Box>
   );
 }
-
 export default MetaDataSidebar;

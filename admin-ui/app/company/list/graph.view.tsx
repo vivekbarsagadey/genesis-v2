@@ -4,33 +4,37 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import moment from 'moment';
 import React, { useState } from 'react';
-import { Chart } from 'react-google-charts';
 import CompanyPieChart from './pie.chart';
-import { ListComponentProps } from './props';
+// import { ListComponentProps } from './props';
+import { ICompany } from '../models';
+import MonthPieChart from './month.pie.chart';
 
-const options = {
-  vAxis: { title: 'Customer Created' },
-  hAxis: { title: 'Month' },
-  seriesType: 'bars',
-  series: { type: 'line' },
+type ListComponentProps={
+  companies : Array<ICompany>;
+  myRef : any
+}
+
+export const options = {
+  hAxis: {
+    title: 'Today Date',
+  },
+  series: {
+    1: { curveType: 'function' },
+  },
 };
+
 const comparisionType = [
   { title: 'Today' },
   { title: 'Last 7 days' },
   { title: 'Month' },
 ];
+
 function CustomerGraphView({ companies, myRef }: ListComponentProps) {
   const [graphView, setGraphView] = useState<string>('Status');
   const [comparisiongraphView, setComparisionGraphView] =
     useState<string>('Month');
-  const updateGrpahView = (
-    e: React.SyntheticEvent<Element, Event>,
-    value: string
-  ) => {
-    setGraphView(value);
-  };
 
-  const keys = Object.keys(companies[0]);
+  const keys =Object.keys(companies[0]);
   const graphTypeVal = keys.filter((element) => {
     if (element === 'country' || element === 'state' || element === 'status') {
       return true;
@@ -165,6 +169,12 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
         .filter((d) => d === 'Dec').length,
     ],
   ];
+  const updateGrpahView = (
+    e: React.SyntheticEvent<Element, Event>,
+    value: string
+  ) => {
+    setGraphView(value);
+  };
 
   const updateComparisionGrpahView = (
     e: React.SyntheticEvent<Element, Event>,
@@ -172,6 +182,17 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
   ) => {
     setComparisionGraphView(value);
   };
+
+  const todayDate = moment(new Date()).format('DD MMM YY');
+  const createdTodayData = [
+    ['Day', 'Count'],
+    [
+      `${todayDate}`,
+      companies
+        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
+        .filter((d) => d === todayDate).length,
+    ],
+  ];
   return (
     <Box mr={2}>
       <Grid container spacing={2} mt={1}>
@@ -233,14 +254,27 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
               />
             </Grid>
           </Grid>
-        </Grid> 
+        </Grid>
         <Grid item xs={6}>
-          <Chart
+          {/* <Chart
             chartType="ComboChart"
             width="100%"
             height="400px"
             data={createdDataData}
             options={options}
+          /> */}
+
+          {/* <Chart
+            chartType="LineChart"
+            width="100%"
+            height="400px"
+            data={createdTodayData}
+            options={options}
+          /> */}
+          <MonthPieChart
+            createdTodayData={createdTodayData}
+            comparisiongraphView={comparisiongraphView}
+            createdDataData={createdDataData}
           />
         </Grid>
         <Grid />

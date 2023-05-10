@@ -23,10 +23,8 @@ const useStyles = makeStyles({
   pagination: { position: 'fixed' },
   divider: { width: '98.5%' },
   infoCom: { height: '62vh' },
-  contactCenter: {
-    display: 'flex',
-    justifyContent: 'center',
-  }
+  contactCenter: { display: 'flex', justifyContent: 'center', },
+  unknownContent: { display: 'flex', justifyContent: 'center', alignItems:'center',height:'100%' }
 });
 
 function ListViewComponent({ companies, myRef }: any) {
@@ -361,16 +359,21 @@ function ListViewComponent({ companies, myRef }: any) {
         </Box>
         <Divider className={classes.divider} />
         <Grid className={classes.infoCom}>
-          {paginationHandler
-            .currentData()
-            .reverse()
-            ?.map((company: ICompany, index: number) => (
-              <Typography key={index}>
-                <InfoCompanyComponent company={company} />
-              </Typography>
-            ))}
+          {companies.length === 0 ?
+            <Box className={classes.unknownContent}>
+              <Typography fontWeight={'bold'}>data not found</Typography>
+            </Box>
+            : paginationHandler.currentData()
+              .reverse()
+              ?.map((company: ICompany, index: number) => (
+                <Typography key={index}>
+                  <InfoCompanyComponent company={company} />
+                </Typography>
+              ))
+          }
         </Grid>
       </Grid>
+
 
       <Grid container mt={4} >
         <Grid item xs={12} className={classes.footer}>

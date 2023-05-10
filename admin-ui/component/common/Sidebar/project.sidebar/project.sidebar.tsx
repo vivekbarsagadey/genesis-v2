@@ -18,7 +18,7 @@ import { Grid, Typography } from '@mui/material';
 import MetaDataSidebar from '../metaDataSidebar/meta.data.sidebar';
 import Link from 'next/link';
 
-interface sidebarProps {
+type sidebarProps= {
   toggleMenu: boolean;
 }
 
@@ -63,30 +63,38 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
     >
       <Box>
         <List>
-          <Link
+          {/* <Link
             href="/dashboard"
             passHref
             style={{ textDecoration: 'none', color: 'black' }}
-          >
-            <ListItemButton onClick={handleOpenDashboard}>
-              <Grid container>
-                <Grid item xs={2}>
-                  <DashboardIcon fontSize="small" />
-                </Grid>
-                {toggleMenu && <Typography>Dashboard</Typography>}
+          > */}
+          <ListItemButton onClick={handleOpenDashboard}>
+            <Grid container>
+              <Grid item xs={2}>
+                <DashboardIcon fontSize="small" />
               </Grid>
-            </ListItemButton>
-          </Link>
+              {toggleMenu && <Typography>Dashboard</Typography>}
+            </Grid>
+          </ListItemButton>
+          {/* </Link> */}
           <Collapse in={openDashboard} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
-                <Grid container>
-                  <Grid item xs={2}>
-                    <AdjustIcon fontSize="small" />
+              <Link
+                href="/dashboard"
+                passHref
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
+                <ListItemButton sx={{ pl: 4 }}>
+                  <Grid container>
+                    <Grid item xs={2}>
+                      <AdjustIcon fontSize="small" />
+                    </Grid>
+                    {toggleMenu && (
+                      <Typography variant="h1">Overview</Typography>
+                    )}
                   </Grid>
-                  {toggleMenu && <Typography variant="h1">Overview</Typography>}
-                </Grid>
-              </ListItemButton>
+                </ListItemButton>
+              </Link>
             </List>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
@@ -150,30 +158,38 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
               </ListItemButton>
             </List>
           </Collapse>
-          <Link
+          {/* <Link
             href="/company"
             passHref
             style={{ textDecoration: 'none', color: 'black' }}
-          >
-            <ListItemButton onClick={handleOpenCompany}>
-              <Grid container>
-                <Grid item xs={2}>
-                  <StoreIcon fontSize="small" />
-                </Grid>
-                {toggleMenu && <Typography>Company</Typography>}
+          > */}
+          <ListItemButton onClick={handleOpenCompany}>
+            <Grid container>
+              <Grid item xs={2}>
+                <StoreIcon fontSize="small" />
               </Grid>
-            </ListItemButton>
-          </Link>
+              {toggleMenu && <Typography>Company</Typography>}
+            </Grid>
+          </ListItemButton>
+          {/* </Link> */}
           <Collapse in={openCompany} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
-                <Grid container>
-                  <Grid item xs={2}>
-                    <AdjustIcon fontSize="small" />
+              <Link
+                href="/company"
+                passHref
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
+                <ListItemButton sx={{ pl: 4 }}>
+                  <Grid container>
+                    <Grid item xs={2}>
+                      <AdjustIcon fontSize="small" />
+                    </Grid>
+                    {toggleMenu && (
+                      <Typography variant="h1">Overview</Typography>
+                    )}
                   </Grid>
-                  {toggleMenu && <Typography variant="h1">Overview</Typography>}
-                </Grid>
-              </ListItemButton>
+                </ListItemButton>
+              </Link>
             </List>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
@@ -187,30 +203,38 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
             </List>
           </Collapse>
 
-          <Link
+          {/* <Link
             href="/customer"
             passHref
             style={{ textDecoration: 'none', color: 'black' }}
-          >
-            <ListItemButton onClick={handleOpenCustomer}>
-              <Grid container>
-                <Grid item xs={2}>
-                  <SupportAgentIcon fontSize="small" />
-                </Grid>
-                {toggleMenu && <Typography>Customer</Typography>}
+          > */}
+          <ListItemButton onClick={handleOpenCustomer}>
+            <Grid container>
+              <Grid item xs={2}>
+                <SupportAgentIcon fontSize="small" />
               </Grid>
-            </ListItemButton>
-          </Link>
+              {toggleMenu && <Typography>Customer</Typography>}
+            </Grid>
+          </ListItemButton>
+          {/* </Link> */}
           <Collapse in={openCustomer} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
-                <Grid container>
-                  <Grid item xs={2}>
-                    <AdjustIcon fontSize="small" />
+              <Link
+                href="/customer"
+                passHref
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
+                <ListItemButton sx={{ pl: 4 }}>
+                  <Grid container>
+                    <Grid item xs={2}>
+                      <AdjustIcon fontSize="small" />
+                    </Grid>
+                    {toggleMenu && (
+                      <Typography variant="h1">Overview</Typography>
+                    )}
                   </Grid>
-                  {toggleMenu && <Typography variant="h1">Overview</Typography>}
-                </Grid>
-              </ListItemButton>
+                </ListItemButton>
+              </Link>
             </List>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
@@ -224,41 +248,55 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
             </List>
           </Collapse>
 
-          <Link
+          {/* <Link
             href="/user"
             passHref
             style={{ textDecoration: 'none', color: 'black' }}
-          >
-            <ListItemButton onClick={handleOpenUser}>
-              <Grid container>
-                <Grid item xs={2}>
-                  <Person2Icon fontSize="small" />
-                </Grid>
-                {toggleMenu && <Typography>User</Typography>}
+          > */}
+          <ListItemButton onClick={handleOpenUser}>
+            <Grid container>
+              <Grid item xs={2}>
+                <Person2Icon fontSize="small" />
               </Grid>
-            </ListItemButton>
-          </Link>
+              {toggleMenu && <Typography>User</Typography>}
+            </Grid>
+          </ListItemButton>
+          {/* </Link> */}
 
           <Collapse in={openUser} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
-                <Grid container>
-                  <Grid item xs={2}>
-                    <AdjustIcon fontSize="small" />
+              <Link
+                href="/user"
+                passHref
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
+                <ListItemButton sx={{ pl: 4 }}>
+                  <Grid container>
+                    <Grid item xs={2}>
+                      <AdjustIcon fontSize="small" />
+                    </Grid>
+                    {toggleMenu && (
+                      <Typography variant="h1">Overview</Typography>
+                    )}
                   </Grid>
-                  {toggleMenu && <Typography variant="h1">Overview</Typography>}
-                </Grid>
-              </ListItemButton>
+                </ListItemButton>
+              </Link>
             </List>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
-                <Grid container>
-                  <Grid item xs={2}>
-                    <ReportIcon fontSize="small" />
+              <Link
+                href="/company/companyreport"
+                passHref
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
+                <ListItemButton sx={{ pl: 4 }}>
+                  <Grid container>
+                    <Grid item xs={2}>
+                      <ReportIcon fontSize="small" />
+                    </Grid>
+                    {toggleMenu && <Typography variant="h1">Report</Typography>}
                   </Grid>
-                  {toggleMenu && <Typography variant="h1">Report</Typography>}
-                </Grid>
-              </ListItemButton>
+                </ListItemButton>
+              </Link>
             </List>
           </Collapse>
         </List>
