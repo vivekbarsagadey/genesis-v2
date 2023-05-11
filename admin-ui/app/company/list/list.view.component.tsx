@@ -41,6 +41,7 @@ function ListViewComponent({
   show,
   multiSelect,
   setMultiSelect,
+  setSelectedCheckbox
 }: any) {
   const classes = useStyles();
   const [page, setPage] = useState(1);
