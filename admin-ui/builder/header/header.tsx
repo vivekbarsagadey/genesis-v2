@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import EmailIcon from '@mui/icons-material/Email';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -6,9 +7,8 @@ import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
-import Stack from '@mui/material/Stack';
 
-function BuilderHeaderComponent({ projectInfo }) {
+function BuilderHeaderComponent({ projectInfo }:any) {
   return (
     <Box padding={2}>
       <Grid container>

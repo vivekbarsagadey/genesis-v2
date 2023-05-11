@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable react/jsx-props-no-spreading */
+
 'use client';
 
 import AppsIcon from '@mui/icons-material/Apps';
@@ -12,13 +15,13 @@ import MuiAccordionSummary, {
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { styled } from '@mui/material/styles';
 import React from 'react';
-import Switch, { Case, Default } from 'react-switch-case';
+import Switch, { Case } from 'react-switch-case';
 import genisys from '../../../data/genisys.json';
 import SideBarInnerList from './sidebar.inner.list';
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
-))(({ theme }) => ({
+))(() => ({
   '&:not(:last-child)': {
     borderBottom: 0,
     border: 'none',
@@ -43,10 +46,10 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
 }));
 
-function SidebarComponent({ toggleMenu, getComponentId, getGridId }) {
-  const [expanded, setExpanded] = React.useState<string | false>('panel1');
+function SidebarComponent({ toggleMenu, getComponentId, getGridId }:any) {
+  const [, setExpanded] = React.useState<string | false>('panel1');
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
-    	setExpanded(newExpanded ? panel : false);
+    setExpanded(newExpanded ? panel : false);
   };
 
   return (

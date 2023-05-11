@@ -1,12 +1,13 @@
+/* eslint-disable react/react-in-jsx-scope */
 import {
   Box, Button, Grid, Typography,
 } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 
-function TextModelComponent({ metaData }) {
+function TextModelComponent({ metaData }:any) {
   const [width, setWidth] = useState<string>(metaData.width);
-  const updateWidth = (e) => {
+  const updateWidth = (e:any) => {
     setWidth(e.target.value);
   };
   return (

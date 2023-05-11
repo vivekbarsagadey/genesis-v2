@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import EmailIcon from '@mui/icons-material/Email';
@@ -24,16 +25,16 @@ const TypographyStyle = styled(Typography)(({ theme }) => ({
   marginLeft: theme.spacing(1),
   cursor: 'pointer',
 }));
-const ContainerStyle = styled(Container)(({ theme }) => ({
+const ContainerStyle = styled(Container)(() => ({
   marginTop: '-1.5rem',
 }));
 
 function SideBarInnerList({
   d, toggleMenu, getComponentId, getGridId,
-}) {
+}:any) {
   const [openInnerList, setOpenInnerList] = useState(false);
 
-  const expandInnerList = (ItemRecv) => {
+  const expandInnerList = (ItemRecv:any) => {
     if (ItemRecv.type === 'component') {
       getComponentId(ItemRecv.id);
     }
@@ -152,7 +153,7 @@ function SideBarInnerList({
 
           <Grid item xs={12}>
             <Collapse in={openInnerList} timeout="auto" unmountOnExit>
-              {d.items?.map((ele) => (
+              {d.items?.map((ele:any) => (
                 <AccordionDetails key={ele.id}>
                   <SideBarInnerText ele={ele} />
                 </AccordionDetails>

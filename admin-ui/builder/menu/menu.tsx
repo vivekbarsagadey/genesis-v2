@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable react/no-unused-prop-types */
 import React from 'react';
 import {
   List,
@@ -17,7 +19,7 @@ type CategoryProps = {
   title: string;
   icon: JSX.Element;
   items: Item[];
-  handleClick: (id: string) => void;
+  handleClick: () => void;
   open: { [key: string]: boolean };
   classes: Record<string, string>;
 };
