@@ -1,3 +1,5 @@
+/* eslint-disable react/react-in-jsx-scope */
+
 'use client';
 
 import PrintIcon from '@mui/icons-material/Print';
@@ -18,16 +20,17 @@ import RoleKanbanView from './list/kanban.view';
 import ListViewComponent from './list/list.view.component';
 import RolesSearchDetails from './search';
 import RoleViewComponent from './view';
+import { IRole, IRoleComponentProps } from './models';
 
 interface RoleComponentProps {
-  roles: Array<IRoles>;
+  roles: Array<IRole>;
 }
 function RoleComponentHome({ roles }: RoleComponentProps) {
   const [copyRoles, setCopyRoles] = useState<Array<IRoleComponentProps>>([
     ...roles,
   ]);
   const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
-  const onSearchHandler = (c: Array<IRoles>) => {
+  const onSearchHandler = (c: Array<IRole>) => {
     setCopyRoles(c);
   };
   const onViewSelect = (view: ViewTypes) => {
@@ -76,7 +79,6 @@ function RoleComponentHome({ roles }: RoleComponentProps) {
           >
             <Button variant="contained" size="small">
               Create
-              <span>+</span>
             </Button>
           </Link>
         </Grid>

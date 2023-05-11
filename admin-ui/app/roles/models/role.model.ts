@@ -6,6 +6,7 @@ type IRole = {
   name: string;
   description: string;
   code: string;
+
 };
 
 export type { IRole };

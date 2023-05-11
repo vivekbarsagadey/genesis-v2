@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { IRole } from '../models';
 
 interface RoleSearchComponentProps {
@@ -19,7 +20,7 @@ function RolesSearchDetails({
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const _searchValue = e.target.value;
     setSearchStr(_searchValue);
-    if (_searchValue == '') {
+    if (_searchValue === '') {
       onSearchHandler(roles);
       return;
     }

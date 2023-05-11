@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import GridViewIcon from '@mui/icons-material/GridView';
 import ListAltIcon from '@mui/icons-material/ListAlt';
