@@ -13,6 +13,7 @@ function CompanyReportComponent({ company }: any) {
   const [settings, setSettings] = useState({});
 
   return (
+    
     <Grid ml={2} mt={2}>
       <PivotTableUI
         data={company}
