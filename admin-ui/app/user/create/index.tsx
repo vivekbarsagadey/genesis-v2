@@ -152,38 +152,38 @@ function UserCreateComponent() {
   };
   const updateUserChange = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any
   ) => {
     setGender(value);
   };
   const updateUserCountry = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any
   ) => {
     setUserCountry(value);
   };
   const updateUserState = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any
   ) => {
     setUserState(value);
   };
   const updateUserCity = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any
   ) => {
     setUserCity(value);
   };
   const updateUserStatus = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any
   ) => {
     setUserStatus(value);
   };
 
   const updateRole = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any
   ) => {
     setRole(value);
   };
@@ -192,7 +192,7 @@ function UserCreateComponent() {
   };
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string
+    reason?: any
   ) => {
     if (reason === 'clickaway') {
       return;
@@ -661,7 +661,7 @@ function UserCreateComponent() {
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
-  value: number;
+  value: any;
 }
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;

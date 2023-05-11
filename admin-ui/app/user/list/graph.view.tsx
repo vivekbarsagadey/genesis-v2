@@ -61,124 +61,124 @@ function UserGraphView({ user, myRef }: any) {
   };
   const statusData = [
     ['Status', 'user'],
-    ['ACTIVE', user.filter((item) => item.status === 'ACTIVE').length],
-    ['INACTIVE', user.filter((item) => item.status === 'INACTIVE').length],
+    ['ACTIVE', user.filter((item:any) => item.status === 'ACTIVE').length],
+    ['INACTIVE', user.filter((item:any) => item.status === 'INACTIVE').length],
   ];
   const stateData = [
     ['user', 'State'],
-    ['Bihar', user.filter((item) => item.state === 'Bihar').length],
+    ['Bihar', user.filter((item:any) => item.state === 'Bihar').length],
     [
       'Madhya Pradesh',
-      user.filter((item) => item.state === 'Madhya Pradesh').length,
+      user.filter((item:any) => item.state === 'Madhya Pradesh').length,
     ],
-    ['UP', user.filter((item) => item.state === 'UP').length],
-    ['Maharastra', user.filter((item) => item.state === 'Maharastra').length],
-    ['Punjab', user.filter((item) => item.state === 'Punjab').length],
-    ['UK', user.filter((item) => item.state === 'UK').length],
-    ['Gujrat', user.filter((item) => item.state === 'Gujrat').length],
-    ['Karnataka', user.filter((item) => item.state === 'Karnataka').length],
+    ['UP', user.filter((item:any) => item.state === 'UP').length],
+    ['Maharastra', user.filter((item:any) => item.state === 'Maharastra').length],
+    ['Punjab', user.filter((item:any) => item.state === 'Punjab').length],
+    ['UK', user.filter((item:any) => item.state === 'UK').length],
+    ['Gujrat', user.filter((item:any) => item.state === 'Gujrat').length],
+    ['Karnataka', user.filter((item:any) => item.state === 'Karnataka').length],
     [
       'Jammu & Kashmir',
-      user.filter((item) => item.state === 'Jammu & Kashmir').length,
+      user.filter((item:any) => item.state === 'Jammu & Kashmir').length,
     ],
   ];
   const countryData = [
     ['user', 'Country'],
-    ['India', user.filter((item) => item.country === 'India').length],
-    ['Australia', user.filter((item) => item.country === 'Australia').length],
-    ['America', user.filter((item) => item.country === 'America').length],
-    ['Spain', user.filter((item) => item.country === 'Spain').length],
-    ['US', user.filter((item) => item.country === 'US').length],
-    ['UK', user.filter((item) => item.country === 'UK').length],
-    ['Dubai', user.filter((item) => item.country === 'Dubai').length],
-    ['Srilanka', user.filter((item) => item.country === 'Srilanka').length],
-    ['Thailand', user.filter((item) => item.country === 'Thailand').length],
+    ['India', user.filter((item:any) => item.country === 'India').length],
+    ['Australia', user.filter((item:any) => item.country === 'Australia').length],
+    ['America', user.filter((item:any) => item.country === 'America').length],
+    ['Spain', user.filter((item:any) => item.country === 'Spain').length],
+    ['US', user.filter((item:any) => item.country === 'US').length],
+    ['UK', user.filter((item:any) => item.country === 'UK').length],
+    ['Dubai', user.filter((item:any) => item.country === 'Dubai').length],
+    ['Srilanka', user.filter((item:any) => item.country === 'Srilanka').length],
+    ['Thailand', user.filter((item:any) => item.country === 'Thailand').length],
   ];
   const cityData = [
     ['user', 'City'],
-    ['Patna', user.filter((item) => item.city === 'Patna').length],
-    ['Mumbai', user.filter((item) => item.city === 'Mumbai').length],
-    ['Pune', user.filter((item) => item.city === 'Pune').length],
-    ['Banglore', user.filter((item) => item.city === 'Banglore').length],
-    ['Ahmedabad', user.filter((item) => item.city === 'Ahmedabad').length],
-    ['Kolkata', user.filter((item) => item.city === 'Kolkata').length],
-    ['Rajasthan', user.filter((item) => item.city === 'Rajasthan').length],
-    ['Hyderabad', user.filter((item) => item.city === 'Hyderabad').length],
-    ['Lucknow', user.filter((item) => item.city === 'Lucknow').length],
+    ['Patna', user.filter((item:any) => item.city === 'Patna').length],
+    ['Mumbai', user.filter((item:any) => item.city === 'Mumbai').length],
+    ['Pune', user.filter((item:any) => item.city === 'Pune').length],
+    ['Banglore', user.filter((item:any) => item.city === 'Banglore').length],
+    ['Ahmedabad', user.filter((item:any) => item.city === 'Ahmedabad').length],
+    ['Kolkata', user.filter((item:any) => item.city === 'Kolkata').length],
+    ['Rajasthan', user.filter((item:any) => item.city === 'Rajasthan').length],
+    ['Hyderabad', user.filter((item:any) => item.city === 'Hyderabad').length],
+    ['Lucknow', user.filter((item:any) => item.city === 'Lucknow').length],
   ];
   const createdDataData = [
     ['Month', 'Count'],
     [
       'JAN',
       user
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Jan').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:string) => d === 'Jan').length,
     ],
     [
       'FEB',
       user
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Feb').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:string) => d === 'Feb').length,
     ],
     [
       'MAR',
       user
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Mar').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:string) => d === 'Mar').length,
     ],
     [
       'APR',
       user
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Apr').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:string) => d === 'Apr').length,
     ],
     [
       'MAY',
       user
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'May').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:string) => d === 'May').length,
     ],
     [
       'JUN',
       user
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Jun').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:string) => d === 'Jun').length,
     ],
     [
       'JUL',
       user
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Jul').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:string) => d === 'Jul').length,
     ],
     [
       'AUG',
       user
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Aug').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:string) => d === 'Aug').length,
     ],
     [
       'SEP',
       user
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Sep').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:string) => d === 'Sep').length,
     ],
     [
       'OCT',
       user
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Oct').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:string) => d === 'Oct').length,
     ],
     [
       'NOV',
       user
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Nov').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:string) => d === 'Nov').length,
     ],
     [
       'DEC',
       user
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Dec').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:string) => d === 'Dec').length,
     ],
   ];
   // Base Value
@@ -206,83 +206,83 @@ function UserGraphView({ user, myRef }: any) {
     [
       'India',
       user
-        .filter((ele) => ele.country === 'India')
-        .filter((ele) => ele.status === 'ACTIVE').length,
+        .filter((ele:any) => ele.country === 'India')
+        .filter((ele:any) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === 'India')
-        .filter((ele) => ele.status === 'INACTIVE').length,
+        .filter((ele:any) => ele.country === 'India')
+        .filter((ele:any) => ele.status === 'INACTIVE').length,
     ],
     [
       'Australia',
       user
-        .filter((ele) => ele.country === 'Australia')
-        .filter((ele) => ele.status === 'ACTIVE').length,
+        .filter((ele:any) => ele.country === 'Australia')
+        .filter((ele:any) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === 'Australia')
-        .filter((ele) => ele.status === 'INACTIVE').length,
+        .filter((ele:any) => ele.country === 'Australia')
+        .filter((ele:any) => ele.status === 'INACTIVE').length,
     ],
     [
       'America',
       user
-        .filter((ele) => ele.country === 'America')
-        .filter((ele) => ele.status === 'ACTIVE').length,
+        .filter((ele:any) => ele.country === 'America')
+        .filter((ele:any) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === 'America')
-        .filter((ele) => ele.status === 'INACTIVE').length,
+        .filter((ele:any) => ele.country === 'America')
+        .filter((ele:any) => ele.status === 'INACTIVE').length,
     ],
     [
       'Spain',
       user
-        .filter((ele) => ele.country === 'Spain')
-        .filter((ele) => ele.status === 'ACTIVE').length,
+        .filter((ele:any) => ele.country === 'Spain')
+        .filter((ele:any) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === 'Spain')
-        .filter((ele) => ele.status === 'INACTIVE').length,
+        .filter((ele:any) => ele.country === 'Spain')
+        .filter((ele:any) => ele.status === 'INACTIVE').length,
     ],
     [
       'US',
       user
-        .filter((ele) => ele.country === 'US')
-        .filter((ele) => ele.status === 'ACTIVE').length,
+        .filter((ele:any) => ele.country === 'US')
+        .filter((ele:any) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === 'US')
-        .filter((ele) => ele.status === 'INACTIVE').length,
+        .filter((ele:any) => ele.country === 'US')
+        .filter((ele:any) => ele.status === 'INACTIVE').length,
     ],
     [
       'UK',
       user
-        .filter((ele) => ele.country === 'UK')
-        .filter((ele) => ele.status === 'ACTIVE').length,
+        .filter((ele:any) => ele.country === 'UK')
+        .filter((ele:any) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === 'UK')
-        .filter((ele) => ele.status === 'INACTIVE').length,
+        .filter((ele:any) => ele.country === 'UK')
+        .filter((ele:any) => ele.status === 'INACTIVE').length,
     ],
     [
       'Dubai',
       user
-        .filter((ele) => ele.country === 'Dubai')
-        .filter((ele) => ele.status === 'ACTIVE').length,
+        .filter((ele:any) => ele.country === 'Dubai')
+        .filter((ele:any) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === 'Dubai')
-        .filter((ele) => ele.status === 'INACTIVE').length,
+        .filter((ele:any) => ele.country === 'Dubai')
+        .filter((ele:any) => ele.status === 'INACTIVE').length,
     ],
     [
       'Srilanka',
       user
-        .filter((ele) => ele.country === 'Srilanka')
-        .filter((ele) => ele.status === 'ACTIVE').length,
+        .filter((ele:any) => ele.country === 'Srilanka')
+        .filter((ele:any) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === 'Srilanka')
-        .filter((ele) => ele.status === 'INACTIVE').length,
+        .filter((ele:any) => ele.country === 'Srilanka')
+        .filter((ele:any) => ele.status === 'INACTIVE').length,
     ],
     [
       'Thailand',
       user
-        .filter((ele) => ele.country === 'Thailand')
-        .filter((ele) => ele.status === 'ACTIVE').length,
+        .filter((ele:any) => ele.country === 'Thailand')
+        .filter((ele:any) => ele.status === 'ACTIVE').length,
       user
-        .filter((ele) => ele.country === 'Thailand')
-        .filter((ele) => ele.status === 'INACTIVE').length,
+        .filter((ele:any) => ele.country === 'Thailand')
+        .filter((ele:any) => ele.status === 'INACTIVE').length,
     ],
   ];
   const CompariosnData = [[graphBase, graph1, graph2]];

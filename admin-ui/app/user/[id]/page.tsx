@@ -1,8 +1,6 @@
 'use client';
-
 import { use } from 'react';
 import UserEditComponent from '.';
-
 import { findById } from '../../../services/api.service';
 
 type User = {

@@ -1,12 +1,8 @@
 'use client';
-
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import {
-  Box, Card, Divider, Grid, IconButton, Pagination, Typography,
-} from '@mui/material';
+import { Box, Card, Divider, Grid, IconButton, Pagination, Typography, } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
-import Paper from '@mui/material/Paper';
 import { useState } from 'react';
 import { PaginationHandler } from '../../utility';
 import InfoUserComponent from '../info';
@@ -26,16 +22,16 @@ function ListViewComponent({ user, myRef }: any) {
 
   const handleNameSort = () => {
     if (nameSort) {
-      user.sort((a:any, b:any) => {
+      user.sort((a: any, b: any) => {
         if (
-          `${a.firstName}${a.lastName}`.toLowerCase()
-          < `${b.firstName}${b.lastName}`.toLowerCase()
+          `${a.firstName}${a.lastName}`.toLowerCase() <
+          `${b.firstName}${b.lastName}`.toLowerCase()
         ) {
           return -1;
         }
         if (
-          `${a.firstName}${a.lastName}`.toLowerCase()
-          > `${b.firstName}${b.lastName}`.toLowerCase()
+          `${a.firstName}${a.lastName}`.toLowerCase() >
+          `${b.firstName}${b.lastName}`.toLowerCase()
         ) {
           return 1;
         }
@@ -44,16 +40,16 @@ function ListViewComponent({ user, myRef }: any) {
       setNameSort(false);
     } else {
       user
-        .sort((a:any, b:any) => {
+        .sort((a: any, b: any) => {
           if (
-            `${a.firstName}${a.lastName}`.toLowerCase()
-            < `${b.firstName}${b.lastName}`.toLowerCase()
+            `${a.firstName}${a.lastName}`.toLowerCase() <
+            `${b.firstName}${b.lastName}`.toLowerCase()
           ) {
             return -1;
           }
           if (
-            `${a.firstName}${a.lastName}`.toLowerCase()
-            > `${b.firstName}${b.lastName}`.toLowerCase()
+            `${a.firstName}${a.lastName}`.toLowerCase() >
+            `${b.firstName}${b.lastName}`.toLowerCase()
           ) {
             return 1;
           }
@@ -65,7 +61,7 @@ function ListViewComponent({ user, myRef }: any) {
   };
   const handleEmailSort = () => {
     if (emailSort) {
-      user.sort((a:any, b:any) => {
+      user.sort((a: any, b: any) => {
         if (a.email.toLowerCase() < b.email.toLowerCase()) {
           return -1;
         }
@@ -77,7 +73,7 @@ function ListViewComponent({ user, myRef }: any) {
       setEmailSort(false);
     } else {
       user
-        .sort((a:any, b:any) => {
+        .sort((a: any, b: any) => {
           if (a.email.toLowerCase() < b.email.toLowerCase()) {
             return -1;
           }
@@ -92,7 +88,7 @@ function ListViewComponent({ user, myRef }: any) {
   };
   const handleDateSort = () => {
     if (dateSort) {
-      user.sort((a:any, b:any) => {
+      user.sort((a: any, b: any) => {
         if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) {
           return -1;
         }
@@ -104,7 +100,7 @@ function ListViewComponent({ user, myRef }: any) {
       setDateSort(false);
     } else {
       user
-        .sort((a:any, b:any) => {
+        .sort((a: any, b: any) => {
           if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) {
             return -1;
           }
@@ -119,7 +115,7 @@ function ListViewComponent({ user, myRef }: any) {
   };
   const handleStatusSort = () => {
     if (statusSort) {
-      user.sort((a:any, b:any) => {
+      user.sort((a: any, b: any) => {
         if (a.status.toLowerCase() < b.status.toLowerCase()) {
           return -1;
         }
@@ -131,7 +127,7 @@ function ListViewComponent({ user, myRef }: any) {
       setStatusSort(false);
     } else {
       user
-        .sort((a:any, b:any) => {
+        .sort((a: any, b: any) => {
           if (a.status.toLowerCase() < b.status.toLowerCase()) {
             return -1;
           }
@@ -146,7 +142,7 @@ function ListViewComponent({ user, myRef }: any) {
   };
   const handleContactSort = () => {
     if (contactSort) {
-      user.sort((a:any, b:any) => {
+      user.sort((a: any, b: any) => {
         if (a.mobile.toLowerCase() < b.mobile.toLowerCase()) {
           return -1;
         }
@@ -158,7 +154,7 @@ function ListViewComponent({ user, myRef }: any) {
       setContactSort(false);
     } else {
       user
-        .sort((a:any, b:any) => {
+        .sort((a: any, b: any) => {
           if (a.mobile.toLowerCase() < b.mobile.toLowerCase()) {
             return -1;
           }
@@ -310,7 +306,7 @@ function ListViewComponent({ user, myRef }: any) {
             </Grid>
           </Card>
         </Box>
-        <Divider style={{width:'98.5%'}}/>
+        <Divider style={{ width: '98.5%' }} />
         <Grid style={{ height: '62vh' }}>
           {paginationHandler
             .currentData()

@@ -12,7 +12,7 @@ interface CalendarEventData {
   start: Date;
   end: Date;
 }
-function UserCalendarView({ user, myRef }: ListComponentProps) {
+function UserCalendarView({ user, myRef }:any) {
   const [events, setEvents] = useState<Array<CalendarEventData>>([]);
   const calendarUser = user?.map((users: IUser) => ({
     title: users.firstName,

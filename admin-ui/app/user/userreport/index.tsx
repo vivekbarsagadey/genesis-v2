@@ -14,7 +14,7 @@ function UserReportComponent({ user }: any) {
     <div>
       <PivotTableUI
         data={user}
-        onChange={(s) => setSettings(s)}
+        onChange={(s:any) => setSettings(s)}
         cols={['createdAt']}
         rows={['firstName', 'lastName', 'address', 'country', 'mobile', 'name']}
         vals={['aos_pax_total']}

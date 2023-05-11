@@ -94,8 +94,8 @@ function FilterComponent({
           'aria-labelledby': 'basic-button',
         }}
       >
-        {user
-          && fileds?.map((feild, index) => {
+        {user &&
+          fileds?.map((feild, index) => {
             const { key } = feild;
             return (
               <Filter

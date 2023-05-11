@@ -9,13 +9,13 @@ import {
   IconButton,
   Modal,
   Paper,
-  Select,
   Button,
   Tooltip,
 } from '@mui/material';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid/Grid';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
@@ -49,11 +49,18 @@ const useStyles = makeStyles({
     width: 400,
     bgcolor: 'background.paper',
     border: '2px solid #000',
-    boxShadow: 24,
     p: 4,
   },
   buttonStyle: {
     padding: '0px',
+  },
+  countIcon: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: '1px solid gray',
+    borderRadius: '40px',
+    backgroundColor: 'lightGray',
   },
 });
 type INewUser = {
@@ -85,21 +92,12 @@ function UserKanbanView({ user, myRef }: any) {
                     NEW
                   </Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={0.7}
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  border="1px solid gray"
-                  borderRadius="40px"
-                  backgroundColor="lightgray"
-                >
+                <Grid item xs={0.7} className={classes.countIcon}>
                   <Typography fontSize="12px">{newUsers.length}</Typography>
                 </Grid>
               </Grid>
 
-              {newUsers.reverse()?.map((newUser, index) => (
+              {newUsers.reverse()?.map((newUser: any, index: any) => (
                 <NewUserComponent newUser={newUser} key={index} />
               ))}
             </CardContent>
@@ -117,21 +115,12 @@ function UserKanbanView({ user, myRef }: any) {
                     ACTIVE
                   </Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={0.7}
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  border="1px solid gray"
-                  borderRadius="40px"
-                  backgroundColor="lightgray"
-                >
+                <Grid item xs={0.7} className={classes.countIcon}>
                   <Typography fontSize="12px">{activeUsers.length}</Typography>
                 </Grid>
               </Grid>
 
-              {activeUsers.reverse()?.map((activeUser, index) => (
+              {activeUsers.reverse()?.map((activeUser: any, index: any) => (
                 <ActiveUserComponent activeUser={activeUser} key={index} />
               ))}
             </CardContent>
@@ -149,23 +138,14 @@ function UserKanbanView({ user, myRef }: any) {
                     INACTIVE
                   </Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={0.7}
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  border="1px solid gray"
-                  borderRadius="40px"
-                  backgroundColor="lightgray"
-                >
+                <Grid item xs={0.7} className={classes.countIcon}>
                   <Typography fontSize="12px">
                     {inActiveUsers.length}
                   </Typography>
                 </Grid>
               </Grid>
 
-              {inActiveUsers.reverse()?.map((inActiveUser, index) => (
+              {inActiveUsers.reverse()?.map((inActiveUser: any, index: any) => (
                 <InActiveUserComponent
                   inActiveUser={inActiveUser}
                   key={index}
@@ -186,7 +166,7 @@ function NewUserComponent({ newUser }: INewUser) {
   const handleEditModalClose = () => setOpenEditModal(false);
   const [newStatus, setNewStatus] = useState(newUser.status);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -194,9 +174,10 @@ function NewUserComponent({ newUser }: INewUser) {
   };
   const classes = useStyles();
 
-  const handleupdateStatus = (event: SelectChangeEvent) => {
+  const handleupdateStatus = (event: SelectChangeEvent)=> {
     setNewStatus(event.target.value as string);
   };
+  
 
   const updateStatusHandler = async () => {
     try {
@@ -218,8 +199,7 @@ function NewUserComponent({ newUser }: INewUser) {
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
             <PersonIcon fontSize="inherit" />
             <Typography noWrap pl={1} variant="h6">
-              {`${newUser.firstName} ${newUser.lastName} `}
-              {' '}
+              {`${newUser.firstName} ${newUser.lastName} `}{' '}
             </Typography>
           </Grid>
           <Grid
@@ -348,7 +328,7 @@ function ActiveUserComponent({ activeUser }: IActiveUser) {
   const handleEditModalClose = () => setOpenEditModal(false);
   const [newStatus, setNewStatus] = useState(activeUser.status);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -380,18 +360,11 @@ function ActiveUserComponent({ activeUser }: IActiveUser) {
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
             <PersonIcon fontSize="inherit" />
             <Typography noWrap pl={1} variant="h6">
-              {`${activeUser.firstName} ${activeUser.lastName} `}
-              {' '}
+              {`${activeUser.firstName} ${activeUser.lastName} `}{' '}
             </Typography>
           </Grid>
-          <Grid
-            item
-            xs={6}
-            display="flex"
-            justifyContent="flex-end"
-            pl={2}
-            pb={1}
-          >
+          <Grid item xs={6} display="flex"
+            justifyContent="flex-end" pl={2} pb={1}>
             <IconButton onClick={handleClick}>
               <MoreHorizIcon fontSize="small" />
             </IconButton>
@@ -510,7 +483,7 @@ function InActiveUserComponent({ inActiveUser }: IInActiveUser) {
   const handleEditModalClose = () => setOpenEditModal(false);
   const [newStatus, setNewStatus] = useState(inActiveUser.status);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event:any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -543,8 +516,7 @@ function InActiveUserComponent({ inActiveUser }: IInActiveUser) {
           <Grid item xs={6} display="flex" alignItems="center" pl={2} pb={1}>
             <PersonIcon fontSize="inherit" />
             <Typography noWrap pl={1} variant="h6">
-              {`${inActiveUser.firstName} ${inActiveUser.lastName} `}
-              {' '}
+              {`${inActiveUser.firstName} ${inActiveUser.lastName} `}{' '}
             </Typography>
           </Grid>
           <Grid

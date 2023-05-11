@@ -10,27 +10,31 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import { useState } from 'react';
-import IUserComponentProps from './props';
-import useGridPagination from './grid.pagination';
+import { IUserComponentProps } from '../models';
+import { PaginationHandler } from '../../utility';
+
 
 type GridComponentProps = IUserComponentProps;
 
 function GridViewComponent({ items }: GridComponentProps) {
   // Pagination logic
   const [page, setPage] = useState(1);
-  const PER_PAGE = 6;
+  const PER_PAGE = 9;
   const count = Math.ceil(items.length / PER_PAGE);
-  const _DATA = useGridPagination(items, PER_PAGE);
+  const paginationHandler = PaginationHandler(items, PER_PAGE);
 
-  const handleChangePage = (e, p) => {
+  const handleChangePage = (e: any, p: number) => {
     setPage(p);
-    _DATA.jump(p);
+    paginationHandler.jump(p);
   };
 
   return (
     <Box sx={{ flexGrow: 1 }} mx={2.5}>
       <Grid container spacing={1.5} mt={1}>
-        {_DATA.currentData()?.map((item) => (
+      {paginationHandler
+          .currentData()
+          .reverse()
+          ?.map((item: any) => (
           <Grid item lg={4} xs={12} sm={6} md={4} mt={0} key={item.id}>
             <Card>
               <Box>

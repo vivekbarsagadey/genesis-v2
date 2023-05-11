@@ -70,7 +70,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
 ));
 
 const genderType = [{ title: 'Male' }, { title: 'Female' }];
-function UserEditComponent({ users, id }: UserComponentProps) {
+function UserEditComponent({ users, id }: any) {
   const classes = useStyles();
   const [userFirstName, setUserFirstName] = useState(users.firstName);
   const [userLastName, setUserLastName] = useState(users.lastName);
@@ -203,7 +203,7 @@ function UserEditComponent({ users, id }: UserComponentProps) {
   ) => {
     event.preventDefault();
   };
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: any) => {
     setValue1(newValue);
   };
   const fetchData = async () => {
@@ -604,7 +604,6 @@ function UserEditComponent({ users, id }: UserComponentProps) {
                               disablePortal
                               disabled
                               defaultValue="Disabled"
-                              onChange={updateRole}
                               size="small"
                               id="combo-box-demo"
                               options={roleList?.map(
@@ -665,7 +664,7 @@ function UserEditComponent({ users, id }: UserComponentProps) {
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
-  value: number;
+  value: any;
 }
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;

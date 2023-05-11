@@ -4,7 +4,6 @@ import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 import { useState } from 'react';
 import { PaginationHandler } from '../../utility';
-import { ListComponentProps } from './props';
 
 function UserGridView({ user, myRef }: any) {
   // pagination
