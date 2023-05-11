@@ -7,8 +7,8 @@ import { useState } from 'react';
 import { PaginationHandler } from '../../utility';
 
 const useStyles = makeStyles({
-  root: { height: '74vh' },
-  imageView: { padding: '.5rem' },
+  root: { height: '75.6vh' },
+  imageView: { padding: '0.5rem' },
   paginationView: { display: "flex", justifyContent: "flex-end" },
   logoSize: { width: '90%', height: '100%' }
 });
@@ -29,7 +29,7 @@ function CompanyGridView({ companies, myRef }: any) {
 
   return (
     <>
-      <Grid container spacing={1} mt={1} className={classes.root} mr={2} ref={myRef}>
+      <Grid container spacing={1} mt={1} className={classes.root} mr={2} pr={2} ref={myRef}>
         {paginationHandler
           .currentData()
           .reverse()
@@ -37,9 +37,9 @@ function CompanyGridView({ companies, myRef }: any) {
             <Grid item xs={4} md={4} sm={4} lg={4} key={item.id} >
               <Box>
                 <Card>
-                  <Grid container>
+                  <Grid container >
                     <Grid item xs={12}>
-                      <Grid container>
+                      <Grid container mr={2}>
                         <Grid item xs={4} className={classes.imageView}>
                           {item.gender === 'Male' ? <Tooltip title={item.ownerName} arrow>
                             <CardMedia
