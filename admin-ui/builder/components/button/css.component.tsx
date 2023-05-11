@@ -4,7 +4,7 @@ import {
 } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
-function ButtonCssComponent({ metaData }) {
+function ButtonCssComponent({ metaData }:any) {
   const [borderRadius, setBorderRadius] = useState<string>(
     metaData.borderRadius,
   );
@@ -12,17 +12,17 @@ function ButtonCssComponent({ metaData }) {
   const [overflow, setOverflow] = useState<string>(metaData.overflowY);
   const [width, setWidth] = useState<string>(metaData.width);
 
-  const updateBorderRadius = (e) => {
+  const updateBorderRadius = (e:any) => {
     setBorderRadius(e.target.value);
   };
 
-  const updateHeight = (e) => {
+  const updateHeight = (e:any) => {
     setHeight(e.target.value);
   };
-  const updateOverflow = (e) => {
+  const updateOverflow = (e:any) => {
     setOverflow(e.target.value);
   };
-  const updateWidth = (e) => {
+  const updateWidth = (e:any) => {
     setWidth(e.target.value);
   };
 

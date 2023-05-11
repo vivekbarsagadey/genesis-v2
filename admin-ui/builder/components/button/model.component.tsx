@@ -4,10 +4,10 @@ import {
 } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
-function ButtonModelComponent({ metaData }) {
+function ButtonModelComponent({ metaData }:any) {
   const [width, setWidth] = useState<string>(metaData.width);
 
-  const updateWidth = (e) => {
+  const updateWidth = (e:any) => {
     setWidth(e.target.value);
   };
   return (

@@ -4,10 +4,10 @@ import {
 } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
-function ButtonApiComponent({ metaData }) {
+function ButtonApiComponent({ metaData }:any) {
   const [url, setUrl] = useState<string>(metaData.url);
 
-  const updatedUrl = (e) => {
+  const updatedUrl = (e:any) => {
     setUrl(e.target.value);
   };
   console.log('urlurl>>>>', url);
