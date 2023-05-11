@@ -52,7 +52,7 @@ type InfoCompanyComponentProps = {
 };
 
 function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompanyComponentProps) {
-  const router = useRouter();
+
   const [alert, setAlert] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const deletePopupOpen = () => setOpen(true);
