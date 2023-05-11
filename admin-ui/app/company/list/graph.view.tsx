@@ -31,8 +31,7 @@ const comparisionType = [
 
 function CustomerGraphView({ companies, myRef }: ListComponentProps) {
   const [graphView, setGraphView] = useState<string>('Status');
-  const [comparisiongraphView, setComparisionGraphView] =
-    useState<string>('Month');
+  const [comparisiongraphView, setComparisionGraphView] = useState<string>('Month');
 
   const keys = Object.keys(companies[0]);
   const graphTypeVal = keys.filter((element) => {
@@ -171,14 +170,14 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
   ];
   const updateGrpahView = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: string,
   ) => {
     setGraphView(value);
   };
 
   const updateComparisionGrpahView = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: string,
   ) => {
     setComparisionGraphView(value);
   };
@@ -263,6 +262,7 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
               options={graphTypeVal?.map((option) => option)}
               renderInput={(params) => (
                 <TextField
+                  // eslint-disable-next-line react/jsx-props-no-spreading
                   {...params}
                   InputProps={{ ...params.InputProps, type: 'search' }}
                   placeholder="Select Graph View"
@@ -284,6 +284,7 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
               options={comparisionType.map((option) => option.title)}
               renderInput={(params) => (
                 <TextField
+                  // eslint-disable-next-line react/jsx-props-no-spreading
                   {...params}
                   InputProps={{
                     ...params.InputProps,
