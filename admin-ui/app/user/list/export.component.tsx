@@ -10,7 +10,7 @@ import UserPdfGenerator from '../../utility/user/pdf.generator';
 import { IUser } from '../models';
 
 interface UserExportComponentProps {
-  user: Array<IUser>;
+  user: any;
 }
 function ExportComponent({ user }: UserExportComponentProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

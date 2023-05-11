@@ -4,8 +4,8 @@ import TextField from '@mui/material/TextField';
 import { IUser } from '../models';
 
 interface UserSearchComponentProps {
-  user: Array<IUser>;
-  onSearchHandler: (_: Array<IUser>) => void;
+  user: any;
+  onSearchHandler: any;
 }
 function UserSearchDetails({
   user,

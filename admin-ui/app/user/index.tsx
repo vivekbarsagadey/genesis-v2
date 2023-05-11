@@ -20,7 +20,7 @@ import UserViewComponent from './view';
 import { colors } from '../../themes';
 
 interface UserComponentProps {
-  user: Array<IUser>;
+  user: any;
 }
 
 function UserComponentHome({ user }: UserComponentProps) {

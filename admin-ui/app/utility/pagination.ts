@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const PaginationHandler = (items, itemsPerPage: number) => {
+const PaginationHandler = (items:any, itemsPerPage: number) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const maxPage = Math.ceil(items.length / itemsPerPage);
   const currentData = () => {

@@ -17,8 +17,8 @@ const FilterStyle = styled(Grid)(({ theme }) => ({
   padding: '1rem',
 }));
 interface CompanyFilterComponentProps {
-  user: Array<IUser>;
-  onFilterHandler: (_: Array<IUser>) => void;
+  user: any;
+  onFilterHandler: any;
 }
 type FilterFields = {
   key: string;

@@ -78,23 +78,13 @@ function UserViewComponent({ onViewSelect }: UserViewComponentProps) {
   return (
     <Stack direction="row">
       {viewIconsSet.map((item) => (
-        <ToggleButtonGroup
-          value={alignment}
-          exclusive
-          onChange={handleAlignment}
-          aria-label="text alignment"
-          key={item.id}
-        >
-          <ToggleButton
-            value={item.id}
-            aria-label="left aligned"
-            key={item.id}
+        <ToggleButtonGroup value={alignment}
+          exclusive onChange={handleAlignment}
+          aria-label="text alignment" key={item.id}>
+          <ToggleButton value={item.id}
+            aria-label="left aligned" key={item.id}
             onClick={() => onViewSelect(item.view)}
-            style={{
-              border: 'none',
-              borderRadius: '50%',
-            }}
-          >
+            style={{ border: 'none', borderRadius: '50%'}}>
             {item.icon}
           </ToggleButton>
         </ToggleButtonGroup>

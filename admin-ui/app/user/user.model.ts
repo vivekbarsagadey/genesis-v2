@@ -14,5 +14,6 @@ type IUser = {
   createdAt: number;
   updatedAt: number;
   status: string;
+  user:string
 };
 export default IUser;
