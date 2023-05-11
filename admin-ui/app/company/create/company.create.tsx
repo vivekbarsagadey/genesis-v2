@@ -1,8 +1,6 @@
 'use client';
 
-import {
-  Box, Button, Card, Grid, TextField, Typography,
-} from '@mui/material';
+import { Box, Button, Card, Grid, TextField, Typography } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
 import Snackbar from '@mui/material/Snackbar';
@@ -11,7 +9,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { createCompany } from '../../../services/company.action';
-import { countrySelect, genderSelect, stateSelect } from '../graphdata/graph.data';
+import {
+  countrySelect,
+  genderSelect,
+  stateSelect,
+} from '../graphdata/graph.data';
 import { Status } from '../models';
 
 const useStyles = makeStyles({
@@ -49,7 +51,7 @@ function CompanyCreateComponent() {
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string,
+    reason?: string
   ) => {
     if (reason === 'clickAway') {
       return;
@@ -63,7 +65,7 @@ function CompanyCreateComponent() {
   const updateMyCompanyData = async () => {
     try {
       const body = {
-        ownername: ownerName,
+        ownerName,
         name: companyName,
         email: companyEmail,
         mobile: companyMobile,
@@ -105,25 +107,25 @@ function CompanyCreateComponent() {
   };
   const updateCompanyState = (
     e: React.SyntheticEvent<Element, Event>,
-    value: any,
+    value: any
   ) => {
     setCompanyState(value);
   };
   const updateCompanyGender = (
     e: React.SyntheticEvent<Element, Event>,
-    value: any,
+    value: any
   ) => {
     setCompanyGender(value);
   };
   const updateCompanyCountry = (
     e: React.SyntheticEvent<Element, Event>,
-    value: any,
+    value: any
   ) => {
     setCompanyCountry(value);
   };
   const getCompanyStatusValue = (
     e: React.SyntheticEvent<Element, Event>,
-    value: any,
+    value: any
   ) => {
     setCompanyStatus(value);
   };
@@ -141,7 +143,6 @@ function CompanyCreateComponent() {
         </Grid>
 
         <Grid container spacing={2} mt={3} paddingLeft={5}>
-
           {/* <Grid item xs={6}>
             <FormInput value={data} header='Name' size='small' onChange={setData} placeholder='Select Name' />
           </Grid> */}

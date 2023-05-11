@@ -5,7 +5,10 @@ import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { Column } from 'jspdf-autotable';
+import { log } from 'console';
 import CreateRowsComponent from '../rows';
+import { createTemplates } from '../../../../services/template.action';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
@@ -13,9 +16,9 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
 
 function CreateTemplate() {
   const [rowCount, setRowCount] = useState([]);
-  const [cellDb, setCellDb] = useState([]);
-  const [rowDb, setRowDb] = useState([]);
   const [alert, setAlert] = useState(false);
+  const [column, setColumn] = useState([]);
+  const [row, setRow] = useState([]);
 
   const router = useRouter();
 
@@ -23,26 +26,7 @@ function CreateTemplate() {
     setRowCount([...rowCount, recv]);
   };
 
-  // const updateRowHandler = () => {
-  // for (let i = 0; i <= cellDb.length; i++) {
-  //   setCellDb([...cellDb, i])
-  // }
-
-  // const updateMyCompanyData = async () => {
-  //   try {
-  //     const body = {
-  //       cell: '',
-  //       row: ''
-  //     };
-  //     await createTemplates(body);
-  //     await router.push('/metadatadashboard/templates/');
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // };
-
-  const handleClose = (
+   const handleClose = (
     event?: React.SyntheticEvent | Event,
     reason?: string
   ) => {
@@ -58,7 +42,15 @@ function CreateTemplate() {
 
   const updateHandler = () => {
     handleClick();
-    // updateRowHandler();
+
+    const data = column.map((val) => {
+      for (let i = 1; i <= val; i++) {
+        createTemplates({
+          row,
+          cell: i,
+        });
+      }
+    });
   };
 
   return (
@@ -80,11 +72,11 @@ function CreateTemplate() {
         {rowCount?.map((data, index) => (
           <Grid item xs={6} key={index}>
             <CreateRowsComponent
+              column={column}
+              setColumn={setColumn}
               index={index}
-              // setCellDb={setCellDb}
-              // cellDb={cellDb}
-              // setRowDb={setRowDb}
-              // rowDb={rowDb}
+              row={row}
+              setRow={setRow}
             />
           </Grid>
         ))}
