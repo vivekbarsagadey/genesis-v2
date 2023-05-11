@@ -1,19 +1,20 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 import { download } from '../pdf-util';
-import IProject from '../../project/project.model';
+import { IProjects } from '../../project/models';
+
 
 type ProjectProps = {
-  projects: Array<IProject>;
+  copyProjectData: Array<IProjects>;
 };
 
-function ProjectPdfGenerator({ projects }: ProjectProps) {
+function ProjectPdfGenerator({ copyProjectData }: ProjectProps) {
   const exportPDF = async () => {
     const fileName = `Project${'-list'}${new Date()
       .toISOString()
       .slice(0, 10)}`;
     const headers = [['Project Name', 'Customer Name', 'Application']];
-    const pdfSendData = projects?.map((elt) => [
+    const pdfSendData = copyProjectData?.map((elt) => [
       elt.name,
       elt.customerName,
       elt.application,

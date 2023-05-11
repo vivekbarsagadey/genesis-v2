@@ -58,7 +58,7 @@ function UserComponentHome({ user }: UserComponentProps) {
             <UserSearchDetails user={user} onSearchHandler={onSearchHandler} />
           </Grid>
 
-          <Grid item xs={4} md={8} sm={8} lg={7} display="flex">
+          <Grid item xs={4} md={8} sm={8} lg={8} display="flex">
             <Grid container>
               <Grid item xs="auto" mt={0.4}>
                 <FilterComponent

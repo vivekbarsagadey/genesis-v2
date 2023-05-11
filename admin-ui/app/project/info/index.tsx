@@ -19,8 +19,8 @@ import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
 import BuilderHome from '../../../builder';
 import downloadJsonFile from '../../utility/json.downloader';
-import IProject from '../project.model';
 import BuilderThemeComponent from './builder.theme.select';
+import { IProjects } from '../models';
 
 const Transition = React.forwardRef(
   (
@@ -32,7 +32,7 @@ const Transition = React.forwardRef(
   ) => <Slide direction="up" ref={ref} {...props} />,
 );
 type InfoCustomerComponentProps = {
-  items: IProject;
+  items: IProjects;
 };
 
 // export const ProjectContext = React.createContext();

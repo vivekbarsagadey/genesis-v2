@@ -10,7 +10,7 @@ import UserPdfGenerator from '../../utility/user/pdf.generator';
 import { IUser } from '../models';
 
 interface UserExportComponentProps {
-  user: any;
+  user:any;
 }
 function ExportComponent({ user }: UserExportComponentProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -34,15 +34,11 @@ function ExportComponent({ user }: UserExportComponentProps) {
           <FileDownloadOutlinedIcon fontSize="small" />
         </IconButton>
       </Tooltip>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
+      <Menu id="basic-menu" anchorEl={anchorEl} open={open}
         onClose={handleClose}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
-        }}
-      >
+        }}>
         <MenuItem onClick={handleClose}>
           <UserExcellGenerator user={user} />
         </MenuItem>

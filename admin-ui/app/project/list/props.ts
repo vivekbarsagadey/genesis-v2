@@ -1,5 +1,7 @@
-import IProject from '../project.model';
+import { IProjects } from "../models";
+
 
 export interface ListComponentProps {
-  projects: Array<IProject>;
+  projects: Array<IProjects>;
+
 }

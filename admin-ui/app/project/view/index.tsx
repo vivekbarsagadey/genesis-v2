@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import GridViewIcon from '@mui/icons-material/GridView';
 import ListAltIcon from '@mui/icons-material/ListAlt';
@@ -64,23 +63,23 @@ const viewIconsSet = [
   },
 ];
 
-interface ProjectViewComponentProps {
+interface CompanyViewComponentProps {
   onViewSelect: (_: ViewTypes) => void;
 }
 
-function ProjectViewComponent({ onViewSelect }: ProjectViewComponentProps) {
+function CompanyViewComponent({ onViewSelect }: CompanyViewComponentProps) {
   const [alignment, setAlignment] = React.useState('left');
 
   const handleAlignment = (
     event: React.MouseEvent<HTMLElement>,
-    newAlignment: string | null,
+    newAlignment: string | null
   ) => {
     if (newAlignment !== null) {
       setAlignment(newAlignment);
     }
   };
   return (
-    <Stack direction="row">
+    <Stack direction="row" >
       {viewIconsSet.map((item) => (
         <ToggleButtonGroup
           value={alignment}
@@ -97,6 +96,7 @@ function ProjectViewComponent({ onViewSelect }: ProjectViewComponentProps) {
             style={{
               border: 'none',
               borderRadius: '50%',
+              background: 'transparent',
             }}
           >
             {item.icon}
@@ -107,4 +107,4 @@ function ProjectViewComponent({ onViewSelect }: ProjectViewComponentProps) {
   );
 }
 
-export default ProjectViewComponent;
+export default CompanyViewComponent;

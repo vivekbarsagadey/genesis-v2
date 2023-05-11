@@ -1,18 +1,19 @@
-import React, { Suspense, use } from 'react';
-import ProjectHomeComponent from '.';
+'use client';
+
+import React, { use, Suspense } from 'react';
+import CompanyComponentHome from '.';
 import { findAll } from '../../services/api.service';
-import IProject from './project.model';
+import { IProjects } from './models';
 
-const URL = 'projects';
+const URL = 'project';
 function Page() {
-  const projects = use<Array<IProject>>(findAll(URL));
-  console.log('this is projects', projects);
-
+  const project = use<Array<IProjects>>(findAll(URL));
   return (
     <Suspense>
-      <ProjectHomeComponent projects={projects} />
+      <CompanyComponentHome projects={project} />
     </Suspense>
-  );
+  )
 }
 
 export default Page;
+ 

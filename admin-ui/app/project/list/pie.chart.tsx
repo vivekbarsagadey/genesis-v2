@@ -3,12 +3,11 @@ import { Grid } from '@mui/material';
 import { Chart } from 'react-google-charts';
 import { Case, Default, Switch } from 'react-if';
 
-type projectChartProps = {
+type companyChartProps = {
   graphView: any;
   statusData: any;
   countryData: any;
   stateData: any;
-  applicationData: any;
 };
 
 function ProjectPieChart({
@@ -16,8 +15,7 @@ function ProjectPieChart({
   statusData,
   countryData,
   stateData,
-  applicationData,
-}: projectChartProps) {
+}: companyChartProps) {
   return (
     <Grid item xs={12}>
       <Switch>
@@ -25,32 +23,24 @@ function ProjectPieChart({
           <Chart
             chartType="PieChart"
             data={stateData}
-            width="100%"
-            height="320px"
+            width="120%"
+            height="450px"
           />
         </Case>
         <Case condition={graphView === 'country'}>
           <Chart
             chartType="PieChart"
             data={countryData}
-            width="100%"
-            height="320px"
+            width="120%"
+            height="450px"
           />
         </Case>
         <Case condition={graphView === 'status'}>
           <Chart
             chartType="PieChart"
             data={statusData}
-            width="100%"
-            height="320px"
-          />
-        </Case>
-        <Case condition={graphView === 'application'}>
-          <Chart
-            chartType="PieChart"
-            data={applicationData}
-            width="100%"
-            height="320px"
+            width="120%"
+            height="450px"
           />
         </Case>
 
@@ -58,8 +48,8 @@ function ProjectPieChart({
           <Chart
             chartType="PieChart"
             data={statusData}
-            width="100%"
-            height="320px"
+            width="120%"
+            height="450px"
           />
         </Default>
       </Switch>

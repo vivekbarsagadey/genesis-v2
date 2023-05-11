@@ -1,15 +1,15 @@
 import Typography from '@mui/material/Typography';
 import { CSVLink } from 'react-csv';
-import IProject from '../../project/project.model';
+import { IProjects } from '../../project/models';
 
 type ProjectProps = {
-  projects: Array<IProject>;
+  copyProjectData: Array<IProjects>;
 };
-function ProjectCsvGenerator({ projects }: ProjectProps) {
+function ProjectCsvGenerator({ copyProjectData }: ProjectProps) {
   return (
     <Typography variant="subtitle1">
       <CSVLink
-        data={projects}
+        data={copyProjectData}
         filename={`projectData${'-list'}${new Date()
           .toISOString()
           .slice(0, 10)}`}

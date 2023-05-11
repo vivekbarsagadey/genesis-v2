@@ -1,36 +1,37 @@
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import IProject from '../project.model';
+import { useState } from 'react';
+import { IProjects } from '../models';
 
-interface CustomerSearchComponentProps {
-  projects: Array<IProject>;
-  onSearchHandler: (_: Array<IProject>) => void;
+interface ProjectSearchComponentProps {
+  projects: Array<IProjects>;
+  onSearchHandler: (_: Array<IProjects>) => void;
 }
 
-function CustomerSearchDetails({
+function ProjectsSearchDetails({
   projects,
   onSearchHandler,
-}: CustomerSearchComponentProps) {
+}: ProjectSearchComponentProps) {
   const [searchStr, setSearchStr] = useState<string>('');
 
-  const filterByProjectName = (name: string) => (f: IProject): boolean => f.name.toLowerCase().includes(name.toLowerCase());
-  // const filterByCompanyName = (customerName: string) =>  (f: IProject): boolean => f.customerName.toLowerCase().includes(customerName.toLowerCase());
-  const filterByApplication = (application: string) => (f: IProject): boolean => f.application.toLowerCase().includes(application.toLowerCase());
+  const filterBySearchValue =
+    (value: string) =>
+    (f: IProjects): boolean =>
+      f.name?.toLowerCase().includes(value.toLowerCase()) ||
+      f.email.toLowerCase().includes(value.toLowerCase()) ||
+      f.mobile.toLowerCase().includes(value.toLowerCase()) ||
+      f.status.toLowerCase().includes(value.toLowerCase());
 
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const _searchValue = e.target.value;
     setSearchStr(_searchValue);
-    if (_searchValue === '') {
+    if (_searchValue == '') {
       onSearchHandler(projects);
       return;
     }
-    onSearchHandler(projects.filter(filterByProjectName(_searchValue)));
-    // onSearchHandler(projects.filter(filterByCompanyName(_searchValue)));
-    onSearchHandler(projects.filter(filterByApplication(_searchValue)));
+    onSearchHandler(projects.filter(filterBySearchValue(_searchValue)));
   };
+
   return (
     <Grid item xs={12}>
       <TextField
@@ -43,4 +44,4 @@ function CustomerSearchDetails({
     </Grid>
   );
 }
-export default CustomerSearchDetails;
+export default ProjectsSearchDetails;

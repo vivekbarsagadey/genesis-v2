@@ -1,13 +1,14 @@
 import { Typography } from '@mui/material';
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
-import IProject from '../../project/project.model';
+import { IProjects } from '../../project/models';
+
 
 type ProjectProps = {
-  projects: Array<IProject>;
+  copyProjectData: Array<IProjects>;
 };
 
-function ProjectExcellGenerator({ projects }: ProjectProps) {
+function ProjectExcellGenerator({ copyProjectData }: ProjectProps) {
   const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
   const fileExtension = '.xlsx';
   const fileName = `project-list-${new Date().toISOString().slice(0, 10)}`;
@@ -22,7 +23,7 @@ function ProjectExcellGenerator({ projects }: ProjectProps) {
   return (
     <Typography
       variant="subtitle1"
-      onClick={(e) => exportToCSV(projects, fileName)}
+      onClick={(e) => exportToCSV(copyProjectData, fileName)}
     >
       Excel
     </Typography>

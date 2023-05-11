@@ -7,9 +7,12 @@ import React from 'react';
 import ProjectCsvGenerator from '../../utility/project/csv.generator';
 import ProjectExcellGenerator from '../../utility/project/excell.generator';
 import ProjectPdfGenerator from '../../utility/project/pdf.generator';
-import { ListComponentProps } from './props';
+import { IProjects } from '../models';
 
-function ProjectExportComponent({ projects }: ListComponentProps) {
+interface CompanyExportComponentProps {
+  copyProjectData: Array<IProjects>;
+}
+function ExportComponent({ copyProjectData }: CompanyExportComponentProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -42,17 +45,17 @@ function ProjectExportComponent({ projects }: ListComponentProps) {
         }}
       >
         <MenuItem onClick={handleClose}>
-          <ProjectExcellGenerator projects={projects} />
+          <ProjectExcellGenerator copyProjectData={copyProjectData} />
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <ProjectPdfGenerator projects={projects} />
+          <ProjectCsvGenerator copyProjectData={copyProjectData} />
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <ProjectCsvGenerator projects={projects} />
+          <ProjectPdfGenerator copyProjectData={copyProjectData} />
         </MenuItem>
       </Menu>
     </>
   );
 }
 
-export default ProjectExportComponent;
+export default ExportComponent;

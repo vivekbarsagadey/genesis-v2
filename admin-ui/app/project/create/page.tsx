@@ -1,5 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope */
-import ProjectCreate from '.';
+import ProjectCreate from './company.create';
 
 const page = () => <ProjectCreate />;
 
