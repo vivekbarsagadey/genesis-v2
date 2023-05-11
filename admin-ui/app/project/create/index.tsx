@@ -1,8 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-restricted-globals */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-props-no-spreading */
-
 'use client';
 
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
@@ -97,6 +92,7 @@ function ProjectCreate() {
   const [customerCity, setCustomerCity] = useState('');
   const [customerState, setCustomerState] = useState('');
   const [customerCountry, setCustomerCountry] = useState('');
+  const [customerProfilePic, setCustomerProfilePic] = useState('');
   const [hover, setHover] = useState(false);
   const [alert, setAlert] = useState(false);
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
@@ -157,32 +153,32 @@ function ProjectCreate() {
 
   const updateCustomerChange = (
     e: React.SyntheticEvent<Element, Event>,
-    value: any,
+    value: string
   ) => {
     setGender(value);
   };
   const updateCustomerCountry = (
     e: React.SyntheticEvent<Element, Event>,
-    value: any,
+    value: string
   ) => {
     setCustomerCountry(value);
   };
   const updateCustomerState = (
     e: React.SyntheticEvent<Element, Event>,
-    value: any,
+    value: string
   ) => {
     setCustomerState(value);
   };
   const updateCustomerCity = (
     e: React.SyntheticEvent<Element, Event>,
-    value: any,
+    value: string
   ) => {
     setCustomerCity(value);
   };
 
   const updateCustomerStatus = (
     e: React.SyntheticEvent<Element, Event>,
-    value: any,
+    value: string
   ) => {
     setCustomerStatus(value);
   };
@@ -201,7 +197,7 @@ function ProjectCreate() {
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: any,
+    reason?: string
   ) => {
     if (reason === 'clickaway') {
       return;
@@ -211,10 +207,10 @@ function ProjectCreate() {
 
   const fetchData = async () => {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/companies`,
+      `${process.env.NEXT_PUBLIC_API_URL}/companies`
     );
     if (!response.ok) {
-      throw new Error('Data cloud not be fetched!');
+      throw new Error('Data coud not be fetched!');
     } else {
       return response.json();
     }
@@ -249,34 +245,34 @@ function ProjectCreate() {
 
   const updateCustomerName = (
     e: React.SyntheticEvent<Element, Event>,
-    value: any,
+    value: string
   ) => {
     setCustomerName(value);
   };
 
   const getProjectStatusValue = (
     e: React.SyntheticEvent<Element, Event>,
-    value: any,
+    value: string
   ) => {
     setProjectStatus(value);
   };
 
   const updateProjectState = (
     e: React.SyntheticEvent<Element, Event>,
-    value: any,
+    value: string
   ) => {
     setProjectState(value);
   };
   const updateProjectCountry = (
     e: React.SyntheticEvent<Element, Event>,
-    value: any,
+    value: string
   ) => {
     setProjectCountry(value);
   };
 
   const updateMyProjectData = async () => {
     if (customerWeb) {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/project`, {
         method: 'POST',
         body: JSON.stringify({
           name: projectName,
@@ -292,7 +288,7 @@ function ProjectCreate() {
       }).then((res) => res.json());
     }
     if (customerMobile) {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/project`, {
         method: 'POST',
         body: JSON.stringify({
           name: projectName,
@@ -307,7 +303,7 @@ function ProjectCreate() {
       }).then((res) => res.json());
     }
     if (businessWeb) {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/project`, {
         method: 'POST',
         body: JSON.stringify({
           name: projectName,
@@ -323,7 +319,7 @@ function ProjectCreate() {
       }).then((res) => res.json());
     }
     if (businessMobile) {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/project`, {
         method: 'POST',
         body: JSON.stringify({
           name: projectName,
@@ -390,7 +386,7 @@ function ProjectCreate() {
                     id="combo-box-demo"
                     size="small"
                     options={companyList?.map(
-                      (company: ICompany) => company.name,
+                      (company: ICompany) => company.name
                     )}
                     renderInput={(params) => (
                       <TextField
@@ -508,7 +504,7 @@ function ProjectCreate() {
                                         id="status"
                                         size="small"
                                         options={genderType?.map(
-                                          (option) => option.title,
+                                          (option) => option.title
                                         )}
                                         renderInput={(params) => (
                                           <TextField
@@ -618,7 +614,7 @@ function ProjectCreate() {
                                       id="status"
                                       size="small"
                                       options={statusSet?.map(
-                                        (option: any) => option,
+                                        (option: any) => option
                                       )}
                                       renderInput={(params) => (
                                         <TextField
@@ -702,7 +698,7 @@ function ProjectCreate() {
                                       id="city"
                                       size="small"
                                       options={citySelect.map(
-                                        (option: any) => option.city,
+                                        (option: any) => option.city
                                       )}
                                       renderInput={(params) => (
                                         <TextField
@@ -735,7 +731,7 @@ function ProjectCreate() {
                                       id="state"
                                       size="small"
                                       options={stateSelect.map(
-                                        (option) => option.state,
+                                        (option) => option.state
                                       )}
                                       renderInput={(params) => (
                                         <TextField
@@ -769,7 +765,7 @@ function ProjectCreate() {
                                         id="status"
                                         size="small"
                                         options={countrySelect.map(
-                                          (option) => option.country,
+                                          (option) => option.country
                                         )}
                                         renderInput={(params) => (
                                           <TextField
@@ -925,7 +921,9 @@ function ProjectCreate() {
                   <Grid item xs={2}>
                     <Checkbox
                       value={customerWeb}
-                      onClick={() => getApplicationType('Business to Customer - Web')}
+                      onClick={() =>
+                        getApplicationType('Business to Customer - Web')
+                      }
                     />
                   </Grid>
                   <Grid item xs={10}>
@@ -934,7 +932,9 @@ function ProjectCreate() {
                   <Grid item xs={2}>
                     <Checkbox
                       value={customerMobile}
-                      onClick={() => getApplicationType('Business to Customer - Mobile')}
+                      onClick={() =>
+                        getApplicationType('Business to Customer - Mobile')
+                      }
                     />
                   </Grid>
                   <Grid item xs={10}>
@@ -943,7 +943,9 @@ function ProjectCreate() {
                   <Grid item xs={2}>
                     <Checkbox
                       value={businessWeb}
-                      onClick={() => getApplicationType('Business to Business - Web')}
+                      onClick={() =>
+                        getApplicationType('Business to Business - Web')
+                      }
                     />
                   </Grid>
                   <Grid item xs={10}>
@@ -952,7 +954,9 @@ function ProjectCreate() {
                   <Grid item xs={2}>
                     <Checkbox
                       value={businessMobile}
-                      onClick={() => getApplicationType('Business to Business - Mobile')}
+                      onClick={() =>
+                        getApplicationType('Business to Business - Mobile')
+                      }
                     />
                   </Grid>
                   <Grid item xs={10}>
