@@ -50,6 +50,7 @@ type InfoCompanyComponentProps = {
   company: ICompany;
   setMultiSelect: any;
   multiSelect: any;
+ 
 };
 
 function InfoCompanyComponent({
@@ -57,6 +58,7 @@ function InfoCompanyComponent({
   show,
   setMultiSelect,
   multiSelect,
+ 
 }: InfoCompanyComponentProps) {
   const [alert, setAlert] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -91,6 +93,8 @@ function InfoCompanyComponent({
     const selectedCompanyId = company.id;
 
     setMultiSelect([...multiSelect, selectedCompanyId]);
+    
+   
   };
 
   const classes = useStyles();
