@@ -6,7 +6,7 @@ type ICompany = {
   lastName: string;
   mobile: string;
   email: string;
-  address?: string;
+  address?: any;
   country?: string;
   state?: string;
   city?: string;

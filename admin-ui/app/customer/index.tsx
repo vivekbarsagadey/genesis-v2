@@ -1,10 +1,13 @@
+/* eslint-disable lines-around-directive */
+/* eslint-disable react/react-in-jsx-scope */
 'use client';
 
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import PrintIcon from '@mui/icons-material/Print';
-import { Box, Button, Grid, IconButton, Tooltip } from '@mui/material';
+import {
+  Box, Button, Grid, IconButton, Tooltip,
+} from '@mui/material';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 import { Case, Default, Switch } from 'react-if';
 import { useReactToPrint } from 'react-to-print';
@@ -19,7 +22,7 @@ import CustomerListScereen from './list/list.screen';
 import { ICustomer } from './models';
 import CustomerSearchDetails from './search';
 import CustomerViewComponent from './view';
-import {colors } from '../../themes';
+import { colors } from '../../themes';
 
 interface CustomerComponentProps {
   customer: Array<ICustomer>;
@@ -43,7 +46,6 @@ function CustomerComponentHome({ customer }: CustomerComponentProps) {
   const handlePrint = useReactToPrint({
     content: () => myRef.current,
   });
-  const router = useRouter();
 
   return (
     <Box

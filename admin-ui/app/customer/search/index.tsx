@@ -1,11 +1,12 @@
+/* eslint-disable max-len */
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { ICustomer } from '../models';
 
 interface CustomerSearchComponentProps {
   customer: Array<ICustomer>;
-  onSearchHandler: (_: Array<ICustomer>) => void;
+  onSearchHandler: any
 }
 
 function CustomerSearchDetails({
@@ -22,7 +23,7 @@ function CustomerSearchDetails({
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const _searchValue = e.target.value;
     setSearchStr(_searchValue);
-    if (_searchValue == '') {
+    if (_searchValue === '') {
       onSearchHandler(customer);
       return;
     }

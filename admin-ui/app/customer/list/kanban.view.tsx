@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-first-prop-new-line */
+/* eslint-disable react/jsx-max-props-per-line */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-restricted-globals */
@@ -168,9 +170,7 @@ function CustomerKanbanView({ customer }: ListComponentProps) {
                     INACTIVE
                   </Typography>
                 </Grid>
-                <Grid
-                  item
-                  xs={0.7}
+                <Grid item xs={0.7}
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
