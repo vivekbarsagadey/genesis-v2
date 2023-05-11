@@ -31,7 +31,8 @@ const comparisionType = [
 
 function CustomerGraphView({ companies, myRef }: ListComponentProps) {
   const [graphView, setGraphView] = useState<string>('Status');
-  const [comparisiongraphView, setComparisionGraphView] = useState<string>('Month');
+  const [comparisiongraphView, setComparisionGraphView] =
+    useState<string>('Month');
 
   const keys = Object.keys(companies[0]);
   const graphTypeVal = keys.filter((element) => {
@@ -98,86 +99,86 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
     [
       'JAN',
       companies
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .map((ele) => moment(ele.createdAt).format('MMM'))
         .filter((d) => d === 'Jan').length,
     ],
     [
       'FEB',
       companies
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .map((ele) => moment(ele.createdAt).format('MMM'))
         .filter((d) => d === 'Feb').length,
     ],
     [
       'MAR',
       companies
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .map((ele) => moment(ele.createdAt).format('MMM'))
         .filter((d) => d === 'Mar').length,
     ],
     [
       'APR',
       companies
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .map((ele) => moment(ele.createdAt).format('MMM'))
         .filter((d) => d === 'Apr').length,
     ],
     [
       'MAY',
       companies
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .map((ele) => moment(ele.createdAt).format('MMM'))
         .filter((d) => d === 'May').length,
     ],
     [
       'JUN',
       companies
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .map((ele) => moment(ele.createdAt).format('MMM'))
         .filter((d) => d === 'Jun').length,
     ],
     [
       'JUL',
       companies
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .map((ele) => moment(ele.createdAt).format('MMM'))
         .filter((d) => d === 'Jul').length,
     ],
     [
       'AUG',
       companies
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .map((ele) => moment(ele.createdAt).format('MMM'))
         .filter((d) => d === 'Aug').length,
     ],
     [
       'SEP',
       companies
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .map((ele) => moment(ele.createdAt).format('MMM'))
         .filter((d) => d === 'Sep').length,
     ],
     [
       'OCT',
       companies
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .map((ele) => moment(ele.createdAt).format('MMM'))
         .filter((d) => d === 'Oct').length,
     ],
     [
       'NOV',
       companies
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .map((ele) => moment(ele.createdAt).format('MMM'))
         .filter((d) => d === 'Nov').length,
     ],
     [
       'DEC',
       companies
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
+        .map((ele) => moment(ele.createdAt).format('MMM'))
         .filter((d) => d === 'Dec').length,
     ],
   ];
   const updateGrpahView = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string,
+    value: string
   ) => {
     setGraphView(value);
   };
 
   const updateComparisionGrpahView = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string,
+    value: string
   ) => {
     setComparisionGraphView(value);
   };
@@ -188,62 +189,71 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
     [
       `${todayDate}`,
       companies
-        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
+        .map((ele) => moment(ele.createdAt).format('DD MMM YY'))
         .filter((d) => d === todayDate).length,
     ],
   ];
 
   const first = moment().subtract(1, 'day').toDate();
+  const _first = moment(first).format('DD MMM YY');
 
   const second = moment().subtract(2, 'day').toDate();
+  const _second = moment(second).format('DD MMM YY');
+
   const third = moment().subtract(3, 'day').toDate();
+  const _third = moment(third).format('DD MMM YY');
   const fourth = moment().subtract(4, 'day').toDate();
+  const _fourth = moment(fourth).format('DD MMM YY');
   const fifth = moment().subtract(5, 'day').toDate();
+  const _fifth = moment(fifth).format('DD MMM YY');
   const sixth = moment().subtract(6, 'day').toDate();
+  const _sixth = moment(sixth).format('DD MMM YY');
   const seventh = moment().subtract(7, 'day').toDate();
+  const _seventh = moment(seventh).format('DD MMM YY');
+
   const pastDays = [
     ['Date', 'Count'],
     [
-      moment(first).format('DD MMM YY'),
+      _first,
       companies
-        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
-        .filter((d) => d === first).length,
+        .map((ele) => moment(ele.createdAt).format('DD MMM YY'))
+        .filter((d) => d === _first).length,
     ],
     [
-      moment(second).format('DD MMM YY'),
+      _second,
       companies
-        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
-        .filter((d) => d === second).length,
+        .map((ele) => moment(ele.createdAt).format('DD MMM YY'))
+        .filter((d) => d === _second).length,
     ],
     [
-      moment(third).format('DD MMM YY'),
+      _third,
       companies
-        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
-        .filter((d) => d === third).length,
+        .map((ele) => moment(ele.createdAt).format('DD MMM YY'))
+        .filter((d) => d === _third).length,
     ],
     [
-      moment(fourth).format('DD MMM YY'),
+      _fourth,
       companies
-        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
-        .filter((d) => d === fourth).length,
+        .map((ele) => moment(ele.createdAt).format('DD MMM YY'))
+        .filter((d) => d === _fourth).length,
     ],
     [
-      moment(fifth).format('DD MMM YY'),
+      _fifth,
       companies
-        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
-        .filter((d) => d === fifth).length,
+        .map((ele) => moment(ele.createdAt).format('DD MMM YY'))
+        .filter((d) => d === _fifth).length,
     ],
     [
-      moment(sixth).format('DD MMM YY'),
+      _sixth,
       companies
-        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
-        .filter((d) => d === sixth).length,
+        .map((ele) => moment(ele.createdAt).format('DD MMM YY'))
+        .filter((d) => d === _sixth).length,
     ],
     [
-      moment(seventh).format('DD MMM YY'),
+      _seventh,
       companies
-        .map((ele) => moment(ele.updatedAt).format('DD MMM YY'))
-        .filter((d) => d === seventh).length,
+        .map((ele) => moment(ele.createdAt).format('DD MMM YY'))
+        .filter((d) => d === _seventh).length,
     ],
   ];
 
