@@ -11,9 +11,9 @@ function Page() {
   const template = use<Array<ITemplates>>(findAll(URL));
   return (
     <Suspense>
-      <TemplateComponent template={template} />
+      <TemplateComponent template={template} id="" row="" column="" />
     </Suspense>
-  )
+  );
 }
 
 export default Page;

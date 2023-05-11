@@ -1,22 +1,20 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Autocomplete, Box, Grid, TextField, Typography } from '@mui/material';
+import {
+  Autocomplete, Box, Grid, TextField, Typography,
+} from '@mui/material';
+import React, { useState } from 'react';
 
 function CreateRowsComponent({
   index,
-  setCellDb,
-  cellDb,
-  setRowDb,
-  rowDb,
-  val,
-  setVal,
 }: any) {
   const [colCount, setColCount] = useState('');
   const loopCount = Number(colCount);
   console.log('colCount >>', loopCount);
 
-  const [ind] = useState(index + 1);
   const column = [
     { id: 1, count: '1' },
     { id: 2, count: '2' },
@@ -38,7 +36,6 @@ function CreateRowsComponent({
     // setCellDb([...cellDb, value]);
     // setRowDb([...rowDb, ind]);
   };
- 
 
   return (
     <Box mt={0.6} mr={2}>

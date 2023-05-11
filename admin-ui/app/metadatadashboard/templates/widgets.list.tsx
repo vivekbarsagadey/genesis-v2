@@ -1,3 +1,6 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import {
   Button,
   Dialog,
@@ -77,14 +80,14 @@ export interface SimpleDialogProps {
   onClose: (value: string) => void;
 }
 
-function WidgetsList({ d }): string {
+function WidgetsList({ d }:any) {
   const [open, setOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState();
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-  const handleClose = (value: string) => {
+  const handleClose = (value: any) => {
     setOpen(false);
     setSelectedValue(value);
   };
@@ -133,7 +136,7 @@ function SimpleDialog(props: SimpleDialogProps) {
 }
 
 function Image() {
-  const [id, setId] = useState();
+  const [, setId] = useState();
   return (
     <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
       {itemData.map((item) => (

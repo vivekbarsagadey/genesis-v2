@@ -1,3 +1,6 @@
+/* eslint-disable no-shadow */
+/* eslint-disable react/no-array-index-key */
+
 'use client';
 
 import {
@@ -7,13 +10,12 @@ import {
   ImageList,
   ImageListItem,
   Modal,
-  Typography,
 } from '@mui/material';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { Case, Switch } from 'react-if';
-import { ITemplates } from '../models/templates.props';
 import { makeStyles } from '@mui/styles';
+import { ITemplates } from '../models/templates.props';
 import { baseStyle, colors } from '../../../themes';
 
 const itemData = [
@@ -104,11 +106,11 @@ function TemplateComponent({ template }: ITemplates) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [copyTemplates, setCopyTemplates] = useState<Array<ITemplates>>([
+  const [copyTemplates] = useState<Array<ITemplates>>([
     ...template,
   ]);
 
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Box
@@ -145,7 +147,7 @@ function TemplateComponent({ template }: ITemplates) {
                 style={{ border: '1px solid black' }}
               >
                 <Switch>
-                  <Case condition={val == 4}>
+                  <Case condition={val === 4}>
                     <Grid container spacing={1}>
                       <Grid item xs={3}>
                         <Button onClick={handleOpen}>+</Button>

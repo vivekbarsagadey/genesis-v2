@@ -1,6 +1,11 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/no-array-index-key */
+
 'use client';
 
-import { Box, Button, Grid, Snackbar, Typography } from '@mui/material';
+import {
+  Box, Button, Grid, Snackbar, Typography,
+} from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -28,7 +33,7 @@ function CreateTemplate() {
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string
+    reason?: string,
   ) => {
     if (reason === 'clickaway') {
       return;
