@@ -18,7 +18,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { createCompany } from '../../../services/company.action';
-import {countrySelect,genderSelect,stateSelect,} from '../graphdata/graph.data';
+import { countrySelect, genderSelect, stateSelect } from '../graphdata/graph.data';
 
 const useStyles = makeStyles({
   buttonStyle: { width: '73%' },
@@ -55,7 +55,7 @@ function CompanyCreateComponent() {
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string
+    reason?: string,
   ) => {
     if (reason === 'clickAway') {
       return;
@@ -66,7 +66,7 @@ function CompanyCreateComponent() {
   const updateMyCompanyData = async () => {
     try {
       const body = {
-        ownername: ownerName,
+        ownerName,
         name: companyName,
         email: companyEmail,
         mobile: companyMobile,
@@ -289,13 +289,11 @@ function CompanyCreateComponent() {
                     value={companyCountry}
                     onChange={updateCompanyCountry}
                   >
-                    {countrySelect.map((f) => {
-                      return (
-                        <MenuItem placeholder="Select Country" value={f.lable}>
-                          {f.country}
-                        </MenuItem>
-                      );
-                    })}
+                    {countrySelect.map((f) => (
+                      <MenuItem placeholder="Select Country" value={f.lable}>
+                        {f.country}
+                      </MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
               </Grid>
@@ -320,13 +318,11 @@ function CompanyCreateComponent() {
                     onChange={updateCompanyState}
                     // placeholder="Select Country"
                   >
-                    {stateSelect.map((f) => {
-                      return (
-                        <MenuItem placeholder="Select Country" value={f.lable}>
-                          {f.state}
-                        </MenuItem>
-                      );
-                    })}
+                    {stateSelect.map((f) => (
+                      <MenuItem placeholder="Select Country" value={f.lable}>
+                        {f.state}
+                      </MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
               </Grid>
@@ -351,13 +347,11 @@ function CompanyCreateComponent() {
                     onChange={updateCompanyGender}
                     // placeholder="Select Country"
                   >
-                    {genderSelect.map((f) => {
-                      return (
-                        <MenuItem placeholder="Select Country" value={f.lable}>
-                          {f.gender}
-                        </MenuItem>
-                      );
-                    })}
+                    {genderSelect.map((f) => (
+                      <MenuItem placeholder="Select Country" value={f.lable}>
+                        {f.gender}
+                      </MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
               </Grid>

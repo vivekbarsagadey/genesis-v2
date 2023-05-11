@@ -2,7 +2,13 @@
 
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import {
-  Box, Card, Divider, Grid, IconButton, Pagination, Typography,
+  Box,
+  Card,
+  Divider,
+  Grid,
+  IconButton,
+  Pagination,
+  Typography,
 } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import Paper from '@mui/material/Paper';
@@ -15,6 +21,8 @@ import IProject from '../project.model';
 import { ListComponentProps } from './props';
 
 function ProjectListViewComponent({ projects }: ListComponentProps) {
+  console.log("projects >>>>>list screen",projects);
+  
   const [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(projects.length / PER_PAGE);
@@ -287,12 +295,9 @@ function ProjectListViewComponent({ projects }: ListComponentProps) {
             </Grid>
           </Grid>
         </Card>
-        <Divider/>
+        <Divider />
       </Box>
-      {/* <Card elevation={0}>
-hhh
-<Divider/>
-      </Card> */}
+
       <Grid style={{ height: '62vh' }}>
         {paginationHandler
           .currentData()
