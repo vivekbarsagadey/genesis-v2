@@ -1,7 +1,8 @@
+/* eslint-disable react/react-in-jsx-scope */
+
 'use client';
 
 import { useSession } from 'next-auth/react';
-import Dashboard from './dashboard';
 import SignIn from './login/page';
 
 const page = () => {

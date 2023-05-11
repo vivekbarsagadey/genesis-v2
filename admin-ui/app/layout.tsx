@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/html-has-lang */
+
 'use client';
 
 import React from 'react';

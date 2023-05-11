@@ -1,3 +1,5 @@
+/* eslint-disable react/react-in-jsx-scope */
+
 'use client';
 
 import { InputComponent } from '../../component/ui/base/input';
