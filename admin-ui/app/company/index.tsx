@@ -34,6 +34,7 @@ import ListViewComponent from './list/list.view.component';
 import { ICompany } from './models/company.model';
 import CompanySearchDetails from './search';
 import CompanyViewComponent from './view';
+import { devNull } from 'os';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   // eslint-disable-next-line react/jsx-props-no-spreading
@@ -79,6 +80,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
   const router = useRouter();
   const [alert, setAlert] = React.useState(false);
   const [show, setShow] = useState(false);
+  const [showDelAll, setShowDelAll] = useState(false);
   const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
   const onSearchHandler = (c: Array<ICompany>) => {
     setCopyCompanies(c);
@@ -127,10 +129,12 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
     setAlert(false);
   };
   const removeSelectedData = async () => {
-    for (let i = 0; i <= multiSelect.length; i++) {
-      await deleteCompany(multiSelect[i]);
+    if (multiSelect.length > 0) {
+      for (let i = 0; i <= multiSelect.length; i++) {
+        await deleteCompany(multiSelect[i]);
+      }
+      window.location.reload();
     }
-    window.location.reload();
   };
 
   return (
@@ -183,22 +187,21 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
             mt={0.7}
             className={classes.checkbox}
           >
-            {show && (
+            {showDelAll ? (
               <Tooltip title="Delete All" arrow>
-                <IconButton
-                  aria-label="delete"
-                  onClick={handleOpen}
-                >
+                <IconButton aria-label="delete" onClick={handleOpen}>
                   <DeleteOutlineIcon fontSize="small" />
                 </IconButton>
               </Tooltip>
-            )}
+            ) : null}
 
-            <Tooltip title="Delete Selected" arrow>
-              <IconButton aria-label="delete" onClick={removeSelectedData}>
-                <DeleteOutlineIcon fontSize="small" />
-              </IconButton>
-            </Tooltip>
+            {multiSelect.length > 1 ? (
+              <Tooltip title="Delete Selected" arrow>
+                <IconButton aria-label="delete" onClick={removeSelectedData}>
+                  <DeleteOutlineIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
+            ) : null}
           </Grid>
           <>
             <Modal
@@ -220,7 +223,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                     id="transition-modal-description"
                     fontSize="0.9rem"
                   >
-                    Are you sure you want to delete the selected company?
+                    Are you sure you want to delete All Companies ?
                   </Typography>
                   <Grid container mt={4}>
                     <Grid item xs={6} />
@@ -297,6 +300,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                   setShow={setShow}
                   multiSelect={multiSelect}
                   setMultiSelect={setMultiSelect}
+                  setShowDelAll={setShowDelAll}
                 />
               </Grid>
             </Default>

@@ -41,7 +41,8 @@ function ListViewComponent({
   show,
   multiSelect,
   setMultiSelect,
-  setSelectedCheckbox
+  setSelectedCheckbox,
+  setShowDelAll
 }: any) {
   const classes = useStyles();
   const [page, setPage] = useState(1);
@@ -228,6 +229,7 @@ function ListViewComponent({
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setShow(event.target.checked);
+    setShowDelAll((s) => !s);
   };
 
   return (
@@ -367,7 +369,7 @@ function ListViewComponent({
                     company={company}
                     show={show}
                     setMultiSelect={setMultiSelect}
-                    multiSelect={multiSelect}    
+                    multiSelect={multiSelect}
                   />
                 </Typography>
               ))
