@@ -4,29 +4,21 @@ import {
   Box,
   Button,
   Card,
+  FormControl,
   Grid,
   TextField,
   Typography,
-  FormControl,
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
-import Autocomplete from '@mui/material/Autocomplete';
-import Snackbar from '@mui/material/Snackbar';
-import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Snackbar from '@mui/material/Snackbar';
 import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { createCompany } from '../../../services/company.action';
-import {
-  countryDataSelect,
-  countrySelect,
-  genderSelect,
-  stateSelect,
-} from '../graphdata/graph.data';
-import { Status } from '../models';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import {countrySelect,genderSelect,stateSelect,} from '../graphdata/graph.data';
 
 const useStyles = makeStyles({
   buttonStyle: { width: '73%' },
@@ -70,9 +62,6 @@ function CompanyCreateComponent() {
     }
     setAlert(false);
   };
-
-  // eslint-disable-next-line no-restricted-globals
-  const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   // POST call
   const updateMyCompanyData = async () => {
     try {
@@ -117,25 +106,6 @@ function CompanyCreateComponent() {
   const updateCompanyPinCode = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyPinCode(e.target.value);
   };
-  // const updateCompanyState = (
-  //   e: React.SyntheticEvent<Element, Event>,
-  //   value: any
-  // ) => {
-  //   setCompanyState(value);
-  // };
-  // const updateCompanyGender = (
-  //   e: React.SyntheticEvent<Element, Event>,
-  //   value: any
-  // ) => {
-  //   setCompanyGender(value);
-  // };
-  // const updateCompanyCountry = (
-  //   e: React.SyntheticEvent<Element, Event>,
-  //   value: any,
-  // ) => {
-  //   setCompanyCountry(value);
-  // };
-
   const updateCompanyCountry = (event: SelectChangeEvent) => {
     setCompanyCountry(event.target.value as string);
   };
@@ -145,13 +115,10 @@ function CompanyCreateComponent() {
   const updateCompanyGender = (event: SelectChangeEvent) => {
     setCompanyGender(event.target.value as string);
   };
-
-  const getCompanyStatusValue = (
-    e: React.SyntheticEvent<Element, Event>,
-    value: any
-  ) => {
-    setCompanyStatus(value);
+  const getCompanyStatusValue = (event: SelectChangeEvent) => {
+    setCompanyStatus(event.target.value as string);
   };
+
   const updateHandler = () => {
     handleClick();
     updateMyCompanyData();
@@ -411,8 +378,8 @@ function CompanyCreateComponent() {
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value={companyGender}
-                    onChange={updateCompanyGender}
+                    value={companyStatus}
+                    onChange={getCompanyStatusValue}
                     // placeholder="Select Country"
                   >
                     <MenuItem value="NEW">NEW</MenuItem>
