@@ -1,18 +1,33 @@
-import React, { Suspense, use } from 'react';
-import ProjectHomeComponent from '.';
-import { findAll } from '../../services/api.service';
-import IProject from './project.model';
+'use client';
 
-const URL = 'projects';
+import React, { useEffect, useState } from 'react';
+import ProjectHomeComponent from '.';
+
 function Page() {
-  const projects = use<Array<IProject>>(findAll(URL));
-  console.log('this is projects',projects);
-  
+  const [projects, setProjects] = useState([]);
+  const fetchData = async () => {
+    const response = await fetch('https://restcountries.com/v3.1/all');
+    if (!response.ok) {
+      throw new Error('Data coud not be fetched!');
+    } else {
+      return response.json();
+    }
+  };
+  useEffect(() => {
+    fetchData()
+      .then((res) => {
+        setProjects(res);
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
+  }, []);
+
   return (
-    <Suspense>
+    <>
       <ProjectHomeComponent projects={projects} />
-    </Suspense>
-  )
+    </>
+  );
 }
 
 export default Page;

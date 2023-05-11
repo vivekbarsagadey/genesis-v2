@@ -23,6 +23,8 @@ interface ProjectComponentProps {
   projects: Array<IProject>;
 }
 function ProjectHomeComponent({ projects }: ProjectComponentProps) {
+  console.log("projects>>>>>>>>>>>>>>>>>>>>",projects);
+  
   const [copyProject, setCopyProject] = useState<Array<IProject>>([
     ...projects,
   ]);
