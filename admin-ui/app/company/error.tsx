@@ -1,3 +1,6 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/react-in-jsx-scope */
+
 'use client';
 
 import { Typography } from '@mui/material';

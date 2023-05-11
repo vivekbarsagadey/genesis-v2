@@ -12,7 +12,7 @@ function Page() {
     <Suspense>
       <CompanyComponentHome companies={companies} />
     </Suspense>
-  )
+  );
 }
 
 export default Page;

@@ -1,11 +1,17 @@
+/* eslint-disable no-use-before-define */
+
 'use client';
+
 import React, { useRef, useState } from 'react';
 import PrintIcon from '@mui/icons-material/Print';
-import { Box, Button, Divider, Grid, IconButton, Tooltip } from '@mui/material';
+import {
+  Box, Button, Divider, Grid, IconButton, Tooltip,
+} from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
 import { Case, Default, Switch } from 'react-if';
 import { useReactToPrint } from 'react-to-print';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { baseStyle, colors } from '../../themes';
 import { ViewTypes } from '../utility';
 import FilterComponent from './filters';
@@ -16,12 +22,9 @@ import CompanyGridView from './list/grid.view';
 import CompanyKanbanView from './list/kanban.view';
 import ListViewComponent from './list/list.view.component';
 import { ICompany } from './models/company.model';
-import CompanySearchDetails from './search';
 import CompanyViewComponent from './view';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { deleteCompany } from '../../services/company.action';
-import { useRouter } from "next/navigation";
-
+import CompanySearchDetails from './search';
 
 interface CompanyComponentProps {
   companies: Array<ICompany>;
@@ -44,7 +47,6 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
   const [copyCompanies, setCopyCompanies] = useState<Array<ICompany>>([
     ...companies,
   ]);
-  const router = useRouter();
   const [show, setShow] = useState(false);
   const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
   const onSearchHandler = (c: Array<ICompany>) => {
@@ -64,7 +66,6 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
   const itemsCallBackHandler = (_items: Array<ICompany>) => {
     setCopyCompanies(_items);
   };
-
 
   const removeData = (f: any) => {
     getRemove(f);
@@ -112,7 +113,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
               </Grid>
 
               <Grid item xs={3} md={6} sm={3}>
-                <CompanyViewComponent onViewSelect={onViewSelect}/>
+                <CompanyViewComponent onViewSelect={onViewSelect} />
               </Grid>
             </Grid>
           </Grid>
