@@ -15,12 +15,14 @@ import {
   stateSelect,
 } from '../graphdata/graph.data';
 import { Status } from '../models';
+import { baseStyle, colors } from '../../../themes';
 
 const useStyles = makeStyles({
   buttonStyle: { width: '73%' },
   gridContainer: { display: 'flex', alignItems: 'center' },
   mainHeader: { display: 'flex', flexDirection: 'row' },
   headerChild: { color: 'red' },
+  root: {backgroundColor: colors.white,borderRadius: baseStyle.borderRadius.small},
 });
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
@@ -42,7 +44,6 @@ function CompanyCreateComponent() {
   const [companyCountry, setCompanyCountry] = useState('');
   const [companyPinCode, setCompanyPinCode] = useState('');
   const [alert, setAlert] = useState(false);
-
   const router = useRouter();
 
   const handleClick = () => {
@@ -134,8 +135,8 @@ function CompanyCreateComponent() {
     updateMyCompanyData();
   };
   return (
-    <Box padding={3}>
-      <Card elevation={0}>
+    <Box ml={1.5}  pb={1} mr={2.5} className={classes.root}>
+
         <Grid container>
           <Grid item xs={12} ml={5} mt={2}>
             <Typography fontSize="1.1rem">Create New Company</Typography>
@@ -446,7 +447,6 @@ function CompanyCreateComponent() {
             </Grid>
           </Grid>
         </Grid>
-      </Card>
     </Box>
   );
 }

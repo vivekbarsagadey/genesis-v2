@@ -1,8 +1,6 @@
 'use client';
-
-import {
-  Button, Card, Grid, TextField, Typography,
-} from '@mui/material';
+import React, { useState } from 'react';
+import {Button, Card, Grid, TextField, Typography,} from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box/Box';
@@ -10,19 +8,19 @@ import Snackbar from '@mui/material/Snackbar';
 import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
 import { updateCompany } from '../../../services/company.action';
 import { countrySelect, genderSelect, stateSelect } from '../graphdata/graph.data';
 import { Status } from '../models';
+import { baseStyle, colors } from '../../../themes';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   // eslint-disable-next-line react/jsx-props-no-spreading
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 ));
-
 const useStyles = makeStyles({
   buttonStyle: { width: '73%' },
   gridContainer: { display: 'flex', alignItems: 'center' },
+  root: {backgroundColor: colors.white,borderRadius: baseStyle.borderRadius.small},
 });
 
 type CompanyComponentProps = {
@@ -134,8 +132,8 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
     updateCompanyEditedData();
   };
   return (
-    <Box padding={3}>
-      <Card elevation={0}>
+    <Box ml={1.5}  pb={1} mr={2.5} className={classes.root}>
+    
         <Grid container>
           <Grid item xs={12} ml={5} mt={2}>
             <Typography fontSize="1.1rem">Edit Company</Typography>
@@ -430,7 +428,6 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
             </Grid>
           </Grid>
         </Grid>
-      </Card>
     </Box>
   );
 }
