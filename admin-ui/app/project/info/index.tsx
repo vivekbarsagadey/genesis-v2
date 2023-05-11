@@ -22,15 +22,14 @@ import downloadJsonFile from '../../utility/json.downloader';
 import BuilderThemeComponent from './builder.theme.select';
 import { IProjects } from '../models';
 
-
 const Transition = React.forwardRef(
   (
     props: TransitionProps & {
       children: React.ReactElement;
     },
-    ref: React.Ref<unknown>,
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  ) => <Slide direction="up" ref={ref} {...props} />,
+    ref: React.Ref<unknown>
+    // eslint-disable-next-line react/jsx-props-no-spreading
+  ) => <Slide direction="up" ref={ref} {...props} />
 );
 type InfoCustomerComponentProps = {
   items: IProjects;
@@ -58,16 +57,19 @@ function InfoProjectComponent({ items }: InfoCustomerComponentProps) {
   };
 
   useEffect(() => {
-    const projectJsonData = JSON.parse(localStorage.getItem('projectJsonData') || '{}');
+    const projectJsonData = JSON.parse(
+      localStorage.getItem('projectJsonData') || '{}'
+    );
     if (projectJsonData) {
       setLocalStoreData(projectJsonData);
     }
   }, []);
 
-  const openBuilderMethod = () => {
-    if (items.projectJson !== null
-    // || Object.keys(localStoreData).length > 0
-    ) {
+  console.log('localStoreData>? ???', localStoreData);
+  console.log('items>? ???', items);
+
+  const openBuilderMethod = (_idRecv) => {
+    if (items.projectJson !== null || _idRecv === localStoreData?.projectId) {
       handelOpenBuilder();
     } else {
       handleOpenTheme();
@@ -119,7 +121,7 @@ function InfoProjectComponent({ items }: InfoCustomerComponentProps) {
               <Grid container display="flex" justifyContent="center" ml={2}>
                 <Grid item xs={4}>
                   <Tooltip title="Edit">
-                    <IconButton onClick={openBuilderMethod}>
+                    <IconButton onClick={() => openBuilderMethod(items.id)}>
                       <EditIcon fontSize="small" />
                     </IconButton>
                   </Tooltip>
@@ -142,7 +144,10 @@ function InfoProjectComponent({ items }: InfoCustomerComponentProps) {
           onClose={handleCloseTheme}
           TransitionComponent={Transition}
         >
-          <BuilderThemeComponent handleCloseTheme={handleCloseTheme} id={items.id} />
+          <BuilderThemeComponent
+            handleCloseTheme={handleCloseTheme}
+            id={items.id}
+          />
         </Dialog>
         {/* Builder full screen  */}
         <Dialog
