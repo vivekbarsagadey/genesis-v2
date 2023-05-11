@@ -29,17 +29,15 @@ function FilterComponent({
   itemsCallBackHandler,
 }: CompanyFilterComponentProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [filterDataCompanyName, setFilterDataName] = useState('');
-  const [filterDataOwnerName, setFilterDataOwnerName] = useState('');
-  const [filterDataEmail, setFilterDataEmail] = useState('');
+  const [filterDataProjectName, setFilterDataName] = useState('');
+  const [filterDataCustomerName, setFilterDataCustomerName] = useState('');
   const open = Boolean(anchorEl);
 
   const doFilter = () => {
     const newProjects = projects?.filter(
       (u) =>
-        u.name.toLowerCase().includes(filterDataCompanyName.toLowerCase()) ||
-        u.ownerName.toLowerCase().includes(filterDataOwnerName.toLowerCase()) ||
-        u.email.toLowerCase().includes(filterDataEmail.toLowerCase())
+        u.name.toLowerCase().includes(filterDataProjectName.toLowerCase()) ||
+        u.customerName.toLowerCase().includes(filterDataCustomerName.toLowerCase())
     );
     itemsCallBackHandler(newProjects);
     // eslint-disable-next-line no-use-before-define
@@ -98,7 +96,7 @@ function FilterComponent({
                   }}
                 />
               )}
-              onChange={(event, value) => setFilterDataOwnerName(value)}
+              onChange={(event, value) => setFilterDataCustomerName(value)}
             />
           </Stack>
         </FilterStyle>
@@ -126,31 +124,6 @@ function FilterComponent({
             />
           </Stack>
         </FilterStyle>
-
-        <FilterStyle>
-          <Stack>
-            <Autocomplete
-              freeSolo
-              size="small"
-              id="free-solo-2-demo"
-              disableClearable
-              options={Array.from(new Set(projects.map((data) => data.email)))}
-              renderInput={(params) => (
-                <TextField
-                  // eslint-disable-next-line react/jsx-props-no-spreading
-                  {...params}
-                  placeholder="Email"
-                  InputProps={{
-                    ...params.InputProps,
-                    type: 'search',
-                  }}
-                />
-              )}
-              onChange={(event, value) => setFilterDataEmail(value)}
-            />
-          </Stack>
-        </FilterStyle>
-
         <Grid container mb={1} mt={2}>
           <Grid item xs={6} />
           <Grid item xs={3}>

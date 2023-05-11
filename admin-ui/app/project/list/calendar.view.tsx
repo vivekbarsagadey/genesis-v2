@@ -6,7 +6,6 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 import { ListComponentProps } from './props';
 import { IProjects } from '../models';
-
 const localizer = momentLocalizer(moment);
 
 interface CalendarEventData {

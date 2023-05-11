@@ -13,7 +13,6 @@ type ListComponentProps = {
   projects: Array<IProjects>;
   myRef: any;
 };
-
 export const options = {
   hAxis: {
     title: 'Today Date',

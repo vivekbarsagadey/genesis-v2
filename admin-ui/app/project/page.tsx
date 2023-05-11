@@ -1,7 +1,7 @@
 'use client';
 
-import React, { use, Suspense } from 'react';
-import CompanyComponentHome from '.';
+import { Suspense, use } from 'react';
+import ProjectComponentHome from '.';
 import { findAll } from '../../services/api.service';
 import { IProjects } from './models';
 
@@ -10,10 +10,9 @@ function Page() {
   const project = use<Array<IProjects>>(findAll(URL));
   return (
     <Suspense>
-      <CompanyComponentHome projects={project} />
+      <ProjectComponentHome projects={project} />
     </Suspense>
-  )
+  );
 }
 
 export default Page;
- 

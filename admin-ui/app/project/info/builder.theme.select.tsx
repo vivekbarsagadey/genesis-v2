@@ -9,6 +9,7 @@ import { makeStyles } from '@mui/styles';
 import React, { useEffect } from 'react';
 import BuilderPageSelectComponent from './builder.page.component.select';
 
+
 const useStyles = makeStyles({
   background_genesis1: {
     backgroundImage: `url(${'./images/genesis1.png'})`,

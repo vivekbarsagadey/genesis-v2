@@ -10,6 +10,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import React from 'react';
 import { ViewTypes } from '../../utility';
 
+
 const viewIconsSet = [
   {
     id: 1,

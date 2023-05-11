@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Checkbox from '@mui/material/Checkbox';
 import { makeStyles } from '@mui/styles';
 
+
 const useStyles = makeStyles({
   background_genesis1: {
     backgroundImage: `url(${'./images/genesis1.png'})`,

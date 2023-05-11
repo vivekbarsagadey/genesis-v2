@@ -18,8 +18,7 @@ function ProjectsSearchDetails({
     (value: string) =>
     (f: IProjects): boolean =>
       f.name?.toLowerCase().includes(value.toLowerCase()) ||
-      f.email.toLowerCase().includes(value.toLowerCase()) ||
-      f.mobile.toLowerCase().includes(value.toLowerCase()) ||
+      f.customerName.toLowerCase().includes(value.toLowerCase()) ||
       f.status.toLowerCase().includes(value.toLowerCase());
 
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +31,7 @@ function ProjectsSearchDetails({
     onSearchHandler(projects.filter(filterBySearchValue(_searchValue)));
   };
 
+  
   return (
     <Grid item xs={12}>
       <TextField

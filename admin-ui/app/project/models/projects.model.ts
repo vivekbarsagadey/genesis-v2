@@ -19,7 +19,6 @@ type IProjects = {
   customerName:string;
   application:string;
   copyProjectData:string;
-
 };
 
 export type { IProjects };

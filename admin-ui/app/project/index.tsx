@@ -126,7 +126,7 @@ function ProjectComponentHome({ projects }: ProjectComponentProps) {
           </Grid> */}
           <Grid item xs={1} mt={1}>
             <Link
-              href="/projects/create"
+              href="/project/create"
               passHref
               className={classes.textDecor}
             >
@@ -175,4 +175,5 @@ function ProjectComponentHome({ projects }: ProjectComponentProps) {
     </Box>
   );
 }
+
 export default ProjectComponentHome;

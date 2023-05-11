@@ -6,4 +6,5 @@ interface IProjectComponentProps {
   itemsCallBackHandler?: (_items: Array<IProject>) => void;
 }
 
+
 export default IProjectComponentProps;

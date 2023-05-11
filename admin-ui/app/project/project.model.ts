@@ -13,5 +13,4 @@ interface IProject {
   createdAt: string;
   moment: any;
 }
-
 export default IProject;

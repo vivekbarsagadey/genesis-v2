@@ -9,6 +9,7 @@ const countrySelect = [
   { country: 'Srilanka' },
   { country: 'Thailand' },
 ];
+
 const stateSelect = [
   { state: 'Bihar' },
   { state: 'Madhya Pradesh' },

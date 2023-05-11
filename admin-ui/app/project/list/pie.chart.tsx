@@ -9,7 +9,6 @@ type companyChartProps = {
   countryData: any;
   stateData: any;
 };
-
 function ProjectPieChart({
   graphView,
   statusData,

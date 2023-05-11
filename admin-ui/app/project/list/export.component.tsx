@@ -21,7 +21,6 @@ function ExportComponent({ copyProjectData }: CompanyExportComponentProps) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   return (
     <>
       <Tooltip title="Export">

@@ -38,7 +38,6 @@ const CardStyle = styled(Grid)(() => ({
   height: '80vh',
   overflowY: 'auto',
 }));
-
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   // eslint-disable-next-line react/jsx-props-no-spreading
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />

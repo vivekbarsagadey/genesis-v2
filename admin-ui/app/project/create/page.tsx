@@ -1,5 +1,4 @@
-import ProjectCreate from './company.create';
+import ProjectCreate from './project.create';
 
 const page = () => <ProjectCreate />;
-
 export default page;

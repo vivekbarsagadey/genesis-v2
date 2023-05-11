@@ -7,11 +7,11 @@ import TableRenderers from 'react-pivottable/TableRenderers';
 import createPlotlyRenderers from 'react-pivottable/PlotlyRenderers';
 import Plot from 'react-plotly.js';
 
+
 // const Plot = createPlotlyComponent(window.Plotly);
 const PlotlyRenderers = createPlotlyRenderers(Plot);
 export default function ReportButtonComponent({ projects }: any) {
   const [settings, setSettings] = useState({});
-  console.log('projects >>at report ', projects);
 
   return (
     <PivotTableUI

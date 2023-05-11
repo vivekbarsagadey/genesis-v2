@@ -1,15 +1,12 @@
 'use client';
 
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import {
-  Box,
-  Card,
+import { Box, Card,
   Divider,
   Grid,
   IconButton,
   Pagination,
-  Typography,
-} from '@mui/material';
+  Typography,} from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import Paper from '@mui/material/Paper';
 import { useState } from 'react';

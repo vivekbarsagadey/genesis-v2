@@ -59,7 +59,6 @@ const genderType = [
   { title: 'Female' },
   { title: 'Others' },
 ];
-
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 ));

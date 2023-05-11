@@ -12,7 +12,6 @@ const useStyles = makeStyles({
   paginationView: { display: "flex", justifyContent: "flex-end" },
   logoSize: { width: '90%', height: '100%' }
 });
-
 function ProjectGridView({ projects, myRef }: any) {
 
   const classes = useStyles();

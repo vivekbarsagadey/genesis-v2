@@ -23,7 +23,6 @@ export const graphViewTitle = {
   seriesType: 'bars',
   series: { type: 'line' },
 };
-
 function MonthPieChart({
   comparisiongraphView,
   createdTodayData,

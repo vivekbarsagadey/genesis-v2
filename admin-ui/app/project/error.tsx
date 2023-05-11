@@ -15,6 +15,7 @@ export default function Error({
     console.error(error);
   }, [error]);
 
+  
   return (
     <>
       <Typography>Something went wrong!</Typography>

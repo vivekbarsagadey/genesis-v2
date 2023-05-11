@@ -5,7 +5,7 @@ export default function RootLayout({
 }) {
   return (
     <>
-      {/* <>This is company header</> */}
+      {/* <>This is project header</> */}
       {children}
     </>
   );
