@@ -1,6 +1,9 @@
+/* eslint-disable no-debugger */
+/* eslint-disable no-undef */
+
 'use client';
 
-import React, { FormEventHandler, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Button, Grid, TextField, Typography,
 } from '@mui/material';
@@ -21,7 +24,7 @@ const Container = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(3),
   height: '100vh',
 }));
-const FormGrid = styled(Grid)(({ theme }) => ({
+const FormGrid = styled(Grid)(() => ({
   position: 'absolute',
   top: '7%',
 }));
@@ -33,7 +36,7 @@ function SignIn(): JSX.Element {
   const [userPassword, setUserPassword] = useState('');
 
   const router = useRouter();
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:any) => {
     // validate your userinfo
     e.preventDefault();
 
@@ -48,10 +51,10 @@ function SignIn(): JSX.Element {
     }
   };
 
-  const updateEmail = (e) => {
+  const updateEmail = (e:any) => {
     setUserEmail(e.target.value);
   };
-  const updatePassword = (e) => {
+  const updatePassword = (e:any) => {
     setUserPassword(e.target.value);
   };
   return (

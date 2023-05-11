@@ -1,13 +1,12 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable no-empty-pattern */
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 'use client';
 
-import AssignmentIcon from '@mui/icons-material/Assignment';
-import CallIcon from '@mui/icons-material/Call';
-import LockIcon from '@mui/icons-material/Lock';
-import MailIcon from '@mui/icons-material/Mail';
 import { Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 import { InputComponent } from '../../component/ui/base/input';
 
 const useStyles = makeStyles({
@@ -41,13 +40,9 @@ const useStyles = makeStyles({
     },
   },
 });
-interface Props {}
 
 function SignIn({}): JSX.Element {
   const classes = useStyles();
-
-  const router = useRouter();
-  const [errorState, setErrorState] = useState(' ');
 
   return (
     <Grid container className={classes.background_style}>
