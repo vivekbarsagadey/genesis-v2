@@ -1,15 +1,8 @@
 'use client';
+import React, { useRef, useState } from 'react';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import PrintIcon from '@mui/icons-material/Print';
-import {
-  Box,
-  Button,
-  Divider,
-  Grid,
-  IconButton,
-  Tooltip,
-  Typography,
-} from '@mui/material';
+import {Box,Button,Divider,Grid,IconButton,Tooltip,Typography} from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Backdrop from '@mui/material/Backdrop';
 import Fade from '@mui/material/Fade';
@@ -17,8 +10,6 @@ import Modal from '@mui/material/Modal';
 import Snackbar from '@mui/material/Snackbar';
 import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import React, { useRef, useState } from 'react';
 import { Case, Default, Switch } from 'react-if';
 import { useReactToPrint } from 'react-to-print';
 import { deleteCompany } from '../../services/company.action';
@@ -34,10 +25,8 @@ import ListViewComponent from './list/list.view.component';
 import { ICompany } from './models/company.model';
 import CompanySearchDetails from './search';
 import CompanyViewComponent from './view';
-import { devNull } from 'os';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
-  // eslint-disable-next-line react/jsx-props-no-spreading
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 ));
 const style = {
@@ -70,18 +59,22 @@ const useStyles = makeStyles({
 });
 
 function CompanyComponentHome({ companies }: CompanyComponentProps) {
+  const classes = useStyles();
   const [copyCompanies, setCopyCompanies] = useState<Array<ICompany>>([
     ...companies,
   ]);
   const [multiSelect, setMultiSelect] = useState([]);
   const [selectAllDeletePopup, setSelectAllDeletePopup] = React.useState(false);
-  const handleOpen = () => setSelectAllDeletePopup(true);
-  const handleCloSeselectAllDeletePopup = () => setSelectAllDeletePopup(false);
-  const router = useRouter();
+  const [selectDeletePopup, setSelectDeletePopup] = React.useState(false);
+  const handleMultiSelectAllPopup = () => setSelectAllDeletePopup(true);
+  const handleSelectPopup = () => setSelectDeletePopup(true);
+  const handleCloseSelectDeletePopup = () => setSelectDeletePopup(false);
+  const handleCloseSelectAllDeletePopup = () => setSelectAllDeletePopup(false);
   const [alert, setAlert] = React.useState(false);
   const [show, setShow] = useState(false);
   const [showDelAll, setShowDelAll] = useState(false);
   const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
+
   const onSearchHandler = (c: Array<ICompany>) => {
     setCopyCompanies(c);
   };
@@ -89,36 +82,27 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
     setViewType(view);
   };
   const myRef = useRef(null);
-
   const handleClickSnackbar = () => {
     setAlert(true);
   };
   const handlePrint = useReactToPrint({
     content: () => myRef.current,
   });
-
-  const classes = useStyles();
-
   const itemsCallBackHandler = (_items: Array<ICompany>) => {
     setCopyCompanies(_items);
   };
-
   const eachCompanyId = companies.map((d) => d.id);
-
   const removeAllData = async () => {
     for (let i = 0; i <= companies.length; i++) {
       await deleteCompany(eachCompanyId[i]);
     }
     window.location.reload();
   };
-
   const removeData = (f: ICompany) => {
     removeAllData();
     handleClickSnackbar();
     window.location.reload();
-    // router.push('/company/kanban');
   };
-
   const handleCloseSnackbar = (
     event?: React.SyntheticEvent | Event,
     reason?: string
@@ -136,31 +120,24 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
       window.location.reload();
     }
   };
-
+  const selectRemoveData = (f: ICompany) => {
+    removeSelectedData();
+    handleClickSnackbar();
+    window.location.reload();
+  };
   return (
-    <Box
-      ml={1.5}
-      // pl={2}
-      pb={1}
-      mr={2.5}
-      className={classes.root}
-    >
+
+    <Box ml={1.5} pb={1} mr={2.5} className={classes.root}>
       <Grid mt={1}>
         <Grid container spacing={1} pl={2}>
           <Grid item xs={3} md={3} lg={3} sm={3}>
-            <CompanySearchDetails
-              companies={companies}
-              onSearchHandler={onSearchHandler}
-            />
+            <CompanySearchDetails companies={companies} onSearchHandler={onSearchHandler} />
           </Grid>
           <Grid item xs={5} md={6} sm={5} lg={7} className={classes.display}>
             <Grid container>
               <Grid item xs="auto" mt={0.3}>
-                <FilterComponent
-                  companies={companies}
-                  onFilterHandler={onSearchHandler}
-                  itemsCallBackHandler={itemsCallBackHandler}
-                />
+                <FilterComponent companies={companies} onFilterHandler={onSearchHandler} 
+                itemsCallBackHandler={itemsCallBackHandler} />
               </Grid>
               <Grid item xs="auto" mt={0.2}>
                 <ExportComponent copyCompanyData={copyCompanies} />
@@ -178,18 +155,10 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
               </Grid>
             </Grid>
           </Grid>
-          <Grid
-            item
-            xs={2}
-            sm={2.3}
-            lg={1}
-            md={1.6}
-            mt={0.7}
-            className={classes.checkbox}
-          >
+          <Grid item xs={2} sm={2.3} lg={1} md={1.6} mt={0.7} className={classes.checkbox} >
             {showDelAll ? (
               <Tooltip title="Delete All" arrow>
-                <IconButton aria-label="delete" onClick={handleOpen}>
+                <IconButton aria-label="delete"onClick={handleMultiSelectAllPopup}>
                   <DeleteOutlineIcon fontSize="small" />
                 </IconButton>
               </Tooltip>
@@ -197,52 +166,32 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
 
             {multiSelect.length > 1 ? (
               <Tooltip title="Delete Selected" arrow>
-                <IconButton aria-label="delete" onClick={removeSelectedData}>
+                <IconButton aria-label="delete" onClick={handleSelectPopup}>
                   <DeleteOutlineIcon fontSize="small" />
                 </IconButton>
               </Tooltip>
             ) : null}
           </Grid>
           <>
-            <Modal
-              aria-labelledby="transition-modal-title"
-              aria-describedby="transition-modal-description"
-              open={selectAllDeletePopup}
-              onClose={handleCloSeselectAllDeletePopup}
-              closeAfterTransition
-              slots={{ backdrop: Backdrop }}
-              slotProps={{
-                backdrop: {
-                  timeout: 500,
-                },
-              }}
-            >
+            <Modal aria-labelledby="transition-modal-title" aria-describedby="transition-modal-description"
+              open={selectAllDeletePopup} onClose={handleCloseSelectAllDeletePopup}
+              closeAfterTransition slots={{ backdrop: Backdrop }}
+              slotProps={{ backdrop: { timeout: 500,},}} >
               <Fade in={selectAllDeletePopup}>
                 <Box sx={style}>
-                  <Typography
-                    id="transition-modal-description"
-                    fontSize="0.9rem"
-                  >
+                  <Typography id="transition-modal-description" fontSize="0.9rem">
                     Are you sure you want to delete All Companies ?
                   </Typography>
                   <Grid container mt={4}>
                     <Grid item xs={6} />
                     <Grid item xs={3}>
-                      <Button
-                        variant="contained"
-                        size="small"
-                        onClick={() => handleCloSeselectAllDeletePopup()}
-                      >
+                      <Button variant="contained" size="small" onClick={()=>handleCloseSelectAllDeletePopup()}>
                         Cancel
                       </Button>
                     </Grid>
 
                     <Grid item xs={2}>
-                      <Button
-                        variant="contained"
-                        size="small"
-                        onClick={removeData}
-                      >
+                      <Button variant="contained" size="small" onClick={removeData}>
                         Ok
                       </Button>
                     </Grid>
@@ -250,11 +199,43 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                 </Box>
               </Fade>
             </Modal>
-            <Snackbar
-              open={alert}
-              autoHideDuration={5000}
-              onClose={handleCloseSnackbar}
-            >
+            <Snackbar open={alert} autoHideDuration={5000} onClose={handleCloseSnackbar} >
+              <Alert onClose={handleCloseSnackbar} severity="error">
+                Items Deleted Successfully...
+              </Alert>
+            </Snackbar>
+          </>
+          <>
+            <Modal aria-labelledby="transition-modal-title"aria-describedby="transition-modal-description" 
+            open={selectDeletePopup} onClose={handleCloseSelectDeletePopup} closeAfterTransition
+              slots={{ backdrop: Backdrop }}slotProps={{backdrop: { timeout: 500, },}} >
+              <Fade in={selectDeletePopup}>
+                <Box sx={style}>
+                  <Typography id="transition-modal-description" fontSize="0.9rem" >
+                    {`Are you sure you want to delete ${multiSelect.length} company?`}
+                  </Typography>
+                  <Grid container mt={4}>
+                    <Grid item xs={6} />
+                    <Grid item xs={3}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={() => handleCloseSelectDeletePopup()}
+                      >
+                        Cancel
+                      </Button>
+                    </Grid>
+
+                    <Grid item xs={2}>
+                      <Button variant="contained" size="small" onClick={selectRemoveData}>
+                        Ok
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Fade>
+            </Modal>
+            <Snackbar open={alert} autoHideDuration={5000} onClose={handleCloseSnackbar} >
               <Alert onClose={handleCloseSnackbar} severity="error">
                 Items Deleted Successfully...
               </Alert>
@@ -293,15 +274,9 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
             </Case>
             <Default>
               <Grid>
-                <ListViewComponent
-                  companies={copyCompanies}
-                  myRef={myRef}
-                  show={show}
-                  setShow={setShow}
-                  multiSelect={multiSelect}
-                  setMultiSelect={setMultiSelect}
-                  setShowDelAll={setShowDelAll}
-                />
+                <ListViewComponent companies={copyCompanies} myRef={myRef}
+                  show={show} setShow={setShow} multiSelect={multiSelect}
+                  setMultiSelect={setMultiSelect} setShowDelAll={setShowDelAll}/>
               </Grid>
             </Default>
           </Switch>
