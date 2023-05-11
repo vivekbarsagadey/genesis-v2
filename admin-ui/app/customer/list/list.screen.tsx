@@ -1,3 +1,8 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 'use client';
 
 import {
@@ -9,15 +14,13 @@ import {
   Typography,
 } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
-import Paper from '@mui/material/Paper';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { PaginationHandler } from '../../utility';
 import InfoCustomerComponent from '../info';
 import { ICustomer } from '../models';
 
 function ListViewComponent({
   customer,
-  setCopyCustomer,
   setShow,
   show,
   myRef,
@@ -25,7 +28,7 @@ function ListViewComponent({
   const [increaseAdd, setIncreaseAdd] = useState(false);
   const [increaseEmail, setIncreaseEmail] = useState(false);
   const [increaseUser, setIncreaseUser] = useState(false);
-  const [data, setData] = useState();
+  const [, setData] = useState();
   const [page, setPage] = useState(1);
   const [multiSelect, setMultiSelect] = useState([]);
   const PER_PAGE = 9;
@@ -43,20 +46,20 @@ function ListViewComponent({
 
   const emailInc = () => {
     setIncreaseEmail(!increaseEmail);
-    setData(customer.sort((a, b) => (a.email > b.email ? 1 : -1)));
+    setData(customer.sort((a:any, b:any) => (a.email > b.email ? 1 : -1)));
   };
 
   const addressInc = () => {
     setIncreaseAdd(!increaseAdd);
-    setData(customer.sort((a, b) => (a.address > b.address ? 1 : -1)));
+    setData(customer.sort((a:any, b:any) => (a.address > b.address ? 1 : -1)));
   };
   const userNameInc = () => {
     setIncreaseUser(!increaseUser);
-    setData(customer.sort((a, b) => (a.address > b.address ? 1 : -1)));
+    setData(customer.sort((a:any, b:any) => (a.address > b.address ? 1 : -1)));
   };
   // console.log("setCopyCustomer >>",setCopyCustomer);
 
-  const getMultiSelectedValue = (valRec) => {
+  const getMultiSelectedValue = (valRec:string) => {
     setMultiSelect([...multiSelect, valRec]);
     // console.log("valRec",valRec);
   };
@@ -126,7 +129,7 @@ function ListViewComponent({
             </Grid>
           </Card>
         </Box>
-        <Divider style={{width:'98.7%'}}/>
+        <Divider style={{ width: '98.7%' }} />
         <Grid style={{ height: '62vh' }}>
           {paginationHandler
             .currentData()
@@ -137,6 +140,7 @@ function ListViewComponent({
                   customer={customer}
                   show={show}
                   getMultiSelectedValue={getMultiSelectedValue}
+                  increase={false}
                 />
               </Typography>
             ))}

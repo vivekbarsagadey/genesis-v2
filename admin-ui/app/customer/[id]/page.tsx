@@ -1,3 +1,5 @@
+/* eslint-disable react/react-in-jsx-scope */
+
 'use client';
 
 import { use } from 'react';
@@ -23,7 +25,7 @@ function Page({ params }: any) {
 
   const customers = use<Customer>(findById('customer', id));
   return (
-    <>{customers && <CustomerEditComponent customers={customers} id={id} />}</>
+    <div>{customers && <CustomerEditComponent customers={customers} id={id} />}</div>
   );
 }
 

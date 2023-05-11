@@ -1,3 +1,9 @@
+/* eslint-disable no-shadow */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 'use client';
 
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
@@ -8,7 +14,6 @@ import {
   Divider,
   Grid,
   IconButton,
-  Paper,
   Tooltip,
   Typography,
 } from '@mui/material';
@@ -20,7 +25,6 @@ import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import Snackbar from '@mui/material/Snackbar';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
 import { deleteCustomer } from '../../../services/customer.action';
@@ -47,16 +51,16 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
 type InfoCustomerComponentProps = {
   customer: ICustomer;
   increase: boolean;
+  getMultiSelectedValue:any;
+  show:any;
 };
 function InfoCustomerComponent({
   customer,
   getMultiSelectedValue,
   show,
 }: InfoCustomerComponentProps) {
-  const [copyData] = useState([customer]);
   const [checked, setChecked] = useState(show);
 
-  const router = useRouter();
   const [alert, setAlert] = useState(false);
   const [open, setOpen] = useState(false);
   const deletePopupOpen = () => setOpen(true);
@@ -67,7 +71,7 @@ function InfoCustomerComponent({
   };
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string
+    reason?: string,
   ) => {
     if (reason === 'clickaway') {
       return;
@@ -223,7 +227,7 @@ function InfoCustomerComponent({
           </Modal>
         </Card>
       </Box>
-      <Divider style={{width:'98.7%'}}/>
+      <Divider style={{ width: '98.7%' }} />
     </>
   );
 }

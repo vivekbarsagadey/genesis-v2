@@ -1,3 +1,7 @@
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Box, Grid } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import Stack from '@mui/material/Stack';
@@ -8,18 +12,18 @@ import MonthPieChart from './month.pie.chart';
 import CustomerPieChart from './pie.chart';
 import { ListComponentProps } from './props';
 
-const options = {
-  hAxis: { title: 'Month' },
-  seriesType: 'bars',
-  series: { type: 'line' },
-};
+// const options = {
+//   hAxis: { title: 'Month' },
+//   seriesType: 'bars',
+//   series: { type: 'line' },
+// };
 
-const comparisonGraphDataVal = [
-  { id: 1, label: 'Active' },
-  { id: 2, label: 'Inactive' },
-  { id: 3, label: 'Male' },
-  { id: 4, label: 'Female' },
-];
+// const comparisonGraphDataVal = [
+//   { id: 1, label: 'Active' },
+//   { id: 2, label: 'Inactive' },
+//   { id: 3, label: 'Male' },
+//   { id: 4, label: 'Female' },
+// ];
 function CustomerGraphView({ customer }: ListComponentProps) {
   const [graphView, setGraphView] = useState<string>('status');
   const [graphBase, setGrpahBase] = useState<string>('');

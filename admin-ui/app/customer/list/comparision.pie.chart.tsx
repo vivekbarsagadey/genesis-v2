@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Grid } from '@mui/material';
 import { Chart } from 'react-google-charts';
 import { Case, Switch } from 'react-if';

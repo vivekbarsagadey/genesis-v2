@@ -1,3 +1,6 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable react/jsx-props-no-spreading */
+
 'use client';
 
 import {
@@ -12,7 +15,7 @@ import {
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
 import Snackbar from '@mui/material/Snackbar';
-import { makeStyles } from '@mui/styles';
+// import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
@@ -28,20 +31,20 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 ));
 
-const useStyles = makeStyles({
-  avtar: {
-    opacity: '1',
-    '&:hover': {
-      opacity: '0.8',
-      color: 'black',
-    },
-    width: '120px',
-    height: '125px',
-  },
-  buttonStyle: {
-    width: '73%',
-  },
-});
+// const useStyles = makeStyles({
+//   avtar: {
+//     opacity: '1',
+//     '&:hover': {
+//       opacity: '0.8',
+//       color: 'black',
+//     },
+//     width: '120px',
+//     height: '125px',
+//   },
+//   buttonStyle: {
+//     width: '73%',
+//   },
+// });
 
 const genderType = [
   { title: 'Male' },
@@ -50,7 +53,7 @@ const genderType = [
 ];
 
 function CustomerCreateComponent() {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [customerFirstName, setCustomerFirstName] = useState('');
   const [customerLastName, setCustomerLastName] = useState('');
   const [gender, setGender] = useState('');
@@ -119,32 +122,32 @@ function CustomerCreateComponent() {
 
   const updateCustomerChange = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setGender(value);
   };
   const updateCustomerCountry = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setCustomerCountry(value);
   };
   const updateCustomerState = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setCustomerState(value);
   };
   const updateCustomerCity = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setCustomerCity(value);
   };
 
   const updateCustomerStatus = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setCustomerStatus(value);
   };
@@ -154,7 +157,7 @@ function CustomerCreateComponent() {
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string
+    reason?: any,
   ) => {
     if (reason === 'clickaway') {
       return;
@@ -377,7 +380,7 @@ function CustomerCreateComponent() {
                           id="country"
                           size="small"
                           options={countrySelect.map(
-                            (option) => option.country
+                            (option) => option.country,
                           )}
                           renderInput={(params) => (
                             <TextField

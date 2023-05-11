@@ -1,3 +1,9 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/no-unused-prop-types */
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { IconButton } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -12,14 +18,14 @@ import React, { useEffect, useState } from 'react';
 import { isNotBlank } from '../../../utils/string.util';
 import { ICustomer } from '../models';
 
-const FilterStyle = styled(Grid)(({ theme }) => ({
+const FilterStyle = styled(Grid)(() => ({
   width: 300,
   padding: '1rem',
 }));
 
 interface CompanyFilterComponentProps {
   customer: Array<ICustomer>;
-  onFilterHandler: (_: Array<ICustomer>) => void;
+  onFilterHandler: any;
 }
 type FilterFields = {
   key: string;
@@ -34,7 +40,7 @@ interface FilterProps {
 
 function FilterComponent({
   customer,
-  onFilterHandler,
+
 }: CompanyFilterComponentProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 

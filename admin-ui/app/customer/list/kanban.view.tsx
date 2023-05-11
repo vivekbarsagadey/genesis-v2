@@ -1,3 +1,6 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-restricted-globals */
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
@@ -9,7 +12,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import LocationCityIcon from '@mui/icons-material/LocationCity';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import {
   Card,
@@ -34,7 +36,7 @@ import {
 import { ListComponentProps } from './props';
 import { ICustomer, Status } from '../models';
 
-const CardStyle = styled(Grid)(({ theme }) => ({
+const CardStyle = styled(Grid)(() => ({
   height: '80vh',
   overflowY: 'auto',
 }));
@@ -54,7 +56,7 @@ const useStyles = makeStyles({
     width: 400,
     bgcolor: 'background.paper',
     border: '2px solid #000',
-    boxShadow: 24,
+    boxShadow: '24px',
     p: 4,
   },
   buttonStyle: {
@@ -76,13 +78,13 @@ function CustomerKanbanView({ customer }: ListComponentProps) {
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
   const newCustomers = customer.filter(
-    (ele: ICustomer) => ele.status == statusSet[0],
+    (ele: ICustomer) => ele.status === statusSet[0],
   );
   const activeCustomers = customer.filter(
-    (ele: ICustomer) => ele.status == statusSet[1],
+    (ele: ICustomer) => ele.status === statusSet[1],
   );
   const inActiveCustomers = customer.filter(
-    (ele: ICustomer) => ele.status == statusSet[2],
+    (ele: ICustomer) => ele.status === statusSet[2],
   );
 
   const classes = useStyles();
@@ -203,7 +205,7 @@ function NewCustomerComponent({ newCustomer }: INewCustomer) {
   const handleEditModalClose = () => setOpenEditModal(false);
   const [newStatus, setNewStatus] = useState(newCustomer.status);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event: { currentTarget: React.SetStateAction<null>; }) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -365,7 +367,7 @@ function ActiveCustomerComponent({ activeCustomer }: IActiveCustomer) {
   const handleEditModalClose = () => setOpenEditModal(false);
   const [newStatus, setNewStatus] = useState(activeCustomer.status);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event: { currentTarget: React.SetStateAction<null>; }) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -528,7 +530,7 @@ function InActiveCustomerComponent({ inActiveCustomer }: IInActiveCustomer) {
   const handleEditModalClose = () => setOpenEditModal(false);
   const [newStatus, setNewStatus] = useState(inActiveCustomer.status);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event: { currentTarget: React.SetStateAction<null>; }) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {

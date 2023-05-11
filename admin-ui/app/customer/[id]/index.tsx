@@ -1,3 +1,6 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable react/jsx-props-no-spreading */
+
 'use client';
 
 import {
@@ -12,7 +15,7 @@ import {
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
 import Snackbar from '@mui/material/Snackbar';
-import { makeStyles } from '@mui/styles';
+// import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
@@ -29,29 +32,29 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
 ));
 
 const genderType = [{ title: 'Male' }, { title: 'Female' }];
-const useStyles = makeStyles({
-  avtar: {
-    opacity: '1',
-    '&:hover': {
-      opacity: '0.8',
-      color: 'black',
-    },
-    width: '120px',
-    height: '125px',
-  },
-  buttonStyle: {
-    width: '73%',
-  },
-});
+// const useStyles = makeStyles({
+//   avtar: {
+//     opacity: '1',
+//     '&:hover': {
+//       opacity: '0.8',
+//       color: 'black',
+//     },
+//     width: '120px',
+//     height: '125px',
+//   },
+//   buttonStyle: {
+//     width: '73%',
+//   },
+// });
 
 type CustomerComponentProps = {
   customers: any;
   id: string;
 };
 function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [customerFirstName, setCustomerFirstName] = useState(
-    customers.firstName
+    customers.firstName,
   );
   const [customerLastName, setCustomerLastName] = useState(customers.lastName);
   const [gender, setGender] = useState(customers.gender);
@@ -113,31 +116,31 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
   };
   const updateCustomerState = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: string,
   ) => {
     setCustomerState(value);
   };
   const updateCustomerCity = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: string,
   ) => {
     setCustomerCity(value);
   };
   const updateCustomerChange = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: string,
   ) => {
     setGender(value);
   };
   const updateCustomerCountry = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: string,
   ) => {
     setCustomerCountry(value);
   };
   const updateCustomerStatus = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: string,
   ) => {
     setCustomerStatus(value);
   };
@@ -147,7 +150,7 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string
+    reason?: string,
   ) => {
     if (reason === 'clickaway') {
       return;
@@ -739,7 +742,7 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
                             id="country"
                             size="small"
                             options={countrySelect.map(
-                              (option) => option.country
+                              (option) => option.country,
                             )}
                             renderInput={(params) => (
                               <TextField
