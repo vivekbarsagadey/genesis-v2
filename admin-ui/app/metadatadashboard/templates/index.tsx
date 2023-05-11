@@ -6,15 +6,14 @@ import {
   Grid,
   ImageList,
   ImageListItem,
-  Modal,
-  Typography,
+  Modal
 } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { Case, Switch } from 'react-if';
-import { ITemplates } from '../models/templates.props';
-import { makeStyles } from '@mui/styles';
 import { baseStyle, colors } from '../../../themes';
+import { ITemplates } from '../models/templates.props';
 
 const itemData = [
   {
