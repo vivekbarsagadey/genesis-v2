@@ -1,7 +1,14 @@
-import { Card, CardMedia, Pagination, Tooltip } from '@mui/material';
+/* eslint-disable react/jsx-closing-tag-location */
+/* eslint-disable react/jsx-wrap-multilines */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable react/react-in-jsx-scope */
+import {
+  Card, CardMedia, Pagination, Tooltip,
+} from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Box } from '@mui/system';
 import { useState } from 'react';
 import { PaginationHandler } from '../../utility';
@@ -9,12 +16,11 @@ import { PaginationHandler } from '../../utility';
 const useStyles = makeStyles({
   root: { height: '74vh' },
   imageView: { padding: '.5rem' },
-  paginationView: { display: "flex", justifyContent: "flex-end" },
-  logoSize: { width: '90%', height: '100%' }
+  paginationView: { display: 'flex', justifyContent: 'flex-end' },
+  logoSize: { width: '90%', height: '100%' },
 });
 
 function CompanyGridView({ companies, myRef }: any) {
-
   const classes = useStyles();
   // pagination
   const [page, setPage] = useState(1);
@@ -34,7 +40,7 @@ function CompanyGridView({ companies, myRef }: any) {
           .currentData()
           .reverse()
           ?.map((item: any) => (
-            <Grid item xs={4} md={4} sm={4} lg={4} key={item.id} >
+            <Grid item xs={4} md={4} sm={4} lg={4} key={item.id}>
               <Box>
                 <Card>
                   <Grid container>
@@ -63,7 +69,9 @@ function CompanyGridView({ companies, myRef }: any) {
                                   image="./images/other.jpg"
                                   alt="others"
                                   className={classes.logoSize}
-                                /></Tooltip>}
+                                />
+
+                              </Tooltip>}
                         </Grid>
                         <Grid item xs={8}>
                           <Grid container>
@@ -137,9 +145,9 @@ function CompanyGridView({ companies, myRef }: any) {
             </Grid>
           ))}
       </Grid>
-      <Grid container >
+      <Grid container>
         <Grid item xs={12} className={classes.paginationView}>
-          <Grid >
+          <Grid>
             <Pagination
               count={count}
               size="small"

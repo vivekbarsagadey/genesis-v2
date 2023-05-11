@@ -12,12 +12,11 @@ import {
   Typography,
 } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@mui/styles';
 import { PaginationHandler } from '../../utility';
 import InfoCompanyComponent from '../info';
 import { ICompany } from '../models/company.model';
-import { baseStyle } from '../../../themes';
 
 const useStyles = makeStyles({
   headerContent: { display: 'flex', alignContent: 'center' },
@@ -34,7 +33,9 @@ const useStyles = makeStyles({
   },
 });
 
-function ListViewComponent({ companies, myRef,setShow,show, }: any) {
+function ListViewComponent({
+  companies, myRef, setShow, show,
+}: any) {
   const classes = useStyles();
   const [page, setPage] = useState(1);
   const PER_PAGE = 9;
@@ -46,15 +47,11 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
   const [contactSort, setContactSort] = useState(true);
   const [addressSort, setAddressSort] = useState(true);
   const [statusSort, setStatusSort] = useState(true);
-  const [isCheckAll, setIsCheckAll] = useState(false);
-  const [isCheck, setIsCheck] = useState([]);
-  const [list] = useState(companies);
   const [multiSelect, setMultiSelect] = useState([]);
-
 
   const handleNameSort = () => {
     if (nameSort) {
-      companies.sort((a, b) => {
+      companies.sort((a:any, b:any) => {
         if (a.name.toLowerCase() < b.name.toLowerCase()) {
           return -1;
         }
@@ -66,7 +63,7 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
       setNameSort(false);
     } else {
       companies
-        .sort((a, b) => {
+        .sort((a:any, b:any) => {
           if (a.name.toLowerCase() < b.name.toLowerCase()) {
             return -1;
           }
@@ -81,7 +78,7 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
   };
   const handleDateSort = () => {
     if (dateSort) {
-      companies.sort((a, b) => {
+      companies.sort((a:any, b:any) => {
         if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) {
           return -1;
         }
@@ -93,7 +90,7 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
       setDateSort(false);
     } else {
       companies
-        .sort((a, b) => {
+        .sort((a:any, b:any) => {
           if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) {
             return -1;
           }
@@ -120,7 +117,7 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
       setEmailSort(false);
     } else {
       companies
-        .sort((a, b) => {
+        .sort((a:any, b:any) => {
           if (a.email.toLowerCase() < b.email.toLowerCase()) {
             return -1;
           }
@@ -135,7 +132,7 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
   };
   const handleContactSort = () => {
     if (contactSort) {
-      companies.sort((a, b) => {
+      companies.sort((a:any, b:any) => {
         if (a.mobile.toLowerCase() < b.mobile.toLowerCase()) {
           return -1;
         }
@@ -147,7 +144,7 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
       setContactSort(false);
     } else {
       companies
-        .sort((a, b) => {
+        .sort((a:any, b:any) => {
           if (a.mobile.toLowerCase() < b.mobile.toLowerCase()) {
             return -1;
           }
@@ -162,7 +159,7 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
   };
   const handleStatusSort = () => {
     if (statusSort) {
-      companies.sort((a, b) => {
+      companies.sort((a:any, b:any) => {
         if (a.status.toLowerCase() < b.status.toLowerCase()) {
           return -1;
         }
@@ -174,7 +171,7 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
       setStatusSort(false);
     } else {
       companies
-        .sort((a, b) => {
+        .sort((a:any, b:any) => {
           if (a.status.toLowerCase() < b.status.toLowerCase()) {
             return -1;
           }
@@ -189,7 +186,7 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
   };
   const handleAddressSort = () => {
     if (addressSort) {
-      companies.sort((a, b) => {
+      companies.sort((a:any, b:any) => {
         if (a.address.toLowerCase() < b.address.toLowerCase()) {
           return -1;
         }
@@ -201,7 +198,7 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
       setAddressSort(false);
     } else {
       companies
-        .sort((a, b) => {
+        .sort((a:any, b:any) => {
           if (a.address.toLowerCase() < b.address.toLowerCase()) {
             return -1;
           }
@@ -220,7 +217,7 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
     paginationHandler.jump(p);
   };
 
-  const getMultiSelectedValue = (valRec) => {
+  const getMultiSelectedValue = (valRec:any) => {
     setMultiSelect([...multiSelect, valRec]);
   };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -236,9 +233,11 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
               <Grid item xs={1}>
                 <Grid container ml={1}>
                   <Grid item xs={4}>
-                    <Checkbox checked={show}
+                    <Checkbox
+                      checked={show}
                       onChange={handleChange}
-                      size="small"/>
+                      size="small"
+                    />
                   </Grid>
                 </Grid>
               </Grid>
@@ -356,10 +355,13 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
             paginationHandler
               .currentData()
               .reverse()
-              ?.map((company: ICompany, index: number) => (
-                <Typography key={index}>
-                  <InfoCompanyComponent company={company}  show={show}
-                  getMultiSelectedValue={getMultiSelectedValue} />
+              ?.map((company: ICompany) => (
+                <Typography>
+                  <InfoCompanyComponent
+                    company={company}
+                    show={show}
+                    getMultiSelectedValue={getMultiSelectedValue}
+                  />
                 </Typography>
               ))
           )}

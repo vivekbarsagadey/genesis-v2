@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 type ICompany = {
   id: string;
   name: string;
