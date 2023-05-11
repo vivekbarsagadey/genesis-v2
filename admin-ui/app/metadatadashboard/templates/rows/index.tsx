@@ -1,27 +1,24 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Autocomplete, Box, Grid, TextField, Typography } from '@mui/material';
 
 function CreateRowsComponent({
   index,
-  setCellDb,
-  cellDb,
-  setRowDb,
-  rowDb,
-  val,
-  setVal,
+  // setCellDb,
+  // cellDb,
+  // setRowDb,
+  // rowDb,
 }: any) {
-  const [colCount, setColCount] = useState('');
-  const loopCount = Number(colCount);
-  console.log('colCount >>', loopCount);
 
+  const [colCount, setColCount] = useState('');
   const [ind] = useState(index + 1);
+
   const column = [
-    { id: 1, count: '1' },
-    { id: 2, count: '2' },
-    { id: 3, count: '3' },
-    { id: 4, count: '4' },
+    { id: 1, count: 1 },
+    { id: 2, count: 2 },
+    { id: 3, count: 3 },
+    { id: 4, count: 4 },
     // { id: 5, count: '5' },
     // { id: 6, count: '6' },
     // { id: 7, count: '7' },
@@ -32,13 +29,12 @@ function CreateRowsComponent({
     // { id: 12, count: '12' },
   ];
 
-  const setCell = (e: React.SyntheticEvent<Element, Event>, value: string) => {
+  const setCell = (value: string) => {
     setColCount(value);
 
     // setCellDb([...cellDb, value]);
     // setRowDb([...rowDb, ind]);
   };
- 
 
   return (
     <Box mt={0.6} mr={2}>
@@ -49,6 +45,7 @@ function CreateRowsComponent({
             {index + 1}
           </Typography>
           <Autocomplete
+            key={index}
             value={colCount}
             onChange={setCell}
             freeSolo

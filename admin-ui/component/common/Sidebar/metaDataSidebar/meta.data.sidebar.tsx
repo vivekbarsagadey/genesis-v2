@@ -19,25 +19,27 @@ import Link from 'next/link';
 type sidebarProps = {
   toggleMenu: boolean;
 }
-function MetaDataSidebar({ toggleMenu }:sidebarProps ) {
+function MetaDataSidebar({ toggleMenu }: sidebarProps) {
   const [address, setAddress] = React.useState(false);
   const [roles, setRoles] = React.useState(false);
   const [dashboard, setDashboard] = React.useState(false);
+  const [dashTemp, setDashTemp] = React.useState(false);
 
   const handleClickAddress = () => {
-    setAddress(!address);
+    setAddress(s => !s);
     setRoles(false);
     setDashboard(false);
   };
   const handleClickRoles = () => {
     setAddress(false);
-    setRoles(!roles);
+    setRoles(s => !s);
     setDashboard(false);
   };
   const handleClickDashboard = () => {
     setAddress(false);
     setRoles(false);
-    setDashboard(!dashboard);
+    setDashboard(s => !s);
+    setDashTemp(s => !s)
   };
 
   return (
@@ -61,7 +63,8 @@ function MetaDataSidebar({ toggleMenu }:sidebarProps ) {
               <RoomIcon fontSize="small" />
             </Grid>
             {toggleMenu && (
-              <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+              <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}
+                style={{ fontSize: address ? 15 : 14, fontWeight: address ? 'bold' : 'normal' }}>
                 Address
               </Typography>
             )}
@@ -138,7 +141,7 @@ function MetaDataSidebar({ toggleMenu }:sidebarProps ) {
               <DirectionsWalkIcon fontSize="small" />
             </Grid>
             {toggleMenu && (
-              <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+              <Typography display={{ xs: 'none', sm: 'none', md: 'block' }} style={{ fontSize: roles ? 16 : 14, fontWeight: roles ? 'bold' : 'normal' }}>
                 Roles
               </Typography>
             )}
@@ -176,7 +179,7 @@ function MetaDataSidebar({ toggleMenu }:sidebarProps ) {
               <DashboardIcon fontSize="small" />
             </Grid>
             {toggleMenu && (
-              <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+              <Typography display={{ xs: 'none', sm: 'none', md: 'block' }} style={{ fontSize: dashboard ? 16 : 14, fontWeight: dashboard ? 'bold' : 'normal' }}>
                 Dashboard
               </Typography>
             )}
@@ -210,7 +213,7 @@ function MetaDataSidebar({ toggleMenu }:sidebarProps ) {
               passHref
               style={{ textDecoration: 'none', color: 'black' }}
             >
-              <ListItemButton sx={{ pl: 3 }}>
+              <ListItemButton sx={{ pl: 3 }} >
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={2}>
                     <HomeIcon fontSize="small" />

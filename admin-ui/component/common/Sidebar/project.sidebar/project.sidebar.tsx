@@ -84,7 +84,8 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                 <DashboardIcon fontSize="small" />
               </Grid>
               {toggleMenu && (
-                <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}
+                  style={{ fontSize: openDashboard ? 15 : 14, fontWeight: openDashboard ? 'bold' : 'normal' }}>
                   Dashboard
                 </Typography>
               )}
@@ -161,7 +162,8 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                 <AppsIcon fontSize="small" />
               </Grid>
               {toggleMenu && (
-                <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}
+                  style={{ fontSize: openProject ? 15 : 14, fontWeight: openProject ? 'bold' : 'normal' }}>
                   Project
                 </Typography>
               )}
@@ -225,7 +227,8 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                 <StoreIcon fontSize="small" />
               </Grid>
               {toggleMenu && (
-                <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}
+                  style={{ fontSize: openCompany ? 15 : 14, fontWeight: openCompany ? 'bold' : 'normal' }}>
                   Company
                 </Typography>
               )}
@@ -289,7 +292,8 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                 <SupportAgentIcon fontSize="small" />
               </Grid>
               {toggleMenu && (
-                <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}
+                  style={{ fontSize: openCustomer ? 15 : 14, fontWeight: openCustomer ? 'bold' : 'normal' }}>
                   Customer
                 </Typography>
               )}
@@ -353,7 +357,8 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                 <Person2Icon fontSize="small" />
               </Grid>
               {toggleMenu && (
-                <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                <Typography display={{ xs: 'none', sm: 'none', md: 'block' }}
+                  style={{ fontSize: openUser ? 15 : 14, fontWeight: openUser ? 'bold' : 'normal' }}>
                   User
                 </Typography>
               )}

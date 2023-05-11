@@ -83,6 +83,7 @@ export const theme = createTheme({
           '&:hover': {
             backgroundColor: 'white',
             borderRadius: 7,
+            // marginRight:10,
             '&.MuiListItemIcon-root': {
               color: 'black',
             },
@@ -94,7 +95,6 @@ export const theme = createTheme({
           },
           '&.Mui-selected:hover': {
             backgroundColor: teal[900],
-            borderRadius: 7,
           },
         },
       },

@@ -5,6 +5,8 @@ import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import CreateRowsComponent from '../rows';
+import { createTemplates } from "../../../../services/template.action"
+import { useRouter } from 'next/navigation';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
@@ -12,19 +14,34 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
 
 function CreateTemplate() {
   const [rowCount, setRowCount] = useState([]);
-  const [cellDb, setCellDb] = useState(null);
+  const [cellDb, setCellDb] = useState([]);
   const [rowDb, setRowDb] = useState([]);
   const [alert, setAlert] = useState(false);
+
+  const router = useRouter();
 
   const createRowHandler = (recv: string) => {
     setRowCount([...rowCount, recv]);
   };
 
-  const updateRowHandler = () => {
+  // const updateRowHandler = () => {
     // for (let i = 0; i <= cellDb.length; i++) {
     //   setCellDb([...cellDb, i])
     // }
-  };
+
+    // const updateMyCompanyData = async () => {
+    //   try {
+    //     const body = {
+    //       cell: '',
+    //       row: ''
+    //     };
+    //     await createTemplates(body);
+    //     await router.push('/metadatadashboard/templates/');
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+  // };
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -42,7 +59,7 @@ function CreateTemplate() {
 
   const updateHandler = () => {
     handleClick();
-    updateRowHandler();
+    // updateRowHandler();
   };
 
   return (
@@ -65,10 +82,10 @@ function CreateTemplate() {
           <Grid item xs={6} key={index}>
             <CreateRowsComponent
               index={index}
-              setCellDb={setCellDb}
-              cellDb={cellDb}
-              setRowDb={setRowDb}
-              rowDb={rowDb}
+              // setCellDb={setCellDb}
+              // cellDb={cellDb}
+              // setRowDb={setRowDb}
+              // rowDb={rowDb}
             />
           </Grid>
         ))}
