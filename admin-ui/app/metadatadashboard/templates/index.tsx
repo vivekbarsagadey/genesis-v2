@@ -13,7 +13,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { Case, Switch } from 'react-if';
 import { baseStyle, colors } from '../../../themes';
-import { ITemplates } from '../models/templates.props';
+import { ITemplates } from './models/templates.props';
 
 const itemData = [
   {

@@ -17,6 +17,7 @@ function CreateTemplate() {
   const [alert, setAlert] = useState(false);
   const [column, setColumn] = useState([]);
   const [row, setRow] = useState([]);
+  const [separateRow, setSeparateRow] = useState([])
 
   const router = useRouter();
 
@@ -38,25 +39,26 @@ function CreateTemplate() {
     setAlert(true);
   };
 
+  
   const updateTemplateData = async () => {
-    for (let i = 1; i <= 5; i++) {
-      try {
-        const body = {
-          row:row,
-          cell: i,
+    const setR = row.map(i => i)
+    // console.log('this is set rowe',setR);    
+    
+    column.map(async (val) => {
+      for (let i = 1; i <= val; i++) {
+        try {
+          const body = {
+            row: setR,
+            cell: i,
+          }
+          await createTemplates(body);
+          await router.push('/metadatadashboard/templates');
         }
-        await createTemplates(body);
-        await router.push('/metadatadashboard/templates');
+        catch (error) {
+          console.log(error);
+        }
       }
-      catch (error) {
-        console.log(error);
-      }
-    }
-    // column.map(async (val) => {
-    //   console.log('this is val', typeof val);
-
-
-    // });
+    });
   }
 
   const updateHandler = () => {

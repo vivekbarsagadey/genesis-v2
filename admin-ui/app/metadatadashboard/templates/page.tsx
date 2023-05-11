@@ -2,7 +2,7 @@
 
 import React, { Suspense, use } from 'react';
 import TemplateComponent from '.';
-import { ITemplates } from '../models/templates.props';
+import { ITemplates } from './models/templates.props';
 import { findAll } from '../../../services/api.service';
 
 const URL = 'templates';
