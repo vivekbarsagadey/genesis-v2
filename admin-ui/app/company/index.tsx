@@ -43,6 +43,8 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
   const [copyCompanies, setCopyCompanies] = useState<Array<ICompany>>([
     ...companies,
   ]);
+  const [multiSelect, setMultiSelect] = useState([]);
+
   const router = useRouter();
   const [show, setShow] = useState(false);
   const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
@@ -69,6 +71,13 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
   const removeAllData = async () => {
     for (let i = 0; i <= companies.length; i++) {
       await deleteCompany(eachCompanyId[i]);
+    }
+    window.location.reload();
+  };
+
+  const removeSelectedData = async () => {
+    for (let i = 0; i <= multiSelect.length; i++) {
+      await deleteCompany(multiSelect[i]);
     }
     window.location.reload();
   };
@@ -130,6 +139,12 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                 </IconButton>
               </Tooltip>
             )}
+
+            <Tooltip title="Delete Selected" arrow>
+              <IconButton aria-label="delete" onClick={removeSelectedData}>
+                <DeleteOutlineIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           </Grid>
           <Grid item xs={1} mt={1}>
             <Link href="/company/create" passHref className={classes.textDecor}>
@@ -169,6 +184,8 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                   myRef={myRef}
                   show={show}
                   setShow={setShow}
+                  multiSelect={multiSelect}
+                  setMultiSelect={setMultiSelect}
                 />
               </Grid>
             </Default>

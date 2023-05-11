@@ -48,11 +48,16 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
 
 type InfoCompanyComponentProps = {
   company: ICompany;
- 
+  setMultiSelect: any;
+  multiSelect: any;
 };
 
-function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompanyComponentProps) {
-
+function InfoCompanyComponent({
+  company,
+  show,
+  setMultiSelect,
+  multiSelect,
+}: InfoCompanyComponentProps) {
   const [alert, setAlert] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const deletePopupOpen = () => setOpen(true);
@@ -64,7 +69,7 @@ function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompa
   };
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string,
+    reason?: string
   ) => {
     if (reason === 'clickAway') {
       return;
@@ -82,11 +87,10 @@ function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompa
   }, [show]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    
     setChecked(event.target.checked);
-    const d = company.firstName;
+    const selectedCompanyId = company.id;
 
-    getMultiSelectedValue(d);
+    setMultiSelect([...multiSelect, selectedCompanyId]);
   };
 
   const classes = useStyles();
@@ -98,8 +102,10 @@ function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompa
           <Grid item xs={1}>
             <Grid container ml={1}>
               <Grid item xs={5}>
-                <Checkbox size="small"  checked={checked}
-                    onChange={handleChange}
+                <Checkbox
+                  size="small"
+                  checked={checked}
+                  onChange={handleChange}
                 />
               </Grid>
             </Grid>
@@ -112,7 +118,11 @@ function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompa
           </Grid>
 
           <Grid item xs={2}>
-            <Typography variant="body2" noWrap style={{ display: 'flex', justifyContent: 'left' }}>
+            <Typography
+              variant="body2"
+              noWrap
+              style={{ display: 'flex', justifyContent: 'left' }}
+            >
               {company.name}
             </Typography>
           </Grid>
@@ -177,10 +187,7 @@ function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompa
                   autoHideDuration={5000}
                   onClose={handleClose}
                 >
-                  <Alert
-                    onClose={handleClose}
-                    severity="success"
-                  >
+                  <Alert onClose={handleClose} severity="success">
                     Items Deleted Successfully...
                   </Alert>
                 </Snackbar>
@@ -198,10 +205,7 @@ function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompa
         >
           <Fade in={open}>
             <Box sx={style}>
-              <Typography
-                id="transition-modal-description"
-                fontSize="0.9rem"
-              >
+              <Typography id="transition-modal-description" fontSize="0.9rem">
                 Are you sure you want to delete the selected company?
               </Typography>
               <Grid container mt={4}>
