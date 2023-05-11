@@ -6,13 +6,16 @@ import 'react-pivottable/pivottable.css';
 import TableRenderers from 'react-pivottable/TableRenderers';
 import createPlotlyRenderers from 'react-pivottable/PlotlyRenderers';
 import Plot from 'react-plotly.js';
+import { Grid } from '@mui/material';
 
 const PlotlyRenderers = createPlotlyRenderers(Plot);
 function CompanyReportComponent({ company }: any) {
   const [settings, setSettings] = useState({});
 
   return (
-    <div>
+    <>
+     <Grid container ml={2} mt={2} style={{height:'20vh'}}>
+      <Grid item xs={12}>
       <PivotTableUI
         data={company}
         onChange={(s) => setSettings(s)}
@@ -30,8 +33,10 @@ function CompanyReportComponent({ company }: any) {
           'pvtAxisContainer',
         ]}
         hiddenFromAggregators={['id', 'companyid']}
-      />
-    </div>
+        />
+      </Grid>
+     </Grid>
+    </>
   );
 }
 

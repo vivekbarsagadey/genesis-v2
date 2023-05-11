@@ -1,7 +1,14 @@
 'use client';
 
 import {
-  Button, Card, FormControl, Grid, MenuItem, Select, TextField, Typography,
+  Button,
+  Card,
+  FormControl,
+  Grid,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -12,7 +19,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { updateCompany } from '../../../services/company.action';
-import { countrySelect, genderSelect, stateSelect } from '../graphdata/graph.data';
+import {
+  countrySelect,
+  genderSelect,
+  stateSelect,
+} from '../graphdata/graph.data';
 import { Status } from '../models';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
@@ -70,40 +81,25 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
     setCompanyWebsite(e.target.value);
   };
 
-  // const getCompanyStatusValue = (
-  //   e: React.SyntheticEvent<Element, Event>,
-  //   value: string,
-  // ) => {
-  //   setCompanyStatus(value);
-  // };
-
   const getCompanyStatusValue = (event: SelectChangeEvent) => {
     setCompanyStatus(event.target.value as string);
   };
 
-  const updateCompanyGender = (
-    e: React.SyntheticEvent<Element, Event>,
-    value: string,
-  ) => {
-    setCompanyGender(value);
+  const updateCompanyGender = (event: SelectChangeEvent) => {
+    setCompanyGender(event.target.value as string);
   };
-  const updateCompanyState = (
-    e: React.SyntheticEvent<Element, Event>,
-    value: string,
-  ) => {
-    setCompanyState(value);
+  const updateCompanyState = (event: SelectChangeEvent) => {
+    setCompanyState(event.target.value as string);
   };
-  const updateCompanyCountry = (
-    e: React.SyntheticEvent<Element, Event>,
-    value: string,
-  ) => {
-    setCompanyCountry(value);
+
+  const updateCompanyCountry = (event: SelectChangeEvent) => {
+    setCompanyCountry(event.target.value as string);
   };
 
   const updateCompanyEditedData = async () => {
     try {
       const body = {
-        ownername: ownerName,
+        ownerName,
         name: companyName,
         email: companyEmail,
         mobile: companyMobile,
@@ -126,7 +122,7 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string,
+    reason?: string
   ) => {
     if (reason === 'clickaway') {
       return;
@@ -261,81 +257,6 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
           <Grid item xs={6} mt={1}>
             <Grid container className={classes.gridContainer}>
               <Grid item xs={3}>
-                <Typography>Country</Typography>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Autocomplete
-                  disablePortal
-                  value={companyCountry}
-                  onChange={updateCompanyCountry}
-                  id="country"
-                  size="small"
-                  options={countrySelect.map((option) => option.country)}
-                  renderInput={(params) => (
-                    // eslint-disable-next-line react/jsx-props-no-spreading
-                    <TextField {...params} placeholder="Select Country" />
-                  )}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3}>
-                <Typography>State</Typography>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Autocomplete
-                  disablePortal
-                  value={companyState}
-                  onChange={updateCompanyState}
-                  id="state"
-                  size="small"
-                  options={stateSelect.map((option) => option.state)}
-                  renderInput={(params) => (
-                    // eslint-disable-next-line react/jsx-props-no-spreading
-                    <TextField {...params} placeholder="Select State" />
-                  )}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3}>
-                <Typography>Gender</Typography>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Autocomplete
-                  disablePortal
-                  value={companyGender}
-                  onChange={updateCompanyGender}
-                  id="gender"
-                  size="small"
-                  options={genderSelect.map((option) => option.gender)}
-                  renderInput={(params) => (
-                    // eslint-disable-next-line react/jsx-props-no-spreading
-                    <TextField {...params} placeholder="Select gender" />
-                  )}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3}>
                 <Typography>PinCode</Typography>
               </Grid>
               <Grid item xs={2}>
@@ -351,6 +272,114 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
                   value={companyPinCode}
                   onChange={updateCompanyPinCode}
                 />
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={1}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3}>
+                <Typography>Country</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <FormControl fullWidth size="small">
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={companyCountry}
+                    onChange={updateCompanyCountry}
+                  >
+                    {countrySelect.map((f) => (
+                      <MenuItem placeholder="Select Country" value={f.lable}>
+                        {f.country}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={1}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3}>
+                <Typography>State</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <FormControl fullWidth size="small">
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={companyState}
+                    onChange={updateCompanyState}
+                    // placeholder="Select Country"
+                  >
+                    {stateSelect.map((f) => (
+                      <MenuItem placeholder="Select Country" value={f.lable}>
+                        {f.state}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={1}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3}>
+                <Typography>Gender</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+              <FormControl fullWidth size="small">
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={companyGender}
+                    onChange={updateCompanyGender}
+                    // placeholder="Select Country"
+                  >
+                    {genderSelect.map((f) => (
+                      <MenuItem placeholder="Select Country" value={f.lable}>
+                        {f.gender}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={6} mt={1}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={3}>
+                <Typography>Company Status</Typography>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <FormControl fullWidth size="small">
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={companyStatus}
+                    onChange={getCompanyStatusValue}
+                    // placeholder="Select Country"
+                  >
+                    <MenuItem value="NEW">NEW</MenuItem>
+                    <MenuItem value="ACTIVE">ACTIVE</MenuItem>
+                    <MenuItem value="INACTIVE">INACTIVE</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
             </Grid>
           </Grid>
@@ -373,44 +402,6 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
                   value={companyWebsite}
                   onChange={updateCompanyWebsite}
                 />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={1}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={3}>
-                <Typography>Company Status</Typography>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                {/* <Autocomplete
-                  disablePortal
-                  value={companyStatus}
-                  onChange={getCompanyStatusValue}
-                  id="status"
-                  size="small"
-                  options={statusSet?.map((option: any) => option)}
-                  renderInput={(params) => (
-                
-                    <TextField {...params} placeholder="Select Status" />
-                  )}
-                /> */}
-                 <FormControl fullWidth size="small">
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={companyStatus}
-                    onChange={getCompanyStatusValue}
-                    // placeholder="Select Country"
-                  >
-                    <MenuItem value="NEW">NEW</MenuItem>
-                    <MenuItem value="ACTIVE">ACTIVE</MenuItem>
-                    <MenuItem value="INACTIVE">INACTIVE</MenuItem>
-                  </Select>
-                </FormControl>
               </Grid>
             </Grid>
           </Grid>
