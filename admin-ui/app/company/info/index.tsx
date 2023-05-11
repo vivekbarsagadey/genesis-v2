@@ -82,6 +82,7 @@ function InfoCompanyComponent({ company, getMultiSelectedValue,show }: InfoCompa
   }, [show]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    
     setChecked(event.target.checked);
     const d = company.firstName;
 

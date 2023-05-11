@@ -20,8 +20,7 @@ import CompanySearchDetails from './search';
 import CompanyViewComponent from './view';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { deleteCompany } from '../../services/company.action';
-import { useRouter } from "next/navigation";
-
+import { useRouter } from 'next/navigation';
 
 interface CompanyComponentProps {
   companies: Array<ICompany>;
@@ -65,16 +64,15 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
     setCopyCompanies(_items);
   };
 
+  const eachCompanyId = companies.map((d) => d.id);
 
-  const removeData = (f: any) => {
-    getRemove(f);
-  };
-
-  const getRemove = async (id: any) => {
-    await deleteCompany(id);
-    // router.push("/company");
+  const removeAllData = async () => {
+    for (let i = 0; i <= companies.length; i++) {
+      await deleteCompany(eachCompanyId[i]);
+    }
     window.location.reload();
   };
+
   return (
     <Box
       ml={1.5}
@@ -112,14 +110,22 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
               </Grid>
 
               <Grid item xs={3} md={6} sm={3}>
-                <CompanyViewComponent onViewSelect={onViewSelect}/>
+                <CompanyViewComponent onViewSelect={onViewSelect} />
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={2} sm={2.3} lg={1} md={1.6} mt={0.7} className={classes.checkbox}>
+          <Grid
+            item
+            xs={2}
+            sm={2.3}
+            lg={1}
+            md={1.6}
+            mt={0.7}
+            className={classes.checkbox}
+          >
             {show && (
               <Tooltip title="Delete All" arrow>
-                <IconButton aria-label="delete" onClick={() => removeData(companies)}>
+                <IconButton aria-label="delete" onClick={removeAllData}>
                   <DeleteOutlineIcon fontSize="small" />
                 </IconButton>
               </Tooltip>
