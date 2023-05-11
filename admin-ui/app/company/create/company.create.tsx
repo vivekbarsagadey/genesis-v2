@@ -18,7 +18,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { createCompany } from '../../../services/company.action';
-import {countrySelect,genderSelect,stateSelect,} from '../graphdata/graph.data';
+import {
+  countrySelect,
+  genderSelect,
+  stateSelect,
+} from '../graphdata/graph.data';
 
 const useStyles = makeStyles({
   buttonStyle: { width: '73%' },

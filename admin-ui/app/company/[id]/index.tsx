@@ -1,7 +1,7 @@
 'use client';
 
 import {
-  Button, Card, Grid, TextField, Typography,
+  Button, Card, FormControl, Grid, MenuItem, Select, TextField, Typography,
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -70,12 +70,17 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
     setCompanyWebsite(e.target.value);
   };
 
-  const getCompanyStatusValue = (
-    e: React.SyntheticEvent<Element, Event>,
-    value: string,
-  ) => {
-    setCompanyStatus(value);
+  // const getCompanyStatusValue = (
+  //   e: React.SyntheticEvent<Element, Event>,
+  //   value: string,
+  // ) => {
+  //   setCompanyStatus(value);
+  // };
+
+  const getCompanyStatusValue = (event: SelectChangeEvent) => {
+    setCompanyStatus(event.target.value as string);
   };
+
   const updateCompanyGender = (
     e: React.SyntheticEvent<Element, Event>,
     value: string,
@@ -381,7 +386,7 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
                 <Typography>:</Typography>
               </Grid>
               <Grid item xs={6}>
-                <Autocomplete
+                {/* <Autocomplete
                   disablePortal
                   value={companyStatus}
                   onChange={getCompanyStatusValue}
@@ -389,10 +394,23 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
                   size="small"
                   options={statusSet?.map((option: any) => option)}
                   renderInput={(params) => (
-                    // eslint-disable-next-line react/jsx-props-no-spreading
+                
                     <TextField {...params} placeholder="Select Status" />
                   )}
-                />
+                /> */}
+                 <FormControl fullWidth size="small">
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={companyStatus}
+                    onChange={getCompanyStatusValue}
+                    // placeholder="Select Country"
+                  >
+                    <MenuItem value="NEW">NEW</MenuItem>
+                    <MenuItem value="ACTIVE">ACTIVE</MenuItem>
+                    <MenuItem value="INACTIVE">INACTIVE</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
             </Grid>
           </Grid>
