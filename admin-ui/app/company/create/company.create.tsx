@@ -1,18 +1,32 @@
 'use client';
 
 import {
-  Box, Button, Card, Grid, TextField, Typography,
+  Box,
+  Button,
+  Card,
+  Grid,
+  TextField,
+  Typography,
+  FormControl,
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Autocomplete from '@mui/material/Autocomplete';
 import Snackbar from '@mui/material/Snackbar';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { createCompany } from '../../../services/company.action';
-import { countrySelect, genderSelect, stateSelect } from '../graphdata/graph.data';
+import {
+  countryDataSelect,
+  countrySelect,
+  genderSelect,
+  stateSelect,
+} from '../graphdata/graph.data';
 import { Status } from '../models';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 const useStyles = makeStyles({
   buttonStyle: { width: '73%' },
@@ -49,7 +63,7 @@ function CompanyCreateComponent() {
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string,
+    reason?: string
   ) => {
     if (reason === 'clickAway') {
       return;
@@ -103,27 +117,38 @@ function CompanyCreateComponent() {
   const updateCompanyPinCode = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyPinCode(e.target.value);
   };
-  const updateCompanyState = (
-    e: React.SyntheticEvent<Element, Event>,
-    value: any,
-  ) => {
-    setCompanyState(value);
+  // const updateCompanyState = (
+  //   e: React.SyntheticEvent<Element, Event>,
+  //   value: any
+  // ) => {
+  //   setCompanyState(value);
+  // };
+  // const updateCompanyGender = (
+  //   e: React.SyntheticEvent<Element, Event>,
+  //   value: any
+  // ) => {
+  //   setCompanyGender(value);
+  // };
+  // const updateCompanyCountry = (
+  //   e: React.SyntheticEvent<Element, Event>,
+  //   value: any,
+  // ) => {
+  //   setCompanyCountry(value);
+  // };
+
+  const updateCompanyCountry = (event: SelectChangeEvent) => {
+    setCompanyCountry(event.target.value as string);
   };
-  const updateCompanyGender = (
-    e: React.SyntheticEvent<Element, Event>,
-    value: any,
-  ) => {
-    setCompanyGender(value);
+  const updateCompanyState = (event: SelectChangeEvent) => {
+    setCompanyState(event.target.value as string);
   };
-  const updateCompanyCountry = (
-    e: React.SyntheticEvent<Element, Event>,
-    value: any,
-  ) => {
-    setCompanyCountry(value);
+  const updateCompanyGender = (event: SelectChangeEvent) => {
+    setCompanyGender(event.target.value as string);
   };
+
   const getCompanyStatusValue = (
     e: React.SyntheticEvent<Element, Event>,
-    value: any,
+    value: any
   ) => {
     setCompanyStatus(value);
   };
@@ -131,6 +156,7 @@ function CompanyCreateComponent() {
     handleClick();
     updateMyCompanyData();
   };
+
   return (
     <Box padding={3}>
       <Card elevation={0}>
@@ -141,13 +167,6 @@ function CompanyCreateComponent() {
         </Grid>
 
         <Grid container spacing={2} mt={3} paddingLeft={5}>
-
-          {/* <Grid item xs={6}>
-            <FormInput value={data} header='Name' size='small' onChange={setData} placeholder='Select Name' />
-          </Grid> */}
-          {/* <Grid item xs={6} mt={1}>
-            <FormSelectComponent mainData={statusSet} onChange={setData} value={data} header='Quantity' size='small' placeholder='Select Quantity' disablePortal={true} />
-          </Grid> */}
           <Grid item xs={6} mt={1}>
             <Grid container className={classes.gridContainer}>
               <Grid item xs={3} className={classes.mainHeader}>
@@ -266,84 +285,6 @@ function CompanyCreateComponent() {
           <Grid item xs={6} mt={1}>
             <Grid container className={classes.gridContainer}>
               <Grid item xs={3} className={classes.mainHeader}>
-                <Typography>Country</Typography>
-                <span className={classes.headerChild}>*</span>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Autocomplete
-                  disablePortal
-                  value={companyCountry}
-                  onChange={updateCompanyCountry}
-                  id="country"
-                  size="small"
-                  options={countrySelect.map((option) => option.country)}
-                  renderInput={(params) => (
-                    // eslint-disable-next-line react/jsx-props-no-spreading
-                    <TextField {...params} placeholder="Select Country" />
-                  )}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} className={classes.mainHeader}>
-                <Typography>State</Typography>
-                <span className={classes.headerChild}>*</span>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Autocomplete
-                  disablePortal
-                  value={companyState}
-                  onChange={updateCompanyState}
-                  id="state"
-                  size="small"
-                  options={stateSelect.map((option) => option.state)}
-                  renderInput={(params) => (
-                    // eslint-disable-next-line react/jsx-props-no-spreading
-                    <TextField {...params} placeholder="Select State" />
-                  )}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} className={classes.mainHeader}>
-                <Typography>Gender</Typography>
-                <span className={classes.headerChild}>*</span>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Autocomplete
-                  disablePortal
-                  value={companyGender}
-                  onChange={updateCompanyGender}
-                  id="gender"
-                  size="small"
-                  options={genderSelect.map((option) => option.gender)}
-                  renderInput={(params) => (
-                    // eslint-disable-next-line react/jsx-props-no-spreading
-                    <TextField {...params} placeholder="Select gender" />
-                  )}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} className={classes.mainHeader}>
                 <Typography>PinCode</Typography>
                 <span className={classes.headerChild}>*</span>
               </Grid>
@@ -365,6 +306,125 @@ function CompanyCreateComponent() {
           </Grid>
 
           <Grid item xs={6} mt={1}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3} className={classes.mainHeader}>
+                <Typography>Country</Typography>
+                <span className={classes.headerChild}>*</span>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <FormControl fullWidth size="small">
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={companyCountry}
+                    onChange={updateCompanyCountry}
+                  >
+                    {countrySelect.map((f) => {
+                      return (
+                        <MenuItem placeholder="Select Country" value={f.lable}>
+                          {f.country}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={1}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3} className={classes.mainHeader}>
+                <Typography>State</Typography>
+                <span className={classes.headerChild}>*</span>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <FormControl fullWidth size="small">
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={companyState}
+                    onChange={updateCompanyState}
+                    // placeholder="Select Country"
+                  >
+                    {stateSelect.map((f) => {
+                      return (
+                        <MenuItem placeholder="Select Country" value={f.lable}>
+                          {f.state}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={1}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3} className={classes.mainHeader}>
+                <Typography>Gender</Typography>
+                <span className={classes.headerChild}>*</span>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <FormControl fullWidth size="small">
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={companyGender}
+                    onChange={updateCompanyGender}
+                    // placeholder="Select Country"
+                  >
+                    {genderSelect.map((f) => {
+                      return (
+                        <MenuItem placeholder="Select Country" value={f.lable}>
+                          {f.gender}
+                        </MenuItem>
+                      );
+                    })}
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={1}>
+            <Grid container className={classes.gridContainer}>
+              <Grid item xs={3} className={classes.mainHeader}>
+                <Typography>Company Status</Typography>
+                <span className={classes.headerChild}>*</span>
+              </Grid>
+              <Grid item xs={2}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <FormControl fullWidth size="small">
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={companyGender}
+                    onChange={updateCompanyGender}
+                    // placeholder="Select Country"
+                  >
+                    <MenuItem value="NEW">NEW</MenuItem>
+                    <MenuItem value="ACTIVE">ACTIVE</MenuItem>
+                    <MenuItem value="INACTIVE">INACTIVE</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={6} mt={1}>
             <Grid container display="flex" alignItems="center">
               <Grid item xs={3}>
                 <Typography>Website</Typography>
@@ -381,32 +441,6 @@ function CompanyCreateComponent() {
                   fullWidth
                   value={companyWebsite}
                   onChange={updateCompanyWebsite}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} className={classes.mainHeader}>
-                <Typography>Company Status</Typography>
-                <span className={classes.headerChild}>*</span>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Autocomplete
-                  disablePortal
-                  value={companyStatus}
-                  onChange={getCompanyStatusValue}
-                  id="status"
-                  size="small"
-                  options={statusSet?.map((option: any) => option)}
-                  renderInput={(params) => (
-                    // eslint-disable-next-line react/jsx-props-no-spreading
-                    <TextField {...params} placeholder="Select Status" />
-                  )}
                 />
               </Grid>
             </Grid>
