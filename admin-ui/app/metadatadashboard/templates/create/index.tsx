@@ -5,10 +5,8 @@ import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
-import { Column } from 'jspdf-autotable';
-import { log } from 'console';
-import CreateRowsComponent from '../rows';
 import { createTemplates } from '../../../../services/template.action';
+import CreateRowsComponent from '../rows';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
@@ -26,7 +24,7 @@ function CreateTemplate() {
     setRowCount([...rowCount, recv]);
   };
 
-   const handleClose = (
+  const handleClose = (
     event?: React.SyntheticEvent | Event,
     reason?: string
   ) => {
@@ -40,17 +38,30 @@ function CreateTemplate() {
     setAlert(true);
   };
 
+  const updateTemplateData = async () => {
+    for (let i = 1; i <= 5; i++) {
+      try {
+        const body = {
+          row:row,
+          cell: i,
+        }
+        await createTemplates(body);
+        await router.push('/metadatadashboard/templates');
+      }
+      catch (error) {
+        console.log(error);
+      }
+    }
+    // column.map(async (val) => {
+    //   console.log('this is val', typeof val);
+
+
+    // });
+  }
+
   const updateHandler = () => {
     handleClick();
-
-    const data = column.map((val) => {
-      for (let i = 1; i <= val; i++) {
-        createTemplates({
-          row,
-          cell: i,
-        });
-      }
-    });
+    updateTemplateData()
   };
 
   return (
