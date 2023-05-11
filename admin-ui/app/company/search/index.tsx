@@ -43,7 +43,7 @@ function CompanySearchDetails({
   return (
     <Grid item xs={12}>
       <TextField
-        placeholder="Search by Company Name"
+        placeholder="Search Here..."
         size="small"
         value={searchStr}
         onChange={onSearch}

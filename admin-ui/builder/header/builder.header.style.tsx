@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 const builderheaderstyle = {
   headercontainer: {
     backgroundColor: '#f8fafc',

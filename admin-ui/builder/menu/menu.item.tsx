@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/* eslint-disable import/no-unresolved */
 import React from 'react';
 import {
   List,
@@ -32,7 +35,7 @@ function MenuItem(props: MenuItemProps) {
   } = props.item;
   const { handleClick, open, classes } = props;
 
-  const handleClickItem = (id: string) => {
+  const handleClickItem = (id:string) => {
     handleClick(id);
   };
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import DoneIcon from '@mui/icons-material/Done';
 import EditAttributesIcon from '@mui/icons-material/EditAttributes';
 import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
@@ -11,7 +12,7 @@ const TypographyStyle = styled(Typography)(({ theme }) => ({
   cursor: 'pointer',
 }));
 
-function SideBarInnerText({ ele }) {
+function SideBarInnerText({ ele }:any) {
   return (
     <>
       <Switch condition={ele.icon}>

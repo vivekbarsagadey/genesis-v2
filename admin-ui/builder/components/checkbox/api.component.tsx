@@ -4,9 +4,9 @@ import {
 } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
-function CheckboxApiComponent({ metaData }) {
+function CheckboxApiComponent({ metaData }:any) {
   const [url, setUrl] = useState<string>(metaData.url);
-  const updatedUrl = (e) => {
+  const updatedUrl = (e:any) => {
     setUrl(e.target.value);
   };
   return (

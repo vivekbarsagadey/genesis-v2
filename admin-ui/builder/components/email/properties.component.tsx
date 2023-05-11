@@ -4,7 +4,7 @@ import {
 } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
-function EmailPropertiesComponent({ metaData }) {
+function EmailPropertiesComponent({ metaData }:any) {
   const [background, setBackground] = useState<string>(metaData.background);
   const [borderRadius, setBorderRadius] = useState<string>(
     metaData.borderRadius,
@@ -14,22 +14,22 @@ function EmailPropertiesComponent({ metaData }) {
   const [position, setPosition] = useState<string>(metaData.position);
   const [width, setWidth] = useState<string>(metaData.width);
 
-  const updateBackground = (e) => {
+  const updateBackground = (e:any) => {
     setBackground(e.target.value);
   };
-  const updateBorderRadius = (e) => {
+  const updateBorderRadius = (e:any) => {
     setBorderRadius(e.target.value);
   };
-  const updateHeight = (e) => {
+  const updateHeight = (e:any) => {
     setHeight(e.target.value);
   };
-  const updateOverflow = (e) => {
+  const updateOverflow = (e:any) => {
     setOverflow(e.target.value);
   };
-  const updatePosition = (e) => {
+  const updatePosition = (e:any) => {
     setPosition(e.target.value);
   };
-  const updateWidth = (e) => {
+  const updateWidth = (e:any) => {
     setWidth(e.target.value);
   };
 
