@@ -5,7 +5,7 @@ import {
 import TextField from '@mui/material/TextField';
 import project from '../../../data/project.json';
 
-function ButtonPropertiesComponent({ metaData, sectionType }) {
+function ButtonPropertiesComponent({ metaData, sectionType }:any) {
   const [background, setBackground] = useState<string>(metaData.background);
   const [borderRadius, setBorderRadius] = useState<string>(
     metaData.borderRadius,
@@ -19,22 +19,22 @@ function ButtonPropertiesComponent({ metaData, sectionType }) {
   console.log('sectionType >>>', sectionType);
   console.log('selectedCompId >>', selectedCompId);
 
-  const updateBackground = (e) => {
+  const updateBackground = (e:any) => {
     setBackground(e.target.value);
   };
-  const updateBorderRadius = (e) => {
+  const updateBorderRadius = (e:any) => {
     setBorderRadius(e.target.value);
   };
-  const updateHeight = (e) => {
+  const updateHeight = (e:any) => {
     setHeight(e.target.value);
   };
-  const updateOverflow = (e) => {
+  const updateOverflow = (e:any) => {
     setOverflow(e.target.value);
   };
-  const updatePosition = (e) => {
+  const updatePosition = (e:any) => {
     setPosition(e.target.value);
   };
-  const updateWidth = (e) => {
+  const updateWidth = (e:any) => {
     setWidth(e.target.value);
   };
   console.log('project json >>', project.pages[0].components);
