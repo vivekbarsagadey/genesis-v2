@@ -1,16 +1,23 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Autocomplete, Box, Grid, TextField, Typography } from '@mui/material';
+import {
+  Autocomplete,
+  Box,
+  Grid,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from '@mui/material';
 
 function CreateRowsComponent({
   index,
-  // setCellDb,
-  // cellDb,
-  // setRowDb,
-  // rowDb,
-}: any) {
-
+}: // setCellDb,
+// cellDb,
+// setRowDb,
+// rowDb,
+any) {
   const [colCount, setColCount] = useState('');
   const [ind] = useState(index + 1);
 
@@ -19,21 +26,10 @@ function CreateRowsComponent({
     { id: 2, count: 2 },
     { id: 3, count: 3 },
     { id: 4, count: 4 },
-    // { id: 5, count: '5' },
-    // { id: 6, count: '6' },
-    // { id: 7, count: '7' },
-    // { id: 8, count: '8' },
-    // { id: 9, count: '9' },
-    // { id: 10, count: '10' },
-    // { id: 11, count: '11' },
-    // { id: 12, count: '12' },
   ];
 
   const setCell = (value: string) => {
     setColCount(value);
-
-    // setCellDb([...cellDb, value]);
-    // setRowDb([...rowDb, ind]);
   };
 
   return (
@@ -44,7 +40,28 @@ function CreateRowsComponent({
             Row
             {index + 1}
           </Typography>
-          <Autocomplete
+
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={colCount}
+            label={`Select column ${index + 1}`}
+            onChange={setCell}
+          >
+            {column &&
+              column.map((col) => {
+                return (
+                  <MenuItem key={col.id} value={col.count}>
+                    {col.count}
+                  </MenuItem>
+                );
+              })}
+
+            {/* <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem> */}
+          </Select>
+          {/* <Autocomplete
             key={index}
             value={colCount}
             onChange={setCell}
@@ -55,14 +72,14 @@ function CreateRowsComponent({
             renderInput={(params) => (
               <TextField
                 {...params}
-                label="Select column"
+                label={`Select column ${index + 1}`}
                 InputProps={{
                   ...params.InputProps,
                   type: 'search',
                 }}
               />
             )}
-          />
+          /> */}
         </Grid>
       </Grid>
     </Box>

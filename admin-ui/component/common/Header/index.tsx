@@ -15,6 +15,7 @@ import { makeStyles } from '@mui/styles';
 import { signOut, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 import { colors } from '../../../themes';
+import { usePathname } from 'next/navigation';
 
 const useStyles = makeStyles({
   headercontainer: {
@@ -28,6 +29,7 @@ const useStyles = makeStyles({
 
 function HeaderComponent() {
   const { data: session } = useSession();
+  const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState<null | HTMLElement>(null);
   const open = Boolean(openMenu);
   const classes = useStyles();
@@ -44,19 +46,19 @@ function HeaderComponent() {
       key="1"
       color="inherit"
       href="/"
-      onClick={handleClick}
+      onClick={()=>console.log("selected >>>")}
     >
-      Companies
-    </Link>,
-    <Link
-      underline="hover"
-      key="2"
-      color="inherit"
-      href="/material-ui/getting-started/installation/"
-      onClick={handleClick}
-    >
-      Create Company
-    </Link>,
+      {pathname}
+    </Link>
+    // <Link
+    //   underline="hover"
+    //   key="2"
+    //   color="inherit"
+    //   href="/material-ui/getting-started/installation/"
+    //   onClick={handleClick}
+    // >
+    //   Create Company
+    // </Link>,
   ];
 
   return (

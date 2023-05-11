@@ -24,22 +24,22 @@ function CreateTemplate() {
   };
 
   // const updateRowHandler = () => {
-    // for (let i = 0; i <= cellDb.length; i++) {
-    //   setCellDb([...cellDb, i])
-    // }
+  // for (let i = 0; i <= cellDb.length; i++) {
+  //   setCellDb([...cellDb, i])
+  // }
 
-    // const updateMyCompanyData = async () => {
-    //   try {
-    //     const body = {
-    //       cell: '',
-    //       row: ''
-    //     };
-    //     await createTemplates(body);
-    //     await router.push('/metadatadashboard/templates/');
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
+  // const updateMyCompanyData = async () => {
+  //   try {
+  //     const body = {
+  //       cell: '',
+  //       row: ''
+  //     };
+  //     await createTemplates(body);
+  //     await router.push('/metadatadashboard/templates/');
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   // };
 
   const handleClose = (
