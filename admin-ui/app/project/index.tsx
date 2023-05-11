@@ -27,7 +27,6 @@ function ProjectHomeComponent({ projects }: ProjectComponentProps) {
     ...projects,
   ]);
   const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
-console.log('projectsasdasdasdasdasd',projects);
 
   const onSearchHandler = (c: Array<IProject>) => {
     setCopyProject(c);
@@ -91,7 +90,6 @@ console.log('projectsasdasdasdasdasd',projects);
             >
               <Button variant="contained" size="small">
                 Create
-                <span>+</span>
               </Button>
             </Link>
           </Grid>

@@ -29,8 +29,6 @@ function CustomerSearchDetails({
     // onSearchHandler(projects.filter(filterByCompanyName(_searchValue)));
     onSearchHandler(projects.filter(filterByApplication(_searchValue)));
   };
-  console.log('projectsprojects', projects);
-
   return (
     <Grid item xs={12}>
       <TextField
