@@ -98,7 +98,7 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
   const updateCompanyEditedData = async () => {
     try {
       const body = {
-        ownername: ownerName,
+        ownerName,
         name: companyName,
         email: companyEmail,
         mobile: companyMobile,

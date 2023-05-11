@@ -219,7 +219,7 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
   const removeData = (f: ICompany) => {
     deleteCompany(f.id);
     handleClickSnackbar();
-    window.location.reload();
+    window.location.reload(true);
     // router.push('/company/kanban');
   };
 
@@ -348,7 +348,7 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
               autoHideDuration={5000}
               onClose={handleCloseSnackbar}
             >
-              <Alert onClose={handleCloseSnackbar} severity="error">
+              <Alert onClose={handleCloseSnackbar} severity="success">
                 Items Deleted Successfully...
               </Alert>
             </Snackbar>
@@ -601,7 +601,7 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
               autoHideDuration={5000}
               onClose={handleCloseSnackbar}
             >
-              <Alert onClose={handleCloseSnackbar} severity="error">
+              <Alert onClose={handleCloseSnackbar} severity="success">
                 Items Deleted Successfully...
               </Alert>
             </Snackbar>
@@ -855,7 +855,7 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
               autoHideDuration={5000}
               onClose={handleCloseSnackbar}
             >
-              <Alert onClose={handleCloseSnackbar} severity="error">
+              <Alert onClose={handleCloseSnackbar} severity="success">
                 Items Deleted Successfully...
               </Alert>
             </Snackbar>
