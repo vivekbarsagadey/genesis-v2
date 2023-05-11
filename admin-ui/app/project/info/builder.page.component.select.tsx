@@ -128,6 +128,7 @@ function BuilderPageSelectComponent({
     localStorage.setItem('projectJsonData', JSON.stringify(projectJsonData));
     handleClose();
     handleCloseTheme();
+    window.location.reload();
   };
 
   // console.log('Pages >>>', count);

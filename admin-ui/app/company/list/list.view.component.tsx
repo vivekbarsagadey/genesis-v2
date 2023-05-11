@@ -34,7 +34,15 @@ const useStyles = makeStyles({
   },
 });
 
-function ListViewComponent({ companies, myRef,setShow,show, }: any) {
+function ListViewComponent({
+  companies,
+  myRef,
+  setShow,
+  show,
+  multiSelect,
+  setMultiSelect,
+  setSelectedCheckbox
+}: any) {
   const classes = useStyles();
   const [page, setPage] = useState(1);
   const PER_PAGE = 9;
@@ -49,8 +57,6 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
   const [isCheckAll, setIsCheckAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
   const [list] = useState(companies);
-  const [multiSelect, setMultiSelect] = useState([]);
-
 
   const handleNameSort = () => {
     if (nameSort) {
@@ -220,9 +226,6 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
     paginationHandler.jump(p);
   };
 
-  const getMultiSelectedValue = (valRec) => {
-    setMultiSelect([...multiSelect, valRec]);
-  };
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setShow(event.target.checked);
   };
@@ -236,9 +239,11 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
               <Grid item xs={1}>
                 <Grid container ml={1}>
                   <Grid item xs={4}>
-                    <Checkbox checked={show}
+                    <Checkbox
+                      checked={show}
                       onChange={handleChange}
-                      size="small"/>
+                      size="small"
+                    />
                   </Grid>
                 </Grid>
               </Grid>
@@ -358,8 +363,12 @@ function ListViewComponent({ companies, myRef,setShow,show, }: any) {
               .reverse()
               ?.map((company: ICompany, index: number) => (
                 <Typography key={index}>
-                  <InfoCompanyComponent company={company}  show={show}
-                  getMultiSelectedValue={getMultiSelectedValue} />
+                  <InfoCompanyComponent
+                    company={company}
+                    show={show}
+                    setMultiSelect={setMultiSelect}
+                    multiSelect={multiSelect}    
+                  />
                 </Typography>
               ))
           )}

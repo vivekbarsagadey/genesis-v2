@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-props-no-spreading */
+
 'use client';
 
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';

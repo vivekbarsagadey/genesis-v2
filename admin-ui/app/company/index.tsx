@@ -1,11 +1,27 @@
 'use client';
-import React, { useRef, useState } from 'react';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import PrintIcon from '@mui/icons-material/Print';
-import { Box, Button, Divider, Grid, IconButton, Tooltip } from '@mui/material';
+import {
+  Box,
+  Button,
+  Divider,
+  Grid,
+  IconButton,
+  Tooltip,
+  Typography,
+} from '@mui/material';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import Backdrop from '@mui/material/Backdrop';
+import Fade from '@mui/material/Fade';
+import Modal from '@mui/material/Modal';
+import Snackbar from '@mui/material/Snackbar';
 import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { useRef, useState } from 'react';
 import { Case, Default, Switch } from 'react-if';
 import { useReactToPrint } from 'react-to-print';
+import { deleteCompany } from '../../services/company.action';
 import { baseStyle, colors } from '../../themes';
 import { ViewTypes } from '../utility';
 import FilterComponent from './filters';
@@ -18,10 +34,22 @@ import ListViewComponent from './list/list.view.component';
 import { ICompany } from './models/company.model';
 import CompanySearchDetails from './search';
 import CompanyViewComponent from './view';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { deleteCompany } from '../../services/company.action';
-import { useRouter } from "next/navigation";
 
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
+));
+const style = {
+  position: 'absolute' as const,
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  boxShadow: 24,
+  p: 3,
+  borderRadius: '7px',
+};
 
 interface CompanyComponentProps {
   companies: Array<ICompany>;
@@ -44,7 +72,12 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
   const [copyCompanies, setCopyCompanies] = useState<Array<ICompany>>([
     ...companies,
   ]);
+  const [multiSelect, setMultiSelect] = useState([]);
+  const [selectAllDeletePopup, setSelectAllDeletePopup] = React.useState(false);
+  const handleOpen = () => setSelectAllDeletePopup(true);
+  const handleCloSeselectAllDeletePopup = () => setSelectAllDeletePopup(false);
   const router = useRouter();
+  const [alert, setAlert] = React.useState(false);
   const [show, setShow] = useState(false);
   const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
   const onSearchHandler = (c: Array<ICompany>) => {
@@ -55,6 +88,9 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
   };
   const myRef = useRef(null);
 
+  const handleClickSnackbar = () => {
+    setAlert(true);
+  };
   const handlePrint = useReactToPrint({
     content: () => myRef.current,
   });
@@ -65,16 +101,38 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
     setCopyCompanies(_items);
   };
 
+  const eachCompanyId = companies.map((d) => d.id);
 
-  const removeData = (f: any) => {
-    getRemove(f);
-  };
-
-  const getRemove = async (id: any) => {
-    await deleteCompany(id);
-    // router.push("/company");
+  const removeAllData = async () => {
+    for (let i = 0; i <= companies.length; i++) {
+      await deleteCompany(eachCompanyId[i]);
+    }
     window.location.reload();
   };
+
+  const removeData = (f: ICompany) => {
+    removeAllData();
+    handleClickSnackbar();
+    window.location.reload();
+    // router.push('/company/kanban');
+  };
+
+  const handleCloseSnackbar = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === 'clickAway') {
+      return;
+    }
+    setAlert(false);
+  };
+  const removeSelectedData = async () => {
+    for (let i = 0; i <= multiSelect.length; i++) {
+      await deleteCompany(multiSelect[i]);
+    }
+    window.location.reload();
+  };
+
   return (
     <Box
       ml={1.5}
@@ -112,19 +170,93 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
               </Grid>
 
               <Grid item xs={3} md={6} sm={3}>
-                <CompanyViewComponent onViewSelect={onViewSelect}/>
+                <CompanyViewComponent onViewSelect={onViewSelect} />
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={2} sm={2.3} lg={1} md={1.6} mt={0.7} className={classes.checkbox}>
+          <Grid
+            item
+            xs={2}
+            sm={2.3}
+            lg={1}
+            md={1.6}
+            mt={0.7}
+            className={classes.checkbox}
+          >
             {show && (
               <Tooltip title="Delete All" arrow>
-                <IconButton aria-label="delete" onClick={() => removeData(companies)}>
+                <IconButton
+                  aria-label="delete"
+                  onClick={handleOpen}
+                >
                   <DeleteOutlineIcon fontSize="small" />
                 </IconButton>
               </Tooltip>
             )}
+
+            <Tooltip title="Delete Selected" arrow>
+              <IconButton aria-label="delete" onClick={removeSelectedData}>
+                <DeleteOutlineIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           </Grid>
+          <>
+            <Modal
+              aria-labelledby="transition-modal-title"
+              aria-describedby="transition-modal-description"
+              open={selectAllDeletePopup}
+              onClose={handleCloSeselectAllDeletePopup}
+              closeAfterTransition
+              slots={{ backdrop: Backdrop }}
+              slotProps={{
+                backdrop: {
+                  timeout: 500,
+                },
+              }}
+            >
+              <Fade in={selectAllDeletePopup}>
+                <Box sx={style}>
+                  <Typography
+                    id="transition-modal-description"
+                    fontSize="0.9rem"
+                  >
+                    Are you sure you want to delete the selected company?
+                  </Typography>
+                  <Grid container mt={4}>
+                    <Grid item xs={6} />
+                    <Grid item xs={3}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={() => handleCloSeselectAllDeletePopup()}
+                      >
+                        Cancel
+                      </Button>
+                    </Grid>
+
+                    <Grid item xs={2}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={removeData}
+                      >
+                        Ok
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Fade>
+            </Modal>
+            <Snackbar
+              open={alert}
+              autoHideDuration={5000}
+              onClose={handleCloseSnackbar}
+            >
+              <Alert onClose={handleCloseSnackbar} severity="error">
+                Items Deleted Successfully...
+              </Alert>
+            </Snackbar>
+          </>
           <Grid item xs={1} mt={1}>
             <Link href="/company/create" passHref className={classes.textDecor}>
               <Button variant="contained" size="small">
@@ -163,6 +295,8 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                   myRef={myRef}
                   show={show}
                   setShow={setShow}
+                  multiSelect={multiSelect}
+                  setMultiSelect={setMultiSelect}
                 />
               </Grid>
             </Default>
