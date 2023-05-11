@@ -1,3 +1,6 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable react/jsx-props-no-spreading */
+
 'use client';
 
 import {
@@ -11,25 +14,25 @@ import {
 } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
-import { makeStyles } from '@mui/styles';
+// import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { createRoles } from '../../../services/role.action';
 import { Status } from '../models/role.status';
 
-const useStyles = makeStyles({
-  buttonStyle: {
-    width: '73%',
-  },
-});
+// const useStyles = makeStyles({
+//   buttonStyle: {
+//     width: '73%',
+//   },
+// });
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 ));
 
 function RoleCreateComponent() {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [code, setCode] = useState('');

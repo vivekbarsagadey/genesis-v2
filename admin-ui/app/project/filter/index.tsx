@@ -1,3 +1,7 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-unused-vars */
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { IconButton } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -12,7 +16,7 @@ import React, { useEffect, useState } from 'react';
 import { isNotBlank } from '../../../utils/string.util';
 import IProject from '../project.model';
 
-const FilterStyle = styled(Grid)(({ theme }) => ({
+const FilterStyle = styled(Grid)(() => ({
   width: 300,
   padding: '1rem',
 }));

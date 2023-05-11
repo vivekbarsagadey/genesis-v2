@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable no-restricted-globals */
+
 'use client';
 
 import {

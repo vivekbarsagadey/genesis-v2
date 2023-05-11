@@ -1,3 +1,6 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/react-in-jsx-scope */
+
 'use client';
 
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -24,7 +27,7 @@ function ListViewComponent({ roles }: any) {
 
   const handleNameSort = () => {
     if (nameSort) {
-      roles.sort((a, b) => {
+      roles.sort((a:any, b:any) => {
         if (a.name.toLowerCase() < b.name.toLowerCase()) {
           return -1;
         }
@@ -36,7 +39,7 @@ function ListViewComponent({ roles }: any) {
       setNameSort(false);
     } else {
       roles
-        .sort((a, b) => {
+        .sort((a:any, b:any) => {
           if (a.name.toLowerCase() < b.name.toLowerCase()) {
             return -1;
           }
@@ -51,7 +54,7 @@ function ListViewComponent({ roles }: any) {
   };
   const handleDateSort = () => {
     if (dateSort) {
-      roles.sort((a, b) => {
+      roles.sort((a:any, b:any) => {
         if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) {
           return -1;
         }
@@ -63,7 +66,7 @@ function ListViewComponent({ roles }: any) {
       setDateSort(false);
     } else {
       roles
-        .sort((a, b) => {
+        .sort((a:any, b:any) => {
           if (a.createdAt.toLowerCase() < b.createdAt.toLowerCase()) {
             return -1;
           }
@@ -78,7 +81,7 @@ function ListViewComponent({ roles }: any) {
   };
   const handleDescriptionSort = () => {
     if (descriptionSort) {
-      roles.sort((a, b) => {
+      roles.sort((a:any, b:any) => {
         if (a.description.toLowerCase() < b.description.toLowerCase()) {
           return -1;
         }
@@ -90,7 +93,7 @@ function ListViewComponent({ roles }: any) {
       setDescriptionSort(false);
     } else {
       roles
-        .sort((a, b) => {
+        .sort((a:any, b:any) => {
           if (a.description.toLowerCase() < b.description.toLowerCase()) {
             return -1;
           }
@@ -105,7 +108,7 @@ function ListViewComponent({ roles }: any) {
   };
   const handleCodeSort = () => {
     if (codeSort) {
-      roles.sort((a, b) => {
+      roles.sort((a:any, b:any) => {
         if (a.code.toLowerCase() < b.code.toLowerCase()) {
           return -1;
         }
@@ -117,7 +120,7 @@ function ListViewComponent({ roles }: any) {
       setCodeSort(false);
     } else {
       roles
-        .sort((a, b) => {
+        .sort((a:any, b:any) => {
           if (a.code.toLowerCase() < b.code.toLowerCase()) {
             return -1;
           }

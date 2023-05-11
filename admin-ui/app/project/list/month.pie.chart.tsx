@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { Grid } from '@mui/material';
 import moment from 'moment';
 import { Chart } from 'react-google-charts';
@@ -25,74 +26,74 @@ function MonthPieChart({ projects, comparisiongraphView }: projectChartProps) {
     [
       'JAN',
       projects
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Jan').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:any) => d === 'Jan').length,
     ],
     [
       'FEB',
       projects
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Feb').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:any) => d === 'Feb').length,
     ],
     [
       'MAR',
       projects
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Mar').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:any) => d === 'Mar').length,
     ],
     [
       'APR',
       projects
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Apr').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:any) => d === 'Apr').length,
     ],
     [
       'MAY',
       projects
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'May').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:any) => d === 'May').length,
     ],
     [
       'JUN',
       projects
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Jun').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:any) => d === 'Jun').length,
     ],
     [
       'JUL',
       projects
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Jul').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:any) => d === 'Jul').length,
     ],
     [
       'AUG',
       projects
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Aug').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:any) => d === 'Aug').length,
     ],
     [
       'SEP',
       projects
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Sep').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:any) => d === 'Sep').length,
     ],
     [
       'OCT',
       projects
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Oct').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:any) => d === 'Oct').length,
     ],
     [
       'NOV',
       projects
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Nov').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:any) => d === 'Nov').length,
     ],
     [
       'DEC',
       projects
-        .map((ele) => moment(ele.updatedAt).format('MMM'))
-        .filter((d) => d === 'Dec').length,
+        .map((ele:any) => moment(ele.updatedAt).format('MMM'))
+        .filter((d:any) => d === 'Dec').length,
     ],
   ];
 
@@ -102,8 +103,8 @@ function MonthPieChart({ projects, comparisiongraphView }: projectChartProps) {
   console.log(
     'nnn',
     projects
-      .map((ele) => moment(ele.createdAt).format('Do MMM YY'))
-      .filter((d) => d == todayDate).length,
+      .map((ele:any) => moment(ele.createdAt).format('Do MMM YY'))
+      .filter((d:any) => d === todayDate).length,
   );
   const today = [
     ['Month', 'Count'],
@@ -111,12 +112,12 @@ function MonthPieChart({ projects, comparisiongraphView }: projectChartProps) {
       `${todayDate}`,
 
       projects
-        .map((ele) => moment(ele.createdAt).format('Do MMM YY'))
-        .filter((d) => d == todayDate).length,
+        .map((ele:any) => moment(ele.createdAt).format('Do MMM YY'))
+        .filter((d:any) => d === todayDate).length,
     ],
   ];
 
-  const timeFrom = (X) => {
+  const timeFrom = (X:any) => {
     const dates = [];
     for (let I = 0; I < Math.abs(X); I++) {
       dates.push(
@@ -136,8 +137,8 @@ function MonthPieChart({ projects, comparisiongraphView }: projectChartProps) {
     [
       'sssjk',
       projects
-        .map((ele) => moment(ele.updatedAt).format('DDD'))
-        .filter((d) => d === 'Sun').length,
+        .map((ele:any) => moment(ele.updatedAt).format('DDD'))
+        .filter((d:any) => d === 'Sun').length,
     ],
   ];
   return (

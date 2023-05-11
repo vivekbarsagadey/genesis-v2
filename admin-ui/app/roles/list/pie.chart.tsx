@@ -1,3 +1,5 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/no-unused-prop-types */
 import { Grid } from '@mui/material';
 import { Chart } from 'react-google-charts';
 import { Case, Default, Switch } from 'react-if';

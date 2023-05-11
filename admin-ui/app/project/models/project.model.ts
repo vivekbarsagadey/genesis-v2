@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 type IProject = {
   id: string;
   name: string;
@@ -5,7 +6,7 @@ type IProject = {
   lastName: string;
   mobile: string;
   email: string;
-  address?: string;
+  address?: any;
   country?: string;
   state?: string;
   city?: string;

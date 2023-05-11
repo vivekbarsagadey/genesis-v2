@@ -1,10 +1,9 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { Box, Grid } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import moment from 'moment';
 import React, { useState } from 'react';
-import { Chart } from 'react-google-charts';
 import MonthPieChart from './month.pie.chart';
 import ProjectPieChart from './pie.chart';
 import { ListComponentProps } from './props';

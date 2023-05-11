@@ -7,7 +7,6 @@ import React from 'react';
 import ProjectCsvGenerator from '../../utility/project/csv.generator';
 import ProjectExcellGenerator from '../../utility/project/excell.generator';
 import ProjectPdfGenerator from '../../utility/project/pdf.generator';
-import IProject from '../project.model';
 import { ListComponentProps } from './props';
 
 function ProjectExportComponent({ projects }: ListComponentProps) {

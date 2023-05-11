@@ -1,3 +1,7 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { IconButton } from '@mui/material';
@@ -12,7 +16,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { isNotBlank } from '../../../utils/string.util';
 import { IRole } from '../models';
 
-const FilterStyle = styled(Grid)(({ theme }) => ({
+const FilterStyle = styled(Grid)(() => ({
   width: 300,
   padding: '1rem',
 }));

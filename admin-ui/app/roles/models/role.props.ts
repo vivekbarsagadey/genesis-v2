@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-unused-vars */
 import { IRole } from './role.model';
 
 interface IRoleComponentProps {

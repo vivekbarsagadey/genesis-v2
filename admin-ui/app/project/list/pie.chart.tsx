@@ -2,7 +2,6 @@ import React from 'react';
 import { Grid } from '@mui/material';
 import { Chart } from 'react-google-charts';
 import { Case, Default, Switch } from 'react-if';
-import { ListComponentProps } from './props';
 
 type projectChartProps = {
   graphView: any;

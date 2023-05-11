@@ -1,3 +1,8 @@
+/* eslint-disable no-undef */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-restricted-globals */
+
 'use client';
 
 import React, { useState } from 'react';
@@ -14,6 +19,7 @@ import {
   Select,
   Tooltip,
   Button,
+  SelectChangeEvent,
 } from '@mui/material';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
@@ -26,13 +32,11 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import moment from 'moment';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import EditIcon from '@mui/icons-material/Edit';
-import EmailIcon from '@mui/icons-material/Email';
-import CallIcon from '@mui/icons-material/Call';
 import { deleteProject, updateProject } from '../../../services/project.action';
 import { ListComponentProps } from './props';
 import { IProject, Status } from '../models';
 
-const CardStyle = styled(Grid)(({ theme }) => ({
+const CardStyle = styled(Grid)(() => ({
   height: '80vh',
   overflowY: 'auto',
 }));
@@ -52,7 +56,7 @@ const useStyles = makeStyles({
     width: 400,
     bgcolor: 'background.paper',
     border: '2px solid #000',
-    boxShadow: 24,
+    boxShadow: '24px',
     p: 4,
   },
   buttonStyle: {
@@ -74,13 +78,13 @@ function ProjectKanbanView({ projects }: ListComponentProps) {
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
   const newProjects = projects.filter(
-    (ele: IProject) => ele.status == statusSet[0],
+    (ele: IProject) => ele.status === statusSet[0],
   );
   const activeProjects = projects.filter(
-    (ele: IProject) => ele.status == statusSet[1],
+    (ele: IProject) => ele.status === statusSet[1],
   );
   const inActiveProjects = projects.filter(
-    (ele: IProject) => ele.status == statusSet[2],
+    (ele: IProject) => ele.status === statusSet[2],
   );
 
   const classes = useStyles();
@@ -203,7 +207,7 @@ function NewProjectComponent({ newProject }: INewProject) {
   const handleEditModalClose = () => setOpenEditModal(false);
   const [newStatus, setNewStatus] = useState(newProject.status);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event:any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -338,7 +342,7 @@ function ActiveProjectComponent({ activeProject }: IActiveProject) {
   const handleEditModalClose = () => setOpenEditModal(false);
   const [newStatus, setNewStatus] = useState(activeProject.status);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event:any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -471,7 +475,7 @@ function InActiveProjectComponent({ inActiveProject }: IInActiveProject) {
   const handleEditModalClose = () => setOpenEditModal(false);
   const [newStatus, setNewStatus] = useState(inActiveProject.status);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event:any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {

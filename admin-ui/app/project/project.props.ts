@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import IProject from './project.model';
 
 interface IProjectComponentProps {

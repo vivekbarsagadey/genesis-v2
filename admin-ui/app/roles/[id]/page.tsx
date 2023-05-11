@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable react/react-in-jsx-scope */
+
 'use client';
 
 import { use } from 'react';

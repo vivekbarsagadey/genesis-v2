@@ -1,4 +1,6 @@
-import { useState } from 'react';
+/* eslint-disable max-len */
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import IProject from '../project.model';
@@ -21,7 +23,7 @@ function CustomerSearchDetails({
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const _searchValue = e.target.value;
     setSearchStr(_searchValue);
-    if (_searchValue == '') {
+    if (_searchValue === '') {
       onSearchHandler(projects);
       return;
     }

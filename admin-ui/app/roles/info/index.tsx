@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 'use client';
 
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
@@ -17,7 +19,6 @@ import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import Snackbar from '@mui/material/Snackbar';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import React from 'react';
 import Moment from 'react-moment';
 import { deleteRoles } from '../../../services/role.action';
@@ -44,7 +45,6 @@ type InfoRoleComponentProps = {
   role: IRole;
 };
 function InfoRoleComponent({ role }: InfoRoleComponentProps) {
-  const router = useRouter();
   const [alert, setAlert] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const deletePopupOpen = () => setOpen(true);

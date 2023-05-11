@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-props-no-spreading */
+
 'use client';
 
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
@@ -9,7 +14,6 @@ import {
   Grid,
   IconButton,
   Modal,
-  Paper,
   TextField,
   Tooltip,
   Typography,
@@ -31,7 +35,6 @@ import {
   stateSelect,
 } from '../graphdata/graph.data';
 import { Status } from '../models';
-import { border_Radius } from '../../../themes';
 
 const useStyles = makeStyles({
   avtar: {
@@ -94,7 +97,6 @@ function ProjectCreate() {
   const [customerCity, setCustomerCity] = useState('');
   const [customerState, setCustomerState] = useState('');
   const [customerCountry, setCustomerCountry] = useState('');
-  const [customerProfilePic, setCustomerProfilePic] = useState('');
   const [hover, setHover] = useState(false);
   const [alert, setAlert] = useState(false);
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
@@ -155,32 +157,32 @@ function ProjectCreate() {
 
   const updateCustomerChange = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setGender(value);
   };
   const updateCustomerCountry = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setCustomerCountry(value);
   };
   const updateCustomerState = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setCustomerState(value);
   };
   const updateCustomerCity = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setCustomerCity(value);
   };
 
   const updateCustomerStatus = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setCustomerStatus(value);
   };
@@ -199,7 +201,7 @@ function ProjectCreate() {
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string
+    reason?: any,
   ) => {
     if (reason === 'clickaway') {
       return;
@@ -209,10 +211,10 @@ function ProjectCreate() {
 
   const fetchData = async () => {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/companies`
+      `${process.env.NEXT_PUBLIC_API_URL}/companies`,
     );
     if (!response.ok) {
-      throw new Error('Data coud not be fetched!');
+      throw new Error('Data cloud not be fetched!');
     } else {
       return response.json();
     }
@@ -247,27 +249,27 @@ function ProjectCreate() {
 
   const updateCustomerName = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setCustomerName(value);
   };
 
   const getProjectStatusValue = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setProjectStatus(value);
   };
 
   const updateProjectState = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setProjectState(value);
   };
   const updateProjectCountry = (
     e: React.SyntheticEvent<Element, Event>,
-    value: string
+    value: any,
   ) => {
     setProjectCountry(value);
   };
@@ -347,7 +349,7 @@ function ProjectCreate() {
 
   return (
     <Box p={2.7}>
-      <Card elevation={0} >
+      <Card elevation={0}>
         <Grid item xs={4} mt={5} ml={3}>
           <Typography fontSize="1.2rem">Create New Project</Typography>
         </Grid>
@@ -388,7 +390,7 @@ function ProjectCreate() {
                     id="combo-box-demo"
                     size="small"
                     options={companyList?.map(
-                      (company: ICompany) => company.name
+                      (company: ICompany) => company.name,
                     )}
                     renderInput={(params) => (
                       <TextField
@@ -506,7 +508,7 @@ function ProjectCreate() {
                                         id="status"
                                         size="small"
                                         options={genderType?.map(
-                                          (option) => option.title
+                                          (option) => option.title,
                                         )}
                                         renderInput={(params) => (
                                           <TextField
@@ -616,7 +618,7 @@ function ProjectCreate() {
                                       id="status"
                                       size="small"
                                       options={statusSet?.map(
-                                        (option: any) => option
+                                        (option: any) => option,
                                       )}
                                       renderInput={(params) => (
                                         <TextField
@@ -700,7 +702,7 @@ function ProjectCreate() {
                                       id="city"
                                       size="small"
                                       options={citySelect.map(
-                                        (option: any) => option.city
+                                        (option: any) => option.city,
                                       )}
                                       renderInput={(params) => (
                                         <TextField
@@ -733,7 +735,7 @@ function ProjectCreate() {
                                       id="state"
                                       size="small"
                                       options={stateSelect.map(
-                                        (option) => option.state
+                                        (option) => option.state,
                                       )}
                                       renderInput={(params) => (
                                         <TextField
@@ -767,7 +769,7 @@ function ProjectCreate() {
                                         id="status"
                                         size="small"
                                         options={countrySelect.map(
-                                          (option) => option.country
+                                          (option) => option.country,
                                         )}
                                         renderInput={(params) => (
                                           <TextField
@@ -923,9 +925,7 @@ function ProjectCreate() {
                   <Grid item xs={2}>
                     <Checkbox
                       value={customerWeb}
-                      onClick={() =>
-                        getApplicationType('Business to Customer - Web')
-                      }
+                      onClick={() => getApplicationType('Business to Customer - Web')}
                     />
                   </Grid>
                   <Grid item xs={10}>
@@ -934,9 +934,7 @@ function ProjectCreate() {
                   <Grid item xs={2}>
                     <Checkbox
                       value={customerMobile}
-                      onClick={() =>
-                        getApplicationType('Business to Customer - Mobile')
-                      }
+                      onClick={() => getApplicationType('Business to Customer - Mobile')}
                     />
                   </Grid>
                   <Grid item xs={10}>
@@ -945,9 +943,7 @@ function ProjectCreate() {
                   <Grid item xs={2}>
                     <Checkbox
                       value={businessWeb}
-                      onClick={() =>
-                        getApplicationType('Business to Business - Web')
-                      }
+                      onClick={() => getApplicationType('Business to Business - Web')}
                     />
                   </Grid>
                   <Grid item xs={10}>
@@ -956,9 +952,7 @@ function ProjectCreate() {
                   <Grid item xs={2}>
                     <Checkbox
                       value={businessMobile}
-                      onClick={() =>
-                        getApplicationType('Business to Business - Mobile')
-                      }
+                      onClick={() => getApplicationType('Business to Business - Mobile')}
                     />
                   </Grid>
                   <Grid item xs={10}>

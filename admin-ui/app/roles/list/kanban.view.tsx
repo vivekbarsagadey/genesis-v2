@@ -1,3 +1,7 @@
+/* eslint-disable no-shadow */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-restricted-globals */
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
@@ -15,8 +19,9 @@ import { makeStyles } from '@mui/styles';
 import React from 'react';
 import { IRole } from '../models';
 import { ListComponentProps } from './props';
+import { Status } from '../models/role.status';
 
-const CardStyle = styled(Grid)(({ theme }) => ({
+const CardStyle = styled(Grid)(() => ({
   height: '80vh',
   overflowY: 'auto',
 }));
@@ -42,9 +47,9 @@ type IInActiveRole = {
 function RoleKanbanView({ roles }: ListComponentProps) {
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
 
-  const newRoles = roles.filter((ele: IRole) => ele.status == statusSet[0]);
-  const activeRole = roles.filter((ele: IRole) => ele.status == statusSet[1]);
-  const inActiveRole = roles.filter((ele: IRole) => ele.status == statusSet[2]);
+  const newRoles = roles.filter((ele: IRole) => ele.status === statusSet[0]);
+  const activeRole = roles.filter((ele: IRole) => ele.status === statusSet[1]);
+  const inActiveRole = roles.filter((ele: IRole) => ele.status === statusSet[2]);
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);

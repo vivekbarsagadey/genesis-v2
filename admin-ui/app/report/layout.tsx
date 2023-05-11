@@ -1,3 +1,6 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/require-default-props */
+
 'use client';
 
 import { ReactNode } from 'react';

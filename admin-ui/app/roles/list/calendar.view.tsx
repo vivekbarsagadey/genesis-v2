@@ -1,3 +1,5 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable no-shadow */
 import Grid from '@mui/material/Grid';
 import moment from 'moment';
 import { useEffect, useState } from 'react';

@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 interface IProject {
   id: string;
   updatedAt: number;
