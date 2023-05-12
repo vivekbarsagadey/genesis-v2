@@ -72,7 +72,7 @@ function HeaderComponent() {
             <span key={index}>
               {breadcrumb.href ? (
                 <Link href={breadcrumb.href} className={classes.breadcrumb}>
-                  <Typography>{breadcrumb.text}</Typography>
+                  <Typography>{breadcrumb.text.charAt(0).toUpperCase() + breadcrumb.text.slice(1)}</Typography>
                 </Link>
               ) : (
                 <span>{breadcrumb.separator}</span>
