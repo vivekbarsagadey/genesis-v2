@@ -287,12 +287,12 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
               }}
             >
               <MenuItem>
-                <Tooltip title="Edit">
+                <Tooltip title="Edit" placement='right'>
                   <IconButton
                     onClick={handleEditModalOpen}
                     className={classes.buttonStyle}
                   >
-                    <EditIcon fontSize="inherit" />
+                    <EditIcon fontSize="inherit"/>
                   </IconButton>
                 </Tooltip>
                 <Modal open={openEditModal} onClose={handleEditModalClose}>
@@ -338,7 +338,7 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
                 </Modal>
               </MenuItem>
               <MenuItem>
-                <Tooltip title="Delete">
+                <Tooltip title="Delete" placement='right'>
                   <IconButton className={classes.buttonStyle}>
                     <DeleteIcon htmlColor="red" onClick={handleOpen} />
                   </IconButton>
@@ -535,7 +535,7 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
               }}
             >
               <MenuItem>
-                <Tooltip title="Edit">
+                <Tooltip title="Edit" placement='right'>
                   <IconButton
                     onClick={handleEditModalOpen}
                     className={classes.buttonStyle}
@@ -587,7 +587,7 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
                 </Modal>
               </MenuItem>
               <MenuItem>
-                <Tooltip title="Delete">
+                <Tooltip title="Delete" placement='right'>
                   <IconButton
                     // onClick={() => deleteCompany(activeCompany.id)}
                     className={classes.buttonStyle}
@@ -787,7 +787,7 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
               }}
             >
               <MenuItem>
-                <Tooltip title="Edit">
+                <Tooltip title="Edit" placement='right'>
                   <IconButton
                     onClick={handleEditModalOpen}
                     className={classes.buttonStyle}
@@ -842,7 +842,7 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
                 </Modal>
               </MenuItem>
               <MenuItem>
-                <Tooltip title="Delete">
+                <Tooltip title="Delete" placement='right'>
                   <IconButton
                     // onClick={() => deleteCompany(inActiveCompany.id)}
                     className={classes.buttonStyle}
