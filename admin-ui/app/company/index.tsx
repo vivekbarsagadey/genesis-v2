@@ -49,7 +49,6 @@ const useStyles = makeStyles({
   display: { display: 'flex' },
   divider: { background: '#009688', height: '0.1rem', marginTop: '0.2rem' },
   checkbox: {display: 'flex',justifyContent: 'flex-end'},
-  iconButton:{ background: 'transparent' }
 });
 function CompanyComponentHome({ companies }: CompanyComponentProps) {
   const classes = useStyles();
@@ -132,14 +131,14 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
               </Grid>
               <Grid item xs="auto" mt={0.2}>
                 <Tooltip title="Print">
-                  <IconButton  onClick={() => handlePrint()} className={classes.iconButton}>
+                  <IconButton  onClick={() => handlePrint()} style={{background: 'transparent'}}>
                     <PrintIcon fontSize="small" />
                   </IconButton>
                 </Tooltip>
               </Grid>
 
               <Grid item xs={3} md={6} sm={3}>
-                <CompanyViewComponent onViewSelect={onViewSelect} />
+                <CompanyViewComponent onViewSelect={onViewSelect}  />
               </Grid>
             </Grid>
           </Grid>
@@ -151,9 +150,8 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                 </IconButton>
               </Tooltip>
             ) : null}
-            
 
-            { multiSelect.length > 1 ? (
+            {multiSelect.length > 1 ? (
               <Tooltip title="Delete Selected" arrow>
                 <IconButton aria-label="delete" onClick={handleSelectPopup}>
                   <DeleteOutlineIcon fontSize="small" />
