@@ -42,7 +42,6 @@ function FilterComponent({
         u.email.toLowerCase().includes(filterDataEmail.toLowerCase())
     );
     itemsCallBackHandler(newCompanies);
-    // eslint-disable-next-line no-use-before-define
     handleClose();
   };
 
@@ -90,7 +89,6 @@ function FilterComponent({
               )}
               renderInput={(params) => (
                 <TextField
-                  // eslint-disable-next-line react/jsx-props-no-spreading
                   {...params}
                   placeholder="Owner Name"
                   InputProps={{
@@ -114,7 +112,6 @@ function FilterComponent({
               options={Array.from(new Set(companies.map((data) => data.name)))}
               renderInput={(params) => (
                 <TextField
-                  // eslint-disable-next-line react/jsx-props-no-spreading
                   {...params}
                   placeholder="Company Name"
                   InputProps={{
@@ -138,7 +135,6 @@ function FilterComponent({
               options={Array.from(new Set(companies.map((data) => data.email)))}
               renderInput={(params) => (
                 <TextField
-                  // eslint-disable-next-line react/jsx-props-no-spreading
                   {...params}
                   placeholder="Email"
                   InputProps={{

@@ -7,8 +7,17 @@ import { Tooltip } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { makeStyles } from '@mui/styles';
 import React from 'react';
 import { ViewTypes } from '../../utility';
+
+const useStyles = makeStyles({
+  toggleButton: {
+    border: 'none',
+    borderRadius: '50%',
+    background: 'transparent',
+  },
+});
 
 const viewIconsSet = [
   {
@@ -69,7 +78,7 @@ interface CompanyViewComponentProps {
 
 function CompanyViewComponent({ onViewSelect }: CompanyViewComponentProps) {
   const [alignment, setAlignment] = React.useState('left');
-
+  const classes = useStyles();
   const handleAlignment = (
     event: React.MouseEvent<HTMLElement>,
     newAlignment: string | null
@@ -93,11 +102,7 @@ function CompanyViewComponent({ onViewSelect }: CompanyViewComponentProps) {
             aria-label="left aligned"
             key={item.id}
             onClick={() => onViewSelect(item.view)}
-            style={{
-              border: 'none',
-              borderRadius: '50%',
-              background: 'transparent',
-            }}
+            className={classes.toggleButton}
           >
             {item.icon}
           </ToggleButton>

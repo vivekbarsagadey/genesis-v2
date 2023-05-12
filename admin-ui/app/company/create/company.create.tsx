@@ -61,7 +61,6 @@ function CompanyCreateComponent() {
     setAlert(false);
   };
 
-  // eslint-disable-next-line no-restricted-globals
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   // POST call
   const updateMyCompanyData = async () => {

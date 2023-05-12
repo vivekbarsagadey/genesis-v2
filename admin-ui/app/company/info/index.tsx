@@ -50,6 +50,7 @@ type InfoCompanyComponentProps = {
   company: ICompany;
   setMultiSelect: any;
   multiSelect: any;
+  show:any
  
 };
 
@@ -91,10 +92,7 @@ function InfoCompanyComponent({
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
     const selectedCompanyId = company.id;
-
     setMultiSelect([...multiSelect, selectedCompanyId]);
-    
-   
   };
 
   const classes = useStyles();
