@@ -190,8 +190,9 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                 </IconButton>
               </Tooltip>
             ) : null}
+            
 
-            {multiSelect.length > 1 ? (
+            { multiSelect.length > 1 ? (
               <Tooltip title="Delete Selected" arrow>
                 <IconButton aria-label="delete" onClick={handleSelectPopup}>
                   <DeleteOutlineIcon fontSize="small" />

@@ -12,21 +12,25 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { updateCompany } from '../../../services/company.action';
 import { baseStyle, colors } from '../../../themes';
-import {countrySelect,genderSelect,stateSelect,} from '../graphdata/graph.data';
+import { countrySelect, genderSelect, stateSelect, } from '../graphdata/graph.data';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 ));
 const useStyles = makeStyles({
   buttonStyle: { width: '73%' },
-  gridContainer: {display: 'flex', alignItems: 'center'},
-  root: {backgroundColor: colors.white,borderRadius: baseStyle.borderRadius.small},
+  gridContainer: { display: 'flex', alignItems: 'center' },
+  root: { backgroundColor: colors.white, borderRadius: baseStyle.borderRadius.small },
+  headerChild: { color: 'red' },
+  mainHeader: { display: 'flex', flexDirection: 'row' },
 });
 
 type CompanyComponentProps = {
   company: any;
   id: string;
 };
+
+
 
 function CompanyEditComponent({ company, id }: CompanyComponentProps) {
   const classes = useStyles();
@@ -126,90 +130,96 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
       <Grid container spacing={2} mt={3} paddingLeft={5}>
         <Grid item xs={6}>
           <Grid container className={classes.gridContainer}>
-            <Grid item xs={3}>
+            <Grid item xs={3} className={classes.mainHeader}>
               <Typography>Name</Typography>
+              <span className={classes.headerChild}>*</span>
             </Grid>
             <Grid item xs={2}>
               <Typography>:</Typography>
             </Grid>
             <Grid item xs={6}>
               <TextField id="owner-name" placeholder="Owner Name" variant="outlined"
-                size="small" fullWidth value={ownerName} onChange={updateOwnerName}/>
+                size="small" fullWidth value={ownerName} onChange={updateOwnerName} />
             </Grid>
           </Grid>
         </Grid>
 
         <Grid item xs={6} mt={1}>
           <Grid container className={classes.gridContainer}>
-            <Grid item xs={3}>
+            <Grid item xs={3} className={classes.mainHeader}>
               <Typography>Company Name</Typography>
+              <span className={classes.headerChild}>*</span>
             </Grid>
             <Grid item xs={2}>
               <Typography>:</Typography>
             </Grid>
             <Grid item xs={6}>
               <TextField id="company-name" placeholder="Company Name"
-                variant="outlined" size="small" fullWidth value={companyName} onChange={updateCompanyName}/>
+                variant="outlined" size="small" fullWidth value={companyName} onChange={updateCompanyName} />
             </Grid>
           </Grid>
         </Grid>
 
         <Grid item xs={6} mt={1}>
           <Grid container className={classes.gridContainer}>
-            <Grid item xs={3}>
+            <Grid item xs={3} className={classes.mainHeader}>
               <Typography>Email</Typography>
+              <span className={classes.headerChild}>*</span>
             </Grid>
             <Grid item xs={2}>
               <Typography>:</Typography>
             </Grid>
             <Grid item xs={6}>
               <TextField id="email" placeholder="Email"
-                variant="outlined"size="small" fullWidth value={companyEmail} onChange={updateCompanyEmail}/>
+                variant="outlined" size="small" fullWidth value={companyEmail} onChange={updateCompanyEmail} />
             </Grid>
           </Grid>
         </Grid>
 
         <Grid item xs={6} mt={1}>
           <Grid container className={classes.gridContainer}>
-            <Grid item xs={3}>
+            <Grid item xs={3} className={classes.mainHeader}>
               <Typography>Mobile</Typography>
+              <span className={classes.headerChild}>*</span>
             </Grid>
             <Grid item xs={2}>
               <Typography>:</Typography>
             </Grid>
             <Grid item xs={6}>
-              <TextField id="Mobile" placeholder="Mobile"variant="outlined" 
-              size="small" fullWidth value={companyMobile}onChange={updateCompanyMobile} />
+              <TextField id="Mobile" placeholder="Mobile" variant="outlined"
+                size="small" fullWidth value={companyMobile} onChange={updateCompanyMobile} />
             </Grid>
           </Grid>
         </Grid>
 
         <Grid item xs={6} mt={1}>
           <Grid container className={classes.gridContainer}>
-            <Grid item xs={3}>
+            <Grid item xs={3} className={classes.mainHeader}>
               <Typography>Address</Typography>
+              <span className={classes.headerChild}>*</span>
             </Grid>
             <Grid item xs={2}>
               <Typography>:</Typography>
             </Grid>
             <Grid item xs={6}>
               <TextField id="address" placeholder="Address" variant="outlined"
-                size="small" fullWidth value={companyAddress} onChange={updateCompanyAdress}/>
+                size="small" fullWidth value={companyAddress} onChange={updateCompanyAdress} />
             </Grid>
           </Grid>
         </Grid>
 
         <Grid item xs={6} mt={1}>
           <Grid container className={classes.gridContainer}>
-            <Grid item xs={3}>
+            <Grid item xs={3} className={classes.mainHeader}>
               <Typography>PinCode</Typography>
+              <span className={classes.headerChild}>*</span>
             </Grid>
             <Grid item xs={2}>
               <Typography>:</Typography>
             </Grid>
             <Grid item xs={6}>
-              <TextField id="pincode" placeholder="Pin Code" variant="outlined" 
-              size="small" fullWidth value={companyPinCode} onChange={updateCompanyPinCode}
+              <TextField id="pincode" placeholder="Pin Code" variant="outlined"
+                size="small" fullWidth value={companyPinCode} onChange={updateCompanyPinCode}
               />
             </Grid>
           </Grid>
@@ -217,8 +227,9 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
 
         <Grid item xs={6} mt={1}>
           <Grid container className={classes.gridContainer}>
-            <Grid item xs={3}>
+            <Grid item xs={3} className={classes.mainHeader}>
               <Typography>Country</Typography>
+              <span className={classes.headerChild}>*</span>
             </Grid>
             <Grid item xs={2}>
               <Typography>:</Typography>
@@ -242,8 +253,9 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
 
         <Grid item xs={6} mt={1}>
           <Grid container className={classes.gridContainer}>
-            <Grid item xs={3}>
+            <Grid item xs={3} className={classes.mainHeader}>
               <Typography>State</Typography>
+              <span className={classes.headerChild}>*</span>
             </Grid>
             <Grid item xs={2}>
               <Typography>:</Typography>
@@ -267,8 +279,9 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
 
         <Grid item xs={6} mt={1}>
           <Grid container className={classes.gridContainer}>
-            <Grid item xs={3}>
+            <Grid item xs={3} className={classes.mainHeader}>
               <Typography>Gender</Typography>
+              <span className={classes.headerChild}>*</span>
             </Grid>
             <Grid item xs={2}>
               <Typography>:</Typography>
@@ -288,8 +301,9 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
 
         <Grid item xs={6} mt={1}>
           <Grid container display="flex" alignItems="center">
-            <Grid item xs={3}>
+            <Grid item xs={3} className={classes.mainHeader}>
               <Typography>Company Status</Typography>
+              <span className={classes.headerChild}>*</span>
             </Grid>
             <Grid item xs={2}>
               <Typography>:</Typography>
@@ -317,7 +331,7 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
             </Grid>
             <Grid item xs={6}>
               <TextField id="website" placeholder="Website" variant="outlined" size="small"
-                fullWidth value={companyWebsite} onChange={updateCompanyWebsite}/>
+                fullWidth value={companyWebsite} onChange={updateCompanyWebsite} />
             </Grid>
           </Grid>
         </Grid>
