@@ -31,6 +31,7 @@ function ExportComponent({ copyCompanyData }: CompanyExportComponentProps) {
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
           onClick={handleClick}
+          style={{ background: 'transparent' }}
         >
           <FileDownloadOutlinedIcon fontSize="small" />
         </IconButton>

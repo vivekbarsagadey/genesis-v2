@@ -2,7 +2,15 @@
 import React, { useRef, useState } from 'react';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import PrintIcon from '@mui/icons-material/Print';
-import {Box,Button,Divider,Grid,IconButton,Tooltip,Typography} from '@mui/material';
+import {
+  Box,
+  Button,
+  Divider,
+  Grid,
+  IconButton,
+  Tooltip,
+  Typography,
+} from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Backdrop from '@mui/material/Backdrop';
 import Fade from '@mui/material/Fade';
@@ -126,25 +134,33 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
     window.location.reload();
   };
   return (
-
     <Box ml={1.5} pb={1} mr={2.5} className={classes.root}>
       <Grid mt={1}>
         <Grid container spacing={1} pl={2}>
           <Grid item xs={3} md={3} lg={3} sm={3}>
-            <CompanySearchDetails companies={companies} onSearchHandler={onSearchHandler} />
+            <CompanySearchDetails
+              companies={companies}
+              onSearchHandler={onSearchHandler}
+            />
           </Grid>
           <Grid item xs={5} md={6} sm={5} lg={7} className={classes.display}>
             <Grid container>
               <Grid item xs="auto" mt={0.3}>
-                <FilterComponent companies={companies} onFilterHandler={onSearchHandler} 
-                itemsCallBackHandler={itemsCallBackHandler} />
+                <FilterComponent
+                  companies={companies}
+                  onFilterHandler={onSearchHandler}
+                  itemsCallBackHandler={itemsCallBackHandler}
+                />
               </Grid>
               <Grid item xs="auto" mt={0.2}>
                 <ExportComponent copyCompanyData={copyCompanies} />
               </Grid>
               <Grid item xs="auto" mt={0.2}>
                 <Tooltip title="Print">
-                  <IconButton onClick={() => handlePrint()}>
+                  <IconButton
+                    onClick={() => handlePrint()}
+                    style={{ background: 'transparent' }}
+                  >
                     <PrintIcon fontSize="small" />
                   </IconButton>
                 </Tooltip>
@@ -155,10 +171,21 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={2} sm={2.3} lg={1} md={1.6} mt={0.7} className={classes.checkbox} >
+          <Grid
+            item
+            xs={2}
+            sm={2.3}
+            lg={1}
+            md={1.6}
+            mt={0.7}
+            className={classes.checkbox}
+          >
             {showDelAll ? (
               <Tooltip title="Delete All" arrow>
-                <IconButton aria-label="delete"onClick={handleMultiSelectAllPopup}>
+                <IconButton
+                  aria-label="delete"
+                  onClick={handleMultiSelectAllPopup}
+                >
                   <DeleteOutlineIcon fontSize="small" />
                 </IconButton>
               </Tooltip>
@@ -173,25 +200,41 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
             ) : null}
           </Grid>
           <>
-            <Modal aria-labelledby="transition-modal-title" aria-describedby="transition-modal-description"
-              open={selectAllDeletePopup} onClose={handleCloseSelectAllDeletePopup}
-              closeAfterTransition slots={{ backdrop: Backdrop }}
-              slotProps={{ backdrop: { timeout: 500,},}} >
+            <Modal
+              aria-labelledby="transition-modal-title"
+              aria-describedby="transition-modal-description"
+              open={selectAllDeletePopup}
+              onClose={handleCloseSelectAllDeletePopup}
+              closeAfterTransition
+              slots={{ backdrop: Backdrop }}
+              slotProps={{ backdrop: { timeout: 500 } }}
+            >
               <Fade in={selectAllDeletePopup}>
                 <Box sx={style}>
-                  <Typography id="transition-modal-description" fontSize="0.9rem">
+                  <Typography
+                    id="transition-modal-description"
+                    fontSize="0.9rem"
+                  >
                     Are you sure you want to delete All Companies ?
                   </Typography>
                   <Grid container mt={4}>
                     <Grid item xs={6} />
                     <Grid item xs={3}>
-                      <Button variant="contained" size="small" onClick={()=>handleCloseSelectAllDeletePopup()}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={() => handleCloseSelectAllDeletePopup()}
+                      >
                         Cancel
                       </Button>
                     </Grid>
 
                     <Grid item xs={2}>
-                      <Button variant="contained" size="small" onClick={removeData}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={removeData}
+                      >
                         Ok
                       </Button>
                     </Grid>
@@ -199,19 +242,32 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                 </Box>
               </Fade>
             </Modal>
-            <Snackbar open={alert} autoHideDuration={5000} onClose={handleCloseSnackbar} >
+            <Snackbar
+              open={alert}
+              autoHideDuration={5000}
+              onClose={handleCloseSnackbar}
+            >
               <Alert onClose={handleCloseSnackbar} severity="error">
                 Items Deleted Successfully...
               </Alert>
             </Snackbar>
           </>
           <>
-            <Modal aria-labelledby="transition-modal-title"aria-describedby="transition-modal-description" 
-            open={selectDeletePopup} onClose={handleCloseSelectDeletePopup} closeAfterTransition
-              slots={{ backdrop: Backdrop }}slotProps={{backdrop: { timeout: 500, },}} >
+            <Modal
+              aria-labelledby="transition-modal-title"
+              aria-describedby="transition-modal-description"
+              open={selectDeletePopup}
+              onClose={handleCloseSelectDeletePopup}
+              closeAfterTransition
+              slots={{ backdrop: Backdrop }}
+              slotProps={{ backdrop: { timeout: 500 } }}
+            >
               <Fade in={selectDeletePopup}>
                 <Box sx={style}>
-                  <Typography id="transition-modal-description" fontSize="0.9rem" >
+                  <Typography
+                    id="transition-modal-description"
+                    fontSize="0.9rem"
+                  >
                     {`Are you sure you want to delete ${multiSelect.length} company?`}
                   </Typography>
                   <Grid container mt={4}>
@@ -227,7 +283,11 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                     </Grid>
 
                     <Grid item xs={2}>
-                      <Button variant="contained" size="small" onClick={selectRemoveData}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={selectRemoveData}
+                      >
                         Ok
                       </Button>
                     </Grid>
@@ -235,7 +295,11 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                 </Box>
               </Fade>
             </Modal>
-            <Snackbar open={alert} autoHideDuration={5000} onClose={handleCloseSnackbar} >
+            <Snackbar
+              open={alert}
+              autoHideDuration={5000}
+              onClose={handleCloseSnackbar}
+            >
               <Alert onClose={handleCloseSnackbar} severity="error">
                 Items Deleted Successfully...
               </Alert>
@@ -274,9 +338,15 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
             </Case>
             <Default>
               <Grid>
-                <ListViewComponent companies={copyCompanies} myRef={myRef}
-                  show={show} setShow={setShow} multiSelect={multiSelect}
-                  setMultiSelect={setMultiSelect} setShowDelAll={setShowDelAll}/>
+                <ListViewComponent
+                  companies={copyCompanies}
+                  myRef={myRef}
+                  show={show}
+                  setShow={setShow}
+                  multiSelect={multiSelect}
+                  setMultiSelect={setMultiSelect}
+                  setShowDelAll={setShowDelAll}
+                />
               </Grid>
             </Default>
           </Switch>

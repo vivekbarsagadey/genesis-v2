@@ -36,9 +36,10 @@ function FilterComponent({
 
   const doFilter = () => {
     const newCompanies = companies?.filter(
-      (u) => u.name.toLowerCase().includes(filterDataCompanyName.toLowerCase())
-      || u.ownerName.toLowerCase().includes(filterDataOwnerName.toLowerCase())
-      || u.email.toLowerCase().includes(filterDataEmail.toLowerCase()),
+      (u) =>
+        u.name.toLowerCase().includes(filterDataCompanyName.toLowerCase()) ||
+        u.ownerName.toLowerCase().includes(filterDataOwnerName.toLowerCase()) ||
+        u.email.toLowerCase().includes(filterDataEmail.toLowerCase())
     );
     itemsCallBackHandler(newCompanies);
     // eslint-disable-next-line no-use-before-define
@@ -58,11 +59,12 @@ function FilterComponent({
     <>
       <Tooltip title="Filter">
         <IconButton
-          id="basic-button"
+          id="filter-btn"
           aria-controls={open ? 'basic-menu' : undefined}
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
           onClick={handleClick}
+          style={{ background: 'transparent' }}
         >
           <FilterAltIcon fontSize="small" />
         </IconButton>
@@ -84,7 +86,7 @@ function FilterComponent({
               id="free-solo-2-demo"
               disableClearable
               options={Array.from(
-                new Set(companies.map((data) => data.ownerName)),
+                new Set(companies.map((data) => data.ownerName))
               )}
               renderInput={(params) => (
                 <TextField
