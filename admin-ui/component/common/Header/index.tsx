@@ -1,5 +1,4 @@
 'use client';
-import React, { useState } from 'react';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -13,6 +12,7 @@ import Stack from '@mui/material/Stack';
 import { makeStyles } from '@mui/styles';
 import { signOut, useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
+import React, { useState } from 'react';
 import { colors } from '../../../themes';
 
 const useStyles = makeStyles({
@@ -56,7 +56,7 @@ function HeaderComponent() {
   }
 
   return (
-    <Grid container className={classes.headercontainer}>
+    <Grid container className={classes.headercontainer} pr={2}>
       <Grid
         item
         lg={3.7}
@@ -72,7 +72,10 @@ function HeaderComponent() {
             <span key={index}>
               {breadcrumb.href ? (
                 <Link href={breadcrumb.href} className={classes.breadcrumb}>
-                  <Typography>{breadcrumb.text.charAt(0).toUpperCase() + breadcrumb.text.slice(1)}</Typography>
+                  <Typography>
+                    {breadcrumb.text.charAt(0).toUpperCase() +
+                      breadcrumb.text.slice(1)}
+                  </Typography>
                 </Link>
               ) : (
                 <span>{breadcrumb.separator}</span>

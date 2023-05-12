@@ -54,7 +54,7 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
       <List>
         <Grid container>
           {toggleMenu && (
-            <Typography fontSize="1.2rem" ml={2} display={{ xs: 'none', sm: 'none', md: 'block' }} >
+            <Typography fontSize="1.3rem" ml={2} display={{ xs: 'none', sm: 'none', md: 'block' }}>
               Master Data
             </Typography>
           )}
@@ -78,7 +78,7 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
         </ListItemButton>
         <Collapse in={address} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 3 }}>
+            <ListItemButton sx={{ pl: 5 }}>
               <Grid container display="flex" alignItems="center">
                 <Grid item xs={2}>
                   <AssistantPhotoIcon fontSize="small" />
@@ -90,7 +90,7 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
                 )}
               </Grid>
             </ListItemButton>
-            <ListItemButton sx={{ pl: 3 }}>
+            <ListItemButton sx={{ pl: 5 }}>
               <Grid container display="flex" alignItems="center">
                 <Grid item xs={2}>
                   <CabinIcon fontSize="small" />
@@ -102,7 +102,7 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
                 )}
               </Grid>
             </ListItemButton>
-            <ListItemButton sx={{ pl: 3 }}>
+            <ListItemButton sx={{ pl: 5 }}>
               <Grid container display="flex" alignItems="center">
                 <Grid item xs={2}>
                   <FmdBadIcon fontSize="small" />
@@ -114,7 +114,7 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
                 )}
               </Grid>
             </ListItemButton>
-            <ListItemButton sx={{ pl: 3 }}>
+            <ListItemButton sx={{ pl: 5 }}>
               <Grid container display="flex" alignItems="center">
                 <Grid item xs={2}>
                   <HomeIcon fontSize="small" />
@@ -153,7 +153,7 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
               passHref
               style={{ textDecoration: 'none', color: 'black' }}
             >
-              <ListItemButton sx={{ pl: 3 }}>
+              <ListItemButton sx={{ pl: 5 }}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={2}>
                     <SportsHandballIcon fontSize="small" />
@@ -189,7 +189,7 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
           <List component="div" disablePadding>
             <Link href="/metadatadashboard/templates" passHref
               className={classes.link}>
-              <ListItemButton sx={{ pl: 3 }}>
+              <ListItemButton sx={{ pl: 5 }}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={2}>
                     <HomeIcon fontSize="small" />
@@ -204,7 +204,7 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
             </Link>
             <Link href="/metadatadashboard/widgets" passHref
               className={classes.link} >
-              <ListItemButton sx={{ pl: 3 }}>
+              <ListItemButton sx={{ pl: 5 }}>
                 <Grid container display="flex" alignItems="center">
                   <Grid item xs={2}>
                     <HomeIcon fontSize="small" />

@@ -18,8 +18,16 @@ import React from 'react';
 import MetaDataSidebar from '../metaDataSidebar/meta.data.sidebar';
 
 const useStyles = makeStyles({
-  gridContainer: {display: 'flex', height: '88vh', flexDirection: 'column',
-    justifyContent: 'space-between', overflowY: 'auto',},
+  gridContainer: {
+    display: 'flex',
+    height: '88vh',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    overflowY: 'auto',
+    marginLeft: '0.7rem',
+    marginRight: '0.7rem',
+    paddingRight: '0.7rem',
+  },
   link: { textDecoration: 'none', color: 'black' },
 });
 
@@ -99,8 +107,8 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
           <Collapse in={openDashboard} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <Link href="/dashboard" passHref className={classes.link}>
-                <ListItemButton sx={{ pl: 4 }}>
-                  <Grid container>
+                <ListItemButton sx={{ pl: 5 }}>
+                  <Grid container display="flex" alignItems="center">
                     <Grid item xs={2}>
                       <AdjustIcon fontSize="small" />
                     </Grid>
@@ -117,8 +125,8 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
               </Link>
             </List>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
-                <Grid container>
+              <ListItemButton sx={{ pl: 5 }}>
+                <Grid container display="flex" alignItems="center">
                   <Grid item xs={2}>
                     <ReportIcon fontSize="small" />
                   </Grid>
@@ -174,8 +182,8 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
           <Collapse in={openProject} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <Link href="/project" passHref className={classes.link}>
-                <ListItemButton sx={{ pl: 4 }}>
-                  <Grid container>
+                <ListItemButton sx={{ pl: 5 }}>
+                  <Grid container display="flex" alignItems="center">
                     <Grid item xs={2}>
                       <AdjustIcon fontSize="small" />
                     </Grid>
@@ -197,8 +205,8 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                 passHref
                 className={classes.link}
               >
-                <ListItemButton sx={{ pl: 4 }}>
-                  <Grid container>
+                <ListItemButton sx={{ pl: 5 }}>
+                  <Grid container display="flex" alignItems="center">
                     <Grid item xs={2}>
                       <ReportIcon fontSize="small" />
                     </Grid>
@@ -240,8 +248,8 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
           <Collapse in={openCompany} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <Link href="/company" passHref className={classes.link}>
-                <ListItemButton sx={{ pl: 4 }}>
-                  <Grid container>
+                <ListItemButton sx={{ pl: 5 }}>
+                  <Grid container display="flex" alignItems="center">
                     <Grid item xs={2}>
                       <AdjustIcon fontSize="small" />
                     </Grid>
@@ -263,8 +271,8 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                 passHref
                 className={classes.link}
               >
-                <ListItemButton sx={{ pl: 4 }}>
-                  <Grid container>
+                <ListItemButton sx={{ pl: 5 }}>
+                  <Grid container display="flex" alignItems="center">
                     <Grid item xs={2}>
                       <ReportIcon fontSize="small" />
                     </Grid>
@@ -306,8 +314,8 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
           <Collapse in={openCustomer} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <Link href="/customer" passHref className={classes.link}>
-                <ListItemButton sx={{ pl: 4 }}>
-                  <Grid container>
+                <ListItemButton sx={{ pl: 5 }}>
+                  <Grid container display="flex" alignItems="center">
                     <Grid item xs={2}>
                       <AdjustIcon fontSize="small" />
                     </Grid>
@@ -329,8 +337,8 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                 passHref
                 className={classes.link}
               >
-                <ListItemButton sx={{ pl: 4 }}>
-                  <Grid container>
+                <ListItemButton sx={{ pl: 5 }}>
+                  <Grid container display="flex" alignItems="center">
                     <Grid item xs={2}>
                       <ReportIcon fontSize="small" />
                     </Grid>
@@ -372,8 +380,8 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
           <Collapse in={openUser} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <Link href="/user" passHref className={classes.link}>
-                <ListItemButton sx={{ pl: 4 }}>
-                  <Grid container>
+                <ListItemButton sx={{ pl: 5 }}>
+                  <Grid container display="flex" alignItems="center">
                     <Grid item xs={2}>
                       <AdjustIcon fontSize="small" />
                     </Grid>
@@ -391,8 +399,8 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
             </List>
             <List component="div" disablePadding>
               <Link href="/user/userreport" passHref className={classes.link}>
-                <ListItemButton sx={{ pl: 4 }}>
-                  <Grid container>
+                <ListItemButton sx={{ pl: 5 }}>
+                  <Grid container display="flex" alignItems="center">
                     <Grid item xs={2}>
                       <ReportIcon fontSize="small" />
                     </Grid>
