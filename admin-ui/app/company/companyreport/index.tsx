@@ -19,7 +19,7 @@ function CompanyReportComponent({ company }: any) {
         data={company}
         onChange={(s) => setSettings(s)}
         cols={['createdAt']}
-        rows={['name', 'firstName', 'lastName', 'email', 'mobile', 'address']}
+        rows={['name', 'ownerName', 'email', 'mobile', 'address']}
         vals={['aos_pax_total']}
         aggregatorName="Integer Sum"
         renderers={{ ...TableRenderers, ...PlotlyRenderers }}
