@@ -33,6 +33,7 @@ import React, { useState } from 'react';
 import { deleteCompany, updateCompany } from '../../../services/company.action';
 import { ICompany, Status } from '../models';
 import { ListComponentProps } from './props';
+import { baseStyle, colors } from '../../../themes';
 
 const CardStyle = styled(Grid)(() => ({
   height: '80vh',
@@ -64,6 +65,10 @@ const useStyles = makeStyles({
   },
   buttonStyle: {
     padding: '0px',
+  },
+  root: {
+    backgroundColor: colors.white,
+    borderRadius: baseStyle.borderRadius.small,
   },
 });
 
@@ -106,7 +111,7 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
 
   const classes = useStyles();
   return (
-    <Grid container spacing={2} mt={1} pr={2}>
+    <Grid container pb={1} mr={2.5} className={classes.root} pr={2} spacing={2}>
       <Grid item xs={4}>
         <CardStyle>
           <Paper variant="outlined" className={classes.cardView}>
@@ -124,7 +129,6 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
               </Grid>
 
               {newCompanies.reverse()?.map((newCompany) => (
-                // eslint-disable-next-line no-use-before-define
                 <NewCompanyComponent newCompany={newCompany} />
               ))}
             </CardContent>
@@ -152,7 +156,6 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
               </Grid>
 
               {activeCompanies.reverse()?.map((activeCompany) => (
-                // eslint-disable-next-line no-use-before-define
                 <ActiveCompanyComponent
                   activeCompany={activeCompany}
                 />
@@ -178,7 +181,6 @@ function CompanyKanbanView({ companies }: ListComponentProps) {
               </Grid>
 
               {inActiveCompanies.reverse()?.map((inActiveCompany) => (
-                // eslint-disable-next-line no-use-before-define
                 <InActiveCompanyComponent
                   inActiveCompany={inActiveCompany}
                 />
