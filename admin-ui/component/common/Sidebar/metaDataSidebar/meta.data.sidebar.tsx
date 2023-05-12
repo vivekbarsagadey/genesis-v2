@@ -50,7 +50,7 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
   };
 
   return (
-    <Box>
+    <Box >
       <List>
         <Grid container>
           {toggleMenu && (
@@ -79,48 +79,48 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
         <Collapse in={address} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             <ListItemButton sx={{ pl: 5 }}>
-              <Grid container display="flex" alignItems="center">
-                <Grid item xs={2}>
+              <Grid container>
+                <Grid item xs={3}>
                   <AssistantPhotoIcon fontSize="small" />
                 </Grid>
                 {toggleMenu && (
-                  <Typography variant="h1" display={{ xs: 'none', sm: 'none', md: 'block' }} >
+                  <Typography variant="h1" display={{ xs: 'none', sm: 'none', md: 'block' }} mt={0.5}>
                     Country
                   </Typography>
                 )}
               </Grid>
             </ListItemButton>
             <ListItemButton sx={{ pl: 5 }}>
-              <Grid container display="flex" alignItems="center">
-                <Grid item xs={2}>
+              <Grid container>
+                <Grid item xs={3}>
                   <CabinIcon fontSize="small" />
                 </Grid>
                 {toggleMenu && (
-                  <Typography variant="h1" display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                  <Typography variant="h1" display={{ xs: 'none', sm: 'none', md: 'block' }}mt={0.5}>
                     State
                   </Typography>
                 )}
               </Grid>
             </ListItemButton>
             <ListItemButton sx={{ pl: 5 }}>
-              <Grid container display="flex" alignItems="center">
-                <Grid item xs={2}>
+              <Grid container >
+                <Grid item xs={3}>
                   <FmdBadIcon fontSize="small" />
                 </Grid>
                 {toggleMenu && (
-                  <Typography variant="h1" display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                  <Typography mt={0.5}variant="h1" display={{ xs: 'none', sm: 'none', md: 'block' }}>
                     City
                   </Typography>
                 )}
               </Grid>
             </ListItemButton>
             <ListItemButton sx={{ pl: 5 }}>
-              <Grid container display="flex" alignItems="center">
-                <Grid item xs={2}>
+              <Grid container >
+                <Grid item xs={3}>
                   <HomeIcon fontSize="small" />
                 </Grid>
                 {toggleMenu && (
-                  <Typography variant="h1" display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                  <Typography mt={0.5}variant="h1" display={{ xs: 'none', sm: 'none', md: 'block' }}>
                     Pin Code
                   </Typography>
                 )}
@@ -154,12 +154,12 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
               style={{ textDecoration: 'none', color: 'black' }}
             >
               <ListItemButton sx={{ pl: 5 }}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={2}>
+                <Grid container >
+                  <Grid item xs={3}>
                     <SportsHandballIcon fontSize="small" />
                   </Grid>
                   {toggleMenu && (
-                    <Typography variant="h1" display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                    <Typography mt={0.5}variant="h1" display={{ xs: 'none', sm: 'none', md: 'block' }}>
                       Role
                     </Typography>
                   )}
@@ -190,12 +190,12 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
             <Link href="/metadatadashboard/templates" passHref
               className={classes.link}>
               <ListItemButton sx={{ pl: 5 }}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={2}>
+                <Grid container >
+                  <Grid item xs={3}>
                     <HomeIcon fontSize="small" />
                   </Grid>
                   {toggleMenu && (
-                    <Typography variant="h1" display={{ xs: 'none', sm: 'none', md: 'block' }}>
+                    <Typography mt={0.5}variant="h1" display={{ xs: 'none', sm: 'none', md: 'block' }}>
                       Templates
                     </Typography>
                   )}
@@ -205,12 +205,12 @@ function MetaDataSidebar({ toggleMenu }: sidebarProps) {
             <Link href="/metadatadashboard/widgets" passHref
               className={classes.link} >
               <ListItemButton sx={{ pl: 5 }}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={2}>
+                <Grid container >
+                  <Grid item xs={3}>
                     <HomeIcon fontSize="small" />
                   </Grid>
                   {toggleMenu && (
-                    <Typography variant="h1" display={{ xs: 'none', sm: 'none', md: 'block' }} >
+                    <Typography mt={0.5}variant="h1" display={{ xs: 'none', sm: 'none', md: 'block' }} >
                       Widgets
                     </Typography>
                   )}

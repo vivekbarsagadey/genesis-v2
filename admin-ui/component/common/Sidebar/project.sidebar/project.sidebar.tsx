@@ -26,7 +26,9 @@ const useStyles = makeStyles({
     overflowY: 'auto',
     marginLeft: '0.7rem',
     marginRight: '0.7rem',
-    paddingRight: '0.7rem',
+    paddingRight: '1.3rem',
+    // background:'red',
+    width:'105%'
   },
   link: { textDecoration: 'none', color: 'black' },
 });
@@ -108,13 +110,13 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
             <List component="div" disablePadding>
               <Link href="/dashboard" passHref className={classes.link}>
                 <ListItemButton sx={{ pl: 5 }}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={2}>
+                  <Grid container >
+                    <Grid item xs={3}>
                       <AdjustIcon fontSize="small" />
                     </Grid>
                     {toggleMenu && (
                       <Typography
-                        variant="h1"
+                        variant="h1"mt={0.5}
                         display={{ xs: 'none', sm: 'none', md: 'block' }}
                       >
                         Overview
@@ -126,13 +128,13 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
             </List>
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 5 }}>
-                <Grid container display="flex" alignItems="center">
-                  <Grid item xs={2}>
+                <Grid container>
+                  <Grid item xs={3}>
                     <ReportIcon fontSize="small" />
                   </Grid>
                   {toggleMenu && (
                     <Typography
-                      variant="h1"
+                      variant="h1"mt={0.5}
                       display={{ xs: 'none', sm: 'none', md: 'block' }}
                     >
                       Report
@@ -183,13 +185,13 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
             <List component="div" disablePadding>
               <Link href="/project" passHref className={classes.link}>
                 <ListItemButton sx={{ pl: 5 }}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={2}>
+                  <Grid container >
+                    <Grid item xs={3}>
                       <AdjustIcon fontSize="small" />
                     </Grid>
                     {toggleMenu && (
                       <Typography
-                        variant="h1"
+                        variant="h1" mt={0.5}
                         display={{ xs: 'none', sm: 'none', md: 'block' }}
                       >
                         Overview
@@ -206,13 +208,13 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                 className={classes.link}
               >
                 <ListItemButton sx={{ pl: 5 }}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={2}>
+                  <Grid container >
+                    <Grid item xs={3}>
                       <ReportIcon fontSize="small" />
                     </Grid>
                     {toggleMenu && (
                       <Typography
-                        variant="h1"
+                        variant="h1"mt={0.5}
                         display={{ xs: 'none', sm: 'none', md: 'block' }}
                       >
                         Report
@@ -249,13 +251,13 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
             <List component="div" disablePadding>
               <Link href="/company" passHref className={classes.link}>
                 <ListItemButton sx={{ pl: 5 }}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={2}>
+                  <Grid container >
+                    <Grid item xs={3}>
                       <AdjustIcon fontSize="small" />
                     </Grid>
                     {toggleMenu && (
                       <Typography
-                        variant="h1"
+                        variant="h1"mt={0.5}
                         display={{ xs: 'none', sm: 'none', md: 'block' }}
                       >
                         Overview
@@ -272,13 +274,13 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                 className={classes.link}
               >
                 <ListItemButton sx={{ pl: 5 }}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={2}>
+                  <Grid container >
+                    <Grid item xs={3}>
                       <ReportIcon fontSize="small" />
                     </Grid>
                     {toggleMenu && (
                       <Typography
-                        variant="h1"
+                        variant="h1"mt={0.5}
                         display={{ xs: 'none', sm: 'none', md: 'block' }}
                       >
                         Report
@@ -315,13 +317,13 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
             <List component="div" disablePadding>
               <Link href="/customer" passHref className={classes.link}>
                 <ListItemButton sx={{ pl: 5 }}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={2}>
+                  <Grid container>
+                    <Grid item xs={3}>
                       <AdjustIcon fontSize="small" />
                     </Grid>
                     {toggleMenu && (
                       <Typography
-                        variant="h1"
+                        variant="h1"mt={0.5}
                         display={{ xs: 'none', sm: 'none', md: 'block' }}
                       >
                         Overview
@@ -338,13 +340,13 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
                 className={classes.link}
               >
                 <ListItemButton sx={{ pl: 5 }}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={2}>
+                  <Grid container >
+                    <Grid item xs={3}>
                       <ReportIcon fontSize="small" />
                     </Grid>
                     {toggleMenu && (
                       <Typography
-                        variant="h1"
+                        variant="h1"mt={0.5}
                         display={{ xs: 'none', sm: 'none', md: 'block' }}
                       >
                         Report
@@ -381,13 +383,13 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
             <List component="div" disablePadding>
               <Link href="/user" passHref className={classes.link}>
                 <ListItemButton sx={{ pl: 5 }}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={2}>
+                  <Grid container >
+                    <Grid item xs={3}>
                       <AdjustIcon fontSize="small" />
                     </Grid>
                     {toggleMenu && (
                       <Typography
-                        variant="h1"
+                        variant="h1"mt={0.5}
                         display={{ xs: 'none', sm: 'none', md: 'block' }}
                       >
                         Overview
@@ -400,13 +402,13 @@ function ProjectSidebar({ toggleMenu }: sidebarProps) {
             <List component="div" disablePadding>
               <Link href="/user/userreport" passHref className={classes.link}>
                 <ListItemButton sx={{ pl: 5 }}>
-                  <Grid container display="flex" alignItems="center">
-                    <Grid item xs={2}>
+                  <Grid container >
+                    <Grid item xs={3}>
                       <ReportIcon fontSize="small" />
                     </Grid>
                     {toggleMenu && (
                       <Typography
-                        variant="h1"
+                        variant="h1"mt={0.5}
                         display={{ xs: 'none', sm: 'none', md: 'block' }}
                       >
                         Report
