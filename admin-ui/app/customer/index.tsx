@@ -19,8 +19,19 @@ import CustomerListScereen from './list/list.screen';
 import { ICustomer } from './models';
 import CustomerSearchDetails from './search';
 import CustomerViewComponent from './view';
-import {colors } from '../../themes';
+import { baseStyle, colors } from '../../themes';
+import { makeStyles } from '@mui/styles';
 
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: colors.white,
+    borderRadius: baseStyle.borderRadius.small,
+  },
+  textDecor: { textDecoration: baseStyle.textDecoration.none },
+  display: { display: baseStyle.display },
+  divider: { background: '#009688', height: '0.1rem', marginTop: '0.2rem' },
+
+});
 interface CustomerComponentProps {
   customer: Array<ICustomer>;
 }
@@ -29,6 +40,7 @@ function CustomerComponentHome({ customer }: CustomerComponentProps) {
   const [copyCustomer, setCopyCustomer] = useState<Array<ICustomer>>([
     ...customer,
   ]);
+  const classes = useStyles();
   const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
   const [show, setShow] = useState(false);
   const onSearchHandler = (c: Array<ICustomer>) => {
@@ -47,25 +59,17 @@ function CustomerComponentHome({ customer }: CustomerComponentProps) {
 
   return (
     <Box
-      ml={1.5}
-      style={{
-        backgroundColor: colors.white,
-        // borderRadius: border_Radius.borderRadius,
-      }}
-      pl={2}
-      pb={1}
-      pt={1}
-      mr={2.5}
+    ml={1.5} pb={1} mr={2.5} className={classes.root}
     >
       <Grid mt={1}>
-        <Grid container spacing={1}>
+        <Grid container spacing={1} pl={2}>
           <Grid item xs={2} md={2} lg={3} sm={2}>
             <CustomerSearchDetails
               customer={customer}
               onSearchHandler={onSearchHandler}
             />
           </Grid>
-          <Grid item xs={7} md={7} sm={7} lg={6} display="flex">
+          <Grid item xs={7} md={7} sm={7} lg={7} display="flex">
             <Grid container>
               <Grid item xs="auto" mt={0.3}>
                 <FilterComponent
@@ -127,6 +131,8 @@ function CustomerComponentHome({ customer }: CustomerComponentProps) {
             </Link>
           </Grid>
         </Grid>
+        <Grid item xs={12} className={classes.divider}></Grid>
+
         <Grid item xs={12}>
           <Switch>
             <Case condition={viewType === ViewTypes.GRID}>

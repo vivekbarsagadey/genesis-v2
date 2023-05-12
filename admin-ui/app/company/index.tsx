@@ -1,11 +1,9 @@
 'use client';
-import React, { useRef, useState } from 'react';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import PrintIcon from '@mui/icons-material/Print';
 import {
   Box,
   Button,
-  Divider,
   Grid,
   IconButton,
   Tooltip,
@@ -18,6 +16,7 @@ import Modal from '@mui/material/Modal';
 import Snackbar from '@mui/material/Snackbar';
 import { makeStyles } from '@mui/styles';
 import Link from 'next/link';
+import React, { useRef, useState } from 'react';
 import { Case, Default, Switch } from 'react-if';
 import { useReactToPrint } from 'react-to-print';
 import { deleteCompany } from '../../services/company.action';
@@ -59,7 +58,7 @@ const useStyles = makeStyles({
   },
   textDecor: { textDecoration: baseStyle.textDecoration.none },
   display: { display: baseStyle.display },
-  divider: { width: '100%', marginTop: '0.5rem' },
+  divider: { background: '#009688', height: '0.1rem', marginTop: '0.2rem' },
   checkbox: {
     display: 'flex',
     justifyContent: 'flex-end',
@@ -190,9 +189,8 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                 </IconButton>
               </Tooltip>
             ) : null}
-            
 
-            { multiSelect.length > 1 ? (
+            {multiSelect.length > 1 ? (
               <Tooltip title="Delete Selected" arrow>
                 <IconButton aria-label="delete" onClick={handleSelectPopup}>
                   <DeleteOutlineIcon fontSize="small" />
@@ -314,7 +312,8 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
             </Link>
           </Grid>
         </Grid>
-        <Divider className={classes.divider} />
+        <Grid item xs={12} className={classes.divider}></Grid>
+        {/* <Divider className={classes.divider} /> */}
         <Grid item xs={12} pl={2}>
           <Switch>
             <Case condition={viewType === ViewTypes.GRID}>
