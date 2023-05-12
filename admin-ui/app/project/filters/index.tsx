@@ -51,8 +51,6 @@ function FilterComponent({
     setAnchorEl(null);
   };
 
-  console.log('companiesCompanies', projects);
-
   return (
     <>
       <Tooltip title="Filter">

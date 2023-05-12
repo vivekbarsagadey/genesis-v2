@@ -53,8 +53,6 @@ function FilterComponent({
     setAnchorEl(null);
   };
 
-  console.log('companiesCompanies', companies);
-
   return (
     <>
       <Tooltip title="Filter">
