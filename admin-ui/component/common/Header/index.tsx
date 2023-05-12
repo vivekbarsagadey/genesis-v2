@@ -1,5 +1,5 @@
 'use client';
-
+import React, { useState } from 'react';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -13,7 +13,6 @@ import Stack from '@mui/material/Stack';
 import { makeStyles } from '@mui/styles';
 import { signOut, useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
-import React, { useState } from 'react';
 import { colors } from '../../../themes';
 
 const useStyles = makeStyles({
@@ -24,6 +23,7 @@ const useStyles = makeStyles({
     width: 32,
     height: 32,
   },
+  breadcrumb: { textDecoration: 'none' },
 });
 
 function HeaderComponent() {
@@ -41,7 +41,6 @@ function HeaderComponent() {
   const segments = pathname.split('/');
   segments.shift();
 
- 
   const separator = ' > ';
   const breadcrumbs = segments.map((segment) => ({
     text: segment,
@@ -72,7 +71,7 @@ function HeaderComponent() {
           {breadcrumbsWithSeparators.map((breadcrumb, index) => (
             <span key={index}>
               {breadcrumb.href ? (
-                <Link href={breadcrumb.href} style={{ textDecoration: 'none' }}>
+                <Link href={breadcrumb.href} className={classes.breadcrumb}>
                   <Typography>{breadcrumb.text}</Typography>
                 </Link>
               ) : (
