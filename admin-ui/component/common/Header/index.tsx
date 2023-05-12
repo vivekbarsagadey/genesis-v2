@@ -3,9 +3,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { Grid, IconButton } from '@mui/material';
+import { Grid, IconButton, Typography } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Fade from '@mui/material/Fade';
 import Link from '@mui/material/Link';
 import Menu from '@mui/material/Menu';
@@ -16,6 +15,7 @@ import { signOut, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 import { colors } from '../../../themes';
 import { usePathname } from 'next/navigation';
+import Breadcrumbs from 'nextjs-breadcrumbs';
 
 const useStyles = makeStyles({
   headercontainer: {
@@ -39,27 +39,13 @@ function HeaderComponent() {
   const handleClose = () => {
     setOpenMenu(null);
   };
+  const segments = pathname.split('/');
+  segments.shift();
 
-  const breadcrumbs = [
-    <Link
-      underline="hover"
-      key="1"
-      color="inherit"
-      href="/"
-      onClick={()=>console.log("selected >>>")}
-    >
-      {pathname}
-    </Link>
-    // <Link
-    //   underline="hover"
-    //   key="2"
-    //   color="inherit"
-    //   href="/material-ui/getting-started/installation/"
-    //   onClick={handleClick}
-    // >
-    //   Create Company
-    // </Link>,
-  ];
+  const breadcrumbs = segments.map((segment, index) => ({
+    text: segment,
+    href: `/${segments.slice(0, index + 1).join('/')}`,
+  }));
 
   return (
     <Grid container className={classes.headercontainer}>
@@ -73,13 +59,16 @@ function HeaderComponent() {
         alignItems={'center'}
         ml={2}
       >
-        <Stack spacing={2}>
-          <Breadcrumbs
-            separator={<NavigateNextIcon fontSize="small" />}
-            aria-label="breadcrumb"
-          >
-            {breadcrumbs}
-          </Breadcrumbs>
+        <Stack direction="row" spacing={2}>
+          {breadcrumbs.map((breadcrumb) => (
+            <Link
+              key={breadcrumb.href}
+              href={breadcrumb.href}
+              style={{ textDecoration: 'none' }}
+            >
+              <Typography>{breadcrumb.text}  </Typography>
+            </Link>
+          ))}
         </Stack>
       </Grid>
       <Grid item lg={8} sm={5} xs={3} md={5}>
