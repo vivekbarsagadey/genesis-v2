@@ -287,7 +287,7 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
               }}
             >
               <MenuItem>
-                <Tooltip title="Edit" placement='right'>
+                <Tooltip title="Edit" placement='top'>
                   <IconButton
                     onClick={handleEditModalOpen}
                     className={classes.buttonStyle}
@@ -338,7 +338,7 @@ function NewCompanyComponent({ newCompany }: INewCompany) {
                 </Modal>
               </MenuItem>
               <MenuItem>
-                <Tooltip title="Delete" placement='right'>
+                <Tooltip title="Delete">
                   <IconButton className={classes.buttonStyle}>
                     <DeleteIcon htmlColor="red" onClick={handleOpen} />
                   </IconButton>
@@ -535,7 +535,7 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
               }}
             >
               <MenuItem>
-                <Tooltip title="Edit" placement='right'>
+                <Tooltip title="Edit" placement='top'>
                   <IconButton
                     onClick={handleEditModalOpen}
                     className={classes.buttonStyle}
@@ -587,7 +587,7 @@ function ActiveCompanyComponent({ activeCompany }: IActiveCompany) {
                 </Modal>
               </MenuItem>
               <MenuItem>
-                <Tooltip title="Delete" placement='right'>
+                <Tooltip title="Delete">
                   <IconButton
                     // onClick={() => deleteCompany(activeCompany.id)}
                     className={classes.buttonStyle}
@@ -787,7 +787,7 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
               }}
             >
               <MenuItem>
-                <Tooltip title="Edit" placement='right'>
+                <Tooltip title="Edit" placement='top'>
                   <IconButton
                     onClick={handleEditModalOpen}
                     className={classes.buttonStyle}
@@ -842,7 +842,7 @@ function InActiveCompanyComponent({ inActiveCompany }: IInActiveCompany) {
                 </Modal>
               </MenuItem>
               <MenuItem>
-                <Tooltip title="Delete" placement='right'>
+                <Tooltip title="Delete">
                   <IconButton
                     // onClick={() => deleteCompany(inActiveCompany.id)}
                     className={classes.buttonStyle}
