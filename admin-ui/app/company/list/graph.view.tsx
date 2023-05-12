@@ -34,7 +34,9 @@ function CustomerGraphView({ companies, myRef }: ListComponentProps) {
   const [comparisiongraphView, setComparisionGraphView] =
     useState<string>('Month');
 
-  const keys = Object.keys(companies[0]);
+
+  const keys = Object?.keys(companies[0]);
+  
   const graphTypeVal = keys.filter((element) => {
     if (element === 'country' || element === 'state' || element === 'status') {
       return true;
