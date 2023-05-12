@@ -1,4 +1,5 @@
 'use client';
+
 import MailIcon from '@mui/icons-material/Mail';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
@@ -13,9 +14,9 @@ import Stack from '@mui/material/Stack';
 import { makeStyles } from '@mui/styles';
 import { signOut, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
-import { colors } from '../../../themes';
 import { usePathname } from 'next/navigation';
 import Breadcrumbs from 'nextjs-breadcrumbs';
+import { colors } from '../../../themes';
 
 const useStyles = makeStyles({
   headercontainer: {
@@ -42,10 +43,23 @@ function HeaderComponent() {
   const segments = pathname.split('/');
   segments.shift();
 
-  const breadcrumbs = segments.map((segment, index) => ({
+  // const breadcrumbs = segments.map((segment, index) => ({
+  //   text: segment,
+  //   href: `/${segments.slice(0, index + 1).join('/')}`,
+  // }));
+  const separator = ' > ';
+  const breadcrumbs = segments.map((segment) => ({
     text: segment,
-    href: `/${segments.slice(0, index + 1).join('/')}`,
+    href: `/${segment}`,
   }));
+
+  const breadcrumbsWithSeparators = [];
+  for (let i = 0; i < breadcrumbs.length; i++) {
+    breadcrumbsWithSeparators.push(breadcrumbs[i]);
+    if (i < breadcrumbs.length - 1) {
+      breadcrumbsWithSeparators.push({ separator });
+    }
+  }
 
   return (
     <Grid container className={classes.headercontainer}>
@@ -56,18 +70,20 @@ function HeaderComponent() {
         sm={6.5}
         md={6.7}
         display="flex"
-        alignItems={'center'}
+        alignItems="center"
         ml={2}
       >
         <Stack direction="row" spacing={2}>
-          {breadcrumbs.map((breadcrumb) => (
-            <Link
-              key={breadcrumb.href}
-              href={breadcrumb.href}
-              style={{ textDecoration: 'none' }}
-            >
-              <Typography>{breadcrumb.text}  </Typography>
-            </Link>
+          {breadcrumbsWithSeparators.map((breadcrumb, index) => (
+            <span key={index}>
+              {breadcrumb.href ? (
+                <Link href={breadcrumb.href} style={{ textDecoration: 'none' }}>
+                  <Typography>{breadcrumb.text}</Typography>
+                </Link>
+              ) : (
+                <span>{breadcrumb.separator}</span>
+              )}
+            </span>
           ))}
         </Stack>
       </Grid>
