@@ -9,24 +9,25 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { createCompany } from '../../../services/company.action';
-import {
-  countrySelect,
-  genderSelect,
-  stateSelect,
-} from '../graphdata/graph.data';
+import {countrySelect,genderSelect,stateSelect} from '../graphdata/graph.data';
 import { Status } from '../models';
 import { baseStyle, colors } from '../../../themes';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 const useStyles = makeStyles({
   buttonStyle: { width: '73%' },
   gridContainer: { display: 'flex', alignItems: 'center' },
   mainHeader: { display: 'flex', flexDirection: 'row' },
   headerChild: { color: 'red' },
-  root: {backgroundColor: colors.white,borderRadius: baseStyle.borderRadius.small},
+  root: {
+    backgroundColor: colors.white,
+    borderRadius: baseStyle.borderRadius.small,
+  },
 });
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
-  // eslint-disable-next-line react/jsx-props-no-spreading
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
 ));
 
@@ -106,347 +107,327 @@ function CompanyCreateComponent() {
   const updateCompanyPinCode = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyPinCode(e.target.value);
   };
-  const updateCompanyState = (
-    e: React.SyntheticEvent<Element, Event>,
-    value: any
-  ) => {
-    setCompanyState(value);
-  };
-  const updateCompanyGender = (
-    e: React.SyntheticEvent<Element, Event>,
-    value: any
-  ) => {
-    setCompanyGender(value);
-  };
-  const updateCompanyCountry = (
-    e: React.SyntheticEvent<Element, Event>,
-    value: any
-  ) => {
-    setCompanyCountry(value);
-  };
-  const getCompanyStatusValue = (
-    e: React.SyntheticEvent<Element, Event>,
-    value: any
-  ) => {
-    setCompanyStatus(value);
-  };
   const updateHandler = () => {
     handleClick();
     updateMyCompanyData();
   };
-  return (
-    <Box ml={1.5}  pb={1} mr={2.5} className={classes.root}>
+  const updateCompanyCountry = (event: SelectChangeEvent) => {
+    setCompanyCountry(event.target.value as string);
+  };
+  const updateCompanyState = (event: SelectChangeEvent) => {
+    setCompanyState(event.target.value as string);
+  };
+  const updateCompanyGender = (event: SelectChangeEvent) => {
+    setCompanyGender(event.target.value as string);
+  };
+  const getCompanyStatusValue = (event: SelectChangeEvent) => {
+    setCompanyStatus(event.target.value as string);
+  };
 
-        <Grid container>
-          <Grid item xs={12} ml={5} mt={2}>
-            <Typography fontSize="1.1rem">Create New Company</Typography>
+  return (
+    <Box ml={1.5} pb={1} mr={2.5} className={classes.root}>
+      <Grid container>
+        <Grid item xs={12} ml={5} mt={2}>
+          <Typography fontSize="1.1rem">Create New Company</Typography>
+        </Grid>
+      </Grid>
+
+      <Grid container spacing={2} mt={3} paddingLeft={5}>
+        <Grid item xs={6} mt={1}>
+          <Grid container className={classes.gridContainer}>
+            <Grid item xs={3} className={classes.mainHeader}>
+              <Typography>Name</Typography>
+              <span className={classes.headerChild}>*</span>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>:</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                id="owner-name"
+                placeholder="Owner Name"
+                variant="outlined"
+                size="small"
+                fullWidth
+                value={ownerName}
+                onChange={updateOwnerName}
+              />
+            </Grid>
           </Grid>
         </Grid>
 
-        <Grid container spacing={2} mt={3} paddingLeft={5}>
-          {/* <Grid item xs={6}>
-            <FormInput value={data} header='Name' size='small' onChange={setData} placeholder='Select Name' />
-          </Grid> */}
-          {/* <Grid item xs={6} mt={1}>
-            <FormSelectComponent mainData={statusSet} onChange={setData} value={data} header='Quantity' size='small' placeholder='Select Quantity' disablePortal={true} />
-          </Grid> */}
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} className={classes.mainHeader}>
-                <Typography>Name</Typography>
-                <span className={classes.headerChild}>*</span>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="owner-name"
-                  placeholder="Owner Name"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={ownerName}
-                  onChange={updateOwnerName}
-                />
-              </Grid>
+        <Grid item xs={6} mt={1}>
+          <Grid container className={classes.gridContainer}>
+            <Grid item xs={3} className={classes.mainHeader}>
+              <Typography>Company Name</Typography>
+              <span className={classes.headerChild}>*</span>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>:</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                id="company-name"
+                placeholder="Company Name"
+                variant="outlined"
+                size="small"
+                fullWidth
+                value={companyName}
+                onChange={updateCompanyName}
+              />
             </Grid>
           </Grid>
+        </Grid>
 
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} className={classes.mainHeader}>
-                <Typography>Company Name</Typography>
-                <span className={classes.headerChild}>*</span>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="company-name"
-                  placeholder="Company Name"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={companyName}
-                  onChange={updateCompanyName}
-                />
-              </Grid>
+        <Grid item xs={6} mt={1}>
+          <Grid container className={classes.gridContainer}>
+            <Grid item xs={3} className={classes.mainHeader}>
+              <Typography>Email</Typography>
+              <span className={classes.headerChild}>*</span>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>:</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                id="email"
+                placeholder="Email"
+                variant="outlined"
+                size="small"
+                fullWidth
+                value={companyEmail}
+                onChange={updateCompanyEmail}
+              />
             </Grid>
           </Grid>
+        </Grid>
 
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} className={classes.mainHeader}>
-                <Typography>Email</Typography>
-                <span className={classes.headerChild}>*</span>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="email"
-                  placeholder="Email"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={companyEmail}
-                  onChange={updateCompanyEmail}
-                />
-              </Grid>
+        <Grid item xs={6} mt={1}>
+          <Grid container className={classes.gridContainer}>
+            <Grid item xs={3} className={classes.mainHeader}>
+              <Typography>Mobile</Typography>
+              <span className={classes.headerChild}>*</span>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>:</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                id="mobile"
+                placeholder="Mobile"
+                variant="outlined"
+                size="small"
+                fullWidth
+                value={companyMobile}
+                onChange={updateCompanyMobile}
+              />
             </Grid>
           </Grid>
+        </Grid>
 
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} className={classes.mainHeader}>
-                <Typography>Mobile</Typography>
-                <span className={classes.headerChild}>*</span>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="Mobile"
-                  placeholder="Mobile"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={companyMobile}
-                  onChange={updateCompanyMobile}
-                />
-              </Grid>
+        <Grid item xs={6} mt={1}>
+          <Grid container className={classes.gridContainer}>
+            <Grid item xs={3} className={classes.mainHeader}>
+              <Typography>Address</Typography>
+              <span className={classes.headerChild}>*</span>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>:</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                id="address"
+                placeholder="Address"
+                variant="outlined"
+                size="small"
+                fullWidth
+                value={companyAddress}
+                onChange={updateCompanyAdress}
+              />
             </Grid>
           </Grid>
+        </Grid>
 
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} className={classes.mainHeader}>
-                <Typography>Address</Typography>
-                <span className={classes.headerChild}>*</span>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="address"
-                  placeholder="Address"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={companyAddress}
-                  onChange={updateCompanyAdress}
-                />
-              </Grid>
+        <Grid item xs={6} mt={1}>
+          <Grid container className={classes.gridContainer}>
+            <Grid item xs={3} className={classes.mainHeader}>
+              <Typography>PinCode</Typography>
+              <span className={classes.headerChild}>*</span>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>:</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                id="pincode"
+                placeholder="Pin Code"
+                variant="outlined"
+                size="small"
+                fullWidth
+                value={companyPinCode}
+                onChange={updateCompanyPinCode}
+              />
             </Grid>
           </Grid>
+        </Grid>
 
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} className={classes.mainHeader}>
-                <Typography>Country</Typography>
-                <span className={classes.headerChild}>*</span>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Autocomplete
-                  disablePortal
+        <Grid item xs={6} mt={1}>
+          <Grid container className={classes.gridContainer}>
+            <Grid item xs={3} className={classes.mainHeader}>
+              <Typography>Country</Typography>
+              <span className={classes.headerChild}>*</span>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>:</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <FormControl fullWidth size="small">
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
                   value={companyCountry}
                   onChange={updateCompanyCountry}
-                  id="country"
-                  size="small"
-                  options={countrySelect.map((option) => option.country)}
-                  renderInput={(params) => (
-                    // eslint-disable-next-line react/jsx-props-no-spreading
-                    <TextField {...params} placeholder="Select Country" />
-                  )}
-                />
-              </Grid>
+                >
+                  {countrySelect.map((f) => {
+                    return <MenuItem value={f.lable}>{f.country}</MenuItem>;
+                  })}
+                </Select>
+              </FormControl>
             </Grid>
           </Grid>
+        </Grid>
 
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} className={classes.mainHeader}>
-                <Typography>State</Typography>
-                <span className={classes.headerChild}>*</span>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Autocomplete
-                  disablePortal
+        <Grid item xs={6} mt={1}>
+          <Grid container className={classes.gridContainer}>
+            <Grid item xs={3} className={classes.mainHeader}>
+              <Typography>State</Typography>
+              <span className={classes.headerChild}>*</span>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>:</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <FormControl fullWidth size="small">
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
                   value={companyState}
                   onChange={updateCompanyState}
-                  id="state"
-                  size="small"
-                  options={stateSelect.map((option) => option.state)}
-                  renderInput={(params) => (
-                    // eslint-disable-next-line react/jsx-props-no-spreading
-                    <TextField {...params} placeholder="Select State" />
-                  )}
-                />
-              </Grid>
+                >
+                  {stateSelect.map((f) => {
+                    return <MenuItem value={f.lable}>{f.state}</MenuItem>;
+                  })}
+                </Select>
+              </FormControl>
             </Grid>
           </Grid>
+        </Grid>
 
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} className={classes.mainHeader}>
-                <Typography>Gender</Typography>
-                <span className={classes.headerChild}>*</span>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Autocomplete
-                  disablePortal
+        <Grid item xs={6} mt={1}>
+          <Grid container className={classes.gridContainer}>
+            <Grid item xs={3} className={classes.mainHeader}>
+              <Typography>Gender</Typography>
+              <span className={classes.headerChild}>*</span>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>:</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <FormControl fullWidth size="small">
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="gender"
                   value={companyGender}
                   onChange={updateCompanyGender}
-                  id="gender"
-                  size="small"
-                  options={genderSelect.map((option) => option.gender)}
-                  renderInput={(params) => (
-                    // eslint-disable-next-line react/jsx-props-no-spreading
-                    <TextField {...params} placeholder="Select gender" />
-                  )}
-                />
-              </Grid>
+                >
+                  {genderSelect.map((f) => {
+                    return <MenuItem value={f.lable}>{f.gender}</MenuItem>;
+                  })}
+                </Select>
+              </FormControl>
             </Grid>
           </Grid>
-
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} className={classes.mainHeader}>
-                <Typography>PinCode</Typography>
-                <span className={classes.headerChild}>*</span>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="pincode"
-                  placeholder="Pin Code"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={companyPinCode}
-                  onChange={updateCompanyPinCode}
-                />
-              </Grid>
+        </Grid>
+        <Grid item xs={6} mt={1}>
+          <Grid container className={classes.gridContainer}>
+            <Grid item xs={3} className={classes.mainHeader}>
+              <Typography>Company Status</Typography>
+              <span className={classes.headerChild}>*</span>
             </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={1}>
-            <Grid container display="flex" alignItems="center">
-              <Grid item xs={3}>
-                <Typography>Website</Typography>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="website"
-                  placeholder="Website"
-                  variant="outlined"
-                  size="small"
-                  fullWidth
-                  value={companyWebsite}
-                  onChange={updateCompanyWebsite}
-                />
-              </Grid>
+            <Grid item xs={2}>
+              <Typography>:</Typography>
             </Grid>
-          </Grid>
-
-          <Grid item xs={6} mt={1}>
-            <Grid container className={classes.gridContainer}>
-              <Grid item xs={3} className={classes.mainHeader}>
-                <Typography>Company Status</Typography>
-                <span className={classes.headerChild}>*</span>
-              </Grid>
-              <Grid item xs={2}>
-                <Typography>:</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Autocomplete
-                  disablePortal
+            <Grid item xs={6}>
+              <FormControl fullWidth size="small">
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
                   value={companyStatus}
                   onChange={getCompanyStatusValue}
-                  id="status"
-                  size="small"
-                  options={statusSet?.map((option: any) => option)}
-                  renderInput={(params) => (
-                    // eslint-disable-next-line react/jsx-props-no-spreading
-                    <TextField {...params} placeholder="Select Status" />
-                  )}
-                />
-              </Grid>
+                >
+                  <MenuItem value="NEW">NEW</MenuItem>
+                  <MenuItem value="ACTIVE">ACTIVE</MenuItem>
+                  <MenuItem value="INACTIVE">INACTIVE</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
           </Grid>
+        </Grid>
+        <Grid item xs={6} mt={1}>
+          <Grid container display="flex" alignItems="center">
+            <Grid item xs={3}>
+              <Typography>Website</Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography>:</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                id="website"
+                placeholder="Website"
+                variant="outlined"
+                size="small"
+                fullWidth
+                value={companyWebsite}
+                onChange={updateCompanyWebsite}
+              />
+            </Grid>
+          </Grid>
+        </Grid>
 
-          <Grid container my={5}>
-            <Grid item xs={8.6} />
-            <Grid item xs={3.4}>
-              <Grid container>
-                <Grid item xs={5.3}>
-                  <Link href="/company" style={{ textDecoration: 'none' }}>
-                    <Button variant="contained" style={{ width: '92%' }}>
-                      Cancel
-                    </Button>
-                  </Link>
-                </Grid>
-                <Grid item xs={6}>
-                  <Button
-                    variant="contained"
-                    onClick={updateHandler}
-                    style={{ width: '83%' }}
-                  >
-                    Save
+        <Grid container my={5}>
+          <Grid item xs={8.6} />
+          <Grid item xs={3.4}>
+            <Grid container>
+              <Grid item xs={5.3}>
+                <Link href="/company" style={{ textDecoration: 'none' }}>
+                  <Button variant="contained" style={{ width: '92%' }}>
+                    Cancel
                   </Button>
-                  <Snackbar
-                    open={alert}
-                    autoHideDuration={8000}
-                    onClose={handleClose}
-                  >
-                    <Alert onClose={handleClose} sx={{ width: '100%' }}>
-                      Company Created Sucessfully...
-                    </Alert>
-                  </Snackbar>
-                </Grid>
+                </Link>
+              </Grid>
+              <Grid item xs={6}>
+                <Button
+                  variant="contained"
+                  onClick={updateHandler}
+                  style={{ width: '83%' }}
+                >
+                  Save
+                </Button>
+                <Snackbar
+                  open={alert}
+                  autoHideDuration={8000}
+                  onClose={handleClose}
+                >
+                  <Alert onClose={handleClose} sx={{ width: '100%' }}>
+                    Company Created Sucessfully...
+                  </Alert>
+                </Snackbar>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
+      </Grid>
     </Box>
   );
 }
