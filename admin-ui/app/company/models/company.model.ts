@@ -15,6 +15,7 @@ type ICompany = {
   updatedAt: number;
   status: string;
   ownerName: string;
+  company: string;
 
 };
 

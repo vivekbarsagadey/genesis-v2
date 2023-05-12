@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   },
   textDecor: { textDecoration: baseStyle.textDecoration.none },
   display: { display: baseStyle.display },
-  divider: { width: '100%', marginTop: '0.5rem' },
+  divider: { background: '#009688', height: '0.1rem', marginTop: '0.2rem' },
   checkbox: {
     display: 'flex',
     justifyContent: 'flex-end',
@@ -125,18 +125,14 @@ function ProjectComponentHome({ projects }: ProjectComponentProps) {
             )}
           </Grid> */}
           <Grid item xs={1} mt={1}>
-            <Link
-              href="/project/create"
-              passHref
-              className={classes.textDecor}
-            >
+            <Link href="/project/create" passHref className={classes.textDecor}>
               <Button variant="contained" size="small">
                 Create
               </Button>
             </Link>
           </Grid>
         </Grid>
-        <Divider className={classes.divider} />
+        <Grid item xs={12} className={classes.divider}></Grid>
         <Grid item xs={12} pl={2}>
           <Switch>
             <Case condition={viewType === ViewTypes.GRID}>

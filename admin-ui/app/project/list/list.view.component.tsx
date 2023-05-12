@@ -16,7 +16,7 @@ import { PaginationHandler } from '../../utility';
 import InfoProjectComponent from '../info';
 import { ListComponentProps } from './props';
 
-function ProjectListViewComponent({ projects }: ListComponentProps) {
+function ProjectListViewComponent({ projects,myRef }: ListComponentProps) {
   const [page, setPage] = useState(1);
   const PER_PAGE = 9;
   const count = Math.ceil(projects.length / PER_PAGE);
