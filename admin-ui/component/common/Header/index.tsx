@@ -1,7 +1,6 @@
 'use client';
 
 import MailIcon from '@mui/icons-material/Mail';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Grid, IconButton, Typography } from '@mui/material';
@@ -13,9 +12,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Stack from '@mui/material/Stack';
 import { makeStyles } from '@mui/styles';
 import { signOut, useSession } from 'next-auth/react';
-import React, { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import Breadcrumbs from 'nextjs-breadcrumbs';
+import React, { useState } from 'react';
 import { colors } from '../../../themes';
 
 const useStyles = makeStyles({
@@ -43,10 +41,7 @@ function HeaderComponent() {
   const segments = pathname.split('/');
   segments.shift();
 
-  // const breadcrumbs = segments.map((segment, index) => ({
-  //   text: segment,
-  //   href: `/${segments.slice(0, index + 1).join('/')}`,
-  // }));
+ 
   const separator = ' > ';
   const breadcrumbs = segments.map((segment) => ({
     text: segment,
