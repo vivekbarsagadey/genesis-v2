@@ -1,8 +1,11 @@
-"use client";
-import { InputComponent } from "../../component/ui/base/input/";
-import { useForm } from "../../hooks/from";
+/* eslint-disable react/react-in-jsx-scope */
 
-const TestComponent = () => {
+'use client';
+
+import { InputComponent } from '../../component/ui/base/input';
+import { useForm } from '../../hooks/from';
+
+function TestComponent() {
   const { register } = useForm();
   return (
     <>
@@ -12,39 +15,31 @@ const TestComponent = () => {
         label="Email"
         id="email"
         register={register}
-      ></InputComponent>
+      />
       <InputComponent
         type="number"
         placeHolder="Enter number"
         label="Number"
         id="number"
-      ></InputComponent>
+      />
 
       <InputComponent
         type="password"
         placeHolder="Enter Password"
         label="Password"
         id="password"
-      ></InputComponent>
+      />
 
       <InputComponent
         type="text"
         placeHolder="Enter Text"
         label="Text"
         id="text"
-      ></InputComponent>
-
-     
+      />
     </>
   );
-};
+}
 
-const page = () => {
-  return (
-    <>
-      <TestComponent></TestComponent>
-    </>
-  );
-};
+const page = () => <TestComponent />;
 
 export default page;

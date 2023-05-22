@@ -6,7 +6,8 @@ interface ValidationErrorRow {
 }
 
 class ValidationErrors {
-  private _isError: boolean = false;
+  private _isError = false;
+
   private errorRows: ValidationErrorRow[] = [];
 
   public add({ row, _errors }: ValidationErrorRow) {
@@ -52,6 +53,7 @@ class ValidationError extends Error {
   getErrorMessage() {
     return this.constraint.message || `${this.constraint.field} is not valid`;
   }
+
   getErrorConstraint() {
     return this.constraint;
   }

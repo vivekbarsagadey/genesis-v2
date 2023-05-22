@@ -3,7 +3,7 @@ export {
   HeaderComponent,
   Logo,
   SidebarComponent,
-} from "./common";
+} from './common';
 export {
   ButtonComponent,
   ErrorComponent,
@@ -13,5 +13,5 @@ export {
   InputPasswordComponent,
   InputTextComponent,
   InputStyle,
-} from "./ui/base";
-export type { InputProps } from "./ui/base";
+} from './ui/base';
+export type { InputProps } from './ui/base';

@@ -1,41 +1,37 @@
-import SearchIcon from "@mui/icons-material/Search";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import IconButton from "@mui/material/IconButton";
-import { useState } from "react";
-import IUserComponentProps from "../user.props";
+import { useState } from 'react';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import { IUser } from '../models';
 
-interface SearchComponentProps extends IUserComponentProps {}
-
-const SearchUserComponent = ({
-  items,
-  itemsCallBackHandler = () => {},
-}: SearchComponentProps) => {
-  const [search, setSearch] = useState("");
-
-  const getSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
+interface UserSearchComponentProps {
+  user: any;
+  onSearchHandler: any;
+}
+function UserSearchDetails({
+  user,
+  onSearchHandler,
+}: UserSearchComponentProps) {
+  const [searchStr, setSearchStr] = useState<string>('');
+  const filterByName = (firstName: string) => (f: IUser): boolean => f.firstName.toLowerCase().includes(firstName.toLowerCase());
+  const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const _searchValue = e.target.value;
+    setSearchStr(_searchValue);
+    if (_searchValue == '') {
+      onSearchHandler(user);
+      return;
+    }
+    onSearchHandler(user.filter(filterByName(_searchValue)));
   };
-  const doSearch = () => {
-    itemsCallBackHandler(
-      items.filter((ele) =>
-        ele.firstName.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-      )
-    );
-  };
-
   return (
-    <>
-      <Grid item xs={12}>
-        <Box pl={1}>
-          <input type="text" placeholder="Search" onChange={getSearch} />
-          <IconButton onClick={doSearch}>
-            <SearchIcon />
-          </IconButton>
-        </Box>
-      </Grid>
-    </>
+    <Grid item xs={12}>
+      <TextField
+        placeholder="Search by User Name"
+        size="small"
+        value={searchStr}
+        onChange={onSearch}
+        fullWidth
+      />
+    </Grid>
   );
-};
-
-export default SearchUserComponent;
+}
+export default UserSearchDetails;

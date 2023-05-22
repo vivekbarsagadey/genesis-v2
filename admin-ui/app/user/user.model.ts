@@ -1,16 +1,19 @@
-
-interface IUser{
-    _id:string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    mobile: string;
-    address: string;
-    state: string;
-    country: string;
-    pinCode: string;
-    name ?:string
-}
-
-
-export default IUser
+type IUser = {
+  id: string;
+  name: string;
+  firstName: string;
+  lastName: string;
+  mobile: string;
+  email: string;
+  address?: string;
+  country?: string;
+  state?: string;
+  city?: string;
+  pincode?: string;
+  website?: string;
+  createdAt: number;
+  updatedAt: number;
+  status: string;
+  user:string
+};
+export default IUser;

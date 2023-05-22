@@ -1,10 +1,18 @@
-import { ValidationError, ValidationContext, ValidationErrors, Constraint } from '.';
+import {
+  ValidationError,
+  ValidationContext,
+  ValidationErrors,
+  Constraint,
+} from '.';
 import { validate as _validate } from '../rules';
 
 class ValidatorContextBuilder {
   private constraints = new Array<Constraint>();
-  private label: string = '';
+
+  private label = '';
+
   private _error: ValidationErrors = new ValidationErrors();
+
   constructor(label: string | undefined) {
     this.label = label || '';
     this.constraints = new Array<Constraint>();

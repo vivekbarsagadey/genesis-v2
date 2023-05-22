@@ -1,5 +1,5 @@
-import jsPDF from "jspdf";
-import "jspdf-autotable";
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 interface DownloadProps {
   headers: string[][];
@@ -9,14 +9,14 @@ interface DownloadProps {
 }
 
 const download = async ({ headers, pdfSendData, fileName }: DownloadProps) => {
-  const unit = "pt";
-  const size = "A3"; // Use A1, A2, A3 or A4
-  const orientation = "portrait"; // portrait or landscape
+  const unit = 'pt';
+  const size = 'A3'; // Use A1, A2, A3 or A4
+  const orientation = 'portrait'; // portrait or landscape
   const marginLeft = 40;
   const doc = new jsPDF(orientation, unit, size);
   doc.setFontSize(15);
 
-  let content = {
+  const content = {
     startY: 50,
     head: headers,
     body: pdfSendData,
@@ -25,6 +25,6 @@ const download = async ({ headers, pdfSendData, fileName }: DownloadProps) => {
   doc.save(fileName);
 };
 
-const upload = () => {};
+const upload = () => { };
 
 export { download, upload };

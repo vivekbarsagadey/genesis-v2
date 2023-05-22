@@ -8,3 +8,4 @@ cloudinary
 requests
 GitPython
 python-dotenv
+Jinja2

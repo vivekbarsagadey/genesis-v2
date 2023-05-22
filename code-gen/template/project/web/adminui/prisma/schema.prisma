@@ -1,0 +1,13 @@
+
+
+model {{page['name'].capitalize()}} {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  status      String?  @map("status")
+
+  {% for component in page['components'] -%}
+    {{component['name']}} {{component['fieldtype'].capitalize()}} @map("{{StringUtil.camel_to_snake(component['name'])}}")
+  {% endfor %}
+  @@map("tb_{{StringUtil.camel_to_snake(page['name'])}}")
+}

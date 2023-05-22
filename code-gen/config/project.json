@@ -1,55 +1,51 @@
+
 {
-  "config": {
-    "name": "admin-app-test",
-    "path": "F:/Repo",
-    "lang": "nextjs",
-    "type": [
-      "admin"
-    ],
-    "out": "generated-sources"
+  "name": "vijay-enterprise-apps",
+  "path": "D:/projects/genesis-v2/code/generated-client-project",
+  "version": "0.0.1-B-01",
+  "app": {
+    "type": "WEB",
+    "project": "ADMIN-UI",
+    "name": "astrocare"
+  },
+  "credential": {
+    "auth": {
+      "url": "http://10.0.0.10:5000/v3",
+      "application_credential_id": "6d141f23732b498e99db8186136c611b",
+      "application_credential_secret": "whiz"
+    },
+    "api": {
+      "url": "http://10.0.0.10:5000/v3",
+      "version": "3"
+    }
+  },
+  "client": {
+    "name": "",
+    "email": "",
+    "phone": ""
   },
   "pages": [
     {
-      "name": "event",
-      "label": "Events",
-      "title": "Events Form",
-      "pipeline": [
-        {
-          "name": "UPCOMING",
-          "title": "UP COMING",
-          "ord": 1
-        },
-        {
-          "name": "RUNNING",
-          "title": "RUNNING",
-          "ord": 2
-        },
-        {
-          "name": "EXPIRED",
-          "title": "EXPIRED",
-          "ord": 3
-        }
-      ],
-      "screen": {
-        "list": [
-          "Calendar",
-          "Cohort",
-          "Kanban",
-          "List",
-          "Grid",
-          "Graph"
-        ]
+      "name": "orders",
+      "label": "Orders Screen",
+      "duration":3000,
+      "title": "Orders",
+      "type": "",
+      "img": "./assets/Images/human.jpg",
+      "pipeline": [],
+      "template": {
+        "type": "flat",
+        "custome": ""
       },
-      "type": "CURD",
-      "img": "",
       "components": [
         {
-          "name": "title",
-          "type": "text",
-          "fieldtype": "String",
+          "name": "firstName",
+          "type": "input",
+          "tpPosition": "m1",
+          "fieldtype": "string",
           "required": "true",
-          "label": "text",
-          "error": "text is required",
+          "label": "First Name",
+          "error": "First Name is required",
           "ui": {
             "extra_small_devices": "12",
             "small_devices": "12",
@@ -61,46 +57,13 @@
           }
         },
         {
-          "name": "name",
-          "type": "text",
-          "fieldtype": "String",
+          "name": "lastName",
+          "type": "input",
+          "tpPosition": "m1",
+          "fieldtype": "string",
           "required": "true",
-          "label": "text",
-          "error": "text is required",
-          "ui": {
-            "extra_small_devices": "12",
-            "small_devices": "12",
-            "medium_devices": "6",
-            "large_devices": "4",
-            "xlarge_devices": "3",
-            "css": "",
-            "clz": ""
-          }
-        },
-        {
-          "name": "date",
-          "type": "date",
-          "fieldtype": "DateTime",
-          "required": "false",
-          "label": "Date of Birth",
-          "error": "DateTime is required",
-          "ui": {
-            "extra_small_devices": "12",
-            "small_devices": "12",
-            "medium_devices": "6",
-            "large_devices": "4",
-            "xlarge_devices": "3",
-            "css": "",
-            "clz": ""
-          }
-        },
-        {
-          "name": "venue",
-          "type": "text",
-          "fieldtype": "String",
-          "required": "true",
-          "label": "text",
-          "error": "text is required",
+          "label": "Last Name",
+          "error": "Last Name is required",
           "ui": {
             "extra_small_devices": "12",
             "small_devices": "12",

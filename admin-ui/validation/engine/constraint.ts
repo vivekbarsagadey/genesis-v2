@@ -1,8 +1,8 @@
-import { ValidatorType } from './';
+import { ValidatorType } from '.';
 
 const Pattern = {
   DOMAIN_NAME: new RegExp(
-    /^\s*(?:(?:\w+(?:-+\w+)*\.)+[a-z]+)\s*(?:,\s*(?:(?:\w+(?:-+\w+)*\.)+[a-z]+)\s*)*$/
+    /^\s*(?:(?:\w+(?:-+\w+)*\.)+[a-z]+)\s*(?:,\s*(?:(?:\w+(?:-+\w+)*\.)+[a-z]+)\s*)*$/,
   ),
 };
 interface Constraint {
@@ -13,4 +13,4 @@ interface Constraint {
   pattern?: RegExp;
 }
 
-export type{ Constraint, Pattern };
+export type { Constraint, Pattern };

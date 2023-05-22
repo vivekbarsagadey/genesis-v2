@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const RegistrationContainer = () => {
-  return (
-    <div>This Is Basic Registration Container</div>
-  )
+function RegistrationContainer() {
+  return <>This Is Basic Registration Container</>;
 }
 
-export default RegistrationContainer
+export default RegistrationContainer;

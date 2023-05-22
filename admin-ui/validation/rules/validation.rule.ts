@@ -1,9 +1,9 @@
-import { ValidationContext, ValidationError } from "../engine";
-import { EmailRule } from "./email.rule";
-import { NumberRule } from "./number.rule";
-import { PasswordRule } from "./password.rule";
-import { RequiredRule } from "./required.rule";
-import { RuleContext } from "./rule.context";
+import { ValidationContext, ValidationError } from '../engine';
+import { EmailRule } from './email.rule';
+import { NumberRule } from './number.rule';
+import { PasswordRule } from './password.rule';
+import { RequiredRule } from './required.rule';
+import { RuleContext } from './rule.context';
 
 const doValidation = (_errors: ValidationError[], context: RuleContext) => {
   const ruleSet = [];
@@ -29,7 +29,11 @@ const doValidation = (_errors: ValidationError[], context: RuleContext) => {
 const validate = (context: ValidationContext): ValidationError[] => {
   const _errors = new Array<ValidationError>();
   context.constraints?.forEach((constraint) => {
-    doValidation(_errors, { data: context.data, constraint, name: context.name });
+    doValidation(_errors, {
+      data: context.data,
+      constraint,
+      name: context.name,
+    });
   });
   return _errors;
 };

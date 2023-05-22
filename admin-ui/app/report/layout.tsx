@@ -1,10 +1,14 @@
-"use client";
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/require-default-props */
 
+'use client';
 
-export default function Layout({ children }) {
-  return (
-    <>
-      <main>{children}</main>
-    </>
-  )
+import { ReactNode } from 'react';
+
+type IReports = {
+  children?: ReactNode;
+};
+
+export default function Layout({ children }: IReports) {
+  return <main>{children}</main>;
 }

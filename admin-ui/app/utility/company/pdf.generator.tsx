@@ -1,17 +1,24 @@
+<<<<<<< HEAD
+import React from 'react';
+import { Typography, Grid } from '@mui/material';
+import { download } from '../pdf-util';
+import { ICompany } from '../../company/models';
+=======
 import React from "react";
 import { Typography } from "@mui/material";
 import { download } from "../pdf-util";
 import { ICompany } from "../../company/models";
 
+>>>>>>> dev
 
 type CompanyProps = {
   copyCompanyData: Array<ICompany>;
 };
 
-const CompanyPdfGenerator = ({ copyCompanyData }: CompanyProps) => {
+function CompanyPdfGenerator({ copyCompanyData }: CompanyProps) {
   const exportPDF = async () => {
     const fileName = `company-list-${new Date().toISOString().slice(0, 10)}`;
-    const headers = [["Company Name", "Email", "Contact", "Address"]];
+    const headers = [['Company Name', 'Email', 'Contact', 'Address']];
     const pdfSendData = copyCompanyData?.map((elt) => [
       elt.name,
       elt.email,
@@ -25,12 +32,12 @@ const CompanyPdfGenerator = ({ copyCompanyData }: CompanyProps) => {
     });
   };
   return (
-    <div>
+    <Grid>
       <Typography variant="subtitle1" onClick={() => exportPDF()}>
         PDF
       </Typography>
-    </div>
+    </Grid>
   );
-};
+}
 
 export default CompanyPdfGenerator;

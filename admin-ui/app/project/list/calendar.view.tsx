@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+import React, { useEffect, useState } from 'react';
+import Grid from '@mui/material/Grid';
+import moment from 'moment';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+import { ListComponentProps } from './props';
+import { IProjects } from '../models';
+=======
 import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import moment from "moment";
@@ -6,6 +16,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import { ListComponentProps } from "./props";
 import IProject from "../project.model";
 
+>>>>>>> dev
 const localizer = momentLocalizer(moment);
 
 interface CalendarEventData {
@@ -14,6 +25,18 @@ interface CalendarEventData {
   end: Date;
 }
 
+<<<<<<< HEAD
+function ProjectsCalendarView({ projects }: ListComponentProps) {
+  const [events, setEvents] = useState<Array<CalendarEventData>>([]);
+
+  const calendarCompanies = projects.map((project: IProjects) => ({
+    title: project.name,
+    start: new Date(project.createdAt),
+    end: new Date(project.createdAt),
+  }));
+  useEffect(() => {
+    setEvents(calendarCompanies);
+=======
 const ProjectCalendarView = ({ projects}: ListComponentProps) => {
   const [events, setEvents] = useState([]);
 
@@ -26,9 +49,10 @@ const ProjectCalendarView = ({ projects}: ListComponentProps) => {
   });
   useEffect(() => {
     setEvents(calendarProjects);
+>>>>>>> dev
   }, []);
   return (
-    <Grid pt={1} container height={"80vh"}>
+    <Grid pt={1} container height="80vh">
       <Grid item xs={12} px={2.5}>
         <Calendar
           events={events}
@@ -40,6 +64,6 @@ const ProjectCalendarView = ({ projects}: ListComponentProps) => {
       </Grid>
     </Grid>
   );
-};
+}
 
-export default ProjectCalendarView;
+export default ProjectsCalendarView;

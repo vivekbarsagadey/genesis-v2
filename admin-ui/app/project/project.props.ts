@@ -1,8 +1,10 @@
-import IProject from "./project.model";
+/* eslint-disable no-unused-vars */
+import IProject from './project.model';
 
 interface IProjectComponentProps {
-    items: Array<IProject>;
-    itemsCallBackHandler? : ((_items: Array<IProject> ) => void
-};
+  items: Array<IProject>;
+  itemsCallBackHandler?: (_items: Array<IProject>) => void;
+}
 
-export default IProjectComponentProps
+
+export default IProjectComponentProps;

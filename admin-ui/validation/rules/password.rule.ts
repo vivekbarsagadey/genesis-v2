@@ -1,11 +1,8 @@
-import { ValidationError, ValidatorType } from "../engine";
-import { RuleContext } from "./rule.context";
-
+import { ValidationError, ValidatorType } from '../engine';
+import { RuleContext } from './rule.context';
 
 const PasswordRule = ({ constraint, data }: RuleContext) => {
-  const condition = (): boolean => {
-    return constraint.validatorType === ValidatorType.PASSWORD;
-  };
+  const condition = (): boolean => constraint.validatorType === ValidatorType.PASSWORD;
 
   const action = () => {
     // one lowercase, uppercase, number and min-8 max-10 character

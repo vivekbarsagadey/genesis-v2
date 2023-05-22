@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import { IconButton } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Menu from '@mui/material/Menu';
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
+import Tooltip from '@mui/material/Tooltip';
+import React, { useEffect, useState } from 'react';
+import { isNotBlank } from '../../../utils/string.util';
+import { ICustomer } from '../models';
+
+const FilterStyle = styled(Grid)(({ theme }) => ({
+  width: 300,
+  padding: '1rem',
+=======
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { IconButton } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -15,6 +34,7 @@ import { ICustomer } from "../models";
 const FilterStyle = styled(Grid)(({ theme }) => ({
   width: 300,
   padding: "1rem",
+>>>>>>> dev
 }));
 
 interface CompanyFilterComponentProps {
@@ -29,6 +49,15 @@ type FilterFields = {
 
 interface FilterProps {
   filterField: FilterFields;
+<<<<<<< HEAD
+  options: Array<string>;
+}
+
+function FilterComponent({
+  customer,
+  onFilterHandler,
+}: CompanyFilterComponentProps) {
+=======
   options: Array<String>;
 }
 
@@ -36,6 +65,7 @@ const FilterComponent = ({
   customer,
   onFilterHandler,
 }: CompanyFilterComponentProps) => {
+>>>>>>> dev
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const [fileds, setFileds] = useState<Array<FilterFields>>([]);
@@ -49,7 +79,11 @@ const FilterComponent = ({
   };
 
   const emailFilter = (value: string) => (item: ICustomer) => {
+<<<<<<< HEAD
+    console.log('value ??', value);
+=======
     console.log("value ??", value);
+>>>>>>> dev
 
     if (isNotBlank(item.email)) {
       if (!item.email.toLowerCase().includes(value.toLowerCase())) {
@@ -71,15 +105,26 @@ const FilterComponent = ({
 
   const applyFilter = () => {
     const emailData = fileds.map((ele) => ele.values);
+<<<<<<< HEAD
+    // const d = customer.filter(() => emailFilter(emailData[0]));
+
+=======
     const d = customer.filter(() => emailFilter(emailData[0]));
    
+>>>>>>> dev
     // onFilterHandler();
   };
 
   useEffect(() => {
+<<<<<<< HEAD
+    const filterFields = [];
+    filterFields.push({ key: 'email', values: [], label: 'Email' });
+    filterFields.push({ key: 'name', values: [], label: 'Name' });
+=======
     var filterFields = [];
     filterFields.push({ key: "email", values: [], label: "Email" });
     filterFields.push({ key: "name", values: [], label: "Name" });
+>>>>>>> dev
     setFileds(filterFields);
   }, []);
 
@@ -88,9 +133,15 @@ const FilterComponent = ({
       <Tooltip title="Filter">
         <IconButton
           id="basic-button"
+<<<<<<< HEAD
+          aria-controls={open ? 'basic-menu' : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? 'true' : undefined}
+=======
           aria-controls={open ? "basic-menu" : undefined}
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
+>>>>>>> dev
           onClick={handleClick}
         >
           <FilterAltIcon fontSize="small" />
@@ -102,6 +153,23 @@ const FilterComponent = ({
         open={open}
         onClose={handleClose}
         MenuListProps={{
+<<<<<<< HEAD
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        {customer
+          && fileds?.map((feild, index) => {
+            const { key } = feild;
+            return (
+              <Filter
+                filterField={feild}
+                // options={Array.from(
+                //   new Set(customer?.map((f) => f[`${key}`]))
+                // )}
+                options={['dummy']}
+                key={index}
+              />
+=======
           "aria-labelledby": "basic-button",
         }}
       >
@@ -116,11 +184,16 @@ const FilterComponent = ({
                 )}
                 key={index}
               ></Filter>
+>>>>>>> dev
             );
           })}
 
         <Grid container mb={1} mt={2}>
+<<<<<<< HEAD
+          <Grid item xs={6} />
+=======
           <Grid item xs={6}></Grid>
+>>>>>>> dev
           <Grid item xs={3}>
             <Button
               variant="contained"
@@ -139,6 +212,12 @@ const FilterComponent = ({
       </Menu>
     </>
   );
+<<<<<<< HEAD
+}
+
+function Filter({ filterField, options }: FilterProps) {
+  const filterUpdateHandler = (value: any) => {
+=======
 };
 
 const Filter = ({ filterField, options }: FilterProps) => {
@@ -146,6 +225,7 @@ const Filter = ({ filterField, options }: FilterProps) => {
     e: React.ChangeEvent<HTMLInputElement>,
     value: string
   ) => {
+>>>>>>> dev
     filterField.values.push(value);
   };
 
@@ -163,7 +243,11 @@ const Filter = ({ filterField, options }: FilterProps) => {
                 {...params}
                 InputProps={{
                   ...params.InputProps,
+<<<<<<< HEAD
+                  type: 'search',
+=======
                   type: "search",
+>>>>>>> dev
                 }}
                 placeholder={filterField.label}
               />
@@ -173,6 +257,10 @@ const Filter = ({ filterField, options }: FilterProps) => {
       </FilterStyle>
     </Grid>
   );
+<<<<<<< HEAD
+}
+=======
 };
+>>>>>>> dev
 
 export default FilterComponent;

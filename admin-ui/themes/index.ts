@@ -1,2 +1,5 @@
-export {colors} from './colors'
-export {weight, fontSize} from './fonts'
+export { colors } from './colors';
+export { theme } from './theme';
+export { baseStyle } from './style';
+export { fontSize } from './size';
+export { weight } from './weight';

@@ -1,26 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import Grid from "@mui/material/Grid";
+import Grid from '@mui/material/Grid';
+import moment from 'moment';
+import { useEffect, useState } from 'react';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { IUser } from '../models';
+import { ListComponentProps } from './props';
+
 const localizer = momentLocalizer(moment);
-
-const CalendarView = ({ items }) => {
-  const [events, setEvents] = useState([]);
-
-  const AllData = items?.map((items) => {
-    return {
-      title: items.firstName,
-      start: new Date(items.createdAt),
-      end: new Date(items.updatedAt),
-    };
-  });
+interface CalendarEventData {
+  title: string;
+  start: Date;
+  end: Date;
+}
+function UserCalendarView({ user, myRef }:any) {
+  const [events, setEvents] = useState<Array<CalendarEventData>>([]);
+  const calendarUser = user?.map((users: IUser) => ({
+    title: users.firstName,
+    start: new Date(users.createdAt),
+    end: new Date(users.createdAt),
+  }));
   useEffect(() => {
-    setEvents(AllData);
+    setEvents(calendarUser);
   }, []);
   return (
-    <Grid pt={1} container>
-      <Grid item xs={12}>
+    <Grid pt={1} container height="80vh" ref={myRef}>
+      <Grid item xs={12} px={2.5}>
         <Calendar
           events={events}
           startAccessor="start"
@@ -31,6 +35,5 @@ const CalendarView = ({ items }) => {
       </Grid>
     </Grid>
   );
-};
-
-export default CalendarView;
+}
+export default UserCalendarView;

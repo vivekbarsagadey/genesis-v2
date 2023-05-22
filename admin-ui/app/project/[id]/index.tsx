@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ProjectEditComponent = () => {
+const index = () => {
   return (
-    <div>Project Edit Page</div>
+    <div>index</div>
   )
 }
 
-export default ProjectEditComponent
+export default index

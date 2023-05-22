@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+import React from 'react';
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+import { IconButton } from '@mui/material';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Tooltip from '@mui/material/Tooltip';
+import CompanyCsvGenerator from '../../utility/company/csv.generator';
+import CompanyExcellGenerator from '../../utility/company/excell.generator';
+import CompanyPdfGenerator from '../../utility/company/pdf.generator';
+import { ICompany } from '../models';
+=======
 import React from "react";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import { IconButton } from "@mui/material";
@@ -8,11 +20,16 @@ import CompanyCsvGenerator from "../../utility/company/csv.generator";
 import CompanyExcellGenerator from "../../utility/company/excell.generator";
 import CompanyPdfGenerator from "../../utility/company/pdf.generator";
 import { ICompany } from "../models";
+>>>>>>> dev
 
 interface CompanyExportComponentProps {
   copyCompanyData: Array<ICompany>;
 }
+<<<<<<< HEAD
+function ExportComponent({ copyCompanyData }: CompanyExportComponentProps) {
+=======
 const ExportComponent = ({ copyCompanyData }: CompanyExportComponentProps) => {
+>>>>>>> dev
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -27,10 +44,18 @@ const ExportComponent = ({ copyCompanyData }: CompanyExportComponentProps) => {
       <Tooltip title="Export">
         <IconButton
           id="basic-button"
+<<<<<<< HEAD
+          aria-controls={open ? 'basic-menu' : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? 'true' : undefined}
+          onClick={handleClick}
+          style={{ background: 'transparent' }}
+=======
           aria-controls={open ? "basic-menu" : undefined}
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
+>>>>>>> dev
         >
           <FileDownloadOutlinedIcon fontSize="small" />
         </IconButton>
@@ -41,7 +66,11 @@ const ExportComponent = ({ copyCompanyData }: CompanyExportComponentProps) => {
         open={open}
         onClose={handleClose}
         MenuListProps={{
+<<<<<<< HEAD
+          'aria-labelledby': 'basic-button',
+=======
           "aria-labelledby": "basic-button",
+>>>>>>> dev
         }}
       >
         <MenuItem onClick={handleClose}>
@@ -56,6 +85,10 @@ const ExportComponent = ({ copyCompanyData }: CompanyExportComponentProps) => {
       </Menu>
     </>
   );
+<<<<<<< HEAD
+}
+=======
 };
+>>>>>>> dev
 
 export default ExportComponent;

@@ -1,11 +1,8 @@
-import { ValidationError, ValidatorType } from "../engine";
-import { RuleContext } from "./rule.context";
-
+import { ValidationError, ValidatorType } from '../engine';
+import { RuleContext } from './rule.context';
 
 const NumberRule = ({ constraint, data }: RuleContext) => {
-  const condition = (): boolean => {
-    return constraint.validatorType === ValidatorType.NUMBER;
-  };
+  const condition = (): boolean => constraint.validatorType === ValidatorType.NUMBER;
 
   const action = () => {
     if (isNaN(data)) {

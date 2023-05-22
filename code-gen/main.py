@@ -6,6 +6,7 @@ from util.file_util import FileUtil
 from util.git_util import clone
 
 
+
 CONFIG_FILE="./config/project.json"
 CURRENT_PATH = os.getcwd()
 
@@ -17,6 +18,19 @@ def process_init_config_file():
 
 def code_gen(project_config):
     print('----------------whiz-code-gen-----------------')
+    if project_config['app']['type'] == 'MOBILE' and project_config['app']['project'] == 'customer':
+        from generator.mobile.customer.builder import build
+        build(project_config)
+    if project_config['app']['type'] == 'MOBILE' and project_config['app']['project'] == 'INSIGHT':
+        from generator.mobile.insight.builder import build
+        build(project_config)
+    if project_config['app']['type'] == 'WEB' and project_config['app']['project'] == 'ADMIN-UI':
+        from generator.web.adminui.builder import build
+        build(project_config)
+    if project_config['app']['type'] == 'WEB' and project_config['app']['project'] == 'CLIENT-UI':
+        from generator.web.adminui.builder import build
+        build(project_config)
+        
    
 
 def clean():
@@ -30,7 +44,7 @@ if __name__ == '__main__':
     load_dotenv()
     clean()
     project_config = process_init_config_file()
-    clone(project_config)
+    #clone(project_config)
     code_gen(project_config)
     
     print('================ END ==============================')

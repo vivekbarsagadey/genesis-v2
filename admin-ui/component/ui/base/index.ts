@@ -1,5 +1,5 @@
-export { ButtonComponent } from "./button";
-export {SearchComponent} from './search' 
+export { ButtonComponent } from './button';
+export { SearchComponent } from './search';
 export {
   ErrorComponent,
   InputComponent,
@@ -8,5 +8,5 @@ export {
   InputPasswordComponent,
   InputTextComponent,
   InputStyle,
-} from "./input";
-export type { InputProps } from "./input";
+} from './input';
+export type { InputProps } from './input';

@@ -1,23 +1,22 @@
-"use client";
-import LockIcon from "@mui/icons-material/Lock";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { IconButton, Input, Typography } from "@mui/material";
-import Box from "@mui/material/Box";
-import InputAdornment from "@mui/material/InputAdornment";
-import React, { useState } from "react";
+'use client';
+
+import LockIcon from '@mui/icons-material/Lock';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { IconButton, Input, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import InputAdornment from '@mui/material/InputAdornment';
+import React, { useState } from 'react';
 // import { ValidatationEngine } from "../../../../validation/validatation.engine";
 // import {ValidationStatus} from "../../../../validation/validator.context";
-import { ErrorComponent, InputProps } from "./";
+import { ErrorComponent, InputProps } from '.';
 
-
-
-const InputPasswordComponent = ({
+function InputPasswordComponent({
   label,
   placeHolder,
   value,
   required,
-}: InputProps) => {
+}: InputProps) {
   // const engine = ValidatationEngine();
   const [_value, setValue] = useState<string | undefined | null>(value);
   const [errors, setErrors] = useState<string[]>();
@@ -45,35 +44,34 @@ const InputPasswordComponent = ({
 
   return (
     <Box component="form" noValidate autoComplete="off">
-      <Typography>{label || "Field Name"}</Typography>
+      <Typography>{label || 'Field Name'}</Typography>
       <Input
         required={required}
         id="standard-required"
         placeholder={placeHolder}
         defaultValue={value}
-        type={showPassword ? "text" : "password"}
+        type={showPassword ? 'text' : 'password'}
         // value={_value}
         onChange={onChangeHandller}
-        startAdornment={
+        startAdornment={(
           <InputAdornment position="start">
             <LockIcon />
           </InputAdornment>
-        }
-        endAdornment={
+        )}
+        endAdornment={(
           <InputAdornment position="end">
             <IconButton onClick={handleShowPassword}>
               {showPassword ? <Visibility /> : <VisibilityOff />}
             </IconButton>
           </InputAdornment>
-        }
-        
+        )}
       />
 
       {errors?.map((e, i) => (
-        <ErrorComponent key={i} message={e}></ErrorComponent>
+        <ErrorComponent key={i} message={e} />
       ))}
     </Box>
   );
-};
+}
 
 export { InputPasswordComponent };

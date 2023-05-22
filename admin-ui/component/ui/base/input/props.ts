@@ -1,5 +1,3 @@
-
-
 interface InputProps {
   label: string;
   id?: string;
@@ -16,8 +14,8 @@ interface InputProps {
   helperText?: any;
   getError?: any;
   onInput?: number;
-  variant?:any;
-  onClick?:any;
+  variant?: any;
+  onClick?: any;
 
   // this to send data back to parent
   register?: any;

@@ -1,14 +1,13 @@
 export default function RootLayout({
-    children,
-  }: {
-    children: React.ReactNode
-  }) {
-    return (
-      <>
-        {/* <div>This is company header</div> */}
-        <>{children}</>
-      </>
-    )
-    
-  }
-  
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <>
+      {/* <>This is user header</> */}
+
+      {children}
+    </>
+  );
+}

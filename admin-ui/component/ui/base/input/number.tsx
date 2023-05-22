@@ -1,21 +1,22 @@
-"use client";
-import Box from "@mui/material/Box";
-import InputAdornment from "@mui/material/InputAdornment";
-import React, { useState } from "react";
+'use client';
+
+import Box from '@mui/material/Box';
+import InputAdornment from '@mui/material/InputAdornment';
+import React, { useState } from 'react';
 // import { ValidatationEngine } from "../../../../validation/validatation.engine";
 // import {ValidationStatus} from "../../../../validation/validator.context";
-import { ErrorComponent, InputProps } from "./";
-import CallIcon from "@mui/icons-material/Call";
-import Input from "@mui/material/Input";
-import Typography from "@mui/material/Typography";
+import CallIcon from '@mui/icons-material/Call';
+import Input from '@mui/material/Input';
+import Typography from '@mui/material/Typography';
+import { ErrorComponent, InputProps } from '.';
 
-const InputNumberComponent = ({
+function InputNumberComponent({
   label,
   type,
   placeHolder,
   value,
   required,
-}: InputProps) => {
+}: InputProps) {
   // const engine = ValidatationEngine();
   const [_value, setValue] = useState<string | undefined | null>(value);
   const [errors, setErrors] = useState<string[]>();
@@ -39,7 +40,7 @@ const InputNumberComponent = ({
 
   return (
     <Box component="form" noValidate autoComplete="off">
-      <Typography>{label || "Field Name"}</Typography>
+      <Typography>{label || 'Field Name'}</Typography>
       <Input
         required={required}
         id="standard-required"
@@ -53,18 +54,18 @@ const InputNumberComponent = ({
             .slice(0, 10);
         }}
         onChange={onChangeHandller}
-        startAdornment={
+        startAdornment={(
           <InputAdornment position="start">
             <CallIcon />
           </InputAdornment>
-        }
+        )}
       />
 
       {errors?.map((e, i) => (
-        <ErrorComponent key={i} message={e}></ErrorComponent>
+        <ErrorComponent key={i} message={e} />
       ))}
     </Box>
   );
-};
+}
 
 export { InputNumberComponent };

@@ -1,37 +1,41 @@
-import React from "react";
-import { Grid, IconButton, Typography } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import ListIcon from "@mui/icons-material/List";
+import ListIcon from '@mui/icons-material/List';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Grid, IconButton } from '@mui/material';
 
 interface logoProps {
-  show: boolean;
+  toggleMenu: boolean;
   handleMenu: () => void;
 }
-const Logo = ({ handleMenu, show }: logoProps) => {
+function SidebarLogo({ handleMenu, toggleMenu }: logoProps) {
   return (
-    <div
-      style={{ display: "flex", alignItems: "center", paddingBottom: "1rem" }}
+    <Grid
+      style={{ display: 'flex', alignItems: 'center', paddingBottom: '1rem' }}
     >
-      {show && (
+      {toggleMenu && (
         <Grid
-          textAlign={"left"}
+          textAlign="left"
           pt={1}
-          display={{ xs: "none", sm: "none", md: "block" }}
+          display={{ xs: 'none', sm: 'none', md: 'block' }}
         >
           <img
-            src="./images/genesislogo2.png"
+            src="./images/genesislogo3.png"
             alt="LoginImage"
-            style={{ height: "70%", width: "70%" }}
+            style={{
+              height: '100%',
+              width: '90%',
+              marginRight: '2rem',
+              marginLeft: '0.7rem',
+            }}
           />
         </Grid>
       )}
-      <div>
+      <>
         <IconButton onClick={handleMenu}>
-          {show ? <MenuIcon /> : <ListIcon />}
+          {toggleMenu ? <MenuIcon /> : <ListIcon />}
         </IconButton>
-      </div>
-    </div>
+      </>
+    </Grid>
   );
-};
+}
 
-export default Logo;
+export default SidebarLogo;

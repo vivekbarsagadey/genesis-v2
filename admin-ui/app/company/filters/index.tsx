@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import { IconButton } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Menu from '@mui/material/Menu';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import Tooltip from '@mui/material/Tooltip';
+import { styled } from '@mui/material/styles';
+import React, { useState } from 'react';
+import { ICompany } from '../models';
+=======
 import React, { useState, useEffect } from "react";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { IconButton } from "@mui/material";
@@ -11,12 +25,47 @@ import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
 import { ICompany } from "../models";
 import { isNotBlank } from "../../../utils/string.util";
+>>>>>>> dev
 
-const FilterStyle = styled(Grid)(({ theme }) => ({
+const FilterStyle = styled(Grid)(() => ({
   width: 300,
-  padding: "1rem",
+  paddingTop: '1rem',
+  paddingLeft: '1rem',
+  paddingRight: '1rem',
 }));
 
+<<<<<<< HEAD
+type CompanyFilterComponentProps = {
+  companies: Array<ICompany>;
+  onFilterHandler: any;
+  itemsCallBackHandler: any;
+};
+
+function FilterComponent({
+  companies,
+  itemsCallBackHandler,
+}: CompanyFilterComponentProps) {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [filterDataCompanyName, setFilterDataName] = useState('');
+  const [filterDataOwnerName, setFilterDataOwnerName] = useState('');
+  const [filterDataEmail, setFilterDataEmail] = useState('');
+  const open = Boolean(anchorEl);
+
+  const doFilter = () => {
+    const newCompanies = companies?.filter(
+      (u) =>
+        u.name.toLowerCase().includes(filterDataCompanyName.toLowerCase()) ||
+        u.ownerName.toLowerCase().includes(filterDataOwnerName.toLowerCase()) ||
+        u.email.toLowerCase().includes(filterDataEmail.toLowerCase())
+    );
+    itemsCallBackHandler(newCompanies);
+    handleClose();
+  };
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+=======
 interface CompanyFilterComponentProps {
   companies: Array<ICompany>;
   onFilterHandler: (_: Array<ICompany>) => void;
@@ -44,6 +93,7 @@ const FilterComponent = ({
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+>>>>>>> dev
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -87,11 +137,20 @@ const FilterComponent = ({
     <>
       <Tooltip title="Filter">
         <IconButton
+<<<<<<< HEAD
+          id="filter-btn"
+          aria-controls={open ? 'basic-menu' : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? 'true' : undefined}
+          onClick={handleClick}
+          style={{ background: 'transparent' }}
+=======
           id="basic-button"
           aria-controls={open ? "basic-menu" : undefined}
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
+>>>>>>> dev
         >
           <FilterAltIcon fontSize="small" />
         </IconButton>
@@ -102,9 +161,81 @@ const FilterComponent = ({
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          "aria-labelledby": "basic-button",
+          'aria-labelledby': 'basic-button',
         }}
       >
+<<<<<<< HEAD
+        <FilterStyle>
+          <Stack>
+            <Autocomplete
+              freeSolo
+              size="small"
+              id="free-solo-2-demo"
+              disableClearable
+              options={Array.from(
+                new Set(companies.map((data) => data.ownerName))
+              )}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  placeholder="Owner Name"
+                  InputProps={{
+                    ...params.InputProps,
+                    type: 'search',
+                  }}
+                />
+              )}
+              onChange={(event, value) => setFilterDataOwnerName(value)}
+            />
+          </Stack>
+        </FilterStyle>
+
+        <FilterStyle>
+          <Stack>
+            <Autocomplete
+              freeSolo
+              size="small"
+              id="free-solo-2-demo"
+              disableClearable
+              options={Array.from(new Set(companies.map((data) => data.name)))}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  placeholder="Company Name"
+                  InputProps={{
+                    ...params.InputProps,
+                    type: 'search',
+                  }}
+                />
+              )}
+              onChange={(event, value) => setFilterDataName(value)}
+            />
+          </Stack>
+        </FilterStyle>
+
+        <FilterStyle>
+          <Stack>
+            <Autocomplete
+              freeSolo
+              size="small"
+              id="free-solo-2-demo"
+              disableClearable
+              options={Array.from(new Set(companies.map((data) => data.email)))}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  placeholder="Email"
+                  InputProps={{
+                    ...params.InputProps,
+                    type: 'search',
+                  }}
+                />
+              )}
+              onChange={(event, value) => setFilterDataEmail(value)}
+            />
+          </Stack>
+        </FilterStyle>
+=======
         {companies &&
           fileds?.map((feild, index) => {
             const key = feild.key;
@@ -118,9 +249,10 @@ const FilterComponent = ({
               ></Filter>
             );
           })}
+>>>>>>> dev
 
         <Grid container mb={1} mt={2}>
-          <Grid item xs={6}></Grid>
+          <Grid item xs={6} />
           <Grid item xs={3}>
             <Button
               variant="contained"
@@ -131,13 +263,19 @@ const FilterComponent = ({
             </Button>
           </Grid>
           <Grid item xs={1}>
+<<<<<<< HEAD
+            <Button variant="contained" size="small" onClick={doFilter}>
+=======
             <Button variant="contained" size="small" onClick={applyFilter}>
+>>>>>>> dev
               Save
             </Button>
           </Grid>
         </Grid>
       </Menu>
     </>
+<<<<<<< HEAD
+=======
   );
 };
 
@@ -172,7 +310,8 @@ const Filter = ({ filterField, options }: FilterProps) => {
         </Stack>
       </FilterStyle>
     </Grid>
+>>>>>>> dev
   );
-};
+}
 
 export default FilterComponent;

@@ -1,10 +1,8 @@
-import React from "react";
-import ProjectReport from ".";
+import React from 'react';
+import ProjectReport from '.';
 
-const Report = () => {
-  return <div>
-    <ProjectReport/>
-  </div>;
-};
+function Report() {
+  return <ProjectReport />;
+}
 
 export default Report;

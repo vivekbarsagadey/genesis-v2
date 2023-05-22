@@ -1,14 +1,11 @@
-import { ValidationError, ValidatorType } from "../engine";
-import { RuleContext } from "./rule.context";
+import { ValidationError, ValidatorType } from '../engine';
+import { RuleContext } from './rule.context';
 
 const TextRule = ({ constraint, data }: RuleContext) => {
-  const condition = (): boolean => {
-    return constraint.validatorType === ValidatorType.TEXT;
-  };
+  const condition = (): boolean => constraint.validatorType === ValidatorType.TEXT;
 
   const action = () => {
-    if (data.includes(' ')) {
-    } else {
+    if (!data.includes(' ')) {
       throw new ValidationError(constraint);
     }
   };

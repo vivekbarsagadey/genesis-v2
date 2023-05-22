@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  admin-ui:
+    image: adminui
+    build: ./admin-ui/
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000

@@ -1,7 +1,9 @@
-"use client";
-import { useSession } from "next-auth/react";
-import Dashboard from "./dashboard";
-import SignIn from "./login/page";
+/* eslint-disable react/react-in-jsx-scope */
+
+'use client';
+
+import { useSession } from 'next-auth/react';
+import SignIn from './login/page';
 
 const page = () => {
   const { data: session } = useSession();
@@ -14,11 +16,7 @@ const page = () => {
       </>
     );
   }
-  return (
-    <>
-      <SignIn />
-    </>
-  );
+  return <SignIn />;
 };
 
 export default page;

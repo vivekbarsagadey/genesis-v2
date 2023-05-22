@@ -1,0 +1,16 @@
+{
+    "expo": {
+      "scheme": "com.whizit.{{name}}",
+      "splash": {
+        "image": "assets/images/human.jpg",
+        "resizeMode": "contain",
+        "backgroundColor": "#fff014"
+      },
+      "web": {
+        "bundler": "metro"
+      },
+      "name": "{{name}}",
+      "slug": "{{name}}"
+    }
+  }
+  

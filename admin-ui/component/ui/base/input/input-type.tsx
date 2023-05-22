@@ -1,29 +1,28 @@
-"use client";
+'use client';
+
 import {
   InputEmailComponent,
   InputNumberComponent,
   InputPasswordComponent,
   InputProps,
-  InputTextComponent
-} from "./";
+  InputTextComponent,
+} from '.';
 
-
-const InputComponent = (props: InputProps) => {
-  if (props.type == "email") {
+function InputComponent(props: InputProps) {
+  if (props.type == 'email') {
     return <InputEmailComponent {...props} />;
   }
-  if (props.type == "password") {
-    return <InputPasswordComponent {...props}></InputPasswordComponent>;
+  if (props.type == 'password') {
+    return <InputPasswordComponent {...props} />;
   }
-  if (props.type == "text") {
-    return <InputTextComponent {...props}></InputTextComponent>;
+  if (props.type == 'text') {
+    return <InputTextComponent {...props} />;
   }
-  if (props.type == "number") {
-    return <InputNumberComponent {...props}></InputNumberComponent>;
+  if (props.type == 'number') {
+    return <InputNumberComponent {...props} />;
   }
 
   return <></>;
-};
+}
 
 export { InputComponent };
-

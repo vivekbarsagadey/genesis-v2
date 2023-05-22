@@ -1,23 +1,22 @@
-"use client";
-import TextSnippetIcon from "@mui/icons-material/TextSnippet";
-import Box from "@mui/material/Box";
-import Input from "@mui/material/Input/Input";
-import InputAdornment from "@mui/material/InputAdornment";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import React, { useState } from "react";
+'use client';
+
+import TextSnippetIcon from '@mui/icons-material/TextSnippet';
+import Box from '@mui/material/Box';
+import Input from '@mui/material/Input/Input';
+import InputAdornment from '@mui/material/InputAdornment';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import React, { useState } from 'react';
 // import { ValidatationEngine } from "../../../../validation/validatation.engine";
 // import {ValidationStatus} from "../../../../validation/validator.context";
-import { ErrorComponent, InputProps, InputStyle } from "./";
+import { ErrorComponent, InputProps, InputStyle } from '.';
 
-
-
-const InputTextComponent = ({
+function InputTextComponent({
   label,
   placeHolder,
   value,
   required,
-}: InputProps) => {
+}: InputProps) {
   //  const engine = ValidatationEngine();
   const [_value, setValue] = useState<string | undefined | null>(value);
   const [errors, setErrors] = useState<string[]>();
@@ -29,7 +28,7 @@ const InputTextComponent = ({
 
   return (
     <Box component="form" noValidate autoComplete="off">
-      <Typography>{label || "Field Name"}</Typography>
+      <Typography>{label || 'Field Name'}</Typography>
       <Input
         required={required}
         id="standard-required"
@@ -38,18 +37,18 @@ const InputTextComponent = ({
         // value={_value}
         type="text"
         onChange={onChangeHandller}
-        startAdornment={
-            <InputAdornment position="start">
-              <TextSnippetIcon />
-            </InputAdornment>
-        }
+        startAdornment={(
+          <InputAdornment position="start">
+            <TextSnippetIcon />
+          </InputAdornment>
+        )}
       />
 
-          {errors?.map(({ e, i }) => {
-          return <ErrorComponent key={i} message={e} />;
-        })}
+      {errors?.map(({ e, i }) => (
+        <ErrorComponent key={i} message={e} />
+      ))}
     </Box>
   );
-};
+}
 
 export { InputTextComponent };

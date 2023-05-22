@@ -1,10 +1,15 @@
 /** @type {import('next').NextConfig} */
 const path = require('node:path');
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   /* concurrentFeatures: true, */
+<<<<<<< HEAD
+  experimental: { appDir: true },
+=======
   experimental:{appDir: true},
+>>>>>>> dev
   webpack(config) {
     config.resolve.alias = {
       ...config.resolve.alias,
@@ -18,6 +23,6 @@ const nextConfig = {
 
     return config;
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

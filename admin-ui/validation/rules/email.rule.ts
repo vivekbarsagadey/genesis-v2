@@ -1,11 +1,8 @@
-import { ValidationError, ValidatorType } from "../engine";
-import { RuleContext } from "./rule.context";
-
+import { ValidationError, ValidatorType } from '../engine';
+import { RuleContext } from './rule.context';
 
 const EmailRule = ({ constraint, data }: RuleContext) => {
-  const condition = (): boolean => {
-    return constraint.validatorType === ValidatorType.EMAIL;
-  };
+  const condition = (): boolean => constraint.validatorType === ValidatorType.EMAIL;
 
   const action = () => {
     if (data.indexOf(' ') >= 0) {
