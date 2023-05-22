@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client';
 
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
@@ -75,10 +76,32 @@ function ProjectCreate() {
   const [projectStatus, setProjectStatus] = useState('');
   const [projectState, setProjectState] = useState('');
   const [projectCountry, setProjectCountry] = useState('');
+=======
+"use client";
+import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { applicationType } from "../../../component/common/data/project/application.type";
+import Stack from "@mui/material/Stack";
+import Autocomplete from "@mui/material/Autocomplete";
+type IApplicationType = {
+  id: Number;
+  type: String;
+  label: String;
+};
+const ProjectCreate = () => {
+  const [projectName, setProjectName] = useState<String>("");
+  const [customerName, setCustomerName] = useState<String>("");
+  const [application, setApplication] = useState([]);
+
+>>>>>>> dev
   const [customerWeb, setCustomerWeb] = useState(false);
   const [customerMobile, setCustomerMobile] = useState(false);
   const [businessWeb, setBusinessWeb] = useState(false);
   const [businessMobile, setBusinessMobile] = useState(false);
+<<<<<<< HEAD
   const classes = useStyles();
   const [customerFirstName, setCustomerFirstName] = useState('');
   const [customerLastName, setCustomerLastName] = useState('');
@@ -96,6 +119,9 @@ function ProjectCreate() {
   const [hover, setHover] = useState(false);
   const [alert, setAlert] = useState(false);
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
+=======
+
+>>>>>>> dev
   const router = useRouter();
   const [companyList, setCompanyList] = useState([]);
   const [customerModalOpen, setCustomerModalOpen] = React.useState(false);
@@ -225,6 +251,7 @@ function ProjectCreate() {
       });
   }, []);
   const getApplicationType = (typeRecv: string) => {
+<<<<<<< HEAD
     if (typeRecv === 'Business to Customer - Web') {
       setCustomerWeb((s) => !s);
     }
@@ -235,6 +262,18 @@ function ProjectCreate() {
       setBusinessWeb((s) => !s);
     }
     if (typeRecv === 'Business to Business - Mobile') {
+=======
+    if (typeRecv === "Business to Customer - Web") {
+      setCustomerWeb((s) => !s);
+    }
+    if (typeRecv === "Business to Customer - Mobile") {
+      setCustomerMobile((s) => !s);
+    }
+    if (typeRecv === "Business to Business - Web") {
+      setBusinessWeb((s) => !s);
+    }
+    if (typeRecv === "Business to Business - Mobile") {
+>>>>>>> dev
       setBusinessMobile((s) => !s);
     }
   };
@@ -243,6 +282,7 @@ function ProjectCreate() {
     setProjectName(e.target.value);
   };
 
+<<<<<<< HEAD
   const updateCustomerName = (
     e: React.SyntheticEvent<Element, Event>,
     value: string
@@ -343,6 +383,71 @@ function ProjectCreate() {
     updateMyProjectData();
   };
 
+=======
+  const updateCustomerName = (e: React.SyntheticEvent, value: string[]) => {
+    setCustomerName(value);
+  };
+
+  const updateMyProjectData = async () => {
+    
+    if (customerWeb) {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+        method: "POST",
+        body: JSON.stringify({
+          name: projectName,
+          customerName,
+          application: "Business to Customer - Web",
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((res) => res.json());
+    }
+    if (customerMobile) {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+        method: "POST",
+        body: JSON.stringify({
+          name: projectName,
+          customerName,
+          application: "Business to Customer - Mobile",
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((res) => res.json());
+    }
+    if (businessWeb) {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+        method: "POST",
+        body: JSON.stringify({
+          name: projectName,
+          customerName,
+          application: "Business to Business - Web",
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((res) => res.json());
+    }
+    if (businessMobile) {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`, {
+        method: "POST",
+        body: JSON.stringify({
+          name: projectName,
+          customerName,
+          application: "Business to Business - Mobile",
+        }),
+        
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((res) => res.json());
+    }
+
+    router.push("/project");
+  };
+
+>>>>>>> dev
   return (
     <Box p={2.7}>
       <Card elevation={0}>
@@ -940,6 +1045,7 @@ function ProjectCreate() {
                   <Grid item xs={10}>
                     <Typography>Business to Customer - Mobile</Typography>
                   </Grid>
+<<<<<<< HEAD
                   <Grid item xs={2}>
                     <Checkbox
                       value={businessWeb}
@@ -947,10 +1053,20 @@ function ProjectCreate() {
                         getApplicationType('Business to Business - Web')
                       }
                     />
+=======
+                  <Link href={"/company/create"}>
+                    <Button>+Add Company</Button>
+                  </Link>
+                </Grid>
+                <Grid container mt={3}>
+                  <Grid item xs={3.3} mt={3}>
+                    <Typography>Application</Typography>
+>>>>>>> dev
                   </Grid>
                   <Grid item xs={10}>
                     <Typography>Business to Business - Web</Typography>
                   </Grid>
+<<<<<<< HEAD
                   <Grid item xs={2}>
                     <Checkbox
                       value={businessMobile}
@@ -958,6 +1074,61 @@ function ProjectCreate() {
                         getApplicationType('Business to Business - Mobile')
                       }
                     />
+=======
+                  <Grid item xs={7}>
+                    <Grid container>
+                      <Grid container alignItems={"center"}>
+                        <Grid item xs={2}>
+                          <Checkbox
+                            value={customerWeb}
+                            onClick={() =>
+                              getApplicationType("Business to Customer - Web")
+                            }
+                          />
+                        </Grid>
+                        <Grid item xs={10}>
+                          <Typography>Business to Customer - Web</Typography>
+                        </Grid>
+                        <Grid item xs={2}>
+                          <Checkbox
+                            value={customerMobile}
+                            onClick={() =>
+                              getApplicationType(
+                                "Business to Customer - Mobile"
+                              )
+                            }
+                          />
+                        </Grid>
+                        <Grid item xs={10}>
+                          <Typography>Business to Customer - Mobile</Typography>
+                        </Grid>
+                        <Grid item xs={2}>
+                          <Checkbox
+                            value={businessWeb}
+                            onClick={() =>
+                              getApplicationType("Business to Business - Web")
+                            }
+                          />
+                        </Grid>
+                        <Grid item xs={10}>
+                          <Typography>Business to Business - Web</Typography>
+                        </Grid>
+                        <Grid item xs={2}>
+                          <Checkbox
+                            value={businessMobile}
+                            onClick={() =>
+                              getApplicationType(
+                                "Business to Business - Mobile"
+                              )
+                            }
+                          />
+                        </Grid>
+                        <Grid item xs={10}>
+                          <Typography>Business to Business - Mobile</Typography>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+>>>>>>> dev
                   </Grid>
                   <Grid item xs={10}>
                     <Typography>Business to Business - Mobile</Typography>
@@ -1002,6 +1173,10 @@ function ProjectCreate() {
       </Card>
     </Box>
   );
+<<<<<<< HEAD
 }
+=======
+};
+>>>>>>> dev
 
 export default ProjectCreate;

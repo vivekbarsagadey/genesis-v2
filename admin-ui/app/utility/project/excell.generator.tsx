@@ -3,6 +3,7 @@ import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
 import { IProjects } from '../../project/models';
 
+<<<<<<< HEAD
 
 type ProjectProps = {
   copyProjectData: Array<IProjects>;
@@ -30,4 +31,38 @@ function ProjectExcellGenerator({ copyProjectData }: ProjectProps) {
   );
 }
 
+=======
+type ProjectProps={
+  projects: Array<IProject>
+}
+
+const header = [
+  "Id",
+  "createdAt",
+  "updatedAt",
+  " Project Name",
+  "Customer Name",
+  "Application",
+];
+const ProjectExcellGenerator = ({ projects }:ProjectProps) => {
+  function handleDownloadExcel() {
+    downloadExcel({
+      fileName: `Project${"-list"}${new Date().toISOString().slice(0, 10)}`,
+      sheet: "react-export-table-to-excel",
+      tablePayload: {
+        header,
+        body: projects,
+      },
+    });
+  }
+  return (
+    <div>
+      <Typography variant="subtitle1" onClick={handleDownloadExcel}>
+        Excel
+      </Typography>
+    </div>
+  );
+}; 
+
+>>>>>>> dev
 export default ProjectExcellGenerator;

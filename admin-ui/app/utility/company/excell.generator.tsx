@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Grid, Typography } from '@mui/material';
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
@@ -19,6 +20,12 @@ function CompanyExcellGenerator({ copyCompanyData }: CompanyProps) {
     const data = new Blob([excelBuffer], { type: fileType });
     FileSaver.saveAs(data, fileName + fileExtension);
   };
+=======
+import React from "react";
+import { Typography } from "@mui/material";
+import { downloadExcel } from "react-export-table-to-excel";
+import { ICompany } from "../../company/models";
+>>>>>>> dev
 
   return (
     <Grid>

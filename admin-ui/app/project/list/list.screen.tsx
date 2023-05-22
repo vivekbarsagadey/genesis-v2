@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client';
 
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
@@ -15,10 +16,26 @@ import { ListComponentProps } from './props';
 
 function ProjectListViewComponent({ projects }: ListComponentProps) {
   const [page, setPage] = useState(1);
+=======
+"use client";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import { Box, Grid, IconButton, Pagination, Typography } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
+import Paper from "@mui/material/Paper";
+import { useState } from "react";
+import { PaginationHandler } from "../../utility";
+import InfoProjectComponent from "../info";
+import InfoCustomerComponent from "../info";
+import IProject from "../project.model";
+
+const ProjectListViewComponent = ({ projects }: any) => {
+  let [page, setPage] = useState(1);
+>>>>>>> dev
   const PER_PAGE = 9;
   const count = Math.ceil(projects.length / PER_PAGE);
   const paginationHandler = PaginationHandler(projects, PER_PAGE);
 
+<<<<<<< HEAD
   const [nameSort, setNameSort] = useState(true);
   const [companyNameSort, setCompanyNameSort] = useState(true);
   const [dateSort, setDateSort] = useState(true);
@@ -161,6 +178,8 @@ function ProjectListViewComponent({ projects }: ListComponentProps) {
     }
   };
 
+=======
+>>>>>>> dev
   const handleChangePage = (e: any, p: number) => {
     setPage(p);
     paginationHandler.jump(p);
@@ -169,13 +188,20 @@ function ProjectListViewComponent({ projects }: ListComponentProps) {
   return (
     <>
       <Box mr={2} mt={2}>
+<<<<<<< HEAD
         <Card elevation={0}>
           <Grid container>
             <Grid item xs={0.6} display="flex" justifyContent="flex-end">
+=======
+        <Paper variant="outlined">
+          <Grid container>
+            <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
+>>>>>>> dev
               <Grid container ml={1}>
                 <Grid item xs={4}>
                   <Checkbox size="small" />
                 </Grid>
+<<<<<<< HEAD
               </Grid>
             </Grid>
 
@@ -280,11 +306,49 @@ function ProjectListViewComponent({ projects }: ListComponentProps) {
                 noWrap
                 display="flex"
                 justifyContent="flex-end"
+=======
+                <Grid item xs={6}>
+                  <IconButton>
+                    <RemoveRedEyeIcon fontSize="small" />
+                  </IconButton>
+                </Grid>
+              </Grid>
+            </Grid>
+
+            <Grid item xs={3}>
+              <Typography variant="subtitle2" noWrap>
+                Project Name
+              </Typography>
+            </Grid>
+            <Grid item xs={3}>
+              <Typography variant="subtitle2" noWrap>
+                Company Name
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                variant="subtitle2"
+                noWrap
+                display={"flex"}
+                justifyContent={"space-around"}
+              >
+                Application
+              </Typography>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                variant="subtitle2"
+                display={"flex"}
+                justifyContent={"space-around"}
+                ml={8}
+                noWrap
+>>>>>>> dev
               >
                 Action
               </Typography>
             </Grid>
           </Grid>
+<<<<<<< HEAD
         </Card>
         <Divider/>
       </Box>
@@ -305,10 +369,34 @@ hhh
       <Grid container mt={4}>
         <Grid item xs={12} display="flex" justifyContent="flex-end">
           <Grid style={{ position: 'fixed' }} />
+=======
+        </Paper>
+      </Box>
+      <Grid style={{ height: "62vh" }}>
+        {paginationHandler
+          .currentData()
+          .reverse()
+          ?.map((items: IProject, index: number) => {
+            return (
+              <Typography key={index}>
+                <InfoProjectComponent items={items} />
+              </Typography>
+            );
+          })}
+      </Grid>
+
+      <Grid container mt={4}>
+        <Grid item xs={12} display={"flex"} justifyContent={"flex-end"}>
+          <Grid style={{ position: "fixed" }}></Grid>
+>>>>>>> dev
           <Pagination
             count={count}
             size="small"
             page={page}
+<<<<<<< HEAD
+=======
+            variant="outlined"
+>>>>>>> dev
             color="primary"
             onChange={handleChangePage}
           />
@@ -316,6 +404,10 @@ hhh
       </Grid>
     </>
   );
+<<<<<<< HEAD
 }
+=======
+};
+>>>>>>> dev
 
 export default ProjectListViewComponent;

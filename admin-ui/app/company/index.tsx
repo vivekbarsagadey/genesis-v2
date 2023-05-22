@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import PrintIcon from '@mui/icons-material/Print';
@@ -113,11 +114,49 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
     handleClickSnackbar();
     window.location.reload();
   };
+=======
+"use client";
+import { Box, Button, Grid } from "@mui/material";
+import Link from "next/link";
+import { useState } from "react";
+import { Case, Default, Switch } from "react-if";
+import { ViewTypes } from "../utility";
+import FilterComponent from "./filters";
+import CompanyCalendarView from "./list/calendar.view";
+import ExportComponent from "./list/export.component";
+import CompanyGraphView from "./list/graph.view";
+import CompanyGridView from "./list/grid.view";
+import CompanyKanbanView from "./list/kanban.view";
+import ListViewComponent from "./list/list.view.component";
+import { ICompany } from "./models/company.model";
+import CompanySearchDetails from "./search";
+import CompanyViewComponent from "./view";
+
+interface CompanyComponentProps {
+  companies: Array<ICompany>;
+}
+
+const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
+  const [copyCompanies, setCopyCompanies] = useState<Array<ICompany>>([
+    ...companies,
+  ]);
+  const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
+
+  const onSearchHandler = (c: Array<ICompany>) => {
+    setCopyCompanies(c);
+  };
+
+  const onViewSelect = (view: ViewTypes) => {
+    setViewType(view);
+  };
+
+>>>>>>> dev
   return (
     <Box ml={1.5} pb={1} mr={2.5} className={classes.root}>
       <Grid mt={1}>
         <Grid container spacing={1} pl={2}>
           <Grid item xs={3} md={3} lg={3} sm={3}>
+<<<<<<< HEAD
             <CompanySearchDetails companies={companies} onSearchHandler={onSearchHandler}/>
           </Grid>
           <Grid item xs={5} md={6} sm={5} lg={7} className={classes.display}>
@@ -139,6 +178,25 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
 
               <Grid item xs={3} md={6} sm={3}>
                 <CompanyViewComponent onViewSelect={onViewSelect}  />
+=======
+            <CompanySearchDetails
+              companies={companies}
+              onSearchHandler={onSearchHandler}
+            />
+          </Grid>
+          <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
+            <Grid container spacing={1}>
+              <Grid item xs={"auto"}>
+                
+                <FilterComponent companies={companies} onFilterHandler={onSearchHandler}/>
+              </Grid>
+              <Grid item xs={"auto"}>
+                <ExportComponent copyCompanyData={copyCompanies} />
+              </Grid>
+
+              <Grid item xs={10}>
+                <CompanyViewComponent onViewSelect={onViewSelect} />
+>>>>>>> dev
               </Grid>
             </Grid>
           </Grid>
@@ -235,6 +293,7 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
         <Grid item xs={12} pl={2}>
           <Switch>
             <Case condition={viewType === ViewTypes.GRID}>
+<<<<<<< HEAD
               <Grid ref={myRef}>
                 <CompanyGridView companies={copyCompanies} myRef={myRef} />
               </Grid>
@@ -260,11 +319,31 @@ function CompanyComponentHome({ companies }: CompanyComponentProps) {
                   setShow={setShow} multiSelect={multiSelect} setMultiSelect={setMultiSelect}
                    setShowDelAll={setShowDelAll}/>
               </Grid>
+=======
+              <CompanyGridView companies={copyCompanies} />
+            </Case>
+            <Case condition={viewType === ViewTypes.GRAPH}>
+              <CompanyGraphView companies={copyCompanies} />
+            </Case>
+            <Case condition={viewType === ViewTypes.KANBAN}>
+              <CompanyKanbanView companies={copyCompanies} />
+            </Case>
+            <Case condition={viewType === ViewTypes.CALENDAR}>
+              <CompanyCalendarView companies={copyCompanies} />
+            </Case>
+            <Default>
+              <ListViewComponent companies={copyCompanies} />
+>>>>>>> dev
             </Default>
           </Switch>
         </Grid>
       </Grid>
     </Box>
   );
+<<<<<<< HEAD
 }
+=======
+};
+
+>>>>>>> dev
 export default CompanyComponentHome;

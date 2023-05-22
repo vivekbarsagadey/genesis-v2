@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client';
 import { Button, Grid, TextField, Typography } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
@@ -24,6 +25,17 @@ const useStyles = makeStyles({
   headerChild: { color: 'red' },
   mainHeader: { display: 'flex', flexDirection: 'row' },
 });
+=======
+"use client";
+import React, { useState } from "react";
+import { Button, Grid, TextField, Typography } from "@mui/material";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import Box from "@mui/material/Box/Box";
+import { Status } from "../models";
+import Autocomplete from "@mui/material/Autocomplete";
+import { updateCompany } from "../../../services/company.action";
+>>>>>>> dev
 
 type CompanyComponentProps = {
   company: any;
@@ -42,11 +54,16 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
   const [companyAddress, setCompanyAddress] = useState(company.address);
   const [companyWebsite, setCompanyWebsite] = useState(company.website);
   const [companyStatus, setCompanyStatus] = useState(company.status);
+<<<<<<< HEAD
   const [companyGender, setCompanyGender] = useState(company.gender);
   const [companyState, setCompanyState] = useState(company.state);
   const [companyCountry, setCompanyCountry] = useState(company.country);
   const [companyPinCode, setCompanyPinCode] = useState(company.pincode);
   const [alert, setAlert] = useState(false);
+=======
+
+  const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
+>>>>>>> dev
 
   const updateCompanyEditedData = async () => {
     try {
@@ -90,6 +107,7 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
   const updateCompanyWebsite = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyWebsite(e.target.value);
   };
+<<<<<<< HEAD
   const updateCompanyCountry = (event: SelectChangeEvent) => {
     setCompanyCountry(event.target.value as string);
   };
@@ -141,6 +159,40 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
               <TextField id="owner-name" placeholder="Owner Name" variant="outlined"
                 size="small" fullWidth value={ownerName} onChange={updateOwnerName} />
             </Grid>
+=======
+
+  const getCompanyStatusValue = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    setCompanyStatus(value);
+  };
+
+  const updateCompanyEditedData = async () => {
+    try {
+      const body = {
+        firstName: firstName,
+        lastName: lastName,
+        name: companyName,
+        email: companyEmail,
+        mobile: companyPhone,
+        address: companyAddress,
+        website: companyWebsite,
+        status:companyStatus,
+      };
+      await updateCompany(id, body);
+      await router.push("/company");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  return (
+    <>
+      <Box sx={{ flexGrow: 1 }} padding={4}>
+        <Grid container>
+          <Grid item xs={12}>
+            <Typography variant="h6">Edit Company Details</Typography>
+>>>>>>> dev
           </Grid>
         </Grid>
 
@@ -225,6 +277,7 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
           </Grid>
         </Grid>
 
+<<<<<<< HEAD
         <Grid item xs={6} mt={1}>
           <Grid container className={classes.gridContainer}>
             <Grid item xs={3} className={classes.mainHeader}>
@@ -247,6 +300,36 @@ function CompanyEditComponent({ company, id }: CompanyComponentProps) {
                   })}
                 </Select>
               </FormControl>
+=======
+          <Grid item xs={6} mt={2}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
+                <Typography>Company Status</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Autocomplete
+                  value={companyStatus}
+                  onChange={getCompanyStatusValue}
+                  freeSolo
+                  id="company-status"
+                  disableClearable
+                  size="small"
+                  options={statusSet?.map((option: any) => option)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      InputProps={{
+                        ...params.InputProps,
+                        type: "search",
+                      }}
+                    />
+                  )}
+                />
+              </Grid>
+>>>>>>> dev
             </Grid>
           </Grid>
         </Grid>

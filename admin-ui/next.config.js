@@ -5,7 +5,11 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   /* concurrentFeatures: true, */
+<<<<<<< HEAD
   experimental: { appDir: true },
+=======
+  experimental:{appDir: true},
+>>>>>>> dev
   webpack(config) {
     config.resolve.alias = {
       ...config.resolve.alias,

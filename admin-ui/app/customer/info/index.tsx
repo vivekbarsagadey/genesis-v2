@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client';
 
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
@@ -123,10 +124,58 @@ function InfoCustomerComponent({
               </Typography>
             </Grid>
             <Grid item xs={2}>
+=======
+"use client";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import EditIcon from "@mui/icons-material/Edit";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { deleteCustomer } from "../../../services/customer.action";
+import { ICustomer } from "../models";
+
+type InfoCustomerComponentProps = {
+  customer: ICustomer;
+};
+const InfoCustomerComponent = ({ customer }: InfoCustomerComponentProps) => {
+  const router = useRouter();
+  const deleteCustomerHandler = async () => {
+    const response = await deleteCustomer(customer.id);
+    window.location.reload();
+    // router.push("/customer");
+  };
+  return (
+    <>
+      <Box mt={0.6} mr={2}>
+        <Paper variant="outlined">
+          <Grid container>
+            <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
+              <Grid container ml={1}>
+                <Grid item xs={4}>
+                  <Checkbox size="small" />
+                </Grid>
+                <Grid item xs={6}>
+                  <IconButton>
+                    <RemoveRedEyeIcon fontSize="small" />
+                  </IconButton>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography variant="body2" noWrap>
+                {customer.firstName} {customer.lastName}
+              </Typography>
+            </Grid>
+            <Grid item xs={2} mr={1}>
+>>>>>>> dev
               <Typography variant="body2" noWrap>
                 {customer.email}
               </Typography>
             </Grid>
+<<<<<<< HEAD
 
             <Grid item xs={2.2}>
               <Typography variant="body2" noWrap display="flex">
@@ -135,12 +184,37 @@ function InfoCustomerComponent({
             </Grid>
             <Grid item xs={1.1}>
               <Typography variant="body2" noWrap display="flex">
+=======
+            <Grid item xs={2}>
+              <Typography
+                variant="body2"
+                noWrap
+                display={"flex"}
+                justifyContent={"space-around"}
+              >
+                {customer.mobile}
+              </Typography>
+            </Grid>
+            <Grid item xs={2} mr={6}>
+              <Typography
+                variant="body2"
+                noWrap
+                display={"flex"}
+                justifyContent={"space-around"}
+                mr={1}
+              >
+>>>>>>> dev
                 {customer.address}
               </Typography>
             </Grid>
             <Grid item xs={1}>
+<<<<<<< HEAD
               <Grid container display="flex" justifyContent="flex-end">
                 <Grid item xs={5}>
+=======
+              <Grid container>
+                <Grid item xs={4}>
+>>>>>>> dev
                   <Tooltip title="Edit">
                     <Link href={`/customer/${customer.id}`}>
                       <IconButton>
@@ -149,6 +223,7 @@ function InfoCustomerComponent({
                     </Link>
                   </Tooltip>
                 </Grid>
+<<<<<<< HEAD
                 <Grid item xs={1}>
                   <Tooltip title="Delete">
                     <IconButton onClick={deletePopupOpen}>
@@ -168,10 +243,23 @@ function InfoCustomerComponent({
                       Items Deleted Sucessfully...
                     </Alert>
                   </Snackbar>
+=======
+                <Grid item xs={2}>
+                  <Tooltip title="Delete">
+                    <IconButton
+                      onClick={() => {
+                        deleteCustomerHandler();
+                      }}
+                    >
+                      <DeleteOutlineIcon fontSize="small" />
+                    </IconButton>
+                  </Tooltip>
+>>>>>>> dev
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
+<<<<<<< HEAD
 
           <Modal
             aria-labelledby="transition-modal-title"
@@ -227,4 +315,11 @@ function InfoCustomerComponent({
     </>
   );
 }
+=======
+        </Paper>
+      </Box>
+    </>
+  );
+};
+>>>>>>> dev
 export default InfoCustomerComponent;

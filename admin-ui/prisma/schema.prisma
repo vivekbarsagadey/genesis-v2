@@ -101,6 +101,7 @@ model Company {
   @@map("tb_company")
 }
 
+<<<<<<< HEAD
 model Project {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt    DateTime @default(now())
@@ -114,6 +115,30 @@ model Project {
   companyId    String?  @map("company_id") @db.ObjectId
   company      Company? @relation(fields: [companyId], references: [id])
   projectJson  Json?
+=======
+
+
+
+model Project {
+ id             String   @id @default(auto()) @map("_id") @db.ObjectId
+ createdAt      DateTime @default(now())
+ updatedAt      DateTime @updatedAt
+ name           String   @unique
+ description    String?
+ logo           String?
+ adminEmail     String? @map("admin_email")  
+ supportEmail   String? @map("support_email")
+ phoneNumber    String? @map("phone_number")
+ supportPhone   String? @map("support_phone")
+ webUrl         String? @map("web_url")
+ currentVersion String? @map("current_version")
+ status         String? @map("status")
+ customerName   String? @map("customer_name")
+ application    String? @map("application")
+ companyId      String? @map("company_id") @db.ObjectId
+ company        Company? @relation(fields: [companyId], references: [id])
+ projectJson    Json?   
+>>>>>>> dev
 
   @@map("tb_project")
 }
@@ -127,6 +152,7 @@ model Roles {
   code        String   @unique
   status      String?
 
+<<<<<<< HEAD
   @@map("tb_roles")
 }
 
@@ -139,6 +165,34 @@ model Widgets {
   description String?
   query       String?
   image       String?
+=======
+
+  @@map("tb_screen")
+}
+model Customer {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  profilePic     String?
+  country_code   String?
+  description    String?
+  address        String?
+  streetAddress  String?   @map("street_address")
+  city           String?
+  state          String?
+  zipCode        String?   @map("zip_code")
+  country        String?
+  firstName      String?   @map("first_name")
+  lastName       String?   @map("last_name")
+  mobile         String?
+  status         String?
+  gender         String?
+  age            String?
+  email          String?   @unique
+  
+  @@map("tb_customer")
+}
+>>>>>>> dev
 
   @@map("tb_widgets")
 }
@@ -219,6 +273,7 @@ model Component {
   @@map("tb_component")
 }
 
+<<<<<<< HEAD
 model VerificationToken {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt  DateTime @default(now())
@@ -226,6 +281,18 @@ model VerificationToken {
   identifier String
   token      String   @unique
   expires    DateTime
+=======
+
+
+
+model VerificationToken {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  identifier    String
+  token         String   @unique
+  expires       DateTime
+>>>>>>> dev
 
   @@unique([identifier, token])
   @@map("tb_verification_tokens")

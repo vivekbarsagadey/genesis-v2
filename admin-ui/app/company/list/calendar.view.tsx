@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import moment from 'moment';
@@ -6,6 +7,15 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { ICompany } from '../models/company.model';
 import { ListComponentProps } from './props';
 
+=======
+import React, { useEffect, useState } from "react";
+import Grid from "@mui/material/Grid";
+import moment from "moment";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import {ICompany} from "../models/company.model";
+import { ListComponentProps } from "./props";
+>>>>>>> dev
 const localizer = momentLocalizer(moment);
 
 interface CalendarEventData {
@@ -14,6 +24,7 @@ interface CalendarEventData {
   end: Date;
 }
 
+<<<<<<< HEAD
 function CompanyCalendarView({ companies }: ListComponentProps) {
   const [events, setEvents] = useState<Array<CalendarEventData>>([]);
 
@@ -22,6 +33,18 @@ function CompanyCalendarView({ companies }: ListComponentProps) {
     start: new Date(company.createdAt),
     end: new Date(company.createdAt),
   }));
+=======
+const CompanyCalendarView = ({ companies }: ListComponentProps) => {
+  const [events, setEvents] = useState([]);
+
+  const calendarCompanies = companies.map((company : ICompany) => {
+    return {
+      title: company.name,
+      start: new Date(company.createdAt),
+      end: new Date(company.updatedAt),
+    }
+  });
+>>>>>>> dev
   useEffect(() => {
     setEvents(calendarCompanies);
   }, []);

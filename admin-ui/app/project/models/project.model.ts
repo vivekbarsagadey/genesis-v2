@@ -1,4 +1,4 @@
-type ICompany = {
+type IProject = {
   id: string;
   name: string;
   firstName: string;
@@ -14,15 +14,6 @@ type ICompany = {
   createdAt: number;
   updatedAt: number;
   status: string;
-<<<<<<< HEAD
-  ownerName: string;
-  company: string;
-
 };
 
-export type { ICompany };
-=======
-};
-
-export type { ICompany } ;
->>>>>>> dev
+export type { IProject } ;

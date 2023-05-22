@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client';
 
 import { Box, Button, Card, Grid, TextField, Typography } from '@mui/material';
@@ -62,6 +63,30 @@ function CompanyCreateComponent() {
   };
 
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
+=======
+"use client";
+import { useState } from "react";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+import Autocomplete from "@mui/material/Autocomplete";
+import { Status } from "../models";
+import { createCompany } from "../../../services/company.action";
+const CompanyCreateComponent = () => {
+  const [ownerFirstName, setOwnerFirstName] = useState("");
+  const [ownerLastName, setOwnerLastName] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [companyEmail, setCompanyEmail] = useState("");
+  const [companyPhone, setCompanyPhone] = useState("");
+  const [companyAddress, setCompanyAddress] = useState("");
+  const [companyWebsite, setCompanyWebsite] = useState("");
+  const [companyStatus, setCompanyStatus] = useState("NEW");
+  const router = useRouter();
+
+  const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
+
+>>>>>>> dev
   // POST call
   const updateMyCompanyData = async () => {
     try {
@@ -73,10 +98,13 @@ function CompanyCreateComponent() {
         address: companyAddress,
         website: companyWebsite,
         status: companyStatus,
+<<<<<<< HEAD
         state: companyState,
         country: companyCountry,
         pincode: companyPinCode,
         gender: companyGender,
+=======
+>>>>>>> dev
       };
       await createCompany(body);
       await router.push('/company');
@@ -103,6 +131,7 @@ function CompanyCreateComponent() {
   const updateCompanyWebsite = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyWebsite(e.target.value);
   };
+<<<<<<< HEAD
   const updateCompanyPinCode = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyPinCode(e.target.value);
   };
@@ -122,7 +151,15 @@ function CompanyCreateComponent() {
   const getCompanyStatusValue = (event: SelectChangeEvent) => {
     setCompanyStatus(event.target.value as string);
   };
+=======
+>>>>>>> dev
 
+  const getCompanyStatusValue = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    value: string
+  ) => {
+    setCompanyStatus(value);
+  };
   return (
     <Box ml={1.5} pb={1} mr={2.5} className={classes.root}>
       <Grid container>
@@ -270,6 +307,7 @@ function CompanyCreateComponent() {
           </Grid>
         </Grid>
 
+<<<<<<< HEAD
         <Grid item xs={6} mt={1}>
           <Grid container className={classes.gridContainer}>
             <Grid item xs={3} className={classes.mainHeader}>
@@ -422,6 +460,62 @@ function CompanyCreateComponent() {
                     Company Created Sucessfully...
                   </Alert>
                 </Snackbar>
+=======
+          <Grid item xs={6} mt={2}>
+            <Grid container display="flex" alignItems="center">
+              <Grid item xs={4}>
+                <Typography>Company Status</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <Typography>:</Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Autocomplete
+                  value={companyStatus}
+                  onChange={getCompanyStatusValue}
+                  freeSolo
+                  id="company-status"
+                  disableClearable
+                  size="small"
+                  options={statusSet?.map((option: any) => option)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      InputProps={{
+                        ...params.InputProps,
+                        type: "search",
+                      }}
+                    />
+                  )}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid container mt={5}>
+            <Grid item xs={12}>
+              <Grid container>
+                <Grid item xs={9}></Grid>
+                <Grid item xs={3}>
+                  <Grid container>
+                    <Grid item xs={7}>
+                      <Link href={"/company"}>
+                        <Button variant="contained" size="small">
+                          Cancel
+                        </Button>
+                      </Link>
+                    </Grid>
+                    <Grid item xs={2} ml={1}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        onClick={updateMyCompanyData}
+                      >
+                        Save
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Grid>
+>>>>>>> dev
               </Grid>
             </Grid>
           </Grid>

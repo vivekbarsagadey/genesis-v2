@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client';
 
 import {
@@ -41,6 +42,39 @@ const useStyles = makeStyles({
   },
   buttonStyle: {
     width: '73%',
+=======
+"use client";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import {
+  Avatar,
+  Box,
+  Button,
+  Grid,
+  IconButton,
+  TextField,
+  Typography,
+} from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
+import FormControl from "@mui/material/FormControl";
+import MenuItem from "@mui/material/MenuItem";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { makeStyles } from "@mui/styles";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { updateCustomer } from "../../../services/customer.action";
+import { Status } from "../models";
+
+const useStyles = makeStyles({
+  avtar: {
+    opacity: "1",
+    "&:hover": {
+      opacity: "0.8",
+      color: "black",
+    },
+    width: "120px",
+    height: "125px",
+>>>>>>> dev
   },
 });
 
@@ -48,6 +82,7 @@ type CustomerComponentProps = {
   customers: any;
   id: string;
 };
+<<<<<<< HEAD
 function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
   const classes = useStyles();
   const [customerFirstName, setCustomerFirstName] = useState(
@@ -67,12 +102,51 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
   const [alert, setAlert] = useState(false);
   const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
   const router = useRouter();
+=======
+const CustomerEditComponent = ({ customers, id }: CustomerComponentProps) => {
+  const [customerFirstName, setCustomerFirstName] = useState(
+    customers.customerFirstName
+  );
+  const [customerLastName, setCustomerLastName] = useState(
+    customers.customerLastName
+  );
+  const [gender, setGender] = useState(customers.gender);
+  const [customerAge, setCustomerAge] = useState(customers.customerAge);
+  const [customerEmail, setCustomerEmail] = useState(customers.customerEmail);
+  const [customerPhone, setCustomerPhone] = useState(customers.customerPhone);
+  const [customerAddress, setCustomerAddress] = useState(
+    customers.customerAddress
+  );
+  const [customerStatus, setCustomerStatus] = useState(
+    customers.customerStatus
+  );
+  const [customerZipCode, setCustomerZipCode] = useState(
+    customers.customerZipCode
+  );
+  const [customerCity, setCustomerCity] = useState(customers.customerCity);
+  const [customerState, setCustomerState] = useState(customers.customerState);
+  const [customerCountry, setCustomerCountry] = useState(
+    customers.customerCountry
+  );
+  const [customerProfilePic, setCustomerProfilePic] = useState(
+    customers.customerProfilePic
+  );
+  const [hover, setHover] = useState(false);
+
+  const statusSet = Object.keys(Status).filter((v) => isNaN(Number(v)));
+  const router = useRouter();
+  const classes = useStyles();
+>>>>>>> dev
   const updateEditMyCustomerData = async () => {
     try {
       const body = {
         firstName: customerFirstName,
         lastName: customerLastName,
+<<<<<<< HEAD
         gender,
+=======
+        gender: gender,
+>>>>>>> dev
         email: customerEmail,
         age: customerAge,
         mobile: customerPhone,
@@ -82,9 +156,16 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
         city: customerCity,
         state: customerState,
         country: customerCountry,
+<<<<<<< HEAD
       };
       await updateCustomer(id, body);
       await router.push('/customer');
+=======
+        profilePic: customerProfilePic,
+      };
+      await updateCustomer(id, body);
+      await router.push("/customer");
+>>>>>>> dev
     } catch (error) {
       console.error(error);
     }
@@ -96,12 +177,24 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
   const updateCustomerLastName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerLastName(e.target.value);
   };
+<<<<<<< HEAD
   const updateCustomerAge = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerAge(e.target.value);
   };
   const updateCustomerEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerEmail(e.target.value);
   };
+=======
+
+  const updateCustomerAge = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerAge(e.target.value);
+  };
+
+  const updateCustomerEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerEmail(e.target.value);
+  };
+
+>>>>>>> dev
   const updateCustomerPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerPhone(e.target.value);
   };
@@ -111,6 +204,7 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
   const updateCustomerZipCode = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomerZipCode(e.target.value);
   };
+<<<<<<< HEAD
   const updateCustomerState = (
     e: React.SyntheticEvent<Element, Event>,
     value: string
@@ -137,10 +231,31 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
   };
   const updateCustomerStatus = (
     e: React.SyntheticEvent<Element, Event>,
+=======
+  const updateCustomerCity = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerCity(e.target.value);
+  };
+  const updateCustomerState = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerState(e.target.value);
+  };
+  const updateCustomerCountry = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerCountry(e.target.value);
+  };
+  const updateCustomerProfilePic = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomerProfilePic(e.target.value);
+  };
+  const customerChange = (event: SelectChangeEvent) => {
+    setGender(event.target.value as string);
+  };
+
+  const updateCustomerStatus = (
+    e: React.ChangeEvent<HTMLInputElement>,
+>>>>>>> dev
     value: string
   ) => {
     setCustomerStatus(value);
   };
+<<<<<<< HEAD
   const handleClick = () => {
     setAlert(true);
   };
@@ -162,14 +277,71 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
   return (
     <>
       {/* <Box>
+=======
+
+  const handleMouseIn = () => {
+    setHover(true);
+  };
+
+  const handleMouseOut = () => {
+    setHover(false);
+  };
+
+  return (
+    <div>
+      <Box>
+>>>>>>> dev
         <Grid container>
           <Grid item xs={12} mt={2} ml={2}>
             <Typography fontSize={"1.2rem"}>Edit Customer</Typography>
           </Grid>
         </Grid>
 
+<<<<<<< HEAD
         <Grid container style={{ display: "flex" }}>
           <Grid item xs={12}>
+=======
+        <Grid container style={{ display: "flex", alignItems: "center" }}>
+          <Grid item xs={2}>
+            <Grid item xs={4}>
+              <div className="App">
+                <input
+                  type="file"
+                  id="upload"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  value={customerProfilePic}
+                  onChange={updateCustomerProfilePic}
+                />
+                <label htmlFor="upload">
+                  <IconButton
+                    color="primary"
+                    aria-label="upload picture"
+                    component="Image"
+                    type="submit"
+                  >
+                    <Avatar
+                      id="avatar"
+                      onMouseOver={handleMouseIn}
+                      onMouseOut={handleMouseOut}
+                      className={classes.avtar}
+                    >
+                      {hover ? (
+                        <span>
+                          <Typography variant="body2">Upload</Typography>
+                          <CameraAltIcon />
+                        </span>
+                      ) : (
+                        ""
+                      )}
+                    </Avatar>
+                  </IconButton>
+                </label>
+              </div>
+            </Grid>
+          </Grid>
+          <Grid item xs={10}>
+>>>>>>> dev
             <Box sx={{ flexGrow: 1 }} padding={2}>
               <Grid container spacing={2}>
                 <Grid item xs={6}>
@@ -225,6 +397,7 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
+<<<<<<< HEAD
                       <Stack spacing={2}>
                         <Autocomplete
                           value={gender}
@@ -246,6 +419,20 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
                           )}
                         />
                       </Stack>
+=======
+                      <FormControl fullWidth>
+                        <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={gender}
+                          onChange={customerChange}
+                          size="small"
+                        >
+                          <MenuItem value={"Male"}>Male</MenuItem>
+                          <MenuItem value={"Female"}>Female</MenuItem>
+                        </Select>
+                      </FormControl>
+>>>>>>> dev
                     </Grid>
                   </Grid>
                 </Grid>
@@ -397,6 +584,7 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
+<<<<<<< HEAD
                       <Autocomplete
                         value={customerCity}
                         onChange={updateCustomerCity}
@@ -415,6 +603,16 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
                             placeholder="Select City"
                           />
                         )}
+=======
+                      <TextField
+                        id="city"
+                        placeholder="City"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={customerCity}
+                        onChange={updateCustomerCity}
+>>>>>>> dev
                       />
                     </Grid>
                   </Grid>
@@ -429,6 +627,7 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
+<<<<<<< HEAD
                       <Autocomplete
                         value={customerState}
                         onChange={updateCustomerState}
@@ -447,6 +646,16 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
                             placeholder="Select State"
                           />
                         )}
+=======
+                      <TextField
+                        id="state"
+                        placeholder="State"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={customerState}
+                        onChange={updateCustomerState}
+>>>>>>> dev
                       />
                     </Grid>
                   </Grid>
@@ -461,6 +670,7 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
                       <Typography>:</Typography>
                     </Grid>
                     <Grid item xs={6}>
+<<<<<<< HEAD
                       <Stack spacing={2}>
                         <Autocomplete
                           value={customerCountry}
@@ -484,11 +694,23 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
                           )}
                         />
                       </Stack>
+=======
+                      <TextField
+                        id="country"
+                        placeholder="Country"
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={customerCountry}
+                        onChange={updateCustomerCountry}
+                      />
+>>>>>>> dev
                     </Grid>
                   </Grid>
                 </Grid>
 
                 <Grid container mt={5}>
+<<<<<<< HEAD
                   <Grid item xs={8.6}></Grid>
                   <Grid item xs={3.4}>
                     <Grid container>
@@ -518,6 +740,30 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
                             Customer Edit Sucessfully...
                           </Alert>
                         </Snackbar>
+=======
+                  <Grid item xs={12}>
+                    <Grid container>
+                      <Grid item xs={9}></Grid>
+                      <Grid item xs={3}>
+                        <Grid container>
+                          <Grid item xs={7}>
+                            <Link href={"/customer"}>
+                              <Button variant="contained" size="small">
+                                Cancel
+                              </Button>
+                            </Link>
+                          </Grid>
+                          <Grid item xs={2} ml={1}>
+                            <Button
+                              variant="contained"
+                              size="small"
+                              onClick={updateEditMyCustomerData}
+                            >
+                              Save
+                            </Button>
+                          </Grid>
+                        </Grid>
+>>>>>>> dev
                       </Grid>
                     </Grid>
                   </Grid>
@@ -526,6 +772,7 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
             </Box>
           </Grid>
         </Grid>
+<<<<<<< HEAD
       </Box> */}
       <Box padding={3}>
         <Card elevation={0}>
@@ -870,5 +1117,11 @@ function CustomerEditComponent({ customers, id }: CustomerComponentProps) {
     </>
   );
 }
+=======
+      </Box>
+    </div>
+  );
+};
+>>>>>>> dev
 
 export default CustomerEditComponent;

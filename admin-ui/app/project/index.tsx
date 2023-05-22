@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client';
 import PrintIcon from '@mui/icons-material/Print';
 import { Box, Button, Divider, Grid, IconButton, Tooltip } from '@mui/material';
@@ -86,10 +87,53 @@ function ProjectComponentHome({ projects }: ProjectComponentProps) {
         <Grid container spacing={1} pl={2}>
           <Grid item xs={3} md={3} lg={3} sm={3}>
             <ProjectsSearchDetails
+=======
+"use client";
+import { Box, Button, Grid } from "@mui/material";
+import Link from "next/link";
+import { useState } from "react";
+import { Case, Default, Switch } from "react-if";
+import { ViewTypes } from "../utility";
+import ProjectFilterComponent from "./filter";
+import ProjectCalendarView from "./list/calendar.view";
+import ProjectExportComponent from "./list/export.component";
+import ProjectGraphView from "./list/graph.view";
+import ProjectGridView from "./list/grid.view";
+import ProjectListViewComponent from "./list/list.screen";
+import IProject from "./project.model";
+import ProjectSearch from "./search";
+import ProjectViewComponent from "./view";
+
+interface ProjectComponentProps {
+  projects: Array<IProject>;
+}
+
+const ProjectHomeComponent = ({ projects }: ProjectComponentProps) => {
+  const [copyProject, setCopyProject] = useState<Array<IProject>>([
+    ...projects,
+  ]);
+  const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
+
+  const onSearchHandler = (c: Array<IProject>) => {
+    setCopyProject(c);
+  };
+
+  const onViewSelect = (view: ViewTypes) => {
+    setViewType(view);
+  };
+
+  return (
+    <>
+      <Box sx={{ flexGrow: 1 }} mt={1}>
+        <Grid container spacing={2}>
+          <Grid item xs={3} md={3} lg={3} sm={3}>
+            <ProjectSearch
+>>>>>>> dev
               projects={projects}
               onSearchHandler={onSearchHandler}
             />
           </Grid>
+<<<<<<< HEAD
           <Grid item xs={5} md={6} sm={5} lg={8} className={classes.display}>
             <Grid container>
               <Grid item xs="auto" mt={0.3}>
@@ -126,12 +170,34 @@ function ProjectComponentHome({ projects }: ProjectComponentProps) {
           </Grid> */}
           <Grid item xs={1} mt={1}>
             <Link href="/project/create" passHref className={classes.textDecor}>
+=======
+          <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
+            <Grid container spacing={1}>
+              <Grid item xs={"auto"}>
+                <ProjectFilterComponent
+                  projects={projects}
+                  onFilterHandler={onSearchHandler}
+                />
+              </Grid>
+              <Grid item xs={"auto"}>
+                <ProjectExportComponent projects={copyProject}/>
+              </Grid>
+
+              <Grid item xs={10}>
+                <ProjectViewComponent onViewSelect={onViewSelect} />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={1}>
+            <Link href={"/project/create"} passHref>
+>>>>>>> dev
               <Button variant="contained" size="small">
                 Create
               </Button>
             </Link>
           </Grid>
         </Grid>
+<<<<<<< HEAD
         <Grid item xs={12} className={classes.divider}></Grid>
         <Grid item xs={12} pl={2}>
           <Switch>
@@ -169,7 +235,34 @@ function ProjectComponentHome({ projects }: ProjectComponentProps) {
         </Grid>
       </Grid>
     </Box>
+=======
+        <Grid item xs={12}>
+          <Switch>
+            <Case condition={viewType === ViewTypes.GRID}>
+              <ProjectGridView projects={projects} />
+            </Case>
+            <Case condition={viewType === ViewTypes.GRAPH}>
+              <ProjectGraphView projects={projects} />
+            </Case>
+            <Case condition={viewType === ViewTypes.KANBAN}>
+              {/* <ProjectKanbanView  /> */}
+            </Case>
+            <Case condition={viewType === ViewTypes.CALENDAR}>
+              <ProjectCalendarView projects={projects}  />
+            </Case>
+            <Default>
+              <ProjectListViewComponent projects={copyProject} />
+            </Default>
+          </Switch>
+        </Grid>
+      </Box>
+    </>
+>>>>>>> dev
   );
 }
 
+<<<<<<< HEAD
 export default ProjectComponentHome;
+=======
+export default ProjectHomeComponent;
+>>>>>>> dev

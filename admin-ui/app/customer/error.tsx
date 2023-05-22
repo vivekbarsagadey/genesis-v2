@@ -1,6 +1,9 @@
 'use client';
 
+<<<<<<< HEAD
 import { Typography } from '@mui/material';
+=======
+>>>>>>> dev
 import { useEffect } from 'react';
 
 export default function Error({
@@ -16,9 +19,18 @@ export default function Error({
   }, [error]);
 
   return (
+<<<<<<< HEAD
     <>
       <Typography>Something went wrong!</Typography>
       <button onClick={() => reset()}>Reset error boundary</button>
     </>
   );
 }
+=======
+    <div>
+      <p>Something went wrong!</p>
+      <button onClick={() => reset()}>Reset error boundary</button>
+    </div>
+  );
+}
+>>>>>>> dev

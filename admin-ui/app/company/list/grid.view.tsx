@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Card, CardMedia, Pagination, Tooltip } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -18,6 +19,20 @@ function CompanyGridView({ companies, myRef }: any) {
   const classes = useStyles();
   // pagination
   const [page, setPage] = useState(1);
+=======
+import React, { useState } from "react";
+import { Pagination, Paper } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import { Box } from "@mui/system";
+import { PaginationHandler } from "../../utility";
+import { ListComponentProps } from "./props";
+
+const CompanyGridView = ({ companies }: ListComponentProps) => {
+
+//pagination 
+  let [page, setPage] = useState(1);
+>>>>>>> dev
   const PER_PAGE = 9;
   const count = Math.ceil(companies.length / PER_PAGE);
   const paginationHandler = PaginationHandler(companies, PER_PAGE);
@@ -29,6 +44,7 @@ function CompanyGridView({ companies, myRef }: any) {
 
   return (
     <>
+<<<<<<< HEAD
       <Grid container spacing={1} mt={1} className={classes.root} mr={2} pr={2} ref={myRef}>
         {paginationHandler
           .currentData()
@@ -64,6 +80,20 @@ function CompanyGridView({ companies, myRef }: any) {
                                   alt="others"
                                   className={classes.logoSize}
                                 /></Tooltip>}
+=======
+      <Box style={{ height: "70.6vh" }} mr={2}>
+        <Grid container spacing={1} mt={1}>
+          {paginationHandler
+          .currentData()
+          .reverse()?.map((item) => {
+              return (
+                <Grid item xs={4} md={4} sm={4} lg={4} key={item.id}>
+                  <Paper variant="outlined">
+                    <Box paddingLeft={2} paddingTop={2}>
+                      <Grid container>
+                        <Grid item xs={5}>
+                          <Typography>Company Name</Typography>
+>>>>>>> dev
                         </Grid>
                         <Grid item xs={8}>
                           <Grid container>

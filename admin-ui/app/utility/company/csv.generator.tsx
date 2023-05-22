@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 import Typography from '@mui/material/Typography';
 import { CSVLink } from 'react-csv';
 import { ICompany } from '../../company/models';
+=======
+import React from "react";
+import Typography from "@mui/material/Typography";
+import { CSVLink } from "react-csv";
+import { ICompany } from "../../company/models";
+>>>>>>> dev
 
 type CompanyProps = {
   copyCompanyData: Array<ICompany>;

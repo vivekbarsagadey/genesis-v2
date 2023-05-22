@@ -16,4 +16,8 @@ type ICustomer = {
   status: string;
 };
 
+<<<<<<< HEAD
 export type { ICustomer };
+=======
+export type { ICustomer } ;
+>>>>>>> dev
