@@ -1,86 +1,62 @@
-<<<<<<< HEAD
-import Grid from '@mui/material/Grid';
-import TextField from '@mui/material/TextField';
-import { useState } from 'react';
-import { ICompany } from '../models/company.model';
-import Moment from 'react-moment';
-import moment from 'moment';
-interface CompanySearchComponentProps {
-  companies: Array<ICompany>;
-  onSearchHandler: (_: Array<ICompany>) => void;
-}
+import { Grid, IconButton, Input } from "@mui/material";
+import { Box } from "@mui/system";
+import SearchIcon from "@mui/icons-material/Search";
+import ICompanyComponentProps from "../company.props";
+import React, { useState } from "react";
+import { makeStyles } from "@mui/styles";
 
-function CompanySearchDetails({companies,onSearchHandler,}: CompanySearchComponentProps) {
+const useStyles = makeStyles({
+  search: {
+    border: "none",
+    height: "5vh",
+    width: "100%",
+    paddingLeft: "10px",
+  },
+  box: {
+    display: "flex",
+    alignItems: "center",
+    border: "1px ridge",
+  },
+});
 
-  const [searchStr, setSearchStr] = useState<string>('');
-  const filterBySearchValue = (value: string) => (f: ICompany): boolean =>
-    f.name?.toLowerCase().includes(value.toLowerCase()) ||
-    f.email.toLowerCase().includes(value.toLowerCase()) ||
-    f.mobile.toLowerCase().includes(value.toLowerCase()) ||
-    f.status.toLowerCase().includes(value.toLowerCase()) ||
-    moment(f.createdAt).format("MMMM Do YYYY").toLowerCase().includes(value.toLowerCase()) ||
-    f?.address.toLowerCase().includes(value.toLowerCase());
-=======
-import { useState } from "react";
-import Grid from "@mui/material/Grid";
-import TextField from "@mui/material/TextField";
-import {ICompany} from "../models/company.model";
+interface SearchComponentProps extends ICompanyComponentProps {}
 
-interface CompanySearchComponentProps {
-  companies: Array<ICompany>;
-  onSearchHandler: (_: Array<ICompany>) => void;
-}
+const SearchComponent = ({
+  items,
+  itemsCallBackHandler = () => {},
+}: SearchComponentProps) => {
+    
+  const [search, setSearch] = useState("");
 
-const CompanySearchDetails = ({
-  companies,
-  onSearchHandler,
-}: CompanySearchComponentProps) => {
-  const [searchStr, setSearchStr] = useState<string>("");
-
-  const filterByName = (name: string) =>  (f: ICompany): boolean => f.name.toLowerCase().includes(name.toLowerCase());
->>>>>>> dev
-
-  const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const _searchValue = e.target.value;
-    setSearchStr(_searchValue);
-<<<<<<< HEAD
-    if (_searchValue == '') {
-      onSearchHandler(companies);
-      return;
-    }
-    onSearchHandler(companies.filter(filterBySearchValue(_searchValue)));
-=======
-    if (_searchValue == "") {
-      onSearchHandler(companies);
-      return;
-    }
-    onSearchHandler(companies.filter(filterByName(_searchValue)));
->>>>>>> dev
+  const getSearch = (event: any) => {
+    setSearch(event.target.value);
   };
+
+  const doSearch = () => {
+    itemsCallBackHandler(
+      items.filter((ele) =>
+        ele.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+      )
+    );
+  };
+  const classes = useStyles();
   return (
-<<<<<<< HEAD
-    <Grid item xs={12}>
-      <TextField
-        placeholder="Search Here..."
-        size="small"
-        value={searchStr}
-        onChange={onSearch}
-        fullWidth
-      />
-    </Grid>
-=======
-    <div>
+    <>
       <Grid item xs={12}>
-        <TextField
-          placeholder="Search by Company Name"
-          size="small"
-          value={searchStr}
-          onChange={onSearch}
-          fullWidth
-        />
+        <Box className={classes.box}>
+          <input
+            type="text"
+            placeholder="Search"
+            onChange={getSearch}
+            className={classes.search}
+          />
+          <IconButton onClick={doSearch}>
+            <SearchIcon />
+          </IconButton>
+        </Box>
       </Grid>
-    </div>
->>>>>>> dev
+    </>
   );
-}
-export default CompanySearchDetails;
+};
+
+export default SearchComponent;

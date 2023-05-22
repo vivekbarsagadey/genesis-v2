@@ -1,349 +1,280 @@
-<<<<<<< HEAD
-'use client';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import PrintIcon from '@mui/icons-material/Print';
-import {Box,Button, Grid, IconButton,Tooltip, Typography,} from '@mui/material';
-import MuiAlert, { AlertProps } from '@mui/material/Alert';
-import Backdrop from '@mui/material/Backdrop';
-import Fade from '@mui/material/Fade';
-import Modal from '@mui/material/Modal';
-import Snackbar from '@mui/material/Snackbar';
-import { makeStyles } from '@mui/styles';
-import Link from 'next/link';
-import React, { useRef, useState } from 'react';
-import { Case, Default, Switch } from 'react-if';
-import { useReactToPrint } from 'react-to-print';
-import { deleteCompany } from '../../services/company.action';
-import { baseStyle, colors } from '../../themes';
-import { ViewTypes } from '../utility';
-import FilterComponent from './filters';
-import CompanyCalendarView from './list/calendar.view';
-import ExportComponent from './list/export.component';
-import CompanyGraphView from './list/graph.view';
-import CompanyGridView from './list/grid.view';
-import CompanyKanbanView from './list/kanban.view';
-import ListViewComponent from './list/list.view.component';
-import { ICompany } from './models/company.model';
-import CompanySearchDetails from './search';
-import CompanyViewComponent from './view';
-
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
-  <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
-));
-const style = {
-  position: 'absolute' as const,
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  boxShadow: 24,
-  p: 3,
-  borderRadius: '7px',
-};
-interface CompanyComponentProps {
-  companies: Array<ICompany>;
-}
-const useStyles = makeStyles({
-  root: {backgroundColor: colors.white, borderRadius: baseStyle.borderRadius.small,},
-  textDecor: { textDecoration: 'none' },
-  display: { display: 'flex' },
-  divider: { background: '#009688', height: '0.1rem', marginTop: '0.2rem' },
-  checkbox: {display: 'flex',justifyContent: 'flex-end'},
-});
-function CompanyComponentHome({ companies }: CompanyComponentProps) {
-  const classes = useStyles();
-  const [copyCompanies, setCopyCompanies] = useState<Array<ICompany>>([...companies]);
-  const [multiSelect, setMultiSelect] = useState([]);
-  const [selectAllDeletePopup, setSelectAllDeletePopup] = React.useState(false);
-  const [selectDeletePopup, setSelectDeletePopup] = React.useState(false);
-  const handleMultiSelectAllPopup = () => setSelectAllDeletePopup(true);
-  const handleSelectPopup = () => setSelectDeletePopup(true);
-  const handleCloseSelectDeletePopup = () => setSelectDeletePopup(false);
-  const handleCloseSelectAllDeletePopup = () => setSelectAllDeletePopup(false);
-  const [alert, setAlert] = React.useState(false);
-  const [show, setShow] = useState(false);
-  const [showDelAll, setShowDelAll] = useState(false);
-  const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
-
-  const onSearchHandler = (c: Array<ICompany>) => {
-    setCopyCompanies(c);
-  };
-  const onViewSelect = (view: ViewTypes) => {
-    setViewType(view);
-  };
-  const myRef = useRef(null);
-  const handleClickSnackbar = () => {
-    setAlert(true);
-  };
-  const handlePrint = useReactToPrint({
-    content: () => myRef.current,
-  });
-  const itemsCallBackHandler = (_items: Array<ICompany>) => {
-    setCopyCompanies(_items);
-  };
-  const eachCompanyId = companies.map((d) => d.id);
-  const removeAllData = async () => {
-    for (let i = 0; i <= companies.length; i++) {
-      await deleteCompany(eachCompanyId[i]);
-    }
-    window.location.reload();
-  };
-  const removeData = () => {
-    removeAllData();
-    handleClickSnackbar();
-    window.location.reload();
-  };
-  const handleCloseSnackbar = ( event?: React.SyntheticEvent | Event, reason?: string
-  ) => {
-    if (reason === 'clickAway') {
-      return;
-    }
-    setAlert(false);
-  };
-  const removeSelectedData = async () => {
-    if (multiSelect.length > 0) {
-      for (let i = 0; i <= multiSelect.length; i++) {
-        await deleteCompany(multiSelect[i]);
-      }
-      window.location.reload();
-    }
-  };
-  const selectRemoveData = () => {
-    removeSelectedData();
-    handleClickSnackbar();
-    window.location.reload();
-  };
-=======
 "use client";
-import { Box, Button, Grid } from "@mui/material";
-import Link from "next/link";
-import { useState } from "react";
-import { Case, Default, Switch } from "react-if";
-import { ViewTypes } from "../utility";
+import React, { useState, useEffect } from "react";
+import { makeStyles } from "@mui/styles";
+import ICompany from "./company.model";
 import FilterComponent from "./filters";
-import CompanyCalendarView from "./list/calendar.view";
-import ExportComponent from "./list/export.component";
-import CompanyGraphView from "./list/graph.view";
-import CompanyGridView from "./list/grid.view";
-import CompanyKanbanView from "./list/kanban.view";
-import ListViewComponent from "./list/list.view.component";
-import { ICompany } from "./models/company.model";
-import CompanySearchDetails from "./search";
-import CompanyViewComponent from "./view";
+import ListViewComponent from "./list/ListViewComponent";
+import SearchComponent from "./search";
+import Link from "next/link";
+import { Button, Grid, IconButton, Tooltip, Typography } from "@mui/material";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import AddIcon from "@mui/icons-material/Add";
+import ImportExportOutlinedIcon from "@mui/icons-material/ImportExportOutlined";
+import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { OutTable, ExcelRenderer } from "react-excel-renderer";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import { createCompany } from "./services/CompanyServices";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import { CSVLink } from "react-csv";
+import * as FileSaver from "file-saver";
+import * as XLSX from "xlsx";
+import ViewsComponent from "./view";
+import GridViewComponent from "./list";
+import GraphViewComponent from "./list/GraphViewComponent";
+import { xlsxDownload } from "../../utils/xlsx-util";
+import { download } from "../../utils/pdf-util";
+import { deleteCompany } from "./services/CompanyServices";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import CalenderViewComponent from "./list/CalenderViewComponent";
 
-interface CompanyComponentProps {
-  companies: Array<ICompany>;
+const useStyles = makeStyles({
+  createButton: {
+    borderRadius: "1.5rem",
+    textTransform:'capitalize'
+  },
+});
+interface HomeComponentProps {
+  items: Array<ICompany>;
 }
 
-const CompanyComponentHome = ({ companies }: CompanyComponentProps) => {
-  const [copyCompanies, setCopyCompanies] = useState<Array<ICompany>>([
-    ...companies,
-  ]);
-  const [viewType, setViewType] = useState<ViewTypes>(ViewTypes.LIST);
+const HomeComponent = ({ items }: HomeComponentProps) => {
+  const [count, setCount] = useState("Grid");
+  const [companies, setCompanies] = useState(items);
+  const [file, setFile] = useState(null);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [menuItem, setmenuItem] = React.useState<null | HTMLElement>(null);
+  const [checked, setChecked] = useState(false)
+  const Open = Boolean(menuItem);
+  // for import popup
+  const [openModule, setOpenModule] = React.useState(false);
 
-  const onSearchHandler = (c: Array<ICompany>) => {
-    setCopyCompanies(c);
+  const handleClickOpen = () => {
+    setOpenModule(true);
   };
 
-  const onViewSelect = (view: ViewTypes) => {
-    setViewType(view);
+  const handleImportClose = () => {
+    setOpenModule(false);
   };
 
->>>>>>> dev
+  //
+  const handleClickData = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setmenuItem(event.currentTarget);
+  };
+  const handleClose1 = () => {
+    setmenuItem(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  useEffect(() => {
+    setCompanies(items);
+  }, [items]);
+
+  const itemsCallBackHandler = (_items: Array<ICompany>) => {
+    setCompanies(_items);
+  };
+  const classes = useStyles();
+
+  const fileHandler = (event: any) => {
+    let fileObj = event.target.files[0];
+
+    //just pass the fileObj as parameter
+    ExcelRenderer(fileObj, (err, resp) => {
+      if (err) {
+        console.log(err);
+      } else {
+        setFile({
+          cols: resp.cols,
+          rows: resp.rows,
+        });
+      }
+    });
+  };
+
+  const sendDataHandler = async () => {
+    for (let i = 1; i < file.rows.length; i++) {
+      //  const row = file.rows[i];
+      const company = {
+        name: file.rows[i][1],
+        address: file.rows[i][2],
+        email: file.rows[i][3],
+        mobile: file.rows[i][4].toString(),
+        country: file.rows[i][5],
+        state: file.rows[i][6],
+        city: file.rows[i][7],
+        pinCode: file.rows[i][8],
+      };
+      await createCompany(company);
+      handleImportClose();
+    }
+  };
+
+  const exportPDF =async () => {
+    const headers = [[" COMPANY NAME", "EMAIL","CONTACT","ADDRESS","COUNTRY","STATE","CITY","PINCODE"]];
+    const title = "Companies Report";
+    const fileName = "companies.pdf"
+    const data = items.map((elt) => [elt.name, elt.email,elt.mobile,elt.address,elt.country,elt.state,elt.city,elt.pinCode]);
+    await download({ headers: headers, items: data, title: title, fileName: fileName });
+    setmenuItem(null);
+  };
+
+  const exportToXLSX = async(items:any) => { 
+    const fileName = "Companies"
+    await xlsxDownload({ fileName: fileName, items: items });
+    setmenuItem(null);
+  };
+
+ const handleCount =(data :string)=>{
+  setCount(data)
+ }
+
+ const removeItem = async(companies:any)=>{
+  await deleteCompany(companies);
+
+}
   return (
-    <Box ml={1.5} pb={1} mr={2.5} className={classes.root}>
-      <Grid mt={1}>
-        <Grid container spacing={1} pl={2}>
-          <Grid item xs={3} md={3} lg={3} sm={3}>
-<<<<<<< HEAD
-            <CompanySearchDetails companies={companies} onSearchHandler={onSearchHandler}/>
-          </Grid>
-          <Grid item xs={5} md={6} sm={5} lg={7} className={classes.display}>
-            <Grid container>
-              <Grid item xs="auto" mt={0.3}>
-                <FilterComponent companies={companies} onFilterHandler={onSearchHandler}
-                 itemsCallBackHandler={itemsCallBackHandler}/>
-              </Grid>
-              <Grid item xs="auto" mt={0.2}>
-                <ExportComponent copyCompanyData={copyCompanies}/>
-              </Grid>
-              <Grid item xs="auto" mt={0.2}>
-                <Tooltip title="Print">
-                  <IconButton  onClick={() => handlePrint()} style={{background: 'transparent'}}>
-                    <PrintIcon fontSize="small" />
-                  </IconButton>
-                </Tooltip>
-              </Grid>
-
-              <Grid item xs={3} md={6} sm={3}>
-                <CompanyViewComponent onViewSelect={onViewSelect}  />
-=======
-            <CompanySearchDetails
-              companies={companies}
-              onSearchHandler={onSearchHandler}
-            />
-          </Grid>
-          <Grid item xs={8} md={8} sm={8} lg={8} display={"flex"}>
-            <Grid container spacing={1}>
-              <Grid item xs={"auto"}>
-                
-                <FilterComponent companies={companies} onFilterHandler={onSearchHandler}/>
-              </Grid>
-              <Grid item xs={"auto"}>
-                <ExportComponent copyCompanyData={copyCompanies} />
-              </Grid>
-
-              <Grid item xs={10}>
-                <CompanyViewComponent onViewSelect={onViewSelect} />
->>>>>>> dev
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={2} sm={2.3} lg={1} md={1.6} mt={0.7} className={classes.checkbox}>
-            {showDelAll ? (
-              <Tooltip title="Delete All" arrow>
-                <IconButton aria-label="delete" onClick={handleMultiSelectAllPopup}>
-                  <DeleteOutlineIcon fontSize="small" />
-                </IconButton>
-              </Tooltip>
-            ) : null}
-
-            {multiSelect.length > 1 ? (
-              <Tooltip title="Delete Selected" arrow>
-                <IconButton aria-label="delete" onClick={handleSelectPopup}>
-                  <DeleteOutlineIcon fontSize="small" />
-                </IconButton>
-              </Tooltip>
-            ) : null}
-          </Grid>
-          <>
-            <Modal aria-labelledby="transition-modal-title" aria-describedby="transition-modal-description"
-              open={selectAllDeletePopup} onClose={handleCloseSelectAllDeletePopup} closeAfterTransition
-              slots={{ backdrop: Backdrop }} slotProps={{ backdrop: { timeout: 500 } }}>
-              <Fade in={selectAllDeletePopup}>
-                <Box sx={style}>
-                  <Typography >
-                    Are you sure you want to delete All Companies ?
-                  </Typography>
-                  <Grid container mt={4}>
-                    <Grid item xs={6} />
-                    <Grid item xs={3}>
-                      <Button variant="contained" size="small"
-                        onClick={() => handleCloseSelectAllDeletePopup()} >
-                        Cancel
-                      </Button>
-                    </Grid>
-                    <Grid item xs={2}>
-                      <Button variant="contained" size="small" onClick={removeData}>
-                        Ok
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </Box>
-              </Fade>
-            </Modal>
-            <Snackbar open={alert} autoHideDuration={5000} onClose={handleCloseSnackbar}>
-              <Alert onClose={handleCloseSnackbar} severity="error">
-                Items Deleted Successfully...
-              </Alert>
-            </Snackbar>
-          </>
-          <>
-            <Modal aria-labelledby="transition-modal-title" aria-describedby="transition-modal-description"
-              open={selectDeletePopup} onClose={handleCloseSelectDeletePopup} closeAfterTransition
-              slots={{ backdrop: Backdrop }} slotProps={{ backdrop: { timeout: 500 } }}>
-              <Fade in={selectDeletePopup}>
-                <Box sx={style}>
-                  <Typography>
-                    {`Are you sure you want to delete ${multiSelect.length} company?`}
-                  </Typography>
-                  <Grid container mt={4}>
-                    <Grid item xs={6} />
-                    <Grid item xs={3}>
-                      <Button variant="contained" size="small" onClick={() => handleCloseSelectDeletePopup()}>
-                        Cancel
-                      </Button>
-                    </Grid>
-                    <Grid item xs={2}>
-                      <Button variant="contained" size="small" onClick={selectRemoveData}>
-                        Ok
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </Box>
-              </Fade>
-            </Modal>
-            <Snackbar open={alert} autoHideDuration={5000} onClose={handleCloseSnackbar}>
-              <Alert onClose={handleCloseSnackbar} severity="error">
-                Items Deleted Successfully...
-              </Alert>
-            </Snackbar>
-          </>
-          <Grid item xs={1} mt={1}>
-            <Link href="/company/create" passHref className={classes.textDecor}>
-              <Button variant="contained" size="small">
-                Create
+    <>
+      <Grid container spacing={2} p={3}>
+        <Grid item xs={12} sm={4} md={4} lg={4}>
+          <SearchComponent
+            items={companies}
+            itemsCallBackHandler={itemsCallBackHandler}
+          />
+        </Grid>
+        <Grid item xs={12}  sm={6} md={6} lg={6} display="flex"  alignItems="center">
+          <Tooltip title="Filter" >
+          <IconButton
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick} 
+          >
+            <FilterAltIcon />
+          </IconButton>
+          </Tooltip>
+          <Tooltip title="Import">
+          <IconButton onClick={handleClickOpen}>
+            <ImportExportOutlinedIcon />
+          </IconButton>
+          </Tooltip>
+          <Dialog
+            open={openModule}
+            onClose={() => setOpenModule(false)}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogContent>
+              <input type="file" onChange={fileHandler} />
+              <Typography pt={1}>
+                for Example.{" "}
+                <Link
+                  href={"/tamplate/campanies_tamplate5.xlsx"}
+                  download="campanies_tamplate5.xlsx"
+                >
+                  click here?
+                </Link>
+              </Typography>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={() => setOpenModule(false)}>Cancel</Button>
+              <Button onClick={sendDataHandler} autoFocus>
+                Save
               </Button>
-            </Link>
-          </Grid>
+            </DialogActions>
+          </Dialog>
+          <Tooltip title='Export'>
+          <IconButton
+            aria-controls={Open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={Open ? "true" : undefined}
+            onClick={handleClickData}
+          >
+            <FileDownloadOutlinedIcon />
+          </IconButton>
+          </Tooltip>
+          <Menu
+            id="basic-menu"
+            anchorEl={menuItem}
+            open={Open}
+            onClose={handleClose1}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <MenuItem>
+              <Typography fontSize="0.8rem" onClick={(e) => exportToXLSX(items)}>
+                Excel
+              </Typography>
+            </MenuItem>
+            <MenuItem>
+              <Typography fontSize="0.8rem" onClick={() => exportPDF()}>
+                PDF
+              </Typography>
+            </MenuItem>
+            <MenuItem>
+              <Typography fontSize="0.8rem" onClick={handleClose1}>
+              <CSVLink data={items} filename={`Companies_tamplate`} style={{ textDecoration: "none",color:"black" }}>
+                 CSV
+              </CSVLink>
+
+              </Typography>
+            </MenuItem>
+          </Menu>
+          <ViewsComponent  handleCount={handleCount}  />
+        </Grid> 
+       
+        <Grid item xs={12} sm={2} md={2} lg={2} textAlign="right">
+
+       {checked && <IconButton onClick={()=>removeItem(items)} >  <DeleteOutlineIcon/></IconButton>}
+          <Link href={"/company/-1"} style={{ textDecoration: "none" }}>
+            <Tooltip title="Create">
+            <Button variant="contained" className={classes.createButton}>
+              <AddIcon fontSize="small" /> Create
+            </Button>
+            </Tooltip>
+          </Link>
         </Grid>
-        <Grid item xs={12} className={classes.divider}></Grid>
-        {/* <Divider className={classes.divider} /> */}
-        <Grid item xs={12} pl={2}>
-          <Switch>
-            <Case condition={viewType === ViewTypes.GRID}>
-<<<<<<< HEAD
-              <Grid ref={myRef}>
-                <CompanyGridView companies={copyCompanies} myRef={myRef} />
-              </Grid>
-            </Case>
-            <Case condition={viewType === ViewTypes.GRAPH}>
-              <Grid>
-                <CompanyGraphView companies={copyCompanies} myRef={myRef} />
-              </Grid>
-            </Case>
-            <Case condition={viewType === ViewTypes.KANBAN}>
-              <Grid ref={myRef}>
-                <CompanyKanbanView companies={copyCompanies} />
-              </Grid>
-            </Case>
-            <Case condition={viewType === ViewTypes.CALENDAR}>
-              <Grid ref={myRef}>
-                <CompanyCalendarView companies={copyCompanies} />
-              </Grid>
-            </Case>
-            <Default>
-              <Grid>
-                <ListViewComponent companies={copyCompanies} myRef={myRef} show={show}
-                  setShow={setShow} multiSelect={multiSelect} setMultiSelect={setMultiSelect}
-                   setShowDelAll={setShowDelAll}/>
-              </Grid>
-=======
-              <CompanyGridView companies={copyCompanies} />
-            </Case>
-            <Case condition={viewType === ViewTypes.GRAPH}>
-              <CompanyGraphView companies={copyCompanies} />
-            </Case>
-            <Case condition={viewType === ViewTypes.KANBAN}>
-              <CompanyKanbanView companies={copyCompanies} />
-            </Case>
-            <Case condition={viewType === ViewTypes.CALENDAR}>
-              <CompanyCalendarView companies={copyCompanies} />
-            </Case>
-            <Default>
-              <ListViewComponent companies={copyCompanies} />
->>>>>>> dev
-            </Default>
-          </Switch>
         </Grid>
-      </Grid>
-    </Box>
+
+        <Grid item xs={12}  pl={3} pr={3} pt={1}>
+        {(() => {
+        switch (count) { 
+          case 'List':
+          return  <ListViewComponent companies={companies}  setCompanies={setCompanies} 
+          checked={checked} setChecked={setChecked}  ></ListViewComponent> 
+           case 'Graph':
+          return  <GraphViewComponent items={companies} ></GraphViewComponent> 
+          case 'Calender':
+            return <CalenderViewComponent items={companies}></CalenderViewComponent>
+          default:
+            return <GridViewComponent items={companies} /> 
+        }
+      })()}
+        </Grid>
+     
+      <div>
+        <FilterComponent
+          items={items}
+          anchorEl={anchorEl}
+          open={open}
+          handleClose={handleClose}
+          itemsCallBackHandler={itemsCallBackHandler}
+        />
+      </div>
+    </>
   );
-<<<<<<< HEAD
-}
-=======
 };
 
->>>>>>> dev
-export default CompanyComponentHome;
+export default HomeComponent;

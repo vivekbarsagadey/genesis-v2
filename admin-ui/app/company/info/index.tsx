@@ -1,337 +1,143 @@
-<<<<<<< HEAD
-'use client';
-
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import EditIcon from '@mui/icons-material/Edit';
-import {
-  Button,
-  Card,
-  Divider,
-  Grid,
-  IconButton,
-  Tooltip,
-  Typography,
-} from '@mui/material';
-import MuiAlert, { AlertProps } from '@mui/material/Alert';
-import Box from '@mui/material/Box';
-import Checkbox from '@mui/material/Checkbox';
-import Fade from '@mui/material/Fade';
-import Modal from '@mui/material/Modal';
-import Snackbar from '@mui/material/Snackbar';
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import Moment from 'react-moment';
-import { makeStyles } from '@mui/styles';
-import Switch, { Case } from 'react-switch-case';
-import { deleteCompany } from '../../../services/company.action';
-import { ICompany } from '../models/company.model';
-
-const style = {
-  position: 'absolute' as const,
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  boxShadow: 24,
-  p: 3,
-  borderRadius: '7px',
-};
-
-const useStyles = makeStyles({
-  contactCenter: { display: 'flex', justifyContent: 'center' },
-  activeData: { textAlign: 'center' },
-});
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
-));
-
-type InfoCompanyComponentProps = {
-  company: ICompany;
-  setMultiSelect: any;
-  multiSelect: any;
-  show: any;
-};
-
-function InfoCompanyComponent({
-  company,
-  show,
-  setMultiSelect,
-  multiSelect,
-}: InfoCompanyComponentProps) {
-  const [alert, setAlert] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
-  const deletePopupOpen = () => setOpen(true);
-  const [checked, setChecked] = useState(show);
-
-  const handleCloseDelete = () => setOpen(false);
-  const handleClick = () => {
-    setAlert(true);
-  };
-  const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
-    if (reason === 'clickAway') {
-      return;
-    }
-    setAlert(false);
-  };
-
-  const removeData = (f: ICompany) => {
-    window.location.reload();
-    deleteCompany(f.id);
-    handleClick();
-  };
-  useEffect(() => {
-    setChecked(show);
-  }, [show]);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
-
-    const selectedCompanyId = company.id;
-
-    setMultiSelect([...multiSelect, selectedCompanyId]);
-  };
-
-  const classes = useStyles();
-
-  return (
-    <Box mt={0.6} mr={2}>
-      <Card elevation={0}>
-        <Grid container>
-          <Grid item xs={1}>
-            <Grid container ml={1}>
-              <Grid item xs={5}>
-                <Checkbox
-                  size="small"
-                  checked={checked}
-                  onChange={handleChange}
-                />
-=======
-"use client";
+import React from "react";
+import ICompanyComponentProps from "../company.props";
+import Grid from "@mui/material/Grid";
+import { Avatar, Card, IconButton, Tooltip, Typography } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import { Grid, IconButton, Paper, Tooltip, Typography } from "@mui/material";
-import Box from "@mui/material/Box";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { deleteCompany } from "../../../services/company.action";
-import { ICompany } from "../models/company.model";
-type InfoCompanyComponentProps = {
-  company: ICompany;
+import { deleteCompany } from "../services/CompanyServices";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
+
+const useStyles = makeStyles({
+  listname: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  card: {
+    padding: "0px  !important ",
+  },
+});
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
 };
-const InfoCompanyComponent = ({ company }: InfoCompanyComponentProps) => {
-  const router = useRouter();
-  const deleteCompanyHandler = async () => {
-    const response = await deleteCompany(company.id);
-    // route to list screen
-    window.location.reload();
-    router.push("/company");
+
+interface InfoComponentProps extends ICompanyComponentProps {}
+const InfoComponent = ({ item }: any) => {
+  const classes = useStyles();
+
+  // snack bar hooks
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const getRemove = async (item: any) => {
+    await deleteCompany(item);
+  };
+  const removeHandler = (item: any) => {
+    getRemove(item);
+    handleClick();
   };
   return (
-    <>
-      <Box mt={0.6} mr={2}>
-        <Paper variant="outlined">
-          <Grid container>
-            <Grid item xs={2} display={"flex"} justifyContent={"flex-end"}>
-              <Grid container ml={1}>
-                <Grid item xs={4}>
-                  <Checkbox size="small" />
-                </Grid>
-                <Grid item xs={6}>
-                  <IconButton>
-                    <RemoveRedEyeIcon fontSize="small" />
-                  </IconButton>
-                </Grid>
-              </Grid>
-            </Grid>
+    <Grid item xs={12} lg={4} sm={6}>
+      <Card style={{ padding: "4px" }}>
+        <Grid container spacing={2}>
+          <Grid
+            item
+            xs={12}
+            style={{ display: "flex", justifyContent: "flex-end" }}
+          >
+            <Tooltip title="Delete">
+              <IconButton onClick={() => removeHandler(item)}>
+                <DeleteOutlineIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
 
-            <Grid item xs={2}>
-              <Typography variant="body2" noWrap>
-                {company.name}
-              </Typography>
-            </Grid>
-            <Grid item xs={2} mr={1}>
-              <Typography variant="body2" noWrap>
-                {company.email}
-              </Typography>
-            </Grid>
-            <Grid item xs={2}>
-              <Typography
-                variant="body2"
-                noWrap
-                display={"flex"}
-                justifyContent={"space-around"}
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+              <Alert
+                onClose={handleClose}
+                severity="error"
+                sx={{ width: "100%" }}
               >
-                {company.mobile}
-              </Typography>
-            </Grid>
-            <Grid item xs={2} mr={6}>
-              <Typography
-                variant="body2"
-                noWrap
-                display={"flex"}
-                justifyContent={"space-around"}
-              >
-                {company.address}
-              </Typography>
-            </Grid>
-            <Grid item xs={1}>
-              <Grid container>
-                <Grid item xs={4}>
-                  <Tooltip title="Edit">
-                    <Link href={`/company/${company.id}`}>
-                      <IconButton>
-                        <EditIcon fontSize="small" />
-                      </IconButton>
-                    </Link>
-                  </Tooltip>
-                </Grid>
-                <Grid item xs={2}>
-                  <Tooltip title="Delete">
-                    <IconButton
-                      onClick={() => {
-                        deleteCompanyHandler();
-                      }}
-                    >
-                      <DeleteOutlineIcon fontSize="small" />
-                    </IconButton>
-                  </Tooltip>
-                </Grid>
->>>>>>> dev
+                Item Deleted Successfully !!
+              </Alert>
+            </Snackbar>
+
+            <Link href={`/company/${item._id}`}>
+              <Tooltip title="Edit">
+                <IconButton>
+                  <EditIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
+            </Link>
+          </Grid>
+          <Grid
+            item
+            xs={3}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "0px",
+            }}
+            sm={3}
+            lg={3}
+            md={3}
+          >
+            <Avatar />
+          </Grid>
+          <Grid item xs={9} sm={9} lg={9} md={9}>
+            <Grid container spacing={2}>
+              <Grid item xs={6} className={classes.card} sm={6} lg={6} md={6}>
+                <Typography fontSize="80%" noWrap>
+                  Company Name:
+                </Typography>
+                <Typography fontSize="80%">Email:</Typography>
+                <Typography fontSize="80%">Contact:</Typography>
+                <Typography fontSize="80%">Address:</Typography>
+              </Grid>
+              <Grid item xs={6} className={classes.card} sm={6} lg={6} md={6}>
+                <Typography fontSize="80%" noWrap>
+                  {item.name}
+                </Typography>
+                <Typography fontSize="80%" noWrap>
+                  {item.email}
+                </Typography>
+                <Typography fontSize="80%" noWrap>
+                  {item.mobile}
+                </Typography>
+                <Typography fontSize="80%" noWrap>
+                  {item.address}
+                </Typography>
               </Grid>
             </Grid>
           </Grid>
 
-          <Grid item xs={2}>
-            <Typography variant="body2" noWrap>
-              <Moment format="MMMM Do YYYY">{company.createdAt}</Moment>
-            </Typography>
-          </Grid>
 
-          <Grid item xs={2}>
-            <Typography
-              variant="body2"
-              noWrap
-              style={{ display: 'flex', justifyContent: 'left' }}
-            >
-              {company.name}
-            </Typography>
-          </Grid>
 
-          <Grid item xs={2}>
-            <Typography variant="body2" noWrap>
-              {company.email}
-            </Typography>
-          </Grid>
-
-          <Grid item xs={2} className={classes.contactCenter}>
-            <Typography variant="body2" noWrap>
-              {company.mobile}
-            </Typography>
-          </Grid>
-
-          <Grid item xs={1}>
-            <Typography variant="body2" noWrap>
-              {company.address}
-            </Typography>
-          </Grid>
-
-          <Grid item xs={1}>
-            <Switch condition={company.status}>
-              <Case value="NEW">
-                <Typography variant="body2" noWrap>
-                  {company.status}
-                </Typography>
-              </Case>
-              <Case value="ACTIVE">
-                <Typography variant="body2" noWrap>
-                  {company.status}
-                </Typography>
-              </Case>
-              <Case value="INACTIVE">
-                <Typography variant="body2" noWrap>
-                  {company.status}
-                </Typography>
-              </Case>
-            </Switch>
-          </Grid>
-
-          <Grid item xs={1}>
-            <Grid container>
-              <Grid item xs={3.3} ml={2}>
-                <Tooltip title="Edit">
-                  <Link href={`/company/${company.id}`}>
-                    <IconButton>
-                      <EditIcon fontSize="small" />
-                    </IconButton>
-                  </Link>
-                </Tooltip>
-              </Grid>
-              <Grid item xs={2}>
-                <Tooltip title="Delete">
-                  <IconButton onClick={deletePopupOpen}>
-                    <DeleteOutlineIcon fontSize="small" />
-                  </IconButton>
-                </Tooltip>
-                <Snackbar
-                  open={alert}
-                  autoHideDuration={5000}
-                  onClose={handleClose}
-                >
-                  <Alert onClose={handleClose} severity="success">
-                    Items Deleted Successfully...
-                  </Alert>
-                </Snackbar>
-              </Grid>
-            </Grid>
-          </Grid>
+          
         </Grid>
-
-        <Modal
-          aria-labelledby="transition-modal-title"
-          aria-describedby="transition-modal-description"
-          open={open}
-          onClose={handleCloseDelete}
-          closeAfterTransition
-        >
-          <Fade in={open}>
-            <Box sx={style}>
-              <Typography id="transition-modal-description" fontSize="0.9rem">
-                Are you sure you want to delete the selected company?
-              </Typography>
-              <Grid container mt={4}>
-                <Grid item xs={6} />
-                <Grid item xs={3}>
-                  <Button
-                    variant="contained"
-                    size="small"
-                    onClick={() => handleCloseDelete()}
-                  >
-                    Cancel
-                  </Button>
-                </Grid>
-                <Grid item xs={2}>
-                  <Button
-                    variant="contained"
-                    size="small"
-                    onClick={() => removeData(company)}
-                  >
-                    Ok
-                  </Button>
-                </Grid>
-              </Grid>
-            </Box>
-          </Fade>
-        </Modal>
       </Card>
-      <Divider />
-    </Box>
+    </Grid>
   );
-}
-export default InfoCompanyComponent;
+};
+export default InfoComponent;

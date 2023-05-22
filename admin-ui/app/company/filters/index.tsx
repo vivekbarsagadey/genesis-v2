@@ -1,317 +1,123 @@
-<<<<<<< HEAD
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import { IconButton } from '@mui/material';
-import Autocomplete from '@mui/material/Autocomplete';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import Menu from '@mui/material/Menu';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import Tooltip from '@mui/material/Tooltip';
-import { styled } from '@mui/material/styles';
-import React, { useState } from 'react';
-import { ICompany } from '../models';
-=======
-import React, { useState, useEffect } from "react";
-import FilterAltIcon from "@mui/icons-material/FilterAlt";
-import { IconButton } from "@mui/material";
-import Autocomplete from "@mui/material/Autocomplete";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Menu from "@mui/material/Menu";
-import Stack from "@mui/material/Stack";
-import { styled } from "@mui/material/styles";
-import TextField from "@mui/material/TextField";
-import Tooltip from "@mui/material/Tooltip";
-import { ICompany } from "../models";
-import { isNotBlank } from "../../../utils/string.util";
->>>>>>> dev
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import ICompanyComponentProps from "../company.props";
+import { Stack } from "@mui/system";
 
-const FilterStyle = styled(Grid)(() => ({
-  width: 300,
-  paddingTop: '1rem',
-  paddingLeft: '1rem',
-  paddingRight: '1rem',
-}));
-
-<<<<<<< HEAD
-type CompanyFilterComponentProps = {
-  companies: Array<ICompany>;
-  onFilterHandler: any;
-  itemsCallBackHandler: any;
-};
-
-function FilterComponent({
-  companies,
-  itemsCallBackHandler,
-}: CompanyFilterComponentProps) {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [filterDataCompanyName, setFilterDataName] = useState('');
-  const [filterDataOwnerName, setFilterDataOwnerName] = useState('');
-  const [filterDataEmail, setFilterDataEmail] = useState('');
-  const open = Boolean(anchorEl);
-
-  const doFilter = () => {
-    const newCompanies = companies?.filter(
-      (u) =>
-        u.name.toLowerCase().includes(filterDataCompanyName.toLowerCase()) ||
-        u.ownerName.toLowerCase().includes(filterDataOwnerName.toLowerCase()) ||
-        u.email.toLowerCase().includes(filterDataEmail.toLowerCase())
-    );
-    itemsCallBackHandler(newCompanies);
-    handleClose();
-  };
-
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-=======
-interface CompanyFilterComponentProps {
-  companies: Array<ICompany>;
-  onFilterHandler: (_: Array<ICompany>) => void;
-}
-type FilterFields = {
-  key: string;
-  values: string[];
-  label: string;
-};
-
-interface FilterProps {
-  filterField: FilterFields;
-  options: Array<String>;
+interface FilterComponentProps extends ICompanyComponentProps {
+  handleClose: () => void;
+  anchorEl: boolean;
+  open: boolean;
 }
 
 const FilterComponent = ({
-  companies,
-  onFilterHandler,
-}: CompanyFilterComponentProps) => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  items,
+  anchorEl,
+  open,
+  handleClose,
+  itemsCallBackHandler = () => {},
+}: FilterComponentProps) => {
+  const [filterDataName, setFilterDataName] = useState("");
+  const [filterDataEmail, setFilterDataEmail] = useState("");
+  
 
-  const [fileds, setFileds] = useState<Array<FilterFields>>([]);
+  const doFilter = () => {
 
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
+    const newCompany = items?.filter(
+      (c) =>
+        c.name.toLowerCase().includes(filterDataName.toLowerCase()) ||
+        c.email.toLowerCase().includes(filterDataEmail.toLowerCase())
+    );
+    itemsCallBackHandler(newCompany);
+    handleClose();
+    
   };
->>>>>>> dev
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const emailFilter = (value: string) => (item: ICompany) => {
-    console.log("value ??", value);
-
-    if (isNotBlank(item.email)) {
-      if (!item.email.toLowerCase().includes(value.toLowerCase())) {
-        return false;
-      }
-      return true;
-    }
-    return true;
-  };
-  const nameFilter = (value: string) => (item: ICompany) => {
-    if (isNotBlank(item.name)) {
-      if (!item.name.toLowerCase().includes(value.toLowerCase())) {
-        return false;
-      }
-      return true;
-    }
-    return true;
-  };
-
-  const applyFilter = () => {
-    const emailData = fileds.map((ele) => ele.values);
-    const d = companies.filter(() => emailFilter(emailData[0]));
-   
-    // onFilterHandler();
-  };
-
-  useEffect(() => {
-    var filterFields = [];
-    filterFields.push({ key: "email", values: [], label: "Email" });
-    filterFields.push({ key: "name", values: [], label: "Name" });
-    setFileds(filterFields);
-  }, []);
 
   return (
-    <>
-      <Tooltip title="Filter">
-        <IconButton
-<<<<<<< HEAD
-          id="filter-btn"
-          aria-controls={open ? 'basic-menu' : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
-          onClick={handleClick}
-          style={{ background: 'transparent' }}
-=======
-          id="basic-button"
-          aria-controls={open ? "basic-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleClick}
->>>>>>> dev
-        >
-          <FilterAltIcon fontSize="small" />
-        </IconButton>
-      </Tooltip>
+    <div>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          'aria-labelledby': 'basic-button',
+          "aria-labelledby": "basic-button",
         }}
       >
-<<<<<<< HEAD
-        <FilterStyle>
-          <Stack>
+        <div>
+          <Stack spacing={2} sx={{ width: 350, padding: "1rem" }} >
             <Autocomplete
               freeSolo
-              size="small"
-              id="free-solo-2-demo"
               disableClearable
-              options={Array.from(
-                new Set(companies.map((data) => data.ownerName))
-              )}
+              options={items.map((f) => f.name)}
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  placeholder="Owner Name"
+                  label="Name"
+                  size="small"
                   InputProps={{
                     ...params.InputProps,
-                    type: 'search',
-                  }}
-                />
-              )}
-              onChange={(event, value) => setFilterDataOwnerName(value)}
-            />
-          </Stack>
-        </FilterStyle>
-
-        <FilterStyle>
-          <Stack>
-            <Autocomplete
-              freeSolo
-              size="small"
-              id="free-solo-2-demo"
-              disableClearable
-              options={Array.from(new Set(companies.map((data) => data.name)))}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  placeholder="Company Name"
-                  InputProps={{
-                    ...params.InputProps,
-                    type: 'search',
+                    type: "search",
                   }}
                 />
               )}
               onChange={(event, value) => setFilterDataName(value)}
             />
           </Stack>
-        </FilterStyle>
+        </div>
 
-        <FilterStyle>
-          <Stack>
+        <div>
+          <Stack spacing={2} sx={{ width: 350, padding: "1rem" }} >
             <Autocomplete
               freeSolo
-              size="small"
-              id="free-solo-2-demo"
               disableClearable
-              options={Array.from(new Set(companies.map((data) => data.email)))}
+              options={items.map((id) => id.email)}
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  placeholder="Email"
+                  label="Email"
+                  size="small"
                   InputProps={{
                     ...params.InputProps,
-                    type: 'search',
+                    type: "search",
                   }}
                 />
               )}
               onChange={(event, value) => setFilterDataEmail(value)}
             />
           </Stack>
-        </FilterStyle>
-=======
-        {companies &&
-          fileds?.map((feild, index) => {
-            const key = feild.key;
-            return (
-              <Filter
-                filterField={feild}
-                options={Array.from(
-                  new Set(companies?.map((f) => f[`${key}`]))
-                )}
-                key={index}
-              ></Filter>
-            );
-          })}
->>>>>>> dev
+        </div>
 
-        <Grid container mb={1} mt={2}>
-          <Grid item xs={6} />
-          <Grid item xs={3}>
+        <Grid container mb={1}>
+          <Grid item xs={5.6}></Grid>
+          <Grid item xs={3.6}>
             <Button
-              variant="contained"
+              variant="outlined"
               size="small"
+              style={{ textTransform: "capitalize" }}
               onClick={() => handleClose()}
             >
               Cancel
             </Button>
           </Grid>
-          <Grid item xs={1}>
-<<<<<<< HEAD
-            <Button variant="contained" size="small" onClick={doFilter}>
-=======
-            <Button variant="contained" size="small" onClick={applyFilter}>
->>>>>>> dev
+          <Grid item xs={2}>
+            <Button
+              variant="outlined"
+              size="small"
+              style={{ textTransform: "capitalize" }}
+              onClick={doFilter}
+             
+            >
               Save
             </Button>
           </Grid>
         </Grid>
       </Menu>
-    </>
-<<<<<<< HEAD
-=======
+    </div>
   );
 };
-
-const Filter = ({ filterField, options }: FilterProps) => {
-  const filterUpdateHandler = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    value: string
-  ) => {
-    filterField.values.push(value);
-  };
-
-  return (
-    <Grid item xs={8}>
-      <FilterStyle>
-        <Stack>
-          <Autocomplete
-            size="small"
-            onChange={filterUpdateHandler}
-            freeSolo
-            options={options}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                InputProps={{
-                  ...params.InputProps,
-                  type: "search",
-                }}
-                placeholder={filterField.label}
-              />
-            )}
-          />
-        </Stack>
-      </FilterStyle>
-    </Grid>
->>>>>>> dev
-  );
-}
 
 export default FilterComponent;

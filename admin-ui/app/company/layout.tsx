@@ -1,12 +1,12 @@
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <>
-      {/* <>This is company header</> */}
-      {children}
+      {/* <div>This is company header</div> */}
+      <>{children}</>
     </>
-  );
+  )
 }
